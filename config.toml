@@ -1,38 +1,30 @@
+# --- main configuration -------------------------------------------
+
 baseurl		 	    = "https://lightjason.github.io/"
 languageCode 	    = "en-us"
-metadataformat      = "yaml"
 title 			    = "LightJason"
-theme 			    = "hugo-alabaster-theme"
-enableEmoji 	    = true
-disqusShortname     = ""
-googleAnalytics     = ""
+theme 			    = "lightjason"
 
 [params]
 	name 		    = "LightJason"
 	description     = "A Lightwire Multi-Agent System"
-	github_user     = ""
-	github_repo     = ""
-	github_banner   = false
-	custom_css 	    = ["cssjs/layout.css"]
-	custom_js  	    = []
-	highlightjs     = "css/highlight.css"
-	favicon 	    = "favicon.ico"
+	listpages		= ["blogpost", "tutorial", "publication"]
 
 [params.sidebar]
 	logo 		    = ""
-	github_button   = false
-	travis_button   = false
-	codecov_button  = false
-	gratipay        = ""
-	show_relations  = false
 
-[params.footer]
-	copyright       = ""
-	show_powered_by = false
+[[params.footer.links]]
+	name = "AgentSpeak(L) Repository"
+	url  = "https://github.com/LightJason/AgentSpeak"
+
+# ----------------------------------------------------------------------	 
+
+
+# --- main navigation menu ---------------------------------------------
 
 [[menu.main]]
-	Name 			= "Blog"
-  	URL 			= "/blog"
+	Name 			= "Blogpost"
+  	URL 			= "/blogpost"
   	weight 			= 0
 
 [[menu.main]]
@@ -41,16 +33,23 @@ googleAnalytics     = ""
   	weight 			= 10
 
 [[menu.main]]
-	Name 			= "Tutorials"
-  	URL				= "/tutorials"
+	Name 			= "Tutorial"
+  	URL				= "/tutorial"
   	weight 			= 20
+
+[[menu.main]]
+	Name 			= "Publication"
+  	URL				= "/publication"
+  	weight 			= 30	  
 
 [[menu.main]]
 	Name 			= "About"
   	URL			    = "/about"
-  	weight 			= 30
+  	weight 			= 40
 
 [[menu.main]]
 	Name 			= "Contact"
   	URL 			= "/contact"
   	weight 			= 1000	
+
+# ----------------------------------------------------------------------
