@@ -7,7 +7,7 @@ git push origin :master
 git branch -D master
 git checkout --orphan master
 rm -Rf *
-echo -n "*.*\n!.gitignore\n!*.html\n!*.xml\n!*.css\n!*.js\n!*.json"
+echo -n "*.*\n!.gitignore\n!*.html\n!*.xml\n!*.css\n!*.js\n!*.json" > .gitignore
 mv /tmp/public/* .
 echo '{ "name" : "LightJason.GitHub.io", "tagline" : "", "body" : "" }' > params.json
 git add --all .
