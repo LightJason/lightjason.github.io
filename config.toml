@@ -1,0 +1,53 @@
+baseurl		 	    = "http://lightjason.github.io/LightJason/"
+languageCode 	    = "en-us"
+metadataformat      = "yaml"
+title 			    = "LightJason"
+theme 			    = "hugo-alabaster-theme"
+enableEmoji 	    = true
+disqusShortname     = ""
+googleAnalytics     = ""
+
+[params]
+	name 		    = "LightJason"
+	description     = "A Lightwire Multi-Agent System"
+	github_user     = ""
+	github_repo     = ""
+	github_banner   = false
+	custom_css 	    = ["css/layout.css"]
+	custom_js  	    = []
+	highlightjs     = "css/highlight.css"
+	favicon 	    = "favicon.ico"
+
+[params.sidebar]
+	logo 		    = ""
+	github_button   = false
+	travis_button   = false
+	codecov_button  = false
+	gratipay        = ""
+	show_relations  = false
+
+[params.footer]
+	copyright       = ""
+	show_powered_by = false
+
+
+
+[[menu.main]]
+	Name 			= "About"
+  	URL			    = "/about"
+  	weight 			= 0
+
+[[menu.main]]
+	Name 			= "Blog"
+  	URL 			= "/blog"
+  	weight 			= 1
+
+[[menu.main]]
+	Name 			= "Tutorials"
+  	URL				= "/tutorials"
+  	weight 			= 2	  
+
+[[menu.main]]
+	Name 			= "Contact"
+  	URL 			= "/contact"
+  	weight 			= 1000	

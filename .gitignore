@@ -1,0 +1,11 @@
+*.*
+!.gitignore
+!*.toml
+!*.html
+!*.md
+!*.css
+!*.js
+!*.bash
+
+# ignore generated files
+public/**
