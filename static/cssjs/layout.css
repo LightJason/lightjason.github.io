@@ -7,3 +7,7 @@ img[src$='#floatright']
 {
 	float: right;
 }
+
+pre{
+	background: transparent;
+}

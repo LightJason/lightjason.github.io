@@ -8,6 +8,10 @@
 	
 	<title>{{ if not .IsHome }}{{ .Title }} &mdash;{{ end }} {{ .Site.Title }}</title>
 	
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/github.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js"></script>
+	<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	
 	<link rel="stylesheet" href="{{ .Site.BaseURL }}css/alabaster.css" type="text/css" />
 	{{ with .Site.Params.highlightjs -}}
 	<link rel="stylesheet" href="{{ $.Site.BaseURL }}{{ . }}" type="text/css" />

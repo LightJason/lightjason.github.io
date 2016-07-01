@@ -13,7 +13,7 @@ googleAnalytics     = ""
 	github_user     = ""
 	github_repo     = ""
 	github_banner   = false
-	custom_css 	    = ["css/layout.css"]
+	custom_css 	    = ["cssjs/layout.css"]
 	custom_js  	    = []
 	highlightjs     = "css/highlight.css"
 	favicon 	    = "favicon.ico"
@@ -31,25 +31,24 @@ googleAnalytics     = ""
 	show_powered_by = false
 
 [[menu.main]]
-	Name 			= "Framework"
-  	URL			    = "/framework"
+	Name 			= "Blog"
+  	URL 			= "/blog"
   	weight 			= 0
 
 [[menu.main]]
-	Name 			= "Blog"
-  	URL 			= "/blog"
+	Name 			= "Framework"
+  	URL			    = "/framework"
   	weight 			= 10
-
-[[menu.main]]
-	Name 			= "About"
-  	URL			    = "/about"
-  	weight 			= 20
 
 [[menu.main]]
 	Name 			= "Tutorials"
   	URL				= "/tutorials"
-  	weight 			= 30	 
-	   
+  	weight 			= 20
+
+[[menu.main]]
+	Name 			= "About"
+  	URL			    = "/about"
+  	weight 			= 30
 
 [[menu.main]]
 	Name 			= "Contact"

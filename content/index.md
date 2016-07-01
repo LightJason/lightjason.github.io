@@ -11,4 +11,6 @@ LightJason is a _lightwire multi-agent framework_ for creating a multi-agent sys
 * parallel execution and thread-safe variables
 * multi-variable assignments
 
-We are working on the theoretical background and developing the whole system with current software development technologies
+We are working on the theoretical background and developing the whole system with current software development technologies. 
+
+One of our main desire is, that we publish a full useable framework which can be used in _productive system_ and is understandable also for _non-computer scientist_. We trying to close the gap between modelling aspects, performance and scalibility and also human-understandable clean written source codes
