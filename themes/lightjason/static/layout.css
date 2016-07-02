@@ -22,3 +22,8 @@ ul.horizontal li {
     display: inline;
 	padding: 0.75em;
 }
+
+.footnotes
+{
+	font-size: 75%;
+}

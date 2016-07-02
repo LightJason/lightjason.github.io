@@ -2,6 +2,7 @@
 !.gitignore
 !.hidden
 !*.toml
+!*.yml
 !*.html
 !*.md
 !*.css
