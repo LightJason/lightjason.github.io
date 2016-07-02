@@ -1,0 +1,36 @@
+[
+    {
+        "id"              : "ahlbrecht+2014emas",
+        "title"           : "A scalable runtime platform for multiagent-based simulation",
+        "type"            : "inproceedings",
+        "container-title" : "Lecture Notes in Artificial Intelligence (LNAI)",
+        "publisher"       : "Springer International Publishing",
+        "page"            : "81-102",
+        "volume"          : 8758,
+        "year"            : 2014,
+        "comment"         : "2014-emas",
+        "author"          : [
+            {
+                "family"  : "Ahlbrecht",
+                "given"   : "Tobias"
+            },
+            {
+                "family"  : "Dix",
+                "given"   : "Jürgen"
+            },
+            {
+                "family"  : "Köster",
+                "given"   : "Michael"
+            },
+            {
+                "family"  : "Kraus",
+                "given"   : "Philipp"
+            },
+            {
+                "family"  : "Müller",
+                "given"   : "Jörg P."
+            }
+        ]
+    }
+]
+                

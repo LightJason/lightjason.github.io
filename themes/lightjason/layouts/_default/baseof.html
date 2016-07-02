@@ -9,19 +9,13 @@
 		<div class="documentwrapper">
 			<div class="bodywrapper">
 				<div class="body" role="main">
-					{{ block "main" . }}
-					{{ end }} 
-					{{ if not .IsHome -}} 
-						{{ template "_internal/disqus.html" . }} 
-					{{- end }}
+					{{ block "main" . }}{{ end }} 
 				</div>
 			</div>
 		</div>
 
 		{{ partial "sidebar/sidebar" . }} 
 		{{ partial "footer" . }} 
-		{{ range .Site.Params.custom_js -}}
-		<script src="{{ $.Site.BaseURL }}{{ . }}"></script> {{- end }}
 	</div>
 </body>
 

@@ -5,6 +5,7 @@
 !*.yml
 !*.html
 !*.md
+!*.json
 !*.css
 !*.js
 !*.bash
