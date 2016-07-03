@@ -3,7 +3,7 @@
         <ul>
         {{ range $item := getJSON "data/references.json" }} 
             <li>
-                <a name="{{ $item.id }}"></a>
+                <a name="{{ $item.id | plainify | urlize }}"></a>
             
                 {{ if (not (isset $item "pdf")) | or (eq $item.pdf "") }}
                     {{ $item.title }}
