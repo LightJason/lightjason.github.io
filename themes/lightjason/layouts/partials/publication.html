@@ -13,7 +13,7 @@
             
                 <em>{{ delimit $item.author ", " }}</em>
                 in {{ $item.containertitle }} - {{ $item.booktitle }} (page {{ $item.page }}), 
-                {{ $item.publisher }} {{ $item.address }}
+                {{ $item.publisher }} ({{ $item.address }})
 
                 {{ with $item.tags }} 
 				    [ {{ range $item.tags }}<a href="{{ $baseurl }}publishing/{{ . | urlize }}">{{ . }}</a> {{ end }} ] 
