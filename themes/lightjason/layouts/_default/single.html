@@ -15,10 +15,16 @@
                     <a href="{{ $item.pdf }}">{{ $item.title }}</a>
                 {{ end }}
             
-                [{{ delimit $item.author ", " }}] 
+                {{ with $item.tags }} 
+				    [ {{ range $item.tags }}<a href="{{ $baseurl }}conference/{{ . | urlize }}">{{ . }}</a> {{ end }}] 
+				{{ end }}
+                
+                <em>{{ delimit $item.author ", " }}</em>
+                in {{ $item.containertitle }} - {{ $item.booktitle }} (page {{ $item.page }}), 
+                {{ $item.publisher }} {{ $item.address }}
             
                 {{ if (isset $item "comment") | and (not (eq $item.comment "")) }}
-                    <a href="{{ $baseurl }}publication/{{ $item.comment | urlize }}">...</a>
+                    <a href="{{ $baseurl }}publication/{{ $item.comment | urlize }}">(...)</a>
                 {{ end }}
             </li>
         {{ end }}

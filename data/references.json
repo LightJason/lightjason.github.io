@@ -1,11 +1,14 @@
 [
     {
         "id"              : "ahlbrecht+2014emas",
+        "tags"            : ["emas"],
         "title"           : "A scalable runtime platform for multiagent-based simulation",
         "author"          : [ "Tobias Ahlbrecht", "Jürgen Dix", "Michael Köster", "Philipp Kraus", "Jörg P. Müller" ],
         "type"            : "inproceedings",
-        "container-title" : "Lecture Notes in Artificial Intelligence (LNAI)",
+        "containertitle"  : "Lecture Notes in Artificial Intelligence (LNAI)",
+        "booktitle"       : "Engineering Multiagent Systems II",
         "publisher"       : "Springer International Publishing",
+        "address"         : "Switzerland",
         "page"            : "81-102",
         "volume"          : 8758,
         "year"            : 2014,
