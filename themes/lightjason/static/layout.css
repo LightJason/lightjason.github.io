@@ -18,6 +18,16 @@ ul.horizontal {
     padding: 0;
 }
 
+.contact
+{
+	float: left;
+}
+
+.linkcopyright
+{
+	float: right;
+}
+
 ul.horizontal li {
     display: inline;
 	padding: 0.75em;

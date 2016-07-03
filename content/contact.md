@@ -1,8 +1,6 @@
 ---
 title: "Conctact"
 ---
-Main Contact via EMail: _info [at] lightjason.org_
-
 Contact Information
 
 > Philipp Kraus ![Philipp](http://www.gravatar.com/avatar/2de3ae533823dae934d3b45b239f797c#floatright)  

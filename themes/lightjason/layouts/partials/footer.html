@@ -1,8 +1,9 @@
 <div class="footer">
+	<span class="contact">{{ .Site.Params.contact }}</span>
 	<ul class="horizontal">
 		{{ range $item := .Site.Params.footer.links }}
 			<li><a href="{{ $item.url }}">{{ $item.name }}</a></li>
 		{{ end }}
-		<li>&copy; {{ .Now.Format "Jan 2006" }}</li>
+		&copy; {{ .Now.Format "Jan 2006" }}
 	</ul>
 </div>

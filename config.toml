@@ -8,6 +8,7 @@ theme 			    = "lightjason"
 [params]
 	name 		    = "LightJason"
 	description     = "A Lightwire Multi-Agent System"
+	contact         = "info [at] lightjason.org"
 	listpages		= ["blogpost", "tutorial", "publication"]
 
 [params.sidebar]
