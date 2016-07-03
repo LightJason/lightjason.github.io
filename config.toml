@@ -4,6 +4,8 @@ baseurl		 	    = "https://lightjason.github.io/"
 languageCode 	    = "en-us"
 title 			    = "LightJason"
 theme 			    = "lightjason"
+# see http://www.emoji-cheat-sheet.com/
+enableEmoji         = true
 
 [params]
 	name 		    = "LightJason"
