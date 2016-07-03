@@ -1,13 +1,16 @@
-# Contact
+---
+title: "Conctact"
+---
+Main Contact via EMail: _info [at] lightjason.org_
 
 Contact Information
 
 > Philipp Kraus ![Philipp](http://www.gravatar.com/avatar/2de3ae533823dae934d3b45b239f797c#floatright)  
-> philipp [at] lightjason.org
+> _philipp [at] lightjason.org_
 
 <br/>  
 
 > Malte Aschermann  
-> malte [at] lightjason.org
+> _malte [at] lightjason.org_
 
 We are working on the [Mobile and Enterprise Computing](http://meclab.in.tu-clausthal.de/) at [TU-Clausthal, Germany](http://tu-clausthal.de). Contact can be send via email or post-address of the institute.

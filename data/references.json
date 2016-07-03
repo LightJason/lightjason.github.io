@@ -1,7 +1,7 @@
 [
     {
         "id"              : "ahlbrecht+2014emas",
-        "tags"            : ["emas"],
+        "tags"            : ["EMAS"],
         "title"           : "A scalable runtime platform for multiagent-based simulation",
         "author"          : [ "Tobias Ahlbrecht", "Jürgen Dix", "Michael Köster", "Philipp Kraus", "Jörg P. Müller" ],
         "type"            : "inproceedings",
