@@ -1,19 +1,19 @@
 {{ define "main" }}
-    <h1>{{ .Title }}</h1>
-		<ul>
-				{{ $baseurl := .Site.BaseURL }} 
-				{{ range $name, $page := .Data.Pages.ByDate }} 
-						{{ if in .Site.Params.listpages .Type }}
-						    <li>
-								<a href="{{ .Permalink }}">{{ $page.Title }}</a>
-								<time>({{ $page.Date.Format "Mon, Jan 1, 2006" }})</time>
-								{{ with $page.Params.tags }} 
-									[ {{ range $page.Params.tags }}<a href="{{ $baseurl }}tags/{{ . | urlize }}">{{ . }}</a> {{ end }}] 
-								{{ end }}
-								<br/>
-								{{ plainify $page.Summary }}{{ if .Truncated }}...{{ end }}
-							</li>
-	  				{{ end }}
-				{{ end }}
-		</ul>
+    {{ $baseurl := .Site.BaseURL }} 
+	<ul>
+    {{ range $name, $page := .Data.Pages.ByDate }} 
+	    {{ if in .Site.Params.listpages .Type }}
+		    <li>
+		        <a href="{{ .Permalink }}">{{ $page.Title }}</a>
+			    <time>({{ $page.Date.Format "Mon, Jan 1, 2006" }})</time>
+			    {{ with $page.Params.tags }} 
+			        [ {{ range $page.Params.tags }}<a href="{{ $baseurl }}tags/{{ . | urlize }}">{{ . }}</a> {{ end }}] 
+			    {{ end }}
+			    <br/>
+			    {{ plainify $page.Summary }}{{ if .Truncated }}...{{ end }}
+		    </li>
+	    {{ end }}
+	{{ end }}
+	</ul>
 {{ end }}
+      

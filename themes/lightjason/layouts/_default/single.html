@@ -1,33 +1,3 @@
 {{ define "main" }}
-	<h1>{{ .Title }}</h1>
 	{{ .Content }}
-
-    {{ if eq .Type "publication" }}
-        {{ $baseurl := .Site.BaseURL }} 
-        <ul>
-        {{ range $item := getJSON "data/references.json" }} 
-            <li>
-                <a name="{{ $item.id }}"></a>
-            
-                {{ if (not (isset $item "pdf")) | or (eq $item.pdf "") }}
-                    {{ $item.title }}
-                {{ else }}
-                    <a href="{{ $item.pdf }}">{{ $item.title }}</a>
-                {{ end }}
-            
-                {{ with $item.tags }} 
-				    [ {{ range $item.tags }}<a href="{{ $baseurl }}conference/{{ . | urlize }}">{{ . }}</a> {{ end }}] 
-				{{ end }}
-                
-                <em>{{ delimit $item.author ", " }}</em>
-                in {{ $item.containertitle }} - {{ $item.booktitle }} (page {{ $item.page }}), 
-                {{ $item.publisher }} {{ $item.address }}
-            
-                {{ if (isset $item "comment") | and (not (eq $item.comment "")) }}
-                    <a href="{{ $baseurl }}publication/{{ $item.comment | urlize }}">(...)</a>
-                {{ end }}
-            </li>
-        {{ end }}
-        </ul>
-    {{ end }}
 {{ end }}

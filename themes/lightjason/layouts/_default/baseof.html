@@ -9,11 +9,13 @@
 		<div class="documentwrapper">
 			<div class="bodywrapper">
 				<div class="body" role="main">
+					<h1>{{ .Title }}</h1>
 					{{ block "main" . }}{{ end }} 
+					{{ partial "publication" . }}
 				</div>
 			</div>
 		</div>
-
+		
 		{{ partial "sidebar/sidebar" . }} 
 		{{ partial "footer" . }} 
 	</div>

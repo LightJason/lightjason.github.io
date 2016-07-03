@@ -1,0 +1,28 @@
+{{ if in .Params.view "pulication" }}
+        {{ $baseurl := .Site.BaseURL }} 
+        <ul>
+        {{ range $item := getJSON "data/references.json" }} 
+            <li>
+                <a name="{{ $item.id }}"></a>
+            
+                {{ if (not (isset $item "pdf")) | or (eq $item.pdf "") }}
+                    {{ $item.title }}
+                {{ else }}
+                    <a href="{{ $item.pdf }}">{{ $item.title }}</a>
+                {{ end }}
+            
+                <em>{{ delimit $item.author ", " }}</em>
+                in {{ $item.containertitle }} - {{ $item.booktitle }} (page {{ $item.page }}), 
+                {{ $item.publisher }} {{ $item.address }}
+
+                {{ with $item.tags }} 
+				    [ {{ range $item.tags }}<a href="{{ $baseurl }}publishing/{{ . | urlize }}">{{ . }}</a> {{ end }} ] 
+				{{ end }}
+            
+                {{ if (isset $item "comment") | and (not (eq $item.comment "")) }}
+                    <a href="{{ $baseurl }}publication/{{ $item.comment | urlize }}">(...)</a>
+                {{ end }}
+            </li>
+        {{ end }}
+        </ul>
+{{ end }}        
