@@ -2,6 +2,7 @@
 
 hugo
 git push origin :master
+rm -Rf /tmp/public
 mv public /tmp
 git push origin :master
 git branch -D master
