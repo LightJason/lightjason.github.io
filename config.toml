@@ -1,6 +1,7 @@
 # --- main configuration -------------------------------------------
 
 baseurl		 	    = "https://lightjason.github.io/"
+metadataformat		= "yaml"
 languageCode 	    = "en-us"
 title 			    = "LightJason"
 theme 			    = "lightjason"
