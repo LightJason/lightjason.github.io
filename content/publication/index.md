@@ -1,5 +1,6 @@
 ---
 title: "Publication"
-view: [pulication]
+view: [publication]
 ---
-We list here all publications of our work, but we comment some publications with additional information, so that we try to give you an overview about the publication
+We list here all publications of our work ([BibTeX format](../references.bib)), but we comment some publications with additional information, so that we try to give you an overview about the publication. 
+
