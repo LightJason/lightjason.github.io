@@ -1,4 +1,4 @@
-{{ if in .Params.view "pulication" }}
+{{ if in .Params.view "publication" }}
         {{ $baseurl := .Site.BaseURL }} 
         <ul>
         {{ range $item := getJSON "data/references.json" }} 
@@ -13,8 +13,8 @@
                 {{ end }}
             
                 <em>delimit ( apply $item.author $concat "." ) ", "</em>
-                in {{ index $item "collection-title" }} - {{ index $item "container-title" }} (page {{ $item.page }}), 
-                {{ $item.publisher }} ({{ index $item "publisher-place" }})
+                in {{ $item.collectiontitle }} - {{ $item.containertitle }} (page {{ $item.page }}), 
+                {{ $item.publisher }} ({{ $item.publisherplace }})
 
                 {{ if (isset $item "note") | and (not (eq $item.note "")) }}
                     <a href="{{ $baseurl }}publication/{{ $item.note | urlize }}">(...)</a>
