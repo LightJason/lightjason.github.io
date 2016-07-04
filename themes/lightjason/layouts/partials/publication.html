@@ -17,7 +17,7 @@
                 {{ $item.publisher }} ({{ index $item "publisher-place" }})
 
                 {{ if (isset $item "note") | and (not (eq $item.note "")) }}
-                    <a href="{{ $baseurl }}publication/{{ $item.note | urlize }}">(...)</a>
+                    <a href="{{ $baseurl }}publication/{{ $item.note | urlize }}">[...]</a>
                 {{ end }}
             </li>
         {{ end }}
