@@ -6,6 +6,7 @@
 !*.html
 !*.md
 !*.json
+!*.bib
 !*.css
 !*.js
 !*.bash

@@ -2,25 +2,22 @@
         {{ $baseurl := .Site.BaseURL }} 
         <ul>
         {{ range $item := getJSON "data/references.json" }} 
+
             <li>
                 <a name="{{ $item.id | plainify | urlize }}"></a>
             
-                {{ if (not (isset $item "pdf")) | or (eq $item.pdf "") }}
+                {{ if (not (isset $item "URL")) | or (eq $item.URL "") }}
                     {{ $item.title }}
                 {{ else }}
-                    <a href="{{ $item.pdf }}">{{ $item.title }}</a>
+                    <a href="{{ $item.URL }}">{{ $item.title }}</a>
                 {{ end }}
             
-                <em>{{ delimit $item.author ", " }}</em>
-                in {{ $item.containertitle }} - {{ $item.booktitle }} (page {{ $item.page }}), 
-                {{ $item.publisher }} ({{ $item.address }})
+                <em>delimit ( apply $item.author $concat "." ) ", "</em>
+                in {{ $item.collectiontitle }} - {{ $item.containertitle }} (page {{ $item.page }}), 
+                {{ $item.publisher }} ({{ $item.publisherplace }})
 
-                {{ with $item.tags }} 
-				    [ {{ range $item.tags }}<a href="{{ $baseurl }}publishing/{{ . | urlize }}">{{ . }}</a> {{ end }} ] 
-				{{ end }}
-            
-                {{ if (isset $item "comment") | and (not (eq $item.comment "")) }}
-                    <a href="{{ $baseurl }}publication/{{ $item.comment | urlize }}">(...)</a>
+                {{ if (isset $item "note") | and (not (eq $item.note "")) }}
+                    <a href="{{ $baseurl }}publication/{{ $item.note | urlize }}">(...)</a>
                 {{ end }}
             </li>
         {{ end }}
