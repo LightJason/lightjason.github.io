@@ -7,7 +7,7 @@
 		        <a href="{{ .Permalink }}">{{ $page.Title }}</a>
 			    <time>({{ $page.Date.Format "Mon, Jan 1, 2006" }})</time>
 			    {{ with $page.Params.tags }} 
-			        [ {{ range $page.Params.tags }}<a href="{{ $baseurl }}tags/{{ . | urlize }}">{{ . }}</a> {{ end }}] 
+			        [{{ delimit (apply (apply (sort .) "partial" "taglink" ".") "chomp" ".") ", " }}] 
 			    {{ end }}
 			    <br/>
 			    {{ plainify $page.Summary }}{{ if .Truncated }}...{{ end }}

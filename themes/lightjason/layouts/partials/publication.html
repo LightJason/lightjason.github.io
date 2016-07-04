@@ -5,19 +5,14 @@
 
             <li>
                 <a name="{{ $publication.id | plainify | urlize }}"></a>
-            
+
                 {{ if (not (isset $publication "URL")) | or (eq $publication.URL "") }}
                     {{ $publication.title }}
                 {{ else }}
                     <a href="{{ $publication.URL }}">{{ $publication.title }}</a>
                 {{ end }}
             
-                {{ range $item := $publication.author }}
-                    <em>{{ print $item.given " " $item.family }}</em>
-                {{ end }}
-
-
-                <em>delimit ( apply $publication.author $concat "." ) ", "</em>
+                {{ delimit (apply (apply  $publication.author "partial" "author" ".") "chomp" ".") ", " }}
                 in {{ index $publication "collection-title" }} - {{ index $publication "container-title" }} (page {{ $publication.page }}), 
                 {{ $publication.publisher }} ({{ index $publication "publisher-place" }})
 
