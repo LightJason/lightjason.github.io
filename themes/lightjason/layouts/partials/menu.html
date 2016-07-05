@@ -7,12 +7,12 @@
 				{{ end }}
 				<h1 class="logo logo-name">{{ .Site.Params.name }}</h1>
 			</a>
-		</p>
 		
-		{{ with .Site.Params.description -}}
-			<span class="blurb">{{ . | markdownify }}</p>
-		{{- end }}
-
+			{{ with .Site.Params.description -}}
+				<span class="blurb">{{ . | markdownify }}</span>
+			{{- end }}
+		</div>
+		
 		{{ if and (ne .Site.Menus.main nil) (gt (len .Site.Menus.main) 0) }}
 			<ul>
 				{{ range .Site.Menus.main }}

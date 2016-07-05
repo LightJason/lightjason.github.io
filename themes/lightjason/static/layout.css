@@ -13,6 +13,7 @@ div.document {
 }
 
 div.sphinxsidebarwrapper {
+    margin-top: -20px;
     padding: 10px 5px 0 10px;
 }
 
