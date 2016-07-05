@@ -10,7 +10,7 @@
 		</p>
 		
 		{{ with .Site.Params.description -}}
-			<p class="blurb">{{ . | markdownify }}</p>
+			<span class="blurb">{{ . | markdownify }}</p>
 		{{- end }}
 
 		{{ if and (ne .Site.Menus.main nil) (gt (len .Site.Menus.main) 0) }}
