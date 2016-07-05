@@ -1,60 +1,36 @@
-[
-  {
-    "URL": "http://winf.in.tu-clausthal.de/winf/publications/2014/Ahlbrecht%2B2014emas.pdf",
-    "author": [
-      {
-        "family": "Ahlbrecht",
-        "given": "T."
-      },
-      {
-        "family": "Dix",
-        "given": "J."
-      },
-      {
-        "family": "Köster",
-        "given": "M."
-      },
-      {
-        "family": "Kraus",
-        "given": "P."
-      },
-      {
-        "family": "Müller",
-        "given": "J. P."
-      }
-    ],
-    "collection-title": "Lecture Notes in Artificial Intelligence (LNAI)",
-    "container-title": "Engineering Multiagent Systems II",
-    "editor": [
-      {
-        "family": "Dalpiaz",
-        "given": "F."
-      },
-      {
-        "dropping-particle": "van",
-        "family": "Riemsdijk",
-        "given": "M. Birna"
-      },
-      {
-        "family": "Dix",
-        "given": "J."
-      }
-    ],
-    "id": "Ahlbrecht+2014emas",
-    "issued": {
-      "date-parts": [
-        [
-          2014
-        ]
-      ]
-    },
-    "keyword": "EMAS",
-    "note": "2014-emas-maserati",
-    "page": "81-102",
-    "publisher": "Springer International Publishing",
-    "publisher-place": "Switzerland",
-    "title": "A scalable runtime platform for multiagent-based simulation",
-    "type": "paper-conference",
-    "volume": "8758"
-  }
-]
+---
+references:
+- id: Ahlbrecht+2014emas
+  type: paper-conference
+  author:
+  - family: Ahlbrecht
+    given: T.
+  - family: Dix
+    given: J.
+  - family: Köster
+    given: M.
+  - family: Kraus
+    given: P.
+  - family: Müller
+    given: J. P.
+  editor:
+  - family: Dalpiaz
+    given: F.
+  - family: Riemsdijk
+    given: M. Birna
+    dropping-particle: van
+  - family: Dix
+    given: J.
+  issued:
+  - year: '2014'
+  title: A scalable runtime platform for multiagent-based simulation
+  container-title: Engineering Multiagent Systems II
+  collection-title: Lecture Notes in Artificial Intelligence (LNAI)
+  publisher: Springer International Publishing
+  publisher-place: Switzerland
+  page: '81-102'
+  volume: '8758'
+  note: 2014-emas-maserati
+  keyword: EMAS
+  URL: http://winf.in.tu-clausthal.de/winf/publications/2014/Ahlbrecht%2B2014emas.pdf
+...
