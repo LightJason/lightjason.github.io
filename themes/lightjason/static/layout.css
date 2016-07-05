@@ -49,7 +49,6 @@ hr {
 }
 
 div.body {
-    background-color: #ffffff;
     color: #3E4349;
     padding: 0 30px 0 30px;
 }
@@ -187,10 +186,6 @@ img[src$='#floatright']
 	float: right;
 }
 
-pre{
-	background: transparent;
-}
-
 ul.horizontal {
     padding: 0;
 }
@@ -213,4 +208,8 @@ ul.horizontal li {
 .footnotes
 {
 	font-size: 75%;
+}
+
+code {
+    border: 1px solid #B1B4B6;
 }
