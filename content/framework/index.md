@@ -10,9 +10,10 @@ __We hope for any assistance...__
 
 ## AgentSpeak(L) ![](https://camo.githubusercontent.com/91d144939950611f83510276f546163e62f3f0f1/68747470733a2f2f636972636c6563692e636f6d2f67682f4c696768744a61736f6e2f4167656e74537065616b2e7376673f7374796c653d736869656c64)
 
-This components defines the main agent structure. It defines the whole syntax and the base agent structure. It supports also an agent generator and configuration, so that you can create a set of agents by an ASL-file. Based on the interface structure you can redefine all elements if you want.
+This components defines the main agent structure. It defines the whole syntax and the base agent structure. It supports also an agent generator and configuration, so that you can create a set of agents by an ASL-file. Based on the interface structure you can redefine all elements if you want. A full [railroad diagram](https://en.wikipedia.org/wiki/Syntax_diagram) of your _AgentSpeak(L)_ syntax can be found on the documentation page.
 
 * [Documentation](http://lightjason.github.io/AgentSpeak/)
+* [Language Example](agentspeak)
 * [OpenHub](https://www.openhub.net/p/LightJason-AgentSpeak)
 * [Source Code](https://github.com/LightJason/AgentSpeak)
 * [Source Code Documentation](http://lightjason.github.io/AgentSpeak/sources/)
