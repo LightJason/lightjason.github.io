@@ -8,7 +8,7 @@
 		<div class="documentwrapper">
 			<div class="bodywrapper">
 				<div class="body">
-					<h1>{{ .Title }}</h1>
+					<h1>{{ if not .IsHome }}{{ .Title }}{{ else }}{{ .Site.Params.name }}{{ end }}</h1>
 					{{ block "main" . }}{{ end }} 
 					{{ partial "publication" . }}
 				</div>

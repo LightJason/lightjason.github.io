@@ -3,7 +3,6 @@
 baseurl		 	    = "https://lightjason.github.io/"
 metadataformat		= "yaml"
 languageCode 	    = "en-us"
-title 			    = "LightJason"
 theme 			    = "lightjason"
 # see http://www.emoji-cheat-sheet.com/
 enableEmoji         = true
