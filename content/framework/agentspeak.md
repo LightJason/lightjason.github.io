@@ -5,7 +5,7 @@ We present here a short overview of language examples of our _AgentSpeak(L)_ syn
 
 ## <a name="lambdaexpression"></a>Lambda Expression
 
-<pre><code class="asl">L = collection/list/range(1, 20);
+<pre><code class="agentspeak">L = collection/list/range(1, 20);
 (L) -> Y : generic/print(Y);
 (L) -> Y | R : R = Y+1; 
 </code></pre>
