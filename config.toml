@@ -1,3 +1,7 @@
+# https://github.com/yoshiharuyamashita/blackburn/tree/master/layouts
+
+
+
 # --- main configuration -------------------------------------------
 
 baseurl		 	    = "https://lightjason.github.io/"
@@ -7,20 +11,25 @@ theme 			    = "lightjason"
 # see http://www.emoji-cheat-sheet.com/
 enableEmoji         = true
 
+# ----------------------------------------------------------------------
+
+
+
+# --- main site configuration ------------------------------------------
+
 [params]
+	logo 		    = ""
 	name 		    = "LightJason"
 	description     = "A Lightwire Multi-Agent System"
 	contact         = "info [at] lightjason.org"
 	listpages		= ["blogpost", "tutorial", "publication"]
-
-[params.sidebar]
-	logo 		    = ""
 
 [[params.footer.links]]
 	name = "AgentSpeak(L) Repository"
 	url  = "https://github.com/LightJason/AgentSpeak"
 
 # ----------------------------------------------------------------------	 
+
 
 
 # --- main navigation menu ---------------------------------------------

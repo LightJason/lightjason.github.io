@@ -2,7 +2,7 @@
 	<div class="sphinxsidebarwrapper">
 		<p class="logo">
 			<a href="{{ .Site.BaseURL }}">
-				{{ with .Site.Params.sidebar.logo }}
+				{{ with .Site.Params.logo }}
 					<img class="logo" src="{{ .Site.BaseURL }}{{ . }}" alt="Logo"/ >
 				{{ end }}
 				<h1 class="logo logo-name">{{ .Site.Params.name }}</h1>
@@ -13,7 +13,13 @@
 		<p class="blurb">{{ . | markdownify }}</p>
 		{{- end }}
 
-		{{ partial "sidebar/menu" . }}
+		{{ if and (ne .Site.Menus.main nil) (gt (len .Site.Menus.main) 0) }}
+			<ul>
+				{{ range .Site.Menus.main }}
+					<li class="toctree-l1"><a class="reference internal" href="{{ .URL }}">{{ .Name }}</a></li>
+				{{ end }}
+			</ul>
+		{{ end }}
 	</div>
 </div>
 <div class="clearer"></div>

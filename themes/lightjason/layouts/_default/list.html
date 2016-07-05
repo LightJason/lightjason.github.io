@@ -6,8 +6,8 @@
 		    <li>
 		        <a href="{{ .Permalink }}">{{ $page.Title }}</a>
 			    <time>({{ $page.Date.Format "Mon, Jan 1, 2006" }})</time>
-			    {{ with $page.Params.tags }} 
-			        [{{ delimit (apply (apply (sort .) "partial" "taglink" ".") "chomp" ".") ", " }}] 
+			    {{ with $page.Params.blogpost }} 
+			        [{{ delimit (apply (apply (sort .) "partial" "blogpost" ".") "chomp" ".") ", " }}] 
 			    {{ end }}
 			    <br/>
 			    {{ plainify $page.Summary }}{{ if .Truncated }}...{{ end }}
