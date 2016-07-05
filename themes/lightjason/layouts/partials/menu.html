@@ -10,7 +10,7 @@
 		</p>
 		
 		{{ with .Site.Params.description -}}
-		<p class="blurb">{{ . | markdownify }}</p>
+			<p class="blurb">{{ . | markdownify }}</p>
 		{{- end }}
 
 		{{ if and (ne .Site.Menus.main nil) (gt (len .Site.Menus.main) 0) }}
@@ -22,5 +22,4 @@
 		{{ end }}
 	</div>
 </div>
-<div class="clearer"></div>
-</div>
+<div class="clearer"></div>	

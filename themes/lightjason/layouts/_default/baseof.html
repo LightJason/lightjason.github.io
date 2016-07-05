@@ -1,23 +1,15 @@
-<!doctype html>
-<html lang="{{ .Site.LanguageCode }}">
-{{ partial "header" . }}
+{{ partial "header" . }} 
 
-<body>
-	<div class="document">
-		
-		<div class="documentwrapper">
-			<div class="bodywrapper">
-				<div class="body">
-					<h1>{{ if not .IsHome }}{{ .Title }}{{ else }}{{ .Site.Params.name }}{{ end }}</h1>
-					{{ block "main" . }}{{ end }} 
-					{{ partial "publication" . }}
-				</div>
+<div class="document"> 
+	<div class="documentwrapper">
+		<div class="bodywrapper">
+			<div class="body">
+				<h1>{{ if not .IsHome }}{{ .Title }}{{ else }}{{ .Site.Params.name }}{{ end }}</h1>
+				{{ block "main" . }}{{ end }} 
+				{{ partial "publication" . }}
 			</div>
 		</div>
-		
-		{{ partial "menu" . }} 
-		{{ partial "footer" . }} 
-	</div>
-</body>
-
-</html>
+	</div>	
+	{{ partial "menu" . }} 
+</div>
+{{ partial "footer" . }} 
