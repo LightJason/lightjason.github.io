@@ -1,10 +1,10 @@
 <div class="footer">
-	<span class="contact">{{ .Site.Params.contact }}</span>
+	<span class="contact">{{- .Site.Params.contact -}}</span>
 	<ul class="horizontal">
-		{{ range $item := .Site.Params.footer.links }}
-			<li><a href="{{ $item.url }}">{{ $item.name }}</a></li>
-		{{ end }}
-		<li>&copy; {{ .Now.Format "Jan 2006" }}</li>
+		{{- range $item := .Site.Params.footer.links -}}
+			<li><a href="{{ $item.url }}">{{- $item.name -}}</a></li>
+		{{- end -}}
+		<li>&copy; {{ .Now.Format "Jan 2006" -}}</li>
 	</ul>
 </div>
 

@@ -2,26 +2,16 @@
 	<div class="sphinxsidebarwrapper">
 		<span class="logo">
 			<h1 class="logo logo-name">
-				<a href="{{ .Site.BaseURL }}">
-					{{ with .Site.Params.logo }}
-						<img class="logo" src="{{ .Site.BaseURL }}{{ . }}" alt="Logo"/ >
-					{{ end }}
-					{{ .Site.Params.name }}
-				</a>
+				<a href="{{ .Site.BaseURL }}">{{- with .Site.Params.logo -}}<img class="logo" src="{{ .Site.BaseURL }}{{ . }}" alt="Logo"/ >{{- end -}}{{- .Site.Params.name -}}</a>
 			</h1>
-		
-			{{ with .Site.Params.description -}}
-				<span class="blurb">{{ . | markdownify }}</span>
-			{{- end }}
+			{{- with .Site.Params.description -}}<span class="blurb">{{- . | markdownify -}}</span>{{- end -}}
 		</div>
 		
-		{{ if and (ne .Site.Menus.main nil) (gt (len .Site.Menus.main) 0) }}
-			<ul>
-				{{ range .Site.Menus.main }}
-					<li class="toctree-l1"><a class="reference internal" href="{{ .URL }}">{{ .Name }}</a></li>
-				{{ end }}
-			</ul>
-		{{ end }}
+		{{- if and (ne .Site.Menus.main nil) (gt (len .Site.Menus.main) 0) -}}
+		<ul>
+			{{- range .Site.Menus.main }}<li class="toctree-l1"><a class="reference internal" href="{{ .URL }}">{{- .Name -}}</a></li>{{- end -}}
+		</ul>
+		{{- end -}}
 	</div>
 </div>
 <div class="clearer"></div>	

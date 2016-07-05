@@ -1,16 +1,16 @@
 <!doctype html>
-<html lang="{{ .Site.LanguageCode }}">
+<html lang="{{- .Site.LanguageCode -}}">
 
 <head>
 	<meta  charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=0.9" />
-	{{ with .Site.Params.description -}}
+	{{- with .Site.Params.description -}}
 		<meta name="description" content="{{ . }}">
-	{{- end }}
+	{{- end -}}
 
-	{{ .Hugo.Generator }}
+	{{- .Hugo.Generator -}}
 	
-	<title>{{ if not .IsHome }}{{ .Title }} &mdash;{{ end }} {{ .Site.Params.name }}</title>
+	<title>{{- if not .IsHome -}}{{- .Title -}} &mdash;{{- end -}} {{- .Site.Params.name -}}</title>
 	<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 	
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js"></script>

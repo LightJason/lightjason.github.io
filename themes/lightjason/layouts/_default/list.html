@@ -1,19 +1,17 @@
-{{ define "main" }}
+{{ define "main" -}}
     {{ $baseurl := .Site.BaseURL }} 
 	<ul>
-    {{ range $name, $page := .Data.Pages.ByDate }} 
-	    {{ if in .Site.Params.listpages .Type }}
+    {{- range $name, $page := .Data.Pages.ByDate -}} 
+	    {{ if in .Site.Params.listpages .Type -}}
 		    <li>
-		        <a href="{{ .Permalink }}">{{ $page.Title }}</a>
-			    <time>({{ $page.Date.Format "Mon, Jan 1, 2006" }})</time>
-			    {{ with $page.Params.blogpost }} 
-			        [{{ delimit (apply (apply (sort .) "partial" "blogpost" ".") "chomp" ".") ", " }}] 
-			    {{ end }}
+		        <a href="{{ .Permalink }}">{{- $page.Title -}}</a>
+			    <time>({{- $page.Date.Format "Mon, Jan 1, 2006" -}})</time>
+			    {{ with $page.Params.blogpost -}} [{{ delimit (apply (apply (sort .) "partial" "blogpost" ".") "chomp" ".") ", " }}] {{- end -}}
 			    <br/>
-			    {{ plainify $page.Summary }}{{ if .Truncated }}...{{ end }}
+			    {{- plainify $page.Summary -}}{{ if .Truncated }}...{{- end -}}
 		    </li>
-	    {{ end }}
-	{{ end }}
+	    {{- end -}}
+	{{- end }}
 	</ul>
-{{ end }}
+{{- end }}
       

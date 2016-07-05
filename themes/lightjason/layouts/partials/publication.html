@@ -1,24 +1,24 @@
-{{ if in .Params.view "publication" }}
+{{- if in .Params.view "publication" -}}
         {{ $baseurl := .Site.BaseURL }} 
         <ul>
         {{ range $publication := getJSON "data/references.json" }} 
 
             <li>
-                <a name="{{ $publication.id | plainify | urlize }}"></a>
+                <a name="{{- $publication.id | plainify | urlize -}}"></a>
 
-                {{ if (not (isset $publication "URL")) | or (eq $publication.URL "") }}
-                    {{ $publication.title }}
-                {{ else }}
-                    <a href="{{ $publication.URL }}">{{ $publication.title }}</a>
-                {{ end }}
+                {{- if (not (isset $publication "URL")) | or (eq $publication.URL "") -}}
+                    {{- $publication.title -}}
+                {{- else -}}
+                    <a href="{{ $publication.URL }}">{{- $publication.title -}}</a>
+                {{- end }}
             
                 {{ delimit (apply (apply  $publication.author "partial" "author" ".") "chomp" ".") ", " }}
-                in {{ index $publication "collection-title" }} - {{ index $publication "container-title" }} (page {{ $publication.page }}), 
-                {{ $publication.publisher }} ({{ index $publication "publisher-place" }})
+                in {{ index $publication "collection-title" }} - {{ index $publication "container-title" }} (page {{ $publication.page -}}), 
+                {{ $publication.publisher }} ({{- index $publication "publisher-place" -}})
 
-                {{ if (isset $publication "note") | and (not (eq $publication.note "")) }}
+                {{- if (isset $publication "note") | and (not (eq $publication.note "")) }}
                     <a href="{{ $baseurl }}publication/{{ $publication.note | urlize }}">[...]</a>
-                {{ end }}
+                {{ end -}}
             </li>
         {{ end }}
         </ul>
