@@ -1,7 +1,7 @@
 {{ define "main" -}}
     {{ $baseurl := .Site.BaseURL }} 
 	<ul>
-    {{- range $name, $page := .Data.Pages.ByDate -}} 
+    {{- range $name, $page := .Data.Pages.ByDate.Reverse -}} 
 	    {{ if in .Site.Params.listpages .Type -}}
 		    <li>
 		        <a href="{{ .Permalink }}">{{- $page.Title -}}</a>
