@@ -12,8 +12,8 @@ __We hope for any assistance...__
 
 This components defines the main agent structure. It defines the whole syntax and the base agent structure. It supports also an agent generator and configuration, so that you can create a set of agents by an ASL-file. Based on the interface structure you can redefine all elements if you want. A full [railroad diagram](https://en.wikipedia.org/wiki/Syntax_diagram) of your _AgentSpeak(L)_ syntax can be found on the documentation page.
 
-* [Agent Railroad / Syntax Diagram](lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/)
-* [PlanBundle Railroad / Syntax Diagram](lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/PlanBundle.g4/)
+* [Agent Railroad / Syntax Diagram](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/)
+* [PlanBundle Railroad / Syntax Diagram](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/PlanBundle.g4/)
 * [Documentation](http://lightjason.github.io/AgentSpeak/)
 * [Language Example](agentspeak)
 * [OpenHub](https://www.openhub.net/p/LightJason-AgentSpeak)
