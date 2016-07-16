@@ -10,6 +10,9 @@
 !*.css
 !*.js
 !*.bash
+!*.png
+!*.gif
+!*.svg
 
 # ignore generated files
 public/**
