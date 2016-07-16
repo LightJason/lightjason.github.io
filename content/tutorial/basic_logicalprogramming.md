@@ -3,9 +3,23 @@ title: "Basic Knowledge: Logical Programming"
 ---
 This tutorial gives a short introduction in [logical programming concepts](https://en.wikipedia.org/wiki/Logic_programming), which are needed to write the source code of an agent.
 
-## Basic Information
+## Designtime
 
 On logical programms we are talking about a _symbolic definition_. We are writing source code in _symbols_, _facts_ and _rules_. The difference between [imperative programming](https://en.wikipedia.org/wiki/Imperative_programming) and a logical programm is, that we don't define _how the problem should be solved_. We define only the facts and rules which are needed to calculate the solution. In a more general way we define the _constraints_ which are needed to solve the problem. On this definition the runtime create an internal structure to solve the problem.
+
+On the agent developing process, you have to write an _agent script_ in our AgentSpeak(L) programming language, which describes the behaviour of the agent. The script describs _what and when should the agent do_. This process is named _designtime_, because you design the behaviour without knowledge about the real execution process. During _designtime_ there are some concepts to understand the structure of our logical programming language, which are shown here...
+
+
+
+### Terms
+
+In short: _Everything is a term_
+All elements within the source code are terms, so the super (generic) data structure is a term. In our framework we are distinguish two different types of terms:
+
+* raw terms are terms with a native Java datatype, in such a term any Java data structure can be stored, but it cannot be used by the normal behaviour of the logical programming language. Unifying and assigments are possible on these raw data structures
+* other terms like literals are structured objects which are here described
+
+In our structure we create an inheritance model to build the software architecture for these structured. The root element is the [ITerm interface](https://lightjason.github.io/AgentSpeak/sources/d9/d34/interfaceorg_1_1lightjason_1_1agentspeak_1_1language_1_1ITerm.html) and the {{< lightbox "https://lightjason.github.io/AgentSpeak/sources/d4/dc1/interfaceorg_1_1lightjason_1_1agentspeak_1_1language_1_1ITerm__inherit__graph_org.svg" "ITerm inheritance diagram" >}} shows the structure of the relations.
 
 ### Atom & Literals
 
@@ -27,15 +41,7 @@ Based on the first example a negation is also possible
 > <pre><code class="prolog">~raining().</pre></code>
 > The tilde ```~``` in front of a atom defines the [strong negation](https://en.wikipedia.org/wiki/Stable_model_semantics#Strong_negation)
 
-### Terms
 
-In short: _Everything is a term_
-All elements within the source code are terms, so the super (generic) data structure is a term. In our frame we are distinguish two different types of terms:
-
-* raw terms are terms with a native Java datatype, in such a term any Java data structure can be stored, but it cannot be used by the normal behaviour of the logical programming language, but these datasets can be stored within variables, can be unified, ...
-* other terms like literals are structured objects that are described above
-
-In our structure we create an inheritance model to build the software architecture for these structured. The root element is the [ITerm interface](https://lightjason.github.io/AgentSpeak/sources/d9/d34/interfaceorg_1_1lightjason_1_1agentspeak_1_1language_1_1ITerm.html) and the {{< lightbox "https://lightjason.github.io/AgentSpeak/sources/d4/dc1/interfaceorg_1_1lightjason_1_1agentspeak_1_1language_1_1ITerm__inherit__graph_org.svg" "ITerm inheritance diagram" >}} shows the structure of the relations.
 
 
 
@@ -43,7 +49,11 @@ In our structure we create an inheritance model to build the software architectu
 
 ### Facts
 
+### Variables
+
 ### Rules
+
+
 
 
 ## Runtime
