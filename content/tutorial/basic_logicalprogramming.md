@@ -62,6 +62,40 @@ Based on the definition of [variables](#variables) and [literals](#atomliterals)
 
 Rules as distinct from [literals](#atomliterals), [variables](#variables) and [facts](#factbeliefs) are an _executable structure_. Rules can be looked upon as a _static function_, but on a logical programming language a function with some additional structure.
 
+> One of the most rule examples for logical programs is the [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_number). In the mathematical definition this sequences is defined as
+> $$F\_n = F\_{n-1} + F\_{n-2}$$
+> $$F\_0 = F\_1 = F\_2 = 1$$
+> For the value $n=5$ the sequence is calculated as 
+> $$F\_5 = F\_4 + F\_3 = (F\_3 + 1) + (1+1) = ((1+1)+1) + (1+1) = 5$$
+> Based on this calculation you see that each function element $F\_n$ which is not defined as $1$ resolved in 
+> a recursive way. To create a rule, which calculates the fibonacci number of any input in Prolog the rules shows
+> <pre><code class="prolog">fibonacci(0,0).
+fibonacci(1,1).
+fibonacci(2,1).
+fibonacci(N,R) :-
+    N > 1,
+    N1 is N-1,
+    N2 is N-2,
+    fibonacci(N1,R1),
+    fibonacci(N2,R2),
+    R is R1 + R2
+.</code></pre>
+> One of the importent part on a Prolog program is, that first the exit conditions are written. The last item 
+> in the list is the calculation iif no other condition will be matched. The last rule can be read in the 
+> following way (the comma is pronounced as a logical _and_):
+
+> > If
+> > (N is greater than 1) _and_ (N1 can be set to N-1) _and_ (N2 can be calculate to N-2) _and_ 
+> > (the rule fibonacci(N1,R1) can be successfull executed) _and_ (the rule fibonacci(N2,R2) can be successfull executed) _and_
+> > (R can be calulated to R1 + R2)
+> > _then_ the rule will be finished successful
+
+> The order of the rule is very importend, because Prolog tries to find a rule, which is matched successfully, 
+> the first rule, that matchs will be used. Variables will be set during runtime and the values will be passed 
+> back by a reference, this is named [side effect](https://en.wikipedia.org/wiki/Side_effect_(computer_science)). In imperative programming languages these side effects are undesired, but 
+> very helpful in logical programming languages.  
+> 
+> But an advice in writing such rules: The logical programming runtime will be check in a worst-case szenario all possibilites of calculating a solution. The system tries to find a successfull solution with a [backtracking algorithm](https://en.wikipedia.org/wiki/Backtracking). This can be an [NP-complete problem](https://en.wikipedia.org/wiki/NP-completeness) and so a solution cannot be calculated efficently.
 
 
 ## <a name="runtime">Runtime</a>
@@ -71,10 +105,7 @@ In the section [designtime](#designtime) we are talking about a symbolic represe
 The description of the figure is that we are modeling the $\Delta$ during [designtime](#designtime) with any kind of [facts](#factbeliefs). During runtime the agent can modify the knowledge and generates implicit knowledge about the environment which is based on the previous knowledge $\Delta$. The implicit knowledge is named $belief(\Delta, \rho)$
 
 
-### <a name="logical">Logical</a>
-
 ### <a name="unification">Unifaction</a>
 
-### <a name="rulesruntime">Rules</a>
 
 
