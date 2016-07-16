@@ -201,13 +201,16 @@ blockquote p {
   display: inline;
 }
 
-img[src$='#floatleft']
-{
+img[src$='#centering'] {
+    display: block;
+    margin: 0 auto;
+}
+
+img[src$='#floatleft'] {
 	float: left;
 }
 
-img[src$='#floatright']
-{
+img[src$='#floatright'] {
 	float: right;
 }
 

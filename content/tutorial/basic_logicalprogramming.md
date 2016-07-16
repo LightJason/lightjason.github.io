@@ -66,6 +66,11 @@ Rules as distinct from [literals](#atomliterals), [variables](#variables) and [f
 
 ## <a name="runtime">Runtime</a>
 
+In the section [designtime](#designtime) we are talking about a symbolic representation of data. We can define such data in the agent script and during the execution of the agent we would like to modify the data. On an abstract point of view are arte talking about [deductive reasoning](https://en.wikipedia.org/wiki/Deductive_reasoning), that means in slopping sentence: _We are generating new knowledge, based on the current knowledge of the agent_.
+![deduction](../../images/deduction.png#centering)
+The description of the figure is that we are modeling the $\Delta$ during [designtime](#designtime) with any kind of [facts](#factbeliefs). During runtime the agent can modify the knowledge and generates implicit knowledge about the environment which is based on the previous knowledge $\Delta$. The implicit knowledge is named $belief(\Delta, \rho)$
+
+
 ### <a name="logical">Logical</a>
 
 ### <a name="unification">Unifaction</a>
