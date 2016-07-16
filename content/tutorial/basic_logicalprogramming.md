@@ -95,7 +95,7 @@ fibonacci(N,R) :-
 > back by a reference, this is named [side effect](https://en.wikipedia.org/wiki/Side_effect_(computer_science)). In imperative programming languages these side effects are undesired, but 
 > very helpful in logical programming languages.  
 > 
-> But an advice in writing such rules: The logical programming runtime will be check in a worst-case szenario all possibilites of calculating a solution. The system tries to find a successfull solution with a [backtracking algorithm](https://en.wikipedia.org/wiki/Backtracking). This can be an [NP-complete problem](https://en.wikipedia.org/wiki/NP-completeness) and so a solution cannot be calculated efficently.
+> But an advice in writing such rules: The logical programming runtime will be check in a worst-case szenario all possibilites of calculating a solution. The system tries to find a successfull solution with a [backtracking algorithm](https://en.wikipedia.org/wiki/Backtracking). This can be a [NP-complete problem](https://en.wikipedia.org/wiki/NP-completeness) and so a solution cannot be calculated efficently.
 
 
 ## <a name="runtime">Runtime</a>
