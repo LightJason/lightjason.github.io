@@ -29,6 +29,18 @@ Based on the first example a negation is also possible
 
 ### Terms
 
+In short: _Everything is a term_
+All elements within the source code are terms, so the super (generic) data structure is a term. In our frame we are distinguish two different types of terms:
+
+* raw terms are terms with a native Java datatype, in such a term any Java data structure can be stored, but it cannot be used by the normal behaviour of the logical programming language, but these datasets can be stored within variables, can be unified, ...
+* other terms like literals are structured objects that are described above
+
+In our structure we create an inheritance model to build the software architecture for these structured. The root element is the [ITerm interface](http://lightjason.github.io/AgentSpeak/sources/d9/d34/interfaceorg_1_1lightjason_1_1agentspeak_1_1language_1_1ITerm.html) and the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d4/dc1/interfaceorg_1_1lightjason_1_1agentspeak_1_1language_1_1ITerm__inherit__graph_org.svg" "ITerm inheritance diagram" >}} shows the structure of the relations.
+
+
+
+
+
 ### Facts
 
 ### Rules
