@@ -8,7 +8,7 @@ body {
 }
 
 div.document {
-    width: 940px;
+    width: 65%;
     margin: 30px auto 0 auto;
 }
 
@@ -139,16 +139,16 @@ a:hover {
     text-decoration: underline;
 }
 
-div.body h1,
-div.body h2,
-div.body h3,
-div.body h4,
-div.body h5,
-div.body h6 {
-    font-family: 'Garamond', 'Georgia', serif;
-    font-weight: normal;
+div.body h1, div.body h1 a,
+div.body h2, div.body h2 a,
+div.body h3, div.body h3 a,
+div.body h4, div.body h4 a,
+div.body h5, div.body h5 a,
+div.body h6, div.body h6 a {
     margin: 30px 0px 10px 0px;
     padding: 0;
+    color: #3E4349;
+    text-decoration: none;
 }
 
 div.body h1 { margin-top: 0; padding-top: 0; font-size: 240%; }
@@ -157,6 +157,14 @@ div.body h3 { font-size: 150%; }
 div.body h4 { font-size: 130%; }
 div.body h5 { font-size: 100%; }
 div.body h6 { font-size: 100%; }
+
+div.body h2::after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 40%;
+    background: #9f9f9f;
+}
 
 div.body p, div.body dd, div.body li {
     line-height: 1.4em;
