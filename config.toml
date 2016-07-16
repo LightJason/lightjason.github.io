@@ -18,6 +18,9 @@ enableEmoji         = true
 
 # --- main site configuration ------------------------------------------
 
+[taxonomies]
+	blogbost        = "blogposts"
+
 [params]
 	logo 		    = ""
 	name 		    = "LightJason"
