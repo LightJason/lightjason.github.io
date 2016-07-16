@@ -11,6 +11,6 @@ mv -f /tmp/public/* .
 echo '# LightJason' > readme.md
 git add --all .
 git commit -m "current documentation"
-#git push origin :master
+git push origin :master
 git push origin master
 git checkout developing
