@@ -7,7 +7,7 @@ We are working on the [Mobile and Enterprise Computing](http://meclab.in.tu-clau
 > _philipp [at] lightjason.org_
 > <br/>
 > <br/>
-> Architect, Developer, Tutorials, Webmaster
+> Architect, Developer, Tutorials, Webmaster (Admin-C)
 
 <br/>
 
