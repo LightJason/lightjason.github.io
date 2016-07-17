@@ -104,7 +104,7 @@ In the section [designtime](#designtime) we are talking about a symbolic represe
 
 ![deduction](../../images/deduction.svg#centering)
 
-The description of the figure is that we are modeling the $\Delta$ during [designtime](#designtime) with any kind of [facts](#factbeliefs). During runtime the agent can modify the knowledge and generates implicit knowledge about the environment which is based on the previous knowledge $\Delta$. The implicit knowledge is named $belief(\Delta, \rho)$
+The description of the figure is that we are modeling the $\Delta$ during [designtime](#designtime) with any kind of [facts](#factsbeliefs). During runtime the agent can modify the knowledge and generates implicit knowledge about the environment which is based on the previous knowledge $\Delta$. The implicit knowledge is named $belief(\Delta, \rho)$
 
 ### <a name="unification">Unifaction</a>
 
