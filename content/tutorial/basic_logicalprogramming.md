@@ -1,7 +1,7 @@
 ---
 title: "Basic Knowledge: Logical Programming"
 ---
-This tutorial gives a short introduction in [logical programming concepts](https://en.wikipedia.org/wiki/Logic_programming), which are needed to write the source code of an agent.
+This tutorial gives a short introduction in [logical programming concepts](https://en.wikipedia.org/wiki/Logic_programming), which are needed to write the source code of an agent. For general understanding of logical programme it can be helpful to learn first Prolog, in detail we recommand [SWI-Prolog](http://www.swi-prolog.org/), because there a lot of application and good tutorials to understand the main mechanism of programming.
 
 ## <a name="designtime">Designtime</a>
 
@@ -100,8 +100,8 @@ fibonacci(N,R) :-
 
 ## <a name="runtime">Runtime</a>
 
-In the section [designtime](#designtime) we are talking about a symbolic representation of data. We can define such data in the agent script and during the execution of the agent we would like to modify the data. On an abstract point of view are arte talking about [deductive reasoning](https://en.wikipedia.org/wiki/Deductive_reasoning), that means in slopping sentence: _We are generating new knowledge, based on the current knowledge of the agent_.
-![deduction](../../images/deduction.png#centering)
+In the section [designtime](#designtime) we are talking about a symbolic representation of data. We can define such data in the agent script and during the execution of the agent we would like to modify the data. On an abstract point of view we are talking about [deductive reasoning](https://en.wikipedia.org/wiki/Deductive_reasoning), that means in slopping sentence: _We are generating new knowledge, based on the current knowledge of the agent_.
+![deduction](../../images/deduction.svg#centering)
 The description of the figure is that we are modeling the $\Delta$ during [designtime](#designtime) with any kind of [facts](#factbeliefs). During runtime the agent can modify the knowledge and generates implicit knowledge about the environment which is based on the previous knowledge $\Delta$. The implicit knowledge is named $belief(\Delta, \rho)$
 
 
