@@ -1,7 +1,7 @@
 ---
 title: "About"
 ---
-This project arises during our PhD time, because our research is along [multi-agent systems](https://en.wikipedia.org/wiki/Multi-agent_system). Our research projects consider with _traffic_ and _crowd simulation_, but we try to simulation complex _behaviour of human behaviour_.
+This project arises during our PhD time, because our research is along [multi-agent systems](https://en.wikipedia.org/wiki/Multi-agent_system). Our research projects consider with _traffic_ and _crowd simulation_, but we try to simulation _complex manner of human behaviour_.
 
 > Malte's research depends on _complex overtaking 
 > manoeuvre_ and _norm usage_ with modelling on a high 
