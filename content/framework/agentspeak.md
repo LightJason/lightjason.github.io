@@ -28,7 +28,7 @@ The multi-assignment allowed to extract elements from a list into different vari
 > The examples creates a list if number within in the range _[1,20)_ and 1 will be put into the variable _A_, 2 in _B_, 3 in _C_, 4 will be ignore, 5 in _D_, 6 in _E_, 7 in _F_ and the list _[8,20)_ in _G_
 
 <pre><code class="prolog">L = collection/list/range(1, 20);
-[A|B|C| _ |D|E|F|G] = L;
+[A|B|C|_|D|E|F|G] = L;
 </code></pre>
 
 ## <a name="parallelism"></a>Parallelism & Thread-Safe Variables

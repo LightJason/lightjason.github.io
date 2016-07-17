@@ -248,3 +248,23 @@ ul.horizontal li {
 code {
     border: 1px solid #B1B4B6;
 }
+
+@media print {
+
+    div.clearer,
+    div.sphinxsidebar,
+    div.sphinxsidebarwrapper,
+    div.footer {
+        display: none;
+    }
+
+    div.document {
+        width: 100%;
+        margin: 0 auto 0 auto;
+    }
+
+    div.bodywrapper {
+        margin: 0;
+    }
+
+}

@@ -29,7 +29,7 @@ enableEmoji         = true
 	listpages		= ["blogpost", "tutorial", "publication"]
 
 [[params.footer.links]]
-	name = "Project Overview"
+	name = "Project Repositories"
 	url  = "https://github.com/LightJason"
 
 [[params.footer.links]]
