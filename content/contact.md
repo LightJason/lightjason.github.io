@@ -9,7 +9,7 @@ We are working on the [Mobile and Enterprise Computing](http://meclab.in.tu-clau
 > <br/>
 > Architect, Developer, Tutorials, Webmaster (Admin-C)
 
-<br/>
+<p/>
 
 > Malte Aschermann  
 > _malte [at] lightjason.org_

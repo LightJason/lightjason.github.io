@@ -58,7 +58,7 @@ Within a logical programming language exists a specialized variable which is _on
 
 Based on the definition of [variables](#variables) and [literals](#atomliterals) we are defining a _fact_ as a _literal without variables_. A fact is a literal which define a state or an information (independed the information is correct or wrong). In relation to a multi-agent system a _belief_ is a _fact about the knowledge or the environment_. So the fact defines a state or a point of view of an object without any information about the correctness.
 
-### <a name="rulesdesigntime">Rules</a>
+### <a name="rules">Rules</a>
 
 Rules as distinct from [literals](#atomliterals), [variables](#variables) and [facts](#factbeliefs) are an _executable structure_. Rules can be looked upon as a _static function_, but on a logical programming language a function with some additional structure.
 
@@ -101,11 +101,22 @@ fibonacci(N,R) :-
 ## <a name="runtime">Runtime</a>
 
 In the section [designtime](#designtime) we are talking about a symbolic representation of data. We can define such data in the agent script and during the execution of the agent we would like to modify the data. On an abstract point of view we are talking about [deductive reasoning](https://en.wikipedia.org/wiki/Deductive_reasoning), that means in slopping sentence: _We are generating new knowledge, based on the current knowledge of the agent_.
-![deduction](../../images/deduction.svg#centering)
-The description of the figure is that we are modeling the $\Delta$ during [designtime](#designtime) with any kind of [facts](#factbeliefs). During runtime the agent can modify the knowledge and generates implicit knowledge about the environment which is based on the previous knowledge $\Delta$. The implicit knowledge is named $belief(\Delta, \rho)$
 
+![deduction](../../images/deduction.svg#centering)
+
+The description of the figure is that we are modeling the $\Delta$ during [designtime](#designtime) with any kind of [facts](#factbeliefs). During runtime the agent can modify the knowledge and generates implicit knowledge about the environment which is based on the previous knowledge $\Delta$. The implicit knowledge is named $belief(\Delta, \rho)$
 
 ### <a name="unification">Unifaction</a>
 
+In general the [unification](https://en.wikipedia.org/wiki/Unification_(computer_science)) is the process for _setting values from one literal into the variables of another literal_. Based on the [time example](#time) we show the procedure.
 
+> We have got two literals, one literal with values and another literal with variables
+> <pre><code class="lightjason">time( current( hour( 2    ), minute( 0      ), pm() ) )
+> time( current( hour( Hour ), minute( Second ), _    ) )
+> </pre></code>
+> Based on this structure the systems tries to transfer the values from the first literal into the variables 
+> of the second literal in that case, that both literals are equal. If it is not possible the unification 
+> process will fail. On a successfull execution the variable ```Hour``` stores the value $2$ and the variable 
+> ```Second``` the value $0$.
 
+The runtime of the logical programming language tries to find an executable structure, so that all unification components and [rules](#rules) can be finished successfully. The unification process can be used to generate new literals based on existing literals. In combination with [rules](#rules) the system can solved complex reasoning structures. If the system cannot find any possibility to solve the problem, the logical program will be stopped with a failure. The goal of the runtime is, to find a successful solution.
