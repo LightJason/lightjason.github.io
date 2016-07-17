@@ -25,4 +25,11 @@ This project arises during our PhD time, because our research is along [multi-ag
 Based on these point of views we can amend our work.
 Our work is inspired by [Jason](http://jason.sourceforge.net/), a multi-agent framework, which is developed by Jomi F. Hübner and Rafael H. Bordini, but cannot ported for your requirements. We had tried a lot different types frameworks to create an usable system for our simulation, but we cannot do so we build-up our framework from scratch. Our goal for this system is to create a real usable and good supported framework, which can be used also from non-software-developer staff. We try to explain the ideas, concepts and technical background in a more clean and understandable way.
 
+> All content of the website is defined under the 
+[Creative Commons License (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/)
+> <br/><br/>
+> ![cc](https://mirrors.creativecommons.org/presskit/icons/cc.svg#floatcentering)
+> ![by](https://mirrors.creativecommons.org/presskit/icons/by.svg#floatcentering)
+> ![sa](https://mirrors.creativecommons.org/presskit/icons/sa.svg#floatcentering)
+
 __We hope for some assistance and feedback. Feel free to ask...__

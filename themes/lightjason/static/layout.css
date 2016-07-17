@@ -203,6 +203,13 @@ blockquote p {
 
 img[src$='#centering'] {
     display: block;
+    padding: 5px;
+    margin: 0 auto;
+}
+
+img[src$='#floatcentering'] {
+    display: inline-block;
+    padding: 5px;
     margin: 0 auto;
 }
 
