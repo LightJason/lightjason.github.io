@@ -22,7 +22,7 @@ In our structure we create an inheritance model to build the software architectu
 
 ### <a name="atomliterals">Atom & Literals</a>
 
-The plainest structure of a logical programming language are _atoms_ and based on this structure the _literals_. In the Prolog definition and so in AgentSpeak(L) all literals / atoms are beginning with a lower-case letter. In our definition the atom can be also contains shalsh ```/``` and ```-```. For example:
+The plainest structure of a logical programming language are _atoms_ and based on this structure the _literals_. In the Prolog definition and so in AgentSpeak(L) all literals / atoms are beginning with a lower-case letter. In our definition the atom can contains also slash ```/``` and minus ```-```. For example:
 
 > We would like to define that the sun is shining
 > <pre><code class="lightjason">sun( shining() )</pre></code>
