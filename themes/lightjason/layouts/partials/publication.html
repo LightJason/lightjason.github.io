@@ -1,7 +1,7 @@
 {{- if in .Params.view "publication" -}}
         {{ $baseurl := .Site.BaseURL }} 
         <ul>
-        {{ range $publication := getJSON "data/references.json" }} 
+        {{ range $publication := .Site.Data.references }} 
 
             <li>
                 <a name="{{- $publication.id | plainify | urlize -}}"></a>
