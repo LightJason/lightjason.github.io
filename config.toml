@@ -33,7 +33,7 @@ enableEmoji         = true
 	url  = "https://github.com/LightJason"
 
 [[params.footer.links]]
-	name = "AgentSpeak(L) Repository"
+	name = "AgentSpeak(L++) Repository"
 	url  = "https://github.com/LightJason/AgentSpeak"
 
 # ----------------------------------------------------------------------	 
