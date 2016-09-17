@@ -15,6 +15,6 @@ We are working on the [Mobile and Enterprise Computing](http://meclab.in.tu-clau
 > _malte [at] lightjason.org_
 > <br/>
 > <br/>
-> Modeling, Testing, Szenariodesign
+> Modeling, Testing, Scenariodesign
 
 
