@@ -5,7 +5,7 @@ LightJason is a _lightwire multi-agent framework_ for creating a multi-agent sys
 
 * [lambda-expression](framework/agentspeak#lambdaexpression)
 * [multi-plan definition](framework/agentspeak#multiplan)
-* [explicit repair-planning](framework/agentspeak#repairplanning)
+* [explicit repair-action](framework/agentspeak#repairaction)
 * [multi-variable assignments](framework/agentspeak#multiassignment)
 * [parallel execution and thread-safe variables](framework/agentspeak#parallelization)
 

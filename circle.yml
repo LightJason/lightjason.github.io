@@ -1,0 +1,39 @@
+general:
+    branches:
+        only:
+            - developing
+        ignore:
+            - master
+            - /hotfix-.*/
+            - /release-.*/
+            - /support-.*/
+            - /dev-.*/
+
+machine:
+    timezone:
+        Europe/Berlin
+
+    environment:
+        GIT_AUTHOR_NAME: CircleCI
+        GIT_AUTHOR_EMAIL: info@flashpixx.de
+        GIT_COMMITTER_NAME: CircleCI
+        GIT_COMMITTER_EMAIL: info@flashpixx.de
+
+dependencies:
+    pre:
+        - sudo apt-get install hugo
+
+test:
+    override:
+        - hugo
+        - mv -f public /tmp        
+        - git branch -D master
+        - git checkout --orphan master
+        - rm -Rf *
+        - echo -n "*.*\n!.gitignore\n!*.html\n!*.xml\n!*.css\n!*.js\n!*.json\n!*.bib\n!*.md" > .gitignore
+        - mv -f /tmp/public/* .
+        - echo '# LightJason' > readme.md
+        - git push origin :master
+        - git add --all .
+        - git commit -m "current documentation"
+        - git push origin master

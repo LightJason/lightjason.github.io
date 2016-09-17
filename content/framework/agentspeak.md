@@ -17,7 +17,7 @@ The language does not support a looping directly, but we are using _lambda expre
 (L) -> Y | R : R = Y+1; 
 </code></pre>
 
-## <a name="repairplanning"></a>Explicit Repair-Planning
+## <a name="repairaction"></a>Explicit Repair-Action
 
 ## <a name="multiplan"></a>Multi-Plan Definition
 
