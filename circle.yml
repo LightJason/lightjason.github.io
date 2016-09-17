@@ -38,5 +38,5 @@ test:
         - echo -n "*.*\n!.gitignore\n!circle.yml\n!*.html\n!*.xml\n!*.css\n!*.js\n!*.json\n!*.bib" > .gitignore
         - echo "# LightJason" > readme.md
         - git add --all .
-        - git commit -m "current documentation"
+        - git commit -m "current website"
         - git push origin master
