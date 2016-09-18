@@ -25,13 +25,13 @@ In our structure we create an inheritance model to build the software architectu
 The plainest structure of a logical programming language are _atoms_ and based on this structure the _literals_. In the Prolog definition and so in AgentSpeak(L) all literals / atoms are beginning with a lower-case letter. In our definition the atom can contains also slash ```/``` and minus ```-```. For example:
 
 > We would like to define that the sun is shining
-> <pre><code class="lightjason">sun( shining() )</pre></code>
+> <pre><code class="prolog">sun( shining() )</pre></code>
 > The word ```sun``` and the word ```shining``` are _atoms_, the whole structure ```sun(shining())``` is named _literal_.
 
 <a name="time"></a>Another example is a time definition:
 
 > We would like to say it is currently 2 a clock post meridiam (pm)
-> <pre><code class="lightjason">time( current( hour(2), minute(0), pm() ) )</pre></code>
+> <pre><code class="prolog">time( current( hour(2), minute(0), pm() ) )</pre></code>
 > You can see, that a literal can store a list of other literals or values inside the brackets.
 
 Based on the first example a negation is also possible
@@ -45,13 +45,13 @@ Based on the first example a negation is also possible
 Variables can be used to define literals with a _placeholder_ and in constrast to atom / literals begins a variable with an upper-case letter. 
 
 > Based on the [time example](#time) we add some variables to extract the hour and minute part of the literal
-> <pre><code class="lightjason">time( current( hour( Hour ), minute( Minute ), pm() ) )</code></pre>
+> <pre><code class="prolog">time( current( hour( Hour ), minute( Minute ), pm() ) )</code></pre>
 > The upper-case variables ```Hour``` and ```Minute``` are parts of the literal and the system can set the values into. This structure is named [unification](#unification)
 
 Within a logical programming language exists a specialized variable which is _only_ the underscore ```_```. This variable can be sloppy named as _trash can_. You can use this special variable for defining a variable which value should be ignored.
 
 > In contradistinction to the time example above, we would like to ignore the ```pm()``` part, so we say, that we would like to get the current time and ignoring the 12-hour clock part
-> <pre><code class="lightjason">time( current( hour( Hour ), minute( Minute ), _ ) )</code></pre>
+> <pre><code class="prolog">time( current( hour( Hour ), minute( Minute ), _ ) )</code></pre>
 > With this definition we can get a very flexible structure for extracting some information from the literals.
 
 ### <a name="factsbeliefs">Facts & Beliefs</a>
@@ -111,7 +111,7 @@ The description of the figure is that we are modeling the $\Delta$ during [desig
 In general the [unification](https://en.wikipedia.org/wiki/Unification_(computer_science)) is the process for _setting values from one literal into the variables of another literal_. Based on the [time example](#time) we show the procedure.
 
 > We have got two literals, one literal with values and another literal with variables
-> <pre><code class="lightjason">time( current( hour( 2    ), minute( 0      ), pm() ) )
+> <pre><code class="prolog">time( current( hour( 2    ), minute( 0      ), pm() ) )
 > time( current( hour( Hour ), minute( Second ), _    ) )
 > </pre></code>
 > Based on this structure the systems tries to transfer the values from the first literal into the variables 

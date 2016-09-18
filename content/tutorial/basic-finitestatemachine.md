@@ -1,7 +1,7 @@
 ---
 title: "Basic Knowledge: Finite-State-Machine"
 ---
-A [finite-State-Machine](https://en.wikipedia.org/wiki/Finite-state_machine) is a system with explicit defined states and transitions between the states with the following syntax:
+A [Finite-State-Machine](https://en.wikipedia.org/wiki/Finite-state_machine) is a system with explicit defined states and transitions between the states with the following syntax:
 
 * a __state__ is present by a circle and defines a _stabel execution point_
 * a __final state__ is defined by a circle with a _double outline_
@@ -11,4 +11,4 @@ A [finite-State-Machine](https://en.wikipedia.org/wiki/Finite-state_machine) is 
 Mostly within a state the state-name is documentated, also the arrow of a transition can be used for documentation.
 
 > This example show a similar state-machine with three states, that runs from the _initial state_ to a _final state_.
-> ![fsmagent](../../images/fsm1.png#centering)
+> ![fsmagent](../../images/fsm1.svg#centering)
