@@ -207,6 +207,12 @@ img[src$='#centering'] {
     margin: 0 auto;
 }
 
+svg {
+    display: block;
+    padding: 5px;
+    margin: 0 auto;
+}
+
 img[src$='#floatcentering'] {
     display: inline-block;
     padding: 5px;
