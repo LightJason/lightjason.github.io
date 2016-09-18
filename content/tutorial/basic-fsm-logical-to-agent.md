@@ -2,10 +2,11 @@
 title: "Basic Knowledge: From Finite-State-Machine and Logical Programming to an Agent"
 ---
 
-The main idea of your framework is, that we define an agent as a [finite-state-machine](../basic-finitestatemachine) with the following definition:
+The main idea of your framework is, that an agent is defined as a [finite-state-machine](../basic-finitestatemachine) in a [logical programming language](../basic-logicalprogramming) with the following definition:
 
-* a __state__ is a set of belief if a cycle is not running
-* a __transition__ is the execution of a plan (with instantiation of a goal)
+* the __initial state__ is optional defined with the _initial goal_
+* a __state__ is a set of beliefs if a cycle is not running
+* a __transition__ is the execution of a plan (with instantiation of a goal) and is limited by the _plan condition_
 
 But in generell of parallel execution of plans there can be many active transition in one cycle. 
 
