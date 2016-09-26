@@ -13,10 +13,8 @@
 	<title>{{- if not .IsHome -}}{{- .Title -}} &mdash;{{- end -}} {{- .Site.Params.name -}}</title>
 	
 	
-	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js"></script>
-	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/languages/prolog.min.js"></script>
-	<script type="text/javascript" src="{{ .Site.BaseURL }}lightjason.js"></script>
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/vs.min.css" />
+	<script type="text/javascript" src="{{ .Site.BaseURL }}prism.js"></script>
+	<link rel="stylesheet" href="{{ .Site.BaseURL }}prism.css" />
 
 	<link rel="stylesheet" href="{{ .Site.BaseURL }}lightbox.min.css" type="text/css" />
 	
