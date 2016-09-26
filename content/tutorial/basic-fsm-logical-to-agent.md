@@ -2,17 +2,15 @@
 title: "Basic Knowledge: From Finite-State-Machine and Logical Programming to an Agent"
 ---
 
-We are defining our __BDI (Belief-Desire-Intention) framework__ along the book of [Michael Wooldrige - An Introduction to MultiAgent Systems](http://www.cs.ox.ac.uk/people/michael.wooldridge/pubs/imas/IMAS2e.html) with the definition:
+The main definition of our [BDI (Belief-Desire-Intention) framework](https://en.wikipedia.org/wiki/Belief%E2%80%93desire%E2%80%93intention_software_model) follows [Russell & Norvig - Artificial Intelligence: A Modern Approach](http://aima.cs.berkeley.edu/) with the structure of _goal-based agents_:
 
-> * _autonomous:_
-> * _reactive:_
-> * _proactive:_
-> * _sociable:_
+> An agent is anything that can be viewed as perceiving its environment through sensors and acting upon that environment through effectors _(chapter 2.1, page 31)_
 
-As additional definition we are using also [Russell & Norvig - Artificial Intelligence: A Modern Approach](http://aima.cs.berkeley.edu/) in detail the _goal-based agents_ with:
+We are defining furthermore along the book of [Michael Wooldrige - An Introduction to MultiAgent Systems (chapter 2.1, page 26)](http://www.cs.ox.ac.uk/people/michael.wooldridge/pubs/imas/IMAS2e.html):
 
-> An agent is anything that can be viewed as perceiving its environment through sensors and acting upon that environment through effectors _(chapter 2.1)_
-
+> * _Reactivity:_ Intelligent agents are able to perceive their environment, and respond in a timely fashion to changes that occur in it in order to satisfy their design objectives
+> * _Proactiveness:_ Intelligent agents are able to exhibit goal-directed behaviour by talking the initiative in order to satisfy their design objectives
+> * _Social ability:_ Intelligent agents are capable of interacting with other agents (and possible humans) in order to satisfy their design objectives
 
 The technical execution structure of the agent uses the concepts of [PRS (Procedural Reasoning System)](https://en.wikipedia.org/wiki/Procedural_reasoning_system) and architecture of [dMARS (Distributed Multi-Agent Reasoning System)](https://en.wikipedia.org/wiki/Distributed_multi-agent_reasoning_system), so we are definiting the agent as a [Finite-State-Machine](../basic-finitestatemachine) in a [Logical Programming language](../basic-logicalprogramming) with the following definition:
 
@@ -20,12 +18,9 @@ The technical execution structure of the agent uses the concepts of [PRS (Proced
 * a __state__ is a set of beliefs if a cycle is not running
 * a __transition__ is the execution of a plan (with instantiation of a goal) and is limited by the _plan condition_
 
-But in generell of parallel execution of plans there can be many active transition in one cycle. We focus also the definition of _Michael Wooldrige_ with 
+But in generell of parallel execution of plans there can be many active transition in one cycle. We focus also the definition of _M. Wooldrige_ with 
 
-> [a] multi-agent system is inherently multithreaded, in that each agent is assumed to have at least on thread of control [page 30]
-
-
-
+> [A] multi-agent system is inherently multithreaded, in that each agent is assumed to have at least on thread of control [chapter 2.2, page 30]
 
 
 
@@ -83,4 +78,3 @@ Based on the first illustrated finite-state-machine we will show the action stru
 </code></pre>
 
 [^iaction]: see the [IAction interface](http://lightjason.github.io/AgentSpeak/sources/dc/d53/interfaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1IAction.html) for a detailed description
-[^wooldridge]:
