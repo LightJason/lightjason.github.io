@@ -6,7 +6,7 @@ The main definition of our [BDI (Belief-Desire-Intention) framework](https://en.
 
 > An agent is anything that can be viewed as perceiving its environment through sensors and acting upon that environment through effectors _(chapter 2.1, page 31)_
 
-We are defining furthermore along the book of [Michael Wooldrige - An Introduction to MultiAgent Systems (chapter 2.1, page 26)](http://www.cs.ox.ac.uk/people/michael.wooldridge/pubs/imas/IMAS2e.html):
+We are defining furthermore along the book of [Michael Wooldrige - An Introduction to MultiAgent Systems](http://www.cs.ox.ac.uk/people/michael.wooldridge/pubs/imas/IMAS2e.html) _(chapter 2.1, page 26)_:
 
 > * _Reactivity:_ Intelligent agents are able to perceive their environment, and respond in a timely fashion to changes that occur in it in order to satisfy their design objectives
 > * _Proactiveness:_ Intelligent agents are able to exhibit goal-directed behaviour by talking the initiative in order to satisfy their design objectives
@@ -20,7 +20,7 @@ The technical execution structure of the agent uses the concepts of [PRS (Proced
 
 But in generell of parallel execution of plans there can be many active transition in one cycle. We focus also the definition of _M. Wooldrige_ with 
 
-> [A] multi-agent system is inherently multithreaded, in that each agent is assumed to have at least on thread of control [chapter 2.2, page 30]
+> [A] multi-agent system is inherently multithreaded, in that each agent is assumed to have at least on thread of control _(chapter 2.2, page 30)_
 
 
 
