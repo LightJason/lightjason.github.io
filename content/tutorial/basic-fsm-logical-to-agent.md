@@ -2,13 +2,31 @@
 title: "Basic Knowledge: From Finite-State-Machine and Logical Programming to an Agent"
 ---
 
-The main idea of your framework is, that an agent is defined as a [Finite-State-Machine](../basic-finitestatemachine) in a [Logical Programming language](../basic-logicalprogramming) with the following definition:
+We are defining our __BDI (Belief-Desire-Intention) framework__ along the book of [Michael Wooldrige - An Introduction to MultiAgent Systems](http://www.cs.ox.ac.uk/people/michael.wooldridge/pubs/imas/IMAS2e.html) with the definition:
+
+> * _autonomous:_
+> * _reactive:_
+> * _proactive:_
+> * _sociable:_
+
+As additional definition we are using also [Russell & Norvig - Artificial Intelligence: A Modern Approach](http://aima.cs.berkeley.edu/) in detail the _goal-based agents_ with:
+
+> An agent is anything that can be viewed as perceiving its environment through sensors and acting upon that environment through effectors _(chapter 2.1)_
+
+
+The technical execution structure of the agent uses the concepts of [PRS (Procedural Reasoning System)](https://en.wikipedia.org/wiki/Procedural_reasoning_system) and architecture of [dMARS (Distributed Multi-Agent Reasoning System)](https://en.wikipedia.org/wiki/Distributed_multi-agent_reasoning_system), so we are definiting the agent as a [Finite-State-Machine](../basic-finitestatemachine) in a [Logical Programming language](../basic-logicalprogramming) with the following definition:
 
 * the __initial state__ is optional defined with the _initial goal_
 * a __state__ is a set of beliefs if a cycle is not running
 * a __transition__ is the execution of a plan (with instantiation of a goal) and is limited by the _plan condition_
 
-But in generell of parallel execution of plans there can be many active transition in one cycle. 
+But in generell of parallel execution of plans there can be many active transition in one cycle. We focus also the definition of _Michael Wooldrige_ with 
+
+> [a] multi-agent system is inherently multithreaded, in that each agent is assumed to have at least on thread of control [page 30]
+
+
+
+
 
 
 ## Basic Behaviour
@@ -65,3 +83,4 @@ Based on the first illustrated finite-state-machine we will show the action stru
 </code></pre>
 
 [^iaction]: see the [IAction interface](http://lightjason.github.io/AgentSpeak/sources/dc/d53/interfaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1IAction.html) for a detailed description
+[^wooldridge]:
