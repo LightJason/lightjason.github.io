@@ -37,7 +37,7 @@ The plainest structure of a logical programming language are _atoms_ and based o
 Based on the first example a negation is also possible
 
 > We would to say it is currently not raining
-> <pre><code class="language-lightjason">~raining()</pre></code>
+> <pre><code class="language-agentspeak">~raining()</pre></code>
 > The tilde ```~``` in front of a atom defines the [strong negation](https://en.wikipedia.org/wiki/Stable_model_semantics#Strong_negation)
 
 ### <a name="variables">Variables</a>

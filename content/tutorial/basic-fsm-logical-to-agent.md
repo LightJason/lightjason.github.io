@@ -28,7 +28,7 @@ But in generell of parallel execution of plans there can be many active transiti
 
 This basic example shows the main functionality of the structure. We define the structure of three plans without a condition and an _initial goal_. The _initial goal (```main```)_ calls two other plans ```first``` and ```second``` within the next cycle. The ```first``` plan will call itself within the following cycles (loop structure) and the ```second``` plan calls the _initial goal_ plan.  The ```first``` plan will be called once in each cycle, because the trigger ```!first``` are equal. The plans ```first``` and ```main``` or ```second``` run in parallel.
  
-<pre><code class="language-lightjason">!main.
+<pre><code class="language-agentspeak">!main.
 +!main <- !first; !second.
 +!first <- !first.
 +!second <- !main.
@@ -54,7 +54,7 @@ On a technical point of view the action is a [method](https://en.wikipedia.org/w
 <br/>
 Based on the first illustrated finite-state-machine we will show the action structure. In a short definition actions are set on the _transition_. On the first state-machine the transition contains only the _achievment goals_. An achievment goal is also an action which executes a plan. We would like to modify the agent that we execute more the one - the achievement goal - action.
 
-<pre><code class="language-lightjason line-numbers">!main.
+<pre><code class="language-agentspeak line-numbers">!main.
 
 +!main <-
 	generic/print("execute main-goal");
