@@ -7,7 +7,7 @@ This tutorial gives a short introduction in [logical programming concepts](https
 
 On logical programms we are talking about a _symbolic definition_. We are writing source code in _symbols_, _facts_ and _rules_. The difference between [imperative programming](https://en.wikipedia.org/wiki/Imperative_programming) and a logical programm is, that we don't define _how the problem should be solved_. We define only the facts and rules which are needed to calculate the solution. In a more general way we define the _constraints_ which are needed to solve the problem. On this definition the runtime create an internal structure to solve the problem.
 
-On the agent developing process, you have to write an _agent script_ in our AgentSpeak(L) programming language, which describes the behaviour of the agent. The script describs _what and when should the agent do_. This process is named _designtime_, because you design the behaviour without knowledge about the real execution process. During _designtime_ there are some concepts to understand the structure of our logical programming language, which are shown here...
+On the agent developing process, you have to write an _agent script_ in our AgentSpeak(L++) programming language, which describes the behaviour of the agent. The script describs _what and when should the agent do_. This process is named _designtime_, because you design the behaviour without knowledge about the real execution process. During _designtime_ there are some concepts to understand the structure of our logical programming language, which are shown here...
 
 
 ### <a name="terms">Terms</a>
@@ -37,7 +37,7 @@ The plainest structure of a logical programming language are _atoms_ and based o
 Based on the first example a negation is also possible
 
 > We would to say it is currently not raining
-> <pre><code class="language-agentspeak">~raining()</pre></code>
+> <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">~raining()</pre></code>
 > The tilde ```~``` in front of a atom defines the [strong negation](https://en.wikipedia.org/wiki/Stable_model_semantics#Strong_negation)
 
 ### <a name="variables">Variables</a>
