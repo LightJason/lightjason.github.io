@@ -56,5 +56,35 @@
     "title": "A scalable runtime platform for multiagent-based simulation",
     "type": "paper-conference",
     "volume": "8758"
+  },
+  {
+    "URL": "https://www.in.tu-clausthal.de/fileadmin/homes/techreports/ifi1604aschermann.pdf",
+    "author": [
+      {
+        "family": "Aschermann",
+        "given": "M."
+      },
+      {
+        "family": "Kraus",
+        "given": "P."
+      },
+      {
+        "family": "Müller",
+        "given": "J. P."
+      }
+    ],
+    "id": "Aschermann+2016",
+    "issued": {
+      "date-parts": [
+        [
+          2016
+        ]
+      ]
+    },
+    "number": "IfI Technical Report IfI-16-04",
+    "publisher": "Department of Computer Science, TU Clausthal",
+    "publisher-place": "Clausthal-Zellerfeld, Germany",
+    "title": "LightJason: A BDI Framework Inspired by Jason",
+    "type": "report"
   }
 ]

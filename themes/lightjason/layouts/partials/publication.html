@@ -13,7 +13,21 @@
                 {{- end }}
             
                 {{ delimit (apply (apply  $publication.author "partial" "author" ".") "chomp" ".") ", " }}
-                in {{ index $publication "collection-title" }} - {{ index $publication "container-title" }} (page {{ $publication.page -}}), 
+
+                {{- if (isset $publication "collection-title") | and (not (eq (index $publication "collection-title") "")) | and (isset $publication "container-title") | and (not (eq (index $publication "container-title") "")) }}  
+                    in {{ index $publication "collection-title" }} - {{ index $publication "container-title" }}
+                {{- else -}}
+                    ,     
+                {{ end -}}
+                
+                {{- if (isset $publication "page") | and (not (eq $publication.page "")) }}    
+                    (page {{ $publication.page -}}), 
+                {{ end -}}
+
+                {{- if (isset $publication "number") | and (not (eq $publication.number "")) }}    
+                    {{ $publication.number -}}, 
+                {{ end -}}
+
                 {{ $publication.publisher }} ({{- index $publication "publisher-place" -}})
 
                 {{- if (isset $publication "note") | and (not (eq $publication.note "")) }}
