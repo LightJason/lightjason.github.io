@@ -5,7 +5,7 @@
 	    {{ if in .Site.Params.listpages .Type -}}
 		    <li>
 		        <a href="{{ .Permalink }}">{{- $page.Title -}}</a>
-			    <time>({{- $page.Date.Format "Mon, Jan 1, 2006" -}})</time>
+			    <time>({{- $page.Date.Format "Mon, Jan 2, 2006" -}})</time>
 			    {{ with $page.Params.blogposts -}} [{{ delimit (apply (apply (sort .) "partial" "blogpost" ".") "chomp" ".") ", " }}] {{- end -}}
 			    <br/>
 			    {{- plainify $page.Summary -}}{{ if .Truncated }}...{{- end -}}

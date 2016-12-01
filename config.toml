@@ -36,6 +36,10 @@ enableEmoji         = true
 	name = "AgentSpeak(L++) Repository"
 	url  = "https://github.com/LightJason/AgentSpeak"
 
+[[params.footer.links]]
+	name = "REST-API Repository"
+	url  = "https://github.com/LightJason/REST"	
+
 # ----------------------------------------------------------------------	 
 
 
