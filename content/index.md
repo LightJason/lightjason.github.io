@@ -1,7 +1,7 @@
 ---
 type: homepage
 ---
-LightJason is a _lightwire multi-agent framework_ for creating a multi-agent systems with Java. The project is inspired by [AgentSpeak(L)](https://en.wikipedia.org/wiki/AgentSpeak) and  [Jason](http://jason.sourceforge.net), but designed and implemented from scratch.
+LightJason is a _BDI multi-agent framework_ for creating a multi-agent systems with Java. The project is inspired by [AgentSpeak(L)](https://en.wikipedia.org/wiki/AgentSpeak) and  [Jason](http://jason.sourceforge.net), but designed and implemented from scratch.
 LightJason is fine-tuned to concurrent plan execution suitable for distributed frameworks and aims at efficient and scalable integration with existing platforms.
 To design agents, this framework uses AgentSpeak(L++), a modular extension of AgentSpeak(L), including new features, e.g.
 

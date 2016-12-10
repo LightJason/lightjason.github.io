@@ -24,7 +24,7 @@ enableEmoji         = true
 [params]
 	logo 		    = ""
 	name 		    = "LightJason"
-	description     = "A Lightwire Multi-Agent System"
+	description     = "BDI Multi-Agent System"
 	contact         = "info [at] lightjason.org"
 	listpages		= ["blogpost", "tutorial", "publication"]
 
