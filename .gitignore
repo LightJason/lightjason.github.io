@@ -13,6 +13,7 @@
 !*.png
 !*.gif
 !*.svg
+!*.pdf
 !*.graffle
 
 # ignore generated files
