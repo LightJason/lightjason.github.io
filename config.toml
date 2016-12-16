@@ -19,7 +19,7 @@ enableEmoji         = true
 # --- main site configuration ------------------------------------------
 
 [taxonomies]
-	news        = "news"
+	news        	= "news"
 
 [params]
 	logo 		    = ""
