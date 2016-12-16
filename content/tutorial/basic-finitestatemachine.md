@@ -11,4 +11,4 @@ A [Finite-State-Machine](https://en.wikipedia.org/wiki/Finite-state_machine) is 
 Mostly within a state the state-name is documentated, also the arrow of a transition can be used for documentation.
 
 > This example show a similar state-machine with three states, that runs from the _initial state_ to a _final state_.
-> ![fsmagent](../../images/fsm1.svg#centering)
+> ![fsmagent](/images/fsm1.svg#centering)

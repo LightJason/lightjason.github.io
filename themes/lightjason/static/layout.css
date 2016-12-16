@@ -239,14 +239,20 @@ ul.horizontal li {
 	padding: 0.75em;
 }
 
-.footnotes
+.footnotes, .info
 {
 	font-size: 75%;
+}
+
+.spread {
+    padding-top: 0.75em;
+    padding-bottom: 0.75em;
 }
 
 code {
     border: 1px solid #B1B4B6;
 }
+
 
 @media print {
 

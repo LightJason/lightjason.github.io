@@ -3,12 +3,18 @@
 	<ul>
     {{- range $name, $page := .Data.Pages.ByDate.Reverse -}} 
 	    {{ if in .Site.Params.listpages .Type -}}
-		    <li>
-		        <a href="{{ .Permalink }}">{{- $page.Title -}}</a>
+		    <li class="spread">
+				{{- if (isset $page.Params "directlink") -}}
+				<a href="{{ $page.Params.directlink }}">{{- $page.Title -}}</a>
+				{{- else -}}
+				<a href="{{ .Permalink }}">{{- $page.Title -}}</a>
+				{{- end }}
 			    <time>({{- $page.Date.Format "Mon, Jan 2, 2006" -}})</time>
 			    {{ with $page.Params.news -}} [{{ delimit (apply (apply (sort .) "partial" "news" ".") "chomp" ".") ", " }}] {{- end -}}
 			    <br/>
-			    {{- plainify $page.Summary -}}{{ if .Truncated }}...{{- end -}}
+				<span class="info">
+			    {{- markdownify $page.Summary -}}{{ if .Truncated }}...{{- end -}}
+				</span>
 		    </li>
 	    {{- end -}}
 	{{- end }}
