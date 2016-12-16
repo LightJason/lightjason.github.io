@@ -1,28 +1,29 @@
 ---
 title: "Basic Knowledge: Agent scenario in 15 minutes"
 ---
-This tutorial shows an example of a scenario in 15 minutes with the current developing source code. You can build a full working scenario.
+This tutorial explains how to build a simple, but full working scenario in 15 minutes with the current developing source code.
 
 ## Tools you need
 
-* working Maven $\geq$ 3.1 [installation](http://maven.apache.org/install.html)
-* JDK 1.8 installation which can be found by Maven
+* Working Maven $\geq$ 3.1 [installation](http://maven.apache.org/install.html)
+* Java JDK 1.8 installation which can be found by Maven
+
 
 ## Tutorial
 
 ### AgentSpeak(L++) Installation
 
-1. Download the current source codes from [AgentSpeak(L++)](https://github.com/LightJason/AgentSpeak) with Git or as Zip
-2. Run within the source code directory ```mvn```. AgentSpeak(L++) builds and after that you can use it
+1. Download the current source codes from [AgentSpeak(L++)](https://github.com/LightJason/AgentSpeak) with Git via ```git clone https://github.com/LightJason/AgentSpeak.git``` or as a Zip archive.
+2. Run ```mvn``` within the source code directory. AgentSpeak(L++) should build and you can use it.
 
 ### Project Configuration
 
-1. Copy the ```groupId```, ```artifactId``` and ```version``` from the [pom.xml](https://github.com/LightJason/AgentSpeak/blob/master/pom.xml#L27) of the current AgentSpeak(L++) project
+1. Copy the ```groupId```, ```artifactId``` and ```version``` from the [pom.xml](https://github.com/LightJason/AgentSpeak/blob/master/pom.xml#L27) of the current AgentSpeak(L++) project.
 
-2. Create a Maven project (we recommand the [Maven in 5 minutes tutorial](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)) with
+2. Create a Maven project (we recommend the [Maven in 5 minutes tutorial](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)) with
 <pre><code class="language-bash">mvn archetype:generate -DgroupId=myagentproject -DartifactId=myagentapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false</code></pre>
 
-3. Open the ```pom.xml```, navigate to the ```dependency``` section and add AgentSpeak(L++) reference (you found an entry for JUnit within the section):
+3. Open the ```pom.xml```, navigate to the ```dependency``` section and add AgentSpeak(L++) reference (you will find an entry for JUnit within the section):
 <pre><code class="language-xml">
     &lt;dependency&gt;
         &lt;groupId&gt;org.lightjason&lt;/groupId&gt;
@@ -31,7 +32,7 @@ This tutorial shows an example of a scenario in 15 minutes with the current deve
     &lt;/dependency&gt;
 </code></pre>    
 
-4. For enabeling the Java 1.8 support, add before the ```dependency``` section the following entry
+4. For enabling the Java 1.8 support, add the following entry before the ```dependency``` section:
 <pre><code class="language-xml"> 
     &lt;properties>
         &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;
@@ -39,7 +40,7 @@ This tutorial shows an example of a scenario in 15 minutes with the current deve
     &lt;/properties&gt;
 </code></pre>   
 
-5. Put under the ```dependency``` section the following code of the [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/examples/executable-jar.html) to create an executable jar
+5. Put the following code under the ```dependency``` section of the [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/examples/executable-jar.html) to create an executable jar
 <pre><code class="language-xml">&lt;build&gt;
         &lt;plugins&gt;
             &lt;plugin&gt;
@@ -66,11 +67,11 @@ This tutorial shows an example of a scenario in 15 minutes with the current deve
         &lt;/plugins&gt;
 &lt;/build&gt;</code></pre>  
 
-6. import you Maven project into your favorite IDE
+6. Import your Maven project into your favorite IDE.
 
 ## Agent Build and Execution
 
-1. Create your agent class. Each agent, which you use, must be inherit from our base class {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d3/d39/interfaceorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IAgent_3_01T_01extends_01IAgent_3_04_4_01_4__coll__graph.svg" "IAgent" >}} interface, but we recommand our {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d6/df3/classorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IBaseAgent_3_01T_01extends_01IAgent_3_04_4_01_4__coll__graph_org.svg" "IBaseAgent" >}} with a fully executable mechanism:
+1. Create your agent class. Each agent, which you use, must be inherited from our base class {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d3/d39/interfaceorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IAgent_3_01T_01extends_01IAgent_3_04_4_01_4__coll__graph.svg" "IAgent" >}} interface, but we recommand our {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d6/df3/classorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IBaseAgent_3_01T_01extends_01IAgent_3_04_4_01_4__coll__graph_org.svg" "IBaseAgent" >}} with a fully executable mechanism:
 
 <pre><code class="language-java">
 package myagentproject;
@@ -91,7 +92,7 @@ public final class MyAgent extends IBaseAgent MyAgent
 
 __Please note__ that you need to pass your agent class as a generic parameter to the definitions of LightJason agents.
 
-2. Create your own {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d1/dc9/interfaceorg_1_1lightjason_1_1agentspeak_1_1generator_1_1IAgentGenerator_3_01T_01extends_01IAgent_3_04_4_01_4__inherit__graph.svg" "agent generator" >}} (agent factory). This componenent based on the [UML factory pattern](https://en.wikipedia.org/wiki/Factory_method_pattern). Within the factory the agent script (ASL) is parsed once and you can generate a lot of agents with a single factory . We support a general implementation of the factory the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/dc/d04/classorg_1_1lightjason_1_1agentspeak_1_1generator_1_1IBaseAgentGenerator_3_01T_01extends_01IAgent_3_04_4_01_4__coll__graph.svg" "IBaseAgentGenerator" >}}:
+2. Create your own {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d1/dc9/interfaceorg_1_1lightjason_1_1agentspeak_1_1generator_1_1IAgentGenerator_3_01T_01extends_01IAgent_3_04_4_01_4__inherit__graph.svg" "agent generator" >}} (agent factory). This component is based on the [UML factory pattern](https://en.wikipedia.org/wiki/Factory_method_pattern). Within the factory the agent script (ASL) is parsed once and you can generate a lot of agents with a single factory. We support a general implementation of the factory the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/dc/d04/classorg_1_1lightjason_1_1agentspeak_1_1generator_1_1IBaseAgentGenerator_3_01T_01extends_01IAgent_3_04_4_01_4__coll__graph.svg" "IBaseAgentGenerator" >}}:
 
 <pre><code class="language-java">
 package myagentproject;
@@ -122,7 +123,7 @@ public final class MyAgentGenerator extends IBaseAgentGenerator<MyAgent>
                     new MyAction()
                 )
             ).collect( Collectors.toSet() ),
-            // aggregation function for the optimization function, here
+            // aggregation function for the optimisation function, here
             // we use an empty function
             IAggregation.EMPTY
         );
@@ -197,13 +198,13 @@ public final class App
 </code></pre>
 
 4. Run ```mvn package``` within the source directory to build the program
-5. Run ```java -jar target/myagentapp-1.0-SNAPSHOT.jar agent.asl 500 1000``` to create 500 agents based on the ```agent.asl``` and the agents will run 1000 cycles
+5. Run ```java -jar target/myagentapp-1.0-SNAPSHOT.jar agent.asl 500 1000``` to create 500 agents based on the ```agent.asl``` and the agents will run 1000 cycles.
  
 ## How can I build my own actions?
 
 In general there are two kinds of actions:
 
-1. actions which are standalone classes e.g. for complex calculations. Just use the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d0/dfe/interfaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1IAction__coll__graph.svg" "IAction" >}} interface or the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/dd/d3e/classorg_1_1lightjason_1_1agentspeak_1_1action_1_1IBaseAction__coll__graph.svg" "IBaseAction" >}} to create your action. 
+1. actions which are standalone classes e.g. for complex calculations. Just use the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d0/dfe/interfaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1IAction__coll__graph.svg" "IAction" >}} interface or the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/dd/d3e/classorg_1_1lightjason_1_1agentspeak_1_1action_1_1IBaseAction__coll__graph.svg" "IBaseAction" >}} to create your actions. 
 
 <pre><code class="language-java">
 package myagentproject;
@@ -252,7 +253,7 @@ public final class MyAction extends IBaseAction
             p_return.add( CRawTerm.from( l_argument ) );
 
             // the actions returns a fuzzy-boolean for successful or failing execution
-            // the optional second paramter is a fuzzy-value in [0,1] on default it is 1
+            // the optional second parameter is a fuzzy-value in [0,1] on default it is 1
             return CFuzzyValue.from( true );
         }
 }
@@ -260,17 +261,17 @@ public final class MyAction extends IBaseAction
 
 
 
-2. actions which are methods inside an agent class
+2. Actions which are methods inside an agent class
 <pre><code class="language-java">
 </code></pre>
 
 
 ## Is there no environment?
 
-Yes, LightJason AgentSpeak(L++) does not need any environment, but you can write it by your own. We recommand the following structur and have in mind, that all environments calls are done in parallel, so at the same time many agents can call the environment, so you must create a thread-safe data structure of your environment. If the environment throws an exception the action on the agent-side will fail.
+Yes, LightJason's AgentSpeak(L++) does not need any environment, but you can easily write your own. We recommend the following structure. Keep in mind, that all environments calls are done in parallel, so many agents might access the environment at the same time. Therefore you must create a thread-safe data structure for your environment. If the environment throws an exception the action on the agent-side will fail.
 
 
-[^runtime]: for creating a complex and fast runtime you need to take a look in general object-orientated programming and Java documention. We create here only a short example to show how you can work with agents
+[^runtime]: For creating a complex and fast runtime you need to take a look at general object-orientated programming and the Java documentation. Here we only provide you with a short example to show you how you can work with LightJason and Agentspeak(L++).
 
 
 
