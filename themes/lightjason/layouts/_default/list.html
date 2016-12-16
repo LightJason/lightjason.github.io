@@ -6,7 +6,7 @@
 		    <li>
 		        <a href="{{ .Permalink }}">{{- $page.Title -}}</a>
 			    <time>({{- $page.Date.Format "Mon, Jan 2, 2006" -}})</time>
-			    {{ with $page.Params.blogposts -}} [{{ delimit (apply (apply (sort .) "partial" "blogpost" ".") "chomp" ".") ", " }}] {{- end -}}
+			    {{ with $page.Params.groups -}} [{{ delimit (apply (apply (sort .) "partial" "news" ".") "chomp" ".") ", " }}] {{- end -}}
 			    <br/>
 			    {{- plainify $page.Summary -}}{{ if .Truncated }}...{{- end -}}
 		    </li>

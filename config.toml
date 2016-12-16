@@ -19,14 +19,14 @@ enableEmoji         = true
 # --- main site configuration ------------------------------------------
 
 [taxonomies]
-	blogbost        = "blogposts"
+	news        = "news"
 
 [params]
 	logo 		    = ""
 	name 		    = "LightJason"
 	description     = "BDI Multi-Agent System"
 	contact         = "info [at] lightjason.org"
-	listpages		= ["blogpost", "tutorial", "publication"]
+	listpages		= ["news", "tutorial", "publication"]
 
 [[params.footer.links]]
 	name = "Project Repositories"
@@ -47,8 +47,8 @@ enableEmoji         = true
 # --- main navigation menu ---------------------------------------------
 
 [[menu.main]]
-	Name 			= "Blogpost"
-  	URL 			= "/blogpost"
+	Name 			= "News"
+  	URL 			= "/news"
   	weight 			= 0
 
 [[menu.main]]
