@@ -1,7 +1,7 @@
 ---
-title: "Basic Knowledge: Agent scenario in 15 minutes"
+title: "Tutorial: AgentSpeak scenario in 15 minutes"
 ---
-This tutorial explains how to build a simple, but full working scenario in 15 minutes with the current developing source code. You can download the [source codes](/download/agent-in-15min.zip)
+This tutorial explains how to build a simple, but full working scenario in 15 minutes with the current developing source code. You can download the [source codes](/download/agentspeak-in-15min.zip)
 
 ## Tools you need
 
@@ -137,15 +137,21 @@ public final class MyAgentGenerator extends IBaseAgentGenerator<MyAgent>
         super(
             // input ASL stream
             p_stream,
-            // a set with all possible actions for the agent, here
-            // we use all build-in actions of LightJason and add our own action
+            // a set with all possible actions for the agent
             Stream.concat(
+                // we use all build-in actions of LightJason 
                 CCommon.actionsFromPackage(),
-                Stream.of(
-                    new MyAction()
+                Stream.concat(
+                    // use the actions which are defined inside the agent class
+                    CCommon.actionsFromAgentClass( MyAgent.class ),
+                    // add an own external action
+                    Stream.of(
+                        new MyAction()
+                    )
                 )
+            // build the set with a collector    
             ).collect( Collectors.toSet() ),
-            // aggregation function for the optimisation function, here
+            // aggregation function for the optimization function, here
             // we use an empty function
             IAggregation.EMPTY
         );
