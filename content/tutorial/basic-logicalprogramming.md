@@ -31,7 +31,7 @@ The plainest structure of a logical programming language are _atoms_ and based o
 <a name="time"></a>Another example is a time definition:
 
 > We would like to say it is currently 2 a clock post meridiam (pm)
-> <pre><code class="prolog">time( current( hour(2), minute(0), pm() ) )</pre></code>
+> <pre><code class="language-prolog">time( current( hour(2), minute(0), pm() ) )</pre></code>
 > You can see, that a literal can store a list of other literals or values inside the brackets.
 
 Based on the first example a negation is also possible
