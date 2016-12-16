@@ -1,5 +1,5 @@
 ---
-date: "2016-07-01T19:30:33+02:00"
+date: 2016-07-01T19:30:33+02:00
 title: "Project is start-up"
 news: [Project, Example]
 ---
