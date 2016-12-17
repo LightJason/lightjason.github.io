@@ -11,7 +11,7 @@ To design agents, this framework uses [AgentSpeak(L++)](http://lightjason.github
 * [multi-plan / -rule definition](framework/agentspeak#multiplanrule)
 * [explicit repair-action](framework/agentspeak#repairaction)
 * [multi-variable assignments](framework/agentspeak#multiassignment)
-* [parallel execution and thread-safe variables](framework/agentspeak#parallelization)
+* [parallel execution and thread-safe variables](framework/agentspeak#parallelism)
 
 We are working on the theoretical background and developing the whole system with current software development technologies.
 

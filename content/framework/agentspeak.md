@@ -23,14 +23,13 @@ In generell supports the implementation _repair planning_ with the default behav
 
 > The example shows the execution of three actions _actionA_, _actionB_, _actionC_. The system execute the _actionA_ first, if the action fails, _actionB_ will be executed, if this also fails _actionC_ will be executed. If _actionC_ fails also, the whole plan fails.
 
-<pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">L = collection/list/range(1, 20);
+<pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
 actionA << actionB << actionC;
 </code></pre>
 
 > If you don't want, that a plan is failing, if an action fails you can put at the end of this chain a ```true``` value. This models the behaviour _anything can go wrong, but the agent ignore the error(s)_. 
 
-<pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">L = collection/list/range(1, 20);
-actionA << true;
+<pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">actionA << true;
 </code></pre>
 
 ## <a name="multiplanrule"></a>Multi-Plan and Rule Definition
