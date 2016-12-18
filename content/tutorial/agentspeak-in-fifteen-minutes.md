@@ -100,7 +100,7 @@ package myagentproject;
 import org.lightjason.agentspeak.agent.IBaseAgent;
 import org.lightjason.agentspeak.configuration.IAgentConfiguration;
 
-public final class MyAgent extends IBaseAgent MyAgent
+public final class MyAgent extends IBaseAgent<MyAgent>
 {
     // constructor of the agent
     // @param p_configuration agent configuration of the agent generator
@@ -265,7 +265,7 @@ package myagentproject;
 import org.lightjason.agentspeak.agent.IBaseAgent;
 import org.lightjason.agentspeak.configuration.IAgentConfiguration;
 
-public final class MyAgent extends IBaseAgent&lt;MyAgent&gt;
+public final class MyAgent extends IBaseAgent<MyAgent>;
 {
     // constructor of the agent
     // @param p_configuration agent configuration of the agent generator
@@ -410,6 +410,38 @@ There is no environment on LightJason's AgentSpeak(L++), because of system desig
 2. modify the [agent class constructor](#agentclass), so that can be put an environment inside[^environment]
 3. modify the [agent generator](#agentgenerator) and pass the environment to the agent constructor 
 4. create [class action](#classaction) to pass the data to / from the environment, on errors throw an exception and the agent plan will fail
+
+```java
+package myagentproject;
+
+import org.lightjason.agentspeak.agent.IBaseAgent;
+import org.lightjason.agentspeak.configuration.IAgentConfiguration;
+
+@IAgentAction
+public final class MyAgent extends IBaseAgent<MyAgent>;
+{
+    // environment reference
+    private final Environment m_environment;
+
+    // constructor of the agent
+    // @param p_environment environment reference
+    // @param p_configuration agent configuration of the agent generator
+    public MyAgent( final Environment p_environment, final IAgentConfiguration MyAgent  p_configuration )
+    {
+        super( p_configuration );
+        m_environment = p_environment;
+    }
+    
+    @IAgentActionFilter
+    @IAgentActionName( name = "env/action" )
+    private void envaction()
+    {
+        // method can throw an exception for action failing
+        m_environment.do_something();
+    }
+
+}
+```
 
 [^runtime]: For creating a complex and fast runtime you need to take a look at general object-orientated programming and the Java documentation. Here we only provide you with a short example to show you how you can work with LightJason and Agentspeak(L++).
 [^environment]: An agent can deal with many environments, so the agent Java object needs only a reference to an environment object and the actions must be references the method inside the environment. With this structure an agent can work in different environments at the same time or the agent can switch the environment during runtime. You need to modify only the agent and generator object for your setting
