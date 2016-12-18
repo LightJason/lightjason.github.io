@@ -15,6 +15,7 @@
 !*.svg
 !*.pdf
 !*.zip
+!*.xml
 !*.graffle
 
 # ignore generated files
