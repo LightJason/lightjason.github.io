@@ -12,11 +12,12 @@ This tutorial explains how to build a simple, but full working scenario in 15 mi
 
 The tutorial give you a _very short_ introduction into LightJason's AgentSpeak(L++) structure. A fully [source code documentation](http://lightjason.github.io/AgentSpeak/sources/index.html) can help to develop your individuell requirements. Do not be afraid to ask via email or on the [issue tracker](https://github.com/LightJason/AgentSpeak/issues)
 
-1. [Build LightJason AgentSpeak(L++) from the sources](#agentspeakbuild)
+1. [AgentSpeak(L++) from the sources](#agentspeakbuild)
 2. [Maven project configuration](#mavenprojectconfig) 
-3. [Create an agent class](#agentclass)
-4. [Create an agent-generator class](#agentgenerator)
-5. [Create the main program with a runtime](#runtime)
+3. Agent and generator
+    * [Your agent class](#agentclass)
+    * [Your agent generator class](#agentgenerator)
+5. [Write your runtime](#runtime)
 6. [Trigger a goal](#triggergoal)
     * [Trigger a goal on each cycle](#goalcycle) 
 7. Write your own actions
@@ -25,7 +26,7 @@ The tutorial give you a _very short_ introduction into LightJason's AgentSpeak(L
 8. [Environment](#environment)
 
 
-## <a id="agentspeakbuild"></a> AgentSpeak(L++) Installation
+## <a id="agentspeakbuild"></a> AgentSpeak(L++) from the sources
 
 1. Download the current source codes from [AgentSpeak(L++)](https://github.com/LightJason/AgentSpeak) as Zip or via Git:
 ```bash
@@ -34,14 +35,16 @@ git clone https://github.com/LightJason/AgentSpeak.git
 
 2. Run ```mvn``` within the source code directory. AgentSpeak(L++) should build and you can use it.
 
-## <a id="mavenprojectconfig"></a> Maven Project Configuration
+## <a id="mavenprojectconfig"></a> Maven project configuration
 
 1. Copy the ```groupId```, ```artifactId``` and ```version``` from the [pom.xml](https://github.com/LightJason/AgentSpeak/blob/master/pom.xml#L27) of the current AgentSpeak(L++) project.
 
 2. Create a Maven project (we recommend the [Maven in 5 minutes tutorial](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)) with
-<pre><code class="language-bash">mvn archetype:generate -DgroupId=myagentproject -DartifactId=myagentapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false</code></pre>
+```bash
+mvn archetype:generate -DgroupId=myagentproject -DartifactId=myagentapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+```
 
-3. Open the ```pom.xml```, navigate to the ```dependency``` section and add AgentSpeak(L++) reference (you will find an entry for JUnit within the section):
+3. Open the ```pom.xml```, navigate to the ```dependency``` section and add AgentSpeak(L++) reference (you will find an entry for JUnit within the section): 
 ```xml
     <dependency>
         <groupId>org.lightjason</groupId>
@@ -89,9 +92,9 @@ git clone https://github.com/LightJason/AgentSpeak.git
 
 6. Import your Maven project into your favorite IDE.
 
-## Agent and Execution
+## Agent and generator
 
-### <a id="agentclass"></a> Create your agent class
+### <a id="agentclass"></a> Your agent class
 Each agent, which you use, must be inherited from our base class {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d3/d39/interfaceorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IAgent_3_01T_01extends_01IAgent_3_04_4_01_4__coll__graph.svg" "IAgent" >}} interface, but we recommand our {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d6/df3/classorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IBaseAgent_3_01T_01extends_01IAgent_3_04_4_01_4__coll__graph_org.svg" "IBaseAgent" >}} with a fully executable mechanism. __Please note__ that you need to pass your agent class as a generic parameter to the definitions of LightJason agents:
 
 ```java
@@ -111,7 +114,7 @@ public final class MyAgent extends IBaseAgent<MyAgent>
 }
 ```
 
-### <a id="agentgenerator"></a> Create the agent generator
+### <a id="agentgenerator"></a> Your agent generator class
 
 Create your own {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d1/dc9/interfaceorg_1_1lightjason_1_1agentspeak_1_1generator_1_1IAgentGenerator_3_01T_01extends_01IAgent_3_04_4_01_4__inherit__graph.svg" "agent generator" >}} (agent factory). This component is based on the [UML factory pattern](https://en.wikipedia.org/wiki/Factory_method_pattern). Within the factory the agent script (ASL) is parsed once and you can generate a lot of agents with a single factory. We support a general implementation of the factory the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/dc/d04/classorg_1_1lightjason_1_1agentspeak_1_1generator_1_1IBaseAgentGenerator_3_01T_01extends_01IAgent_3_04_4_01_4__coll__graph.svg" "IBaseAgentGenerator" >}}:
 
@@ -170,7 +173,7 @@ public final class MyAgentGenerator extends IBaseAgentGenerator<MyAgent>
 
 ### <a id="runtime"></a> Write your runtime
 
-Write your own runtime[^runtime] within the ```main``` method and let the agents run
+Write your own runtime[^runtime] within the ```main``` method and let the agents run. We are using [Java streams](https://docs.oracle.com/javase/tutorial/collections/streams/) to execute the agent, but you can use also a [thread-pool](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Executors.html) because all agents are implements the [Callable](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Callable.html) interface (the [Future](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Future.html) object is the agent in the state $cycle + 1$)
 
 ```java
 package myagentproject;
@@ -239,7 +242,7 @@ mvn package
 java -jar target/myagentapp-1.0-SNAPSHOT.jar agent.asl 500 1000
 ```
 
-## <a id="triggergoal"></a> Trigger goal
+## <a id="triggergoal"></a> Trigger a goal
 
 The agent class has got a [trigger method](http://lightjason.github.io/AgentSpeak/sources/db/d62/interfaceorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IAgent_3_01T_01extends_01IAgent_3_04_4_01_4.html#af453e6a5f02ca05958925af4a8c04c10) which runs a goal, The [CTrigger](http://lightjason.github.io/AgentSpeak/sources/d1/d5a/classorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1CTrigger.html) class uses four [trigger types](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html) ([addgoal](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html#a8f036453c557da7c573456ab30fea9cb), [deletegoal](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html#a27c788cd71ba696603248697b88c1aa7), [addbelief](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html#a3b940a57e1aef6525a6730ccdb929405), [deletebelief](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html#aedd88e304e671dc112395eeffe010645)) and a literal for execution. The third parameter is a boolean flag to run the immediately otherweise the goal will be run within the next cycle.
 
@@ -443,7 +446,7 @@ public final class MyAgent extends IBaseAgent<MyAgent>;
 }
 ```
 
-[^runtime]: For creating a complex and fast runtime you need to take a look at general object-orientated programming and the Java documentation. Here we only provide you with a short example to show you how you can work with LightJason and Agentspeak(L++).
+[^runtime]: For creating a complex and fast runtime you need to take a look at general object-orientated programming pattern. Here we only provide a short example to show you how you can work with Agentspeak(L++) agents.
 [^environment]: An agent can deal with many environments, so the agent Java object needs only a reference to an environment object and the actions must be references the method inside the environment. With this structure an agent can work in different environments at the same time or the agent can switch the environment during runtime. You need to modify only the agent and generator object for your setting
 
 
