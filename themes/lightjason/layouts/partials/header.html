@@ -8,11 +8,8 @@
 		<meta name="description" content="{{ . }}">
 	{{- end -}}
 
-	{{- if .RSSLink}}
-	<link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
-	<link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
-	{{- end -}}
-	
+	<link href="/news/index.xml" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+	<link href="/news/index.xml" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />	
 	<title>{{- if not .IsHome -}}{{- .Title -}} &mdash;{{- end -}} {{- .Site.Params.name -}}</title>
 	
 	
