@@ -11,4 +11,5 @@ We would like to explain some tutorial stuff and basic knowldge about our framew
 
 ## Tutorials
 
-1. [AgentSpeak scenario in 15 minutes](agentspeak-in-fifteen-minutes) a minimal example to build an agent scenario in 15 minutes from scratch with the current developer source codes
+1. [AgentSpeak scenario in 15 minutes](tutorial-agentspeak-in-fifteen-minutes) a minimal example to build an agent scenario in 15 minutes from scratch with the current developer source codes
+2. [Efficient Beliefbase](tutorial-efficient-beliefbase) is a tutorial for creating efficient beliefbase structures
