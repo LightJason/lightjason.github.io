@@ -139,6 +139,7 @@ public final class MyAgentGenerator extends IBaseAgentGenerator<MyAgent>
         super(
             // input ASL stream
             p_stream,
+            
             // a set with all possible actions for the agent
             Stream.concat(
                 // we use all build-in actions of LightJason 
@@ -153,6 +154,7 @@ public final class MyAgentGenerator extends IBaseAgentGenerator<MyAgent>
                 )
             // build the set with a collector    
             ).collect( Collectors.toSet() ),
+            
             // aggregation function for the optimization function, here
             // we use an empty function
             IAggregation.EMPTY
@@ -208,7 +210,8 @@ public final class App
         {
             l_exception.printStackTrace();
             return;
-        }    
+        }
+        
         // runtime call (with parallel execution)
         IntStream
             .range(
