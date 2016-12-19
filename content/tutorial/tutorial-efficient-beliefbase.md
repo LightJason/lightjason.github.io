@@ -37,6 +37,18 @@ This structure allows the agent to store knowledge in persistence way with gener
  
 ### On-Demand
 
-The on-demand beliefbase allows you to create a non-persistence belief definition, which is suitable to get access to the environment / underlying software architecture. The beliefs will generate by access on after usage the literal object will be removed. So this is a very efficent way for perceiving.
+The on-demand beliefbase allows you to create a non-persistence belief definition, which is suitable to get access to the environment / underlying software architecture. 
 
 ![Beliefbase](/images/ondemandbeliefbase.svg#centering)
+
+For some practical explanation. Think about agents:
+
+> Agents are _individual and self-organized_ items, 
+> which perceives their environment autonomous.
+
+We build this structure with _on-demand beliefbases_ into LightJasn AgentSpeak(L++), so you can get access to a belief which will be create if you access it and after usage the literal object will be removed. So this is a very efficent way for perceiving. We recommand the following workflow: 
+
+1. build a on-demand beliefbase for all dynamic access and changable information e.g. environment other agents
+2. create a plan which will run in a continuous, so the plan will run in each cycle
+3. within this plan you get access to the belief
+4. if the belief can be unified within the plan condition get the information out of the belief and put it - if is needed - into a persistency beliefbase
