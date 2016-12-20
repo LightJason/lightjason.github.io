@@ -123,7 +123,7 @@ public final class MyAgent extends IBaseAgent<MyAgent>
 
 #### ASL of the agent
 
-On the ASL side all beliefs witch has the prefix ```env/``` will be matched to the on-demand beliefbase and so it will passed back to the agent. On the unification (```>>```) the literal will be generated and unified into the variable ```X```. After printing the value of X, it will be set into the persistence beliefbase. Beacuse on LightJason system architecture the ```checkenv``` plan will be run in each cycle (in parallel to other plans), so you can control the agent perceiving in a clean way.
+On the ASL side all beliefs witch has the prefix ```env/``` will be matched to the on-demand beliefbase and so it will passed back to the agent. On the unification (```>>```) the literal will be generated and unified into the variable ```X```. After printing the value of X, it will be set into the persistence beliefbase. Beacuse on LightJason system architecture the ```checkenvironment``` plan will be run in each cycle (in parallel to other plans), so you can control the agent perceiving in a clean way.
 
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
 !checkenvironment.
