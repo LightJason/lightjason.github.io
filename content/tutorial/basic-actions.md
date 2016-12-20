@@ -5,7 +5,7 @@ This text gives you an overview over the build-in actions in LightJason AgentSpe
 
 ## Action structure
 
-All actions are organized within the [action.buildin](http://lightjason.github.io/AgentSpeak/sources/d8/da4/namespaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1buildin.html) package. Each packages defines a semantic structure of the actions:
+All actions are organized within the [action.buildin](http://lightjason.github.io/AgentSpeak/sources/d8/da4/namespaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1buildin.html) package. Each packages defines a semantic structure of the actions and the action name is equal to Java package and class name:
 
 * ```collection``` any type of collections e.g. map, list, tupel...
 * ```cypto``` defines any crypotographic algorithms e.g. hash and encryption functions
