@@ -1,15 +1,10 @@
-# https://github.com/yoshiharuyamashita/blackburn/tree/master/layouts
-# https://gohugo.io/templates/terms/
-
-
-
 # --- main configuration -------------------------------------------
+# see http://www.emoji-cheat-sheet.com/
 
 baseurl		 	    = "https://lightjason.github.io/"
 metadataformat		= "yaml"
 languageCode 	    = "en-us"
 theme 			    = "lightjason"
-# see http://www.emoji-cheat-sheet.com/
 enableEmoji         = true
 
 # ----------------------------------------------------------------------
