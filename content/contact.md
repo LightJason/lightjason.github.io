@@ -14,6 +14,7 @@ We are working on the [Mobile and Enterprise Computing](http://meclab.in.tu-clau
 <p/>
 
 > Malte Aschermann ![Malte](http://meclab.in.tu-clausthal.de/images/people/malte_aschermann.png#contact)
+> <br/>
 > _malte [at] lightjason.org_
 > <br/>
 > <br/>
