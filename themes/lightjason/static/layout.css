@@ -216,6 +216,13 @@ img[src$='#floatleft'] {
 	float: left;
 }
 
+img[src$='#contact'] {
+	float: right;
+    width: auto;
+    height: 80px;
+    overflow: hidden;
+}
+
 img[src$='#floatright'] {
 	float: right;
 }
