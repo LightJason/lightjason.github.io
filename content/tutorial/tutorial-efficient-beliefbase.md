@@ -66,9 +66,9 @@ public final class MyAgent extends IBaseAgent<MyAgent>
     private Environment m_environment;
 
     // constructor of the agent
-    // @param p_environment
+    // @param p_environment environment reference
     // @param p_configuration agent configuration of the agent generator
-    public MyAgent( final IAgentConfiguration MyAgent  p_configuration )
+    public MyAgent( final Environment p_environment, final IAgentConfiguration<MyAgent> p_configuration )
     {
         super( p_configuration );
         m_environment = p_environment;
