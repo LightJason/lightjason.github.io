@@ -41,34 +41,34 @@ enableEmoji         = true
 
 # --- main navigation menu ---------------------------------------------
 
-[[menu.main]]
-	Name 			= "News"
-  	URL 			= "/news"
+[[params.menu]]
+	name 			= "News"
+  	url 			= "/news"
   	weight 			= 0
 
-[[menu.main]]
-	Name 			= "Framework"
-  	URL			    = "/framework"
+[[params.menu]]
+	name 			= "Framework"
+  	url			    = "/framework"
   	weight 			= 10
 
-[[menu.main]]
-	Name 			= "Tutorial"
-  	URL				= "/tutorial"
+[[params.menu]]
+	name 			= "Tutorial"
+  	url				= "/tutorial"
   	weight 			= 20
 
-[[menu.main]]
-	Name 			= "Publication"
-  	URL				= "/publication"
+[[params.menu]]
+	name 			= "Publication"
+  	url				= "/publication"
   	weight 			= 30	  
 
-[[menu.main]]
-	Name 			= "About"
-  	URL			    = "/about"
+[[params.menu]]
+	name 			= "About"
+  	url			    = "/about"
   	weight 			= 40
 
-[[menu.main]]
-	Name 			= "Contact"
-  	URL 			= "/contact"
+[[params.menu]]
+	name 			= "Contact"
+  	url 			= "/contact"
   	weight 			= 1000	
 
 # ----------------------------------------------------------------------

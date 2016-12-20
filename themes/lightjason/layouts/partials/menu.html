@@ -7,9 +7,9 @@
 			{{- with .Site.Params.description -}}<span class="blurb">{{- . | markdownify -}}</span>{{- end -}}
 		</div>
 		
-		{{- if and (ne .Site.Menus.main nil) (gt (len .Site.Menus.main) 0) -}}
+		{{- if and (ne .Site.Params.menu nil) (gt (len .Site.Params.menu) 0) -}}
 		<ul>
-			{{- range .Site.Menus.main }}<li class="toctree-l1"><a class="reference internal" href="{{ .URL }}">{{- .Name -}}</a></li>{{- end -}}
+			{{- range sort .Site.Params.menu "weight" }}<li class="toctree-l1"><a class="reference internal" href="{{ .url }}">{{- .name -}}</a></li>{{- end -}}
 		</ul>
 		{{- end -}}
 	</div>
