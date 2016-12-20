@@ -41,7 +41,7 @@ The state-machine of this agent which executs empty plans is shown in the follow
 The picture shows the _static model_ of the agent and the states represent a _set of beliefs_ which are created during runtime and the the transitions are the instantiation of the goal and the execution of the plans. The initial state is defined by the initial goal.
 <br/>
 Based on this static model the _runtime model_ shows the execution structure of the state-machine. The animation shows the _continous execution_ of the agent on each cycle. In this case the agent runs infinity, but it switchs between the ```main```-state and the ```first``` and ```second```-state, but these two state run in parallel (<a href="#agentfsm" id="animate-agentfsm">animate finite-state-machine</a>).
-{{< inlinejs "../../contentjs/agentfsm.js" >}}
+{{< inlinejs "/contentjs/agentfsm.js" >}}
 
 
 ## Action Behaviour
