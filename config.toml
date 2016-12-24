@@ -43,32 +43,32 @@ enableEmoji         = true
 
 [[params.menu]]
 	name 			= "News"
-  	url 			= "/news"
+  	url 			= "/news/"
   	weight 			= 0
 
 [[params.menu]]
 	name 			= "Framework"
-  	url			    = "/framework"
+  	url			    = "/framework/"
   	weight 			= 10
 
 [[params.menu]]
 	name 			= "Tutorial"
-  	url				= "/tutorial"
+  	url				= "/tutorial/"
   	weight 			= 20
 
 [[params.menu]]
 	name 			= "Publication"
-  	url				= "/publication"
+  	url				= "/publication/"
   	weight 			= 30	  
 
 [[params.menu]]
 	name 			= "About"
-  	url			    = "/about"
+  	url			    = "/about/"
   	weight 			= 40
 
 [[params.menu]]
 	name 			= "Contact"
-  	url 			= "/contact"
+  	url 			= "/contact/"
   	weight 			= 1000	
 
 # ----------------------------------------------------------------------
