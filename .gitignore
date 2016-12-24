@@ -3,6 +3,7 @@
 !.hidden
 !*.toml
 !*.yml
+!*.yaml
 !*.html
 !*.md
 !*.json
