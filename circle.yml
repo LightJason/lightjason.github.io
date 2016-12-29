@@ -22,8 +22,8 @@ machine:
 dependencies:
     pre:
         # see release version https://github.com/spf13/hugo/releases
-        - wget https://github.com/spf13/hugo/releases/download/v0.16/hugo_0.16-1_amd64.deb
-        - sudo dpkg -i hugo_0.16-1_amd64.deb
+        - wget https://github.com/spf13/hugo/releases/download/v0.18/hugo_0.18-64bit.deb
+        - sudo dpkg -i hugo_0.18-64bit.deb
 
 test:
     override:
