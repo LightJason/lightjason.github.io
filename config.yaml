@@ -1,62 +1,62 @@
 # --- main configuration -------------------------------------------
 # see http://www.emoji-cheat-sheet.com/
 
-baseurl		 	    : "https://lightjason.github.io/"
-metadataformat		: "yaml"
-languageCode 	    : "en-us"
-theme 			    : "lightjason"
-enableEmoji         : true
+baseurl		 	       : "https://lightjason.github.io/"
+metadataformat		   : "yaml"
+defaultContentLanguage : "en-us"
+theme 			       : "lightjason"
+enableEmoji            : true
 
 
 taxonomies:
-    news        	: "news"
+    news        	   : "news"
 
 
 params:
-    logo 		    : ""
-    name 		    : "LightJason"
-    description     : "BDI Multi-Agent System"
-    contact         : "info [at] lightjason.org"
-    listpages		: ["news", "tutorial", "publication"]
+    logo 		       : ""
+    name 		       : "LightJason"
+    description        : "BDI Multi-Agent System"
+    contact            : "info [at] lightjason.org"
+    listpages		   : ["news", "tutorial", "publication"]
 
 
     footer:
         links:
             -
-                name : "Project Repositories"
-                url  : "https://github.com/LightJason"
+                name   : "Project Repositories"
+                url    : "https://github.com/LightJason"
             -
-                name : "AgentSpeak(L++) Repository"
-                url  : "https://github.com/LightJason/AgentSpeak"
+                name   : "AgentSpeak(L++) Repository"
+                url    : "https://github.com/LightJason/AgentSpeak"
             -
-                name : "REST-API Repository"
-                url  : "https://github.com/LightJason/REST"
+                name   : "REST-API Repository"
+                url    : "https://github.com/LightJason/REST"
 
 
     menu:
         -
-            name 	: "News"
-            url 	: "/news/"
-            weight 	: 0
+            name 	   : "News"
+            url 	   : "/news/"
+            weight 	   : 0
         -
-            name 	: "Framework"
-            url		: "/framework/"
-            weight 	: 10
+            name 	   : "Framework"
+            url		   : "/framework/"
+            weight 	   : 10
         -
-            name 	: "Tutorial"
-            url		: "/tutorial/"
-            weight 	: 20
+            name 	   : "Tutorial"
+            url		   : "/tutorial/"
+            weight 	   : 20
         -
-            name 	: "Publication"
-            url		: "/publication/"
-            weight 	: 30
+            name 	   : "Publication"
+            url		   : "/publication/"
+            weight 	   : 30
         -
-            name 	: "About"
-            url		: "/about/"
-            weight 	: 40
+            name 	   : "About"
+            url		   : "/about/"
+            weight 	   : 40
         -
-            name 	: "Contact"
-            url 	: "/contact/"
-            weight 	: 1000
+            name 	   : "Contact"
+            url 	   : "/contact/"
+            weight 	   : 1000
 
 # ----------------------------------------------------------------------
