@@ -8,11 +8,11 @@
 		<meta name="description" content="{{- . -}}">
 	{{- end -}}
 
-	<link rel="shortcut icon" href="{{ $.Site.BaseURL }}favicon.ico" type="image/x-icon"/>
+	<link rel="shortcut icon" href="{{ $.Site.BaseURL }}/images/favicon.png" type="image/png"/>
 	<link href="/news/index.xml" rel="alternate" type="application/rss+xml" title="{{- .Site.Params.name -}}" />
 	<title>{{- if not .IsHome -}}{{- .Title -}} &mdash;{{- end -}} {{- .Site.Params.name -}}</title>
 	
-	<link href="http://fonts.googleapis.com/css?family=Pridi:200,300,400,500,600,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Pridi:200,300,400,500,600,700" rel="stylesheet">
 	<script type="text/javascript" src="{{ .Site.BaseURL }}prism.js"></script>
 	<script type="text/javascript" src="{{ .Site.BaseURL }}prism-agentspeak.js"></script>
 	<link rel="stylesheet" href="{{ .Site.BaseURL }}prism.css" />
