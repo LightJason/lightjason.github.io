@@ -37,7 +37,7 @@ This structure allows the agent to store knowledge in persistence way with gener
  
 ### On-Demand
 
-The on-demand beliefbase allows you to create a non-persistence belief definition, which is suitable to get access to the environment / underlying software architecture. 
+The on-demand beliefbase allows you to create a non-persistence belief definition, which is suitable to get access to the environment / underlying software architecture. It follows up the [lazy loading pattern](https://en.wikipedia.org/wiki/Lazy_loading))
 
 ![Beliefbase](/images/ondemandbeliefbase.svg#centering)
 

@@ -1,5 +1,5 @@
 ---
-title: "Tutorials"
+title: "Tutorial"
 ---
 We would like to explain some tutorial stuff and basic knowldge about our framework. We recommand, that you have got expirence about the [belief–desire–intention model](https://en.wikipedia.org/wiki/Belief%E2%80%93desire%E2%80%93intention_software_model) of a multi-agent system, some programming concepts in a logical programming (similar to [Prolog](https://en.wikipedia.org/wiki/Prolog)) language and [Java](https://docs.oracle.com/javase/tutorial/).
 
@@ -14,3 +14,4 @@ We would like to explain some tutorial stuff and basic knowldge about our framew
 
 1. [AgentSpeak scenario in 15 minutes](tutorial-agentspeak-in-fifteen-minutes) a minimal example to build an agent scenario in 15 minutes from scratch with the current developer source codes
 2. [Efficient Beliefbase](tutorial-efficient-beliefbase) is a tutorial for creating efficient beliefbase structures
+3. [Communication](tutorial-communication) is a tutorial to build communication, because LightJason does not support a build-in communication.

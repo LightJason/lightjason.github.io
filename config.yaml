@@ -5,6 +5,7 @@ baseurl		 	       : "https://lightjason.github.io/"
 metadataformat		   : "yaml"
 defaultContentLanguage : "en-us"
 theme 			       : "lightjason"
+title                  : "lightjason.org"
 enableEmoji            : true
 
 
@@ -17,8 +18,6 @@ params:
     name 		       : "LightJason"
     description        : "BDI Multi-Agent System"
     contact            : "info [at] lightjason.org"
-    listpages		   : ["news", "tutorial", "publication"]
-
 
     footer:
         links:
@@ -39,21 +38,21 @@ params:
             url 	   : "/news/"
             weight 	   : 0
         -
+            name 	   : "Publication"
+            url		   : "/publication/"
+            weight 	   : 10            
+        -
             name 	   : "Framework"
             url		   : "/framework/"
-            weight 	   : 10
+            weight 	   : 20
         -
             name 	   : "Tutorial"
             url		   : "/tutorial/"
-            weight 	   : 20
-        -
-            name 	   : "Publication"
-            url		   : "/publication/"
             weight 	   : 30
         -
             name 	   : "About"
             url		   : "/about/"
-            weight 	   : 40
+            weight 	   : 500
         -
             name 	   : "Contact"
             url 	   : "/contact/"

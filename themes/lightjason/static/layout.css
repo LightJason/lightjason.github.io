@@ -1,5 +1,5 @@
 body {
-    font-family: "PT Serif", serif;
+    font-family: Pridi, serif;
     font-size: 18px;
     background-color: white;
     color: #000;
@@ -55,7 +55,7 @@ div.body {
 }
 
 div.footer {
-    width: 65%;
+    width: 75%;
     margin: 20px auto 30px auto;
     font-size: 14px;
     color: #888;
@@ -231,14 +231,9 @@ ul.horizontal {
     padding: 0;
 }
 
-.contact
-{
+.contact {
 	float: left;
-}
-
-.linkcopyright
-{
-	float: right;
+    text-align: left;
 }
 
 ul.horizontal li {
@@ -246,9 +241,19 @@ ul.horizontal li {
 	padding: 0.75em;
 }
 
-.footnotes, .info
-{
+.info {
+    font-size: 90%;    
+}
+
+.footnotes {
 	font-size: 75%;
+}
+
+.category_control {
+    position: fixed;
+    top: 4em;
+    right: 3em;
+    font-size: 75%;
 }
 
 .spread {
