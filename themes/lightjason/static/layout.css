@@ -12,11 +12,6 @@ div.document {
     margin: 30px auto 0 auto;
 }
 
-div.sphinxsidebarwrapper {
-    margin-top: -20px;
-    padding: 10px 5px 0 10px;
-}
-
 div.sphinxsidebar {
     float: left;
     width: 230px;
@@ -84,6 +79,10 @@ div.sphinxsidebar {
 div.sphinxsidebarwrapper {
     padding: 18px 10px;
     text-align: center;
+}
+
+div.sphinxsidebarwrapper ul {
+    text-align: left;
 }
 
 div.sphinxsidebarwrapper p.logo {
