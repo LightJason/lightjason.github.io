@@ -7,6 +7,7 @@ defaultContentLanguage : "en-us"
 theme 			       : "lightjason"
 title                  : "lightjason.org"
 enableEmoji            : true
+googleAnalytics		   : "UA-89676576-1"
 
 
 taxonomies:
