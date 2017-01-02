@@ -1,6 +1,6 @@
 #!/bin/bash
 
 TMP=$(mktemp)
-minify $1 > $TMP
+minify --output $TMP $1
 mv -f $TMP $1
 
