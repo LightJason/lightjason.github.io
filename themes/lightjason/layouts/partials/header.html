@@ -6,16 +6,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=0.9" />
 	{{- with .Site.Params.description -}}<meta name="description" content="{{- . -}}">{{- end -}}
 
-	<link href="https://fonts.googleapis.com/css?family=Pridi:200,300,400,500,600,700" type="text/css" rel="stylesheet" async media="all">
+	<link href="https://fonts.googleapis.com/css?family=Pridi:200,300,400,500,600,700" type="text/css" rel="stylesheet" media="all">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" type="text/javascript"></script>
-	<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript" async ></script>
+	<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 		
-	<link href="{{- .Site.BaseURL -}}lightbox.min.css" type="text/css" rel="stylesheet" media="screen" async />
-	<link href="{{- .Site.BaseURL -}}prism.css" type="text/css" rel="stylesheet" media="all" async />
-	<link href="{{- .Site.BaseURL -}}layout.css" type="text/css" rel="stylesheet" media="all" async />
+	<link href="{{- .Site.BaseURL -}}lightbox.min.css" type="text/css" rel="stylesheet" media="screen" />
+	<link href="{{- .Site.BaseURL -}}prism.css" type="text/css" rel="stylesheet" media="all" />
+	<link href="{{- .Site.BaseURL -}}layout.css" type="text/css" rel="stylesheet" media="all" />
 
-	<script src="{{- .Site.BaseURL -}}prism.js" type="text/javascript" async defer></script>
-	<script src="{{- .Site.BaseURL -}}prism-agentspeak.js" type="text/javascript" async defer></script>
+	<script src="{{- .Site.BaseURL -}}prism.js" type="text/javascript"></script>
+	<script src="{{- .Site.BaseURL -}}prism-agentspeak.js" type="text/javascript"></script>
 	<script src="{{- .Site.BaseURL -}}toc.min.js" type="text/javascript"></script>
 	<script src="{{- .Site.BaseURL -}}script.js" type="text/javascript"></script>
 
@@ -33,7 +33,7 @@
 		});
 	</script>
 
-	<link href="{{- .Site.BaseURL -}}images/favicon.png" type="image/png" rel="shortcut icon" async />
+	<link href="{{- .Site.BaseURL -}}images/favicon.png" type="image/png" rel="shortcut icon" />
 	<link href="{{- .Site.BaseURL -}}news/index.xml" type="application/rss+xml" rel="alternate" title="{{- .Site.Params.name -}}" />
 	<title>{{- if not .IsHome -}}{{- .Title -}} &mdash;{{- end -}} {{- .Site.Params.name -}}</title>
 </head>
