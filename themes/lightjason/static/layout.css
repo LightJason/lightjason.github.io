@@ -117,7 +117,7 @@ div.sphinxsidebar ul {
     color: #000;
 }
 
-div.sphinxsidebar ul li.toctree-l1 > a {
+div.sphinxsidebar ul li {
     font-size: 120%;
 }
 
@@ -263,13 +263,61 @@ code {
     border: 1px solid #B1B4B6;
 }
 
+#toccontainer {
+    display: block;
+    border: 1px solid #a2a9b1;
+    background-color: #f8f9fa;
+    font-size: 90%;
+    width: 35%;
+    text-align: center;
+}
+
+#toc {
+    text-align: left;
+}
+
+#toc ul, h1 {
+    counter-reset: section;
+    list-style: none;
+}
+
+.toc-h2, h2 {
+    counter-increment: section;
+    counter-reset: subsection;
+}
+
+.toc-h2::before, h2::before {
+    content: counter(section) ". ";    
+}
+
+.toc-h3, h3 {
+    margin-left: 1em;
+    counter-increment: subsection;
+    counter-reset: subsubsection;
+}
+
+.toc-h3::before, h3::before {    
+    content: counter(section) "." counter(subsection) ". ";
+}
+
+.toc-h4, h4 {
+    margin-left: 2em;
+    counter-increment: subsubsection;
+}
+
+.toc-h4::before, h4::before {    
+    content: counter(section) "." counter(subsection) "." counter(subsubsection) ". ";
+}
+
+
+
 
 @media print {
 
     div.clearer,
     div.sphinxsidebar,
     div.sphinxsidebarwrapper,
-    div.footer, .category_control {
+    div.footer, #toccontainer, .category_control {
         display: none;
     }
 

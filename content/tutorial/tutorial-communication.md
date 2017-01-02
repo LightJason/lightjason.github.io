@@ -2,14 +2,12 @@
 title: "Tutorial: Communication"
 ---
 
-> LightJason architecture does not support in general a
->  build-in communication, because communication and 
-> agent addressing / naming depends on the domain or 
-> underlying software architecture. To create a 
-> communication structure you have to build-up your own 
-> naming model, a send action with a receiving plan and 
-> a data structure to map agent names / addresses to 
-> agent objects.
+LightJason architecture does not support in general a build-in communication, because communication and 
+agent addressing / naming depends on the domain or underlying software architecture. To create a 
+communication structure you have to build-up your own naming model, a send action with a receiving plan and 
+a data structure to map agent names / addresses to agent objects.
+
+{{< toc >}}
 
 ## Don't reinvent the edge
 

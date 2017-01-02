@@ -1,7 +1,10 @@
 ---
 title: "Tutorial: AgentSpeak scenario in 15 minutes"
 ---
+
 This tutorial explains how to build a simple, but full working scenario in 15 minutes with the current developing source code. You can download the [source codes](/download/agentspeak-in-15min.zip)
+
+{{< toc >}}
 
 ## Tools you need
 
@@ -12,21 +15,7 @@ This tutorial explains how to build a simple, but full working scenario in 15 mi
 
 The tutorial give you a _very short_ introduction into LightJason's AgentSpeak(L++) structure. A fully [source code documentation](http://lightjason.github.io/AgentSpeak/sources/index.html) can help to develop your individuell requirements. Do not be afraid to ask via email or on the [issue tracker](https://github.com/LightJason/AgentSpeak/issues)
 
-1. [AgentSpeak(L++) from the sources](#agentspeakbuild)
-2. [Maven project configuration](#mavenprojectconfig) 
-3. Agent and generator
-    * [Your agent class](#agentclass)
-    * [Your agent generator class](#agentgenerator)
-5. [Write your runtime](#runtime)
-6. [Trigger a goal](#triggergoal)
-    * [Trigger a goal on each cycle](#goalcycle) 
-7. Write your own actions
-    * [Standalone action](#standaloneaction)
-    * [Agent-class action](#classaction)
-8. [Environment](#environment)
-
-
-## <a id="agentspeakbuild"></a> AgentSpeak(L++) from the sources
+## AgentSpeak(L++) from the sources
 
 1. Download the current source codes from [AgentSpeak(L++)](https://github.com/LightJason/AgentSpeak) as Zip or via Git:
 ```bash
@@ -35,7 +24,7 @@ git clone https://github.com/LightJason/AgentSpeak.git
 
 2. Run ```mvn``` within the source code directory. AgentSpeak(L++) should build and you can use it.
 
-## <a id="mavenprojectconfig"></a> Maven project configuration
+## Maven project configuration
 
 1. Copy the ```groupId```, ```artifactId``` and ```version``` from the [pom.xml](https://github.com/LightJason/AgentSpeak/blob/master/pom.xml#L27) of the current AgentSpeak(L++) project.
 
@@ -114,7 +103,7 @@ public final class MyAgent extends IBaseAgent<MyAgent>
 }
 ```
 
-### <a id="agentgenerator"></a> Your agent generator class
+### Your agent generator class
 
 Create your own {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d1/dc9/interfaceorg_1_1lightjason_1_1agentspeak_1_1generator_1_1IAgentGenerator_3_01T_01extends_01IAgent_3_04_4_01_4__inherit__graph.svg" "agent generator" >}} (agent factory). This component is based on the [UML factory pattern](https://en.wikipedia.org/wiki/Factory_method_pattern). Within the factory the agent script (ASL) is parsed once and you can generate a lot of agents with a single factory. We support a general implementation of the factory the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/dc/d04/classorg_1_1lightjason_1_1agentspeak_1_1generator_1_1IBaseAgentGenerator_3_01T_01extends_01IAgent_3_04_4_01_4__coll__graph.svg" "IBaseAgentGenerator" >}}:
 
@@ -173,7 +162,7 @@ public final class MyAgentGenerator extends IBaseAgentGenerator<MyAgent>
 ```
 
 
-### <a id="runtime"></a> Write your runtime
+### Write your runtime
 
 Write your own runtime[^runtime] within the ```main``` method and let the agents run. We are using [Java streams](https://docs.oracle.com/javase/tutorial/collections/streams/) to execute the agent, but you can use also a [thread-pool](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Executors.html) because all agents are implements the [Callable](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Callable.html) interface (the [Future](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Future.html) object is the agent in the state $cycle + 1$)
 
@@ -245,7 +234,7 @@ mvn package
 java -jar target/myagentapp-1.0-SNAPSHOT.jar agent.asl 500 1000
 ```
 
-## <a id="triggergoal"></a> Trigger a goal
+## Trigger a goal
 
 The agent class has got a [trigger method](http://lightjason.github.io/AgentSpeak/sources/db/d62/interfaceorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IAgent_3_01T_01extends_01IAgent_3_04_4_01_4.html#af453e6a5f02ca05958925af4a8c04c10) which runs a goal, The [CTrigger](http://lightjason.github.io/AgentSpeak/sources/d1/d5a/classorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1CTrigger.html) class uses four [trigger types](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html) ([addgoal](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html#a8f036453c557da7c573456ab30fea9cb), [deletegoal](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html#a27c788cd71ba696603248697b88c1aa7), [addbelief](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html#a3b940a57e1aef6525a6730ccdb929405), [deletebelief](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html#aedd88e304e671dc112395eeffe010645)) and a literal for execution. The third parameter is a boolean flag to run the immediately otherweise the goal will be run within the next cycle.
 
@@ -261,7 +250,7 @@ agent.trigger(
 );
 ```
 
-### <a id="goalcycle"></a> Trigger on each cycle
+### Trigger on each cycle
 
 If you need a goal-trigger based on any external data, we recommand the following structure
 
@@ -308,7 +297,7 @@ In general we support two kind of actions:
 * Actions which are standalone classes e.g. for complex calculations.
 * Actions which are methods inside an agent class can be used to build action, which modify the agent Java object or depended Java objects.
 
-### <a id="standaloneaction"></a> Standalone action
+### Standalone action
 
 Use the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d0/dfe/interfaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1IAction__coll__graph.svg" "IAction" >}} interface or the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/dd/d3e/classorg_1_1lightjason_1_1agentspeak_1_1action_1_1IBaseAction__coll__graph.svg" "IBaseAction" >}} to create your actions. 
 
@@ -365,7 +354,7 @@ public final class MyAction extends IBaseAction
 }
 ```
 
-### <a id="classaction"></a> Class actions
+### Class actions
 
 You need to write a method (visibility can be ```public```, ```protected``` or ```private```) inside your agent class:
 
@@ -408,14 +397,14 @@ public final class MyAgent extends IBaseAgent<MyAgent>
 }
 ```
 
-## <a id="environment"></a> Where is the environment?
+## Where is the environment?
 
 There is no environment on LightJason's AgentSpeak(L++), because of system design it is not needed anymore, but you can easily write your own. Keep in mind, that all calls of the environment are done in parallel, so many agents might access the environment at the same time. Therefore you must create a thread-safe data structure for your environment. If the environment throws an exception the action on the agent-side will fail. We recommend the following structure:
 
 1. create an environment class
-2. modify the [agent class constructor](#agentclass), so that can be put an environment inside[^environment]
-3. modify the [agent generator](#agentgenerator) and pass the environment to the agent constructor 
-4. create [class action](#classaction) to pass the data to / from the environment, on errors throw an exception and the agent plan will fail
+2. modify the [agent class constructor](#a-id-agentclass-a-your-agent-class), so that can be put an environment inside[^environment]
+3. modify the [agent generator](#your-agent-generator-class) and pass the environment to the agent constructor 
+4. create [class action](#class-actions) to pass the data to / from the environment, on errors throw an exception and the agent plan will fail
 
 ```java
 package myagentproject;

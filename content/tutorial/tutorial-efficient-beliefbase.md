@@ -1,7 +1,12 @@
 ---
 title: "Tutorial: Efficent Beliebase"
 ---
-In contrast to Prolog and original Jason the beliefbase is more than a list. LightJason supports a hierarchical structure of beliefs. A literal in LightJason can be structure like
+
+In contrast to Prolog and original Jason the beliefbase is more than a list. LightJason supports a hierarchical structure of beliefs. We support a more organized data structure with efficient searching and unification of beliefs.
+
+{{< toc >}}
+
+A literal in LightJason can be structure like
 
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
 foo/value(5)
