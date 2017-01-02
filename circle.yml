@@ -30,9 +30,9 @@ dependencies:
 test:
     override:
         - hugo
-        - find public -type f -exec "*.css" -exec data/minifyfile.bash \{\} \;
-        - find public -type f -exec "*.js" -exec data/minifyfile.bash \{\} \;
-        - find public -type f -exec "*.htm*" -exec data/minifyfile.bash \{\} \;
+        - find public -type f -name "*.css" -exec data/minifyfile.bash \{\} \; &>/dev/null
+        - find public -type f -name "*.js" -exec data/minifyfile.bash \{\} \; &>/dev/null
+        - find public -type f -name "*.htm*" -exec data/minifyfile.bash \{\} \; &>/dev/null
         - mv -f public /tmp
         - git push origin :master
         - git fetch -p        
