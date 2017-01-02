@@ -6,17 +6,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=0.9" />
 	{{- with .Site.Params.description -}}<meta name="description" content="{{- . -}}">{{- end -}}
 
-	<link href="https://fonts.googleapis.com/css?family=Pridi:200,300,400,500,600,700" rel="stylesheet">
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<link async href="https://fonts.googleapis.com/css?family=Pridi:200,300,400,500,600,700" rel="stylesheet">
+	<script async type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script async type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 		
-	<link rel="stylesheet" href="/lightbox.min.css" type="text/css" />
-	<link rel="stylesheet" href="/prism.css" />
-	<link rel="stylesheet" href="/layout.css" type="text/css" />
+	<link async rel="stylesheet" href="/lightbox.min.css" type="text/css" />
+	<link async rel="stylesheet" href="/prism.css" />
+	<link async rel="stylesheet" href="/layout.css" type="text/css" />
 
-	<script type="text/javascript" src="/prism.js"></script>
-	<script type="text/javascript" src="/prism-agentspeak.js"></script>
-	<script type="text/javascript" src="/script.js"></script>
+	<script async type="text/javascript" src="/prism.js"></script>
+	<script async type="text/javascript" src="/prism-agentspeak.js"></script>
+	<script async defer type="text/javascript" src="/script.js"></script>
 
 	{{ template "_internal/google_analytics.html" . }}
 	<script type="text/x-mathjax-config">
@@ -32,7 +32,7 @@
 		});
 	</script>
 
-	<link rel="shortcut icon" href="/images/favicon.png" type="image/png"/>
+	<link async rel="shortcut icon" href="/images/favicon.png" type="image/png"/>
 	<link href="/news/index.xml" rel="alternate" type="application/rss+xml" title="{{- .Site.Params.name -}}" />
 	<title>{{- if not .IsHome -}}{{- .Title -}} &mdash;{{- end -}} {{- .Site.Params.name -}}</title>
 </head>
