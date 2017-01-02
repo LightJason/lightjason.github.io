@@ -269,7 +269,7 @@ code {
     div.clearer,
     div.sphinxsidebar,
     div.sphinxsidebarwrapper,
-    div.footer {
+    div.footer, .category_control {
         display: none;
     }
 
