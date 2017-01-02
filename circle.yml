@@ -24,6 +24,8 @@ dependencies:
         # see release version https://github.com/spf13/hugo/releases
         - wget https://github.com/spf13/hugo/releases/download/v0.18/hugo_0.18-64bit.deb
         - sudo dpkg -i hugo_0.18-64bit.deb
+        - sudo apt-get install npm
+        - npm install -g minifier
 
 test:
     override:
