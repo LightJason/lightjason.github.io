@@ -249,9 +249,8 @@ ul.horizontal li {
 }
 
 .category_control {
-    position: fixed;
-    top: 4em;
-    right: 3em;
+    display: block;
+    float: right;
     font-size: 75%;
 }
 
