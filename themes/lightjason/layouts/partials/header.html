@@ -10,13 +10,13 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script async type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 		
-	<link async rel="stylesheet" href="{{- .Site.BaseURL -}}lightbox.min.css" type="text/css" />
-	<link async rel="stylesheet" href="{{- .Site.BaseURL -}}prism.css" />
-	<link async rel="stylesheet" href="{{- .Site.BaseURL -}}layout.css" type="text/css" />
+	<link async rel="stylesheet" href="/lightbox.min.css" type="text/css" />
+	<link async rel="stylesheet" href="/prism.css" />
+	<link async rel="stylesheet" href="/layout.css" type="text/css" />
 
-	<script async defer type="text/javascript" src="{{- .Site.BaseURL -}}prism.js"></script>
-	<script async defer type="text/javascript" src="{{- .Site.BaseURL -}}prism-agentspeak.js"></script>
-	<script type="text/javascript" src="{{- .Site.BaseURL -}}script.js"></script>
+	<script async defer type="text/javascript" src="/prism.js"></script>
+	<script async defer type="text/javascript" src="/prism-agentspeak.js"></script>
+	<script type="text/javascript" src="/script.js"></script>
 
 	{{ template "_internal/google_analytics.html" . }}
 	<script type="text/x-mathjax-config">
@@ -32,8 +32,8 @@
 		});
 	</script>
 
-	<link async rel="shortcut icon" href="{{- .Site.BaseURL -}}images/favicon.png" type="image/png"/>
-	<link href="{{- .Site.BaseURL -}}news/index.xml" rel="alternate" type="application/rss+xml" title="{{- .Site.Params.name -}}" />
+	<link async rel="shortcut icon" href="/images/favicon.png" type="image/png"/>
+	<link href="/news/index.xml" rel="alternate" type="application/rss+xml" title="{{- .Site.Params.name -}}" />
 	<title>{{- if not .IsHome -}}{{- .Title -}} &mdash;{{- end -}} {{- .Site.Params.name -}}</title>
 </head>
 

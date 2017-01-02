@@ -1,12 +1,12 @@
 <div class="footer">
 	<span class="contact">{{- .Site.Params.contact -}}</span>
 	<ul class="horizontal">
-		{{- range $item := .Site.Params.footer.links -}}
-			<li><a href="{{ $item.url }}">{{- $item.name -}}</a></li>
+		{{- range .Site.Params.footer.links -}}
+			<li><a href="{{ .url }}">{{- .name -}}</a></li>
 		{{- end -}}
 		<li>&copy; {{ .Now.Format "Jan 2006" -}}</li>
 	</ul>
 </div>
-<script type="text/javascript" src="{{- .Site.BaseURL -}}lightbox.min.js"></script>
+<script type="text/javascript" src="/lightbox.min.js"></script>
 </body>
 </html>
