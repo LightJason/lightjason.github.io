@@ -37,7 +37,10 @@ params:
         -
             name 	   : "News"
             url 	   : "/news/"
-            weight 	   : 0
+            weight 	   : 0            
+            sublink:
+                url    : "/news/index.xml"
+                name   : "RSS"
         -
             name 	   : "Publication"
             url		   : "/publication/"

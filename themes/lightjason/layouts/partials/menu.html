@@ -9,7 +9,14 @@
 		
 		{{- if and (ne .Site.Params.menu nil) (gt (len .Site.Params.menu) 0) -}}
 		<ul>
-			{{- range sort .Site.Params.menu "weight" }}<li class="toctree-l1"><a class="reference internal" href="{{ .url }}">{{- .name -}}</a></li>{{- end -}}
+			{{- range sort .Site.Params.menu "weight" }}
+			<li class="toctree-l1">
+				<a class="reference internal" href="{{ .url }}">{{- .name -}}</a>
+				{{- with .sublink }}
+				(<a href="{{- .url -}}">{{- .name -}}</a>)
+				{{- end -}}
+			</li>
+			{{- end -}}
 		</ul>
 		{{- end -}}
 	</div>
