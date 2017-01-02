@@ -15,12 +15,7 @@
 	<title>{{- if not .IsHome -}}{{- .Title -}} &mdash;{{- end -}} {{- .Site.Params.name -}}</title>
 	
 	<link href="https://fonts.googleapis.com/css?family=Pridi:200,300,400,500,600,700" rel="stylesheet">
-	<script type="text/javascript" src="{{ .Site.BaseURL }}prism.js"></script>
-	<script type="text/javascript" src="{{ .Site.BaseURL }}prism-agentspeak.js"></script>
-	<link rel="stylesheet" href="{{ .Site.BaseURL }}prism.css" />
-
-	<link rel="stylesheet" href="{{ .Site.BaseURL }}lightbox.min.css" type="text/css" />
-	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 	<script type="text/x-mathjax-config">
 		MathJax.Hub.Config({
@@ -34,10 +29,13 @@
   			}
 		});
 	</script>
-
-	<script type="text/javascript" src="{{ .Site.BaseURL }}jquery-3.1.0.min.js"></script>
-
+		
+	<link rel="stylesheet" href="{{ .Site.BaseURL }}lightbox.min.css" type="text/css" />
+	<link rel="stylesheet" href="{{ .Site.BaseURL }}prism.css" />
 	<link rel="stylesheet" href="{{ .Site.BaseURL }}layout.css" type="text/css" />
+
+	<script type="text/javascript" src="{{ .Site.BaseURL }}prism.js"></script>
+	<script type="text/javascript" src="{{ .Site.BaseURL }}prism-agentspeak.js"></script>
 	<script type="text/javascript" src="{{ .Site.BaseURL }}script.js"></script>
 </head>
 
