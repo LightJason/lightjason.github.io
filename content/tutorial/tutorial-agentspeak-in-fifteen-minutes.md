@@ -18,9 +18,10 @@ The tutorial give you a _very short_ introduction into LightJason's AgentSpeak(L
 ## AgentSpeak(L++) from the sources
 
 1. Download the current source codes from [AgentSpeak(L++)](https://github.com/LightJason/AgentSpeak) as Zip or via Git:
-```bash
-git clone https://github.com/LightJason/AgentSpeak.git
-```
+    
+    ```bash
+    git clone https://github.com/LightJason/AgentSpeak.git
+    ```
 
 2. Run ```mvn``` within the source code directory. AgentSpeak(L++) should build and you can use it.
 
@@ -29,55 +30,59 @@ git clone https://github.com/LightJason/AgentSpeak.git
 1. Copy the ```groupId```, ```artifactId``` and ```version``` from the [pom.xml](https://github.com/LightJason/AgentSpeak/blob/master/pom.xml#L27) of the current AgentSpeak(L++) project.
 
 2. Create a Maven project (we recommend the [Maven in 5 minutes tutorial](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)) with
-```bash
-mvn archetype:generate -DgroupId=myagentproject -DartifactId=myagentapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
-```
+
+    ```bash
+    mvn archetype:generate -DgroupId=myagentproject -DartifactId=myagentapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+    ```
 
 3. Open the ```pom.xml```, navigate to the ```dependency``` section and add AgentSpeak(L++) reference (you will find an entry for JUnit within the section): 
-```xml
-    <dependency>
-        <groupId>org.lightjason</groupId>
-        <artifactId>AgentSpeak</artifactId>
-        <version>version from AgentSpeak(L++) pom.xml</version>
-    </dependency>
-```
+
+    ```xml
+        <dependency>
+            <groupId>org.lightjason</groupId>
+            <artifactId>AgentSpeak</artifactId>
+            <version>version from AgentSpeak(L++) pom.xml</version>
+        </dependency>
+    ```
 
 4. For enabling the Java 1.8 support, add the following entry before the ```dependency``` section:
-```xml
-    <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
-``` 
+
+    ```xml
+        <properties>
+            <maven.compiler.source>1.8</maven.compiler.source>
+            <maven.compiler.target>1.8</maven.compiler.target>
+        </properties>
+    ``` 
 
 5. Put the following code under the ```dependency``` section of the [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/examples/executable-jar.html) to create an executable Jar
-```xml
-<build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>2.4.3</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <!-- here must be set the full name of the class which contains the main method -->
-                                    <mainClass>myagentproject.App</mainClass>
-                                </transformer>
-                            </transformers>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-</build>
-```
+
+    ```xml
+    <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>2.4.3</version>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>shade</goal>
+                            </goals>
+                            <configuration>
+                                <transformers>
+                                    <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                        <!-- here must be set the full name of the class which contains the main method -->
+                                        <mainClass>myagentproject.App</mainClass>
+                                    </transformer>
+                                </transformers>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+    </build>
+    ```
 
 6. Import your Maven project into your favorite IDE.
 
@@ -96,7 +101,7 @@ public final class MyAgent extends IBaseAgent<MyAgent>
 {
     // constructor of the agent
     // @param p_configuration agent configuration of the agent generator
-    public MyAgent( final IAgentConfiguration MyAgent  p_configuration )
+    public MyAgent( final IAgentConfiguration<MyAgent> p_configuration )
     {
         super( p_configuration );
     }
@@ -121,8 +126,8 @@ import java.util.stream.Collectors;
 
 public final class MyAgentGenerator extends IBaseAgentGenerator<MyAgent>
 {
-    //constructor of the generator
-    //@param p_stream ASL code as any stream e.g. FileInputStream
+    // constructor of the generator
+    // @param p_stream ASL code as any stream e.g. FileInputStream
     public MyAgentGenerator( final InputStream p_stream ) throws Exception
     {
         super(
@@ -260,11 +265,11 @@ package myagentproject;
 import org.lightjason.agentspeak.agent.IBaseAgent;
 import org.lightjason.agentspeak.configuration.IAgentConfiguration;
 
-public final class MyAgent extends IBaseAgent<MyAgent>;
+public final class MyAgent extends IBaseAgent<MyAgent>
 {
     // constructor of the agent
     // @param p_configuration agent configuration of the agent generator
-    public MyAgent( final IAgentConfiguration MyAgent  p_configuration )
+    public MyAgent( final IAgentConfiguration<MyAgent> p_configuration )
     {
         super( p_configuration );
     }
@@ -385,7 +390,7 @@ public final class MyAgent extends IBaseAgent<MyAgent>
     // and the action-name for the ASL script is set
     // @param p_value argument of the action
     // @note LightJason supports Long and Double values, so if you declare
-    // every numerical value als Number you can handle both types, because
+    // every numerical value as Number you can handle both types, because
     // number has methods to convert the data
     @IAgentActionFilter
     @IAgentActionName( name = "my/very-cool-action" )
@@ -397,50 +402,4 @@ public final class MyAgent extends IBaseAgent<MyAgent>
 }
 ```
 
-## Where is the environment?
-
-There is no environment on LightJason's AgentSpeak(L++), because of system design it is not needed anymore, but you can easily write your own. Keep in mind, that all calls of the environment are done in parallel, so many agents might access the environment at the same time. Therefore you must create a thread-safe data structure for your environment. If the environment throws an exception the action on the agent-side will fail. We recommend the following structure:
-
-1. create an environment class
-2. modify the [agent class constructor](#a-id-agentclass-a-your-agent-class), so that can be put an environment inside[^environment]
-3. modify the [agent generator](#your-agent-generator-class) and pass the environment to the agent constructor 
-4. create [class action](#class-actions) to pass the data to / from the environment, on errors throw an exception and the agent plan will fail
-
-```java
-package myagentproject;
-
-import org.lightjason.agentspeak.agent.IBaseAgent;
-import org.lightjason.agentspeak.configuration.IAgentConfiguration;
-
-@IAgentAction
-public final class MyAgent extends IBaseAgent<MyAgent>;
-{
-    // environment reference
-    private final Environment m_environment;
-
-    // constructor of the agent
-    // @param p_environment environment reference
-    // @param p_configuration agent configuration of the agent generator
-    public MyAgent( final Environment p_environment, final IAgentConfiguration MyAgent  p_configuration )
-    {
-        super( p_configuration );
-        m_environment = p_environment;
-    }
-    
-    @IAgentActionFilter
-    @IAgentActionName( name = "env/action" )
-    private void envaction()
-    {
-        // method can throw an exception for action failing
-        m_environment.do_something();
-    }
-
-}
-```
-
 [^runtime]: For creating a complex and fast runtime you need to take a look at general object-orientated programming pattern. Here we only provide a short example to show you how you can work with Agentspeak(L++) agents.
-[^environment]: An agent can deal with many environments, so the agent Java object needs only a reference to an environment object and the actions must be references the method inside the environment. With this structure an agent can work in different environments at the same time or the agent can switch the environment during runtime. You need to modify only the agent and generator object for your setting
-
-
-
-
