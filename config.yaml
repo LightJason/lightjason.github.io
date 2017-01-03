@@ -19,6 +19,7 @@ params:
     logo 		       : ""
     name 		       : "LightJason"
     description        : "BDI Multi-Agent System"
+    keywords           : "BDI, agent, multiagentsystem, concurrency"
     contact            : "info [at] lightjason.org"
 
     footer:
