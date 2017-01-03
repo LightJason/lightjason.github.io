@@ -1,318 +1,298 @@
-body {
-    font-family: Pridi, serif;
-    font-size: 18px;
-    background-color: white;
-    color: #000;
-    margin: 0;
-    padding: 0;
+
+    body {
+        font-family: Pridi, serif;
+        font-size: 18px;
+        background-color: white;
+        color: #3E4349;
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        color: #3782BE;
+        text-decoration: underline;
+    }
+
+    hr {
+        border: 1px solid #B1B4B6;
+    }
+
+    ul, ol {
+        margin: 10px 0 10px 30px;
+        padding: 0;
+    }
+
+    blockquote:before {
+        line-height: 0.1em;
+        margin-right: 0.25em;
+        vertical-align: -0.4em;
+    }
+
+    blockquote {
+        background: #f9f9f9;
+        border-left: 10px solid #ddd;
+        margin: 1.5em 10px;
+        padding: 0.5em 10px;
+    }
+
+    blockquote p {
+        display: inline;
+    }
+
+    svg {
+        display: block;
+        padding: 5px;
+        margin: 0 auto;
+    }
+
+    img[src$='#centering'] {
+        display: block;
+        padding: 5px;
+        margin: 0 auto;
+    }
+
+    img[src$='#floatleft'] {
+        float: left;
+    }
+
+    img[src$='#floatright'] {
+        float: right;
+    }
+
+    img[src$='#contact'] {
+        float: right;
+        width: auto;
+        height: 80px;
+        overflow: hidden;
+    }
+
+
+
+
+
+    div.document {
+        width: 85%;
+        margin: 30px auto 0 auto;
+    }
+
+    div.sidebar {
+        float: left;
+        width: 260px;
+        margin-left: -102%;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #444;
+    }
+
+    div.sidebar a {
+        color: #444;
+        text-decoration: none;
+        border-bottom: 1px dotted #999;
+    }
+
+    div.sidebar a:hover {
+        border-bottom: 1px solid #000;
+    }
+
+    div.sidebar ul {
+        list-style: none;
+        margin: 10px 0;
+        padding: 0;
+        color: #000;
+    }
+
+    div.sidebar ul li {
+        font-size: 120%;
+    }
+
+
+
+    div.documentwrapper {
+        float: left;
+        width: 100%;
+    }
+
+    div.bodywrapper {
+        margin: 0 0 0 220px;
+    }
+
+    div.clearer {
+        clear: both;
+    }
+
+
+
+    div.body {
+        padding: 0 30px 0 30px;
+    }
+
+    div.footer {
+        width: 85%;
+        margin: 20px auto 30px auto;
+        font-size: 14px;
+        text-align: right;
+        color: #888;
+    }
+
+    div.footer a {
+        color: #888;
+    }
+
+
+
+    div.sidebarwrapper {
+        padding: 0 10px;
+        text-align: center;
+    }
+
+    div.sidebarwrapper ul {
+        text-align: left;
+    }
+
+    div.sidebarwrapper h1.logo {
+        margin-top: 0;
+        margin-bottom: 5px;
+    }
+
+
+
+
+
+    div.body h1, div.body h1 a,
+    div.body h2, div.body h2 a,
+    div.body h3, div.body h3 a,
+    div.body h4, div.body h4 a,
+    div.body h5, div.body h5 a,
+    div.body h6, div.body h6 a {
+        margin: 30px 0px 10px 0px;
+        padding: 0;
+        color: #3E4349;
+        text-decoration: none;
+    }
+
+    div.body h1 { margin-top: 0; padding-top: 0; font-size: 240%; }
+    div.body h2 { font-size: 180%; }
+    div.body h3 { font-size: 150%; }
+    div.body h4 { font-size: 130%; }
+    div.body h5 { font-size: 100%; }
+    div.body h6 { font-size: 100%; }
+
+    div.body h2::after {
+        content: "";
+        display: block;
+        height: 1px;
+        width: 40%;
+        background: #9f9f9f;
+    }
+
+    div.body p, div.body dd, div.body li {
+        line-height: 1.4em;
+    }
+
+
+    .contact {
+        float: left;
+        text-align: left;
+    }
+
+    ul.horizontal li {
+        display: inline;
+        padding: 0.75em;
+    }
+
+    .info {
+        font-size: 90%;    
+    }
+
+    .footnotes {
+        font-size: 75%;
+    }
+
+    .category_control {
+        display: block;
+        float: right;
+        font-size: 75%;
+    }
+
+    .spread {
+        padding-top: 0.75em;
+        padding-bottom: 0.75em;
+    }
+
+    #toccontainer {
+        display: block;
+        border: 1px solid #a2a9b1;
+        background-color: #f8f9fa;
+        font-size: 90%;
+        width: 35%;
+        text-align: center;
+    }
+
+    #toc {
+        text-align: left;
+    }
+
+    #toc ul, h1 {
+        counter-reset: section;
+        list-style: none;
+    }
+
+    .toc-h2, h2 {
+        counter-increment: section;
+        counter-reset: subsection;
+    }
+
+    .toc-h2::before, h2::before {
+        content: counter(section) ". ";    
+    }
+
+    .toc-h3, h3 {
+        margin-left: 1em;
+        counter-increment: subsection;
+        counter-reset: subsubsection;
+    }
+
+    .toc-h3::before, h3::before {    
+        content: counter(section) "." counter(subsection) ". ";
+    }
+
+    .toc-h4, h4 {
+        margin-left: 2em;
+        counter-increment: subsubsection;
+    }
+
+    .toc-h4::before, h4::before {    
+        content: counter(section) "." counter(subsection) "." counter(subsubsection) ". ";
+    }
+
+
+
+@media only screen and (max-width: 1000px) {
+
+    div.clearer,
+    div.sidebar,
+    div.sidebarwrapper,
+    div.footer, #toccontainer, .category_control {
+            display: none;
+    }
+
+    div.document {
+        width: 100%;
+        margin: 0 auto 0 auto;
+    }
+
+    div.bodywrapper {
+        margin: 0;
+    }
+
 }
-
-div.document {
-    width: 85%;
-    margin: 30px auto 0 auto;
-}
-
-div.sphinxsidebar {
-    float: left;
-    width: 260px;
-    margin-left: -102%;
-    font-size: 90%;
-}
-
-div.sphinxsidebar ul {
-    list-style: none;
-}
-
-div.documentwrapper {
-    float: left;
-    width: 100%;
-}
-
-div.bodywrapper {
-    margin: 0 0 0 220px;
-}
-
-div.clearer {
-    clear: both;
-}
-
-hr {
-    border: 1px solid #B1B4B6;
-}
-
-div.body {
-    color: #3E4349;
-    padding: 0 30px 0 30px;
-}
-
-div.footer {
-    width: 85%;
-    margin: 20px auto 30px auto;
-    font-size: 14px;
-    color: #888;
-    text-align: right;
-}
-
-div.footer a {
-    color: #888;
-}
-
-div.sphinxsidebar a {
-    color: #444;
-    text-decoration: none;
-    border-bottom: 1px dotted #999;
-}
-
-div.sphinxsidebar a:hover {
-    border-bottom: 1px solid #999;
-}
-
-div.sphinxsidebar {
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-div.sphinxsidebarwrapper {
-    padding: 18px 10px;
-    text-align: center;
-}
-
-div.sphinxsidebarwrapper ul {
-    text-align: left;
-}
-
-div.sphinxsidebarwrapper p.logo {
-    padding: 0;
-    margin: -10px 0 0 0px;
-}
-
-div.sphinxsidebarwrapper h1.logo {
-    margin-top: -10px;
-    margin-bottom: 5px;
-}
-
-div.sphinxsidebarwrapper h1.logo-name {
-    margin-top: 0px;
-}
-
-div.sphinxsidebar p.logo a,
-div.sphinxsidebar h3 a,
-div.sphinxsidebar p.logo a:hover,
-div.sphinxsidebar h3 a:hover {
-    border: none;
-}
-
-div.sphinxsidebar p {
-    color: #555;
-    margin: 10px 0;
-}
-
-div.sphinxsidebar ul {
-    margin: 10px 0;
-    padding: 0;
-    color: #000;
-}
-
-div.sphinxsidebar ul li {
-    font-size: 120%;
-}
-
-a {
-    color: #3782BE;
-    text-decoration: underline;
-}
-
-a:hover {
-    color: #3782BE;
-    text-decoration: underline;
-}
-
-div.body h1, div.body h1 a,
-div.body h2, div.body h2 a,
-div.body h3, div.body h3 a,
-div.body h4, div.body h4 a,
-div.body h5, div.body h5 a,
-div.body h6, div.body h6 a {
-    margin: 30px 0px 10px 0px;
-    padding: 0;
-    color: #3E4349;
-    text-decoration: none;
-}
-
-div.body h1 { margin-top: 0; padding-top: 0; font-size: 240%; }
-div.body h2 { font-size: 180%; }
-div.body h3 { font-size: 150%; }
-div.body h4 { font-size: 130%; }
-div.body h5 { font-size: 100%; }
-div.body h6 { font-size: 100%; }
-
-div.body h2::after {
-    content: "";
-    display: block;
-    height: 1px;
-    width: 40%;
-    background: #9f9f9f;
-}
-
-div.body p, div.body dd, div.body li {
-    line-height: 1.4em;
-}
-
-ul, ol {
-    margin: 10px 0 10px 30px;
-    padding: 0;
-}
-
-a.reference {
-    text-decoration: none;
-    border-bottom: 1px dotted #3782BE;
-}
-
-a.reference:hover {
-    border-bottom: 1px solid #3782BE;
-}
-
-blockquote {
-  background: #f9f9f9;
-  border-left: 10px solid #ddd;
-  margin: 1.5em 10px;
-  padding: 0.5em 10px;
-}
-
-blockquote:before {
-  line-height: 0.1em;
-  margin-right: 0.25em;
-  vertical-align: -0.4em;
-}
-
-blockquote p {
-  display: inline;
-}
-
-img[src$='#centering'] {
-    display: block;
-    padding: 5px;
-    margin: 0 auto;
-}
-
-svg {
-    display: block;
-    padding: 5px;
-    margin: 0 auto;
-}
-
-img[src$='#floatcentering'] {
-    display: inline-block;
-    padding: 5px;
-    margin: 0 auto;
-}
-
-img[src$='#floatleft'] {
-	float: left;
-}
-
-img[src$='#contact'] {
-	float: right;
-    width: auto;
-    height: 80px;
-    overflow: hidden;
-}
-
-img[src$='#floatright'] {
-	float: right;
-}
-
-ul.horizontal {
-    padding: 0;
-}
-
-.contact {
-	float: left;
-    text-align: left;
-}
-
-ul.horizontal li {
-    display: inline;
-	padding: 0.75em;
-}
-
-.info {
-    font-size: 90%;    
-}
-
-.footnotes {
-	font-size: 75%;
-}
-
-.category_control {
-    display: block;
-    float: right;
-    font-size: 75%;
-}
-
-.spread {
-    padding-top: 0.75em;
-    padding-bottom: 0.75em;
-}
-
-code {
-    border: 1px solid #B1B4B6;
-}
-
-#toccontainer {
-    display: block;
-    border: 1px solid #a2a9b1;
-    background-color: #f8f9fa;
-    font-size: 90%;
-    width: 35%;
-    text-align: center;
-}
-
-#toc {
-    text-align: left;
-}
-
-#toc ul, h1 {
-    counter-reset: section;
-    list-style: none;
-}
-
-.toc-h2, h2 {
-    counter-increment: section;
-    counter-reset: subsection;
-}
-
-.toc-h2::before, h2::before {
-    content: counter(section) ". ";    
-}
-
-.toc-h3, h3 {
-    margin-left: 1em;
-    counter-increment: subsection;
-    counter-reset: subsubsection;
-}
-
-.toc-h3::before, h3::before {    
-    content: counter(section) "." counter(subsection) ". ";
-}
-
-.toc-h4, h4 {
-    margin-left: 2em;
-    counter-increment: subsubsection;
-}
-
-.toc-h4::before, h4::before {    
-    content: counter(section) "." counter(subsection) "." counter(subsubsection) ". ";
-}
-
-
 
 
 @media print {
 
     div.clearer,
-    div.sphinxsidebar,
-    div.sphinxsidebarwrapper,
+    div.sidebar,
+    div.sidebarwrapper,
     div.footer, #toccontainer, .category_control {
         display: none;
     }

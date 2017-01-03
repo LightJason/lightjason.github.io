@@ -1,8 +1,8 @@
-<div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-	<div class="sphinxsidebarwrapper">
+<div class="sidebar" role="navigation" aria-label="main navigation">
+	<div class="sidebarwrapper">
 		<div class="logo">
 			<h1 class="logo logo-name">
-				<a href="{{ .Site.BaseURL }}">{{- with .Site.Params.logo -}}<img class="logo" src="{{ .Site.BaseURL }}{{ . }}" alt="Logo"/ >{{- end -}}{{- .Site.Params.name -}}</a>
+				<a href="{{ .Site.BaseURL }}">{{- .Site.Params.name -}}</a>
 			</h1>
 			{{- with .Site.Params.description -}}<span class="blurb">{{- . | markdownify -}}</span>{{- end -}}
 		</div>
