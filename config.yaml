@@ -18,7 +18,7 @@ taxonomies:
 params:
     logo 		       : ""
     name 		       : "LightJason"
-    description        : "Concurrency BDI multi-agent system"
+    description        : "Concurrent BDI multi-agent system"
     keywords           : "AI, BDI, Agent, Multiagentsystem, Concurrency, Java"
     contact            : "info [at] lightjason.org"
 

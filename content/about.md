@@ -32,4 +32,3 @@ Our goal for this system is to create a real usable and good supported framework
 > ![by](https://mirrors.creativecommons.org/presskit/icons/by.svg#floatcentering)
 > ![sa](https://mirrors.creativecommons.org/presskit/icons/sa.svg#floatcentering)
 
-__We hope for some assistance and feedback. Feel free to ask...__

@@ -8,14 +8,14 @@ body {
 }
 
 div.document {
-    width: 75%;
+    width: 85%;
     margin: 30px auto 0 auto;
 }
 
 div.sphinxsidebar {
     float: left;
-    width: 230px;
-    margin-left: -100%;
+    width: 260px;
+    margin-left: -102%;
     font-size: 90%;
 }
 
@@ -32,10 +32,6 @@ div.bodywrapper {
     margin: 0 0 0 220px;
 }
 
-div.sphinxsidebar {
-    width: 220px;
-}
-
 div.clearer {
     clear: both;
 }
@@ -50,7 +46,7 @@ div.body {
 }
 
 div.footer {
-    width: 75%;
+    width: 85%;
     margin: 20px auto 30px auto;
     font-size: 14px;
     color: #888;
