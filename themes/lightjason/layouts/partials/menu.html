@@ -13,7 +13,7 @@
 			<li>
 				<a class="reference internal" href="{{ .url }}">{{- .name -}}</a>
 				{{- with .sublink }}
-				(<a href="{{- .url -}}">{{- .name -}}</a>)
+				<span class="sublink">(<a href="{{- .url -}}">{{- .name -}}</a>)</span>
 				{{- end -}}
 			</li>
 			{{- end -}}

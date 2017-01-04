@@ -265,16 +265,37 @@
         content: counter(section) "." counter(subsection) "." counter(subsubsection) ". ";
     }
 
-
+ /* 
+ http://www.olivergast.de/blog/2015/05/22/css-ein-horizontales-dropdown-menue-responsive-gestalten/
+ https://anythinggraphic.net/responsive-mobile-navigation-menu/
+ */
 
 @media only screen and (max-width: 1000px) {
 
-    div.clearer,
-    div.sidebar,
-    div.sidebarwrapper,
-    div.footer, #toccontainer, .category_control {
-            display: none;
+    code {
+        font-size: 75%;
     }
+
+    .blurb, .sublink, div.clearer,
+    div.footer, #toccontainer {
+        display: none;
+    }
+
+    .category_control {
+        margin-top: -3em;
+    }
+
+    div.sidebar { 
+        width: 100%;
+        position: relative;
+        height: 70px;
+        overflow: hidden;
+    }
+
+    div.logo {
+        font-size: 65%;
+    }
+
 
     div.document {
         width: 100%;
@@ -283,6 +304,8 @@
 
     div.bodywrapper {
         margin: 0;
+        position: relative;
+        top: 70px;
     }
 
 }
