@@ -21,6 +21,12 @@ params:
     keywords           : "AI, BDI, Agent, Multiagentsystem, Concurrency, Java"
     contact            : "info [at] lightjason.org"
 
+    cache:
+        value          : 864000
+        list           : 86400
+        taxonomies:
+            news       : 86400           
+
     footer:
         links:
             -
