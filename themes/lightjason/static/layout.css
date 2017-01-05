@@ -264,11 +264,6 @@
         content: counter(section) "." counter(subsection) "." counter(subsubsection) ". ";
     }
 
- /* 
- http://www.olivergast.de/blog/2015/05/22/css-ein-horizontales-dropdown-menue-responsive-gestalten/
- https://anythinggraphic.net/responsive-mobile-navigation-menu/
- */
-
 @media only screen and (max-width: 1000px) {
 
     code {

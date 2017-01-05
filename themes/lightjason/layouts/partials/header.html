@@ -37,6 +37,8 @@
 	<link href="{{- .Site.BaseURL -}}images/favicon.png" type="image/png" rel="shortcut icon" />
 	<link href="{{- .Site.BaseURL -}}news/index.xml" type="application/rss+xml" rel="alternate" title="{{- .Site.Params.name -}}" />
 	<title>{{- if not .IsHome -}}{{- .Title -}} &mdash;{{- end -}} {{- .Site.Params.name -}}</title>
+
+	{{- partial "microdata" . -}}
 </head>
 
 <body>
