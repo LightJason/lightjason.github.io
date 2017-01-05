@@ -297,8 +297,8 @@
     div.body h6 { font-size: 100%; }
 
     #nav {
-        position: fixed;
-        top: 0.4em;
+        position: absolute;
+        top: 0.5em;
         right: 1em;
         z-index: 2;
         display: inline;
