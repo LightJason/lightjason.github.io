@@ -21,5 +21,18 @@ jQuery(function() {
         });
 
     });    
+
+    jQuery("#nav").click(function() {
+        if (!jQuery(".sidebar").data("active"))
+        {
+            jQuery(".sidebar").css("width", "250px");
+            jQuery(".sidebar").css("margin-left", "0");
+            jQuery(".sidebar").data("active", true);
+        } else {
+            jQuery(".sidebar").css("width", "0");
+            jQuery(".sidebar").css("margin-left", "0");  
+            jQuery(".sidebar").data("active", false);
+        }
+    });
 });
     

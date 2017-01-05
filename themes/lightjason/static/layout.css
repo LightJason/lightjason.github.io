@@ -116,11 +116,6 @@
         margin: 0 0 0 220px;
     }
 
-    div.clearer {
-        clear: both;
-    }
-
-
 
     div.body {
         padding: 0 30px 0 30px;
@@ -200,6 +195,10 @@
         padding: 0.75em;
     }
 
+    #nav {
+        display: none;
+    }
+
     .info {
         font-size: 90%;    
     }
@@ -276,45 +275,76 @@
         font-size: 75%;
     }
 
-    .blurb, .sublink, div.clearer,
+    .blurb,
     div.footer, #toccontainer {
         display: none;
     }
 
     .category_control {
-        margin-top: -3em;
+        margin-top: -1.5em;
     }
-
-    div.sidebar { 
-        width: 100%;
-        position: relative;
-        height: 70px;
-        overflow: hidden;
-    }
-
-    div.logo {
-        font-size: 65%;
-    }
-
 
     div.document {
         width: 100%;
         margin: 0 auto 0 auto;
     }
 
-    div.bodywrapper {
-        margin: 0;
-        position: relative;
-        top: 70px;
+    div.body h1 { margin-top: 0; padding-top: 0.5em; font-size: 160%; }
+    div.body h2 { font-size: 140%; }
+    div.body h3 { font-size: 130%; }
+    div.body h4 { font-size: 110%; }
+    div.body h5 { font-size: 100%; }
+    div.body h6 { font-size: 100%; }
+
+    #nav {
+        position: fixed;
+        top: 0.4em;
+        right: 1em;
+        z-index: 2;
+        display: inline;
+        font-size: 26px;
     }
 
+    div.sidebar { 
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #333;
+        overflow-x: hidden;
+        padding-top: 15px;
+        transition: 0.5s; 
+        font-size: 100%;
+    }
+
+    div.sidebar ul {
+        padding-top: 1.5em;
+    }
+
+    div.sidebar li {
+        padding-top: 0.75em;
+        padding-bottom: 0.75em;
+    }
+
+    div.sidebar a {
+        color: #fff;
+    }
+
+    div.bodywrapper {
+        margin: 0;
+    }
+
+    .sublink {
+        color: #fff;
+    }
 }
 
 
 @media print {
 
-    div.clearer,
-    div.sidebar,
+    div.sidebar, div.clear,
     div.sidebarwrapper,
     div.footer, #toccontainer, .category_control {
         display: none;
