@@ -11,6 +11,7 @@
 		{{- range $i, $l := .Site.Params.person -}}
 		{{- if gt $i 0 -}},{{- end -}}
 		{
+			"@type": "Person",
 			"email" : {{- .email -}},
 			"name" : {{- delimit (slice .name.given .name.family) " " -}},
 			"givenName" : {{- .name.given -}},
