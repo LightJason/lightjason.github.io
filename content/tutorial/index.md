@@ -10,4 +10,4 @@ Having [basic knowledge](/knowledgebase) about the [belief–desire–intention 
 1. [AgentSpeak scenario in 15 minutes](tutorial-agentspeak-in-fifteen-minutes) a minimal example to build an agent scenario in 15 minutes from scratch with the current developer source codes
 2. [Efficient Beliefbase](tutorial-efficient-beliefbase) is a tutorial for creating efficient beliefbase structures
 3. [Environment](tutorial-environment) is a tutorial to create an environment, which is not nessessary on LightJason 
-4. [Communication](tutorial-communication) is a tutorial to build communication, because LightJason does not support a build-in communication.
+4. [Communication](tutorial-communication) is a tutorial on how to realise communication, because LightJason does not provide built-in communication mechanisms.
