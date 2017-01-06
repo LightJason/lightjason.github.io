@@ -115,7 +115,7 @@ In most cases you have got a _bidirectional connection_ between agent and enviro
 On the system design an agent can deal with multiple environments, in a short view we can definied it with:
 
 > Each environment will be referenced by an unique name, which is used for the literal functor.
-> LightJason [unifcation](/knowledgebase/basic-logicalprogramming/#unifaction) and [variables](/knowledgebase/logicalprogramming/#variables) allows to store an environment object, so the environment object
+> LightJason [unifcation](/knowledgebase/logicalprogramming/#unifaction) and [variables](/knowledgebase/logicalprogramming/#variables) allows to store an environment object, so the environment object
 > can be passed to the action. The agent gets also an beliefbase to get knowledge
 > about the current environment references, which can be changed at any time e.g. by [communication](/tutorials/communication) or by the underlying software system.
 
