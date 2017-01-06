@@ -426,9 +426,11 @@ In general we support two kind of actions:
 * Actions which are standalone classes e.g. for complex calculations.
 * Actions which are methods inside an agent class can be used to build action, which modify the agent Java object or depended Java objects.
 
-### Standalone action
+### Standalone Actions
 
-Use the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d0/dfe/interfaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1IAction__coll__graph.svg" "IAction" >}} interface or the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/dd/d3e/classorg_1_1lightjason_1_1agentspeak_1_1action_1_1IBaseAction__coll__graph.svg" "IBaseAction" >}} to create your actions. 
+Use the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d0/dfe/interfaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1IAction__coll__graph.svg" "IAction" >}} interface or the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/dd/d3e/classorg_1_1lightjason_1_1agentspeak_1_1action_1_1IBaseAction__coll__graph.svg" "IBaseAction" >}} to create your actions.
+
+Create a ```MyAction``` class in ```src/main/java/myagentproject/```, which converts an input string into lower-case, as follows: 
 
 ```java
 package myagentproject;
@@ -448,69 +450,143 @@ import java.text.MessageFormat;
 
 public final class MyAction extends IBaseAction
 {
-        @Override
-        public final IPath name()
-        {
-            return CPath.from( "my/cool-action" );
-        }
+    @Override
+    public final IPath name()
+    {
+        return CPath.from( "my/cool-action" );
+    }
 
-        @Override
-        public final int minimalArgumentNumber()
-        {
-            return 1;
-        }
+    @Override
+    public final int minimalArgumentNumber()
+    {
+        return 1;
+    }
 
-        @Override
-        public final IFuzzyValue<Boolean> execute( final IContext p_context, final boolean p_parallel, final List<ITerm> p_argument, final List<ITerm> p_return,
-                                                   final List<ITerm> p_annotation )
-        {
-            // convert term-value to the Java-type (here String) and create a lower-case string
-            // you don't think about the term definition, LightJason does this for you, but
-            // it can be create a casting exception if the type is incorrect
-            final String l_argument = p_argument.get(0).<String>raw().toLowerCase(Locale.ROOT);
+    @Override
+    public final IFuzzyValue<Boolean> execute( final IContext p_context, final boolean p_parallel, final List<ITerm> p_argument, final List<ITerm> p_return,
+                                               final List<ITerm> p_annotation )
+    {
+        // convert term-value to the Java-type (here String) and create a lower-case string
+        // you don't think about the term definition, LightJason does this for you, but
+        // it can be create a casting exception if the type is incorrect
+        final String l_argument = p_argument.get(0).<String>raw().toLowerCase(Locale.ROOT);
 
-            // here we do some testing output stuff and the context parameter contains all information
-            // in which context the action is called e.g. the agent which calls, current variables, ...
-            System.out.println( MessageFormat.format( "standalone action is called from agent {0}", p_context.agent() ) );
+        // here we do some testing output stuff and the context parameter contains all information
+        // in which context the action is called e.g. the agent which calls, current variables, ...
+        System.out.println( MessageFormat.format(
+                "standalone action is called from agent {0} with argument \"{1}\"", p_context.agent(), l_argument
+        ) );
 
-            // the action should return a value, you can wrap each Java type into LightJason
-            p_return.add( CRawTerm.from( l_argument ) );
+        // the action should return a value, you can wrap each Java type into LightJason
+        p_return.add( CRawTerm.from( l_argument ) );
 
-            // the actions returns a fuzzy-boolean for successful or failing execution
-            // the optional second parameter is a fuzzy-value in [0,1] on default it is 1
-            return CFuzzyValue.from( true );
-        }
+        // the actions returns a fuzzy-boolean for successful or failing execution
+        // the optional second parameter is a fuzzy-value in [0,1] on default it is 1
+        return CFuzzyValue.from( true );
+    }
 }
+
 ```
 
-### Class actions
+To make the action ```my/cool-action``` available to your agents, simply add it to the agents where they get instantiated, i.e. in our case inside the ```MyAgentGenerator``` class.
+Replace the code segment
 
-You need to write a method (visibility can be ```public```, ```protected``` or ```private```) inside your agent class:
+```java
+// a set with all possible actions for the agent
+Stream.concat(
+        // we use all build-in actions of LightJason
+        CCommon.actionsFromPackage(),
+        CCommon.actionsFromAgentClass(MyAgent.class)
+        // build the set with a collector
+).collect( Collectors.toSet() ),
+```
+
+with
+
+```Java
+// a set with all possible actions for the agent
+Stream.concat(
+        // we use all build-in actions of LightJason
+        CCommon.actionsFromPackage(),
+        Stream.concat(
+                // use the actions which are defined inside the agent class
+                CCommon.actionsFromAgentClass( MyAgent.class ),
+                // add an own external action
+                Stream.of(
+                        new MyAction()
+                )
+        )
+        // build the set with a collector
+).collect( Collectors.toSet() ),
+```
+
+which adds a instance of ```MyAction``` to the built-in actions of our agents.
+
+Try your new action by modifying your ```agent.asl```
+
+<pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
++!special-goal(X) <-
+    generic/print("Special goal with value", X, "triggered in cycle", Cycle);
+    R = my/cool-action("Lorem Ipsum.");
+    generic/print("The return of my cool action is", R)
+    .
+</code></pre>
+
+rebuilding your JAR and running it. The relevant part of the print-out is
+
+```bash
+standalone action is called from agent myagentproject.MyAgent@38e79ae3 ( Cycle: 0 / Trigger: [+!mynextgoal[][]] / Running Plans: [main, special-goal] / Beliefbase: beliefbase (org.lightjason.agentspeak.beliefbase.view.CView@53db6f10): [] ) with argument lorem ipsum.
+The return of my cool action is   lorem ipsum.
+```
+
+### Agent Class Actions
+
+To create actions within the agent's class you need to write a method  (visibility can be ```public```, ```protected``` or ```private```) inside of it and annotate the class as ```@IAgentAction``` and the method with
 
 ```java
 package myagentproject;
 
-import org.lightjason.agentspeak.agent.IBaseAgent;
-import org.lightjason.agentspeak.configuration.IAgentConfiguration;
 import org.lightjason.agentspeak.action.binding.IAgentAction;
 import org.lightjason.agentspeak.action.binding.IAgentActionFilter;
 import org.lightjason.agentspeak.action.binding.IAgentActionName;
+import org.lightjason.agentspeak.agent.IBaseAgent;
+import org.lightjason.agentspeak.configuration.IAgentConfiguration;
+import org.lightjason.agentspeak.language.CLiteral;
+import org.lightjason.agentspeak.language.CRawTerm;
+import org.lightjason.agentspeak.language.instantiable.plan.trigger.CTrigger;
+import org.lightjason.agentspeak.language.instantiable.plan.trigger.ITrigger;
 
 import java.text.MessageFormat;
 
-// annotation to mark the class, that actions are inside
+// annotation to mark the class that actions are inside
 @IAgentAction
-public final class MyAgent extends IBaseAgent<MyAgent>
-{
+public final class MyAgent extends IBaseAgent<MyAgent> {
     // constructor of the agent
     // @param p_configuration agent configuration of the agent generator
-    public MyAgent( final IAgentConfiguration<MyAgent> p_configuration )
-    {
-        super( p_configuration );
+    public MyAgent(final IAgentConfiguration<MyAgent> p_configuration) {
+        super(p_configuration);
+    }
+
+    // overload agent-cycle
+    @Override
+    public final MyAgent call() throws Exception {
+        // create goal trigger based on a condition
+        this.trigger(
+                CTrigger.from(
+                        ITrigger.EType.ADDGOAL,
+                        CLiteral.from(
+                                "special-goal",
+                                CRawTerm.from(2342)
+                        )
+                )
+        );
+
+        // run default cycle
+        return super.call();
     }
 
     // an inner action inside the agent class,
-    // with the annotation the method is marked as action
+    // with the annotation that the method is marked as action
     // and the action-name for the ASL script is set
     // @param p_value argument of the action
     // @note LightJason supports Long and Double values, so if you declare
@@ -522,8 +598,23 @@ public final class MyAgent extends IBaseAgent<MyAgent>
     {
         System.out.println( MessageFormat.format( "inner action is called with value {0} by agent {1}", p_value, this ) );
     }
-
 }
+
 ```
 
-[^runtime]: For creating a complex and fast runtime you need to take a look at general object-orientated programming pattern. Here we only provide a short example to show you how you can work with Agentspeak(L++) agents.
+Modify the ```special-goal``` plan of your ```agent.asl``` to execute the *agent class action*:
+
+<pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
++!special-goal(X) <-
+    generic/print("Special goal with value", X, "triggered in cycle", Cycle);
+    my/very-cool-action(4711)
+    .
+</code></pre>
+
+Again, rebuild the JAR and run it. The output should now look like this:
+
+```bash
+inner action is called with value 4,711 by agent myagentproject.MyAgent@c03cf28 ( Cycle: 0 / Trigger: [+!mynextgoal[][]] / Running Plans: [main, special-goal] / Beliefbase: beliefbase (org.lightjason.agentspeak.beliefbase.view.CView@46547924): [] )
+```
+
+[^runtime]: For creating a complex and fast runtime have a look at general object-orientated programming patterns. Here we only provide a short example to show you how you can work with AgentSpeak(L++) agents.
