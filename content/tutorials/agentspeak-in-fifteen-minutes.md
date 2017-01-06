@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: AgentSpeak scenario in 15 minutes"
+title: "Tutorial: AgentSpeak Scenario in 15 Minutes"
 jsonld:
     techarticle: true
 ---
