@@ -1,5 +1,5 @@
 <script type="application/ld+json">
-{
+[{
 	"@context": "http://schema.org",
 	"@type": "WebSite",
 	"name": {{ .Site.Title -}},
@@ -12,12 +12,12 @@
 		{{- if gt $i 0 -}},{{- end -}}
 		{
 			"@type": "Person",
-			"email" : {{- .email -}},
-			"name" : {{- delimit (slice .name.given .name.family) " " -}},
-			"givenName" : {{- .name.given -}},
-			"familyName" : {{- .name.family }}
-			{{ with .name.middle -}}, "additionalName" : {{- . -}}{{- end -}}
-			{{ with .image }}, "image" : {{- . -}}{{- end }}
+			"email" : {{ .email -}},
+			"name" : {{ delimit (slice .name.given .name.family) " " -}},
+			"givenName" : {{ .name.given -}},
+			"familyName" : {{ .name.family }}
+			{{- with .name.middle -}}, "additionalName" : {{ . -}}{{- end -}}
+			{{- with .image }}, "image" : {{ . -}}{{- end }}
 			{{- if .links }}
 			, "sameAs" : [
 				{{- range $n, $k := .links -}}
@@ -30,4 +30,26 @@
 		{{ end -}}
 	]
 }
+{{- if .Params.jsonld.techarticle }}
+,{
+	"@context" : "http://schema.org",
+	"@type" : "TechArticle",
+	"about" : {{ .Title -}},
+	"proficiencyLevel" : "Beginner",
+	"wordCount" : {{ .FuzzyWordCount }}
+}
+{{- end }}
+{{- if isset .Site.Taxonomies .Section -}}
+,{
+	"@context" : "http://schema.org",
+	"@type" : "BlogPosting",
+	"about" : {{ .Title -}},
+	"articleBody" : {{ .Content | plainify | chomp -}},
+	"wordCount" : {{ .FuzzyWordCount }}
+	{{ with .Params.categories -}}, "keywords" : {{ delimit (sort .) ", " -}}{{- end }}
+}
+{{- end }}
+]
 </script>
+
+
