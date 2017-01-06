@@ -9,7 +9,8 @@ In this Section we provide basic knowledge helpful for understanding the theoret
 3. [Finite-State-Machine & Logical Programming to an Agent](basic-fsm-logical-to-agent) to understand how we combine the parts into our agent definition
 4. [Actions](basic-actions) explanation of all built-in actions
 
-## User Contribution
+
+##### User Contribution
 
 We are always happy to receive constructive feedback.
 If you think there is anything missing or wish to contribute to our documentation feel free to [contact us](/contact).
