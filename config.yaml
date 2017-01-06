@@ -87,8 +87,8 @@ params:
             url		   : "/knowledgebase/"
             weight 	   : 30
         -
-            name 	   : "Tutorial"
-            url		   : "/tutorial/"
+            name 	   : "Tutorials"
+            url		   : "/tutorials/"
             weight 	   : 40
         -
             name 	   : "About"

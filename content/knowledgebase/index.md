@@ -2,7 +2,7 @@
 title: "Knowledge Base"
 ---
 
-In this Section we provide basic knowledge helpful for understanding the theoretical concepts and [practical tutorials](/tutorial) of our framework.
+In this Section we provide basic knowledge helpful for understanding the theoretical concepts and [practical tutorials](/tutorials) of our framework.
 
 1. [Logical Programming](basic-logicalprogramming) for understanding the difference to imperative programming. Explanation of the basic concepts for using this paradigm to describe the agent behaviour
 2. [Finite-State-Machine](basic-finitestatemachine) for understanding the runtime model of the agent behaviour
