@@ -5,7 +5,7 @@ title: "About"
 This project arises during our PhD time, because our research deals with [multi-agent systems](https://en.wikipedia.org/wiki/Multi-agent_system).
 Our research projects consider _traffic_ and _crowd simulation_, but we try to simulate _complex manner of human behaviour_.
 
-> [Malte](contact)'s research depends on _complex overtaking
+> [Malte](/contact)'s research depends on _complex overtaking
 > manoeuvre_ and _norm usage_ with the on a high
 > abstraction level. The research contains a more
 > application-based structure, but it is a great and
@@ -14,7 +14,7 @@ Our research projects consider _traffic_ and _crowd simulation_, but we try to s
 
 <p/>
 
-> [Philipp](contact)'s focus of research is the _high scalability_ of such
+> [Philipp](/contact)'s focus of research is the _high scalability_ of such
 > complex simulation systems with data mining / big
 > data and software developing aspects.
 > His thesis mainly contains algorithms, data structure, software developing and formal structure.
