@@ -1,6 +1,7 @@
 ---
 title: "Basic Knowledge: Logical Programming"
 ---
+
 This tutorial gives a short introduction in [logical programming concepts](https://en.wikipedia.org/wiki/Logic_programming), which are needed to write the source code of an agent. For general understanding of logical programme it can be helpful to learn first Prolog, in detail we recommand [SWI-Prolog](http://www.swi-prolog.org/), because there a lot of application and good tutorials to understand the main mechanism of programming.
 
 {{< toc >}}
