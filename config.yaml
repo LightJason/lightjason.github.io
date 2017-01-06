@@ -27,20 +27,20 @@ params:
             name:
                 family : "Aschermann"
                 given  : "Malte"
-            image      : "http://meclab.in.tu-clausthal.de/images/people/malte_aschermann.png"    
+            image      : "http://meclab.in.tu-clausthal.de/images/people/malte_aschermann.png"
             email      : "malte@lightjason.org"
             work       : ["Modeling", "Testing", "Scenariodesign"]
         -
             name:
                 family : "Kraus"
-                given  : "Philipp" 
+                given  : "Philipp"
             image      : "http://www.gravatar.com/avatar/2de3ae533823dae934d3b45b239f797c"
             email      : "philipp@lightjson.org"
             work       : ["Architect", "Developer", "Tutorials", "Webmaster (Admin-C)"]
             links:
-                - 
+                -
                     name  : "Xing"
-                    image : "https://www.xing.com/img/buttons/9_de_btn.gif"                    
+                    image : "https://www.xing.com/img/buttons/9_de_btn.gif"
                     url   : "http://xing.to/philippkraus"
                 -
                     name  : "LinkedIn"
@@ -51,7 +51,7 @@ params:
         value          : 864000
         list           : 86400
         taxonomies:
-            news       : 86400           
+            news       : 86400
 
     footer:
         links:
@@ -70,22 +70,26 @@ params:
         -
             name 	   : "News"
             url 	   : "/news/"
-            weight 	   : 0            
+            weight 	   : 0
             sublink:
                 url    : "/news/index.xml"
                 name   : "RSS"
         -
             name 	   : "Publication"
             url		   : "/publication/"
-            weight 	   : 10            
+            weight 	   : 10
         -
             name 	   : "Framework"
             url		   : "/framework/"
             weight 	   : 20
         -
+            name 	   : "Knowledge Base"
+            url		   : "/knowledgebase/"
+            weight 	   : 30
+        -
             name 	   : "Tutorial"
             url		   : "/tutorial/"
-            weight 	   : 30
+            weight 	   : 40
         -
             name 	   : "About"
             url		   : "/about/"
