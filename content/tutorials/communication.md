@@ -1,5 +1,7 @@
 ---
 title: "Tutorial: Communication"
+jsonld:
+    techarticle: true
 ---
 
 LightJason architecture does not support in general a build-in communication, because communication and 

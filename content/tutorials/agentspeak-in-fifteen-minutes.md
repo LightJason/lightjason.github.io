@@ -1,5 +1,7 @@
 ---
 title: "Tutorial: AgentSpeak scenario in 15 minutes"
+jsonld:
+    techarticle: true
 ---
 
 This tutorial explains how to build a simple, but full working scenario in 15 minutes with the current developing source code. You can download the [source codes](/download/agentspeak-in-15min.zip)
