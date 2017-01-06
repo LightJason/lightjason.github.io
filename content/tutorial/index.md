@@ -1,7 +1,7 @@
 ---
-title: "Tutorial"
+title: "Tutorials"
 ---
-In this Section we would like to introduce our framework from a *hands-on* perspective by providing basic tutorials. It is advised that, that you already have got some experience with the [belief–desire–intention model](https://en.wikipedia.org/wiki/Belief%E2%80%93desire%E2%80%93intention_software_model) of multi-agent systems, knowledge about logical programming concepts, i.e. [Prolog](https://en.wikipedia.org/wiki/Prolog) and Object Oriented Programming (OOP) with [Java](https://docs.oracle.com/javase/tutorial/).
+In this Section we introduce our framework from a *hands-on* perspective by providing basic tutorials. It is advised that, that you already have got some experience with the [belief–desire–intention model](https://en.wikipedia.org/wiki/Belief%E2%80%93desire%E2%80%93intention_software_model) of multi-agent systems, knowledge about logical programming concepts, i.e. [Prolog](https://en.wikipedia.org/wiki/Prolog) and Object Oriented Programming (OOP) with [Java](https://docs.oracle.com/javase/tutorial/).
 
 ## Basic Knowledge
 
