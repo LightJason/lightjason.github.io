@@ -1,10 +1,32 @@
-	<script type="application/ld+json">
-	{
-		"@context": "http://schema.org",
-		"@type": "WebSite",
-		"name": "{{- .Title -}}",
-		"alternateName": "{{- .Site.Params.name -}}",
-		"url": "http://{{- .Title -}}"
-	}
-	</script>
-    
+<script type="application/ld+json">
+{
+	"@context": "http://schema.org",
+	"@type": "WebSite",
+	"name": {{ .Site.Title -}},
+	"alternateName": {{ .Site.Params.name -}},
+	"url": {{- delimit (slice "http://" .Site.Title) "" }}
+	{{ with .Site.Params.license }}, "license" : {{ . -}}{{- end }}
+	{{ with .Site.Params.keywords -}}, "genre" : {{ . -}}, "keywords" : {{ . -}}{{- end }}
+	, "author" : [
+		{{- range $i, $l := .Site.Params.person -}}
+		{{- if gt $i 0 -}},{{- end -}}
+		{
+			"email" : {{- .email -}},
+			"name" : {{- delimit (slice .name.given .name.family) " " -}},
+			"givenName" : {{- .name.given -}},
+			"familyName" : {{- .name.family }}
+			{{ with .name.middle -}}, "additionalName" : {{- . -}}{{- end -}}
+			{{ with .image }}, "image" : {{- . -}}{{- end }}
+			{{- if .links }}
+			, "sameAs" : [
+				{{- range $n, $k := .links -}}
+				{{- if gt $n 0 -}},{{- end }}
+				{{ .url }}
+				{{- end -}}
+			]
+			{{- end -}}
+		}
+		{{ end -}}
+	]
+}
+</script>

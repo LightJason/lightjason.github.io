@@ -19,7 +19,33 @@ params:
     name 		       : "LightJason"
     description        : "Concurrent BDI multi-agent system"
     keywords           : "AI, BDI, Agent, Multiagentsystem, Concurrency, Java"
-    contact            : "info [at] lightjason.org"
+    contact            : "info@lightjason.org"
+    license            : "https://creativecommons.org/licenses/by-sa/4.0/"
+
+    person:
+        -
+            name:
+                family : "Aschermann"
+                given  : "Malte"
+            image      : "http://meclab.in.tu-clausthal.de/images/people/malte_aschermann.png"    
+            email      : "malte@lightjason.org"
+            work       : ["Modeling", "Testing", "Scenariodesign"]
+        -
+            name:
+                family : "Kraus"
+                given  : "Philipp" 
+            image      : "http://www.gravatar.com/avatar/2de3ae533823dae934d3b45b239f797c"
+            email      : "philipp@lightjson.org"
+            work       : ["Architect", "Developer", "Tutorials", "Webmaster (Admin-C)"]
+            links:
+                - 
+                    name  : "Xing"
+                    image : "https://www.xing.com/img/buttons/9_de_btn.gif"                    
+                    url   : "http://xing.to/philippkraus"
+                -
+                    name  : "LinkedIn"
+                    image : "https://static.licdn.com/scds/common/u/img/webpromo/btn_liprofile_blue_80x15_de_DE.png?locale="
+                    url   : "http://www.linkedin.com/in/philipp-kraus"
 
     cache:
         value          : 864000
