@@ -34,7 +34,7 @@ There is no environment on LightJason's AgentSpeak(L++), because of system desig
     }
     ```
 
-3. modify the [agent generator](/tutorial/tutorial-agentspeak-in-fifteen-minutes/#your-agent-generator-class) and pass the environment to the agent constructor 
+2. modify the [agent generator](/tutorials/agentspeak-in-fifteen-minutes/#your-agent-generator-class) and pass the environment to the agent constructor 
 
     ```java
     public final class MyAgentGenerator extends IBaseAgentGenerator<MyAgent>
@@ -69,7 +69,7 @@ There is no environment on LightJason's AgentSpeak(L++), because of system desig
     }    
     ```
 
-2. modify the [agent class constructor](/tutorial/tutorial-agentspeak-in-fifteen-minutes/#a-id-agentclass-a-your-agent-class), so that can be put an environment inside and create [class action](/tutorial/tutorial-agentspeak-in-fifteen-minutes/#class-actions) to pass the data to / from the environment, on errors throw an exception and the agent plan will fail
+3. modify the [agent class constructor](/tutorials/agentspeak-in-fifteen-minutes/#a-id-agentclass-a-your-agent-class), so that can be put an environment inside and create [class action](/tutorials/agentspeak-in-fifteen-minutes/#class-actions) to pass the data to / from the environment, on errors throw an exception and the agent plan will fail
 
     ```java    
     @IAgentAction
@@ -108,14 +108,14 @@ There is no environment on LightJason's AgentSpeak(L++), because of system desig
 
 ## Complex environment
 
-In most cases you have got a _bidirectional connection_ between agent and environment, so the agent should perceive the environment (reads data from the environemnt) and should also modify the environment (by executing actions). So we combine the [efficient beliefbase tutorial](/tutorial/tutorial-efficient-beliefbase) with the [simple environment code](#create-simple-environment).
+In most cases you have got a _bidirectional connection_ between agent and environment, so the agent should perceive the environment (reads data from the environemnt) and should also modify the environment (by executing actions). So we combine the [efficient beliefbase tutorial](/tutorials/efficient-beliefbase) with the [simple environment code](#create-simple-environment).
 
 ## Multiple environments
 
 On the system design an agent can deal with multiple environments, in a short view we can definied it with:
 
 > Each environment will be referenced by an unique name, which is used for the literal functor.
-> LightJason [unifcation](/tutorial/basic-logicalprogramming/#unifaction) and [variables](/tutorial/basic-logicalprogramming/#variables) allows to store an environment object, so the environment object
+> LightJason [unifcation](/knowledgebase/basic-logicalprogramming/#unifaction) and [variables](/knowledgebase/logicalprogramming/#variables) allows to store an environment object, so the environment object
 > can be passed to the action. The agent gets also an beliefbase to get knowledge
-> about the current environment references, which can be changed at any time e.g. by [communication](/tutorial/tutorial-communication) or by the underlying software system.
+> about the current environment references, which can be changed at any time e.g. by [communication](/tutorials/communication) or by the underlying software system.
 
