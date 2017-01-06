@@ -1,8 +1,9 @@
 ---
 title: "Tutorials"
 ---
-In this Section we introduce our framework from a *hands-on* perspective by providing basic tutorials for understanding the practical use of LightJason/AgentSpeak(L++).
-It is advised that, that you already have got some experience with the [belief–desire–intention model](https://en.wikipedia.org/wiki/Belief%E2%80%93desire%E2%80%93intention_software_model) of multi-agent systems, knowledge about logical programming concepts, i.e. [Prolog](https://en.wikipedia.org/wiki/Prolog) and Object Oriented Programming (OOP) with [Java](https://docs.oracle.com/javase/tutorial/).
+In this Section we introduce LightJason/AgentSpeak(L++) from a *hands-on* perspective by providing tutorials for understanding the practical applications of our framework.
+
+Having basic knowledge about the [belief–desire–intention model](https://en.wikipedia.org/wiki/Belief%E2%80%93desire%E2%80%93intention_software_model) of multi-agent systems and understanding of logical programming concepts, i.e. [Prolog](https://en.wikipedia.org/wiki/Prolog), as well as Object Oriented Programming (OOP) with [Java](https://docs.oracle.com/javase/tutorial/) is helpful to follow our tutorials.
 
 ## Basic Knowledge
 
