@@ -1,7 +1,6 @@
 ---
 title: "Basic Knowledge: Finite-State-Machine"
-jsonld:
-    techarticle: true
+jsonld: ["techarticle"]
 ---
 A [Finite-State-Machine](https://en.wikipedia.org/wiki/Finite-state_machine) is a system with explicit defined states and transitions between the states with the following syntax:
 

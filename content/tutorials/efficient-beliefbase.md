@@ -1,7 +1,6 @@
 ---
 title: "Tutorial: Efficient Beliefbase"
-jsonld:
-    techarticle: true
+jsonld: ["techarticle"]
 ---
 
 In contrast to Prolog and original Jason, the beliefbase of LightJason is more than a list.
