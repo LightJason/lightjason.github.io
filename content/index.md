@@ -22,5 +22,10 @@ One of our main desire is, that we publish a full useable framework which can be
 
 We are always happy to receive constructive feedback.
 If you think there is anything missing or wish to contribute to our documentation feel free to [contact us](/contact).
-You can send us [pull requests](https://help.github.com/articles/about-pull-requests/) with your corrections and input (preferably), create an [issue](https://github.com/LightJason/AgentSpeak/issues) or write us an email.
+
+You can
+
+* send us [pull requests](https://help.github.com/articles/about-pull-requests/) for the [documentation repository](https://github.com/LightJason/lightjason.github.io) with your corrections and input (preferably)
+* create an [issue](https://github.com/LightJason/AgentSpeak/issues) or 
+* write us an email.
 
