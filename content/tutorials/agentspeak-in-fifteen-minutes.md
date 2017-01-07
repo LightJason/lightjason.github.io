@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: AgentSpeak scenario in 15 minutes"
+title: "Tutorial: AgentSpeak Scenario in 15 Minutes"
 jsonld: ["techarticle"]
 ---
 
@@ -102,7 +102,7 @@ __Note:__ Don't hesitate to ask questions via email or on the [issue tracker](ht
     </build>
     ```
     
-5. Test your project by running ``mvn package`` in the directory  where your ``pom.xml`` is located (here ```myagentapp```). It should print ```BUILD SUCCESS```. The resulting, runnable JAR is located at  ```target/myagentapp-1.0-SNAPSHOT.jar```.
+5. Test-build your project by running ``mvn package`` in the directory  where your ``pom.xml`` is located (here ```myagentapp```). It should print ```BUILD SUCCESS```. The resulting, runnable JAR is located at  ```target/myagentapp-1.0-SNAPSHOT.jar```.
 
 6. Import your Maven project into your favourite IDE.
 
