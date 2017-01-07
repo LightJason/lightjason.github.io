@@ -53,8 +53,8 @@
 	"@context" : "http://schema.org",
 	"@type" : "DigitalDocument",
 	"about" : {{ .Title -}},
-	"fileFormat" : {{ partial "domainlink" (dict "content" . "path" .Params.relmedia) -}},
-	"url" : {{ partial "domainlink" (dict "content" . "path" .Params.relmedia) -}},
+	"fileFormat" : {{ partialCached "domainlink" (dict "content" . "path" .Params.relmedia) -}},
+	"url" : {{ partialCached "domainlink" (dict "content" . "path" .Params.relmedia) -}},
 	"license" : {{ .Site.Params.license -}}
 }
 {{- end -}}
