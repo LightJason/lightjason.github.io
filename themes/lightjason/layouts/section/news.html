@@ -4,8 +4,8 @@
 	<ul>
     {{- range .Data.Pages.ByDate.Reverse -}} 
 		    <li class="spread">
-				{{- if (isset .Params "directlink") -}}
-				<a href="{{ .Params.directlink }}">{{- .Title -}}</a>
+				{{- if (isset .Params "relmedia") -}}
+				<a href="{{ .Params.relmedia }}">{{- .Title -}}</a>
 				{{- else -}}
 				<a href="{{ .Permalink }}">{{- .Title -}}</a>
 				{{- end -}}

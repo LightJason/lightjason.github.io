@@ -1,7 +1,6 @@
 ---
 title: "Tutorial: Environment"
-jsonld:
-    techarticle: true
+jsonld: ["techarticle"]
 ---
 
 By default, there is no environment in LightJason, because of our system requirements and design; but you can easily write your own. __Keep in mind that all calls of the environment are done in parallel, so many agents might access the environment at the same time with different actions.__ Therefore you must create a thread-safe data structure for your environment. If the environment throws an exception, the action on the agent-side will fail.
