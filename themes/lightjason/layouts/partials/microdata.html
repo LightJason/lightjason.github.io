@@ -4,7 +4,7 @@
 	"@type": "WebSite",
 	"name": {{ .Site.Title -}},
 	"alternateName": {{ .Site.Params.name -}},
-	"url": {{- delimit (slice "http://" .Site.Title) "" }}
+	"url": {{- partial "domainlink" (dict "content" .) }}
 	{{ with .Site.Params.license }}, "license" : {{ . -}}{{- end }}
 	{{ with .Site.Params.keywords -}}, "genre" : {{ . -}}, "keywords" : {{ . -}}{{- end }}
 	, "author" : [
@@ -53,8 +53,8 @@
 	"@context" : "http://schema.org",
 	"@type" : "DigitalDocument",
 	"about" : {{ .Title -}},
-	"fileFormat" : {{ delimit (slice "http://" .Site.Title .Params.relmedia) "" -}},
-	"url" : {{ delimit (slice "http://" .Site.Title .Params.relmedia) "" -}},
+	"fileFormat" : {{ partial "domainlink" (dict "content" . "path" .Params.relmedia) -}},
+	"url" : {{ partial "domainlink" (dict "content" . "path" .Params.relmedia) -}},
 	"license" : {{ .Site.Params.license -}}
 }
 {{- end -}}
