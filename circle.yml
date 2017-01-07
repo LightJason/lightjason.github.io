@@ -39,7 +39,7 @@ test:
         - rm -Rf *
         - mv -f /tmp/public/* .
         - echo -e 'general:\n    branches:\n        ignore:\n            - master\n' > circle.yml
-        - echo -e '*.*\n!.gitignore\n!circle.yml\n!*.html\n!*.xml\n!*.css\n!*.js\n!*.json\n!*.bib\n!*.zip\n!*.png\n!*.gif\n!*.pdf\n!*.svg\n!*.txt\n' > .gitignore
+        - echo -e '*.*\n!.gitignore\n!circle.yml\n!*.html\n!*.xml\n!*.css\n!*.js\n!*.cache\n!*.json\n!*.bib\n!*.zip\n!*.png\n!*.gif\n!*.pdf\n!*.svg\n!*.txt\n' > .gitignore
         - echo '# LightJason' > readme.md
         - git add --all .
         - git commit -m "current website"

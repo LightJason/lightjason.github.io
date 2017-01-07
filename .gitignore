@@ -1,6 +1,7 @@
 *.*
 !.gitignore
 !.hidden
+!*.cache
 !*.toml
 !*.yml
 !*.yaml
