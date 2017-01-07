@@ -27,5 +27,5 @@ You can
 
 * send us [pull requests](https://help.github.com/articles/about-pull-requests/) for the [documentation repository](https://github.com/LightJason/lightjason.github.io) with your corrections and input (preferably)
 * create an [issue](https://github.com/LightJason/AgentSpeak/issues) or 
-* write us an email.
+* write us an [email](/contact).
 
