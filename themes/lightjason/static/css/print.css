@@ -1,0 +1,14 @@
+div.sidebar, div.clear,
+div.sidebarwrapper,
+div.footer, #toccontainer, .category_control {
+    display: none;
+}
+
+div.document {
+    width: 100%;
+    margin: 0 auto 0 auto;
+}
+
+div.bodywrapper {
+    margin: 0;
+}
