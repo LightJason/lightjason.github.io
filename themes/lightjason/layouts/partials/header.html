@@ -6,13 +6,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=0.9" />
 	{{ with .Site.Params.description -}}<meta name="description" content="{{- . -}}">{{- end }}
 	{{ with .Site.Params.keywords -}}<meta name="keywords" content="{{- . -}}">{{- end }}
-	<meta name="msvalidate.01" content="2EB13C5538E9973D8DFC39C6A455DEFE" />
+	{{ with .Site.Params.bingverify -}}<meta name="msvalidate.01" content="{{- . -}}" />{{- end }}
 
 	{{- if ne (printf "%v" .Site.BaseURL) "http://localhost:1313/" -}}
 	{{- $tax := .Type | singularize | lower -}}
 	<meta http-equiv="Cache-Control" content="max-age={{- if isset .Params "cache" -}}{{- .Params.cache -}}{{- else -}}{{- if (isset .Site.Params.cache.taxonomies $tax) -}}{{- index .Site.Params.cache.taxonomies $tax -}}{{- else -}}{{- if and (and (eq .Section "") (eq .Kind "section")) (eq .Type "page") -}}{{- .Site.Params.cache.list -}}{{- else -}}{{- .Site.Params.cache.value -}}{{- end -}}{{- end -}}{{- end -}}"/>
 	<meta http-equiv="expires" content="{{- if isset .Params "cache" -}}{{- .Params.cache -}}{{- else -}}{{- if (isset .Site.Params.cache.taxonomies $tax) -}}{{- index .Site.Params.cache.taxonomies $tax -}}{{- else -}}{{- if and (and (eq .Section "") (eq .Kind "section")) (eq .Type "page") -}}{{- .Site.Params.cache.list -}}{{- else -}}{{- .Site.Params.cache.value -}}{{- end -}}{{- end -}}{{- end -}}"/>
-	{{- end -}}
+	{{- end }}
 
 	<link href="https://fonts.googleapis.com/css?family=Pridi:200,300,400,500,600,700" type="text/css" rel="stylesheet" media="all">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" type="text/javascript"></script>

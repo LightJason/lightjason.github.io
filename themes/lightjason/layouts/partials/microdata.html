@@ -87,10 +87,15 @@
 	"datePublished" : {{ if .Date.IsZero -}}{{- .Site.Params.nonexistingdate -}}{{- else -}}{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" -}}{{- end }},
 	"dateModified" : {{ if .Lastmod.IsZero -}}{{- .Site.Params.nonexistingdate -}}{{- else -}}{{ .Lastmod.Format "Mon, 02 Jan 2006 15:04:05 -0700" -}}{{- end }},
 	"image" : {{ if .Params.image -}}{{ delimit (slice .Site.BaseURL .Params.image) "" -}}{{- else -}}{{- delimit (slice .Site.BaseURL .Site.Params.favicon.icon) "" -}}{{- end }}, 
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": {{ delimit (slice .Site.Params.domain.protocol .Site.Params.domain.name) "" -}}
+	},
 	"publisher" : {
 			"@type": "Organization",	
 			"name" : {{ .Site.Params.name -}},
 			"email" : {{ .Site.Params.contact -}},
+			"logo" : {{ delimit (slice .Site.BaseURL .Site.Params.favicon.icon) "" -}},
 			"url" : {{ delimit (slice .Site.Params.domain.protocol .Site.Params.domain.name) "" -}}
 	},
 	"author" : {

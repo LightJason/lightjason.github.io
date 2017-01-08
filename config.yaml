@@ -22,6 +22,7 @@ params:
     contact            : "info@lightjason.org"
     license            : "https://creativecommons.org/licenses/by-sa/4.0/"
     nonexistingdate    : "2017-01-01T12:00:00+01:00"
+    bingverify         : "2EB13C5538E9973D8DFC39C6A455DEFE"
 
     favicon:
         icon           : "images/favicon.png"
