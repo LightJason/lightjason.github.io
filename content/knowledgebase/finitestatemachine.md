@@ -34,7 +34,7 @@ Most programming languages defines such regular expression in a [perl notation](
 * The second block ```[0-9]+``` defines _all elements between 0 and 9_ and the ```+```-operator sets the number of elements $\geq 1$
 * The third block ```(x|X){2,}``` defines similar to the first both letter cases and the ```{2,}``` defines the number of elements with $\geq 2$
 
-Based on this definition it is possible to define a state machine, which can check if  the string matchs the given structure. 
+Based on this definition it is possible to define a state machine, which can check if  the string matchs the given structure. On the runtime the string is read character by character and based on the state machine a transition will be found, which matchs the character.
 
  
 
