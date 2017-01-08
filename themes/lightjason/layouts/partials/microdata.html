@@ -69,7 +69,7 @@
 	"@context" : "http://schema.org",
 	"@type" : "TechArticle",
 	"headline" : {{ .Title -}},
-	"proficiencyLevel" : "Beginner",
+	"proficiencyLevel" : {{ if .Params.difficulty -}}{{- .Params.difficulty -}}{{- else -}}"Beginner"{{- end -}},
 	"wordCount" : {{ .FuzzyWordCount }},
 	"datePublished" : {{ if .Date.IsZero -}}{{- .Site.Params.nonexistingdate -}}{{- else -}}{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" -}}{{- end }},
 	"image" : {{ if .Params.image -}}{{ delimit (slice .Site.BaseURL .Params.image) "" -}}{{- else -}}{{- delimit (slice .Site.BaseURL .Site.Params.favicon.icon) "" -}}{{- end }} 
@@ -86,7 +86,7 @@
 	"wordCount" : {{ .FuzzyWordCount }},
 	"datePublished" : {{ if .Date.IsZero -}}{{- .Site.Params.nonexistingdate -}}{{- else -}}{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" -}}{{- end }},
 	"dateModified" : {{ if .Lastmod.IsZero -}}{{- .Site.Params.nonexistingdate -}}{{- else -}}{{ .Lastmod.Format "Mon, 02 Jan 2006 15:04:05 -0700" -}}{{- end }},
-	"image" : {{ if .Params.image -}}{{ delimit (slice .Site.BaseURL .Params.image) "" -}}{{- else -}}{{- delimit (slice .Site.BaseURL .Site.Params.favicon.icon) "" -}}{{- end }} 
+	"image" : {{ if .Params.image -}}{{ delimit (slice .Site.BaseURL .Params.image) "" -}}{{- else -}}{{- delimit (slice .Site.BaseURL .Site.Params.favicon.icon) "" -}}{{- end }}, 
 	"publisher" : {
 			"@type": "Organization",	
 			"name" : {{ .Site.Params.name -}},
