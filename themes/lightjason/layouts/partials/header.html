@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=0.9" />
 	{{ with .Site.Params.description -}}<meta name="description" content="{{- . -}}">{{- end }}
 	{{ with .Site.Params.keywords -}}<meta name="keywords" content="{{- . -}}">{{- end }}
+	<meta name="msvalidate.01" content="2EB13C5538E9973D8DFC39C6A455DEFE" />
 
 	{{- if ne (printf "%v" .Site.BaseURL) "http://localhost:1313/" -}}
 	{{- $tax := .Type | singularize | lower -}}
