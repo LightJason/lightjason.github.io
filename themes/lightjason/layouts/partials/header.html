@@ -25,10 +25,10 @@
 	<link href="{{- .Site.BaseURL -}}css/lightbox.min.css" type="text/css" rel="stylesheet" media="screen" />
 
 
-	<script src="{{- .Site.BaseURL -}}prism.js" type="text/javascript" async></script>
-	<script src="{{- .Site.BaseURL -}}prism-agentspeak.js" type="text/javascript" async></script>
-	<script src="{{- .Site.BaseURL -}}toc.min.js" type="text/javascript"></script>
-	<script src="{{- .Site.BaseURL -}}script.js" type="text/javascript"></script>
+	<script src="{{- .Site.BaseURL -}}js/prism.js" type="text/javascript"></script>
+	<script src="{{- .Site.BaseURL -}}js/prism-agentspeak.js" type="text/javascript"></script>
+	<script src="{{- .Site.BaseURL -}}js/toc.min.js" type="text/javascript"></script>
+	<script src="{{- .Site.BaseURL -}}js/script.js" type="text/javascript"></script>
 
 	{{ template "_internal/google_analytics.html" . }}
 	<script type="text/x-mathjax-config">
@@ -44,7 +44,7 @@
 		});
 	</script>
 
-	<link href="{{- .Site.BaseURL -}}{{- .Site.Params.favicon.icon -}}" type="{{- .Site.Params.favicon.type -}}" rel="shortcut icon" />
+	<link href="{{- .Site.BaseURL -}}{{- .Site.Params.icon.icon -}}" type="{{- .Site.Params.icon.type -}}" rel="shortcut icon" />
 	<link href="{{- .Site.BaseURL -}}news/index.xml" type="application/rss+xml" rel="alternate" title="{{- .Site.Params.name -}}" />
 	<title>{{- if not .IsHome -}}{{- .Title -}} &mdash;{{- end -}} {{- .Site.Params.name -}}</title>
 
