@@ -268,8 +268,8 @@ Add a file ```agent.asl``` in the top-level directory of your project with the f
 
 </code></pre>
 
-The agent starts in cycle 0 with the initial goal ```!main```. As the plan ```main``` matches, it gets executed, i.e. printing "Hello World" and adding ```mynextgoal``` to be triggered in the next cycle.
-In cycle 1 and preceding cycles 1\+n the agent will execute the plan ```mynextgoal```, printing "Hello World! (again)" with the current cycle number and adds the trigger for the same plan for the preceding cycle.
+The agent starts in cycle $0$ with the initial goal ```!main```. As the plan ```main``` matches, it gets executed, i.e. printing "Hello World" and adding ```mynextgoal``` to be triggered in the next cycle.
+In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynextgoal```, printing ```Hello World! (again)``` with the current cycle number and adds the trigger for the same plan for the preceding cycle.
 
 ### Run It
 
