@@ -3,7 +3,9 @@ title: "Tutorial: AgentSpeak Scenario in 15 Minutes"
 jsonld: ["techarticle"]
 ---
 
-This tutorial explains how to build a simple, but full working scenario in 15 minutes with the current developing source code. You can download the [source codes](/download/agentspeak-in-15min.zip)
+This tutorial explains how to build a simple, but full working scenario in 15 minutes with the current developing source code.
+
+You can also download the archive containing the final source code of this tutorial [here](/download/agentspeak-in-15min.zip).
 
 {{< toc >}}
 
@@ -188,7 +190,9 @@ public final class MyAgentGenerator extends IBaseAgentGenerator<MyAgent>
 
 ### Write Your Own Runtime
 
-Write your own runtime[^runtime] within the ```main``` method of the ```App``` class and let the agents run. We are using [Java streams](https://docs.oracle.com/javase/tutorial/collections/streams/) to execute the agent, but you can use also a [thread-pool](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Executors.html), because all agents implement the [Callable](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Callable.html) interface (the [Future](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Future.html) object is the agent in the state $cycle + 1$)
+In this section you will write your own runtime[^runtime] within the ```main``` method of the ```App``` class.
+The runtime is responsible for running the agents in each cycle.
+We are using [Java streams](https://docs.oracle.com/javase/tutorial/collections/streams/) to execute the agent, but you can use also a [thread-pool](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Executors.html), because all agents implement the [Callable](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Callable.html) interface (the [Future](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Future.html) object is the agent in the state $cycle + 1$)
 
 ```java
 package myagentproject;
