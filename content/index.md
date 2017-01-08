@@ -16,11 +16,11 @@ To design agents, this framework uses [AgentSpeak(L++)](http://lightjason.github
 
 We are working on the theoretical background and developing the whole system with current software development technologies.
 
-One of our main desire is, that we publish a full useable framework which can be used in _productive system_ and is understandable also for _non-computer scientists_. We trying to close the gap between modelling aspects, performance and scalability and also human-understandable clean written source codes
+One of our main desires is to publish a full useable framework which can be used in _productive system_ and is understandable also for _non-computer scientists_. We try to close the gap between modelling aspects, performance and scalability and also human-understandable clean written source codes
 
 ##### Feedback and User Contribution
 
-We are always happy to receive constructive feedback.
+We welcome any constructive feedback.
 If you think there is anything missing or wish to contribute to our documentation feel free to [contact us](/contact).
 
 You can
