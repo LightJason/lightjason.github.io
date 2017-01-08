@@ -22,16 +22,17 @@ machine:
 dependencies:
     pre:
         # see release version https://github.com/spf13/hugo/releases
-        - wget https://github.com/spf13/hugo/releases/download/v0.18/hugo_0.18-64bit.deb
-        - sudo dpkg -i hugo_0.18-64bit.deb
-        - sudo apt-get install npm
-        - npm install -g minifier
+        - wget -O hugo.deb https://github.com/spf13/hugo/releases/download/v0.18/hugo_0.18-64bit.deb
+        - sudo dpkg -i hugo.deb
+        # see release version https://github.com/yui/yuicompressor/releases
+        - wget -O yuicompressor.jar https://github.com/yui/yuicompressor/releases/download/v2.4.8/yuicompressor-2.4.8.jar
+  
 
 test:
     override:
         - hugo
-        #- find public -type f -name "*.css" -exec data/minifyfile.bash \{\} \;
-        - find public -type f -name "*.js" -exec data/minifyfile.bash \{\} \; 
+        - find public -type f -name "*.css" -exec java -jar yuicompressor.jar -o \{\} \{\} \; 
+        - find public -type f -name "*.js" -exec java -jar yuicompressor.jar -o \{\} \{\} \; 
         - mv -f public /tmp
         - git push origin :master || true
         - git brach -D master || true       
