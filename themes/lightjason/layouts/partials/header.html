@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{- .Site.Language -}}" manifest="{{- .Site.BaseURL -}}manifest.cache">
+<html lang="{{- .Site.Language -}}" {{ if ne (printf "%v" $.Site.BaseURL) "http://localhost:1313/" -}} manifest="{{- .Site.BaseURL -}}manifest.cache"{{- end -}}>
 
 <head>
 	<meta  charset="utf-8" />
@@ -7,9 +7,11 @@
 	{{ with .Site.Params.description -}}<meta name="description" content="{{- . -}}">{{- end }}
 	{{ with .Site.Params.keywords -}}<meta name="keywords" content="{{- . -}}">{{- end }}
 
+	{{- if ne (printf "%v" $.Site.BaseURL) "http://localhost:1313/" -}}
 	{{- $tax := .Type | singularize | lower -}}
 	<meta http-equiv="Cache-Control" content="max-age={{- if isset .Params "cache" -}}{{- .Params.cache -}}{{- else -}}{{- if (isset .Site.Params.cache.taxonomies $tax) -}}{{- index .Site.Params.cache.taxonomies $tax -}}{{- else -}}{{- if and (and (eq .Section "") (eq .Kind "section")) (eq .Type "page") -}}{{- .Site.Params.cache.list -}}{{- else -}}{{- .Site.Params.cache.value -}}{{- end -}}{{- end -}}{{- end -}}"/>
 	<meta http-equiv="expires" content="{{- if isset .Params "cache" -}}{{- .Params.cache -}}{{- else -}}{{- if (isset .Site.Params.cache.taxonomies $tax) -}}{{- index .Site.Params.cache.taxonomies $tax -}}{{- else -}}{{- if and (and (eq .Section "") (eq .Kind "section")) (eq .Type "page") -}}{{- .Site.Params.cache.list -}}{{- else -}}{{- .Site.Params.cache.value -}}{{- end -}}{{- end -}}{{- end -}}"/>
+	{{- end -}}
 
 	<link href="https://fonts.googleapis.com/css?family=Pridi:200,300,400,500,600,700" type="text/css" rel="stylesheet" media="all">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" type="text/javascript"></script>
