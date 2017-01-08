@@ -18,6 +18,7 @@ taxonomies:
 params:
     name 		       : "LightJason"
     description        : "Concurrent BDI multi-agent system"
+    metadescription    : "LightJason is an artificial intelligence BDI multi-agent framework for adding AI with optimization and fuzzy-logical concepts to existing software-architecture"
     keywords           : "AI, BDI, Agent, Multiagentsystem, Concurrency, Java"
     contact            : "info@lightjason.org"
     license            : "https://creativecommons.org/licenses/by-sa/4.0/"
