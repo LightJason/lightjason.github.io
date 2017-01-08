@@ -1,10 +1,8 @@
 <div class="sidebar" role="navigation" aria-label="main navigation">
 	<div class="sidebarwrapper">
 		<div class="logo">
-			<h1 class="logo logo-name">
-				<a href="{{ .Site.BaseURL }}">{{- .Site.Params.name -}}</a>
-			</h1>
-			{{- with .Site.Params.description -}}<span class="blurb">{{- . | markdownify -}}</span>{{- end -}}
+			<a href="{{ .Site.BaseURL }}">{{- .Site.Params.name -}}</a>
+			{{- with .Site.Params.description -}}<div class="subtitle">{{- . | markdownify -}}</div>{{- end -}}
 		</div>
 		
 		{{- if and (ne .Site.Params.menu nil) (gt (len .Site.Params.menu) 0) -}}
