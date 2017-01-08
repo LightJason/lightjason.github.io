@@ -1,15 +1,5 @@
 "use strict";
 
-window.addEventListener('load', function() {
-    window.applicationCache.addEventListener('updateready', function() {
-        if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
-            window.applicationCache.swapCache();
-            window.location.reload();
-        }
-  }, false);
-}, false);
-
-
 jQuery(function() {
 
     jQuery(".category_showall").click(function() {

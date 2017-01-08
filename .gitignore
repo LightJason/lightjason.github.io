@@ -1,7 +1,6 @@
 *.*
 !.gitignore
 !.hidden
-!*.cache
 !*.toml
 !*.yml
 !*.yaml
@@ -11,7 +10,6 @@
 !*.bib
 !*.css
 !*.js
-!*.bash
 !*.png
 !*.gif
 !*.svg
