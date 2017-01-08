@@ -42,6 +42,7 @@ svg {
     display: block;
     padding: 5px;
     margin: 0 auto;
+    width: 100%;
 }
 
 img[src$='#centering'] {
