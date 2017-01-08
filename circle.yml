@@ -19,6 +19,9 @@ machine:
         GIT_COMMITTER_NAME: CircleCI
         GIT_COMMITTER_EMAIL: info@lightjason.org
 
+    java:
+        version: oraclejdk8        
+
 dependencies:
     pre:
         # see release version https://github.com/spf13/hugo/releases
