@@ -25,6 +25,17 @@ State-Machine are a useful tool to describe [regular expressions](https://en.wik
 > The strings starts with an arbitrary  sequence of the letter ```a``` or ```b``` (the sequence can be empty).
 > After the initial sequence follows a positiv number which depends on any digit. 
 > The end of the sequence is a sequence of the letter ```x``` with two letters at minimum. All letters within this string can be lower- or upper-case. Some valid example sequences: ```ab1x```, ```aaaaabbb169XXX```, ```AaAabbBB972xXxXXXX```
+
+Most programming languages defines such regular expression in a [perl notation](https://en.wikipedia.org/wiki/Regular_expression#Perl) or [posix notation](https://en.wikipedia.org/wiki/Regular_expression#POSIX_basic_and_extended). We use for the example the posix notation which is defined as: 
+
+```(a|A|b|B)*  [0-9]+  (x|X){2,}```
+
+* The first block ```(a|A|b|B)*``` defines the different letters and the ```|``` defines the _or_-Operator. At the end the ```*```-operator defines $\geq 0$ elements.
+* The second block ```[0-9]+``` defines _all elements between 0 and 9_ and the ```+```-operator sets the number of elements $\geq 1$
+* The third block ```(x|X){2,}``` defines similar to the first both letter cases and the ```{2,}``` defines the number of elements with $\geq 2$
+
+Based on this definition it is possible to define a state machine, which can check if  the string matchs the given structure. 
+
  
 
 ## Petri Net
