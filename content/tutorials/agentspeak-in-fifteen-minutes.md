@@ -149,10 +149,12 @@ import java.io.InputStream;
 import java.util.stream.Collectors;
 
 
-public final class MyAgentGenerator extends IBaseAgentGenerator<MyAgent> {
+public final class MyAgentGenerator extends IBaseAgentGenerator<MyAgent>
+{
     // constructor of the generator
     // @param p_stream ASL code as any stream e.g. FileInputStream
-    public MyAgentGenerator(final InputStream p_stream) throws Exception {
+    public MyAgentGenerator( final InputStream p_stream ) throws Exception
+    {
         super(
                 // input ASL stream
                 p_stream,
@@ -161,9 +163,9 @@ public final class MyAgentGenerator extends IBaseAgentGenerator<MyAgent> {
                 Stream.concat(
                         // we use all build-in actions of LightJason
                         CCommon.actionsFromPackage(),
-                        CCommon.actionsFromAgentClass(MyAgent.class)
+                        CCommon.actionsFromAgentClass( MyAgent.class )
                         // build the set with a collector
-                ).collect(Collectors.toSet()),
+                ).collect( Collectors.toSet() ),
 
                 // aggregation function for the optimisation function, here
                 // we use an empty function
@@ -196,7 +198,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public final class App 
+public final class App
 {
     private App()
     {
@@ -210,36 +212,37 @@ public final class App
         // 3. number of iterations (if not set maximum)
         final Set<MyAgent> l_agents;
         try
-        ( 
-            final FileInputStream l_stream = new FileInputStream( p_args[0] );
-        )
+            (
+                        final FileInputStream l_stream = new FileInputStream( p_args[0] );
+            )
         {
             l_agents = new MyAgentGenerator( l_stream )
-                            .generatemultiple( Integer.parseInt(p_args[1]) )
-                            .collect( Collectors.toSet() );
+                    .generatemultiple( Integer.parseInt( p_args[1] ) )
+                    .collect( Collectors.toSet() );
         } catch ( final Exception l_exception )
         {
             l_exception.printStackTrace();
             return;
         }
-        
+
         // runtime call (with parallel execution)
         IntStream
-            .range(
-                0, 
-                p_args.length < 3 
-                ? Integer.MAX_VALUE
-                : Integer.parseInt( p_args[2] ) 
-            )
-            .forEach( j -> l_agents.parallelStream().forEach( i -> {
-                try
-                {
-                    i.call();
-                } catch ( final Exception l_exception )
-                {
-                    l_exception.printStackTrace();
-                }
-            } ) );
+                .range(
+                        0,
+                        p_args.length < 3
+                                ? Integer.MAX_VALUE
+                                : Integer.parseInt( p_args[2] )
+                )
+                .forEach( j -> l_agents.parallelStream().forEach( i -> {
+                    try
+                    {
+                        i.call();
+                    }
+                    catch ( final Exception l_exception )
+                    {
+                        l_exception.printStackTrace();
+                    }
+                } ) );
     }
 }
 
@@ -358,7 +361,7 @@ If you need a goal-trigger based on any external data, we recommend to overload 
 public final MyAgent call() throws Exception
 {
     // create goal trigger based on a condition
-    if (any condition)
+    if ( any condition )
         this.trigger(
             CTrigger.from(
                 ITrigger.EType.ADDGOAL,
@@ -385,32 +388,34 @@ public final MyAgent call() throws Exception
     import org.lightjason.agentspeak.language.instantiable.plan.trigger.CTrigger;
     import org.lightjason.agentspeak.language.instantiable.plan.trigger.ITrigger;
     
-    public final class MyAgent extends IBaseAgent<MyAgent> {
+    public final class MyAgent extends IBaseAgent<MyAgent>
+    {
         // constructor of the agent
         // @param p_configuration agent configuration of the agent generator
-        public MyAgent(final IAgentConfiguration<MyAgent> p_configuration) {
-            super(p_configuration);
+        public MyAgent( final IAgentConfiguration<MyAgent> p_configuration )
+        {
+            super( p_configuration );
         }
     
         // overload agent-cycle
         @Override
-        public final MyAgent call() throws Exception {
+        public final MyAgent call() throws Exception
+        {
             // create goal trigger based on a condition
             this.trigger(
-                    CTrigger.from(
-                            ITrigger.EType.ADDGOAL,
-                            CLiteral.from(
-                                    "special-goal",
-                                    CRawTerm.from(2342)
-                            )
+                CTrigger.from(
+                    ITrigger.EType.ADDGOAL,
+                    CLiteral.from(
+                        "special-goal",
+                        CRawTerm.from( 2342 )
                     )
+                )
             );
     
             // run default cycle
             return super.call();
         }
     }
-    
     
     ```
     
@@ -485,7 +490,7 @@ Use the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d0/dfe/inte
             // convert term-value to the Java-type (here String) and create a lower-case string
             // you don't think about the term definition, LightJason does this for you, but
             // it can be create a casting exception if the type is incorrect
-            final String l_argument = p_argument.get(0).<String>raw().toLowerCase(Locale.ROOT);
+            final String l_argument = p_argument.get( 0 ).<String>raw().toLowerCase( Locale.ROOT );
     
             // here we do some testing output stuff and the context parameter contains all information
             // in which context the action is called e.g. the agent which calls, current variables, ...
@@ -512,7 +517,7 @@ Replace the code segment
     Stream.concat(
             // we use all build-in actions of LightJason
             CCommon.actionsFromPackage(),
-            CCommon.actionsFromAgentClass(MyAgent.class)
+            CCommon.actionsFromAgentClass( MyAgent.class )
             // build the set with a collector
     ).collect( Collectors.toSet() ),
     ```
@@ -538,7 +543,7 @@ Replace the code segment
     
     which adds a instance of ```MyAction``` to the built-in actions of our agents.
     
-3. Try your new action by modifying your ```agent.asl```
+3. Execute your new action inside the ```special-goal``` plan by modifying your ```agent.asl```
 
     <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
     +!special-goal(X) <-
@@ -551,13 +556,21 @@ Replace the code segment
     rebuilding your JAR and running it. The relevant part of the print-out is
     
     ```bash
+    ...
     standalone action is called from agent myagentproject.MyAgent@38e79ae3 ( Cycle: 0 / Trigger: [+!mynextgoal[][]] / Running Plans: [main, special-goal] / Beliefbase: beliefbase (org.lightjason.agentspeak.beliefbase.view.CView@53db6f10): [] ) with argument lorem ipsum.
     The return of my cool action is   lorem ipsum.
     ```
     
 ### Agent Class Actions
 
-1. To create actions within the agent's class you need to write a method  (visibility can be ```public```, ```protected``` or ```private```) inside of it and annotate the class as ```@IAgentAction``` and the method with
+To create actions within the agent's class you need to add a method (visibility can be ```public```, ```protected``` or ```private```) inside of it and annotate the class with ```@IAgentAction``` and the method with
+
+```java
+@IAgentActionFilter
+@IAgentActionName( name = "my/very-cool-action" )
+```
+
+1. Modify your ```MyAgent``` class as follows:
 
     ```java
     package myagentproject;
@@ -576,23 +589,26 @@ Replace the code segment
     
     // annotation to mark the class that actions are inside
     @IAgentAction
-    public final class MyAgent extends IBaseAgent<MyAgent> {
+    public final class MyAgent extends IBaseAgent<MyAgent>
+    {
         // constructor of the agent
         // @param p_configuration agent configuration of the agent generator
-        public MyAgent(final IAgentConfiguration<MyAgent> p_configuration) {
-            super(p_configuration);
+        public MyAgent( final IAgentConfiguration<MyAgent> p_configuration )
+        {
+            super( p_configuration );
         }
     
         // overload agent-cycle
         @Override
-        public final MyAgent call() throws Exception {
+        public final MyAgent call() throws Exception
+        {
             // create goal trigger based on a condition
             this.trigger(
                     CTrigger.from(
                             ITrigger.EType.ADDGOAL,
                             CLiteral.from(
                                     "special-goal",
-                                    CRawTerm.from(2342)
+                                    CRawTerm.from( 2342 )
                             )
                     )
             );
@@ -618,18 +634,23 @@ Replace the code segment
     
     ```
 
-2. Modify the ```special-goal``` plan of your ```agent.asl``` to execute the *agent class action*:
+2. Modify the ```special-goal``` plan of your ```agent.asl``` to also execute the *agent class action* (line 5):
 
     <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
     +!special-goal(X) <-
         generic/print("Special goal with value", X, "triggered in cycle", Cycle);
+        R = my/cool-action("Lorem Ipsum.");
+        generic/print("The return of my cool action is", R);
         my/very-cool-action(4711)
         .
     </code></pre>
     
-    Again, rebuild the JAR and run it. The output should now look like this:
+    __Note:__ Don't forget to add the semicolon at the end of line 4.
+    
+3. Again, rebuild the JAR and run it. The output should now look like this:
     
     ```bash
+    ...
     inner action is called with value 4,711 by agent myagentproject.MyAgent@c03cf28 ( Cycle: 0 / Trigger: [+!mynextgoal[][]] / Running Plans: [main, special-goal] / Beliefbase: beliefbase (org.lightjason.agentspeak.beliefbase.view.CView@46547924): [] )
     ```
     
