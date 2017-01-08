@@ -29,6 +29,8 @@
 		{{ end -}}
 	]
 },
+
+
 {
 	"@context": "http://schema.org",
 	"@type": "WebSite",
@@ -60,6 +62,8 @@
 		{{ end -}}
 	]
 }
+
+
 {{- if in .Params.jsonld "techarticle" }}
 ,{
 	"@context" : "http://schema.org",
@@ -71,6 +75,8 @@
 	"image" : {{ if .Params.image -}}{{ delimit (slice .Site.BaseURL .Params.image) "" -}}{{- else -}}{{- delimit (slice .Site.BaseURL .Site.Params.favicon.icon) "" -}}{{- end }} 
 }
 {{- end }}
+
+
 {{- if isset .Site.Taxonomies .Section -}}
 ,{
 	"@context" : "http://schema.org",
@@ -79,9 +85,24 @@
 	"articleBody" : {{ .Content | plainify | chomp -}},
 	"wordCount" : {{ .FuzzyWordCount }},
 	"datePublished" : {{ if .Date.IsZero -}}{{- .Site.Params.nonexistingdate -}}{{- else -}}{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" -}}{{- end }},
+	"dateModified" : {{ if .Lastmod.IsZero -}}{{- .Site.Params.nonexistingdate -}}{{- else -}}{{ .Lastmod.Format "Mon, 02 Jan 2006 15:04:05 -0700" -}}{{- end }},
 	"image" : {{ if .Params.image -}}{{ delimit (slice .Site.BaseURL .Params.image) "" -}}{{- else -}}{{- delimit (slice .Site.BaseURL .Site.Params.favicon.icon) "" -}}{{- end }} 
+	"publisher" : {
+			"@type": "Organization",	
+			"name" : {{ .Site.Params.name -}},
+			"email" : {{ .Site.Params.contact -}},
+			"url" : {{ delimit (slice .Site.Params.domain.protocol .Site.Params.domain.name) "" -}}
+	},
+	"author" : {
+			"@type": "Organization",	
+			"name" : {{ .Site.Params.name -}},
+			"email" : {{ .Site.Params.contact -}},
+			"url" : {{ delimit (slice .Site.Params.domain.protocol .Site.Params.domain.name) "" -}}
+	}
 	{{ with .Params.categories -}}, "keywords" : {{ delimit (sort .) ", " -}}{{- end }}
 }
+
+
 {{- if .Params.relmedia -}}
 ,{
 	"@context" : "http://schema.org",
