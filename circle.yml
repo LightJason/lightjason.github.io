@@ -33,7 +33,7 @@ test:
         #- find public -type f -name "*.css" -exec data/minifyfile.bash \{\} \;
         - find public -type f -name "*.js" -exec data/minifyfile.bash \{\} \; 
         - mv -f public /tmp
-        - git push origin :master
+        - git push origin :master || true
         - git fetch -p        
         - git checkout --orphan master
         - rm -Rf *
