@@ -125,11 +125,16 @@ div.sidebarwrapper .logo .subtitle {
 }
 
 div.sidebarwrapper .socialmedia {
-    padding-top: 2em;
+    padding-top: 1em;
 }
 
 div.sidebarwrapper .socialmedia li a {
    border: none;
+}
+
+div.sidebarwrapper ul.socialmediaaction {
+    padding-top: 1em;
+    list-style: none;
 }
 
 .socialmediaimg
