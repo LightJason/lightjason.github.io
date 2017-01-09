@@ -1,14 +1,20 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@{{- .Site.Params.twitter -}}" />
-<meta name="twitter:title" content="{{- .Site.Params.name -}}{{- if not .IsHome }} - {{ .Title -}}{{- end -}}" />
+<meta name="twitter:title" content="{{- .Site.Title -}}{{- if not .IsHome }} - {{ .Title -}}{{- end -}}" />
 <meta name="twitter:description" content="{{- (.Render "summary") | default .Title -}}" />
-<meta name="twitter:image" content="{{- delimit (slice .Site.BaseURL .Site.Params.icon.logo) "" -}}" />
+<meta name="twitter:image" content="{{- if .Params.image -}}{{ delimit (slice .Site.BaseURL .Params.image) "" -}}{{- else -}}{{- delimit (slice .Site.BaseURL .Site.Params.icon.logo) "" -}}{{- end }}" />
+
+<meta property="og:site_name" content="{{- .Site.Title -}}" />
+<meta property="og:url" content="{{- partialCached "domainlink" (dict "content" . "path" .Params.relmedia) -}}" />
+<meta property="og:title" content="{{- .Site.Title -}}{{- if not .IsHome }} - {{ .Title -}}{{- end -}}" />
+<meta property="og:image" content="{{- if .Params.image -}}{{ delimit (slice .Site.BaseURL .Params.image) "" -}}{{- else -}}{{- delimit (slice .Site.BaseURL .Site.Params.icon.logo) "" -}}{{- end }}" />
+<meta property="og:description" content="{{- (.Render "summary") | default .Title -}}" /> 
 
 <script type="application/ld+json">
 [{
 	"@context": "http://schema.org",
 	"@type": "Organization",	
-	"name" : {{ .Site.Params.name -}},
+	"name" : {{ .Site.Title -}},
 	"email" : {{ .Site.Params.contact -}},
 	"url" : {{ delimit (slice .Site.Params.domain.protocol .Site.Params.domain.name) "" -}},
 	"logo" : {{ delimit (slice .Site.BaseURL .Site.Params.icon.logo) "" -}},
@@ -41,7 +47,7 @@
 	"@context": "http://schema.org",
 	"@type": "WebSite",
 	"name": {{ .Site.Title -}},
-	"alternateName": {{ .Site.Params.name -}},
+	"alternateName": {{ .Site.Title -}},
 	"url": {{- partial "domainlink" (dict "content" .) }}
 	{{ with .Site.Params.license }}, "license" : {{ . -}}{{- end }}
 	{{ with .Site.Params.keywords -}}, "genre" : {{ . -}}, "keywords" : {{ . -}}{{- end }}
@@ -99,14 +105,14 @@
 	},
 	"publisher" : {
 			"@type": "Organization",	
-			"name" : {{ .Site.Params.name -}},
+			"name" : {{ .Site.Title -}},
 			"email" : {{ .Site.Params.contact -}},
 			"logo" : {{ delimit (slice .Site.BaseURL .Site.Params.icon.logo) "" -}},
 			"url" : {{ delimit (slice .Site.Params.domain.protocol .Site.Params.domain.name) "" -}}
 	},
 	"author" : {
 			"@type": "Organization",	
-			"name" : {{ .Site.Params.name -}},
+			"name" : {{ .Site.Title -}},
 			"email" : {{ .Site.Params.contact -}},
 			"url" : {{ delimit (slice .Site.Params.domain.protocol .Site.Params.domain.name) "" -}}
 	}

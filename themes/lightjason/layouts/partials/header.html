@@ -46,8 +46,8 @@
 	</script>
 
 	<link href="{{- .Site.BaseURL -}}{{- .Site.Params.icon.icon -}}" type="{{- .Site.Params.icon.type -}}" rel="shortcut icon" />
-	<link href="{{- .Site.BaseURL -}}news/index.xml" type="application/rss+xml" rel="alternate" title="{{- .Site.Params.name -}}" />
-	<title>{{- if not .IsHome -}}{{- .Title -}} &mdash;{{- end -}} {{- .Site.Params.name -}}</title>
+	<link href="{{- .Site.BaseURL -}}news/index.xml" type="application/rss+xml" rel="alternate" title="{{- .Site.Title -}}" />
+	<title>{{- .Site.Title }} {{ if not .IsHome -}}&mdash; {{ .Title -}}{{- end -}}</title>
 
 	{{- partial "microdata" . -}}
 </head>
