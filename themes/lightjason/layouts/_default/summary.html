@@ -1,1 +1,1 @@
-{{- .Summary | markdownify -}} {{- if .Truncated -}}....{{- end -}}
+{{- replace (.Summary | markdownify | plainify) "Contents [Hide]" "" -}} {{- if .Truncated -}}...{{- end -}}
