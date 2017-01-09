@@ -47,5 +47,6 @@ test:
         - echo -e '*.*\n!.gitignore\n!circle.yml\n!*.html\n!*.xml\n!*.css\n!*.js\n!*.json\n!*.bib\n!*.zip\n!*.png\n!*.gif\n!*.pdf\n!*.svg\n!*.txt\n' > .gitignore
         - echo -e '# LightJason\n\nCurrent website of the [LightJason](http://lightjason.org) project' > readme.md
         - git add --all .
-        - git commit -m "webpage update: $GIT_COMMIT_MESSAGE"
+        - >
+          git commit -m "webpage update: ${GIT_COMMIT_MESSAGE}"
         - git push origin master
