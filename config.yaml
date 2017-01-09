@@ -68,15 +68,22 @@ params:
     footer:
         links:
             -
-                name   : "Project Repositories"
-                url    : "https://github.com/LightJason"
-            -
                 name   : "AgentSpeak(L++) Repository"
                 url    : "https://github.com/LightJason/AgentSpeak"
             -
                 name   : "REST-API Repository"
                 url    : "https://github.com/LightJason/REST"
 
+
+    socialmedia:
+        -
+            name       : "github"
+            url        : "https://github.com/LightJason"
+            weight     : 10
+        -
+            name	   : "twitter"
+            url		   : "http://twitter.com/LightJasonAI"
+            weight	   : 20
 
     menu:
         -

@@ -124,6 +124,20 @@ div.sidebarwrapper .logo .subtitle {
     padding-bottom: 1em;
 }
 
+div.sidebarwrapper .socialmedia {
+    padding-top: 2em;
+}
+
+div.sidebarwrapper .socialmedia li a {
+   border: none;
+}
+
+.socialmediaimg
+{
+	width: 40px;
+	height: auto;
+}
+
 div.documentwrapper {
     float: left;
     width: 100%;
@@ -182,6 +196,7 @@ div.body h2::after {
 div.body p, div.body dd, div.body li {
     line-height: 1.4em;
 }
+
 
 
 .contact {
