@@ -18,8 +18,7 @@ machine:
         GIT_AUTHOR_EMAIL: info@lightjason.org
         GIT_COMMITTER_NAME: CircleCI
         GIT_COMMITTER_EMAIL: info@lightjason.org
-        #GIT_COMMIT_MESSAGE: $(git log --format=oneline -n 1 $CIRCLE_SHA1)
-        GIT_COMMIT_MESSAGE: "test commit message"
+        GIT_COMMIT_MESSAGE: $(git log --format=oneline -n 1 $CIRCLE_SHA1)
 
     java:
         version: oraclejdk8        
@@ -46,7 +45,7 @@ test:
         - mv -f /tmp/public/* .
         - echo -e 'general:\n    branches:\n        ignore:\n            - master\n' > circle.yml
         - echo -e '*.*\n!.gitignore\n!circle.yml\n!*.html\n!*.xml\n!*.css\n!*.js\n!*.json\n!*.bib\n!*.zip\n!*.png\n!*.gif\n!*.pdf\n!*.svg\n!*.txt\n' > .gitignore
-        - echo -e '# LightJason\n\nCurrent website of the [LightJason](http://lightjason.org) project. Last update with _$GIT_COMMIT_MESSAGE_' > readme.md
+        - echo -e '# LightJason\n\nCurrent website of the [LightJason](http://lightjason.org) project' > readme.md
         - git add --all .
         - git commit -m "webpage update $GIT_COMMIT_MESSAGE"
         - git push origin master
