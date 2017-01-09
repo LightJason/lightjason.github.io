@@ -3,7 +3,7 @@
 
 baseurl		 	       : "https://lightjason.github.io/"
 metadataformat		   : "yaml"
-defaultContentLanguage : "en-EN"
+defaultContentLanguage : "en-GB"
 theme 			       : "lightjason"
 title                  : "LightJason"
 enableEmoji            : true

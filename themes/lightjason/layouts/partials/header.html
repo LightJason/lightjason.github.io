@@ -11,7 +11,6 @@
 
 	{{- if ne (printf "%v" .Site.BaseURL) "http://localhost:1313/" -}}
 	{{- $tax := .Type | singularize | lower -}}
-	<meta http-equiv="Cache-Control" content="max-age={{- if isset .Params "cache" -}}{{- .Params.cache -}}{{- else -}}{{- if (isset .Site.Params.cache.taxonomies $tax) -}}{{- index .Site.Params.cache.taxonomies $tax -}}{{- else -}}{{- if and (and (eq .Section "") (eq .Kind "section")) (eq .Type "page") -}}{{- .Site.Params.cache.list -}}{{- else -}}{{- .Site.Params.cache.value -}}{{- end -}}{{- end -}}{{- end -}}"/>
 	<meta http-equiv="expires" content="{{- if isset .Params "cache" -}}{{- .Params.cache -}}{{- else -}}{{- if (isset .Site.Params.cache.taxonomies $tax) -}}{{- index .Site.Params.cache.taxonomies $tax -}}{{- else -}}{{- if and (and (eq .Section "") (eq .Kind "section")) (eq .Type "page") -}}{{- .Site.Params.cache.list -}}{{- else -}}{{- .Site.Params.cache.value -}}{{- end -}}{{- end -}}{{- end -}}"/>
 	{{- end }}
 
