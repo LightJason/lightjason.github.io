@@ -1,7 +1,7 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@{{- .Site.Params.twitter -}}" />
 <meta name="twitter:title" content="{{- .Site.Params.name -}}{{- if not .IsHome }} - {{ .Title -}}{{- end -}}" />
-<meta name="twitter:description" content="{{- .Render "summary" -}}" />
+<meta name="twitter:description" content="{{- (.Render "summary") | default .Title -}}" />
 <meta name="twitter:image" content="{{- delimit (slice .Site.BaseURL .Site.Params.icon.logo) "" -}}" />
 
 <script type="application/ld+json">
