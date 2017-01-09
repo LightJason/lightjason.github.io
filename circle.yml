@@ -18,7 +18,7 @@ machine:
         GIT_AUTHOR_EMAIL: info@lightjason.org
         GIT_COMMITTER_NAME: CircleCI
         GIT_COMMITTER_EMAIL: info@lightjason.org
-        GIT_COMMIT_MESSAGE: $(git log -1 --pretty=%B)
+        GIT_COMMIT_MESSAGE: "$(git log -1 --pretty=format:%s)"
 
     java:
         version: oraclejdk8        
