@@ -18,7 +18,7 @@ machine:
         GIT_AUTHOR_EMAIL: info@lightjason.org
         GIT_COMMITTER_NAME: CircleCI
         GIT_COMMITTER_EMAIL: info@lightjason.org
-        GIT_COMMIT_MESSAGE: $(git log --format=oneline -n 1 $CIRCLE_SHA1)
+        GIT_COMMIT_MESSAGE: git log --format=oneline -n 1 $CIRCLE_SHA1
 
     java:
         version: oraclejdk8        
