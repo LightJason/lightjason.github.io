@@ -24,7 +24,7 @@ params:
     license            : "https://creativecommons.org/licenses/by-sa/4.0/"
     nonexistingdate    : "2017-01-01T12:00:00+01:00"
     bingverify         : "2EB13C5538E9973D8DFC39C6A455DEFE"
-    googleverify       : sVNU1mmaPgvbzlig03vdNtqHYnJNzvbdQYLCWqvtxRU"
+    googleverify       : "sVNU1mmaPgvbzlig03vdNtqHYnJNzvbdQYLCWqvtxRU"
     twitter            : "LightJasonAI"
 
     icon:
