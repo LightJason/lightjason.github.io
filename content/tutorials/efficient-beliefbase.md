@@ -137,7 +137,7 @@ On the ASL side all beliefs with the prefix ```env/``` will be matched to the on
 On the unification (```>>```) the literal will be generated and unified into the variable ```X```. After printing the value of X, it will be stored in the persistent beliefbase.
 Because of LightJason's system architecture the ```checkenvironment``` plan will be run in each cycle (in parallel to other plans), so you can control the agent's perceptions in a clean way.
 
-<pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
+<!-- htmlmin:ignore --><pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
 !checkenvironment.
 
 +!checkenvironment
@@ -151,4 +151,4 @@ Because of LightJason's system architecture the ```checkenvironment``` plan will
     generic/print( "I get knowledge", T )
 .    
 
-</code></pre>
+</code></pre><!-- htmlmin:ignore -->

@@ -258,6 +258,7 @@ public final class App
 Create a simple *Hello World* agent for testing purposes.
 Add a file ```agent.asl``` in the top-level directory of your project with the following content:
 
+<!-- htmlmin:ignore -->
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
 // initial-goal
 !main.
@@ -274,6 +275,7 @@ Add a file ```agent.asl``` in the top-level directory of your project with the f
     .
 
 </code></pre>
+<!-- htmlmin:ignore -->
 
 The agent starts in cycle $0$ with the initial goal ```!main```. As the plan ```main``` matches, it gets executed, i.e. printing "Hello World" and adding ```mynextgoal``` to be triggered in the next cycle.
 In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynextgoal```, printing ```Hello World! (again)``` with the current cycle number and adds the trigger for the same plan for the preceding cycle.
@@ -293,6 +295,7 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
     ```
 
 3. Observe the CPU load and time with the print actions (code above) and without (code below): 
+	<!-- htmlmin:ignore -->
    <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
     // initial-goal
     !main.
@@ -304,6 +307,7 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
         !mynextgoal
         .
     </code></pre>
+    <!-- htmlmin:ignore -->
 
     i.e. run
     
@@ -425,11 +429,13 @@ public final MyAgent call() throws Exception
     
     and add the following to your ```agent.asl```
     
+    <!-- htmlmin:ignore -->
     <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
     +!special-goal(X) <-
         generic/print("Special goal with value", X, "triggered in cycle", Cycle)
         .
     </code></pre>
+    <!-- htmlmin:ignore -->
     
 2. Rebuild you JAR (```mvn package```) and run it with your modified ```agent.asl```. You should see the prints of the triggered ```special-goal```:
          
@@ -549,6 +555,7 @@ Replace the code segment
     
 3. Execute your new action inside the ```special-goal``` plan by modifying your ```agent.asl```
 
+	<!-- htmlmin:ignore -->
     <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
     +!special-goal(X) <-
         generic/print("Special goal with value", X, "triggered in cycle", Cycle);
@@ -556,6 +563,7 @@ Replace the code segment
         generic/print("The return of my cool action is", R)
         .
     </code></pre>
+    <!-- htmlmin:ignore -->
     
     rebuilding your JAR and running it. The relevant part of the print-out is
     
@@ -640,6 +648,7 @@ To create actions within the agent's class you need to add a method (visibility 
 
 2. Modify the ```special-goal``` plan of your ```agent.asl``` to also execute the *agent class action* (line 5):
 
+	<!-- htmlmin:ignore -->
     <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
     +!special-goal(X) <-
         generic/print("Special goal with value", X, "triggered in cycle", Cycle);
@@ -648,6 +657,7 @@ To create actions within the agent's class you need to add a method (visibility 
         my/very-cool-action(4711)
         .
     </code></pre>
+    <!-- htmlmin:ignore -->
     
     __Note:__ Don't forget to add the semicolon at the end of line 4.
     
