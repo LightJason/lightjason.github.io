@@ -23,6 +23,8 @@ machine:
         version: oraclejdk8        
 
 dependencies:
+    override:
+        - npm install
     pre:
         # see release version https://github.com/spf13/hugo/releases
         - wget -O hugo.deb https://github.com/spf13/hugo/releases/download/v0.18/hugo_0.18-64bit.deb
@@ -36,6 +38,7 @@ test:
         - hugo
         - find public -type f -name "*.css" -exec java -jar yuicompressor.jar -o \{\} \{\} \; 
         - find public -type f -name "*.js" -exec java -jar yuicompressor.jar -o \{\} \{\} \; 
+        - find public -type f -name "*.htm*" -exec data/minifyhtml.bash \{\} \;
         - mv -f public /tmp
         - git push origin :master || true
         - git brach -D master || true       
