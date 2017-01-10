@@ -33,7 +33,6 @@ dependencies:
         - | curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
             sudo apt-get install -y nodejs
         # see release version https://www.npmjs.com/package/html-minifier-cli
-        - sudo apt-get install npm
         - npm install html-minifier -g
 
 test:
