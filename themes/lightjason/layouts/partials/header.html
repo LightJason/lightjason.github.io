@@ -9,11 +9,6 @@
 	{{ with .Site.Params.bingverify -}}<meta name="msvalidate.01" content="{{- . -}}" />{{- end }}
 	{{ with .Site.Params.googleverify -}}<meta name="google-site-verification" content="{{- . -}}" />{{- end }}
 
-	{{- if ne (printf "%v" .Site.BaseURL) "http://localhost:1313/" -}}
-	{{- $tax := .Type | singularize | lower -}}
-	<meta http-equiv="expires" content="{{- if isset .Params "cache" -}}{{- .Params.cache -}}{{- else -}}{{- if (isset .Site.Params.cache.taxonomies $tax) -}}{{- index .Site.Params.cache.taxonomies $tax -}}{{- else -}}{{- if and (and (eq .Section "") (eq .Kind "section")) (eq .Type "page") -}}{{- .Site.Params.cache.list -}}{{- else -}}{{- .Site.Params.cache.value -}}{{- end -}}{{- end -}}{{- end -}}"/>
-	{{- end }}
-
 	<link href="https://fonts.googleapis.com/css?family=Pridi:200,300,400,500,600,700" type="text/css" rel="stylesheet" media="all">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" type="text/javascript" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 	<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript" async></script>
