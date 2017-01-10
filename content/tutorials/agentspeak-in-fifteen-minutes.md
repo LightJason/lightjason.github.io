@@ -24,17 +24,21 @@ __Note:__ Don't hesitate to ask questions via email or on the [issue tracker](ht
 
 1. Download the current source codes from [AgentSpeak(L++)](https://github.com/LightJason/AgentSpeak) as Zip (```AgentSpeak-master.zip```) or via Git and change into the source directory:
     
+    <!-- htmlmin:ignore -->
     ```bash
     unzip AgentSpeak-master.zip
     cd AgentSpeak
     ```
+    <!-- htmlmin:ignore -->
     
     or
     
+    <!-- htmlmin:ignore -->
     ```bash
     git clone https://github.com/LightJason/AgentSpeak.git
     cd AgentSpeak
     ```
+    <!-- htmlmin:ignore -->
     
     
 
@@ -44,14 +48,17 @@ __Note:__ Don't hesitate to ask questions via email or on the [issue tracker](ht
 
 1. Create an empty Maven project (see [Maven in 5 minutes tutorial](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)).
     
+    <!-- htmlmin:ignore -->
     ```bash
     mvn archetype:generate -DgroupId=myagentproject -DartifactId=myagentapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
+    <!-- htmlmin:ignore -->
     
 2. Open the ```pom.xml```, navigate to the ```dependency``` section and add an AgentSpeak(L++) reference inside the ```dependency``` tags (you will also find an entry for JUnit within the section).
     
     The Result should look like this:
 
+	<!-- htmlmin:ignore -->
     ```xml
         <dependencies>
         
@@ -62,20 +69,24 @@ __Note:__ Don't hesitate to ask questions via email or on the [issue tracker](ht
             </dependency>
         ...
     ```
+    <!-- htmlmin:ignore -->
     
     Regarding the ```groupId```, ```artifactId``` and ```version```, you can find the correct values in the [pom.xml](https://github.com/LightJason/AgentSpeak/blob/master/pom.xml#L27) of AgentSpeak(L++).
     
 3. For enabling the Java 1.8 support, add the following entry before the ```dependencies``` section:
 
+	<!-- htmlmin:ignore -->
     ```xml
         <properties>
             <maven.compiler.source>1.8</maven.compiler.source>
             <maven.compiler.target>1.8</maven.compiler.target>
         </properties>
     ``` 
+    <!-- htmlmin:ignore -->
 
 4. Put the following code inside the ```project``` section, e.g. after the ```dependencies```, to include the [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/examples/executable-jar.html) which creates an executable JAR.
 
+	<!-- htmlmin:ignore -->
     ```xml
     <build>
         <plugins>
@@ -103,6 +114,7 @@ __Note:__ Don't hesitate to ask questions via email or on the [issue tracker](ht
         </plugins>
     </build>
     ```
+    <!-- htmlmin:ignore -->
     
 5. Test-build your project by running ``mvn package`` in the directory  where your ``pom.xml`` is located (here ```myagentapp```). It should print ```BUILD SUCCESS```. The resulting, runnable JAR is located at  ```target/myagentapp-1.0-SNAPSHOT.jar```.
 
@@ -115,6 +127,7 @@ Each agent, which you use, must be inherited from our base class {{< lightbox "h
 
 Create an agent class ```MyAgent.java``` in ```src/main/java/myagentproject/``` as follows:
 
+<!-- htmlmin:ignore -->
 ```java
 package myagentproject;
 
@@ -132,6 +145,7 @@ public final class MyAgent extends IBaseAgent<MyAgent>
 }
 
 ```
+<!-- htmlmin:ignore -->
 
 ### Agent Generator Class
 
@@ -139,6 +153,7 @@ Next create your own {{< lightbox "http://lightjason.github.io/AgentSpeak/source
 
 Create an agent generator class ```MyAgentGenerator.java``` in ```src/main/java/myagentproject/``` as follows:
 
+<!-- htmlmin:ignore -->
 ```java
 package myagentproject;
 
@@ -186,6 +201,7 @@ public final class MyAgentGenerator extends IBaseAgentGenerator<MyAgent>
 }
 
 ```
+<!-- htmlmin:ignore -->
 
 
 ### Write Your Own Runtime
@@ -194,6 +210,7 @@ In this section you will write your own runtime[^runtime] within the ```main``` 
 The runtime is responsible for running the agents in each cycle.
 We are using [Java streams](https://docs.oracle.com/javase/tutorial/collections/streams/) to execute the agent, but you can use also a [thread-pool](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Executors.html), because all agents implement the [Callable](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Callable.html) interface (the [Future](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Future.html) object is the agent in the state $cycle + 1$)
 
+<!-- htmlmin:ignore -->
 ```java
 package myagentproject;
 
@@ -251,6 +268,7 @@ public final class App
 }
 
 ```
+<!-- htmlmin:ignore -->
 
 
 ### Write Your Agent Script
@@ -284,17 +302,22 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
 
 1. Run Maven within the source directory to build the program:
 
+	<!-- htmlmin:ignore -->
     ```bash
     mvn package
     ```
+    <!-- htmlmin:ignore -->
      
 2. Run the program to create 500 agents based on the ```agent.asl``` and the agents will run 1000 cycles:
 
+	<!-- htmlmin:ignore -->
     ```bash
     java -jar target/myagentapp-1.0-SNAPSHOT.jar agent.asl 500 1000
     ```
+    <!-- htmlmin:ignore -->
 
 3. Observe the CPU load and time with the print actions (code above) and without (code below): 
+
 	<!-- htmlmin:ignore -->
    <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
     // initial-goal
@@ -311,31 +334,39 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
 
     i.e. run
     
+    <!-- htmlmin:ignore -->
     ```bash
     java -jar target/myagentapp-1.0-SNAPSHOT.jar agent.asl 500 1000
     ```
+    <!-- htmlmin:ignore -->
     
     and compare it with
     
+    <!-- htmlmin:ignore -->
     ```bash
     java -jar target/myagentapp-1.0-SNAPSHOT.jar agent_noprint.asl 500 1000
     ```
+    <!-- htmlmin:ignore -->
     
     On a recent dual-core 2C/4T laptop (benchmarked with the Linux/Unix tool ```time```) this yields
     
+    <!-- htmlmin:ignore -->
     ```bash
     time java -jar target/myagentapp-1.0-SNAPSHOT.jar agent.asl 500 1000
     ...
     74.76s user 6.61s system 161% cpu 50.367 total
     ```
+    <!-- htmlmin:ignore -->
     
     vs.
     
+    <!-- htmlmin:ignore -->
     ```bash
     time java -jar target/myagentapp-1.0-SNAPSHOT.jar agent_noprint.asl 500 1000
     ...
     45.54s user 1.34s system 307% cpu 15.247 total
     ```
+    <!-- htmlmin:ignore -->
     
     It is therefore noteworthy, that 
     * the load gets well distributed across the CPU-cores and
@@ -346,6 +377,7 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
 
 The agent class has got a [trigger method](http://lightjason.github.io/AgentSpeak/sources/db/d62/interfaceorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IAgent_3_01T_01extends_01IAgent_3_04_4_01_4.html#af453e6a5f02ca05958925af4a8c04c10) which runs a goal, The [CTrigger](http://lightjason.github.io/AgentSpeak/sources/d1/d5a/classorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1CTrigger.html) class uses four [trigger types](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html) ([addgoal](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html#a8f036453c557da7c573456ab30fea9cb), [deletegoal](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html#a27c788cd71ba696603248697b88c1aa7), [addbelief](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html#a3b940a57e1aef6525a6730ccdb929405), [deletebelief](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html#aedd88e304e671dc112395eeffe010645)) and a literal for execution. The third parameter is a boolean flag to run the immediately otherwise the goal will be run within the next cycle.
 
+<!-- htmlmin:ignore -->
 ```java
 agent.trigger(
     CTrigger.from(
@@ -357,12 +389,14 @@ agent.trigger(
     )
 );
 ```
+<!-- htmlmin:ignore -->
 
 
 ### Trigger on each cycle
 
 If you need a goal-trigger based on any external data, we recommend to overload the agent's ```call()``` method and put the trigger into it, e.g.
 
+<!-- htmlmin:ignore -->
 ```java
 // overload agent-cycle
 @Override
@@ -383,9 +417,11 @@ public final MyAgent call() throws Exception
     return super.call();
 }
 ```
+<!-- htmlmin:ignore -->
 
 1. To try this out modify your ```MyAgent``` class as follows
     
+    <!-- htmlmin:ignore -->
     ```java
     package myagentproject;
     
@@ -426,6 +462,7 @@ public final MyAgent call() throws Exception
     }
     
     ```
+    <!-- htmlmin:ignore -->
     
     and add the following to your ```agent.asl```
     
@@ -439,6 +476,7 @@ public final MyAgent call() throws Exception
     
 2. Rebuild you JAR (```mvn package```) and run it with your modified ```agent.asl```. You should see the prints of the triggered ```special-goal```:
          
+    <!-- htmlmin:ignore -->
     ```bash
     Hello World!
     Special goal with value   2342   triggered in cycle   0
@@ -448,6 +486,7 @@ public final MyAgent call() throws Exception
     Special goal with value   2342   triggered in cycle   2
     ...
     ```
+    <!-- htmlmin:ignore -->
 
 
 ## How can I build my own actions?
@@ -463,6 +502,7 @@ Use the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d0/dfe/inte
 
 1. Create a ```MyAction``` class in ```src/main/java/myagentproject/```, which converts an input string into lower-case, as follows: 
 
+	<!-- htmlmin:ignore -->
     ```java
     package myagentproject;
     
@@ -518,10 +558,12 @@ Use the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d0/dfe/inte
     }
     
     ```
+    <!-- htmlmin:ignore -->
 
 2. To make the action ```my/cool-action``` available to your agents, simply add it to the agents where they get instantiated, i.e. in our case inside the ```MyAgentGenerator``` class.
 Replace the code segment
 
+	<!-- htmlmin:ignore -->
     ```java
     // a set with all possible actions for the agent
     Stream.concat(
@@ -531,9 +573,11 @@ Replace the code segment
             // build the set with a collector
     ).collect( Collectors.toSet() ),
     ```
+    <!-- htmlmin:ignore -->
     
     with
     
+    <!-- htmlmin:ignore -->
     ```Java
     // a set with all possible actions for the agent
     Stream.concat(
@@ -550,6 +594,7 @@ Replace the code segment
             // build the set with a collector
     ).collect( Collectors.toSet() ),
     ```
+    <!-- htmlmin:ignore -->
     
     which adds a instance of ```MyAction``` to the built-in actions of our agents.
     
@@ -567,16 +612,20 @@ Replace the code segment
     
     rebuilding your JAR and running it. The relevant part of the print-out is
     
+    <!-- htmlmin:ignore -->
     ```bash
     ...
     standalone action is called from agent myagentproject.MyAgent@38e79ae3 ( Cycle: 0 / Trigger: [+!mynextgoal[][]] / Running Plans: [main, special-goal] / Beliefbase: beliefbase (org.lightjason.agentspeak.beliefbase.view.CView@53db6f10): [] ) with argument lorem ipsum.
     The return of my cool action is   lorem ipsum.
     ```
+    <!-- htmlmin:ignore -->
+    
     
 ### Agent Class Actions
 
 To create actions within the agent's class you need to add a method (visibility can be ```public```, ```protected``` or ```private```) inside of it and annotate the class with ```@IAgentAction``` and the method with
 
+<!-- htmlmin:ignore -->
 ```java
 @IAgentActionFilter
 @IAgentActionName( name = "my/very-cool-action" )
@@ -645,6 +694,7 @@ To create actions within the agent's class you need to add a method (visibility 
     }
     
     ```
+    <!-- htmlmin:ignore -->
 
 2. Modify the ```special-goal``` plan of your ```agent.asl``` to also execute the *agent class action* (line 5):
 
@@ -663,9 +713,11 @@ To create actions within the agent's class you need to add a method (visibility 
     
 3. Again, rebuild the JAR and run it. The output should now look like this:
     
+    <!-- htmlmin:ignore -->
     ```bash
     ...
     inner action is called with value 4,711 by agent myagentproject.MyAgent@c03cf28 ( Cycle: 0 / Trigger: [+!mynextgoal[][]] / Running Plans: [main, special-goal] / Beliefbase: beliefbase (org.lightjason.agentspeak.beliefbase.view.CView@46547924): [] )
     ```
+    <!-- htmlmin:ignore -->
     
 [^runtime]: For creating a complex and fast runtime have a look at general object-orientated programming patterns. Here we only provide a short example to show you how you can work with AgentSpeak(L++) agents.

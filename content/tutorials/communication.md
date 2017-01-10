@@ -26,6 +26,7 @@ are [JSON](https://de.wikipedia.org/wiki/JavaScript_Object_Notation), [YAML](htt
 For communication a _name resolution_ is needed, so the agents needs to get a name (here a string). This name will be used to determine the sender
 of a message
 
+<!-- htmlmin:ignore -->
 ```java
 public final class MyCommunicationAgent extends IBaseAgent<MyCommunicationAgent>
 {
@@ -50,12 +51,15 @@ public final class MyCommunicationAgent extends IBaseAgent<MyCommunicationAgent>
 
 }
 ```
+<!-- htmlmin:ignore -->
+
 
 ## Send-Action with address resolution
 
 For communication basisc a _send_ action must be created. This actions needs also an _address resolution_ for the agent names, this can be an URL access or a string name. Within this example we use a map with string for the agent name and the value for the agent object. Each generated agent must be registered at this action so that other agents can send messages. The action tries to find the agent object based on the name, builds the goal-trigger and transfer the data to the other agent. On the next cycle call of the receiving
 agent the message goal-plan will be triggered.
 
+<!-- htmlmin:ignore -->
 ```java
 public final class CSend extends IBaseAction
 {
@@ -136,6 +140,7 @@ public final class CSend extends IBaseAction
 
 }
 ```
+<!-- htmlmin:ignore -->
 
 
 ## Agent factory with name generating
@@ -146,7 +151,7 @@ be accessable within the factory to register each agent. The name definition is 
 but __keep in mind that the generate method can be called in parallel, so the counter must be thread-safe.__ Java
 supports such [atomic variables](https://docs.oracle.com/javase/tutorial/essential/concurrency/atomicvars.html).
 
-
+<!-- htmlmin:ignore -->
 ```java
 public final class MyAgentGenerator extends IBaseAgentGenerator<MyCommunicationAgent>
 {
@@ -212,6 +217,6 @@ public final class MyAgentGenerator extends IBaseAgentGenerator<MyCommunicationA
     }
 }
 ```
-
+<!-- htmlmin:ignore -->
 
 

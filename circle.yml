@@ -30,9 +30,9 @@ dependencies:
         # see release version https://github.com/yui/yuicompressor/releases
         - wget -O yuicompressor.jar https://github.com/yui/yuicompressor/releases/download/v2.4.8/yuicompressor-2.4.8.jar
         # see relese version https://github.com/nodesource/distributions
-        - curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash - apt-get install -y nodejs
+        #- curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash - apt-get install -y nodejs
         # see release version https://www.npmjs.com/package/html-minifier-cli
-        - npm install html-minifier -g
+        #- npm install html-minifier -g
 
 test:
     override:
