@@ -40,7 +40,7 @@ test:
         - hugo
         - find public -type f -name "*.css" -exec java -jar yuicompressor.jar -o \{\} \{\} \; 
         - find public -type f -name "*.js" -exec java -jar yuicompressor.jar -o \{\} \{\} \; 
-        #- find public -type f -name "*.htm*" -exec data/minifyhtml.sh \{\} \;
+        - find public -type f -name "*.htm*" -exec data/minifyhtml.sh \{\} \;
         - mv -f public /tmp
         - git push origin :master || true
         - git brach -D master || true       
