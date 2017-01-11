@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 MINIFY=$(which html-minifier)
 
