@@ -24,7 +24,6 @@ machine:
 
 dependencies:
     pre:
-        - sudo apt-get install zsh
         # see release version https://github.com/spf13/hugo/releases
         - wget -O hugo.deb https://github.com/spf13/hugo/releases/download/v0.18/hugo_0.18-64bit.deb
         - sudo dpkg -i hugo.deb
