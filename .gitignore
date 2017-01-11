@@ -6,6 +6,7 @@
 !*.yaml
 !*.html
 !*.md
+!*.sh
 !*.json
 !*.bib
 !*.css

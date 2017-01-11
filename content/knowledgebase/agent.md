@@ -30,11 +30,13 @@ We also focus on the definition of _M. Wooldrige_, stating that
 
 This basic example shows the main functionality of the structure. We define the structure of three plans without a condition and an _initial goal_. The _initial goal (```main```)_ calls two other plans ```first``` and ```second``` within the next cycle. The ```first``` plan will call itself within the following cycles (loop structure) and the ```second``` plan calls the _initial goal_ plan.  The ```first``` plan will be called once in each cycle, because the trigger ```!first``` and the plan ```+!first``` match. Note: The plans ```first``` and ```main``` or ```second``` run in parallel.
  
+<!-- htmlmin:ignore --> 
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">!main.
 +!main <- !first; !second.
 +!first <- !first.
 +!second <- !main.
 </code></pre>
+<!-- htmlmin:ignore -->
 
 The state-machine of this agent which executes empty plans is shown in the following picture.
 
@@ -56,6 +58,7 @@ On a technical point of view the action is a [method](https://en.wikipedia.org/w
 <br/>
 Based on the first illustrated finite-state-machine we will show the action structure. In short: Actions executed on the _transition_. On the first state-machine the transition contains only the _achievement goals_. An achievement goal is also an action which executes a plan.
 
+<!-- htmlmin:ignore -->
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak line-numbers">!main.
 
 +!main <-
@@ -78,6 +81,7 @@ Based on the first illustrated finite-state-machine we will show the action stru
 	generic/print("achievement-goal in second: main")
 .
 </code></pre>
+<!-- htmlmin:ignore -->
 
 
 [^iaction]: see the [IAction interface](http://lightjason.github.io/AgentSpeak/sources/dc/d53/interfaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1IAction.html) for a detailed description

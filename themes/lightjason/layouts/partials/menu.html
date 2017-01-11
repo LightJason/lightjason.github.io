@@ -1,7 +1,7 @@
 <div class="sidebar" role="navigation" aria-label="main navigation">
 	<div class="sidebarwrapper">
 		<div class="logo">
-			<a href="{{ .Site.BaseURL }}">{{- .Site.Params.name -}}</a>
+			<a href="{{ .Site.BaseURL }}">{{- .Site.Title -}}</a>
 			{{- with .Site.Params.description -}}<div class="subtitle">{{- . | markdownify -}}</div>{{- end -}}
 		</div>
 		
@@ -28,6 +28,8 @@
 
 		<ul class="socialmediaaction">
 			<li>{{- partial "tweet" -}}</li>
+			<li>{{- partial "googleplus" . -}}</li>
+			<li>{{- partial "facebook" . -}}</li>
 		</ul>
 	</div>
 </div>

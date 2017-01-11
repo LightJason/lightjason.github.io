@@ -34,13 +34,17 @@ So an literal object will be set into the storage and the views creates the tree
 
 In this example, there are two agents and both agents are referenced to the equal storage, but use different views.
 
-* Agent 1 gets access to the literal by the structure <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
-foo/value(5)
+* Agent 1 gets access to the literal by the structure 
+<!-- htmlmin:ignore -->
+<pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">foo/value(5)
 </code></pre>
+<!-- htmlmin:ignore -->
 
-* Agent 2 gets access to the literal by the structure <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
-foo2/value(5)
+* Agent 2 gets access to the literal by the structure 
+<!-- htmlmin:ignore -->
+<pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">foo2/value(5)
 </code></pre>
+<!-- htmlmin:ignore -->
  
 This structure allows the agent to store knowledge in a persistent way with generating the goals.
 But this type of beliefs consumes more memory and reduce performance during modification. On each cycle the storage can generate or delete beliefs which triggers the goals.
@@ -69,6 +73,7 @@ Java agent class with inner on-demand beliefbase class. The inner class can get 
 The environment class contains attributes to generate data as literals for each agent.
 The on-demand beliefbase is only a wrapper for the environment literals.
 
+<!-- htmlmin:ignore -->
 ```java
 public final class MyAgent extends IBaseAgent<MyAgent>
 {
@@ -130,6 +135,8 @@ public final class MyAgent extends IBaseAgent<MyAgent>
     }
 }
 ```
+<!-- htmlmin:ignore -->
+
 
 #### ASL of the agent
 
@@ -137,6 +144,7 @@ On the ASL side all beliefs with the prefix ```env/``` will be matched to the on
 On the unification (```>>```) the literal will be generated and unified into the variable ```X```. After printing the value of X, it will be stored in the persistent beliefbase.
 Because of LightJason's system architecture the ```checkenvironment``` plan will be run in each cycle (in parallel to other plans), so you can control the agent's perceptions in a clean way.
 
+<!-- htmlmin:ignore -->
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
 !checkenvironment.
 
@@ -152,3 +160,4 @@ Because of LightJason's system architecture the ```checkenvironment``` plan will
 .    
 
 </code></pre>
+<!-- htmlmin:ignore -->

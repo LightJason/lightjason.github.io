@@ -11,6 +11,7 @@ By default, there is no environment in LightJason, because of our system require
 
 1. You can create an environment class which any content, but for this tutorial we create two ```synchronized``` methods for a more efficient execution with concurrent data structures and a well-organised source code.
 
+	<!-- htmlmin:ignore -->
     ```java
     public final class Environment
     {
@@ -34,9 +35,11 @@ By default, there is no environment in LightJason, because of our system require
         }
     }
     ```
+    <!-- htmlmin:ignore -->
 
 2. Modify the [agent generator](/tutorials/agentspeak-in-fifteen-minutes/#your-agent-generator-class) and pass the environment to the agent constructor.
 
+	<!-- htmlmin:ignore -->
     ```java
     public final class MyAgentGenerator extends IBaseAgentGenerator<MyAgent>
     {
@@ -69,9 +72,11 @@ By default, there is no environment in LightJason, because of our system require
         }
     }    
     ```
+    <!-- htmlmin:ignore -->
 
 3. Modify the [agent class constructor](/tutorials/agentspeak-in-fifteen-minutes/#a-id-agentclass-a-your-agent-class), so you can put an environment inside it and create a [class action](/tutorials/agentspeak-in-fifteen-minutes/#class-actions) to pass the data to/from the environment. If errors occur, throw an exception so the agent plan will fail.
 
+	<!-- htmlmin:ignore -->
     ```java    
     @IAgentAction
     public final class MyAgent extends IBaseAgent<MyAgent>;
@@ -106,6 +111,7 @@ By default, there is no environment in LightJason, because of our system require
     
     }
     ```
+    <!-- htmlmin:ignore -->
 
 ## Complex Environment
 
