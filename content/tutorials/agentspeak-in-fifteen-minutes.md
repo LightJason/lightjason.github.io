@@ -491,9 +491,9 @@ Use the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d0/dfe/inte
         public final IFuzzyValue<Boolean> execute( final IContext p_context, final boolean p_parallel, final List<ITerm> p_argument, final List<ITerm> p_return,
                                                    final List<ITerm> p_annotation )
         {
-            // convert term-value to the Java-type (here String) and create a lower-case string
-            // you don't think about the term definition, LightJason does this for you, but
-            // it can be create a casting exception if the type is incorrect
+            // Convert term-value to a Java-type (here String) and create a lower-case string.
+            // Note: You don't have to think about the term definition, LightJason does this for you.
+            // But it will throw a casting exception if the type of the passed argument is incorrect.
             final String l_argument = p_argument.get( 0 ).<String>raw().toLowerCase( Locale.ROOT );
     
             // here we do some testing output stuff and the context parameter contains all information
@@ -502,11 +502,11 @@ Use the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d0/dfe/inte
                     "standalone action is called from agent {0} with argument \"{1}\"", p_context.agent(), l_argument
             ) );
     
-            // the action should return a value, you can wrap each Java type into LightJason
+            // the action should return a value, you can wrap any Java object into LightJasons's terms.
             p_return.add( CRawTerm.from( l_argument ) );
     
-            // the actions returns a fuzzy-boolean for successful or failing execution
-            // the optional second parameter is a fuzzy-value in [0,1] on default it is 1
+            // actions returns a fuzzy-boolean for successful or failed execution
+            // the optional second parameter is a fuzzy-value in [0,1]. default: 1
             return CFuzzyValue.from( true );
         }
     }
