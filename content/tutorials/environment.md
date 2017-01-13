@@ -125,3 +125,12 @@ Each environment can be referenced by an unique name, which is used for the lite
 LightJason's [unifcation](/knowledgebase/logicalprogramming/#unifaction) and [variables](/knowledgebase/logicalprogramming/#variables) allow to store an environment object.
 The reference to the environment object can be passed to the action. The agent also has access to the beliefbase to get knowledge about the current environment state, which can changed at any time, e.g. by [communication](/tutorials/communication) or by the underlying software system.
 
+<div>
+	<div id="content">
+   		<span>Typed.js is a <strong>jQuery</strong> plugin.</span>
+   		<p>It <em>types</em> out sentences.</p>
+   		<p>And then deletes them.</p>
+   		<p>Try it out!</p>
+   </div>
+   <span id="typed" style="white-space:pre;"></span>
+</div>

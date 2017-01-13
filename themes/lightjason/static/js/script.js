@@ -34,5 +34,16 @@ jQuery(function() {
             jQuery(".sidebar").data("active", false);
         }
     });
+
+    jQuery("#typed").typed({
+            stringsElement: jQuery("#content"),
+            typeSpeed: 30,
+            backDelay: 500,
+            loop: true
+        });
+
+    jQuery(".terminalreset").click(function(){
+        jQuery( "#" + jQuery(this).attr( "data-category" ) ).typed('reset');
+    });
 });
     
