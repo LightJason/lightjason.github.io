@@ -23,3 +23,27 @@ pandoc-citeproc --bib2json static/references.bib > data/references.json
 ### Deployment
 
 Run ```hugo``` and copy all data from the ```public``` directory to the ```master```-Branch. The deployment will run automatically on a ```git push``` to the ```developing```-Branch
+
+
+## Content ToDo's
+
+* ASL Tutorial (Syntax & Semantic Example) with some tricks
+* Agent-Tutorial (Workflow from an idea to code)
+	1. Problem description
+	2. Problem splitting into distributed and task-orientated solving
+	3. Agent-code developing
+	4. Java-code developing - creating a logic-based event-handler with -listener
+* Choice-Behaviour
+	1. fitness proprtionate selection (lineare & Gibbs-Boltzmann)
+	2. CES-function
+	4. PCA
+	4. Plan execution based on the data
+* Action Tutorial - Building action in an efficient way
+	1. Term represenatation of data
+	2. Term-to-Raw converting
+	3. Java-Object representation inside terms
+* REST-API
+	1. Java Webserver (here Jetty)
+	2. Servlet Structure
+	3. Agent-Access via REST
+	4. UI with jQuery / Angular.JS
