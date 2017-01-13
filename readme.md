@@ -28,13 +28,14 @@ Run ```hugo``` and copy all data from the ```public``` directory to the ```maste
 ## Content ToDo's
 
 * ASL Tutorial (Syntax & Semantic Example) with some tricks
+* Tutorial Agent-Configuration & -Generatoren 
 * Agent-Tutorial (Workflow from an idea to code)
 	1. Problem description
 	2. Problem splitting into distributed and task-orientated solving
 	3. Agent-code developing
 	4. Java-code developing - creating a logic-based event-handler with -listener
 * Choice-Behaviour
-	1. fitness proprtionate selection (lineare & Gibbs-Boltzmann)
+	1. Fitness proportionate selection (Linear & Gibbs-Boltzmann)
 	2. CES-function
 	4. PCA
 	4. Plan execution based on the data
@@ -45,5 +46,6 @@ Run ```hugo``` and copy all data from the ```public``` directory to the ```maste
 * REST-API
 	1. Java Webserver (here Jetty)
 	2. Servlet Structure
-	3. Agent-Access via REST
-	4. UI with jQuery / Angular.JS
+	3. Agent-Inspector 
+	4. Agent-Access via REST
+	5. UI with jQuery / Angular.JS
