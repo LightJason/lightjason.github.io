@@ -89,7 +89,7 @@
 			} else {
 				output.html( 
 					output.html() + 
-					( (settings.result.length == settings.text.length) && (!!settings.result[current.index])   ? '<p class="teletype-result">' + settings.result[current.index] + "</p>" : "" ) + 
+					current.result + 
 					'<span class="teletype-prefix">' + settings.prefix + '</span>' 
 				);
 				if ( next() ) {
@@ -132,6 +132,7 @@
 		};
 		var setCurrentString = function() {
 			current.string = settings.text[current.index].replace(/\n/g, "\\n");
+			current.result = (settings.result.length == settings.text.length) && (!!settings.result[current.index]) ? '<p class="teletype-result">' + settings.result[current.index] + "</p>" : "";
 		}
 		this.setCursor = function( cursor ) {
 			jQuery('.teletype-cursor', self).text( cursor );
