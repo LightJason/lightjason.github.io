@@ -64,7 +64,7 @@ For the following sections we assume that you are working inside the directory `
     ```
     <!-- htmlmin:ignore -->
 
-2. Change into the source code directory ```Developer/AgentSpeak``` and run ```mvn install``` to build and install AgentSpeak:
+2. Change into the AgentSpeak project directory ```Developer/AgentSpeak``` and run ```mvn install``` to build and install AgentSpeak:
 
     <!-- htmlmin:ignore -->
     ```bash
@@ -93,7 +93,7 @@ For the following sections we assume that you are working inside the directory `
     <!-- htmlmin:ignore -->
     ```
     ├── Developer/
-    │   └── AgentSpeak/ <-- AgentSpeak source code (added in previous section)
+    │   └── AgentSpeak/ <-- AgentSpeak project (added in previous section)
     │   └── myagentapp/ <-- created by Maven
     │   ├── pom.xml
     │   └── src/
@@ -363,7 +363,7 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
 
 ### Run It
 
-1. Run Maven within the source directory to build the program:
+1. Run Maven within your project directory to build the program:
 
 	<!-- htmlmin:ignore -->
     ```bash
