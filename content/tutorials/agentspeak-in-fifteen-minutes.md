@@ -53,6 +53,8 @@ For the following sections we assume that you are working inside the directory `
     ```
     <!-- htmlmin:ignore -->
     
+    __Note:__ If you chose to download the _ZIP archive_, be aware that the resulting directory will be ```AgentSpeak-master```. Either rename it to ```AgentSpeak``` or keep this in mind in the following sections.
+    
     You should now have the following directory structure:
     
     <!-- htmlmin:ignore -->
