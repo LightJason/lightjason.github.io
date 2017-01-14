@@ -95,16 +95,16 @@ For the following sections we assume that you are working inside the directory `
     ├── Developer/
     │   └── AgentSpeak/ <-- AgentSpeak project (added in previous section)
     │   └── myagentapp/ <-- created by Maven
-    │   ├── pom.xml
-    │   └── src/
-    │       ├── main/
-    │       │   └── java/
-    │       │       └── myagentproject/
-    │       │           └── App.java
-    │       └── test/
-    │           └── java/
-    │               └── myagentproject
-    |               └── AppTest.java    
+    │       ├── pom.xml
+    │       └── src/
+    │           ├── main/
+    │           │   └── java/
+    │           │       └── myagentproject/
+    │           │           └── App.java
+    │           └── test/
+    │               └── java/
+    │                   └── myagentproject
+    |                   └── AppTest.java    
     ```
     <!-- htmlmin:ignore -->
     
@@ -343,18 +343,15 @@ Add a file ```agent.asl``` in the top-level directory of your project with the f
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
 // initial-goal
 !main.
-
 // initial plan (triggered by the initial goal)
 +!main <-
     generic/print("Hello World!");
     !mynextgoal
     .
-
 +!mynextgoal <-
     generic/print("Hello World! (again)", Cycle);
     !mynextgoal
     .
-
 </code></pre>
 <!-- htmlmin:ignore -->
 
