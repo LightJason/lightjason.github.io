@@ -35,15 +35,25 @@ jQuery(function() {
         }
     });
 
-    jQuery("#typed").typed({
-            stringsElement: jQuery("#content"),
-            typeSpeed: 30,
-            backDelay: 500,
-            loop: true
+    jQuery(".terminal").each(function() {
+        jQuery(this).css("width", jQuery(this).attr( "data-width" ) );
+        jQuery(this).css("height", jQuery(this).attr( "data-height" ) );
+
+        jQuery(this).teletype({
+            text: jQuery(this).find("p.command").map(function(){ return jQuery(this).text().trim(); }),
+            prefix: "<br/>" + (jQuery(this).attr( "data-prefix" ) ? '<span class="terminalprefix">' + jQuery(this).attr( "data-prefix" ) + "</span>" : ""),
+            cursor: "\u258B",
+            typeDelay: 30,
+            backDelay: 50,
+            preserve: true,
+            loop: 1,
+            callbackNext : function(po_current, po_teletype) {
+            }
         });
+    });
 
     jQuery(".terminalreset").click(function(){
-        jQuery( "#" + jQuery(this).attr( "data-category" ) ).typed('reset');
+        jQuery( "#" + jQuery(this).attr( "data-terminal" ) ).teletype().reset();
     });
 });
     
