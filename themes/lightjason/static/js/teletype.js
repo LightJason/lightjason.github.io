@@ -10,11 +10,11 @@
 * Dual licensed under the MIT or GPL Version 2 licenses.
 *
 */
-( function ( $ ) {
-	$.fn.teletype = function( options ) {
-		var settings = $.extend( {}, $.fn.teletype.defaults, options );
+( function () {
+	jQuery.fn.teletype = function( options ) {
+		var settings = jQuery.extend( {}, jQuery.fn.teletype.defaults, options );
 		var object = this,
-			self = $( this ),
+			self = jQuery( this ),
 			output = null,
 			current = { 
 				string: '',
@@ -42,7 +42,7 @@
 		var type = function() {
 			if ( settings.prefix && current.position === 0 ) {
 				if ( current.loop === 0 && current.index === 0 ) {
-					$( '<span />' ).addClass( 'teletype-prefix' ).html( settings.prefix ).prependTo( self );
+					jQuery( '<span />' ).addClass( 'teletype-prefix' ).html( settings.prefix ).prependTo( self );
 				}
 			}
 			var letters = current.string.split( '' ),
@@ -54,7 +54,7 @@
 					end = current.string.length;
 				}
 				var value = current.string.substr( start, end );
-				if ( $.isNumeric( value ) ) {
+				if ( jQuery.isNumeric( value ) ) {
 					current.string = current.string.replace( letter + value, '' );
 					if ( letter == '^' ) {
 						window.setTimeout( function() {
@@ -134,10 +134,10 @@
 			current.string = settings.text[current.index].replace(/\n/g, "\\n");
 		}
 		this.setCursor = function( cursor ) {
-			$('.teletype-cursor', self).text( cursor );
+			jQuery('.teletype-cursor', self).text( cursor );
 		};
         this.reset = function() {
-            //$( '.teletype-text' ).empty();
+            //jQuery( '.teletype-text' ).empty();
             current.index = 0;
             current.position = 0;
             type();
@@ -145,9 +145,9 @@
 		return this.each( function() {
 			setCurrentString();
 			self.addClass( 'teletype' ).empty();
-			output = $( '<span />' ).addClass( 'teletype-text' ).appendTo( self );
+			output = jQuery( '<span />' ).addClass( 'teletype-text' ).appendTo( self );
 			if ( settings.cursor ) {
-				var cursor = $( '<span />' )
+				var cursor = jQuery( '<span />' )
 					.addClass( 'teletype-cursor' )
 					.appendTo( self );
 				object.setCursor( settings.cursor );
@@ -162,7 +162,7 @@
 			type();
 		} );
 	};
-	$.fn.teletype.defaults = {
+	jQuery.fn.teletype.defaults = {
 		text: [ 'one', 'two', 'three' ],
 		result: ['', '', ''],
 		typeDelay: 100,
