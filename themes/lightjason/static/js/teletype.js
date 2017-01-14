@@ -18,6 +18,7 @@
 			output = null,
 			current = { 
 				string: '',
+				result: '',
 				index: 0,
 				position: 0,
 				loop: 0
@@ -86,7 +87,11 @@
 					window.setTimeout( backspace, delay( settings.backDelay ) );
 				}, settings.delay );
 			} else {
-				output.html( output.html() + '<span class="teletype-prefix">' + settings.prefix + '</span>' );
+				output.html( 
+					output.html() + 
+					( (settings.result.length == settings.text.length) && (!!settings.result[current.index])   ? '<p class="teletype-result">' + settings.result[current.index] + "</p>" : "" ) + 
+					'<span class="teletype-prefix">' + settings.prefix + '</span>' 
+				);
 				if ( next() ) {
 					window.setTimeout( function() {
 						window.setTimeout( type, delay( settings.typeDelay ) );
@@ -159,6 +164,7 @@
 	};
 	$.fn.teletype.defaults = {
 		text: [ 'one', 'two', 'three' ],
+		result: ['', '', ''],
 		typeDelay: 100,
 		backDelay: 50,
 		blinkSpeed: 1000,

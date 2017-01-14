@@ -20,11 +20,11 @@ Parameter für das _terminal_ Command (sind alle optional):
 3. Parameter ist die Breite der Box (Default ist _100%_)
 4. Parameter ist die Höhe der Box (Default ist _10em_ [10 Zeilen])
 
-{{< terminal "~prefix:" "test" "65%" "8em" >}}
+{{< terminal "~prefix:" "test" "65%" "16em" >}}
 <p class="command">each line must be within a p tag</p>
 <p class="result"></p>
 <p class="command">second line for layout</p>
-<p class="result">-- Das soll das Result von von Command 2 sein--</p>
+<p class="result">-- Das soll das <em>Result</em> von von Command 2 sein--</p>
 <p class="command">two line typing with pause in 5 seconds ^5000 \nnext line with foo bar</p>
 <p class="result"></p>
 {{< /terminal >}}

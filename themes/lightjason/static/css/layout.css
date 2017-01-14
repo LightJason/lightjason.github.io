@@ -293,6 +293,12 @@ ul.horizontal li {
     box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 
-.terminalprefix {
+p.teletype-result {
+    margin-left: 2em;
+    margin-right: 2em;
+    background: #bbb;
+}
+
+span.teletype-prefix {
     font-weight: bold;
 }

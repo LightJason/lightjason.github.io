@@ -41,14 +41,13 @@ jQuery(function() {
 
         jQuery(this).teletype({
             text: jQuery(this).find("p.command").map(function(){ return jQuery(this).text().trim(); }),
-            prefix: "<br/>" + (jQuery(this).attr( "data-prefix" ) ? '<span class="terminalprefix">' + jQuery(this).attr( "data-prefix" ) + "</span>" : ""),
+            result : jQuery(this).find("p.result").map(function(){ return jQuery(this).html(); }),
+            prefix: "<br/>" + jQuery(this).attr( "data-prefix" ),
             cursor: "\u258B",
             typeDelay: 30,
             backDelay: 50,
             preserve: true,
-            loop: 1,
-            callbackNext : function(po_current, po_teletype) {
-            }
+            loop: 1
         });
     });
 
