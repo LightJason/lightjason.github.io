@@ -1,79 +1,128 @@
 ---
-title: "Tutorial: AgentSpeak Scenario in 15 Minutes"
+title: "Tutorial: AgentSpeak Scenario in 15 Minutes for Developers"
 jsonld: ["techarticle"]
 ---
 
-This tutorial explains how to build a simple, but full working scenario in 15 minutes with the current developing source code.
+This tutorial explains how to build a simple, but full working scenario in 15 minutes with the most recent version of the AgentSpeak(L++) source code.
 
-You can also download the archive containing the final source code of this tutorial [here](/download/agentspeak-in-15min.zip).
+__Note: This tutorial aims at developers of multi-agent systems (MAS) and requires some basic understanding in programming.__
 
 {{< toc >}}
 
-## Tools you need
+## Tools You Need
 
-* Working Maven $\geq$ 3.1 [installation](http://maven.apache.org/install.html)
-* Java JDK 1.8 installation which can be found by Maven
+* Working Maven $\geq$ 3.1 [installation](http://maven.apache.org/install.html).
+* Java __JDK__ 1.8 installation which can be obtained [here](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
+* Git installation (optional, but recommended)
+  * Linux: Installing ``git`` via your favourite package manager should be sufficient.
+  * MacOS: Using [Homebrew](http://brew.sh) with ```brew install git```.
+  * [Git for Windows](https://git-for-windows.github.io)
+  
 
 ## Introduction
 
-The tutorial gives you a _very short_ introduction into LightJason's AgentSpeak(L++) structure. Our [source code documentation](http://lightjason.github.io/AgentSpeak/sources/index.html) can help to develop your project according to your individual requirements. 
+This tutorial gives you a _very short_ introduction into LightJason's AgentSpeak(L++) structure. Our [source code documentation](http://lightjason.github.io/AgentSpeak/sources/index.html) can help you in developing your own MAS project according to your individual requirements. 
 
 __Note:__ Don't hesitate to ask questions via email or on the [issue tracker](https://github.com/LightJason/AgentSpeak/issues).
 
+This tutorial is structured as follows:
+First you will build AgentSpeak(L++) from source and install the resulting _AgentSpeak_ package on your system, making it available as a dependency for your own MAS project.
+Then you will create your own MAS project based on the template created by the Maven tool.
+
+All further configuration of ```xml``` files and programming will then take place in your own project's directory.
+
+For the following sections we assume that you are working inside the directory ```Developer```. You are of course free to choose your own, in which case, please replace ```Developer``` accordingly.
+
 ## Build AgentSpeak(L++) from the Sources
 
-1. Download the current source codes from [AgentSpeak(L++)](https://github.com/LightJason/AgentSpeak) as Zip (```AgentSpeak-master.zip```) or via Git and change into the source directory:
-    
-    <!-- htmlmin:ignore -->
-    ```bash
-    unzip AgentSpeak-master.zip
-    cd AgentSpeak
-    ```
-    <!-- htmlmin:ignore -->
-    
-    or
-    
-    <!-- htmlmin:ignore -->
-    ```bash
-    git clone https://github.com/LightJason/AgentSpeak.git
-    cd AgentSpeak
-    ```
-    <!-- htmlmin:ignore -->
-    
-    
+1. Obtain the current source code from [AgentSpeak(L++)](https://github.com/LightJason/AgentSpeak) and place it into ```Developer/AgentSpeak```. This can be done on the command line either via Git 
 
-2. Run ```mvn``` within the source code directory. AgentSpeak(L++) should build and install as a local maven artifact and you can use it.
+    <!-- htmlmin:ignore -->
+    ```bash
+    cd Developer
+    git clone https://github.com/LightJason/AgentSpeak.git
+    ```
+    <!-- htmlmin:ignore -->
+
+    or by downloading the [ZIP archive](https://github.com/LightJason/AgentSpeak/archive/master.zip) and extracting it to ```Developer```.
+    
+    <!-- htmlmin:ignore -->
+    ```bash
+    cd Developer
+    unzip AgentSpeak-master.zip
+    ```
+    <!-- htmlmin:ignore -->
+    
+    You should now have the following directory structure:
+    
+    <!-- htmlmin:ignore -->
+    ```
+    ├── Developer/
+    │   └── AgentSpeak/      
+    ```
+    <!-- htmlmin:ignore -->
+
+2. Change into the source code directory ```Developer/AgentSpeak``` and run ```mvn install``` to build and install AgentSpeak:
+
+    <!-- htmlmin:ignore -->
+    ```bash
+    cd Developer/AgentSpeak
+    mvn install
+    ```
+    <!-- htmlmin:ignore -->
+    
+    AgentSpeak will be installed as a local maven artifact in the directory ```~/.m2``` and can be imported as a dependency by your project.
+    
+    The build process should terminate with a ```BUILD SUCCESS``` message.
 
 ## Maven Project Configuration
 
-1. Create an empty Maven project (see [Maven in 5 minutes tutorial](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)).
+1. Create an empty Maven project (see [Maven in 5 minutes tutorial](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)) inside the ```Developer``` directory:
     
     <!-- htmlmin:ignore -->
     ```bash
+    cd Developer
     mvn archetype:generate -DgroupId=myagentproject -DartifactId=myagentapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
     <!-- htmlmin:ignore -->
     
-2. Open the ```pom.xml```, navigate to the ```dependency``` section and add an AgentSpeak(L++) reference inside the ```dependency``` tags (you will also find an entry for JUnit within the section).
+    Maven will then create a project template, resulting in the following directory structure:
     
-    The Result should look like this:
-
-	<!-- htmlmin:ignore -->
-    ```xml
-        <dependencies>
-        
-            <dependency>
-                <groupId>from AgentSpeak(L++) pom.xml</groupId>
-                <artifactId>from AgentSpeak(L++) pom.xml</artifactId>
-                <version>from AgentSpeak(L++) pom.xml</version>
-            </dependency>
-        ...
+    <!-- htmlmin:ignore -->
+    ```
+    ├── Developer/
+    │   └── AgentSpeak/ <-- AgentSpeak source code (added in previous section)
+    │   └── myagentapp/ <-- created by Maven
+    │   ├── pom.xml
+    │   └── src/
+    │       ├── main/
+    │       │   └── java/
+    │       │       └── myagentproject/
+    │       │           └── App.java
+    │       └── test/
+    │           └── java/
+    │               └── myagentproject
+    |               └── AppTest.java    
     ```
     <!-- htmlmin:ignore -->
     
-    Regarding the ```groupId```, ```artifactId``` and ```version```, you can find the correct values in the [pom.xml](https://github.com/LightJason/AgentSpeak/blob/master/pom.xml#L27) of AgentSpeak(L++).
+    ```Developer/myagentapp/``` is the directory in which your own MAS projects resides.
     
-3. For enabling the Java 1.8 support, add the following entry before the ```dependencies``` section:
+2. Take a note of the current values of ```groupId```, ```artifactId``` and ```version``` from the AgentSpeak [pom.xml](https://github.com/LightJason/AgentSpeak/blob/master/pom.xml#L27) and put them inside the corresponding tags of the following excerpt (replace ```from AgentSpeak(L++) pom.xml``` with the correct value):
+    
+	<!-- htmlmin:ignore -->
+    ```xml
+        <dependency>
+            <groupId>from AgentSpeak(L++) pom.xml</groupId>
+            <artifactId>from AgentSpeak(L++) pom.xml</artifactId>
+            <version>from AgentSpeak(L++) pom.xml</version>
+        </dependency>
+    ```
+    <!-- htmlmin:ignore -->
+    
+    Inside ```Developer/myagentapp/``` open the ```pom.xml``` with your favourite (programming) editor, navigate to the ```<dependencies>``` section and add the completed excerpt above or below the already present ```<dependency>``` entries (for example, you will also find an entry for JUnit within this section).
+    
+3. __For LightJason/AgentSpeak to run, it is crucial to enforce Java 1.8 support__ in your project. Add the following entry before the ```<dependencies>``` section:
 
 	<!-- htmlmin:ignore -->
     ```xml
@@ -84,7 +133,7 @@ __Note:__ Don't hesitate to ask questions via email or on the [issue tracker](ht
     ``` 
     <!-- htmlmin:ignore -->
 
-4. Put the following code inside the ```project``` section, e.g. after the ```dependencies```, to include the [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/examples/executable-jar.html) which creates an executable JAR.
+4. Put the following code inside the ```<project>``` section, e.g. after ```</dependencies>```, to include the [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/examples/executable-jar.html) which creates an executable JAR when you build your project with ```mvn package```.
 
 	<!-- htmlmin:ignore -->
     ```xml
@@ -103,7 +152,7 @@ __Note:__ Don't hesitate to ask questions via email or on the [issue tracker](ht
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <!-- here must be set the full name of the class which contains the main method -->
+                                    <!-- here you must provide the full name of the class which contains the main method -->
                                     <mainClass>myagentproject.App</mainClass>
                                 </transformer>
                             </transformers>
@@ -116,11 +165,23 @@ __Note:__ Don't hesitate to ask questions via email or on the [issue tracker](ht
     ```
     <!-- htmlmin:ignore -->
     
-5. Test-build your project by running ``mvn package`` in the directory  where your ``pom.xml`` is located (here ```myagentapp```). It should print ```BUILD SUCCESS```. The resulting, runnable JAR is located at  ```target/myagentapp-1.0-SNAPSHOT.jar```.
+5. Test-build your project by running ``mvn package`` inside ```Developer/myagentapp/```, i.e. where your ``pom.xml`` is located:
+
+    <!-- htmlmin:ignore -->
+    ```bash
+    cd Developer/myagentapp/
+    mvn package
+    ```
+    
+    It should print ```BUILD SUCCESS```. 
+    
+    The resulting, runnable JAR is located at  ```Developer/myagentapp/target/myagentapp-1.0-SNAPSHOT.jar```.
 
 6. Import your Maven project into your favourite IDE.
 
 ## Agent and Generator Classes
+
+__Note:__ The file names and paths provided in the following sections are relative to your project folder. For example ```src/main/java/myagentproject/MyAgent.java``` refers to the file ```MyAgent.java``` located at ```Developer/myagentapp/src/main/java/myagentproject/```.
 
 ### <a id="agentclass"></a> Agent Class
 Each agent, which you use, must be inherited from our base class {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d3/d39/interfaceorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IAgent_3_01T_01extends_01IAgent_3_04_4_01_4__coll__graph.svg" "IAgent" >}} interface, but we recommend our {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d6/df3/classorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IBaseAgent_3_01T_01extends_01IAgent_3_04_4_01_4__coll__graph_org.svg" "IBaseAgent" >}} with a complete execution mechanism. __Please note__ that you need to pass your agent class as a generic parameter to the definition of a LightJason agent class.
@@ -720,4 +781,23 @@ To create actions within the agent's class you need to add a method (visibility 
     ```
     <!-- htmlmin:ignore -->
     
+## Reference Solution
+
+If you struggled at some point or wish to obtain our exemplary solution to this tutorial, you can download the archive containing the source code [here](/download/agentspeak-in-15min.zip). 
+
+__Be aware__ that if you build AgentSpeak from the _most recent_ sources, the values inside the ```groupId```, ```artifactId``` and ```version``` tags of the AgentSpeak dependency (inside of __your__ ```pom.xml```) will have to correspond to the _most recent_ [pom.xml](https://github.com/LightJason/AgentSpeak/blob/master/pom.xml#L27) in the AgentSpeak(L++) repository.
+As of this writing (January 2017) this would be
+
+<!-- htmlmin:ignore -->
+```xml
+<dependency>
+    <groupId>org.lightjason</groupId>
+    <artifactId>agentspeak</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+</dependency>
+```
+<!-- htmlmin:ignore -->
+
+but it might change in the future.
+
 [^runtime]: For creating a complex and fast runtime have a look at general object-orientated programming patterns. Here we only provide a short example to show you how you can work with AgentSpeak(L++) agents.
