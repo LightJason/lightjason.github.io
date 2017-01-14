@@ -95,16 +95,16 @@ For the following sections we assume that you are working inside the directory `
     ├── Developer/
     │   └── AgentSpeak/ <-- AgentSpeak project (added in previous section)
     │   └── myagentapp/ <-- created by Maven
-    │   ├── pom.xml
-    │   └── src/
-    │       ├── main/
-    │       │   └── java/
-    │       │       └── myagentproject/
-    │       │           └── App.java
-    │       └── test/
-    │           └── java/
-    │               └── myagentproject
-    |               └── AppTest.java    
+    │       ├── pom.xml
+    │       └── src/
+    │           ├── main/
+    │           │   └── java/
+    │           │       └── myagentproject/
+    │           │           └── App.java
+    │           └── test/
+    │               └── java/
+    │                   └── myagentproject
+    |                   └── AppTest.java    
     ```
     <!-- htmlmin:ignore -->
     
