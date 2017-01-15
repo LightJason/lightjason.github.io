@@ -152,8 +152,8 @@
 		this.start = function() {
 			//if (settings.automaticstart)
 			//	return;
-			
-			self.empty();
+
+			//console.log( self.html() );
 		}
 
 
@@ -162,14 +162,13 @@
 			self.addClass( settings.classmain ).empty();
 			output = jQuery( '<span />' ).addClass( settings.classtext ).appendTo( self );
 			if ( settings.cursor ) {
+				var cursor = $( '<span />' ).addClass( settings.classcursor ).appendTo( self );
 				object.setCursor( settings.cursor );
-				var cursor = jQuery( '<span />' ).addClass( settings.classcursor ).appendTo( self );
-				
 				setInterval ( function() {
                 	if ( settings.smoothBlink )
 				    	cursor.animate( { opacity: 0 } ).animate( { opacity: 1 } );
 			      	else
-                    	cursor.delay(500).fadeTo(0,0).delay(500).fadeTo(0,1); 
+                    	cursor.delay(500).fadeTo(0,0).delay(500).fadeTo(0,1);
 				}, settings.blinkSpeed );
 			}
 			if (settings.automaticstart)
