@@ -140,13 +140,10 @@
         this.reset = function() {
 			if (settings.loop === 0)
 				return;
-
-        	//type();
         };
 		this.start = function() {
 			if (settings.automaticstart)
 				return;
-			//type();
 		}
 		return this.each( function() {
 			setCurrentString();
@@ -172,7 +169,7 @@
 	jQuery.fn.teletype.defaults = {
 		text: [ 'one', 'two', 'three' ],
 		result: [],
-		automaticstart: false,
+		automaticstart: true,
 		classresult: "teletype-result",
 		classcursor: "teletype-cursor",
 		classprefix: "teletype-prefix",
