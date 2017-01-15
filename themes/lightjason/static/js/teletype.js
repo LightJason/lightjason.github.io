@@ -40,6 +40,7 @@
 			setCurrentString();
 			if ( typeof( settings.callbackNext ) == 'function' )
 				settings.callbackNext( current, object );
+
 			return true;
 		};
 
@@ -69,18 +70,20 @@
 						current.string = current.string.substr( 0, index - 1 ) + current.string.substr( current.position - 1 );
 						window.setTimeout( function() { backspace( Math.max( index, 0 ) ); }, delay( settings.backDelay ) );
 					}
+
 					return;
 				}
 
-			} else if ( letter == '\\' ) {
-				var nextChar = current.string.substr( start, 1 );
-				if ( nextChar == 'n' ) {
-					current.position++;
-					letter = '<br />';
+			} else 
+				if ( letter == '\\' ) {
+					var nextChar = current.string.substr( start, 1 );
+					if ( nextChar == 'n' ) {
+						current.position++;
+						letter = '<br />';
+					}
 				}
-			}
 
-			if ( ( output ) && ( letter !== undefined ) )
+			if ( ( output ) && ( letter ) )
 				output.html( output.html() + letter );
 			
 			current.position++;
