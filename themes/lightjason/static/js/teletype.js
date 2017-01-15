@@ -152,12 +152,12 @@
 		this.start = function() {
 			//if (settings.automaticstart)
 			//	return;
-
-			//console.log( self.html() );
 		}
 
 
 		return this.each( function() {
+			// http://stefangabos.ro/jquery/jquery-plugin-boilerplate-revisited/
+
 			setCurrentString();
 			self.addClass( settings.classmain ).empty();
 			output = jQuery( '<span />' ).addClass( settings.classtext ).appendTo( self );
@@ -172,7 +172,7 @@
 				}, settings.blinkSpeed );
 			}
 			if (settings.automaticstart)
-				type();
+				type();	
 		} );
 	};
 
