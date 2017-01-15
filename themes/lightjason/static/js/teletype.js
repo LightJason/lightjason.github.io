@@ -13,6 +13,8 @@
 ( function () {
 	jQuery.fn.teletype = function( options ) {
 		var settings = jQuery.extend( {}, jQuery.fn.teletype.defaults, options );
+
+
 		var object = this,
 			self = jQuery( this ),
 			output = null,
@@ -23,52 +25,53 @@
 				position: 0,
 				loop: 0
 			};
+
+			
 		var next = function() {
 			current.index++;
 			if ( current.index >= settings.text.length ) {
 				current.index = 0;
 				current.loop++;
-				if ( settings.loop !== false && ( settings.loop == current.loop ) ) {
+				if ( settings.loop !== false && ( settings.loop == current.loop ) )
 					return false;
-				}
 			}
+
 			current.position = 0;
 			setCurrentString();
-			if ( typeof( settings.callbackNext ) == 'function' ) {
+			if ( typeof( settings.callbackNext ) == 'function' )
 				settings.callbackNext( current, object );
-			}
 			return true;
 		};
+
+
 		var type = function() {
-			if ( settings.prefix && current.position === 0 ) {
-				if ( current.loop === 0 && current.index === 0 ) {
+			if ( ( settings.prefix && current.position === 0 ) && ( current.loop === 0 && current.index === 0 ) )
 					jQuery( '<span />' ).addClass( settings.classprefix ).html( settings.prefix ).prependTo( self );
-				}
-			}
+
 			var letters = current.string.split( '' ),
 				letter = letters[current.position],
 				start = current.position + 1;
+
 			if ( letter == '^' || letter == '~' ) {
 				var end = current.string.substr( start ).search( /[^0-9]/ );
-				if ( end == -1 ) {
+				if ( end == -1 )
 					end = current.string.length;
-				}
+				
 				var value = current.string.substr( start, end );
 				if ( jQuery.isNumeric( value ) ) {
 					current.string = current.string.replace( letter + value, '' );
-					if ( letter == '^' ) {
-						window.setTimeout( function() {
-							window.setTimeout( type, delay( settings.typeDelay ) );
-						}, value );
-					} else {
+
+					if ( letter == '^' )
+						window.setTimeout( function() { window.setTimeout( type, delay( settings.typeDelay ) ); }, value );
+
+					else {
 						var index = current.position - value;
 						current.string = current.string.substr( 0, index - 1 ) + current.string.substr( current.position - 1 );
-						window.setTimeout( function() {
-							backspace( Math.max( index, 0 ) );
-						}, delay( settings.backDelay ) );
+						window.setTimeout( function() { backspace( Math.max( index, 0 ) ); }, delay( settings.backDelay ) );
 					}
 					return;
 				}
+
 			} else if ( letter == '\\' ) {
 				var nextChar = current.string.substr( start, 1 );
 				if ( nextChar == 'n' ) {
@@ -76,75 +79,79 @@
 					letter = '<br />';
 				}
 			}
-			if ( letter !== undefined ) {
+
+			if ( ( output ) && ( letter !== undefined ) )
 				output.html( output.html() + letter );
-			}
+			
 			current.position++;
-			if ( current.position < current.string.length ) {
+			if ( current.position < current.string.length )
 				window.setTimeout( type, delay( settings.typeDelay ) );
-			} else if ( settings.preserve === false ) {
-				window.setTimeout( function() {
-					window.setTimeout( backspace, delay( settings.backDelay ) );
-				}, settings.delay );
-			} else {
-				output.html( 
-					output.html() + 
-					current.result + 
-					'<span class="' + settings.classprefix+ '">' + settings.prefix + '</span>' 
-				);
-				if ( next() ) {
-					window.setTimeout( function() {
-						window.setTimeout( type, delay( settings.typeDelay ) );
-					}, settings.delay );
-				} else if ( typeof( settings.callbackFinished ) == 'function' ) {
-					settings.callbackFinished( object );
-				}
+			else 
+				if ( settings.preserve === false )
+					window.setTimeout( function() { window.setTimeout( backspace, delay( settings.backDelay ) ); }, settings.delay );
+			else {
+				output.html( output.html() + current.result + '<span class="' + settings.classprefix+ '">' + settings.prefix + '</span>' );
+				if ( next() )
+					window.setTimeout( function() { window.setTimeout( type, delay( settings.typeDelay ) ); }, settings.delay );
+				else 
+					if ( typeof( settings.callbackFinished ) == 'function' )
+						settings.callbackFinished( object );
 			}
-			if ( typeof( settings.callbackType ) == 'function' ) {
+
+			if ( typeof( settings.callbackType ) == 'function' )
 				settings.callbackType( letter, current, object );
-			}
+		
 		};
+
+
 		var backspace = function( stop ) {
-			if ( !stop ) {
+			if ( !stop )
 				stop = 0;
-			}
+			
 			if ( current.position > stop ) {
-				output.html( output.html().slice( 0, -1 ) );
-				window.setTimeout( function() {
-					backspace( stop );
-				}, delay( settings.backDelay ) );
+				if (output)
+					output.html( output.html().slice( 0, -1 ) );
+				window.setTimeout( function() { backspace( stop ); }, delay( settings.backDelay ) );
 				current.position--;
+			
 			} else {
-				if ( stop === 0 ) {
-					if ( next() === false ) {
-						return;
-					}
-				}
+				if ( ( stop === 0 ) && ( next() === false ) )
+					return;
+			
 				window.setTimeout( type, delay( settings.typeDelay ) );
 			}
 		};
-		var delay = function( speed ) {
-			var time = parseInt( speed );
-			if ( settings.humanise ) {
-				time += Math.floor( Math.random() * 200 );
-			}
-			return time;
-		};
+
+
+		var delay = function( speed ) { return settings.humanise ? parseInt( speed ) + Math.floor( Math.random() * 200 ) : parseInt( speed ); };
+
+
 		var setCurrentString = function() {
 			current.string = settings.text[current.index].replace(/\n/g, "\\n");
 			current.result = (settings.result.length == settings.text.length) && (!!settings.result[current.index]) ? '<p class="' + settings.classresult + '">' + settings.result[current.index] + "</p>" : "";
 		}
+
+
 		this.setCursor = function( cursor ) {
 			jQuery('.'+settings.classcursor, self).text( cursor );
 		};
-        this.reset = function() {
+        
+		
+		this.reset = function() {
 			if (settings.loop === 0)
 				return;
         };
+
+
 		this.start = function() {
 			if (settings.automaticstart)
 				return;
+
+			setCurrentString();
+			type();	
 		}
+
+
 		return this.each( function() {
 			setCurrentString();
 			self.addClass( settings.classmain ).empty();
@@ -155,17 +162,19 @@
 					.appendTo( self );
 				object.setCursor( settings.cursor );
 				setInterval ( function() {
-                  if ( settings.smoothBlink ) {
+                  if ( settings.smoothBlink )
 				    cursor.animate( { opacity: 0 } ).animate( { opacity: 1 } );
-			      } else {
+			      else
                       cursor.delay(500).fadeTo(0,0).delay(500).fadeTo(0,1);
-                  }
+                  
 				}, settings.blinkSpeed );
 			}
 			if (settings.automaticstart)
 				type();
 		} );
 	};
+
+
 	jQuery.fn.teletype.defaults = {
 		text: [ 'one', 'two', 'three' ],
 		result: [],
