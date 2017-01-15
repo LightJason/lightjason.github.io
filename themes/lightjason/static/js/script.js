@@ -52,7 +52,7 @@ jQuery(function() {
     });
 
     jQuery(".terminalreset").click(function(){
-        jQuery( "#" + jQuery(this).attr( "data-terminal" ) ).teletype().reset();
+        jQuery( "#" + jQuery(this).attr( "data-terminal" ) ).teletype().start();
     });
 });
     

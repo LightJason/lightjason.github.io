@@ -42,7 +42,7 @@
 		var type = function() {
 			if ( settings.prefix && current.position === 0 ) {
 				if ( current.loop === 0 && current.index === 0 ) {
-					jQuery( '<span />' ).addClass( 'teletype-prefix' ).html( settings.prefix ).prependTo( self );
+					jQuery( '<span />' ).addClass( settings.classprefix ).html( settings.prefix ).prependTo( self );
 				}
 			}
 			var letters = current.string.split( '' ),
@@ -90,7 +90,7 @@
 				output.html( 
 					output.html() + 
 					current.result + 
-					'<span class="teletype-prefix">' + settings.prefix + '</span>' 
+					'<span class="' + settings.classprefix+ '">' + settings.prefix + '</span>' 
 				);
 				if ( next() ) {
 					window.setTimeout( function() {
@@ -132,24 +132,29 @@
 		};
 		var setCurrentString = function() {
 			current.string = settings.text[current.index].replace(/\n/g, "\\n");
-			current.result = (settings.result.length == settings.text.length) && (!!settings.result[current.index]) ? '<p class="teletype-result">' + settings.result[current.index] + "</p>" : "";
+			current.result = (settings.result.length == settings.text.length) && (!!settings.result[current.index]) ? '<p class="' + settings.classresult + '">' + settings.result[current.index] + "</p>" : "";
 		}
 		this.setCursor = function( cursor ) {
-			jQuery('.teletype-cursor', self).text( cursor );
+			jQuery('.'+settings.classcursor, self).text( cursor );
 		};
         this.reset = function() {
-            //jQuery( '.teletype-text' ).empty();
-            current.index = 0;
-            current.position = 0;
-            type();
+			if (settings.loop === 0)
+				return;
+
+        	//type();
         };
+		this.start = function() {
+			if (settings.automaticstart)
+				return;
+			//type();
+		}
 		return this.each( function() {
 			setCurrentString();
-			self.addClass( 'teletype' ).empty();
-			output = jQuery( '<span />' ).addClass( 'teletype-text' ).appendTo( self );
+			self.addClass( settings.classmain ).empty();
+			output = jQuery( '<span />' ).addClass( settings.classtext ).appendTo( self );
 			if ( settings.cursor ) {
 				var cursor = jQuery( '<span />' )
-					.addClass( 'teletype-cursor' )
+					.addClass( settings.classcursor )
 					.appendTo( self );
 				object.setCursor( settings.cursor );
 				setInterval ( function() {
@@ -160,12 +165,19 @@
                   }
 				}, settings.blinkSpeed );
 			}
-			type();
+			if (settings.automaticstart)
+				type();
 		} );
 	};
 	jQuery.fn.teletype.defaults = {
 		text: [ 'one', 'two', 'three' ],
-		result: ['', '', ''],
+		result: [],
+		automaticstart: false,
+		classresult: "teletype-result",
+		classcursor: "teletype-cursor",
+		classprefix: "teletype-prefix",
+		classtext: "teletype-text",
+		classmain: "teletype",
 		typeDelay: 100,
 		backDelay: 50,
 		blinkSpeed: 1000,
