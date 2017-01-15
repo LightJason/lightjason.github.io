@@ -35,7 +35,7 @@ jQuery(function() {
         }
     });
 
-    jQuery(".terminal").each(function() {
+    jQuery(".teletype").each(function() {
         jQuery(this).css("width", jQuery(this).attr( "data-width" ) );
         jQuery(this).css("height", jQuery(this).attr( "data-height" ) );
 
@@ -51,7 +51,7 @@ jQuery(function() {
         });
     });
 
-    jQuery(".terminalreset").click(function(){
+    jQuery(".teletypereset").click(function(){
         jQuery( "#" + jQuery(this).attr( "data-terminal" ) ).teletype().start();
     });
 });

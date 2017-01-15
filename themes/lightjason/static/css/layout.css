@@ -283,7 +283,7 @@ ul.horizontal li {
     content: counter(section) "." counter(subsection) "." counter(subsubsection) ". ";
 }
 
-.terminal {
+.teletype {
     font-family: monospace;
     background: #fafafa;
     margin: 1em;

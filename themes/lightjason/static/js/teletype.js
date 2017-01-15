@@ -10,7 +10,10 @@
 * Dual licensed under the MIT or GPL Version 2 licenses.
 *
 */
+
+"use strict";
 ( function () {
+
 	jQuery.fn.teletype = function( options ) {
 		var settings = jQuery.extend( {}, jQuery.fn.teletype.defaults, options );
 
@@ -147,11 +150,10 @@
 
 
 		this.start = function() {
-			if (settings.automaticstart)
-				return;
-
-			setCurrentString();
-			type();	
+			//if (settings.automaticstart)
+			//	return;
+			
+			self.empty();
 		}
 
 
@@ -160,16 +162,14 @@
 			self.addClass( settings.classmain ).empty();
 			output = jQuery( '<span />' ).addClass( settings.classtext ).appendTo( self );
 			if ( settings.cursor ) {
-				var cursor = jQuery( '<span />' )
-					.addClass( settings.classcursor )
-					.appendTo( self );
 				object.setCursor( settings.cursor );
+				var cursor = jQuery( '<span />' ).addClass( settings.classcursor ).appendTo( self );
+				
 				setInterval ( function() {
-                  if ( settings.smoothBlink )
-				    cursor.animate( { opacity: 0 } ).animate( { opacity: 1 } );
-			      else
-                      cursor.delay(500).fadeTo(0,0).delay(500).fadeTo(0,1);
-                  
+                	if ( settings.smoothBlink )
+				    	cursor.animate( { opacity: 0 } ).animate( { opacity: 1 } );
+			      	else
+                    	cursor.delay(500).fadeTo(0,0).delay(500).fadeTo(0,1); 
 				}, settings.blinkSpeed );
 			}
 			if (settings.automaticstart)
@@ -201,4 +201,5 @@
 		callbackType: null,
 		callbackFinished: null
 	};
+
 }( jQuery ) );

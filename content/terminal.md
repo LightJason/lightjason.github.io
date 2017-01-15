@@ -37,3 +37,4 @@ Um das Terminal zu resetten wird ein eigenes Command genutzt, wobei zwei Paramet
 {{< terminalreset "test" "reset terminal" >}}
 
 
+
