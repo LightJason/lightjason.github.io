@@ -14,10 +14,9 @@
 "use strict";
 (function () {
 
-	jQuery.fn.teletype = function( options ) {
-		var settings = jQuery.extend( {}, jQuery.fn.teletype.defaults, options );
+	jQuery.teletype = function( element, options ) {
 
-
+		// helper references
 		var object = this,
 			self = jQuery( this ),
 			output = null,
@@ -28,8 +27,37 @@
 				position: 0,
 				loop: 0
 			};
+		
+		// default plugin settings
+		var defaults = {
+			text: [ 'one', 'two', 'three' ],
+			result: [],
+			automaticstart: true,
+			classresult: "teletype-result",
+			classcursor: "teletype-cursor",
+			classprefix: "teletype-prefix",
+			classtext: "teletype-text",
+			classmain: "teletype",
+			typeDelay: 100,
+			backDelay: 50,
+			blinkSpeed: 1000,
+			delay: 2000,
+			cursor: '|',
+			preserve: false,
+			prefix: '',
+			loop: 0,
+			humanise: true,
+			smoothBlink: true,
+			callbackNext: null,
+			callbackType: null,
+			callbackFinished: null
+		}
 
-			
+		// sets instance values into object
+		object.settings = jQuery.extend( {}, defaults, options );
+
+
+
 		var next = function() {
 			current.index++;
 			if ( current.index >= settings.text.length ) {
@@ -174,31 +202,6 @@
 			if (settings.automaticstart)
 				type();	
 		} );
-	};
-
-
-	jQuery.fn.teletype.defaults = {
-		text: [ 'one', 'two', 'three' ],
-		result: [],
-		automaticstart: true,
-		classresult: "teletype-result",
-		classcursor: "teletype-cursor",
-		classprefix: "teletype-prefix",
-		classtext: "teletype-text",
-		classmain: "teletype",
-		typeDelay: 100,
-		backDelay: 50,
-		blinkSpeed: 1000,
-		delay: 2000,
-		cursor: '|',
-		preserve: false,
-		prefix: '',
-		loop: 0,
-		humanise: true,
-		smoothBlink: true,
-		callbackNext: null,
-		callbackType: null,
-		callbackFinished: null
 	};
 
 })(jQuery);
