@@ -12,7 +12,7 @@
 */
 
 "use strict";
-( function () {
+(function () {
 
 	jQuery.fn.teletype = function( options ) {
 		var settings = jQuery.extend( {}, jQuery.fn.teletype.defaults, options );
@@ -201,4 +201,4 @@
 		callbackFinished: null
 	};
 
-}( jQuery ) );
+})(jQuery);
