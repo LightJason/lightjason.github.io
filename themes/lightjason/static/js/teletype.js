@@ -17,16 +17,8 @@
 	jQuery.teletype = function( element, options ) {
 
 		// helper references
-		var object = this,
-			self = jQuery( this ),
-			output = null,
-			current = { 
-				string: '',
-				result: '',
-				index: 0,
-				position: 0,
-				loop: 0
-			};
+		var object = this, self = jQuery( this );
+			
 		
 			// default plugin settings
 			var defaults = {
@@ -53,26 +45,23 @@
 				callbackFinished: null
 			}
 
-			// sets instance values into object
-			object.settings = jQuery.extend( {}, defaults, options );
-
-
 
 			// ---- private methods -------------------------------------------------------------------------------------------------
 
 			var next = function() {
-				current.index++;
-				if ( current.index >= settings.text.length ) {
-					current.index = 0;
-					current.loop++;
-					if ( settings.loop !== false && ( settings.loop == current.loop ) )
+				object.current.index++;
+			
+				if ( object.current.index >= object.settings.text.length ) {
+					object.current.index = 0;
+					object.current.loop++;
+					if ( object.settings.loop !== false && ( object.settings.loop == object.current.loop ) )
 						return false;
 				}
 
-				current.position = 0;
-				setCurrentString();
-				if ( typeof( settings.callbackNext ) == 'function' )
-					settings.callbackNext( current, object );
+				object.current.position = 0;
+				object.setCurrentString();
+				if ( typeof( object.settings.callbackNext ) == 'function' )
+					object.settings.callbackNext( object );
 
 				return true;
 			};
@@ -87,21 +76,23 @@
 					start = current.position + 1;
 
 				if ( letter == '^' || letter == '~' ) {
-					var end = current.string.substr( start ).search( /[^0-9]/ );
+
+					// @todo code shorten
+					var end = object.current.string.substr( start ).search( /[^0-9]/ );
 					if ( end == -1 )
 						end = current.string.length;
 					
-					var value = current.string.substr( start, end );
+					var value = object.current.string.substr( start, end );
 					if ( jQuery.isNumeric( value ) ) {
-						current.string = current.string.replace( letter + value, '' );
+						object.current.string = object.current.string.replace( letter + value, '' );
 
 						if ( letter == '^' )
-							window.setTimeout( function() { window.setTimeout( type, delay( settings.typeDelay ) ); }, value );
+							window.setTimeout( function() { window.setTimeout( type, delay( object.settings.typeDelay ) ); }, value );
 
 						else {
-							var index = current.position - value;
-							current.string = current.string.substr( 0, index - 1 ) + current.string.substr( current.position - 1 );
-							window.setTimeout( function() { backspace( Math.max( index, 0 ) ); }, delay( settings.backDelay ) );
+							var index = object.current.position - value;
+							object.current.string = object.current.string.substr( 0, index - 1 ) + object.current.string.substr( object.current.position - 1 );
+							window.setTimeout( function() { backspace( Math.max( index, 0 ) ); }, delay( object.settings.backDelay ) );
 						}
 
 						return;
@@ -109,33 +100,33 @@
 
 				} else 
 					if ( letter == '\\' ) {
-						var nextChar = current.string.substr( start, 1 );
+						var nextChar = object.current.string.substr( start, 1 );
 						if ( nextChar == 'n' ) {
-							current.position++;
+							objet.current.position++;
 							letter = '<br />';
 						}
 					}
 
-				if ( ( output ) && ( letter ) )
-					output.html( output.html() + letter );
+				if ( ( objet.output ) && ( letter ) )
+					objet.output.html( objet.output.html() + letter );
 				
-				current.position++;
-				if ( current.position < current.string.length )
-					window.setTimeout( type, delay( settings.typeDelay ) );
+				object.current.position++;
+				if ( objet.current.position < object.current.string.length )
+					window.setTimeout( type, delay( object.settings.typeDelay ) );
 				else 
-					if ( settings.preserve === false )
+					if ( object.settings.preserve != false )
 						window.setTimeout( function() { window.setTimeout( backspace, delay( settings.backDelay ) ); }, settings.delay );
-				else {
-					output.html( output.html() + current.result + '<span class="' + settings.classprefix+ '">' + settings.prefix + '</span>' );
-					if ( next() )
-						window.setTimeout( function() { window.setTimeout( type, delay( settings.typeDelay ) ); }, settings.delay );
-					else 
-						if ( typeof( settings.callbackFinished ) == 'function' )
-							settings.callbackFinished( object );
-				}
+					else {
+						objet.output.html( objet.output.html() + objet.current.result + '<span class="' + objet.settings.classprefix+ '">' + objet.settings.prefix + '</span>' );
+						if ( next() )
+							window.setTimeout( function() { window.setTimeout( type, delay( objet.settings.typeDelay ) ); }, objet.settings.delay );
+						else 
+							if ( typeof( object.settings.callbackFinished ) == 'function' )
+								objet.settings.callbackFinished( object );
+					}
 
-				if ( typeof( settings.callbackType ) == 'function' )
-					settings.callbackType( letter, current, object );
+				if ( typeof( object.settings.callbackType ) == 'function' )
+					objet.settings.callbackType( letter, object );
 			
 			};
 
@@ -144,27 +135,27 @@
 				if ( !stop )
 					stop = 0;
 				
-				if ( current.position > stop ) {
+				if ( object.current.position > stop ) {
 					if (output)
-						output.html( output.html().slice( 0, -1 ) );
-					window.setTimeout( function() { backspace( stop ); }, delay( settings.backDelay ) );
-					current.position--;
+						object.output.html( object.output.html().slice( 0, -1 ) );
+					window.setTimeout( function() { backspace( stop ); }, delay( object.settings.backDelay ) );
+					object.current.position--;
 				
 				} else {
 					if ( ( stop === 0 ) && ( next() === false ) )
 						return;
 				
-					window.setTimeout( type, delay( settings.typeDelay ) );
+					window.setTimeout( type, delay( object.settings.typeDelay ) );
 				}
 			};
 
 
-			var delay = function( speed ) { return settings.humanise ? parseInt( speed ) + Math.floor( Math.random() * 200 ) : parseInt( speed ); };
+			var delay = function( speed ) { return object.settings.humanise ? parseInt( speed ) + Math.floor( Math.random() * 200 ) : parseInt( speed ); };
 
 
 			var setCurrentString = function() {
-				current.string = settings.text[current.index].replace(/\n/g, "\\n");
-				current.result = (settings.result.length == settings.text.length) && (!!settings.result[current.index]) ? '<p class="' + settings.classresult + '">' + settings.result[current.index] + "</p>" : "";
+				object.current.string = object.settings.text[current.index].replace(/\n/g, "\\n");
+				object.current.result = (object.settings.result.length == object.settings.text.length) && (!!object.settings.result[object.current.index]) ? '<p class="' + object.settings.classresult + '">' + object.settings.result[object.current.index] + "</p>" : "";
 			}
 
 
@@ -172,23 +163,30 @@
 			// ---- public methods --------------------------------------------------------------------------------------------------
 
 			object.setCursor = function( cursor ) {
+				object.current.cursor = cursor;
+
 				jQuery('.'+settings.classcursor, self).text( cursor );
 			};
 			
 			
 			object.reset = function() {
-				if (settings.loop === 0)
+				if (object.settings.loop === 0)
 					return;
 			};
 
 
 			object.start = function() {
-				//if (settings.automaticstart)
+				//if (object.settings.automaticstart)
 				//	return;
 			}
 
 
 			object.init = function() {
+
+				// sets instance values into object
+				object.settings = jQuery.extend( {}, defaults, options );
+				object.current   = { string: '', result: '', index: 0, position: 0, loop: 0 };
+				object.output   = '';
 
 			}
 
