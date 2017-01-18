@@ -16,8 +16,8 @@
 
 	jQuery.teletype = function( element, options ) {
 
-		// helper references
-		var object = this, self = jQuery( this );
+			// helper references
+			var dom = jQuery( this );
 			
 		
 			// default plugin settings
@@ -49,50 +49,50 @@
 			// ---- private methods -------------------------------------------------------------------------------------------------
 
 			var next = function() {
-				object.current.index++;
+				element.current.index++;
 			
-				if ( object.current.index >= object.settings.text.length ) {
-					object.current.index = 0;
-					object.current.loop++;
-					if ( object.settings.loop !== false && ( object.settings.loop == object.current.loop ) )
+				if ( element.current.index >= element.settings.text.length ) {
+					element.current.index = 0;
+					element.current.loop++;
+					if ( element.settings.loop !== false && ( element.settings.loop == element.current.loop ) )
 						return false;
 				}
 
-				object.current.position = 0;
-				object.setCurrentString();
-				if ( typeof( object.settings.callbackNext ) == 'function' )
-					object.settings.callbackNext( object );
+				element.current.position = 0;
+				element.setCurrentString();
+				if ( typeof( element.settings.callbackNext ) == 'function' )
+					element.settings.callbackNext( element );
 
 				return true;
 			};
 
 
 			var type = function() {
-				if ( ( object.settings.prefix && current.position === 0 ) && ( object.current.loop === 0 && object.current.index === 0 ) )
-						jQuery( '<span />' ).addClass( object.settings.classprefix ).html( object.settings.prefix ).prependTo( self );
+				if ( ( element.settings.prefix && current.position === 0 ) && ( element.current.loop === 0 && element.current.index === 0 ) )
+						jQuery( '<span />' ).addClass( element.settings.classprefix ).html( element.settings.prefix ).prependTo( dom );
 
-				var letters = object.current.string.split( '' ),
-					letter = letters[object.current.position],
-					start = object.current.position + 1;
+				var letters = element.current.string.split( '' ),
+					letter = letters[element.current.position],
+					start = element.current.position + 1;
 
 				if ( letter == '^' || letter == '~' ) {
 
 					// @todo code shorten
-					var end = object.current.string.substr( start ).search( /[^0-9]/ );
+					var end = element.current.string.substr( start ).search( /[^0-9]/ );
 					if ( end == -1 )
 						end = current.string.length;
 					
-					var value = object.current.string.substr( start, end );
+					var value = element.current.string.substr( start, end );
 					if ( jQuery.isNumeric( value ) ) {
-						object.current.string = object.current.string.replace( letter + value, '' );
+						element.current.string = element.current.string.replace( letter + value, '' );
 
 						if ( letter == '^' )
-							window.setTimeout( function() { window.setTimeout( type, delay( object.settings.typeDelay ) ); }, value );
+							window.setTimeout( function() { window.setTimeout( type, delay( element.settings.typeDelay ) ); }, value );
 
 						else {
-							var index = object.current.position - value;
-							object.current.string = object.current.string.substr( 0, index - 1 ) + object.current.string.substr( object.current.position - 1 );
-							window.setTimeout( function() { backspace( Math.max( index, 0 ) ); }, delay( object.settings.backDelay ) );
+							var index = element.current.position - value;
+							element.current.string = element.current.string.substr( 0, index - 1 ) + element.current.string.substr( element.current.position - 1 );
+							window.setTimeout( function() { backspace( Math.max( index, 0 ) ); }, delay( element.settings.backDelay ) );
 						}
 
 						return;
@@ -100,33 +100,33 @@
 
 				} else 
 					if ( letter == '\\' ) {
-						var nextChar = object.current.string.substr( start, 1 );
+						var nextChar = element.current.string.substr( start, 1 );
 						if ( nextChar == 'n' ) {
-							objet.current.position++;
+							element.current.position++;
 							letter = '<br />';
 						}
 					}
 
-				if ( ( objet.output ) && ( letter ) )
-					objet.output.html( objet.output.html() + letter );
+				if ( ( element.output ) && ( letter ) )
+					element.output.html( element.output.html() + letter );
 				
-				object.current.position++;
-				if ( objet.current.position < object.current.string.length )
-					window.setTimeout( type, delay( object.settings.typeDelay ) );
+				element.current.position++;
+				if ( element.current.position < element.current.string.length )
+					window.setTimeout( type, delay( element.settings.typeDelay ) );
 				else 
-					if ( object.settings.preserve != false )
+					if ( element.settings.preserve != false )
 						window.setTimeout( function() { window.setTimeout( backspace, delay( settings.backDelay ) ); }, settings.delay );
 					else {
-						objet.output.html( objet.output.html() + objet.current.result + '<span class="' + objet.settings.classprefix+ '">' + objet.settings.prefix + '</span>' );
+						element.output.html( element.output.html() + element.current.result + '<span class="' + element.settings.classprefix+ '">' + element.settings.prefix + '</span>' );
 						if ( next() )
-							window.setTimeout( function() { window.setTimeout( type, delay( objet.settings.typeDelay ) ); }, objet.settings.delay );
+							window.setTimeout( function() { window.setTimeout( type, delay( element.settings.typeDelay ) ); }, element.settings.delay );
 						else 
-							if ( typeof( object.settings.callbackFinished ) == 'function' )
-								objet.settings.callbackFinished( object );
+							if ( typeof( element.settings.callbackFinished ) == 'function' )
+								element.settings.callbackFinished( element );
 					}
 
-				if ( typeof( object.settings.callbackType ) == 'function' )
-					objet.settings.callbackType( letter, object );
+				if ( typeof( element.settings.callbackType ) == 'function' )
+					element.settings.callbackType( letter, element );
 			
 			};
 
@@ -135,62 +135,77 @@
 				if ( !stop )
 					stop = 0;
 				
-				if ( object.current.position > stop ) {
+				if ( element.current.position > stop ) {
 					if (output)
-						object.output.html( object.output.html().slice( 0, -1 ) );
-					window.setTimeout( function() { backspace( stop ); }, delay( object.settings.backDelay ) );
-					object.current.position--;
+						element.output.html( element.output.html().slice( 0, -1 ) );
+					window.setTimeout( function() { backspace( stop ); }, delay( element.settings.backDelay ) );
+					element.current.position--;
 				
 				} else {
 					if ( ( stop === 0 ) && ( next() === false ) )
 						return;
 				
-					window.setTimeout( type, delay( object.settings.typeDelay ) );
+					window.setTimeout( type, delay( element.settings.typeDelay ) );
 				}
 			};
 
 
-			var delay = function( speed ) { return object.settings.humanise ? parseInt( speed ) + Math.floor( Math.random() * 200 ) : parseInt( speed ); };
+			var delay = function( speed ) { return element.settings.humanise ? parseInt( speed ) + Math.floor( Math.random() * 200 ) : parseInt( speed ); };
 
 
 			var setCurrentString = function() {
-				object.current.string = object.settings.text[current.index].replace(/\n/g, "\\n");
-				object.current.result = (object.settings.result.length == object.settings.text.length) && (!!object.settings.result[object.current.index]) ? '<p class="' + object.settings.classresult + '">' + object.settings.result[object.current.index] + "</p>" : "";
+				element.current.string = element.settings.text[current.index].replace(/\n/g, "\\n");
+				element.current.result = (element.settings.result.length == element.settings.text.length) && (!!element.settings.result[element.current.index]) ? '<p class="' + element.settings.classresult + '">' + element.settings.result[element.current.index] + "</p>" : "";
 			}
 
 
 
 			// ---- public methods --------------------------------------------------------------------------------------------------
 
-			object.setCursor = function( cursor ) {
-				object.current.cursor = cursor;
-
-				jQuery('.'+settings.classcursor, self).text( cursor );
+			element.setCursor = function( cursor ) {
+				element.current.cursor = cursor;
 			};
 			
 			
-			object.reset = function() {
-				if (object.settings.loop === 0)
+			element.reset = function() {
+				if (element.settings.loop === 0)
 					return;
 			};
 
 
-			object.start = function() {
-				//if (object.settings.automaticstart)
+			element.start = function() {
+				//if (element.settings.automaticstart)
 				//	return;
 			}
 
 
-			object.init = function() {
+			element.init = function() {
 
-				// sets instance values into object
-				object.settings = jQuery.extend( {}, defaults, options );
-				object.current   = { string: '', result: '', index: 0, position: 0, loop: 0 };
-				object.output   = '';
+				// clear DOM node first
+				dom.empty();
+
+				// sets instance values into element
+				element.settings = jQuery.extend( {}, defaults, options );
+				element.current   = { string: '', result: '', index: 0, position: 0, loop: 0 };
+				element.output   = '';
+
+				// set cursor
+				if ( element.settings.cursor ) {
+					//var cursor = jQuery( '<span />' ).addClass( element.settings.classcursor ).appendTo( self );
+					/*
+					setInterval ( function() {
+						if ( element.settings.smoothBlink )
+							cursor.animate( { opacity: 0 } ).animate( { opacity: 1 } );
+						else
+							cursor.delay(500).fadeTo(0,0).delay(500).fadeTo(0,1);
+					}, settings.blinkSpeed );
+					*/
+				}
+				
 
 			}
 
-			object.init();
+			element.init();
 		}
 
 		// ---- jQuery initialization -------------------------------------------------------------------------------------------
@@ -211,7 +226,7 @@
 				output = jQuery( '<span />' ).addClass( settings.classtext ).appendTo( self );
 				if ( settings.cursor ) {
 					var cursor = $( '<span />' ).addClass( settings.classcursor ).appendTo( self );
-					object.setCursor( settings.cursor );
+					element.setCursor( settings.cursor );
 					setInterval ( function() {
 						if ( settings.smoothBlink )
 							cursor.animate( { opacity: 0 } ).animate( { opacity: 1 } );
