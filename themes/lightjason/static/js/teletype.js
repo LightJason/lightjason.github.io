@@ -68,12 +68,12 @@
 
 
 			var type = function() {
-				if ( ( settings.prefix && current.position === 0 ) && ( current.loop === 0 && current.index === 0 ) )
-						jQuery( '<span />' ).addClass( settings.classprefix ).html( settings.prefix ).prependTo( self );
+				if ( ( object.settings.prefix && current.position === 0 ) && ( object.current.loop === 0 && object.current.index === 0 ) )
+						jQuery( '<span />' ).addClass( object.settings.classprefix ).html( object.settings.prefix ).prependTo( self );
 
-				var letters = current.string.split( '' ),
-					letter = letters[current.position],
-					start = current.position + 1;
+				var letters = object.current.string.split( '' ),
+					letter = letters[object.current.position],
+					start = object.current.position + 1;
 
 				if ( letter == '^' || letter == '~' ) {
 
