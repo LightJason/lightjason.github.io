@@ -42,7 +42,7 @@ jQuery(function() {
         jQuery(this).teletype({
             text: jQuery(this).find("p.command").map(function(){ return jQuery(this).text().trim(); }),
             result : jQuery(this).find("p.result").map(function(){ return jQuery(this).html(); }),
-            prefix: "<br/>" + jQuery(this).attr( "data-prefix" ),
+            prefix: jQuery(this).attr( "data-prefix" ),
             cursor: "\u258B",
             typeDelay: 30,
             backDelay: 50,

@@ -29,6 +29,7 @@
 				classprefix: "teletype-prefix",
 				classcursor: "teletype-cursor",
 				classoutput: "teletype-text",
+				taglinebreak: "<br/>",
 				typeDelay: 100,
 				backDelay: 50,
 				blinkSpeed: 1000,
@@ -51,7 +52,8 @@
 			var next = function()
 			{
 				element.current.index++;
-			
+
+				// check end and looping
 				if ( element.current.index >= element.settings.text.length )
 				{
 					element.current.index = 0;
@@ -60,8 +62,8 @@
 						return false;
 				}
 
-				element.current.position = 0;
 				setCurrentString();
+				element.current.position = 0;
 				if ( typeof( element.settings.callbackNext ) == 'function' )
 					element.settings.callbackNext( element );
 
@@ -75,7 +77,7 @@
 				return text.substr( start, end == -1 ? text.length : end );
 			}
 
-			// creates a pause callback 
+			// creates a pause function
 			var pause = function( text, start )
 			{
 				var time = extractnumber( text, start );
@@ -83,8 +85,7 @@
 					return;
 
 				element.current.position = start + time.length;
-				setTimeout( function() {}, time );
-				type();
+				setTimeout( type.bind(element), time );
 			}
 
 
@@ -93,12 +94,11 @@
 			{
 
 				// add new prefix item if possible
-				if ( ( element.settings.prefix ) && ( element.current.position === 0 ) && ( element.current.loop === 0 ) && ( element.current.index === 0 ) )
-						jQuery( '<span />' ).addClass( element.settings.classprefix ).html( element.settings.prefix ).prependTo( element.output );
+				if ( ( element.settings.prefix ) && ( element.current.position === 0 ) )
+						jQuery( '<span />' ).addClass( element.settings.classprefix ).html( element.settings.prefix ).appendTo( element.output );
 
 				// get current letter & position
-				var letters = element.current.string.split( '' ),
-					letter = letters[element.current.position],
+				var letter = element.current.letters[element.current.position],
 					start = element.current.position + 1;
 
 				// check pause
@@ -109,6 +109,7 @@
 				}
 
 				// check for pause or remove sign
+				/*
 				if ( letter == '~' )
 				{
 
@@ -135,21 +136,40 @@
 					}
 
 				}
+				*/
 				
 				// check for line-break
-				if ( ( letter == '\\' ) && ( element.current.string.substr( start, 1 ) === 'n' ) ) {
+				if ( ( letter == '\\' ) && ( element.current.string.substr( start, 1 ) === 'n' ) )
+				{
 					element.current.position++;
-					letter = '<br/>';		
+					letter = element.settings.taglinebreak;		
 				}
 
-				// output
-				if ( letter )
-					element.output.html( element.output.html() + letter );
 
+
+				// increment current position and set output
 				element.current.position++;
+				element.output.html( element.output.html() + letter );
+
+
+				// run the next iteration
 				if ( element.current.position < element.current.string.length )
 					setTimeout( type.bind(element), delay( element.settings.typeDelay ) );
-				else 
+				else
+				{
+					// set the result (of the typing) if it exists
+					if ( element.current.result )
+						element.output.html( element.output.html() + element.current.result );
+
+					// check if there exists a new line
+					if ( next() )
+					{
+						element.output.html( element.output.html() + element.settings.taglinebreak );
+						setTimeout( type.bind(element), delay( element.settings.typeDelay ) );
+					}
+				}
+
+
 				/*
 					if ( element.settings.preserve != false )
 						setTimeout( function() { setTimeout( backspace, delay( element.settings.backDelay ) ); }, element.settings.delay );
@@ -197,6 +217,7 @@
 			// sets the current string data (command and command result)
 			var setCurrentString = function() {
 				element.current.string = element.settings.text[element.current.index].replace(/\n/g, "\\n");
+				element.current.letters = element.current.string.split( '' );
 				element.current.result = (element.settings.result.length == element.settings.text.length) && (!!element.settings.result[element.current.index]) ? '<p class="' + element.settings.classresult + '">' + element.settings.result[element.current.index] + "</p>" : "";
 			}
 
@@ -228,7 +249,7 @@
 
 				// sets instance an nessessary DOM values into element
 				element.settings = jQuery.extend( {}, defaults, options );
-				element.current   = { string: '', result: '', index: 0, position: 0, loop: 0 };
+				element.current   = { string: '', result: '', letters: [], index: 0, position: 0, loop: 0 };
 				element.output    = jQuery( '<span/>' ).addClass( element.settings.classoutput ).appendTo( dom );
 
 				// set cursor
