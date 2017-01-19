@@ -21,7 +21,7 @@ Parameter für das _terminal_ Command (sind alle optional):
 4. Parameter ist die Höhe der Box (Default ist _10em_ [10 Zeilen])
 
 {{< terminal "~prefix:" "test" "65%" "16em" >}}
-<p class="command">each line must be within a p tag</p>
+<p class="command">each line must be ^2000 within a p tag</p>
 <p class="result"></p>
 <p class="command">second line for layout</p>
 <p class="result">-- Das soll das <em>Result</em> von von Command 2 sein--</p>

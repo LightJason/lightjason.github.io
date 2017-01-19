@@ -48,7 +48,8 @@
 			// ---- private methods -------------------------------------------------------------------------------------------------
 
 			// defines the function for get the next command-item
-			var next = function() {
+			var next = function()
+			{
 				element.current.index++;
 			
 				if ( element.current.index >= element.settings.text.length )
@@ -67,9 +68,29 @@
 				return true;
 			};
 
+			// extracts a number beginning on the given position
+			var extractnumber = function( text, start )
+			{
+				var end = text.substr( start ).search( /[^0-9]/ );
+				return text.substr( start, end == -1 ? text.length : end );
+			}
+
+			// creates a pause callback 
+			var pause = function( text, start )
+			{
+				var time = extractnumber( text, start );
+				if ( !jQuery.isNumeric( time ) )
+					return;
+
+				element.current.position = start + time.length;
+				setTimeout( function() {}, time );
+				type();
+			}
+
 
 			// runs the typing animation
-			var type = function() {
+			var type = function() 
+			{
 
 				// add new prefix item if possible
 				if ( ( element.settings.prefix ) && ( element.current.position === 0 ) && ( element.current.loop === 0 ) && ( element.current.index === 0 ) )
@@ -80,8 +101,15 @@
 					letter = letters[element.current.position],
 					start = element.current.position + 1;
 
+				// check pause
+				if ( letter == '^' )
+				{
+					pause( element.current.string, start );
+					return;
+				}
+
 				// check for pause or remove sign
-				if ( ( letter == '^' ) || ( letter == '~' ) )
+				if ( letter == '~' )
 				{
 
 					// @todo code shorten
@@ -94,13 +122,13 @@
 						element.current.string = element.current.string.replace( letter + value, '' );
 
 						if ( letter == '^' )
-							window.setTimeout( function() { window.setTimeout( type, delay( element.settings.typeDelay ) ); }, value );
+							setTimeout( function() {}, value );
 
 						else
 						{
 							var index = element.current.position - value;
 							element.current.string = element.current.string.substr( 0, index - 1 ) + element.current.string.substr( element.current.position - 1 );
-							window.setTimeout( function() { backspace( Math.max( index, 0 ) ); }, delay( element.settings.backDelay ) );
+							setTimeout( backspace( Math.max( index, 0 ) ).bind(element) , delay( element.settings.backDelay ) );
 						}
 
 						return;
@@ -120,15 +148,15 @@
 
 				element.current.position++;
 				if ( element.current.position < element.current.string.length )
-					window.setTimeout( type, delay( element.settings.typeDelay ) );
+					setTimeout( type.bind(element), delay( element.settings.typeDelay ) );
 				else 
 				/*
 					if ( element.settings.preserve != false )
-						window.setTimeout( function() { window.setTimeout( backspace, delay( element.settings.backDelay ) ); }, element.settings.delay );
+						setTimeout( function() { setTimeout( backspace, delay( element.settings.backDelay ) ); }, element.settings.delay );
 					else {
 						element.output.html( element.output.html() + element.current.result + '<span class="' + element.settings.classprefix+ '">' + element.settings.prefix + '</span>' );
 						if ( next() )
-							window.setTimeout( function() { window.setTimeout( type, delay( element.settings.typeDelay ) ); }, element.settings.delay );
+							setTimeout( function() { setTimeout( type, delay( element.settings.typeDelay ) ); }, element.settings.delay );
 						else 
 							if ( typeof( element.settings.callbackFinished ) == 'function' )
 								element.settings.callbackFinished( element );
@@ -136,32 +164,37 @@
 					*/
 
 				if ( typeof( element.settings.callbackType ) == 'function' )
-					element.settings.callbackType( letter, element );			
-			
-			};
+					element.settings.callbackType( letter, element );
+			}
 
 
-			var backspace = function( stop ) {
+			var backspace = function( stop ) 
+			{
 				if ( !stop )
 					stop = 0;
 				
 				if ( element.current.position > stop ) {
 					dom.html( dom.html().slice( 0, -1 ) );
-					window.setTimeout( function() { backspace( stop ); }, delay( element.settings.backDelay ) );
+					setTimeout( backspace( stop ).bind(element), delay( element.settings.backDelay ) );
 					element.current.position--;
 				
 				} else {
 					if ( ( stop === 0 ) && ( next() === false ) )
 						return;
 				
-					window.setTimeout( type, delay( element.settings.typeDelay ) );
+					setTimeout( type.bind(element), delay( element.settings.typeDelay ) );
 				}
-			};
+			}
 
 
-			var delay = function( speed ) { return element.settings.humanise ? parseInt( speed ) + Math.floor( Math.random() * 200 ) : parseInt( speed ); };
+			// returns a delay value
+			var delay = function( speed ) 
+			{ 
+				return element.settings.humanise ? parseInt( speed ) + Math.floor( Math.random() * 200 ) : parseInt( speed ); 
+			}
 
 
+			// sets the current string data (command and command result)
 			var setCurrentString = function() {
 				element.current.string = element.settings.text[element.current.index].replace(/\n/g, "\\n");
 				element.current.result = (element.settings.result.length == element.settings.text.length) && (!!element.settings.result[element.current.index]) ? '<p class="' + element.settings.classresult + '">' + element.settings.result[element.current.index] + "</p>" : "";
@@ -173,13 +206,13 @@
 
 			element.setCursor = function( cursor ) {
 				element.settings.cursor = cursor;
-			};
+			}
 			
 			
 			element.reset = function() {
 				if (element.settings.loop === 0)
 					return;
-			};
+			}
 
 
 			element.start = function() {
