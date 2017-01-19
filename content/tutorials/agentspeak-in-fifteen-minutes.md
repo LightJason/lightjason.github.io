@@ -103,8 +103,8 @@ For the following sections we assume that you are working inside the directory `
     │           │           └── App.java
     │           └── test/
     │               └── java/
-    │                   └── myagentproject
-    |                   └── AppTest.java    
+    │                   └── myagentproject/
+    │                   └── AppTest.java    
     ```
     <!-- htmlmin:ignore -->
     
