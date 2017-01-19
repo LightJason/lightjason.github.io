@@ -17,7 +17,7 @@
 	jQuery.teletype = function( element, options ) {
 
 			// helper references
-			var dom = jQuery( this );
+			var dom = jQuery( element );
 			
 		
 			// default plugin settings
@@ -163,7 +163,7 @@
 			// ---- public methods --------------------------------------------------------------------------------------------------
 
 			element.setCursor = function( cursor ) {
-				element.current.cursor = cursor;
+				element.settings.cursor = cursor;
 			};
 			
 			
@@ -191,15 +191,13 @@
 
 				// set cursor
 				if ( element.settings.cursor ) {
-					//var cursor = jQuery( '<span />' ).addClass( element.settings.classcursor ).appendTo( self );
-					/*
+					var cursor = jQuery( '<span />' ).addClass( element.settings.classcursor ).appendTo( dom ).text( element.settings.cursor );
 					setInterval ( function() {
 						if ( element.settings.smoothBlink )
 							cursor.animate( { opacity: 0 } ).animate( { opacity: 1 } );
 						else
 							cursor.delay(500).fadeTo(0,0).delay(500).fadeTo(0,1);
-					}, settings.blinkSpeed );
-					*/
+					}, element.settings.blinkSpeed );
 				}
 				
 
@@ -216,10 +214,11 @@
 
 			return this.each( function() {
 				// http://stefangabos.ro/jquery/jquery-plugin-boilerplate-revisited/
+				// http://stackoverflow.com/questions/8758685/get-dom-element-from-jquery-plugin-extension
 
 				if (undefined == jQuery(this).data('teletype'))
 					return jQuery(this).data( 'teletype', new jQuery.teletype(this, options) );
-
+				
 				/*
 				setCurrentString();
 				self.addClass( settings.classmain ).empty();
