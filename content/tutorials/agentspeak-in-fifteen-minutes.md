@@ -104,7 +104,7 @@ For the following sections we assume that you are working inside the directory `
     │           └── test/
     │               └── java/
     │                   └── myagentproject/
-    │                   └── AppTest.java    
+    │                       └── AppTest.java    
     ```
     <!-- htmlmin:ignore -->
     
