@@ -27,9 +27,8 @@
 				automaticstart: true,
 				classresult: "teletype-result",
 				classprefix: "teletype-prefix",
-				classtext: "teletype-text",
-				// classcursor: "teletype-cursor",
-				// classmain: "teletype",
+				classcursor: "teletype-cursor",
+				classoutput: "teletype-text",
 				typeDelay: 100,
 				backDelay: 50,
 				blinkSpeed: 1000,
@@ -48,18 +47,20 @@
 
 			// ---- private methods -------------------------------------------------------------------------------------------------
 
+			// defines the function for get the next command-item
 			var next = function() {
 				element.current.index++;
 			
-				if ( element.current.index >= element.settings.text.length ) {
+				if ( element.current.index >= element.settings.text.length )
+				{
 					element.current.index = 0;
 					element.current.loop++;
-					if ( element.settings.loop !== false && ( element.settings.loop == element.current.loop ) )
+					if ( ( element.settings.loop !== false ) && ( element.settings.loop == element.current.loop ) )
 						return false;
 				}
 
 				element.current.position = 0;
-				element.setCurrentString();
+				setCurrentString();
 				if ( typeof( element.settings.callbackNext ) == 'function' )
 					element.settings.callbackNext( element );
 
@@ -67,15 +68,21 @@
 			};
 
 
+			// runs the typing animation
 			var type = function() {
-				if ( ( element.settings.prefix && current.position === 0 ) && ( element.current.loop === 0 && element.current.index === 0 ) )
-						jQuery( '<span />' ).addClass( element.settings.classprefix ).html( element.settings.prefix ).prependTo( dom );
 
+				// add new prefix item if possible
+				if ( ( element.settings.prefix ) && ( element.current.position === 0 ) && ( element.current.loop === 0 ) && ( element.current.index === 0 ) )
+						jQuery( '<span />' ).addClass( element.settings.classprefix ).html( element.settings.prefix ).prependTo( element.output );
+
+				// get current letter & position
 				var letters = element.current.string.split( '' ),
 					letter = letters[element.current.position],
 					start = element.current.position + 1;
 
-				if ( letter == '^' || letter == '~' ) {
+				// check for pause or remove sign
+				if ( ( letter == '^' ) || ( letter == '~' ) )
+				{
 
 					// @todo code shorten
 					var end = element.current.string.substr( start ).search( /[^0-9]/ );
@@ -89,7 +96,8 @@
 						if ( letter == '^' )
 							window.setTimeout( function() { window.setTimeout( type, delay( element.settings.typeDelay ) ); }, value );
 
-						else {
+						else
+						{
 							var index = element.current.position - value;
 							element.current.string = element.current.string.substr( 0, index - 1 ) + element.current.string.substr( element.current.position - 1 );
 							window.setTimeout( function() { backspace( Math.max( index, 0 ) ); }, delay( element.settings.backDelay ) );
@@ -98,24 +106,25 @@
 						return;
 					}
 
-				} else 
-					if ( letter == '\\' ) {
-						var nextChar = element.current.string.substr( start, 1 );
-						if ( nextChar == 'n' ) {
-							element.current.position++;
-							letter = '<br />';
-						}
-					}
-
-				if ( ( element.output ) && ( letter ) )
-					element.output.html( element.output.html() + letter );
+				}
 				
+				// check for line-break
+				if ( ( letter == '\\' ) && ( element.current.string.substr( start, 1 ) === 'n' ) ) {
+					element.current.position++;
+					letter = '<br/>';		
+				}
+
+				// output
+				if ( letter )
+					element.output.html( element.output.html() + letter );
+
 				element.current.position++;
 				if ( element.current.position < element.current.string.length )
 					window.setTimeout( type, delay( element.settings.typeDelay ) );
 				else 
+				/*
 					if ( element.settings.preserve != false )
-						window.setTimeout( function() { window.setTimeout( backspace, delay( settings.backDelay ) ); }, settings.delay );
+						window.setTimeout( function() { window.setTimeout( backspace, delay( element.settings.backDelay ) ); }, element.settings.delay );
 					else {
 						element.output.html( element.output.html() + element.current.result + '<span class="' + element.settings.classprefix+ '">' + element.settings.prefix + '</span>' );
 						if ( next() )
@@ -124,9 +133,10 @@
 							if ( typeof( element.settings.callbackFinished ) == 'function' )
 								element.settings.callbackFinished( element );
 					}
+					*/
 
 				if ( typeof( element.settings.callbackType ) == 'function' )
-					element.settings.callbackType( letter, element );
+					element.settings.callbackType( letter, element );			
 			
 			};
 
@@ -136,8 +146,7 @@
 					stop = 0;
 				
 				if ( element.current.position > stop ) {
-					if (output)
-						element.output.html( element.output.html().slice( 0, -1 ) );
+					dom.html( dom.html().slice( 0, -1 ) );
 					window.setTimeout( function() { backspace( stop ); }, delay( element.settings.backDelay ) );
 					element.current.position--;
 				
@@ -154,7 +163,7 @@
 
 
 			var setCurrentString = function() {
-				element.current.string = element.settings.text[current.index].replace(/\n/g, "\\n");
+				element.current.string = element.settings.text[element.current.index].replace(/\n/g, "\\n");
 				element.current.result = (element.settings.result.length == element.settings.text.length) && (!!element.settings.result[element.current.index]) ? '<p class="' + element.settings.classresult + '">' + element.settings.result[element.current.index] + "</p>" : "";
 			}
 
@@ -184,14 +193,14 @@
 				// clear DOM node first
 				dom.empty();
 
-				// sets instance values into element
+				// sets instance an nessessary DOM values into element
 				element.settings = jQuery.extend( {}, defaults, options );
 				element.current   = { string: '', result: '', index: 0, position: 0, loop: 0 };
-				element.output   = '';
+				element.output    = jQuery( '<span/>' ).addClass( element.settings.classoutput ).appendTo( dom );
 
 				// set cursor
 				if ( element.settings.cursor ) {
-					var cursor = jQuery( '<span />' ).addClass( element.settings.classcursor ).appendTo( dom ).text( element.settings.cursor );
+					var cursor = jQuery( '<span/>' ).addClass( element.settings.classcursor ).appendTo( dom ).text( element.settings.cursor );
 					setInterval ( function() {
 						if ( element.settings.smoothBlink )
 							cursor.animate( { opacity: 0 } ).animate( { opacity: 1 } );
@@ -200,7 +209,9 @@
 					}, element.settings.blinkSpeed );
 				}
 				
-
+				// start typing
+				setCurrentString();
+				type();
 			}
 
 			element.init();
