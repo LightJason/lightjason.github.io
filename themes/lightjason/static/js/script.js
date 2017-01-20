@@ -44,7 +44,7 @@ jQuery(function() {
             result : jQuery(this).find("p.result").map(function(){ return jQuery(this).html(); }),
             prefix: jQuery(this).attr( "data-prefix" ),
             cursor: "\u258B",
-            automaticstart: false,
+            automaticstart: true,
             typeDelay: 30,
             backDelay: 50,
             preserve: true,
