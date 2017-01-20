@@ -44,6 +44,7 @@ jQuery(function() {
             result : jQuery(this).find("p.result").map(function(){ return jQuery(this).html(); }),
             prefix: jQuery(this).attr( "data-prefix" ),
             cursor: "\u258B",
+            automaticstart: false,
             typeDelay: 30,
             backDelay: 50,
             preserve: true,
@@ -52,7 +53,7 @@ jQuery(function() {
     });
 
     jQuery(".teletypereset").click(function(){
-        jQuery( "#" + jQuery(this).attr( "data-terminal" ) ).teletype().start();
+        console.log( jQuery( "#" + jQuery(this).attr( "data-terminal" ) ).data("teletype") );
     });
 });
     

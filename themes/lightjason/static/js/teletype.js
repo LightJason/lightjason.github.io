@@ -214,24 +214,32 @@
 
 			// ---- public methods --------------------------------------------------------------------------------------------------
 
-			element.setCursor = function( cursor ) {
+			this.setCursor = function( cursor )
+			{
 				element.settings.cursor = cursor;
 			}
 			
 			
-			element.reset = function() {
+			this.reset = function()
+			{
 				if (element.settings.loop === 0)
 					return;
 			}
 
 
-			element.start = function() {
-				//if (element.settings.automaticstart)
-				//	return;
+			this.start = function()
+			{
+				console.log("foo");
+				if (element.settings.automaticstart)
+					return;
+
+				//setCurrentString();
+				//type();	
 			}
 
 
-			element.init = function() {
+			this.init = function()
+			{
 
 				// clear DOM node first
 				dom.empty();
@@ -253,16 +261,17 @@
 				}
 				
 				// start typing
-				setCurrentString();
-				type();
+				if (element.settings.automaticstart)
+				{
+					setCurrentString();
+					type();
+				}
 			}
 
-			element.init();
+			this.init();
 		}
 
 		// ---- jQuery initialization -------------------------------------------------------------------------------------------
-
-
 
 		jQuery.fn.teletype = function( options ) {
 
@@ -270,27 +279,8 @@
 				// http://stefangabos.ro/jquery/jquery-plugin-boilerplate-revisited/
 				// http://stackoverflow.com/questions/8758685/get-dom-element-from-jquery-plugin-extension
 
-				if (undefined == jQuery(this).data('teletype'))
-					return jQuery(this).data( 'teletype', new jQuery.teletype(this, options) );
-				
-				/*
-				setCurrentString();
-				self.addClass( settings.classmain ).empty();
-				output = jQuery( '<span />' ).addClass( settings.classtext ).appendTo( self );
-				if ( settings.cursor ) {
-					var cursor = $( '<span />' ).addClass( settings.classcursor ).appendTo( self );
-					element.setCursor( settings.cursor );
-					setInterval ( function() {
-						if ( settings.smoothBlink )
-							cursor.animate( { opacity: 0 } ).animate( { opacity: 1 } );
-						else
-							cursor.delay(500).fadeTo(0,0).delay(500).fadeTo(0,1);
-					}, settings.blinkSpeed );
-				}
-				if (settings.automaticstart)
-					type();	
-				*/
-
+				if ( jQuery(this).data('teletype') == undefined )
+					return jQuery(this).data( 'teletype', new jQuery.teletype(this, options) );				
 			} );
 	}
 
