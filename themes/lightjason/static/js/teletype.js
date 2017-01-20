@@ -48,6 +48,27 @@
 
 			// ---- private methods -------------------------------------------------------------------------------------------------
 
+			// returns a delay value
+			var delay = function( speed ) 
+			{ 
+				return element.settings.humanise ? parseInt( speed ) + Math.floor( Math.random() * 200 ) : parseInt( speed ); 
+			}
+
+			// sets the current string data (command and command-result)
+			var setCurrentString = function() {
+				element.current.string = element.settings.text[element.current.index].replace(/\n/g, "\\n");
+				element.current.letters = element.current.string.split( '' );
+				element.current.result = (element.settings.result.length == element.settings.text.length) && (!!element.settings.result[element.current.index]) ? '<p class="' + element.settings.classresult + '">' + element.settings.result[element.current.index] + "</p>" : "";
+			}
+
+			// extracts a number beginning on the given position of a string
+			var extractnumber = function( text, start )
+			{
+				var end = text.substr( start ).search( /[^0-9]/ );
+				return text.substr( start, end == -1 ? text.length : end );
+			}
+
+
 			// defines the function for get the next command-item
 			var next = function()
 			{
@@ -64,18 +85,14 @@
 
 				setCurrentString();
 				element.current.position = 0;
+
+				// runs next-callback
 				if ( typeof( element.settings.callbackNext ) == 'function' )
 					element.settings.callbackNext( element );
 
 				return true;
 			};
 
-			// extracts a number beginning on the given position
-			var extractnumber = function( text, start )
-			{
-				var end = text.substr( start ).search( /[^0-9]/ );
-				return text.substr( start, end == -1 ? text.length : end );
-			}
 
 			// creates a pause function
 			var pause = function( text, start )
@@ -146,11 +163,14 @@
 				}
 
 
+				// run typing-callback
+				if ( typeof( element.settings.callbackType ) == 'function' )
+					element.settings.callbackType( element );
+
 
 				// increment current position and set output
 				element.current.position++;
 				element.output.html( element.output.html() + letter );
-
 
 				// run the next iteration
 				if ( element.current.position < element.current.string.length )
@@ -169,22 +189,6 @@
 					}
 				}
 
-
-				/*
-					if ( element.settings.preserve != false )
-						setTimeout( function() { setTimeout( backspace, delay( element.settings.backDelay ) ); }, element.settings.delay );
-					else {
-						element.output.html( element.output.html() + element.current.result + '<span class="' + element.settings.classprefix+ '">' + element.settings.prefix + '</span>' );
-						if ( next() )
-							setTimeout( function() { setTimeout( type, delay( element.settings.typeDelay ) ); }, element.settings.delay );
-						else 
-							if ( typeof( element.settings.callbackFinished ) == 'function' )
-								element.settings.callbackFinished( element );
-					}
-					*/
-
-				if ( typeof( element.settings.callbackType ) == 'function' )
-					element.settings.callbackType( letter, element );
 			}
 
 
@@ -204,21 +208,6 @@
 				
 					setTimeout( type.bind(element), delay( element.settings.typeDelay ) );
 				}
-			}
-
-
-			// returns a delay value
-			var delay = function( speed ) 
-			{ 
-				return element.settings.humanise ? parseInt( speed ) + Math.floor( Math.random() * 200 ) : parseInt( speed ); 
-			}
-
-
-			// sets the current string data (command and command result)
-			var setCurrentString = function() {
-				element.current.string = element.settings.text[element.current.index].replace(/\n/g, "\\n");
-				element.current.letters = element.current.string.split( '' );
-				element.current.result = (element.settings.result.length == element.settings.text.length) && (!!element.settings.result[element.current.index]) ? '<p class="' + element.settings.classresult + '">' + element.settings.result[element.current.index] + "</p>" : "";
 			}
 
 
