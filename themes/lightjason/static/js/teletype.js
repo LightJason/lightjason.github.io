@@ -16,10 +16,6 @@
 
 	jQuery.teletype = function( element, options ) {
 
-			// helper references
-			var dom = jQuery( element );
-			
-		
 			// default plugin settings
 			var defaults = {
 				text: [ 'one', 'two', 'three' ],
@@ -46,31 +42,73 @@
 			}
 
 
-			// ---- private methods -------------------------------------------------------------------------------------------------
 
-			// returns a delay value
-			var delay = function( speed ) 
-			{ 
-				return element.settings.humanise ? parseInt( speed ) + Math.floor( Math.random() * 200 ) : parseInt( speed ); 
+			function Plugin( element, options )
+			{
+				this.settings = jQuery.extend( {}, defaults, options );
+				this.element = element;
+				this.init();
 			}
 
+
+			Plugin.prototype = {
+
+
+			// ---- private methods -------------------------------------------------------------------------------------------------
+
+			init : function()
+			{
+
+				// clear DOM node first
+				dom.empty();
+
+				// sets instance an nessessary DOM values into element
+				element.current   = { string: '', result: '', letters: [], index: 0, position: 0, loop: 0 };
+				element.output    = jQuery( '<span/>' ).addClass( element.settings.classoutput ).appendTo( dom );
+
+				// set cursor
+				if ( element.settings.cursor ) {
+					var cursor = jQuery( '<span/>' ).addClass( element.settings.classcursor ).appendTo( dom ).text( element.settings.cursor );
+					setInterval ( function() {
+						if ( element.settings.smoothBlink )
+							cursor.animate( { opacity: 0 } ).animate( { opacity: 1 } );
+						else
+							cursor.delay(500).fadeTo(0,0).delay(500).fadeTo(0,1);
+					}, element.settings.blinkSpeed );
+				}
+			
+				// start typing
+				if (element.settings.automaticstart)
+				{
+					setCurrentString();
+					type();
+				}
+
+			},
+
+			// returns a delay value
+			delay : function( speed ) 
+			{ 
+				return element.settings.humanise ? parseInt( speed ) + Math.floor( Math.random() * 200 ) : parseInt( speed ); 
+			},
+
 			// sets the current string data (command and command-result)
-			var setCurrentString = function() {
+			setCurrentString : function() {
 				element.current.string = element.settings.text[element.current.index].replace(/\n/g, "\\n");
 				element.current.letters = element.current.string.split( '' );
 				element.current.result = (element.settings.result.length == element.settings.text.length) && (!!element.settings.result[element.current.index]) ? '<p class="' + element.settings.classresult + '">' + element.settings.result[element.current.index] + "</p>" : "";
-			}
+			},
 
 			// extracts a number beginning on the given position of a string
-			var extractnumber = function( text, start )
+			extractnumber : function( text, start )
 			{
 				var end = text.substr( start ).search( /[^0-9]/ );
 				return text.substr( start, end == -1 ? text.length : end );
-			}
+			},
 
 
 			// defines the function for get the next command-item
-			var next = function()
+			next : function()
 			{
 				element.current.index++;
 
@@ -91,11 +129,11 @@
 					element.settings.callbackNext( element );
 
 				return true;
-			};
+			},
 
 
 			// creates a pause function
-			var pause = function( text, start )
+			pause : function( text, start )
 			{
 				var time = extractnumber( text, start );
 				if ( !jQuery.isNumeric( time ) )
@@ -103,11 +141,11 @@
 
 				element.current.position = start + time.length;
 				setTimeout( type.bind(element), time );
-			}
+			},
 
 
 			// runs the typing animation
-			var type = function() 
+			type : function() 
 			{
 
 				// add new prefix item if possible
@@ -189,10 +227,10 @@
 					}
 				}
 
-			}
+			},
 
 
-			var backspace = function( stop ) 
+			backspace : function( stop ) 
 			{
 				if ( !stop )
 					stop = 0;
@@ -208,26 +246,26 @@
 				
 					setTimeout( type.bind(element), delay( element.settings.typeDelay ) );
 				}
-			}
+			},
 
 
 
 			// ---- public methods --------------------------------------------------------------------------------------------------
 
-			this.setCursor = function( cursor )
+			setCursor : function( cursor )
 			{
 				element.settings.cursor = cursor;
-			}
+			},
 			
 			
-			this.reset = function()
+			reset : function()
 			{
 				if (element.settings.loop === 0)
 					return;
-			}
+			},
 
 
-			this.start = function()
+			start : function()
 			{
 				console.log("foo");
 				if (element.settings.automaticstart)
@@ -238,49 +276,20 @@
 			}
 
 
-			this.init = function()
-			{
-
-				// clear DOM node first
-				dom.empty();
-
-				// sets instance an nessessary DOM values into element
-				element.settings = jQuery.extend( {}, defaults, options );
-				element.current   = { string: '', result: '', letters: [], index: 0, position: 0, loop: 0 };
-				element.output    = jQuery( '<span/>' ).addClass( element.settings.classoutput ).appendTo( dom );
-
-				// set cursor
-				if ( element.settings.cursor ) {
-					var cursor = jQuery( '<span/>' ).addClass( element.settings.classcursor ).appendTo( dom ).text( element.settings.cursor );
-					setInterval ( function() {
-						if ( element.settings.smoothBlink )
-							cursor.animate( { opacity: 0 } ).animate( { opacity: 1 } );
-						else
-							cursor.delay(500).fadeTo(0,0).delay(500).fadeTo(0,1);
-					}, element.settings.blinkSpeed );
-				}
-				
-				// start typing
-				if (element.settings.automaticstart)
-				{
-					setCurrentString();
-					type();
-				}
-			}
-
-			this.init();
-		}
+		};
 
 		// ---- jQuery initialization -------------------------------------------------------------------------------------------
 
 		jQuery.fn.teletype = function( options ) {
 
 			return this.each( function() {
+				// https://github.com/jquery-boilerplate/jquery-patterns
 				// http://stefangabos.ro/jquery/jquery-plugin-boilerplate-revisited/
 				// http://stackoverflow.com/questions/8758685/get-dom-element-from-jquery-plugin-extension
+				// https://github.com/jquery-boilerplate/jquery-patterns/blob/master/patterns/jquery.basic.plugin-boilerplate.js
 
-				if ( jQuery(this).data('teletype') == undefined )
-					return jQuery(this).data( 'teletype', new jQuery.teletype(this, options) );				
+				if ( !jQuery.data(this, 'teletype') )
+					return jQuery.data( this, 'teletype', new jQuery.teletype(this, options) );				
 			} );
 	}
 
