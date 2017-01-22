@@ -12,285 +12,285 @@
 */
 
 "use strict";
-(function () {
+;(function ( jQuery, window, document, undefined ) {
 
-	jQuery.teletype = function( element, options ) {
-
-			// default plugin settings
-			var defaults = {
-				text: [ 'one', 'two', 'three' ],
-				result: [],
-				automaticstart: true,
-				classresult: "teletype-result",
-				classprefix: "teletype-prefix",
-				classcursor: "teletype-cursor",
-				classoutput: "teletype-text",
-				taglinebreak: "<br/>",
-				typeDelay: 100,
-				backDelay: 50,
-				blinkSpeed: 1000,
-				delay: 2000,
-				cursor: '|',
-				preserve: false,
-				prefix: '',
-				loop: 0,
-				humanise: true,
-				smoothBlink: true,
-				callbackNext: null,
-				callbackType: null,
-				callbackFinished: null
-			}
+	// default plugin settings
+	var defaults = {
+		text: [ 'one', 'two', 'three' ],
+		result: [],
+		automaticstart: true,
+		classresult: "teletype-result",
+		classprefix: "teletype-prefix",
+		classcursor: "teletype-cursor",
+		classoutput: "teletype-text",
+		taglinebreak: "<br/>",
+		typeDelay: 100,
+		backDelay: 50,
+		blinkSpeed: 1000,
+		delay: 2000,
+		cursor: '|',
+		preserve: false,
+		prefix: '',
+		loop: 0,
+		humanise: true,
+		smoothBlink: true,
+		callbackNext: null,
+		callbackType: null,
+		callbackFinished: null
+	};
 
 
 
-			function Plugin( element, options )
-			{
-				this.settings = jQuery.extend( {}, defaults, options );
-				this.element = element;
-				this.init();
-			}
+	function Plugin( element, options )
+	{
+		this.dom = jQuery( element );
+		this.settings = jQuery.extend( {}, defaults, options );
 
-
-			Plugin.prototype = {
-
-
-			// ---- private methods -------------------------------------------------------------------------------------------------
-
-			init : function()
-			{
-
-				// clear DOM node first
-				dom.empty();
-
-				// sets instance an nessessary DOM values into element
-				element.current   = { string: '', result: '', letters: [], index: 0, position: 0, loop: 0 };
-				element.output    = jQuery( '<span/>' ).addClass( element.settings.classoutput ).appendTo( dom );
-
-				// set cursor
-				if ( element.settings.cursor ) {
-					var cursor = jQuery( '<span/>' ).addClass( element.settings.classcursor ).appendTo( dom ).text( element.settings.cursor );
-					setInterval ( function() {
-						if ( element.settings.smoothBlink )
-							cursor.animate( { opacity: 0 } ).animate( { opacity: 1 } );
-						else
-							cursor.delay(500).fadeTo(0,0).delay(500).fadeTo(0,1);
-					}, element.settings.blinkSpeed );
-				}
-			
-				// start typing
-				if (element.settings.automaticstart)
-				{
-					setCurrentString();
-					type();
-				}
-
-			},
-
-			// returns a delay value
-			delay : function( speed ) 
-			{ 
-				return element.settings.humanise ? parseInt( speed ) + Math.floor( Math.random() * 200 ) : parseInt( speed ); 
-			},
-
-			// sets the current string data (command and command-result)
-			setCurrentString : function() {
-				element.current.string = element.settings.text[element.current.index].replace(/\n/g, "\\n");
-				element.current.letters = element.current.string.split( '' );
-				element.current.result = (element.settings.result.length == element.settings.text.length) && (!!element.settings.result[element.current.index]) ? '<p class="' + element.settings.classresult + '">' + element.settings.result[element.current.index] + "</p>" : "";
-			},
-
-			// extracts a number beginning on the given position of a string
-			extractnumber : function( text, start )
-			{
-				var end = text.substr( start ).search( /[^0-9]/ );
-				return text.substr( start, end == -1 ? text.length : end );
-			},
-
-
-			// defines the function for get the next command-item
-			next : function()
-			{
-				element.current.index++;
-
-				// check end and looping
-				if ( element.current.index >= element.settings.text.length )
-				{
-					element.current.index = 0;
-					element.current.loop++;
-					if ( ( element.settings.loop !== false ) && ( element.settings.loop == element.current.loop ) )
-						return false;
-				}
-
-				setCurrentString();
-				element.current.position = 0;
-
-				// runs next-callback
-				if ( typeof( element.settings.callbackNext ) == 'function' )
-					element.settings.callbackNext( element );
-
-				return true;
-			},
-
-
-			// creates a pause function
-			pause : function( text, start )
-			{
-				var time = extractnumber( text, start );
-				if ( !jQuery.isNumeric( time ) )
-					return;
-
-				element.current.position = start + time.length;
-				setTimeout( type.bind(element), time );
-			},
-
-
-			// runs the typing animation
-			type : function() 
-			{
-
-				// add new prefix item if possible
-				if ( ( element.settings.prefix ) && ( element.current.position === 0 ) )
-						jQuery( '<span />' ).addClass( element.settings.classprefix ).html( element.settings.prefix ).appendTo( element.output );
-
-				// get current letter & position
-				var letter = element.current.letters[element.current.position],
-					start = element.current.position + 1;
-
-				// check pause
-				if ( letter == '^' )
-				{
-					pause( element.current.string, start );
-					return;
-				}
-
-				// check for pause or remove sign
-				/*
-				if ( letter == '~' )
-				{
-
-					// @todo code shorten
-					var end = element.current.string.substr( start ).search( /[^0-9]/ );
-					if ( end == -1 )
-						end = current.string.length;
-					
-					var value = element.current.string.substr( start, end );
-					if ( jQuery.isNumeric( value ) ) {
-						element.current.string = element.current.string.replace( letter + value, '' );
-
-						if ( letter == '^' )
-							setTimeout( function() {}, value );
-
-						else
-						{
-							var index = element.current.position - value;
-							element.current.string = element.current.string.substr( 0, index - 1 ) + element.current.string.substr( element.current.position - 1 );
-							setTimeout( backspace( Math.max( index, 0 ) ).bind(element) , delay( element.settings.backDelay ) );
-						}
-
-						return;
-					}
-
-				}
-				*/
-				
-				// check for line-break
-				if ( ( letter == '\\' ) && ( element.current.string.substr( start, 1 ) === 'n' ) )
-				{
-					element.current.position++;
-					letter = element.settings.taglinebreak;		
-				}
-
-
-				// run typing-callback
-				if ( typeof( element.settings.callbackType ) == 'function' )
-					element.settings.callbackType( element );
-
-
-				// increment current position and set output
-				element.current.position++;
-				element.output.html( element.output.html() + letter );
-
-				// run the next iteration
-				if ( element.current.position < element.current.string.length )
-					setTimeout( type.bind(element), delay( element.settings.typeDelay ) );
-				else
-				{
-					// set the result (of the typing) if it exists
-					if ( element.current.result )
-						element.output.html( element.output.html() + element.current.result );
-
-					// check if there exists a new line
-					if ( next() )
-					{
-						element.output.html( element.output.html() + element.settings.taglinebreak );
-						setTimeout( type.bind(element), delay( element.settings.typeDelay ) );
-					}
-				}
-
-			},
-
-
-			backspace : function( stop ) 
-			{
-				if ( !stop )
-					stop = 0;
-				
-				if ( element.current.position > stop ) {
-					dom.html( dom.html().slice( 0, -1 ) );
-					setTimeout( backspace( stop ).bind(element), delay( element.settings.backDelay ) );
-					element.current.position--;
-				
-				} else {
-					if ( ( stop === 0 ) && ( next() === false ) )
-						return;
-				
-					setTimeout( type.bind(element), delay( element.settings.typeDelay ) );
-				}
-			},
-
-
-
-			// ---- public methods --------------------------------------------------------------------------------------------------
-
-			setCursor : function( cursor )
-			{
-				element.settings.cursor = cursor;
-			},
-			
-			
-			reset : function()
-			{
-				if (element.settings.loop === 0)
-					return;
-			},
-
-
-			start : function()
-			{
-				console.log("foo");
-				if (element.settings.automaticstart)
-					return;
-
-				//setCurrentString();
-				//type();	
-			}
-
-
-		};
-
-		// ---- jQuery initialization -------------------------------------------------------------------------------------------
-
-		jQuery.fn.teletype = function( options ) {
-
-			return this.each( function() {
-				// https://github.com/jquery-boilerplate/jquery-patterns
-				// http://stefangabos.ro/jquery/jquery-plugin-boilerplate-revisited/
-				// http://stackoverflow.com/questions/8758685/get-dom-element-from-jquery-plugin-extension
-				// https://github.com/jquery-boilerplate/jquery-patterns/blob/master/patterns/jquery.basic.plugin-boilerplate.js
-
-				if ( !jQuery.data(this, 'teletype') )
-					return jQuery.data( this, 'teletype', new jQuery.teletype(this, options) );				
-			} );
+		// sets instance an nessessary DOM values into element
+		this.current   = { string: '', result: '', letters: [], index: 0, position: 0, loop: 0 };
+		this.output    = jQuery( '<span/>' ).addClass( this.settings.classoutput ).appendTo( this.dom );
+		
+		this.init();
 	}
 
-})(jQuery);
+
+	Plugin.prototype = {
+
+
+		// ---- private methods -------------------------------------------------------------------------------------------------
+
+		init : function()
+		{
+
+			// clear DOM node first
+			this.dom.empty();
+
+			// set cursor
+			if ( this.settings.cursor ) {
+				var cursor = jQuery( '<span/>' ).addClass( this.settings.classcursor ).appendTo( this.dom ).text( this.settings.cursor );
+				var self = this;
+				setInterval ( function() {
+					if ( self.settings.smoothBlink )
+						cursor.animate( { opacity: 0 } ).animate( { opacity: 1 } );
+					else
+						cursor.delay(500).fadeTo(0,0).delay(500).fadeTo(0,1);
+				}, this.settings.blinkSpeed );
+			}
+		
+			// start typing
+			if (this.settings.automaticstart)
+			{
+				this.setCurrentString();
+				this.type();
+			}
+
+		},
+
+		// returns a delay value
+		delay : function( speed ) 
+		{ 
+			return this.settings.humanise ? parseInt( speed ) + Math.floor( Math.random() * 200 ) : parseInt( speed ); 
+		},
+
+		// sets the current string data (command and command-result)
+		setCurrentString : function() {
+			this.current.string = this.settings.text[this.current.index].replace(/\n/g, "\\n");
+			this.current.letters = this.current.string.split( '' );
+			this.current.result = (this.settings.result.length == this.settings.text.length) && (this.settings.result[this.current.index]) ? '<p class="' + this.settings.classresult + '">' + this.settings.result[this.current.index] + "</p>" : "";
+		},
+
+		// extracts a number beginning on the given position of a string
+		extractnumber : function( text, start )
+		{
+			var end = text.substr( start ).search( /[^0-9]/ );
+			return text.substr( start, end == -1 ? text.length : end );
+		},
+
+
+		// defines the function for get the next command-item
+		next : function()
+		{
+			this.current.index++;
+
+			// check end and looping
+			if ( this.current.index >= this.settings.text.length )
+			{
+				this.current.index = 0;
+				this.current.loop++;
+				if ( ( this.settings.loop !== false ) && ( this.settings.loop == this.current.loop ) )
+					return false;
+			}
+
+			this.setCurrentString();
+			this.current.position = 0;
+
+			// runs next-callback
+			if ( typeof( this.settings.callbackNext ) == 'function' )
+				this.settings.callbackNext( null );
+
+			return true;
+		},
+
+
+		// creates a pause function
+		pause : function( text, start )
+		{
+			var time = this.extractnumber( text, start );
+			if ( !jQuery.isNumeric( time ) )
+				return;
+
+			this.current.position = start + time.length;
+			setTimeout( this.type.bind(this), time );
+		},
+
+
+		// runs the typing animation
+		type : function() 
+		{
+
+			// add new prefix item if possible
+			if ( ( this.settings.prefix ) && ( this.current.position === 0 ) )
+					jQuery( '<span />' ).addClass( this.settings.classprefix ).html( this.settings.prefix ).appendTo( this.output );
+
+			// get current letter & position
+			var letter = this.current.letters[this.current.position],
+				start = this.current.position + 1;
+
+			// check pause
+			if ( letter == '^' )
+			{
+				this.pause( this.current.string, start );
+				return;
+			}
+
+			// check for pause or remove sign
+			/*
+			if ( letter == '~' )
+			{
+
+				// @todo code shorten
+				var end = this.current.string.substr( start ).search( /[^0-9]/ );
+				if ( end == -1 )
+					end = current.string.length;
+				
+				var value = this.current.string.substr( start, end );
+				if ( jQuery.isNumeric( value ) ) {
+					this.current.string = this.current.string.replace( letter + value, '' );
+
+					if ( letter == '^' )
+						setTimeout( function() {}, value );
+
+					else
+					{
+						var index = this.current.position - value;
+						this.current.string = this.current.string.substr( 0, index - 1 ) + this.current.string.substr( this.current.position - 1 );
+						setTimeout( backspace( Math.max( index, 0 ) ).bind(element) , delay( this.settings.backDelay ) );
+					}
+
+					return;
+				}
+
+			}
+			*/
+			
+			// check for line-break
+			if ( ( letter == '\\' ) && ( this.current.string.substr( start, 1 ) === 'n' ) )
+			{
+				this.current.position++;
+				letter = this.settings.taglinebreak;		
+			}
+
+
+			// run typing-callback
+			if ( typeof( this.settings.callbackType ) == 'function' )
+				this.settings.callbackType( element );
+
+
+			// increment current position and set output
+			this.current.position++;
+			this.output.html( this.output.html() + letter );
+
+			// run the next iteration
+			if ( this.current.position < this.current.string.length )
+				setTimeout( this.type.bind(this), this.delay( this.settings.typeDelay ) );
+			else
+			{
+				// set the result (of the typing) if it exists
+				if ( this.current.result )
+					this.output.html( this.output.html() + this.current.result );
+
+				// check if there exists a new line
+				if ( this.next() )
+				{
+					this.output.html( this.output.html() + this.settings.taglinebreak );
+					setTimeout( this.type.bind(this), this.delay( this.settings.typeDelay ) );
+				}
+			}
+
+		},
+
+
+		backspace : function( stop ) 
+		{
+			if ( !stop )
+				stop = 0;
+			
+			if ( this.current.position > stop ) {
+				this.dom.html( this.dom.html().slice( 0, -1 ) );
+				setTimeout( this.backspace( stop ).bind(this), delay( this.settings.backDelay ) );
+				this.current.position--;
+			
+			} else {
+				if ( ( stop === 0 ) && ( next() === false ) )
+					return;
+			
+				setTimeout( this.type.bind(element), this.delay( this.settings.typeDelay ) );
+			}
+		},
+
+
+
+		// ---- public methods --------------------------------------------------------------------------------------------------
+
+		setCursor : function( cursor )
+		{
+			this.settings.cursor = cursor;
+		},
+		
+		
+		reset : function()
+		{
+			if (this.settings.loop === 0)
+				return;
+		},
+
+
+		start : function()
+		{
+			console.log("foo");
+			if (this.settings.automaticstart)
+				return;
+
+			//setCurrentString();
+			//type();	
+		}
+
+	
+	};
+
+	// ---- jQuery initialization -------------------------------------------------------------------------------------------
+
+	jQuery.fn.teletype = function( options ) {
+
+		return this.each( function() {
+			// https://github.com/jquery-boilerplate/jquery-patterns
+			// http://stefangabos.ro/jquery/jquery-plugin-boilerplate-revisited/
+			// http://stackoverflow.com/questions/8758685/get-dom-element-from-jquery-plugin-extension
+			// https://github.com/jquery-boilerplate/jquery-patterns/blob/master/patterns/jquery.basic.plugin-boilerplate.js
+
+			if ( !jQuery.data(this, 'teletype') )
+				return jQuery.data( this, 'teletype', new Plugin(this, options) );				
+		} );
+	}
+
+})( jQuery, window, document );
