@@ -12,13 +12,15 @@
 */
 
 "use strict";
-;(function ( jQuery, window, document, undefined ) {
+(function() {
 
-	// default plugin settings
-	var defaults = {
+	/**
+	 * static default options
+	 */
+	var so_default = {
 		text: [ 'one', 'two', 'three' ],
 		result: [],
-		automaticstart: true,
+		automaticpn_start: true,
 		classresult: "teletype-result",
 		classprefix: "teletype-prefix",
 		classcursor: "teletype-cursor",
@@ -26,7 +28,7 @@
 		taglinebreak: "<br/>",
 		typeDelay: 100,
 		backDelay: 50,
-		blinkSpeed: 1000,
+		blinkpn_Speed: 1000,
 		delay: 2000,
 		cursor: '|',
 		preserve: false,
@@ -40,11 +42,16 @@
 	};
 
 
-
-	function Plugin( element, options )
+	/**
+	 * plugin factory
+	 * 
+	 * @param po_element closure element
+	 * @param po_options initialize options 
+	 */
+	function Plugin( po_element, po_options )
 	{
-		this.dom = jQuery( element );
-		this.settings = jQuery.extend( {}, defaults, options );
+		this.dom = jQuery( po_element );
+		this.settings = jQuery.extend( {}, so_default, po_options );
 
 		this.init();
 	}
@@ -52,9 +59,9 @@
 
 	Plugin.prototype = {
 
-
-		// ---- private methods -------------------------------------------------------------------------------------------------
-
+		/**
+		 * constructor
+		 */
 		init : function()
 		{
 
@@ -74,11 +81,11 @@
 						cursor.animate( { opacity: 0 } ).animate( { opacity: 1 } );
 					else
 						cursor.delay(500).fadeTo(0,0).delay(500).fadeTo(0,1);
-				}, this.settings.blinkSpeed );
+				}, this.settings.blinkpn_Speed );
 			}
 		
 			// start typing
-			if (this.settings.automaticstart)
+			if (this.settings.automaticpn_start)
 			{
 				this.setCurrentString();
 				this.type();
@@ -86,28 +93,45 @@
 
 		},
 
-		// returns a delay value
-		delay : function( speed ) 
+		/**
+		 * delay function
+		 * 
+		 * @param pn_speed any speed value
+		 * @return randomized speed value
+		 */
+		delay : function( pn_speed ) 
 		{ 
-			return this.settings.humanise ? parseInt( speed ) + Math.floor( Math.random() * 200 ) : parseInt( speed ); 
+			return this.settings.humanise ? parseInt( pn_speed ) + Math.floor( Math.random() * 200 ) : parseInt( pn_speed ); 
 		},
 
-		// sets the current string data (command and command-result)
+
+		/**
+		 * sets the current string and if possible result data
+		 */
 		setCurrentString : function() {
 			this.current.string = this.settings.text[this.current.index].replace(/\n/g, "\\n");
 			this.current.letters = this.current.string.split( '' );
 			this.current.result = (this.settings.result.length == this.settings.text.length) && (this.settings.result[this.current.index]) ? '<p class="' + this.settings.classresult + '">' + this.settings.result[this.current.index] + "</p>" : "";
 		},
 
-		// extracts a number beginning on the given position of a string
-		extractnumber : function( text, start )
+
+		/**
+		 * extract a number from a text
+		 * 
+		 * @param pc_text input text
+		 * @param pn_start start position within the string
+		 * @return extracted number
+		 */
+		extractnumber : function( pc_text, pn_start )
 		{
-			var end = text.substr( start ).search( /[^0-9]/ );
-			return text.substr( start, end == -1 ? text.length : end );
+			var end = pc_text.substr( pn_start ).search( /[^0-9]/ );
+			return pc_text.substr( pn_start, end == -1 ? pc_text.length : end );
 		},
 
 
-		// defines the function for get the next command-item
+		/**
+		 * sets the next outpur sequence
+		 */
 		next : function()
 		{
 			this.current.index++;
@@ -132,19 +156,26 @@
 		},
 
 
-		// creates a pause function
-		pause : function( text, start )
+		/**
+		 * pause function for typing pause
+		 * 
+		 * @param pc_text current input text
+		 * @param pn_start start position for searching pause time
+		 */
+		pause : function( pc_text, pn_start )
 		{
-			var time = this.extractnumber( text, start );
+			var time = this.extractnumber( pc_text, pn_start );
 			if ( !jQuery.isNumeric( time ) )
 				return;
 
-			this.current.position = start + time.length;
+			this.current.position = pn_start + time.length;
 			setTimeout( this.type.bind(this), time );
 		},
 
 
-		// runs the typing animation
+		/**
+		 * execution typing
+		 */
 		type : function() 
 		{
 
@@ -154,12 +185,12 @@
 
 			// get current letter & position
 			var letter = this.current.letters[this.current.position],
-				start = this.current.position + 1;
+				pn_start = this.current.position + 1;
 
 			// check pause
 			if ( letter == '^' )
 			{
-				this.pause( this.current.string, start );
+				this.pause( this.current.string, pn_start );
 				return;
 			}
 
@@ -169,11 +200,11 @@
 			{
 
 				// @todo code shorten
-				var end = this.current.string.substr( start ).search( /[^0-9]/ );
+				var end = this.current.string.substr( pn_start ).search( /[^0-9]/ );
 				if ( end == -1 )
 					end = current.string.length;
 				
-				var value = this.current.string.substr( start, end );
+				var value = this.current.string.substr( pn_start, end );
 				if ( jQuery.isNumeric( value ) ) {
 					this.current.string = this.current.string.replace( letter + value, '' );
 
@@ -194,7 +225,7 @@
 			*/
 			
 			// check for line-break
-			if ( ( letter == '\\' ) && ( this.current.string.substr( start, 1 ) === 'n' ) )
+			if ( ( letter == '\\' ) && ( this.current.string.substr( pn_start, 1 ) === 'n' ) )
 			{
 				this.current.position++;
 				letter = this.settings.taglinebreak;		
@@ -229,35 +260,44 @@
 
 		},
 
-
-		backspace : function( stop ) 
+		/**
+		 * backspace for removing characters
+		 * @bug incomplete
+		 * 
+		 * @param pn_stiop number of characters to remove
+		 */
+		backspace : function( pn_stop ) 
 		{
-			if ( !stop )
-				stop = 0;
+			if ( !pn_stop )
+				pn_stop = 0;
 			
-			if ( this.current.position > stop ) {
+			if ( this.current.position > pn_stop ) {
 				this.dom.html( this.dom.html().slice( 0, -1 ) );
-				setTimeout( this.backspace( stop ).bind(this), delay( this.settings.backDelay ) );
+				setTimeout( this.backspace( pn_stop ).bind(this), delay( this.settings.backDelay ) );
 				this.current.position--;
 			
 			} else {
-				if ( ( stop === 0 ) && ( next() === false ) )
+				if ( ( pn_stop === 0 ) && ( next() === false ) )
 					return;
 			
-				setTimeout( this.type.bind(element), this.delay( this.settings.typeDelay ) );
+				setTimeout( this.type.bind(this), this.delay( this.settings.typeDelay ) );
 			}
 		},
 
 
-
-		// ---- public methods --------------------------------------------------------------------------------------------------
-
-		setCursor : function( cursor )
+		/**
+		 * modifies the internal cursor representation
+		 * 
+		 * @param pc_cursor cursor character
+		 */
+		setCursor : function( pc_cursor )
 		{
-			this.settings.cursor = cursor;
+			this.settings.cursor = pc_cursor;
 		},
 		
-		
+		/**
+		 * resets the dom element and rerun typing
+		 */
 		reset : function()
 		{
 			if (this.settings.loop === 0)
@@ -265,10 +305,13 @@
 		},
 
 
+		/**
+		 * starts typing if automatic start is disabled
+		 */
 		start : function()
 		{
 			console.log("foo");
-			if (this.settings.automaticstart)
+			if (this.settings.automaticpn_start)
 				return;
 
 			//setCurrentString();
@@ -280,7 +323,7 @@
 
 	// ---- jQuery initialization -------------------------------------------------------------------------------------------
 
-	jQuery.fn.teletype = function( options ) {
+	jQuery.fn.teletype = function( px_data ) {
 
 		return this.each( function() {
 			// https://github.com/jquery-boilerplate/jquery-patterns
@@ -289,11 +332,13 @@
 			// https://github.com/jquery-boilerplate/jquery-patterns/blob/master/patterns/jquery.basic.plugin-boilerplate.js
 
 			// http://stackoverflow.com/questions/24683831/how-to-call-public-function-within-jquery-plugin-from-the-plugin
+			// http://stackoverflow.com/questions/18185956/calling-a-function-inside-a-jquery-plugin-from-outside
+			// http://stackoverflow.com/questions/1117086/how-to-create-a-jquery-plugin-with-methods
 
 			if ( !jQuery.data(this, 'teletype') )
-				return jQuery.data( this, 'teletype', new Plugin(this, options) );	
-				
+				return jQuery.data( this, 'teletype', new Plugin(this, px_data) );	
+
 		} );
 	}
 
-})( jQuery, window, document );
+})(jQuery);
