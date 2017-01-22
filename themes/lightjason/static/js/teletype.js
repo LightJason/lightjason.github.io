@@ -46,10 +46,6 @@
 		this.dom = jQuery( element );
 		this.settings = jQuery.extend( {}, defaults, options );
 
-		// sets instance an nessessary DOM values into element
-		this.current   = { string: '', result: '', letters: [], index: 0, position: 0, loop: 0 };
-		this.output    = jQuery( '<span/>' ).addClass( this.settings.classoutput ).appendTo( this.dom );
-		
 		this.init();
 	}
 
@@ -64,6 +60,10 @@
 
 			// clear DOM node first
 			this.dom.empty();
+
+			// sets instance an nessessary DOM values into element
+			this.current   = { string: '', result: '', letters: [], index: 0, position: 0, loop: 0 };
+			this.output    = jQuery( '<span/>' ).addClass( this.settings.classoutput ).appendTo( this.dom );
 
 			// set cursor
 			if ( this.settings.cursor ) {
