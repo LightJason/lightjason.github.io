@@ -288,8 +288,11 @@
 			// http://stackoverflow.com/questions/8758685/get-dom-element-from-jquery-plugin-extension
 			// https://github.com/jquery-boilerplate/jquery-patterns/blob/master/patterns/jquery.basic.plugin-boilerplate.js
 
+			// http://stackoverflow.com/questions/24683831/how-to-call-public-function-within-jquery-plugin-from-the-plugin
+
 			if ( !jQuery.data(this, 'teletype') )
-				return jQuery.data( this, 'teletype', new Plugin(this, options) );				
+				return jQuery.data( this, 'teletype', new Plugin(this, options) );	
+				
 		} );
 	}
 

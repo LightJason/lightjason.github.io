@@ -53,7 +53,7 @@ jQuery(function() {
     });
 
     jQuery(".teletypereset").click(function(){
-        console.log( jQuery( "#" + jQuery(this).attr( "data-terminal" ) ).teletype("start") );
+        jQuery( "#" + jQuery(this).attr( "data-terminal" ) ).teletype().start();
     });
 });
     
