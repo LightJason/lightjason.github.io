@@ -324,7 +324,7 @@
 	// ---- jQuery initialization -------------------------------------------------------------------------------------------
 
 	jQuery.fn.teletype = function( px_data ) {
-
+		var arg = arguments;
 		return this.each( function() {
 			// https://github.com/jquery-boilerplate/jquery-patterns
 			// http://stefangabos.ro/jquery/jquery-plugin-boilerplate-revisited/
@@ -335,9 +335,14 @@
 			// http://stackoverflow.com/questions/18185956/calling-a-function-inside-a-jquery-plugin-from-outside
 			// http://stackoverflow.com/questions/1117086/how-to-create-a-jquery-plugin-with-methods
 
-			if ( !jQuery.data(this, 'teletype') )
-				return jQuery.data( this, 'teletype', new Plugin(this, px_data) );	
+			var lo_reference = jQuery(this).data('teletype');
+			if ( !lo_reference )
+				return jQuery(this).data( 'teletype', new Plugin(this, px_data) );
 
+			if (typeof px_data === 'string')
+				return arg.length > 1
+					   ? lo_reference[px_data].apply(lo_reference, Array.prototype.slice.call(arg, 1))
+					   : lo_reference[px_data]();
 		} );
 	}
 
