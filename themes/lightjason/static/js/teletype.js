@@ -15,41 +15,40 @@
 (function() {
 
 	/**
-	 * static default options
-	 */
-	var so_default = {
-		text: [ 'one', 'two', 'three' ],
-		result: [],
-		automaticpn_start: true,
-		classresult: "teletype-result",
-		classprefix: "teletype-prefix",
-		classcursor: "teletype-cursor",
-		classoutput: "teletype-text",
-		taglinebreak: "<br/>",
-		typeDelay: 100,
-		backDelay: 50,
-		blinkpn_Speed: 1000,
-		delay: 2000,
-		cursor: '|',
-		preserve: false,
-		prefix: '',
-		loop: 0,
-		humanise: true,
-		smoothBlink: true,
-		callbackNext: null,
-		callbackType: null,
-		callbackFinished: null
-	};
-
-
-	/**
 	 * plugin factory
 	 * 
 	 * @param po_element closure element
 	 * @param po_options initialize options 
 	 */
-	function Plugin( po_element, po_options )
+	var Plugin = function Plugin( po_element, po_options )
 	{
+		/**
+		 * static default options
+		 */
+		var so_default = {
+			text: [ 'one', 'two', 'three' ],
+			result: [],
+			automaticpn_start: true,
+			classresult: "teletype-result",
+			classprefix: "teletype-prefix",
+			classcursor: "teletype-cursor",
+			classoutput: "teletype-text",
+			taglinebreak: "<br/>",
+			typeDelay: 100,
+			backDelay: 50,
+			blinkpn_Speed: 1000,
+			delay: 2000,
+			cursor: '|',
+			preserve: false,
+			prefix: '',
+			loop: 0,
+			humanise: true,
+			smoothBlink: true,
+			callbackNext: null,
+			callbackType: null,
+			callbackFinished: null
+		};
+
 		this.dom = jQuery( po_element );
 		this.settings = jQuery.extend( {}, so_default, po_options );
 
@@ -85,7 +84,7 @@
 			}
 		
 			// start typing
-			if (this.settings.automaticpn_start)
+			if (this.settings.automaticstart)
 			{
 				this.setCurrentString();
 				this.type();
@@ -310,12 +309,13 @@
 		 */
 		start : function()
 		{
-			console.log("foo");
-			if (this.settings.automaticpn_start)
+			if (this.settings.automaticstart)
 				return;
 
-			//setCurrentString();
-			//type();	
+			// wrong scope....
+			console.log(this);
+			this.setCurrentString();
+			this.type();
 		}
 
 	
@@ -323,27 +323,16 @@
 
 	// ---- jQuery initialization -------------------------------------------------------------------------------------------
 
-	jQuery.fn.teletype = function( px_data ) {
-		var arg = arguments;
-		return this.each( function() {
-			// https://github.com/jquery-boilerplate/jquery-patterns
-			// http://stefangabos.ro/jquery/jquery-plugin-boilerplate-revisited/
-			// http://stackoverflow.com/questions/8758685/get-dom-element-from-jquery-plugin-extension
-			// https://github.com/jquery-boilerplate/jquery-patterns/blob/master/patterns/jquery.basic.plugin-boilerplate.js
-
-			// http://stackoverflow.com/questions/24683831/how-to-call-public-function-within-jquery-plugin-from-the-plugin
-			// http://stackoverflow.com/questions/18185956/calling-a-function-inside-a-jquery-plugin-from-outside
-			// http://stackoverflow.com/questions/1117086/how-to-create-a-jquery-plugin-with-methods
-
-			var lo_reference = jQuery(this).data('teletype');
-			if ( !lo_reference )
-				return jQuery(this).data( 'teletype', new Plugin(this, px_data) );
-
-			if (typeof px_data === 'string')
-				return arg.length > 1
-					   ? lo_reference[px_data].apply(lo_reference, Array.prototype.slice.call(arg, 1))
-					   : lo_reference[px_data]();
-		} );
+	jQuery.fn.teletype = function( px_option )
+	{
+		var lo_reference = jQuery(this).data("teletype");
+		if (!lo_reference)
+		{
+			lo_reference = new Plugin(this, px_option);
+			jQuery(this).data('teletype', lo_reference );
+		}
+		
+		return lo_reference;
 	}
 
 })(jQuery);
