@@ -28,7 +28,7 @@
 		var so_default = {
 			text: [ 'one', 'two', 'three' ],
 			result: [],
-			automaticpn_start: true,
+			automaticstart: true,
 			classresult: "teletype-result",
 			classprefix: "teletype-prefix",
 			classcursor: "teletype-cursor",
@@ -36,7 +36,7 @@
 			taglinebreak: "<br/>",
 			typeDelay: 100,
 			backDelay: 50,
-			blinkpn_Speed: 1000,
+			blinkSpeed: 1000,
 			delay: 2000,
 			cursor: '|',
 			preserve: false,
@@ -80,7 +80,7 @@
 						cursor.animate( { opacity: 0 } ).animate( { opacity: 1 } );
 					else
 						cursor.delay(500).fadeTo(0,0).delay(500).fadeTo(0,1);
-				}, this.settings.blinkpn_Speed );
+				}, this.settings.blinkSpeed );
 			}
 		
 			// start typing
@@ -184,12 +184,12 @@
 
 			// get current letter & position
 			var letter = this.current.letters[this.current.position],
-				pn_start = this.current.position + 1;
+				start = this.current.position + 1;
 
 			// check pause
 			if ( letter == '^' )
 			{
-				this.pause( this.current.string, pn_start );
+				this.pause( this.current.string, start );
 				return;
 			}
 
@@ -199,11 +199,11 @@
 			{
 
 				// @todo code shorten
-				var end = this.current.string.substr( pn_start ).search( /[^0-9]/ );
+				var end = this.current.string.substr( start ).search( /[^0-9]/ );
 				if ( end == -1 )
 					end = current.string.length;
 				
-				var value = this.current.string.substr( pn_start, end );
+				var value = this.current.string.substr( start, end );
 				if ( jQuery.isNumeric( value ) ) {
 					this.current.string = this.current.string.replace( letter + value, '' );
 
@@ -224,7 +224,7 @@
 			*/
 			
 			// check for line-break
-			if ( ( letter == '\\' ) && ( this.current.string.substr( pn_start, 1 ) === 'n' ) )
+			if ( ( letter == '\\' ) && ( this.current.string.substr( start, 1 ) === 'n' ) )
 			{
 				this.current.position++;
 				letter = this.settings.taglinebreak;		
@@ -309,11 +309,12 @@
 		 */
 		start : function()
 		{
+			// wrong scope....
+			console.log(this);
+		
 			if (this.settings.automaticstart)
 				return;
 
-			// wrong scope....
-			console.log(this);
 			this.setCurrentString();
 			this.type();
 		}
