@@ -324,9 +324,15 @@
 
 	// ---- jQuery initialization -------------------------------------------------------------------------------------------
 
+	// https://www.mp-development.de/blog/13-grundlagen-der-jquery-plugin-entwicklung
+	// http://stackoverflow.com/questions/18103230/calling-public-method-of-jquery-plugin
+	// http://stackoverflow.com/questions/27888769/how-to-extend-a-jquery-plugins-public-methods-through-its-prototype
+	// http://stackoverflow.com/questions/12880256/jquery-plugin-creation-and-public-facing-methods
+
 	jQuery.fn.teletype = function( px_option )
 	{
 		var lo_reference = jQuery(this).data("teletype");
+		console.log(lo_reference);
 		if (!lo_reference)
 		{
 			lo_reference = new Plugin(this, px_option);
