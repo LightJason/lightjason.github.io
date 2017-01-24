@@ -12,7 +12,9 @@
 */
 
 "use strict";
-(function() {
+;(function (jQuery, window, document, undefined) {
+
+	var pluginname = "teletype";
 
 	/**
 	 * plugin factory
@@ -328,18 +330,24 @@
 	// http://stackoverflow.com/questions/18103230/calling-public-method-of-jquery-plugin
 	// http://stackoverflow.com/questions/27888769/how-to-extend-a-jquery-plugins-public-methods-through-its-prototype
 	// http://stackoverflow.com/questions/12880256/jquery-plugin-creation-and-public-facing-methods
+	// https://github.com/jquery-boilerplate/jquery-boilerplate/wiki/jQuery-boilerplate-and-demo
 
-	jQuery.fn.teletype = function( px_option )
-	{
-		var lo_reference = jQuery(this).data("teletype");
-		console.log(lo_reference);
-		if (!lo_reference)
-		{
-			lo_reference = new Plugin(this, px_option);
-			jQuery(this).data('teletype', lo_reference );
-		}
-		
-		return lo_reference;
-	}
+	jQuery.fn[pluginname] = function (options) {
 
-})(jQuery);
+        var plugin = this.data("plugin_" + pluginname);
+
+        // has plugin instantiated ?
+        if (plugin instanceof Plugin) {
+            // if have options arguments, call plugin.init() again
+            if (typeof options !== 'undefined') {
+                plugin.init(options);
+            }
+        } else {
+            plugin = new Plugin(this, options);
+            this.data("plugin_" + pluginname, plugin);
+        }
+
+        return plugin;
+    };
+
+}(jQuery, window, document));
