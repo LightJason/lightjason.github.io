@@ -14,30 +14,7 @@
 "use strict";
 ;(function() {
 
-	var pluginname = "teletype",
-	    so_default = {
-			text: [ 'one', 'two', 'three' ],
-			result: [],
-			automaticstart: true,
-			classresult: "teletype-result",
-			classprefix: "teletype-prefix",
-			classcursor: "teletype-cursor",
-			classoutput: "teletype-text",
-			taglinebreak: "<br/>",
-			typeDelay: 100,
-			backDelay: 50,
-			blinkSpeed: 1000,
-			delay: 2000,
-			cursor: '|',
-			preserve: false,
-			prefix: '',
-			loop: 0,
-			humanise: true,
-			smoothBlink: true,
-			callbackNext: null,
-			callbackType: null,
-			callbackFinished: null
-		};
+	var pluginname = "teletype";
 
 	/**
 	 * plugin factory
@@ -45,12 +22,13 @@
 	 * @param po_element closure element
 	 * @param po_options initialize options 
 	 */
-	var Plugin = function Plugin( po_element, po_options )
+	function Plugin( po_element, po_options )
 	{
-		this.dom = po_element;
-		this.settings = jQuery.extend( {}, so_default, po_options );
+		this.dom = po_element
+		this.settings = po_options;
 
 		this.init();
+		return this;
 	}
 
 
@@ -308,7 +286,7 @@
 		start : function()
 		{
 			// wrong scope....
-			console.log(this);
+			console.log(this.settings);
 
 			if (this.settings.automaticstart)
 				return;
@@ -328,21 +306,48 @@
 	// http://stackoverflow.com/questions/27888769/how-to-extend-a-jquery-plugins-public-methods-through-its-prototype
 	// http://stackoverflow.com/questions/12880256/jquery-plugin-creation-and-public-facing-methods
 	// https://github.com/jquery-boilerplate/jquery-boilerplate/wiki/jQuery-boilerplate-and-demo
+	// http://jonathannicol.com/blog/2012/05/06/a-jquery-plugin-boilerplate/
+	// https://www.bitovi.com/blog/writing-the-perfect-jquery-plugin
+	// https://www.html5andbeyond.com/jquery-plugin-authoring-defining-and-invoking-public-methods/
+	// http://www.acuriousanimal.com/2013/02/25/things-i-learned-creating-a-jquery-plugin-part-ii.html
 
-	jQuery.fn[pluginname] = function(options) {
+	jQuery.fn[ pluginname ] = function( options ) {
+		var plugin = this.data( 'plugin_' + pluginname  );
 
-        var plugin = this.data("plugin_" + pluginname);
-		console.log(   );
+		if (!plugin)
+		{
+			plugin = new Plugin( this, jQuery.extend({}, jQuery.fn[ pluginname ].defaultSettings, options || {} ) );
+			this.data( "plugin_" + pluginname, plugin );
+		}
 
-        if (plugin instanceof Plugin) {
-            if (typeof options !== 'undefined')
-                plugin.init(options);
-        } else {
-            plugin = new Plugin(this, options);
-            this.data("plugin_" + pluginname, plugin);
-        }
+		return plugin;
+	};
 
-        return plugin;
-    };
+
+
+
+	jQuery.fn[ pluginname ].defaultSettings = {
+		text: [ 'one', 'two', 'three' ],
+		result: [],
+		automaticstart: true,
+		classresult: "teletype-result",
+		classprefix: "teletype-prefix",
+		classcursor: "teletype-cursor",
+		classoutput: "teletype-text",
+		taglinebreak: "<br/>",
+		typeDelay: 100,
+		backDelay: 50,
+		blinkSpeed: 1000,
+		delay: 2000,
+		cursor: '|',
+		preserve: false,
+		prefix: '',
+		loop: 0,
+		humanise: true,
+		smoothBlink: true,
+		callbackNext: null,
+		callbackType: null,
+		callbackFinished: null
+	};
 
 }(jQuery));
