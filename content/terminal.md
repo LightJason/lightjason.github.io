@@ -34,7 +34,7 @@ Um das Terminal zu resetten wird ein eigenes Command genutzt, wobei zwei Paramet
 1. Der DOM-ID Tag des Terminals
 2. Der HTML-Code zwischen den Link
 
-{{< terminalreset "test" "reset terminal" >}}
+{{< terminalreset "test" "start terminal typing" >}}
 
 
 

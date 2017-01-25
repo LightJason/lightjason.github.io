@@ -312,15 +312,17 @@
 	// http://www.acuriousanimal.com/2013/02/25/things-i-learned-creating-a-jquery-plugin-part-ii.html
 
 	jQuery.fn[ pluginname ] = function( options ) {
-		var plugin = this.data( 'plugin_' + pluginname  );
-
+		var settings = jQuery.extend({}, jQuery.fn[ pluginname ].defaultSettings, options || {} ),
+			plugin   = this.data( 'plugin_' + pluginname );
+			
 		if (!plugin)
 		{
-			plugin = new Plugin( this, jQuery.extend({}, jQuery.fn[ pluginname ].defaultSettings, options || {} ) );
-			this.data( "plugin_" + pluginname, plugin );
+			plugin = new Plugin(this, settings);
+			this.data( 'plugin_' + pluginname, plugin )
 		}
 
 		return plugin;
+        
 	};
 
 
