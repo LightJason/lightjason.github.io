@@ -8,7 +8,7 @@ jQuery(function() {
 
     jQuery(".item_category").click(function() {
         jQuery("[data-category=" + jQuery(this).attr( "data-category" ) + "]").parent().fadeOut( "slow", function() {});
-    });    
+    });
 
     jQuery("#toc").toc({
         "selectors" : "h2,h3,h4,h5,h6",
@@ -16,11 +16,11 @@ jQuery(function() {
     });
 
     jQuery("#tochideshow").click(function() {
-        jQuery("#toc").fadeToggle( "slow", function() { 
+        jQuery("#toc").fadeToggle( "slow", function() {
             jQuery("#tochideshow").text().match(/hide/i) ?  jQuery("#tochideshow").text("Show") : jQuery("#tochideshow").text("Hide");
         });
 
-    });    
+    });
 
     jQuery("#nav").click(function() {
         if (!jQuery(".sidebar").data("active"))
@@ -30,7 +30,7 @@ jQuery(function() {
             jQuery(".sidebar").data("active", true);
         } else {
             jQuery(".sidebar").css("width", "0");
-            jQuery(".sidebar").css("margin-left", "0");  
+            jQuery(".sidebar").css("margin-left", "0");
             jQuery(".sidebar").data("active", false);
         }
     });
@@ -57,4 +57,3 @@ jQuery(function() {
         jQuery( "#" + jQuery(this).attr( "data-terminal" ) ).teletype().start();
     });
 });
-    
