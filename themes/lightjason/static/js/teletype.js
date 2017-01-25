@@ -16,13 +16,63 @@
 
     var pluginname = "teletype";
 
+    // ---- jQuery initialization -------------------------------------------------------------------------------------------
+
+    /**
+     * plugininitialize
+     *
+     * @param options any options
+     */
+    jQuery.fn[pluginname] = function(options) {
+        var plugin = this.data('plugin_' + pluginname);
+
+        if (!plugin) {
+            plugin = new Teletype(this, jQuery.extend({}, jQuery.fn[pluginname].defaultSettings, options || {}));
+            this.data('plugin_' + pluginname, plugin)
+        }
+
+        return plugin;
+
+    };
+
+
+    /**
+     * default settings
+     */
+    jQuery.fn[pluginname].defaultSettings = {
+        text: ['one', 'two', 'three'],
+        result: [],
+        automaticstart: true,
+        classresult: "teletype-result",
+        classprefix: "teletype-prefix",
+        classcursor: "teletype-cursor",
+        classoutput: "teletype-text",
+        taglinebreak: "<br/>",
+        typeDelay: 100,
+        backDelay: 50,
+        blinkSpeed: 1000,
+        delay: 2000,
+        cursor: '|',
+        preserve: false,
+        prefix: '',
+        loop: 0,
+        humanise: true,
+        smoothBlink: true,
+        callbackNext: null,
+        callbackType: null,
+        callbackFinished: null
+    };
+
+
+    // ---- plugin definition -----------------------------------------------------------------------------------------------
+
     /**
      * plugin factory
      *
      * @param po_element closure element
      * @param po_options initialize options
      */
-    function Plugin(po_element, po_options) {
+    function Teletype(po_element, po_options) {
         this.dom = po_element
         this.settings = po_options;
 
@@ -31,7 +81,7 @@
     }
 
 
-    Plugin.prototype = {
+    Teletype.prototype = {
 
         /**
          * constructor
@@ -70,11 +120,12 @@
 
             // start typing
             if (this.settings.automaticstart) {
-                this.setCurrentString();
+                setCurrentString(this);
                 this.type();
             }
 
         },
+
 
         /**
          * delay function
@@ -84,16 +135,6 @@
          */
         delay: function(pn_speed) {
             return this.settings.humanise ? parseInt(pn_speed) + Math.floor(Math.random() * 200) : parseInt(pn_speed);
-        },
-
-
-        /**
-         * sets the current string and if possible result data
-         */
-        setCurrentString: function() {
-            this.current.string = this.settings.text[this.current.index].replace(/\n/g, "\\n");
-            this.current.letters = this.current.string.split('');
-            this.current.result = (this.settings.result.length == this.settings.text.length) && (this.settings.result[this.current.index]) ? '<p class="' + this.settings.classresult + '">' + this.settings.result[this.current.index] + "</p>" : "";
         },
 
 
@@ -124,7 +165,7 @@
                     return false;
             }
 
-            this.setCurrentString();
+            setCurrentString(this);
             this.current.position = 0;
 
             // runs next-callback
@@ -233,6 +274,7 @@
 
         },
 
+
         /**
          * backspace for removing characters
          * @bug incomplete
@@ -266,6 +308,7 @@
             this.settings.cursor = pc_cursor;
         },
 
+
         /**
          * resets the dom element and rerun typing
          */
@@ -282,61 +325,22 @@
             if (this.settings.automaticstart)
                 return;
 
-            this.setCurrentString();
+            setCurrentString(this);
             this.type();
         }
 
-
-    };
-
+    }
 
 
-    // ---- jQuery initialization -------------------------------------------------------------------------------------------
+    // ---- private function ------------------------------------------------------------------------------------------------
 
     /**
-     * plugininitialize
-     *
-     * @param options any options
+     * sets the current string and if possible result data
      */
-    jQuery.fn[pluginname] = function(options) {
-        var plugin = this.data('plugin_' + pluginname);
-
-        if (!plugin) {
-            plugin = new Plugin(this, jQuery.extend({}, jQuery.fn[pluginname].defaultSettings, options || {}));
-            this.data('plugin_' + pluginname, plugin)
-        }
-
-        return plugin;
-
-    };
-
-
-
-    /**
-     * default settings
-     */
-    jQuery.fn[pluginname].defaultSettings = {
-        text: ['one', 'two', 'three'],
-        result: [],
-        automaticstart: true,
-        classresult: "teletype-result",
-        classprefix: "teletype-prefix",
-        classcursor: "teletype-cursor",
-        classoutput: "teletype-text",
-        taglinebreak: "<br/>",
-        typeDelay: 100,
-        backDelay: 50,
-        blinkSpeed: 1000,
-        delay: 2000,
-        cursor: '|',
-        preserve: false,
-        prefix: '',
-        loop: 0,
-        humanise: true,
-        smoothBlink: true,
-        callbackNext: null,
-        callbackType: null,
-        callbackFinished: null
-    };
+    var setCurrentString = function(po_reference) {
+        po_reference.current.string = po_reference.settings.text[po_reference.current.index].replace(/\n/g, "\\n");
+        po_reference.current.letters = po_reference.current.string.split('');
+        po_reference.current.result = (po_reference.settings.result.length == po_reference.settings.text.length) && (po_reference.settings.result[po_reference.current.index]) ? '<p class="' + po_reference.settings.classresult + '">' + po_reference.settings.result[po_reference.current.index] + "</p>" : "";
+    }
 
 }(jQuery));

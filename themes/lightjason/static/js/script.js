@@ -55,5 +55,6 @@ jQuery(function() {
 
     jQuery(".teletypereset").click(function() {
         jQuery( "#" + jQuery(this).attr( "data-terminal" ) ).teletype().start();
+        //console.log(jQuery( "#" + jQuery(this).attr( "data-terminal" ) ).teletype());
     });
 });
