@@ -336,12 +336,9 @@
 
         var plugin = this.data("plugin_" + pluginname);
 
-        // has plugin instantiated ?
         if (plugin instanceof Plugin) {
-            // if have options arguments, call plugin.init() again
-            if (typeof options !== 'undefined') {
+            if (typeof options !== 'undefined')
                 plugin.init(options);
-            }
         } else {
             plugin = new Plugin(this, options);
             this.data("plugin_" + pluginname, plugin);
