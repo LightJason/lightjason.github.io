@@ -16,7 +16,7 @@ Formatierung und animation können im Text kontrolliert werden, siehe [GitHub](h
 Parameter für das _terminal_ Command (sind alle optional):
 
 1. Parameter ist das _Terminalprefix_ (Default ist leer)
-2. Parameter ist die DOM-ID ggf um das Temrinal direkt zu referenzien
+2. Parameter ist die DOM-ID ggf um das Terminal direkt zu referenzien
 3. Parameter ist die Breite der Box (Default ist _100%_)
 4. Parameter ist die Höhe der Box (Default ist _10em_ [10 Zeilen])
 
