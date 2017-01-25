@@ -19,7 +19,7 @@
     // ---- jQuery initialization -------------------------------------------------------------------------------------------
 
     /**
-     * plugininitialize
+     * plugin initialize
      *
      * @param options any options
      */
@@ -128,30 +128,6 @@
 
 
         /**
-         * delay function
-         *
-         * @param pn_speed any speed value
-         * @return randomized speed value
-         */
-        delay: function(pn_speed) {
-            return this.settings.humanise ? parseInt(pn_speed) + Math.floor(Math.random() * 200) : parseInt(pn_speed);
-        },
-
-
-        /**
-         * extract a number from a text
-         *
-         * @param pc_text input text
-         * @param pn_start start position within the string
-         * @return extracted number
-         */
-        extractnumber: function(pc_text, pn_start) {
-            var end = pc_text.substr(pn_start).search(/[^0-9]/);
-            return pc_text.substr(pn_start, end == -1 ? pc_text.length : end);
-        },
-
-
-        /**
          * sets the next outpur sequence
          */
         next: function() {
@@ -177,22 +153,6 @@
 
 
         /**
-         * pause function for typing pause
-         *
-         * @param pc_text current input text
-         * @param pn_start start position for searching pause time
-         */
-        pause: function(pc_text, pn_start) {
-            var time = this.extractnumber(pc_text, pn_start);
-            if (!jQuery.isNumeric(time))
-                return;
-
-            this.current.position = pn_start + time.length;
-            setTimeout(this.type.bind(this), time);
-        },
-
-
-        /**
          * execution typing
          */
         type: function() {
@@ -207,7 +167,7 @@
 
             // check pause
             if (letter == '^') {
-                this.pause(this.current.string, start);
+                pause(this, start);
                 return;
             }
 
@@ -259,7 +219,7 @@
 
             // run the next iteration
             if (this.current.position < this.current.string.length)
-                setTimeout(this.type.bind(this), this.delay(this.settings.typeDelay));
+                setTimeout(this.type.bind(this), delay(this, this.settings.typeDelay));
             else {
                 // set the result (of the typing) if it exists
                 if (this.current.result)
@@ -268,34 +228,10 @@
                 // check if there exists a new line
                 if (this.next()) {
                     this.output.html(this.output.html() + this.settings.taglinebreak);
-                    setTimeout(this.type.bind(this), this.delay(this.settings.typeDelay));
+                    setTimeout(this.type.bind(this), delay(this, this.settings.typeDelay));
                 }
             }
 
-        },
-
-
-        /**
-         * backspace for removing characters
-         * @bug incomplete
-         *
-         * @param pn_stiop number of characters to remove
-         */
-        backspace: function(pn_stop) {
-            if (!pn_stop)
-                pn_stop = 0;
-
-            if (this.current.position > pn_stop) {
-                this.dom.html(this.dom.html().slice(0, -1));
-                setTimeout(this.backspace(pn_stop).bind(this), delay(this.settings.backDelay));
-                this.current.position--;
-
-            } else {
-                if ((pn_stop === 0) && (next() === false))
-                    return;
-
-                setTimeout(this.type.bind(this), this.delay(this.settings.typeDelay));
-            }
         },
 
 
@@ -306,6 +242,8 @@
          */
         setCursor: function(pc_cursor) {
             this.settings.cursor = pc_cursor;
+
+            return this;
         },
 
 
@@ -314,7 +252,10 @@
          */
         reset: function() {
             if (this.settings.loop === 0)
-                return;
+                return this;
+
+            this.start();
+            return this;
         },
 
 
@@ -327,6 +268,8 @@
 
             setCurrentString(this);
             this.type();
+
+            return this;
         }
 
     }
@@ -336,11 +279,80 @@
 
     /**
      * sets the current string and if possible result data
+     *
+     * @param po_this execution context
      */
-    var setCurrentString = function(po_reference) {
-        po_reference.current.string = po_reference.settings.text[po_reference.current.index].replace(/\n/g, "\\n");
-        po_reference.current.letters = po_reference.current.string.split('');
-        po_reference.current.result = (po_reference.settings.result.length == po_reference.settings.text.length) && (po_reference.settings.result[po_reference.current.index]) ? '<p class="' + po_reference.settings.classresult + '">' + po_reference.settings.result[po_reference.current.index] + "</p>" : "";
-    }
+    var setCurrentString = function(po_this) {
+            po_this.current.string = po_this.settings.text[po_this.current.index].replace(/\n/g, "\\n");
+            po_this.current.letters = po_this.current.string.split('');
+            po_this.current.result = (po_this.settings.result.length == po_this.settings.text.length) && (po_this.settings.result[po_this.current.index]) ? '<p class="' + po_this.settings.classresult + '">' + po_this.settings.result[po_this.current.index] + "</p>" : "";
+        },
+
+
+        /**
+         * delay function
+         *
+         * @param po_this execution context
+         * @param pn_speed any speed value
+         * @return randomized speed value
+         */
+        delay = function(po_this, pn_speed) {
+            return po_this.settings.humanise ? parseInt(pn_speed) + Math.floor(Math.random() * 200) : parseInt(pn_speed);
+        },
+
+
+        /**
+         * extract a number from a text
+         *
+         * @param pc_text input text
+         * @param pn_start start position within the string
+         * @return extracted number
+         */
+        extractnumber = function(pc_text, pn_start) {
+            var end = pc_text.substr(pn_start).search(/[^0-9]/);
+            return pc_text.substr(pn_start, end == -1 ? pc_text.length : end);
+        },
+
+
+        /**
+         * pause function for typing pause
+         *
+         * @param po_this execution context
+         * @param pc_text current input text
+         * @param pn_start start position for searching pause time
+         */
+        pause = function(po_this, pn_start) {
+            var time = extractnumber(po_this.current.string, pn_start);
+            if (!jQuery.isNumeric(time))
+                return;
+
+            po_this.current.position = pn_start + time.length;
+            setTimeout(po_this.type.bind(po_this), time);
+        },
+
+
+        /**
+         * backspace for removing characters
+         * @bug incomplete
+         *
+         * @param po_this execution context
+         * @param pn_stop number of characters to remove
+         */
+        backspace = function(po_this, pn_stop) {
+            if (!pn_stop)
+                pn_stop = 0;
+
+            if (this.current.position > pn_stop) {
+                this.dom.html(this.dom.html().slice(0, -1));
+                setTimeout(this.backspace(pn_stop).bind(this), delay(this.settings.backDelay));
+                this.current.position--;
+
+            } else {
+                if ((pn_stop === 0) && (next() === false))
+                    return;
+
+                setTimeout(this.type.bind(this), delay(po_this, this.settings.typeDelay));
+            }
+        };
 
 }(jQuery));
