@@ -12,22 +12,10 @@
 */
 
 "use strict";
-;(function (jQuery, window, document, undefined) {
+;(function() {
 
-	var pluginname = "teletype";
-
-	/**
-	 * plugin factory
-	 * 
-	 * @param po_element closure element
-	 * @param po_options initialize options 
-	 */
-	var Plugin = function Plugin( po_element, po_options )
-	{
-		/**
-		 * static default options
-		 */
-		var so_default = {
+	var pluginname = "teletype",
+	    so_default = {
 			text: [ 'one', 'two', 'three' ],
 			result: [],
 			automaticstart: true,
@@ -51,7 +39,15 @@
 			callbackFinished: null
 		};
 
-		this.dom = jQuery( po_element );
+	/**
+	 * plugin factory
+	 * 
+	 * @param po_element closure element
+	 * @param po_options initialize options 
+	 */
+	var Plugin = function Plugin( po_element, po_options )
+	{
+		this.dom = po_element;
 		this.settings = jQuery.extend( {}, so_default, po_options );
 
 		this.init();
@@ -313,7 +309,7 @@
 		{
 			// wrong scope....
 			console.log(this);
-		
+
 			if (this.settings.automaticstart)
 				return;
 
@@ -326,15 +322,17 @@
 
 	// ---- jQuery initialization -------------------------------------------------------------------------------------------
 
+	// http://stefangabos.ro/jquery/jquery-plugin-boilerplate/
 	// https://www.mp-development.de/blog/13-grundlagen-der-jquery-plugin-entwicklung
 	// http://stackoverflow.com/questions/18103230/calling-public-method-of-jquery-plugin
 	// http://stackoverflow.com/questions/27888769/how-to-extend-a-jquery-plugins-public-methods-through-its-prototype
 	// http://stackoverflow.com/questions/12880256/jquery-plugin-creation-and-public-facing-methods
 	// https://github.com/jquery-boilerplate/jquery-boilerplate/wiki/jQuery-boilerplate-and-demo
 
-	jQuery.fn[pluginname] = function (options) {
+	jQuery.fn[pluginname] = function(options) {
 
         var plugin = this.data("plugin_" + pluginname);
+		console.log(   );
 
         if (plugin instanceof Plugin) {
             if (typeof options !== 'undefined')
@@ -347,4 +345,4 @@
         return plugin;
     };
 
-}(jQuery, window, document));
+}(jQuery));
