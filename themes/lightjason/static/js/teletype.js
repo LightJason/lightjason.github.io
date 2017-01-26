@@ -40,28 +40,51 @@
      * default settings
      */
     jQuery.fn[pluginname].defaultSettings = {
-        text: ['one', 'two', 'three'],
+        // plain text commands
+        text: [],
+        // results of each command as HTML data (length of text and result array must be equal, for empty results, use an empty string)
         result: [],
+        // starts typing automatically otherwise with calling start-function
         automaticstart: true,
+        // CSS class of command-results
         classresult: "teletype-result",
+        // CSS class of teletype prefix
         classprefix: "teletype-prefix",
+        // CSS class of teletype cursor
         classcursor: "teletype-cursor",
+        // CSS class of output container
         classoutput: "teletype-text",
+        // linebreak HTML tag
         taglinebreak: "<br/>",
+        // type delay
         typeDelay: 100,
+        // backward delay
         backDelay: 50,
+        // cursor blink speed
         blinkSpeed: 1000,
+        // delay of commands
         delay: 2000,
+        // cursor visualization
         cursor: '|',
+        // preserving elements on typing
         preserve: false,
+        // command-line prefix
         prefix: '',
+        // number fo loops
         loop: 0,
+        // humanise typing
         humanise: true,
+        // cursor smooth blinking
         smoothBlink: true,
+        // callback function to catch next command (parameter full teletype DOM object)
         callbackNext: null,
+        // callback function to catch typing (parameter full teletype DOM object)
         callbackType: null,
+        // callback function which is called after finished typing (parameter full teletype DOM object)
         callbackFinished: null,
+        // callback function which is calld on start typing (parameter full teletype DOM object)
         callbackStart: null,
+        // callback function which is called on restting DOM element (parameter full teletype DOM object)
         callbackReset: null
     };
 
@@ -71,7 +94,7 @@
     /**
      * plugin factory
      *
-     * @param po_element closure element
+     * @param po_element DOM element
      * @param po_options initialize options
      */
     function Teletype(po_element, po_options) {
