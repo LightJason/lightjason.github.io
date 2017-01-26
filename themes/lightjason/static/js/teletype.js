@@ -76,74 +76,11 @@
         this.dom = po_element
         this.settings = po_options;
 
-        this.init();
-        return this;
+        return initialize(this);
     }
 
 
     Teletype.prototype = {
-
-        /**
-         * constructor
-         */
-        init: function() {
-
-            // clear DOM node first
-            this.dom.empty();
-
-            // sets instance an nessessary DOM values into element
-            clearCurrent(this);
-            this.output = jQuery('<span/>').addClass(this.settings.classoutput).appendTo(this.dom);
-
-            // set cursor
-            if (this.settings.cursor) {
-                var cursor = jQuery('<span/>').addClass(this.settings.classcursor).appendTo(this.dom).text(this.settings.cursor);
-                var self = this;
-                setInterval(function() {
-                    if (self.settings.smoothBlink)
-                        cursor.animate({
-                            opacity: 0
-                        }).animate({
-                            opacity: 1
-                        });
-                    else
-                        cursor.delay(500).fadeTo(0, 0).delay(500).fadeTo(0, 1);
-                }, this.settings.blinkSpeed);
-            }
-
-            // start typing
-            if (this.settings.automaticstart) {
-                setCurrentString(this);
-                this.type();
-            }
-
-        },
-
-
-        /**
-         * sets the next outpur sequence
-         */
-        next: function() {
-            this.current.index++;
-
-            // check end and looping
-            if (this.current.index >= this.settings.text.length) {
-                this.current.index = 0;
-                this.current.loop++;
-                if ((this.settings.loop !== false) && (this.settings.loop == this.current.loop))
-                    return false;
-            }
-
-            setCurrentString(this);
-            this.current.position = 0;
-
-            // runs next-callback
-            if (typeof(this.settings.callbackNext) == 'function')
-                this.settings.callbackNext(null);
-
-            return true;
-        },
-
 
         /**
          * execution typing
@@ -223,7 +160,7 @@
                     this.output.html(this.output.html() + this.current.result);
 
                 // check if there exists a new line
-                if (this.next()) {
+                if (next(this)) {
                     this.output.html(this.output.html() + this.settings.taglinebreak);
                     this.current.timeout = setTimeout(this.type.bind(this), delay(this, this.settings.typeDelay));
                 }
@@ -356,6 +293,72 @@
 
         po_this.current.position = pn_start + time.length;
         po_this.current.timeout = setTimeout(po_this.type.bind(po_this), time);
+    },
+
+
+    /**
+     * sets the next outpur sequence
+     * 
+     * @param po_this execution context
+     * @return boolean next line exists
+     */
+    next = function(po_this) {
+        po_this.current.index++;
+
+        // check end and looping
+        if (po_this.current.index >= po_this.settings.text.length) {
+            po_this.current.index = 0;
+            po_this.current.loop++;
+            if ((po_this.settings.loop !== false) && (po_this.settings.loop == po_this.current.loop))
+                return false;
+        }
+
+        setCurrentString(po_this);
+        po_this.current.position = 0;
+
+        // runs next-callback
+        if (typeof(po_this.settings.callbackNext) == 'function')
+            po_this.settings.callbackNext(null);
+
+        return true;
+    },
+
+
+    /**
+     * constructor
+     */
+    initialize = function(po_this) {
+
+        // clear DOM node first
+        po_this.dom.empty();
+
+        // sets instance an nessessary DOM values into element
+        clearCurrent(po_this);
+        po_this.output = jQuery('<span/>').addClass(po_this.settings.classoutput).appendTo(po_this.dom);
+
+        // set cursor
+        if (po_this.settings.cursor) {
+            var cursor = jQuery('<span/>').addClass(po_this.settings.classcursor).appendTo(po_this.dom).text(po_this.settings.cursor);
+            var self = po_this;
+            setInterval(function() {
+                if (self.settings.smoothBlink)
+                    cursor.animate({
+                        opacity: 0
+                    }).animate({
+                        opacity: 1
+                    });
+                else
+                    cursor.delay(500).fadeTo(0, 0).delay(500).fadeTo(0, 1);
+            }, po_this.settings.blinkSpeed);
+        }
+
+        // start typing
+        if (po_this.settings.automaticstart) {
+            setCurrentString(po_this);
+            po_this.type();
+        }
+
+        return this;
     },
 
 
