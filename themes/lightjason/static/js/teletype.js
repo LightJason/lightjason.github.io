@@ -59,19 +59,17 @@
         // type delay
         typeDelay: 100,
         // backward delay
-        backDelay: 50,
+        backDelay: 75,
         // cursor blink speed
         blinkSpeed: 1000,
         // delay of commands
         delay: 2000,
         // cursor visualization
         cursor: '|',
-        // preserving elements on typing
-        preserve: false,
         // command-line prefix
         prefix: '',
-        // number fo loops
-        loop: 0,
+        // number foe looping typing
+        loop: 1,
         // humanise typing
         humanise: true,
         // cursor smooth blinking
@@ -85,7 +83,9 @@
         // callback function which is calld on start typing (parameter full teletype DOM object)
         callbackStart: null,
         // callback function which is called on restting DOM element (parameter full teletype DOM object)
-        callbackReset: null
+        callbackReset: null,
+        // callback function, which is called on next loop (parameter full teletype DOM object)
+        callbackNextLoop: null
     };
 
 
@@ -116,10 +116,6 @@
             if ((this.settings.prefix) && (this.current.position === 0))
                 jQuery('<span />').addClass(this.settings.classprefix).html(this.settings.prefix).appendTo(this.output);
 
-            // check anything exists for typing
-            if (!this.current.string)
-                return;
-
             // get current letter & position
             var letter = this.current.letters[this.current.position],
                 start = this.current.position + 1;
@@ -131,34 +127,15 @@
             }
 
             // check for pause or remove sign
-            /*
             if ( letter == '~' )
             {
-
-            	// @todo code shorten
-            	var end = this.current.string.substr( start ).search( /[^0-9]/ );
-            	if ( end == -1 )
-            		end = current.string.length;
-
-            	var value = this.current.string.substr( start, end );
-            	if ( jQuery.isNumeric( value ) ) {
-            		this.current.string = this.current.string.replace( letter + value, '' );
-
-            		if ( letter == '^' )
-            			setTimeout( function() {}, value );
-
-            		else
-            		{
-            			var index = this.current.position - value;
-            			this.current.string = this.current.string.substr( 0, index - 1 ) + this.current.string.substr( this.current.position - 1 );
-            			setTimeout( backspace( Math.max( index, 0 ) ).bind(element) , delay( this.settings.backDelay ) );
-            		}
-
-            		return;
-            	}
-
+            	var value = extractnumber(this.current.string, start);
+            	if ( jQuery.isNumeric( value ) )
+                {
+                    this.current.position += value;
+           			this.current.timeout = setTimeout( backspace( this, value ), delay( this, this.settings.backDelay ) );
+                }
             }
-            */
 
             // check for line-break
             if ((letter == '\\') && (this.current.string.substr(start, 1) === 'n')) {
@@ -178,7 +155,7 @@
 
             // run the next iteration
             if (this.current.position < this.current.string.length)
-                this.current.timeout = setTimeout(this.type.bind(this), delay(this, this.settings.typeDelay));
+                this.current.timeout = setTimeout( this.type.bind(this), delay(this, this.settings.typeDelay) );
             else {
                 // set the result (of the typing) if it exists
                 if (this.current.result)
@@ -187,7 +164,7 @@
                 // check if there exists a new line
                 if (next(this)) {
                     this.output.html(this.output.html() + this.settings.taglinebreak);
-                    this.current.timeout = setTimeout(this.type.bind(this), delay(this, this.settings.typeDelay));
+                    this.current.timeout = setTimeout( this.type.bind(this), delay(this, this.settings.typeDelay) );
                 }
             }
 
@@ -344,10 +321,14 @@
         if (po_this.current.index >= po_this.settings.text.length) {
             po_this.current.index = 0;
             po_this.current.loop++;
+
+            if (typeof(this.settings.callbackNextLoop) == 'function')
+                this.settings.callbackNextLoop(po_this);
+
             if ((po_this.settings.loop !== false) && (po_this.settings.loop == po_this.current.loop))
             {
                 // runs finished callback
-                if (typeof(po_this.settings.callbackNext) == 'function')
+                if (typeof(po_this.settings.callbackFinished) == 'function')
                     po_this.settings.callbackFinished(po_this);
 
                 return false;
@@ -417,20 +398,11 @@
      * @param pn_stop number of characters to remove
      */
     backspace = function(po_this, pn_stop) {
-        if (!pn_stop)
-            pn_stop = 0;
+        if ( (pn_stop < 1) || (po_this.current.position - pn_stop < 1) )  
+            return;
 
-        if (this.current.position > pn_stop) {
-            this.dom.html(this.dom.html().slice(0, -1));
-            po_this.current.timeout = setTimeout(this.backspace(pn_stop).bind(this), delay(this.settings.backDelay));
-            this.current.position--;
-
-        } else {
-            if ((pn_stop === 0) && (next() === false))
-                return;
-
-            po_this.current.timeout = setTimeout(this.type.bind(this), delay(po_this, this.settings.typeDelay));
-        }
+        po_this.current.timeout = setTimeout( backspace(po_this, pn_stop-1), delay(po_this, po_this.settings.backDelay) );
+        po_this.output.html( po_this.output.html().slice(0, -1) );
     }
 
 }(jQuery));

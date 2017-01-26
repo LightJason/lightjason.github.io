@@ -49,10 +49,7 @@ jQuery(function() {
             prefix: jQuery(this).attr("data-prefix"),
             cursor: "\u258B",
             automaticstart: false,
-            typeDelay: 30,
-            backDelay: 50,
-            preserve: true,
-            loop: 1
+            typeDelay: 30
         });
     });
 

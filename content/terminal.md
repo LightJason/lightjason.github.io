@@ -3,7 +3,7 @@ title: "Terminal"
 draft: true
 ---
 
-Formatierung und animation können im Text kontrolliert werden, siehe [GitHub](https://github.com/stvwhtly/jquery-teletype-plugin#deleting-characters-)
+Formatierung und Animation können im Text kontrolliert werden, siehe Basisplugin [GitHub](https://github.com/stvwhtly/jquery-teletype-plugin#deleting-characters-)
 
 > Es müssen p-Tags mit der Klasse _command_ gesetzt werden für die einzelnen Zeilen, die als Command definiert sind
 
@@ -22,6 +22,8 @@ Parameter für das _terminal_ Command (sind alle optional):
 
 {{< terminal "~prefix:" "test" "65%" "16em" >}}
 <p class="command">each line must be ^2000 within a p tag</p>
+<p class="result"></p>
+<p class="command">do typing with erororororor~10ror</p>
 <p class="result"></p>
 <p class="command">second line for layout with result</p>
 <p class="result">-- This is the <em>result</em> of the second command--</p>
