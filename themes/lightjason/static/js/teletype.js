@@ -60,7 +60,9 @@
         smoothBlink: true,
         callbackNext: null,
         callbackType: null,
-        callbackFinished: null
+        callbackFinished: null,
+        callbackStart: null,
+        callbackReset: null
     };
 
 
@@ -198,6 +200,10 @@
             this.dom.find("." + this.settings.classoutput + ":first").empty();
             clearCurrent(this);
             setCurrentString(this);
+
+            if (typeof(this.settings.callbackReset) == 'function')
+                this.settings.callbackReset(this);            
+
             return this;
         },
 
@@ -212,6 +218,9 @@
                 return;
 
             setCurrentString(this);
+            if (typeof(this.settings.callbackStart) == 'function')
+                this.settings.callbackStart(po_this);
+
             this.type();
             return this;
         }
@@ -240,6 +249,7 @@
      * clear current
      * 
      * @param po_this execution context
+     * @return boolean next line exists
      */
     clearCurrent = function(po_this) {
         po_this.current = {
@@ -251,6 +261,8 @@
             loop: 0,
             timeout: null
         };
+
+        return po_this;
     },
 
 
@@ -332,6 +344,9 @@
 
     /**
      * constructor
+     * 
+     * @param po_this execution context
+     * @return boolean next line exists
      */
     initialize = function(po_this) {
 
@@ -361,10 +376,13 @@
         // start typing
         if (po_this.settings.automaticstart) {
             setCurrentString(po_this);
+            if (typeof(po_this.settings.callbackStart) == 'function')
+                po_this.settings.callbackStart(po_this);
+
             po_this.type();
         }
 
-        return this;
+        return po_this;
     },
 
 
