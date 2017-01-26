@@ -48,14 +48,12 @@ jQuery(function() {
             }),
             prefix: jQuery(this).attr("data-prefix"),
             cursor: "\u258B",
-            automaticstart: false,
-            typeDelay: 30
+            automaticstart: false
         });
     });
 
     jQuery(".teletypereset").click(function() {
         jQuery("#" + jQuery(this).attr("data-terminal")).teletype().start();
-        //console.log(jQuery("#" + jQuery(this).attr("data-terminal")).teletype());
     });
 
     jQuery(".teletypeother").click(function() {

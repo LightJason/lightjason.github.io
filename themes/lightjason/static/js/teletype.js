@@ -57,13 +57,11 @@
         // linebreak HTML tag
         taglinebreak: "<br/>",
         // type delay
-        typeDelay: 100,
+        typeDelay: 120,
         // backward delay
-        backDelay: 75,
+        backDelay: 180,
         // cursor blink speed
         blinkSpeed: 1000,
-        // delay of commands
-        delay: 2000,
         // cursor visualization
         cursor: '|',
         // command-line prefix
@@ -132,8 +130,10 @@
             	var value = extractnumber(this.current.string, start);
             	if ( jQuery.isNumeric( value ) )
                 {
-                    this.current.position += value;
-           			this.current.timeout = setTimeout( backspace( this, value ), delay( this, this.settings.backDelay ) );
+                    this.current.position += value.length + 1;
+           			this.current.timeout = setTimeout( backspace( this, value ), delay( this, this.settings.backDelay*value ) );
+                    this.current.timeout = setTimeout( this.type.bind(this), delay(this, this.settings.typeDelay) );
+                    return;
                 }
             }
 
@@ -274,7 +274,7 @@
      * @return randomized speed value
      */
     delay = function(po_this, pn_speed) {
-        return po_this.settings.humanise ? parseInt(pn_speed) + Math.floor(Math.random() * 200) : parseInt(pn_speed);
+        return po_this.settings.humanise ? Math.round(parseInt(pn_speed) + Math.random() * pn_speed / 3) : parseInt(pn_speed);
     },
 
 
@@ -322,8 +322,8 @@
             po_this.current.index = 0;
             po_this.current.loop++;
 
-            if (typeof(this.settings.callbackNextLoop) == 'function')
-                this.settings.callbackNextLoop(po_this);
+            if (typeof(po_this.settings.callbackNextLoop) == 'function')
+                po_this.settings.callbackNextLoop(po_this);
 
             if ((po_this.settings.loop !== false) && (po_this.settings.loop == po_this.current.loop))
             {
@@ -401,7 +401,7 @@
         if ( (pn_stop < 1) || (po_this.current.position - pn_stop < 1) )  
             return;
 
-        po_this.current.timeout = setTimeout( backspace(po_this, pn_stop-1), delay(po_this, po_this.settings.backDelay) );
+        po_this.current.timeout = setTimeout( backspace(po_this, pn_stop-1), delay(po_this, po_this.settings.backDelay*pn_stop) );
         po_this.output.html( po_this.output.html().slice(0, -1) );
     }
 

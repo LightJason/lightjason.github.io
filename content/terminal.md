@@ -23,7 +23,7 @@ Parameter für das _terminal_ Command (sind alle optional):
 {{< terminal "~prefix:" "test" "65%" "16em" >}}
 <p class="command">each line must be ^2000 within a p tag</p>
 <p class="result"></p>
-<p class="command">do typing with erororororor~10ror</p>
+<p class="command">do typing with erororororor~10ror and some other text</p>
 <p class="result"></p>
 <p class="command">second line for layout with result</p>
 <p class="result">-- This is the <em>result</em> of the second command--</p>
