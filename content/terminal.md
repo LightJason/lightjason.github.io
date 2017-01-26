@@ -36,5 +36,4 @@ Um das Terminal zu resetten wird ein eigenes Command genutzt, wobei zwei Paramet
 
 {{< terminalreset "test" "start terminal typing" >}}
 
-
-
+<a href="#teletype-test" class="teletypeother" data-terminal="teletype-test" >Terminal Click</a>

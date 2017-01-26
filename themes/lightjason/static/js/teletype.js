@@ -92,14 +92,7 @@
             this.dom.empty();
 
             // sets instance an nessessary DOM values into element
-            this.current = {
-                string: '',
-                result: '',
-                letters: [],
-                index: 0,
-                position: 0,
-                loop: 0
-            };
+            clearCurrent(this);
             this.output = jQuery('<span/>').addClass(this.settings.classoutput).appendTo(this.dom);
 
             // set cursor
@@ -161,6 +154,10 @@
             if ((this.settings.prefix) && (this.current.position === 0))
                 jQuery('<span />').addClass(this.settings.classprefix).html(this.settings.prefix).appendTo(this.output);
 
+            // check anything exists for typing
+            if (!this.current.string)
+                return;
+
             // get current letter & position
             var letter = this.current.letters[this.current.position],
                 start = this.current.position + 1;
@@ -219,7 +216,7 @@
 
             // run the next iteration
             if (this.current.position < this.current.string.length)
-                setTimeout(this.type.bind(this), delay(this, this.settings.typeDelay));
+                this.current.timeout = setTimeout(this.type.bind(this), delay(this, this.settings.typeDelay));
             else {
                 // set the result (of the typing) if it exists
                 if (this.current.result)
@@ -228,7 +225,7 @@
                 // check if there exists a new line
                 if (this.next()) {
                     this.output.html(this.output.html() + this.settings.taglinebreak);
-                    setTimeout(this.type.bind(this), delay(this, this.settings.typeDelay));
+                    this.current.timeout = setTimeout(this.type.bind(this), delay(this, this.settings.typeDelay));
                 }
             }
 
@@ -239,28 +236,39 @@
          * modifies the internal cursor representation
          *
          * @param pc_cursor cursor character
+         * @return self reference
          */
         setCursor: function(pc_cursor) {
             this.settings.cursor = pc_cursor;
+            this.dom.find("." + this.settings.classcursor + ":first").html(this.settings.cursor);
 
             return this;
         },
 
 
         /**
-         * resets the dom element and rerun typing
+         * resets the dom element with clearning
+         * 
+         * @return self reference
          */
         reset: function() {
             if (this.settings.loop === 0)
                 return this;
 
-            this.start();
+            if (this.current.timeout)
+                clearTimeout( this.current.timeout );    
+
+            this.dom.find("." + this.settings.classoutput + ":first").empty();
+            clearCurrent(this);
+            setCurrentString(this);
             return this;
         },
 
 
         /**
          * starts typing if automatic start is disabled
+         * 
+         * @return self reference
          */
         start: function() {
             if (this.settings.automaticstart)
@@ -268,7 +276,6 @@
 
             setCurrentString(this);
             this.type();
-
             return this;
         }
 
@@ -283,9 +290,30 @@
      * @param po_this execution context
      */
     var setCurrentString = function(po_this) {
+        if ( (!po_this.settings.text) || (po_this.settings.text.length == 0) )
+            return;
+
         po_this.current.string = po_this.settings.text[po_this.current.index].replace(/\n/g, "\\n");
         po_this.current.letters = po_this.current.string.split('');
         po_this.current.result = (po_this.settings.result.length == po_this.settings.text.length) && (po_this.settings.result[po_this.current.index]) ? '<p class="' + po_this.settings.classresult + '">' + po_this.settings.result[po_this.current.index] + "</p>" : "";
+    },
+
+
+    /**
+     * clear current
+     * 
+     * @param po_this execution context
+     */
+    clearCurrent = function(po_this) {
+        po_this.current = {
+            string: '',
+            result: '',
+            letters: [],
+            index: 0,
+            position: 0,
+            loop: 0,
+            timeout: null
+        };
     },
 
 
@@ -327,7 +355,7 @@
             return;
 
         po_this.current.position = pn_start + time.length;
-        setTimeout(po_this.type.bind(po_this), time);
+        po_this.current.timeout = setTimeout(po_this.type.bind(po_this), time);
     },
 
 
@@ -344,14 +372,14 @@
 
         if (this.current.position > pn_stop) {
             this.dom.html(this.dom.html().slice(0, -1));
-            setTimeout(this.backspace(pn_stop).bind(this), delay(this.settings.backDelay));
+            po_this.current.timeout = setTimeout(this.backspace(pn_stop).bind(this), delay(this.settings.backDelay));
             this.current.position--;
 
         } else {
             if ((pn_stop === 0) && (next() === false))
                 return;
 
-            setTimeout(this.type.bind(this), delay(po_this, this.settings.typeDelay));
+            po_this.current.timeout = setTimeout(this.type.bind(this), delay(po_this, this.settings.typeDelay));
         }
     }
 
