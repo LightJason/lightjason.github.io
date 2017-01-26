@@ -144,7 +144,7 @@
 
             // run typing-callback
             if (typeof(this.settings.callbackType) == 'function')
-                this.settings.callbackType(element);
+                this.settings.callbackType(this);
 
 
             // increment current position and set output
@@ -310,7 +310,13 @@
             po_this.current.index = 0;
             po_this.current.loop++;
             if ((po_this.settings.loop !== false) && (po_this.settings.loop == po_this.current.loop))
+            {
+                // runs finished callback
+                if (typeof(po_this.settings.callbackNext) == 'function')
+                    po_this.settings.callbackFinished(po_this);
+
                 return false;
+            }
         }
 
         setCurrentString(po_this);
@@ -318,7 +324,7 @@
 
         // runs next-callback
         if (typeof(po_this.settings.callbackNext) == 'function')
-            po_this.settings.callbackNext(null);
+            po_this.settings.callbackNext(po_this);
 
         return true;
     },
