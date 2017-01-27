@@ -11,10 +11,10 @@
  *
  */
 
-"use strict";;
-(function() {
+'use strict';
+;(function() {
 
-    var pluginname = "teletype";
+    var pluginname = 'teletype';
 
     // ---- jQuery initialization -------------------------------------------------------------------------------------------
 
