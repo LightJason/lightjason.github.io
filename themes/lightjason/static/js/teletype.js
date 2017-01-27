@@ -256,7 +256,7 @@
             return this;
         }
 
-    }
+    };
 
 
     // ---- private function ------------------------------------------------------------------------------------------------
@@ -461,6 +461,6 @@
             }, delay(po_this, po_this.settings.backDelay));
 
             return po_this;
-        }
+        };
 
 }(jQuery));
