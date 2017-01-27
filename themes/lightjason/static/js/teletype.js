@@ -76,6 +76,8 @@
         callbackNext: null,
         // callback function to catch typing (parameter full teletype DOM object)
         callbackType: null,
+        // callback function to catch backward moving (parameter full teletype DOM object)
+        vallbackBackward: null,
         // callback function which is called after finished typing (parameter full teletype DOM object)
         callbackFinished: null,
         // callback function which is calld on start typing (parameter full teletype DOM object)
@@ -130,9 +132,9 @@
             	var value = extractnumber(this.current.string, start);
             	if ( jQuery.isNumeric( value ) )
                 {
+                    var self = this;
                     this.current.position += value.length + 1;
-           			this.current.timeout = setTimeout( backspace( this, value ), delay( this, this.settings.backDelay*value ) );
-                    this.current.timeout = setTimeout( this.type.bind(this), delay(this, this.settings.typeDelay) );
+                    this.current.timeout = setTimeout( function() { backspace( self, value ); }, delay( this, this.settings.backDelay*value ) );
                     return;
                 }
             }
@@ -398,11 +400,21 @@
      * @param pn_stop number of characters to remove
      */
     backspace = function(po_this, pn_stop) {
-        if ( (pn_stop < 1) || (po_this.current.position - pn_stop < 1) )  
+        if ( (pn_stop < 1) || (po_this.current.position - pn_stop < 1) )
+        {
+            po_this.current.timeout = setTimeout( po_this.type.bind(po_this), delay(po_this, po_this.settings.typeDelay) );    
             return;
+        }
 
-        po_this.current.timeout = setTimeout( backspace(po_this, pn_stop-1), delay(po_this, po_this.settings.backDelay*pn_stop) );
-        po_this.output.html( po_this.output.html().slice(0, -1) );
+        po_this.current.timeout = setTimeout( function() { 
+            po_this.output.html( po_this.output.html().slice(0, -1) );
+            backspace(po_this, pn_stop-1);
+
+            if (typeof(po_this.settings.callbackBackward) == 'function')
+                po_this.settings.callbackBackward(po_this);
+
+        }, delay(po_this, po_this.settings.backDelay) );
+        
     }
 
 }(jQuery));
