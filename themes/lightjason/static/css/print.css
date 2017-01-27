@@ -15,13 +15,14 @@ div.bodywrapper {
 }
 
 .teletype {
-    background: #fff;
     overflow-x: hidden;
     overflow-y: visible;
     height: auto !important;
     width: 96% !important;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
 }
 
-p.teletype-result {
-    background: #ff0000;
+.teletype-result {
+    font-style: italic;
 }
