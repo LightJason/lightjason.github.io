@@ -6,7 +6,7 @@
  * @see http://teletype.rocks
  * @see https://github.com/stvwhtly/jquery-teletype-plugin
  *
- * Copyright (c) 2015-2016 Steve Whiteley & Philipp Kraus
+ * Copyright (c) 2015-2017 Steve Whiteley & Philipp Kraus
  * Dual licensed under the MIT or GPL Version 2 licenses.
  *
  */
@@ -179,7 +179,7 @@
          * @param pc_cursor cursor character
          * @return self reference
          */
-        setCursor: function(pc_cursor) {
+        cursor: function(pc_cursor) {
             this.settings.cursor = pc_cursor;
             this.dom.find("." + this.settings.classcursor + ":first").html(this.settings.cursor);
 
