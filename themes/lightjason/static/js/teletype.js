@@ -118,8 +118,8 @@
             }
 
             // get current letter & position
-            var letter = this.current.letters[this.current.position],
-                start = this.current.position + 1;
+            var letter = this.current.letters[this.current.position];
+            var start = this.current.position + 1;
 
             // check pause
             if (letter === "^") {
@@ -266,199 +266,199 @@
      * @return self reference
      */
     var setCurrentString = function (po_this) {
-            if ((!po_this.settings.text) || (po_this.settings.text.length === 0)) {
-                return po_this;
-            }
-
-            po_this.current.string = po_this.settings.text[po_this.current.index].replace(/\n/g, "\\n");
-            po_this.current.letters = po_this.current.string.split("");
-            po_this.current.result = ((po_this.settings.result.length === po_this.settings.text.length) && (po_this.settings.result[po_this.current.index]))
-                                     ? "<p class=\"" + po_this.settings.classresult + "\">" + po_this.settings.result[po_this.current.index] + "</p>"
-                                     : "";
-
+        if ((!po_this.settings.text) || (po_this.settings.text.length === 0)) {
             return po_this;
-        },
+        }
+
+        po_this.current.string = po_this.settings.text[po_this.current.index].replace(/\n/g, "\\n");
+        po_this.current.letters = po_this.current.string.split("");
+        po_this.current.result = ((po_this.settings.result.length === po_this.settings.text.length) && (po_this.settings.result[po_this.current.index]))
+                                    ? "<p class=\"" + po_this.settings.classresult + "\">" + po_this.settings.result[po_this.current.index] + "</p>"
+                                    : "";
+
+        return po_this;
+    };
 
 
-        /**
-         * clear current
-         *
-         * @param po_this execution context
-         * @return self reference
-         */
-        clearCurrent = function (po_this) {
-            po_this.current = {
-                string: "",
-                result: "",
-                letters: [],
-                index: 0,
-                position: 0,
-                loop: 0,
-                timeout: null
-            };
-
-            return po_this;
-        },
-
-
-        /**
-         * delay function
-         *
-         * @param po_this execution context
-         * @param pn_speed any speed value
-         * @return randomized speed value
-         */
-        delay = function (po_this, pn_speed) {
-            return po_this.settings.humanise
-                   ? Math.round(parseInt(pn_speed) + Math.random() * pn_speed / 3)
-                   : parseInt(pn_speed);
-        },
-
-
-        /**
-         * extract a number from a text
-         *
-         * @param pc_text input text
-         * @param pn_start start position within the string
-         * @return extracted number
-         */
-        extractnumber = function (pc_text, pn_start) {
-            var end = pc_text.substr(pn_start).search(/[^0-9]/);
-            return pc_text.substr(pn_start, end === -1 ? pc_text.length : end);
-        },
-
-
-        /**
-         * pause function for typing pause
-         *
-         * @param po_this execution context
-         * @param pn_start start position for searching pause time
-         * @return self reference
-         */
-        pause = function (po_this, pn_start) {
-            var time = extractnumber(po_this.current.string, pn_start);
-            if (!jQuery.isNumeric(time)) {
-                return po_this;
-            }
-
-            po_this.current.position = pn_start + time.length;
-            po_this.current.timeout = setTimeout(po_this.type.bind(po_this), time);
-
-            return po_this;
-        },
-
-
-        /**
-         * sets the next outpur sequence
-         *
-         * @param po_this execution context
-         * @return boolean next line exists
-         */
-        next = function (po_this) {
-            po_this.current.index += 1;
-
-            // check end and looping
-            if (po_this.current.index >= po_this.settings.text.length) {
-                po_this.current.index = 0;
-                po_this.current.loop += 1;
-
-                if (typeof(po_this.settings.callbackNextLoop) === "function") {
-                    po_this.settings.callbackNextLoop(po_this);
-                }
-
-                if ((po_this.settings.loop !== false) && (po_this.settings.loop === po_this.current.loop)) {
-                    // runs finished callback
-                    if (typeof(po_this.settings.callbackFinished) === "function") {
-                        po_this.settings.callbackFinished(po_this);
-                    }
-
-                    return false;
-                }
-            }
-
-            setCurrentString(po_this);
-            po_this.current.position = 0;
-
-            // runs next-callback
-            if (typeof(po_this.settings.callbackNext) === "function") {
-                po_this.settings.callbackNext(po_this);
-            }
-
-            return true;
-        },
-
-
-        /**
-         * constructor
-         *
-         * @param po_this execution context
-         * @return self reference
-         */
-        initialize = function (po_this) {
-
-            // clear DOM node first
-            po_this.dom.empty();
-
-            // sets instance an nessessary DOM values into element
-            clearCurrent(po_this);
-            po_this.output = jQuery("<span/>").addClass(po_this.settings.classoutput).appendTo(po_this.dom);
-
-            // set cursor
-            if (po_this.settings.cursor) {
-                var cursor = jQuery("<span/>").addClass(po_this.settings.classcursor).appendTo(po_this.dom).text(po_this.settings.cursor);
-                var self = po_this;
-                setInterval(function () {
-                    if (self.settings.smoothBlink) {
-                        cursor.animate({
-                            opacity: 0
-                        }).animate({
-                            opacity: 1
-                        });
-                    } else {
-                        cursor.delay(500).fadeTo(0, 0).delay(500).fadeTo(0, 1);
-                    }
-                }, po_this.settings.blinkSpeed);
-            }
-
-            // start typing
-            if (po_this.settings.automaticstart) {
-                setCurrentString(po_this);
-                if (typeof(po_this.settings.callbackStart) === "function") {
-                    po_this.settings.callbackStart(po_this);
-                }
-
-                po_this.type();
-            }
-
-            return po_this;
-        },
-
-
-        /**
-         * backspace for removing characters
-         * @bug incomplete
-         *
-         * @param po_this execution context
-         * @param pn_stop number of characters to remove
-         * @return self reference
-         */
-        backspace = function (po_this, pn_stop) {
-            if ((pn_stop < 1) || (po_this.current.position - pn_stop < 1)) {
-                po_this.current.timeout = setTimeout(po_this.type.bind(po_this), delay(po_this, po_this.settings.typeDelay));
-                return po_this;
-            }
-
-            po_this.current.timeout = setTimeout(function () {
-                po_this.output.html(po_this.output.html().slice(0, -1));
-                backspace(po_this, pn_stop - 1);
-
-                if (typeof(po_this.settings.callbackBackward) === "function") {
-                    po_this.settings.callbackBackward(po_this);
-                }
-
-            }, delay(po_this, po_this.settings.backDelay));
-
-            return po_this;
+    /**
+     * clear current
+     *
+     * @param po_this execution context
+     * @return self reference
+     */
+    var clearCurrent = function (po_this) {
+        po_this.current = {
+            string: "",
+            result: "",
+            letters: [],
+            index: 0,
+            position: 0,
+            loop: 0,
+            timeout: null
         };
+
+        return po_this;
+    };
+
+
+    /**
+     * delay function
+     *
+     * @param po_this execution context
+     * @param pn_speed any speed value
+     * @return randomized speed value
+     */
+    var delay = function (po_this, pn_speed) {
+        return po_this.settings.humanise
+                ? Math.round(parseInt(pn_speed) + Math.random() * pn_speed / 3)
+                : parseInt(pn_speed);
+    };
+
+
+    /**
+     * extract a number from a text
+     *
+     * @param pc_text input text
+     * @param pn_start start position within the string
+     * @return extracted number
+     */
+    var extractnumber = function (pc_text, pn_start) {
+        var end = pc_text.substr(pn_start).search(/[^0-9]/);
+        return pc_text.substr(pn_start, end === -1 ? pc_text.length : end);
+    };
+
+
+    /**
+     * pause function for typing pause
+     *
+     * @param po_this execution context
+     * @param pn_start start position for searching pause time
+     * @return self reference
+     */
+    var pause = function (po_this, pn_start) {
+        var time = extractnumber(po_this.current.string, pn_start);
+        if (!jQuery.isNumeric(time)) {
+            return po_this;
+        }
+
+        po_this.current.position = pn_start + time.length;
+        po_this.current.timeout = setTimeout(po_this.type.bind(po_this), time);
+
+        return po_this;
+    };
+
+
+    /**
+     * sets the next outpur sequence
+     *
+     * @param po_this execution context
+     * @return boolean next line exists
+     */
+    var next = function (po_this) {
+        po_this.current.index += 1;
+
+        // check end and looping
+        if (po_this.current.index >= po_this.settings.text.length) {
+            po_this.current.index = 0;
+            po_this.current.loop += 1;
+
+            if (typeof(po_this.settings.callbackNextLoop) === "function") {
+                po_this.settings.callbackNextLoop(po_this);
+            }
+
+            if ((po_this.settings.loop !== false) && (po_this.settings.loop === po_this.current.loop)) {
+                // runs finished callback
+                if (typeof(po_this.settings.callbackFinished) === "function") {
+                    po_this.settings.callbackFinished(po_this);
+                }
+
+                return false;
+            }
+        }
+
+        setCurrentString(po_this);
+        po_this.current.position = 0;
+
+        // runs next-callback
+        if (typeof(po_this.settings.callbackNext) === "function") {
+            po_this.settings.callbackNext(po_this);
+        }
+
+        return true;
+    };
+
+
+    /**
+     * constructor
+     *
+     * @param po_this execution context
+     * @return self reference
+     */
+    var initialize = function (po_this) {
+
+        // clear DOM node first
+        po_this.dom.empty();
+
+        // sets instance an nessessary DOM values into element
+        clearCurrent(po_this);
+        po_this.output = jQuery("<span/>").addClass(po_this.settings.classoutput).appendTo(po_this.dom);
+
+        // set cursor
+        if (po_this.settings.cursor) {
+            var cursor = jQuery("<span/>").addClass(po_this.settings.classcursor).appendTo(po_this.dom).text(po_this.settings.cursor);
+            var self = po_this;
+            setInterval(function () {
+                if (self.settings.smoothBlink) {
+                    cursor.animate({
+                        opacity: 0
+                    }).animate({
+                        opacity: 1
+                    });
+                } else {
+                    cursor.delay(500).fadeTo(0, 0).delay(500).fadeTo(0, 1);
+                }
+            }, po_this.settings.blinkSpeed);
+        }
+
+        // start typing
+        if (po_this.settings.automaticstart) {
+            setCurrentString(po_this);
+            if (typeof(po_this.settings.callbackStart) === "function") {
+                po_this.settings.callbackStart(po_this);
+            }
+
+            po_this.type();
+        }
+
+        return po_this;
+    };
+
+
+    /**
+     * backspace for removing characters
+     * @bug incomplete
+     *
+     * @param po_this execution context
+     * @param pn_stop number of characters to remove
+     * @return self reference
+     */
+    var backspace = function (po_this, pn_stop) {
+        if ((pn_stop < 1) || (po_this.current.position - pn_stop < 1)) {
+            po_this.current.timeout = setTimeout(po_this.type.bind(po_this), delay(po_this, po_this.settings.typeDelay));
+            return po_this;
+        }
+
+        po_this.current.timeout = setTimeout(function () {
+            po_this.output.html(po_this.output.html().slice(0, -1));
+            backspace(po_this, pn_stop - 1);
+
+            if (typeof(po_this.settings.callbackBackward) === "function") {
+                po_this.settings.callbackBackward(po_this);
+            }
+
+        }, delay(po_this, po_this.settings.backDelay));
+
+        return po_this;
+    };
 
 }(jQuery));
