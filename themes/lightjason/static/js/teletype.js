@@ -12,7 +12,7 @@
  */
 
 "use strict";
-(function() {
+(function () {
 
     var pluginname = "teletype";
 
@@ -133,7 +133,7 @@
                 if (jQuery.isNumeric(value)) {
                     var self = this;
                     this.current.position += value.length + 1;
-                    this.current.timeout = setTimeout(function() {
+                    this.current.timeout = setTimeout(function () {
                         backspace(self, value);
                     }, delay(this, this.settings.backDelay * value));
                     return;
@@ -160,9 +160,7 @@
             // run the next iteration
             if (this.current.position < this.current.string.length) {
                 this.current.timeout = setTimeout(this.type.bind(this), delay(this, this.settings.typeDelay));
-            } 
-            else
-            {
+            } else {
                 // set the result (of the typing) if it exists
                 if (this.current.result) {
                     this.output.html(this.output.html() + this.current.result);
@@ -242,7 +240,7 @@
          *
          * @return self reference
          */
-        start: function() {
+        start: function () {
             if (this.settings.automaticstart) {
                 return this;
             }
@@ -275,7 +273,7 @@
             po_this.current.string = po_this.settings.text[po_this.current.index].replace(/\n/g, "\\n");
             po_this.current.letters = po_this.current.string.split("");
             po_this.current.result = ((po_this.settings.result.length === po_this.settings.text.length) && (po_this.settings.result[po_this.current.index]))
-                                     ? "<p class=\"" + po_this.settings.classresult + "\">" + po_this.settings.result[po_this.current.index] + "</p>" 
+                                     ? "<p class=\"" + po_this.settings.classresult + "\">" + po_this.settings.result[po_this.current.index] + "</p>"
                                      : "";
 
             return po_this;
@@ -311,7 +309,9 @@
          * @return randomized speed value
          */
         delay = function (po_this, pn_speed) {
-            return po_this.settings.humanise ? Math.round(parseInt(pn_speed) + Math.random() * pn_speed / 3) : parseInt(pn_speed);
+            return po_this.settings.humanise
+                   ? Math.round(parseInt(pn_speed) + Math.random() * pn_speed / 3)
+                   : parseInt(pn_speed);
         },
 
 
@@ -407,16 +407,14 @@
             if (po_this.settings.cursor) {
                 var cursor = jQuery("<span/>").addClass(po_this.settings.classcursor).appendTo(po_this.dom).text(po_this.settings.cursor);
                 var self = po_this;
-                setInterval(function() {
+                setInterval(function () {
                     if (self.settings.smoothBlink) {
                         cursor.animate({
                             opacity: 0
                         }).animate({
                             opacity: 1
                         });
-                    } 
-                    else
-                    {
+                    } else {
                         cursor.delay(500).fadeTo(0, 0).delay(500).fadeTo(0, 1);
                     }
                 }, po_this.settings.blinkSpeed);
@@ -450,7 +448,7 @@
                 return po_this;
             }
 
-            po_this.current.timeout = setTimeout(function() {
+            po_this.current.timeout = setTimeout(function () {
                 po_this.output.html(po_this.output.html().slice(0, -1));
                 backspace(po_this, pn_stop - 1);
 
