@@ -107,75 +107,6 @@
     Teletype.prototype = {
 
         /**
-         * execution typing
-         */
-        type: function () {
-
-            // add new prefix item if possible
-            if ((this.settings.prefix) && (this.current.position === 0)) {
-                jQuery("<span />").addClass(this.settings.classprefix).html(this.settings.prefix).appendTo(this.output);
-            }
-
-            // get current letter & position
-            var letter = this.current.letters[this.current.position];
-            var start = this.current.position + 1;
-
-            // check pause
-            if (letter === "^") {
-                pause(this, start);
-                return;
-            }
-
-            // check for pause or remove sign
-            if (letter === "~") {
-                var value = extractnumber(this.current.string, start);
-                if (jQuery.isNumeric(value)) {
-                    var self = this;
-                    this.current.position += value.length + 1;
-                    this.current.timeout = setTimeout(function () {
-                        backspace(self, value);
-                    }, delay(this, this.settings.backDelay * value));
-                    return;
-                }
-            }
-
-            // check for line-break
-            if ((letter === "\\") && (this.current.string.substr(start, 1) === "n")) {
-                this.current.position += 1;
-                letter = this.settings.taglinebreak;
-            }
-
-
-            // run typing-callback
-            if (typeof(this.settings.callbackType) === "function") {
-                this.settings.callbackType(this);
-            }
-
-
-            // increment current position and set output
-            this.current.position += 1;
-            this.output.html(this.output.html() + letter);
-
-            // run the next iteration
-            if (this.current.position < this.current.string.length) {
-                this.current.timeout = setTimeout(this.type.bind(this), delay(this, this.settings.typeDelay));
-            } else {
-                // set the result (of the typing) if it exists
-                if (this.current.result) {
-                    this.output.html(this.output.html() + this.current.result);
-                }
-
-                // check if there exists a new line
-                if (next(this)) {
-                    this.output.html(this.output.html() + this.settings.taglinebreak);
-                    this.current.timeout = setTimeout(this.type.bind(this), delay(this, this.settings.typeDelay));
-                }
-            }
-
-        },
-
-
-        /**
          * modifies the internal cursor representation
          *
          * @param pc_cursor cursor character
@@ -249,7 +180,7 @@
                 this.settings.callbackStart(this);
             }
 
-            this.type();
+            type(this);
             return this;
         }
 
@@ -324,8 +255,8 @@
     var extractnumber = function (pc_text, pn_start) {
         var end = pc_text.substr(pn_start).search(/[^0-9]/);
         return pc_text.substr(
-                    pn_start, end === -1 
-                    ? pc_text.length 
+                    pn_start, end === -1
+                    ? pc_text.length
                     : end
                );
     };
@@ -345,7 +276,7 @@
         }
 
         po_this.current.position = pn_start + time.length;
-        po_this.current.timeout = setTimeout(po_this.type.bind(po_this), time);
+        po_this.current.timeout = setTimeout(type(po_this), time);
 
         return po_this;
     };
@@ -430,7 +361,7 @@
                 po_this.settings.callbackStart(po_this);
             }
 
-            po_this.type();
+            type(po_this);
         }
 
         return po_this;
@@ -447,7 +378,7 @@
      */
     var backspace = function (po_this, pn_stop) {
         if ((pn_stop < 1) || (po_this.current.position - pn_stop < 1)) {
-            po_this.current.timeout = setTimeout(po_this.type.bind(po_this), delay(po_this, po_this.settings.typeDelay));
+            po_this.current.timeout = setTimeout(type(po_this), delay(po_this, po_this.settings.typeDelay));
             return po_this;
         }
 
@@ -463,5 +394,82 @@
 
         return po_this;
     };
+
+
+
+        /**
+         * execution typing
+         */
+        var type = function (po_this) {
+
+            // add new prefix item if possible
+            if ((po_this.settings.prefix) && (po_this.current.position === 0)) {
+                jQuery("<span />").addClass(po_this.settings.classprefix).html(po_this.settings.prefix).appendTo(po_this.output);
+            }
+
+            // get current letter & position
+            var letter = po_this.current.letters[po_this.current.position];
+            var start = po_this.current.position + 1;
+
+            // check pause
+            if (letter === "^") {
+                pause(po_this, start);
+                return;
+            }
+
+            // check for pause or remove sign
+            if (letter === "~") {
+                var value = extractnumber(po_this.current.string, start);
+                if (jQuery.isNumeric(value)) {
+                    var self = po_this;
+                    po_this.current.position += value.length + 1;
+                    po_this.current.timeout = setTimeout(function () {
+                        backspace(self, value);
+                    }, delay(po_this, po_this.settings.backDelay * value));
+                    return;
+                }
+            }
+
+            // check for line-break
+            if ((letter === "\\") && (po_this.current.string.substr(start, 1) === "n")) {
+                po_this.current.position += 1;
+                letter = po_this.settings.taglinebreak;
+            }
+
+
+            // run typing-callback
+            if (typeof(po_this.settings.callbackType) === "function") {
+                po_this.settings.callbackType(po_this);
+            }
+
+
+
+
+            // run the next iteration
+            if (po_this.current.position < po_this.current.string.length) {
+
+                po_this.current.timeout = setTimeout(function () {
+
+                    // increment current position and set output
+                    po_this.current.position += 1;
+                    po_this.output.html(po_this.output.html() + letter);
+
+                    type(po_this);
+                }, delay(po_this, po_this.settings.typeDelay));
+
+            } else {
+                // set the result (of the typing) if it exists
+                if (po_this.current.result) {
+                    po_this.output.html(po_this.output.html() + po_this.current.result);
+                }
+
+                // check if there exists a new line
+                if (next(po_this)) {
+                    po_this.output.html(po_this.output.html() + po_this.settings.taglinebreak);
+                    po_this.current.timeout = setTimeout(type(po_this), delay(po_this, po_this.settings.typeDelay));
+                }
+            }
+
+        };
 
 }(jQuery));
