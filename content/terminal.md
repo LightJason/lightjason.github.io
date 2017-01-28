@@ -8,7 +8,7 @@ Command formatting can be found on the plugin page on [GitHub](https://github.co
 > The terminal command seperates with ```p```-tags _commands_ annd _command results_. Results are optional, but if the results are used the
 number of command ```p```-tags and result ```p```-tags must be equal
 
-<br/>
+## Basic
 
 Arguments of the Hugo _terminal_ shortcode (all arguments are optional):
 
@@ -16,7 +16,6 @@ Arguments of the Hugo _terminal_ shortcode (all arguments are optional):
 2. Argument is DOM-ID to create an unique referenced ID of the terminal (default is empty)
 3. Argument is the height of the terminal box (default is _10em_ [10 text-lines])
 4. Argument is the width of the terminal box (default is _100%_)
-
 
 {{< terminal "~prefix:" "test""16em" >}}
 <p class="command">each line must be ^2000 within a p tag</p>
@@ -28,6 +27,8 @@ Arguments of the Hugo _terminal_ shortcode (all arguments are optional):
 <p class="command">two line typing with pause in 5 seconds ^5000 \nnext line with foo bar</p>
 <p class="result"></p>
 {{< /terminal >}}
+
+## Control
 
 For resetting and/or start typing there exists a single Hugo shortcode with two arguments
 
