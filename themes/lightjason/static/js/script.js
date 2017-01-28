@@ -48,11 +48,11 @@ jQuery(function() {
             cursor: "\u258B",
             automaticstart: false
         });
-        
+
     });
 
     jQuery(".teletypereset").click(function() {
         jQuery("#" + jQuery(this).attr("data-terminal")).teletype().reset().start();
     });
-   
+
 });

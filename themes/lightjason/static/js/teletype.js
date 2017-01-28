@@ -397,7 +397,7 @@
 
     /**
      * execution typing
-     * 
+     *
      * @param po_this execution context
      */
     var type = function (po_this) {
@@ -467,7 +467,7 @@
                 po_this.output.html(po_this.output.html() + po_this.settings.taglinebreak);
                 po_this.current.timeout = setTimeout(type(po_this), delay(po_this, po_this.settings.typeDelay));
             }
-        
+
         }
 
     };
