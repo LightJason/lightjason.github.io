@@ -17,10 +17,11 @@ Parameter für das _terminal_ Command (sind alle optional):
 
 1. Parameter ist das _Terminalprefix_ (Default ist leer)
 2. Parameter ist die DOM-ID ggf um das Terminal direkt zu referenzien
-3. Parameter ist die Breite der Box (Default ist _100%_)
-4. Parameter ist die Höhe der Box (Default ist _10em_ [10 Zeilen])
+3. Parameter ist die Höhe der Box (Default ist _10em_ [10 Zeilen])
+4. Parameter ist die Breite der Box (Default ist _100%_)
 
-{{< terminal "~prefix:" "test" "65%" "16em" >}}
+
+{{< terminal "~prefix:" "test""16em" >}}
 <p class="command">each line must be ^2000 within a p tag</p>
 <p class="result"></p>
 <p class="command">do typing with erororororor~10ror and some other text</p>
