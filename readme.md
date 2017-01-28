@@ -56,3 +56,6 @@ Run ```hugo``` and copy all data from the ```public``` directory to the ```maste
 	3. Agent-Inspector 
 	4. Agent-Access via REST
 	5. UI with jQuery / Angular.JS
+* Video-Screencast
+	* import IntelliJ pom.xml 
+	* import Eclipse pom.xml

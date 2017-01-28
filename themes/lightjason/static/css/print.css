@@ -1,5 +1,6 @@
 div.sidebar, div.clear,
 div.sidebarwrapper,
+span.teletype-cursor,
 div.footer, #toccontainer, .category_control {
     display: none;
 }
@@ -11,4 +12,17 @@ div.document {
 
 div.bodywrapper {
     margin: 0;
+}
+
+.teletype {
+    overflow-x: hidden;
+    overflow-y: visible;
+    height: auto !important;
+    width: 96% !important;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.teletype-result {
+    font-style: italic;
 }

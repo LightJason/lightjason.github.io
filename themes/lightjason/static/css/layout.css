@@ -282,3 +282,26 @@ ul.horizontal li {
 .toc-h4::before, h4::before {    
     content: counter(section) "." counter(subsection) "." counter(subsubsection) ". ";
 }
+
+.teletype {
+    font-family: monospace;
+    background: #fafafa;
+    margin: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    border: 1px solid #888;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    overflow: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p.teletype-result {
+    margin-left: 2em;
+    margin-right: 2em;
+    background: #ddd;
+}
+
+span.teletype-prefix {
+    font-weight: bold;
+}
