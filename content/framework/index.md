@@ -18,6 +18,7 @@ This component defines the main agent structure. It defines the whole syntax and
 * [Language Features](agentspeak)
 * [Source Documentation](https://lightjason.github.io/AgentSpeak/sources/index.html)
 * [OpenHub Code Statistic](https://www.openhub.net/p/LightJason-AgentSpeak)
+* [Libraries.io Statistic](https://libraries.io/github/LightJason/AgentSpeak)
 
 ## REST-API ![REST-API](https://camo.githubusercontent.com/a72dbacc13be27a0b87b8be9177f52180610b50f/68747470733a2f2f636972636c6563692e636f6d2f67682f4c696768744a61736f6e2f524553542e7376673f7374796c653d736869656c64)
 
@@ -26,3 +27,4 @@ A [REST-API (ReSTful)](https://en.wikipedia.org/wiki/Representational_state_tran
 
 * [Source Documentation](https://lightjason.github.io/REST/sources/index.html)
 * [OpenHub Code Statistic](https://www.openhub.net/p/LightJason-REST)
+* [Libraries.io Statistic](https://libraries.io/github/LightJason/REST)
