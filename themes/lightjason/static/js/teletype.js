@@ -28,11 +28,10 @@
 
         if (!plugin) {
             plugin = new Teletype(this, jQuery.extend({}, jQuery.fn[pluginname].defaultSettings, options || {}));
-            this.data("plugin_" + pluginname, plugin)
+            this.data("plugin_" + pluginname, plugin);
         }
 
         return plugin;
-
     };
 
 
@@ -324,7 +323,11 @@
      */
     var extractnumber = function (pc_text, pn_start) {
         var end = pc_text.substr(pn_start).search(/[^0-9]/);
-        return pc_text.substr(pn_start, end === -1 ? pc_text.length : end);
+        return pc_text.substr(
+                    pn_start, end === -1 
+                    ? pc_text.length 
+                    : end
+               );
     };
 
 
