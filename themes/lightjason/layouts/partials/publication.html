@@ -3,7 +3,7 @@
         <ul>
         {{ range $publication := .Site.Data.references }} 
 
-            <li>
+            <li class="spread">
                 <a name="{{- $publication.id | plainify | urlize -}}"></a>
 
                 {{- if (not (isset $publication "URL")) | or (eq $publication.URL "") -}}

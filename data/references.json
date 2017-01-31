@@ -86,5 +86,77 @@
     "publisher-place": "Clausthal-Zellerfeld, Germany",
     "title": "LightJason: A BDI Framework Inspired by Jason",
     "type": "report"
+  },
+  {
+    "author": [
+      {
+        "family": "Aschermann",
+        "given": "Malte"
+      },
+      {
+        "family": "Kraus",
+        "given": "Philipp"
+      },
+      {
+        "family": "Müller",
+        "given": "Jörg P."
+      }
+    ],
+    "container-title": "Multi-Agent Systems and Agreement Technologies: 14th Europ. Conf., EUMAS 2016, and 4rd Int. Conf., AT 2016, Valencia, Spain, 2016",
+    "id": "Kraus+2016eumas",
+    "issued": {
+      "date-parts": [
+        [
+          2016
+        ]
+      ]
+    },
+    "page": "tbd",
+    "publisher": "Springer International Publishing",
+    "title": "LightJason: A BDI Framework inspired by Jason",
+    "type": "paper-conference"
+  },
+  {
+    "DOI": "10.1504/IJAOSE.2016.10001873",
+    "author": [
+      {
+        "family": "Ahlbrecht",
+        "given": "T."
+      },
+      {
+        "family": "Dix",
+        "given": "J."
+      },
+      {
+        "family": "Fiekas",
+        "given": "N."
+      },
+      {
+        "family": "Köster",
+        "given": "M."
+      },
+      {
+        "family": "Kraus",
+        "given": "P."
+      },
+      {
+        "family": "Müller",
+        "given": "J. P."
+      }
+    ],
+    "container-title": "International Journal of Agent-Oriented Software Engineering (IJAOSE)",
+    "id": "Ahlbrecht+2016ijaose",
+    "issue": "2/3",
+    "issued": {
+      "date-parts": [
+        [
+          2016
+        ]
+      ]
+    },
+    "page": "232-265",
+    "title": "An architecture for scalable simulation of systems of cognitive agents",
+    "type": "article-journal",
+    "volume": "5"
   }
 ]
