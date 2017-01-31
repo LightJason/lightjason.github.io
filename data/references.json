@@ -48,7 +48,6 @@
         ]
       ]
     },
-    "keyword": "EMAS",
     "note": "2014-emas-maserati",
     "page": "81-102",
     "publisher": "Springer International Publishing",
@@ -58,7 +57,7 @@
     "volume": "8758"
   },
   {
-    "URL": "https://www.in.tu-clausthal.de/fileadmin/homes/techreports/ifi1604aschermann.pdf",
+    "URL": "/publication/2016-ifi-techreport.pdf",
     "author": [
       {
         "family": "Aschermann",
@@ -88,6 +87,7 @@
     "type": "report"
   },
   {
+    "URL": "/publication/2016-eumas.pdf",
     "author": [
       {
         "family": "Aschermann",
