@@ -79,6 +79,11 @@ params:
             name	   : "twitter"
             url		   : "http://twitter.com/LightJasonAI"
             weight	   : 20
+        -
+            name       : "vimeo"
+            url        : "https://vimeo.com/lightjason"
+            weight	   : 30
+
 
     menu:
         -
