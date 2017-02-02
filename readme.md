@@ -22,7 +22,7 @@ pandoc-citeproc --bib2json static/references.bib > data/references.json
 
 ### Deployment
 
-Run ```hugo``` and copy all data from the ```public``` directory to the ```master```-Branch. The deployment will run automatically on a ```git push``` to the ```developing```-Branch
+The deployment will run automatically on a ```git push``` to the ```developing```-Branch
 
 
 ## Content ToDo's
