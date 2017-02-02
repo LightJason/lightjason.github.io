@@ -4,9 +4,6 @@ general:
             - developing
         ignore:
             - master
-            - /hotfix-.*/
-            - /release-.*/
-            - /support-.*/
             - /dev-.*/
 
 machine:
@@ -40,14 +37,19 @@ test:
         - find public -type f -name "*.js" -exec java -jar yuicompressor.jar -o \{\} \{\} \; 
         - find public -type f -name "*.htm*" -exec data/minifyhtml.sh \{\} \;
         - mv -f public /tmp
-        - git push origin :master || true
-        - git brach -D master || true       
-        - git checkout --orphan master
-        - rm -Rf *
-        - mv -f /tmp/public/* .
-        - echo -e 'general:\n    branches:\n        ignore:\n            - master\n' > circle.yml
-        - echo -e '*.*\n!.gitignore\n!circle.yml\n!*.html\n!*.xml\n!*.css\n!*.js\n!*.json\n!*.bib\n!*.zip\n!*.png\n!*.gif\n!*.pdf\n!*.svg\n!*.txt\n' > .gitignore
-        - echo -e '# LightJason\n\nCurrent website of the [LightJason](http://lightjason.org) project' > readme.md
-        - git add --all .
-        - export GIT_COMMIT_MESSAGE="$(git show -s --pretty=format:%s $CIRCLE_SHA1)" && git commit -m "webpage update [$GIT_COMMIT_MESSAGE]"
-        - git push origin master
+
+deployment:
+    production:
+        branch: developing
+        commands:
+            - git push origin :master || true
+            - git brach -D master || true       
+            - git checkout --orphan master
+            - rm -Rf *
+            - mv -f /tmp/public/* .
+            - echo -e 'general:\n    branches:\n        ignore:\n            - master\n' > circle.yml
+            - echo -e '*.*\n!.gitignore\n!circle.yml\n!*.html\n!*.xml\n!*.css\n!*.js\n!*.json\n!*.bib\n!*.zip\n!*.png\n!*.gif\n!*.pdf\n!*.svg\n!*.txt\n' > .gitignore
+            - echo -e '# LightJason\n\nCurrent website of the [LightJason](http://lightjason.org) project' > readme.md
+            - git add --all .
+            - export GIT_COMMIT_MESSAGE="$(git show -s --pretty=format:%s $CIRCLE_SHA1)" && git commit -m "webpage update [$GIT_COMMIT_MESSAGE]"
+            - git push origin master
