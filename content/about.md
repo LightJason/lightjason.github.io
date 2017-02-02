@@ -37,4 +37,3 @@ Our goal for this system is to create a practically usable and well documented f
 > ![cc](https://mirrors.creativecommons.org/presskit/icons/cc.svg#floatcentering)
 > ![by](https://mirrors.creativecommons.org/presskit/icons/by.svg#floatcentering)
 > ![sa](https://mirrors.creativecommons.org/presskit/icons/sa.svg#floatcentering)
-
