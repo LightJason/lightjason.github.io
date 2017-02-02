@@ -311,3 +311,7 @@ p.teletype-result {
 span.teletype-prefix {
     font-weight: bold;
 }
+
+.videoprintlink {
+    display: none;
+}

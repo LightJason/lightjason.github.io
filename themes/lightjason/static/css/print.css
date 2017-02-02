@@ -1,7 +1,7 @@
 div.sidebar, div.clear,
 div.sidebarwrapper,
 span.teletype-cursor,
-div.footer, #toccontainer, .category_control {
+div.footer, #toccontainer, .category_control, .video {
     display: none;
 }
 
@@ -25,4 +25,10 @@ div.bodywrapper {
 
 .teletype-result {
     font-style: italic;
+}
+
+.videoprintlink {
+    display: block;
+    border: 1px solid #B1B4B6;
+    text-align: center;
 }
