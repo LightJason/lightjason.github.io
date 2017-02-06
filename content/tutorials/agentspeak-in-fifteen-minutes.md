@@ -135,9 +135,9 @@ For the following sections we assume that you are working inside the directory `
     ``` 
     <!-- htmlmin:ignore -->
 
-4. Put the following code inside the ```<project>``` section, e.g. after ```</dependencies>```, to include the [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/examples/executable-jar.html) which creates an executable JAR when you build your project with ```mvn package```.
+4. Put the following code inside the ```<project>``` section, e.g. after ```</dependencies>```, to include the [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/examples/executable-jar.html) which creates an executable JAR when you build your project with ```mvn package``` 
 
-	<!-- htmlmin:ignore -->
+    <!-- htmlmin:ignore -->
     ```xml
     <build>
         <plugins>
@@ -170,7 +170,7 @@ For the following sections we assume that you are working inside the directory `
 5. Test-build your project by running ``mvn package`` inside ```Developer/myagentapp/```, i.e. where your ``pom.xml`` is located:
 
     <!-- htmlmin:ignore -->
-    ```bash
+    ```commandline
     cd Developer/myagentapp/
     mvn package
     ```
@@ -210,7 +210,6 @@ public final class MyAgent extends IBaseAgent<MyAgent>
         super( p_configuration );
     }
 }
-
 ```
 <!-- htmlmin:ignore -->
 
@@ -798,17 +797,16 @@ To create actions within the agent's class you need to add a method (visibility 
     <!-- htmlmin:ignore -->
 
 2. Modify the ```special-goal``` plan of your ```agent.asl``` to also execute the *agent class action* ({{< linelink "" "specialgoal" "5" >}}):
-
-	 <!-- htmlmin:ignore -->
-{{% asl "specialgoal" %}}
+<!-- htmlmin:ignore -->
+{{% source "agentspeak" "specialgoal" %}}
 +!special-goal(X) <-
         generic/print("Special goal with value", X, "triggered in cycle", Cycle);
         R = my/cool-action("Lorem Ipsum.");
         generic/print("The return of my cool action is", R);
         my/very-cool-action(4711)
 .
-{{% /asl %}}
-    <!-- htmlmin:ignore -->
+{{% /source %}}
+<!-- htmlmin:ignore -->
     
     __Note:__ Don't forget to add the semicolon at the end of {{< linelink "" "specialgoal" "4" >}}.
     

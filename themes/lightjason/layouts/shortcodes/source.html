@@ -1,0 +1,3 @@
+<pre {{ if eq (.Get 0) "agentspeak" -}}data-language="AgentSpeak(L++)"{{- end }} {{ if (.Get 1) -}}id="source-{{- .Get 1 -}}"{{- end }}><code class="language-{{- .Get 0 -}}">
+{{- .Inner | chomp -}}
+</code></pre>
