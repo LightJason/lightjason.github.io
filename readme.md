@@ -24,6 +24,14 @@ pandoc-citeproc --bib2json static/references.bib > data/references.json
 
 The deployment will run automatically on a ```git push``` to the ```developing```-Branch
 
+### Prim.js configuration
+
+For code hightlighting the JavaScript component [Prism.js](http://prismjs.com/) is used with the following definition:
+
+| Languages                                            | Plugins                                         |
+| ---------------------------------------------------- | ----------------------------------------------- |
+| Markup, C-like, Bash, C, Git, Java, Prolog, Yaml | [Line Hightlight](http://prismjs.com/plugins/line-highlight/), [Line Number](http://prismjs.com/plugins/line-numbers/), [Command Line](http://prismjs.com/plugins/command-line/), Show Language, Toolbar, Copy to Clipboard |
+
 
 ## Content ToDo's
 

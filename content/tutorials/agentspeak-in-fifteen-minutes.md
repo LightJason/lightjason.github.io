@@ -38,7 +38,7 @@ For the following sections we assume that you are working inside the directory `
 1. Obtain the current source code from [AgentSpeak(L++)](https://github.com/LightJason/AgentSpeak) and place it into ```Developer/AgentSpeak```. This can be done on the command line either via Git 
 
     <!-- htmlmin:ignore -->
-    ```bash
+    ```commandline
     cd Developer
     git clone https://github.com/LightJason/AgentSpeak.git
     ```
@@ -47,7 +47,7 @@ For the following sections we assume that you are working inside the directory `
     or by downloading the [ZIP archive](https://github.com/LightJason/AgentSpeak/archive/master.zip) and extracting it to ```Developer```.
     
     <!-- htmlmin:ignore -->
-    ```bash
+    ```commandline
     cd Developer
     unzip AgentSpeak-master.zip
     ```
@@ -58,7 +58,7 @@ For the following sections we assume that you are working inside the directory `
     You should now have the following directory structure:
     
     <!-- htmlmin:ignore -->
-    ```
+    ```commandline
     ├── Developer/
     │   └── AgentSpeak/      
     ```
@@ -67,7 +67,7 @@ For the following sections we assume that you are working inside the directory `
 2. Change into the AgentSpeak project directory ```Developer/AgentSpeak``` and run ```mvn install``` to build and install AgentSpeak:
 
     <!-- htmlmin:ignore -->
-    ```bash
+    ```commandline
     cd Developer/AgentSpeak
     mvn install
     ```
@@ -82,7 +82,7 @@ For the following sections we assume that you are working inside the directory `
 1. Create an empty Maven project (see [Maven in 5 minutes tutorial](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)) inside the ```Developer``` directory:
     
     <!-- htmlmin:ignore -->
-    ```bash
+    ```commandline
     cd Developer
     mvn archetype:generate -DgroupId=myagentproject -DartifactId=myagentapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
@@ -91,7 +91,7 @@ For the following sections we assume that you are working inside the directory `
     Maven will then create a project template, resulting in the following directory structure:
     
     <!-- htmlmin:ignore -->
-    ```
+    ```commandline
     ├── Developer/
     │   └── AgentSpeak/ <-- AgentSpeak project (added in previous section)
     │   └── myagentapp/ <-- created by Maven
@@ -114,11 +114,11 @@ For the following sections we assume that you are working inside the directory `
     
 	<!-- htmlmin:ignore -->
     ```xml
-        <dependency>
-            <groupId>from AgentSpeak(L++) pom.xml</groupId>
-            <artifactId>from AgentSpeak(L++) pom.xml</artifactId>
-            <version>from AgentSpeak(L++) pom.xml</version>
-        </dependency>
+	<dependency>
+	    <groupId>from AgentSpeak(L++) pom.xml</groupId>
+	    <artifactId>from AgentSpeak(L++) pom.xml</artifactId>
+	    <version>from AgentSpeak(L++) pom.xml</version>
+	</dependency>
     ```
     <!-- htmlmin:ignore -->
     
@@ -128,10 +128,10 @@ For the following sections we assume that you are working inside the directory `
 
 	<!-- htmlmin:ignore -->
     ```xml
-        <properties>
-            <maven.compiler.source>1.8</maven.compiler.source>
-            <maven.compiler.target>1.8</maven.compiler.target>
-        </properties>
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
     ``` 
     <!-- htmlmin:ignore -->
 
@@ -197,10 +197,14 @@ package myagentproject;
 import org.lightjason.agentspeak.agent.IBaseAgent;
 import org.lightjason.agentspeak.configuration.IAgentConfiguration;
 
+/* basic agent structure */
 public final class MyAgent extends IBaseAgent<MyAgent>
 {
-    // constructor of the agent
-    // @param p_configuration agent configuration of the agent generator
+    /**
+     * constructor of the agent
+     *
+     * @param p_configuration agent configuration of the agent generator
+     **/
     public MyAgent( final IAgentConfiguration<MyAgent> p_configuration )
     {
         super( p_configuration );
@@ -299,6 +303,13 @@ import java.util.stream.IntStream;
 public final class App
 {
 
+    static
+    {
+        // disable logger
+        LogManager.getLogManager().reset();
+    }
+    
+
     /**
      * private constructor to avoid any instantiation
      */
@@ -362,8 +373,7 @@ Create a simple *Hello World* agent for testing purposes.
 Add a file ```agent.asl``` in the top-level directory of your project with the following content:
 
 <!-- htmlmin:ignore -->
-<pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
-// initial-goal
+<pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">// initial-goal
 !main.
 // initial plan (triggered by the initial goal)
 +!main <-
@@ -385,7 +395,7 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
 1. Run Maven within your project directory to build the program:
 
 	<!-- htmlmin:ignore -->
-    ```bash
+    ```commandline
     mvn package
     ```
     <!-- htmlmin:ignore -->
@@ -393,7 +403,7 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
 2. Run the program to create 500 agents based on the ```agent.asl``` and the agents will run 1000 cycles:
 
 	<!-- htmlmin:ignore -->
-    ```bash
+    ```commandline
     java -jar target/myagentapp-1.0-SNAPSHOT.jar agent.asl 500 1000
     ```
     <!-- htmlmin:ignore -->
@@ -401,8 +411,7 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
 3. Observe the CPU load and time with the print actions (code above) and without (code below): 
 
 	<!-- htmlmin:ignore -->
-   <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
-    // initial-goal
+   <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">// initial-goal
     !main.
     // initial plan (triggered by the initial goal)
     +!main <-
@@ -417,7 +426,7 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
     i.e. run
     
     <!-- htmlmin:ignore -->
-    ```bash
+    ```commandline
     java -jar target/myagentapp-1.0-SNAPSHOT.jar agent.asl 500 1000
     ```
     <!-- htmlmin:ignore -->
@@ -425,7 +434,7 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
     and compare it with
     
     <!-- htmlmin:ignore -->
-    ```bash
+    ```commandline
     java -jar target/myagentapp-1.0-SNAPSHOT.jar agent_noprint.asl 500 1000
     ```
     <!-- htmlmin:ignore -->
@@ -433,7 +442,7 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
     On a recent dual-core 2C/4T laptop (benchmarked with the Linux/Unix tool ```time```) this yields
     
     <!-- htmlmin:ignore -->
-    ```bash
+    ```commandline
     time java -jar target/myagentapp-1.0-SNAPSHOT.jar agent.asl 500 1000
     ...
     74.76s user 6.61s system 161% cpu 50.367 total
@@ -443,7 +452,7 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
     vs.
     
     <!-- htmlmin:ignore -->
-    ```bash
+    ```commandline
     time java -jar target/myagentapp-1.0-SNAPSHOT.jar agent_noprint.asl 500 1000
     ...
     45.54s user 1.34s system 307% cpu 15.247 total
@@ -514,6 +523,7 @@ public final MyAgent call() throws Exception
     import org.lightjason.agentspeak.language.instantiable.plan.trigger.CTrigger;
     import org.lightjason.agentspeak.language.instantiable.plan.trigger.ITrigger;
     
+    /* complex agent */
     public final class MyAgent extends IBaseAgent<MyAgent>
     {
         // constructor of the agent
@@ -549,8 +559,7 @@ public final MyAgent call() throws Exception
     and add the following to your ```agent.asl```
     
     <!-- htmlmin:ignore -->
-    <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
-    +!special-goal(X) <-
+    <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">+!special-goal(X) <-
         generic/print("Special goal with value", X, "triggered in cycle", Cycle)
         .
     </code></pre>
@@ -601,9 +610,7 @@ Use the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d0/dfe/inte
     import java.util.Locale;
     import java.text.MessageFormat;
 
-    /**
-    * action in a external class
-    */
+    /* action in a external class */
     public final class MyAction extends IBaseAction
     {
         @Override
@@ -684,9 +691,8 @@ Replace the code segment
     
 3. Execute your new action inside the ```special-goal``` plan by modifying your ```agent.asl```
 
-	<!-- htmlmin:ignore -->
-    <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
-    +!special-goal(X) <-
+	 <!-- htmlmin:ignore -->
+    <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">+!special-goal(X) <-
         generic/print("Special goal with value", X, "triggered in cycle", Cycle);
         R = my/cool-action("Lorem Ipsum.");
         generic/print("The return of my cool action is", R)
@@ -733,17 +739,15 @@ To create actions within the agent's class you need to add a method (visibility 
     import java.text.MessageFormat;
 
 
-    /**
-    * agent class with annotation to mark the class that actions are inside
-    */
+    /** agent class with annotation to mark the class that actions are inside **/
     @IAgentAction
     public final class MyAgent extends IBaseAgent<MyAgent>
     {
         /**
-        * constructor of the agent
-        *
-        * @param p_configuration agent configuration of the agent generator
-        **/
+         * constructor of the agent
+         *
+         * @param p_configuration agent configuration of the agent generator
+         **/
         public MyAgent( final IAgentConfiguration<MyAgent> p_configuration )
         {
             super( p_configuration );
@@ -793,25 +797,25 @@ To create actions within the agent's class you need to add a method (visibility 
     ```
     <!-- htmlmin:ignore -->
 
-2. Modify the ```special-goal``` plan of your ```agent.asl``` to also execute the *agent class action* (line 5):
+2. Modify the ```special-goal``` plan of your ```agent.asl``` to also execute the *agent class action* ({{< linelink "" "specialgoal" "5" >}}):
 
-	<!-- htmlmin:ignore -->
-    <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
-    +!special-goal(X) <-
+	 <!-- htmlmin:ignore -->
+{{% asl "specialgoal" %}}
++!special-goal(X) <-
         generic/print("Special goal with value", X, "triggered in cycle", Cycle);
         R = my/cool-action("Lorem Ipsum.");
         generic/print("The return of my cool action is", R);
         my/very-cool-action(4711)
-        .
-    </code></pre>
+.
+{{% /asl %}}
     <!-- htmlmin:ignore -->
     
-    __Note:__ Don't forget to add the semicolon at the end of line 4.
+    __Note:__ Don't forget to add the semicolon at the end of {{< linelink "" "specialgoal" "4" >}}.
     
 3. Again, rebuild the JAR and run it. The output should now look like this:
     
     <!-- htmlmin:ignore -->
-    ```bash
+    ```commandline
     ...
     inner action is called with value 4,711 by agent myagentproject.MyAgent@c03cf28 ( Cycle: 0 / Trigger: [+!mynextgoal[][]] / Running Plans: [main, special-goal] / Beliefbase: beliefbase (org.lightjason.agentspeak.beliefbase.view.CView@46547924): [] )
     ```

@@ -75,14 +75,19 @@ The on-demand beliefbase is only a wrapper for the environment literals.
 
 <!-- htmlmin:ignore -->
 ```java
+/* agent class which can deal with an environment */
 public final class MyAgent extends IBaseAgent<MyAgent>
 {
-    // environment reference
+    /**
+     * environment reference
+     */ 
     private Environment m_environment;
 
-    // constructor of the agent
-    // @param p_environment environment reference
-    // @param p_configuration agent configuration of the agent generator
+    /*
+     * constructor of the agent
+     * @param p_environment environment reference
+     * @param p_configuration agent configuration of the agent generator
+     */
     public MyAgent( final Environment p_environment, final IAgentConfiguration<MyAgent> p_configuration )
     {
         super( p_configuration );
@@ -93,7 +98,7 @@ public final class MyAgent extends IBaseAgent<MyAgent>
             .add( new EnvironmentBeliefbase().create( "env" ) );
     }
     
-    // inner class with on-demand beliefbase
+    /* inner class with on-demand beliefbase */
     private final class EnvironmentBeliefbase extends IDemandBeliefbase
     {
         @Override
@@ -145,8 +150,7 @@ On the unification (```>>```) the literal will be generated and unified into the
 Because of LightJason's system architecture the ```checkenvironment``` plan will be run in each cycle (in parallel to other plans), so you can control the agent's perceptions in a clean way.
 
 <!-- htmlmin:ignore -->
-<pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
-!checkenvironment.
+<pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">!checkenvironment.
 
 +!checkenvironment
     : >>env/foo(X) <-
@@ -158,6 +162,5 @@ Because of LightJason's system architecture the ```checkenvironment``` plan will
 +myknowledge(T) <-
     generic/print( "I get knowledge", T )
 .    
-
 </code></pre>
 <!-- htmlmin:ignore -->

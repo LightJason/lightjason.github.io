@@ -13,26 +13,34 @@ By default, there is no environment in LightJason, because of our system require
 
 	<!-- htmlmin:ignore -->
     ```java
+    /* environment class */
     public final class Environment
     {
-        // method to do something with the agent but method
-        // is synchronized to avoid concurrency exceptions
-        // @param p_agent agent
+    
+        /**
+         * method to do something with the agent but method
+         * is synchronized to avoid concurrency exceptions
+         * @param p_agent agent
+         */
         public final synchronized void do_something( final IAgent<?> p_agent )
         {
             // do something with the agent
             // throw an execption for action failing
         }
         
-        // method to do something with the agent and value but method
-        // is synchronized to avoid concurrency exceptions
-        // @param p_agent agent
-        // @param p_value double value
+        
+        /**
+         * method to do something with the agent and value but method
+         * is synchronized to avoid concurrency exceptions
+         * @param p_agent agent
+         * @param p_value double value
+         */ 
         public final synchronized void do_somethingother( final IAgent<?> p_agent, final double p_value )
         {
             // do something with the agent and the value
             // throw an execption for action failing
         }
+        
     }
     ```
     <!-- htmlmin:ignore -->
@@ -43,12 +51,16 @@ By default, there is no environment in LightJason, because of our system require
     ```java
     public final class MyAgentGenerator extends IBaseAgentGenerator<MyAgent>
     {
-        // environment reference
+        /**
+         * environment reference
+         */
         private final Environment m_environment;
     
-        // constructor of the generator
-        // @param p_environment environment reference        
-        // @param p_stream ASL code as any stream e.g. FileInputStream
+        /**
+         * constructor of the generator
+         * @param p_environment environment reference        
+         * @param p_stream ASL code as any stream e.g. FileInputStream
+         */ 
         public MyAgentGenerator( final Environment p_environment, final InputStream p_stream ) throws Exception
         {
             super(
@@ -77,22 +89,32 @@ By default, there is no environment in LightJason, because of our system require
 3. Modify the [agent class constructor](/tutorials/agentspeak-in-fifteen-minutes/#a-id-agentclass-a-your-agent-class), so you can put an environment inside it and create a [class action](/tutorials/agentspeak-in-fifteen-minutes/#class-actions) to pass the data to/from the environment. If errors occur, throw an exception so the agent plan will fail.
 
 	<!-- htmlmin:ignore -->
-    ```java    
+    ```java
+    /* agent class with inner actions which pass data to the environment */
     @IAgentAction
     public final class MyAgent extends IBaseAgent<MyAgent>;
     {
-        // environment reference
+    
+        /**
+         * environment reference
+         */
         private final Environment m_environment;
     
-        // constructor of the agent
-        // @param p_configuration agent configuration of the agent generator        
-        // @param p_environment environment reference
+        /**
+         * constructor of the agent
+         * @param p_configuration agent configuration of the agent generator        
+         * @param p_environment environment reference
+         */
         public MyAgent( final IAgentConfiguration<MyAgent> p_configuration, final Environment p_environment,  )
         {
             super( p_configuration );
             m_environment = p_environment;
         }
         
+        /**
+         * methods which represent an action of the agent and pass the call
+         * through the environment
+         */
         @IAgentActionFilter
         @IAgentActionName( name = "env/action" )
         private void envaction()
@@ -101,6 +123,11 @@ By default, there is no environment in LightJason, because of our system require
             m_environment.do_something( this );
         }
         
+        /**
+         * other method for an agent action
+         *
+         * @param p_value number value
+         */
         @IAgentActionFilter
         @IAgentActionName( name = "env/paramaction" )
         private void envotheraction( final Number p_value )

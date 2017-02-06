@@ -11,11 +11,14 @@ The source codes are written in Java (latest release version) with a defined syn
 
 This component defines the main agent structure. It defines the whole syntax and the base agent structure. It also supports an agent generator and configuration, so that you can create a set of agents by an ASL-file. Based on the interface structure, you can redefine all elements if you like. A full [railroad diagram](https://en.wikipedia.org/wiki/Syntax_diagram) of our _AgentSpeak(L++)_ syntax can be found on the feature page.
 
-
-* [Testing Agent](https://github.com/LightJason/AgentSpeak/blob/master/src/test/resources/agent/complete.asl)
-* [Agent](https://github.com/LightJason/AgentSpeak/blob/master/src/test/resources/agent/hanoi.asl) which plays [Tower of Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi)
+* Agent Examples
+	* [Testing Agent](https://github.com/LightJason/AgentSpeak/blob/master/src/test/resources/agent/complete.asl)
+	* [Agent](https://github.com/LightJason/AgentSpeak/blob/master/src/test/resources/agent/hanoi.asl) which plays [Tower of Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi)
+* Grammar / Syntax Definition
+	* [Agent](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/) 
+	* [PlanBundle](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/PlanBundle.g4/) 
 * [Language Features](agentspeak)
-* [Source Documentation](https://lightjason.github.io/AgentSpeak/sources/index.html)
+* [Source Documentation](https://lightjason.github.io/AgentSpeak/sources/) 
 * [OpenHub Code Statistic](https://www.openhub.net/p/LightJason-AgentSpeak)
 * [Libraries.io Statistic](https://libraries.io/github/LightJason/AgentSpeak)
 
