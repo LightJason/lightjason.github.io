@@ -8,6 +8,8 @@ agent addressing / naming depends on the domain or underlying software architect
 communication structure you have to build-up your own naming model, a send action with a receiving plan and 
 a data structure to map agent names / addresses to agent objects.
 
+If you struggled at some point or wish to obtain our exemplary solution to this tutorial, you can download the archive containing the source code [here](/download/communication-agent.zip).
+
 {{< toc >}}
 
 ## Don't reinvent the edge
