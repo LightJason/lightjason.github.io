@@ -229,40 +229,51 @@ import java.io.InputStream;
 import java.util.stream.Collectors;
 
 
+/**
+ * agent generator to create agents
+ */
 public final class MyAgentGenerator extends IBaseAgentGenerator<MyAgent>
 {
-    // constructor of the generator
-    // @param p_stream ASL code as any stream e.g. FileInputStream
+    /**
+     * @param p_stream ASL code as any stream e.g. FileInputStream
+     */
     public MyAgentGenerator( final InputStream p_stream ) throws Exception
     {
         super(
-                // input ASL stream
-                p_stream,
-
-                // a set with all possible actions for the agent
+            // input ASL stream
+            p_stream,
+            // a set with all possible actions for the agent
+            Stream.concat(
+                // we use all build-in actions of LightJason
+                CCommon.actionsFromPackage(),
                 Stream.concat(
-                        // we use all build-in actions of LightJason
-                        CCommon.actionsFromPackage(),
-                        CCommon.actionsFromAgentClass( MyAgent.class )
-                        // build the set with a collector
-                ).collect( Collectors.toSet() ),
-
-                // aggregation function for the optimisation function, here
-                // we use an empty function
-                IAggregation.EMPTY
+                    // use the actions which are defined inside the agent class
+                    CCommon.actionsFromAgentClass( MyAgent.class ),
+                    // add an own external action
+                    Stream.of(
+                        new MyAction()
+                    )
+                )
+            // build the set with a collector
+            ).collect( Collectors.toSet() ),
+            // aggregation function for the optimization function, here
+            // we use an empty function
+            IAggregation.EMPTY
         );
     }
 
-    // generator method of the agent
-    // @param p_data any data which can be put from outside to the generator method
-    // @return returns an agent
+    /**
+     * generator method of the agent
+     *
+     * @param p_data any data which can be put from outside to the generator method
+     * @return returns an agent
+     */
     @Override
     public final MyAgent generatesingle( final Object... p_data )
     {
         return new MyAgent( m_configuration );
     }
 }
-
 ```
 <!-- htmlmin:ignore -->
 
@@ -282,12 +293,24 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * main application with runtime
+ */
 public final class App
 {
+
+    /**
+     * private constructor to avoid any instantiation
+     */
     private App()
     {
     }
 
+    /**
+     * main method
+     *
+     * @param p_args command-line arguments
+     */
     public static void main( final String[] p_args ) throws Exception
     {
         // parameter of the command-line arguments:
@@ -297,12 +320,12 @@ public final class App
         final Set<MyAgent> l_agents;
         try
             (
-                        final FileInputStream l_stream = new FileInputStream( p_args[0] );
+                final FileInputStream l_stream = new FileInputStream( p_args[0] );
             )
         {
             l_agents = new MyAgentGenerator( l_stream )
-                    .generatemultiple( Integer.parseInt( p_args[1] ) )
-                    .collect( Collectors.toSet() );
+                .generatemultiple( Integer.parseInt( p_args[1] ) )
+                .collect( Collectors.toSet() );
         } catch ( final Exception l_exception )
         {
             l_exception.printStackTrace();
@@ -311,25 +334,24 @@ public final class App
 
         // runtime call (with parallel execution)
         IntStream
-                .range(
-                        0,
-                        p_args.length < 3
-                                ? Integer.MAX_VALUE
-                                : Integer.parseInt( p_args[2] )
-                )
-                .forEach( j -> l_agents.parallelStream().forEach( i -> {
-                    try
-                    {
-                        i.call();
-                    }
-                    catch ( final Exception l_exception )
-                    {
-                        l_exception.printStackTrace();
-                    }
-                } ) );
+            .range(
+                0,
+                p_args.length < 3
+                ? Integer.MAX_VALUE
+                : Integer.parseInt( p_args[2] )
+            )
+            .forEach( j -> l_agents.parallelStream().forEach( i -> {
+                try
+                {
+                    i.call();
+                }
+                catch ( final Exception l_exception )
+                {
+                    l_exception.printStackTrace();
+                }
+            } ) );
     }
 }
-
 ```
 <!-- htmlmin:ignore -->
 
@@ -565,7 +587,7 @@ Use the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d0/dfe/inte
 	<!-- htmlmin:ignore -->
     ```java
     package myagentproject;
-    
+
     import org.lightjason.agentspeak.common.CPath;
     import org.lightjason.agentspeak.common.IPath;
     import org.lightjason.agentspeak.action.IBaseAction;
@@ -574,11 +596,14 @@ Use the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d0/dfe/inte
     import org.lightjason.agentspeak.language.CRawTerm;
     import org.lightjason.agentspeak.language.execution.fuzzy.CFuzzyValue;
     import org.lightjason.agentspeak.language.execution.fuzzy.IFuzzyValue;
-    
+
     import java.util.List;
     import java.util.Locale;
     import java.text.MessageFormat;
-    
+
+    /**
+    * action in a external class
+    */
     public final class MyAction extends IBaseAction
     {
         @Override
@@ -586,37 +611,36 @@ Use the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d0/dfe/inte
         {
             return CPath.from( "my/cool-action" );
         }
-    
+
         @Override
         public final int minimalArgumentNumber()
         {
             return 1;
         }
-    
+
         @Override
         public final IFuzzyValue<Boolean> execute( final IContext p_context, final boolean p_parallel, final List<ITerm> p_argument, final List<ITerm> p_return,
-                                                   final List<ITerm> p_annotation )
+                                                final List<ITerm> p_annotation )
         {
             // Convert term-value to a Java-type (here String) and create a lower-case string.
             // Note: You don't have to think about the term definition, LightJason does this for you.
             // But it will throw a casting exception if the type of the passed argument is incorrect.
             final String l_argument = p_argument.get( 0 ).<String>raw().toLowerCase( Locale.ROOT );
-    
+
             // here we do some testing output stuff and the context parameter contains all information
             // in which context the action is called e.g. the agent which calls, current variables, ...
             System.out.println( MessageFormat.format(
                     "standalone action is called from agent {0} with argument \"{1}\"", p_context.agent(), l_argument
             ) );
-    
+
             // the action should return a value, you can wrap any Java object into LightJasons's terms.
             p_return.add( CRawTerm.from( l_argument ) );
-    
+
             // actions returns a fuzzy-boolean for successful or failed execution
             // the optional second parameter is a fuzzy-value in [0,1]. default: 1
             return CFuzzyValue.from( true );
         }
-    }
-    
+    }        
     ```
     <!-- htmlmin:ignore -->
 
@@ -695,7 +719,7 @@ To create actions within the agent's class you need to add a method (visibility 
 
     ```java
     package myagentproject;
-    
+
     import org.lightjason.agentspeak.action.binding.IAgentAction;
     import org.lightjason.agentspeak.action.binding.IAgentActionFilter;
     import org.lightjason.agentspeak.action.binding.IAgentActionName;
@@ -705,21 +729,31 @@ To create actions within the agent's class you need to add a method (visibility 
     import org.lightjason.agentspeak.language.CRawTerm;
     import org.lightjason.agentspeak.language.instantiable.plan.trigger.CTrigger;
     import org.lightjason.agentspeak.language.instantiable.plan.trigger.ITrigger;
-    
+
     import java.text.MessageFormat;
-    
-    // annotation to mark the class that actions are inside
+
+
+    /**
+    * agent class with annotation to mark the class that actions are inside
+    */
     @IAgentAction
     public final class MyAgent extends IBaseAgent<MyAgent>
     {
-        // constructor of the agent
-        // @param p_configuration agent configuration of the agent generator
+        /**
+        * constructor of the agent
+        *
+        * @param p_configuration agent configuration of the agent generator
+        **/
         public MyAgent( final IAgentConfiguration<MyAgent> p_configuration )
         {
             super( p_configuration );
         }
-    
-        // overload agent-cycle
+
+        /**
+        * overload agent-cycle
+        *
+        * @return agent self-reference
+        */
         @Override
         public final MyAgent call() throws Exception
         {
@@ -733,26 +767,29 @@ To create actions within the agent's class you need to add a method (visibility 
                             )
                     )
             );
-    
+
             // run default cycle
             return super.call();
         }
-    
-        // an inner action inside the agent class,
-        // with the annotation that the method is marked as action
-        // and the action-name for the ASL script is set
-        // @param p_value argument of the action
-        // @note LightJason supports Long and Double values, so if you declare
-        // every numerical value as Number you can handle both types, because
-        // number has methods to convert the data
+
+        /**
+        *  an inner action inside the agent class,
+        * with the annotation that the method is marked as action
+        * and the action-name for the ASL script is set
+        *
+        * @note LightJason supports Long and Double values, so if you declare
+        * every numerical value as Number you can handle both types, because
+        * number has methods to convert the data
+        *
+        * @param p_value argument of the action
+        */
         @IAgentActionFilter
         @IAgentActionName( name = "my/very-cool-action" )
         private void myaction( final Number p_value )
         {
             System.out.println( MessageFormat.format( "inner action is called with value {0} by agent {1}", p_value, this ) );
         }
-    }
-    
+    }    
     ```
     <!-- htmlmin:ignore -->
 

@@ -28,22 +28,39 @@ of a message
 
 <!-- htmlmin:ignore -->
 ```java
+package myagentproject;
+
+
+import org.lightjason.agentspeak.agent.IBaseAgent;
+import org.lightjason.agentspeak.configuration.IAgentConfiguration;
+
+/**
+ * agent, here in detail an communication agents with an individual name
+ */
 public final class MyCommunicationAgent extends IBaseAgent<MyCommunicationAgent>
 {
-    // agent name
+    /**
+     *   agent name
+     */
     private final String m_name;
 
-    // constructor of the agent
-    // @param p_name agent name
-    // @param p_configuration agent configuration of the agent generator
-    public MyAgent( final IAgentConfiguration MyAgent  p_configuration )
+    /**
+     * constructor of the agent
+     *
+     * @param p_name agent name
+     * @param p_configuration agent configuration of the agent generator
+     */
+    public MyCommunicationAgent( final String p_name, final IAgentConfiguration<MyCommunicationAgent> p_configuration )
     {
         super( p_configuration );
         m_name = p_name;
     }
-    
-    // returns the agent name
-    // @return agent name
+
+    /**
+     * returns the agent name
+     *
+     * @return agent name
+     */
     public final String name()
     {
         return m_name;
@@ -61,23 +78,52 @@ agent the message goal-plan will be triggered.
 
 <!-- htmlmin:ignore -->
 ```java
+package myagentproject;
+
+import org.lightjason.agentspeak.action.IBaseAction;
+import org.lightjason.agentspeak.agent.IAgent;
+import org.lightjason.agentspeak.common.CPath;
+import org.lightjason.agentspeak.common.IPath;
+import org.lightjason.agentspeak.language.CLiteral;
+import org.lightjason.agentspeak.language.CRawTerm;
+import org.lightjason.agentspeak.language.ITerm;
+import org.lightjason.agentspeak.language.execution.IContext;
+import org.lightjason.agentspeak.language.execution.fuzzy.CFuzzyValue;
+import org.lightjason.agentspeak.language.execution.fuzzy.IFuzzyValue;
+import org.lightjason.agentspeak.language.instantiable.plan.trigger.CTrigger;
+import org.lightjason.agentspeak.language.instantiable.plan.trigger.ITrigger;
+
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+/**
+ * send action with storage of all agents to define addressing
+ */
 public final class CSend extends IBaseAction
 {
-    // create a thread-safe map to store name and agent object
+    /**
+     * create a thread-safe map to store name and agent object
+     */
     private final Map<String, MyCommunicationAgent> m_agents = new ConcurrentHashMap<>();
 
-    // register method to register an agent
-    // @param p_agent agent object    
-    // @return agent object
+    /** register method to register an agent
+     *
+     * @param p_agent agent object
+     * @return agent object
+     */
     public final MyCommunicationAgent register( final MyCommunicationAgent p_agent )
     {
         m_agents.put( p_agent.name(), p_agent );
         return p_agent;
     }
-    
-    // remove an agent by the name
-    // @param p_agent agent object
-    // @return agent object
+
+    /**
+     * remove an agent by the name
+     *
+     * @param p_agent agent object
+     * @return agent object
+     */
     public final MyCommunicationAgent unregister( final MyCommunicationAgent p_agent )
     {
         m_agents.remove( p_agent.name() );
@@ -97,42 +143,52 @@ public final class CSend extends IBaseAction
     }
 
     @Override
-    public final IFuzzyValue<Boolean> execute( final IContext p_context, final boolean p_parallel, final List<ITerm> p_argument, 
-                                               final List<ITerm> p_return, final List<ITerm> p_annotation
-    )
+    public final IFuzzyValue<Boolean> execute( final IContext p_context, final boolean p_parallel, final List<ITerm> p_argument,
+                                               final List<ITerm> p_return, final List<ITerm> p_annotation )
     {
         // first parameter of the action is the name of the receiving agent
         final IAgent<?> l_receiver = m_agents.get( p_argument.get( 0 ).<String>raw() );
-        
+
         // if the agent is it not found, action fails
         if ( l_receiver == null )
             return CFuzzyValue.from( false );
 
+        //System.out.println( "==> " + p_context.agent().<MyCommunicationAgent>raw().name() + "  ==> " + p_argument.subList( 1, p_argument.size() ) );
+
         // create the receiving goal-trigger of the message
         l_receiver.trigger(
-            CTrigger.from(
-                ITrigger.EType.ADDGOAL,
-                
-                // create the goal literal "message/receive(M,S)" with M is the message literal
-                // and S the sending agent name
-                CLiteral.from(
-                    "message/receive",
-                    
-                    // message literal
-                    CLiteral.from(
-                        "message",
-                        
-                        // first argument is the agent name so copy all other arguments to the message literal
-                        p_argument.subList( 1, p_argument.size() ).stream().map( i -> CRawTerm.from( i.raw() ) )
-                    ),
-                    
-                    // name of the sending agent in this the agent which calls the send action is read from
-                    // context and translate in the communication agent, the communication agent has got the
-                    // method name() to read the agent name
-                    CLiteral.from( "from", CRawTerm.from( p_context.agent().<MyCommunicationAgent>raw().name() ) )
+                CTrigger.from(
+                        ITrigger.EType.ADDGOAL,
+
+                        // create the goal literal "message/receive(M,S)" with M is the message literal
+                        // and S the sending agent name
+                        CLiteral.from(
+                                "message/receive",
+
+                                // message literal
+                                CLiteral.from(
+                                        "message",
+
+                                        // first argument is the agent name so copy all other
+                                        // arguments to the message literal
+                                        p_argument
+                                                .subList( 1, p_argument.size() )
+                                                .stream()
+                                                .map( i -> CRawTerm.from( i.raw() ) )
+                                ),
+
+                                // name of the sending agent in this the agent which calls the send action is read from
+                                // context and translate in the communication agent, the communication agent has got the
+                                // method name() to read the agent name
+                                CLiteral.from(
+                                        "from",
+                                        CRawTerm.from(
+                                                p_context.agent().<MyCommunicationAgent>raw().name()
+                                        )
+                                )
+                        )
+
                 )
-                
-            )
         );
 
         return CFuzzyValue.from( true );
@@ -153,68 +209,105 @@ supports such [atomic variables](https://docs.oracle.com/javase/tutorial/essenti
 
 <!-- htmlmin:ignore -->
 ```java
+package myagentproject;
+
+
+import org.lightjason.agentspeak.common.CCommon;
+import org.lightjason.agentspeak.generator.IBaseAgentGenerator;
+import org.lightjason.agentspeak.language.score.IAggregation;
+
+import java.io.InputStream;
+import java.text.MessageFormat;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+/**
+ * agent generator to create communication agents
+ */
 public final class MyAgentGenerator extends IBaseAgentGenerator<MyCommunicationAgent>
 {
-    // store a reference to the send action for adding / removing agents
-    private final IAction m_send = new CSend();
-    
-    // thread-safe counter for the agent name, because the generator method
-    // can be called in parallel
+    /**
+     * store a reference to the send action for adding / removing agents
+     */
+    private final CSend m_send;
+
+    /**
+     * thread-safe counter for the agent name, because the
+     * generator method can be called in parallel
+     */
     private final AtomicLong m_counter = new AtomicLong();
 
-    //constructor of the generator
-    //@param p_stream ASL code as any stream e.g. FileInputStream
-    public MyAgentGenerator( final InputStream p_stream ) throws Exception
+    /**
+     * constructor of the generator
+     *
+     * @param p_send send action
+     * @param p_stream asl stream
+     * @throws Exception on any error
+     */
+    //
+    public MyAgentGenerator(final CSend p_send, final InputStream p_stream ) throws Exception
     {
         super(
-            // input ASL stream
-            p_stream,
+                // input ASL stream
+                p_stream,
 
-            // a set with all possible actions for the agent
-            Stream.concat(
-                // we use all build-in actions of LightJason
-                CCommon.actionsFromPackage(),
-                
-                // add send action to the generator
-                Stream.concat( m_send )
-                
-            // build the set with a collector
-            ).collect( Collectors.toSet() ),
+                // a set with all possible actions for the agent
+                Stream.concat(
+                        // we use all build-in actions of LightJason
+                        CCommon.actionsFromPackage(),
+                        // add VotingAgent related external action
+                        Stream.of( p_send )
+                        
+                // build the set with a collector
+                ).collect( Collectors.toSet() ),
 
-            // aggregation function for the optimization function, here
-            // we use an empty function
-            IAggregation.EMPTY
+                // aggregation function for the optimization function, here
+                // we use an empty function
+                IAggregation.EMPTY,
+
+                // variable builder for fixed variables within each plan
+                new CVariableBuilder()
         );
+
+        m_send = p_send;
     }
-    
-    // unregister an agent
-    // @param p_agent agent object
+
+    /**
+     * unregister an agent
+     *
+     * @param p_agent agent object
+     */
     public final void unregister( final MyCommunicationAgent p_agent )
     {
         m_send.unregister( p_agent );
     }
 
-    // generator method of the agent
-    // @param p_data any data which can be put from outside to the generator method
-    // @return returns an agent
+    /**
+     * generator method of the agent
+     *
+     * @param p_data any data which can be put from outside to the generator method
+     * @return returns an agent
+     */
     @Override
     public final MyCommunicationAgent generatesingle( final Object... p_data )
     {
         // register a new agent object at the send action and the register
         // method retruns the object reference
-        return m_send.register( 
-                   new MyCommunicationAgent( 
-            
+        return m_send.register(
+                new MyCommunicationAgent(
+
                         // create a string with the agent name "agent <number>"
                         // get the value of the counter first and increment, build the agent
                         // name with message format (see Java documentation)
                         MessageFormat.format( "agent {0}", m_counter.getAndIncrement() ),
-                
+
                         // add the agent configuration
-                        m_configuration 
+                        m_configuration
                 )
         );
     }
+
 }
 ```
 <!-- htmlmin:ignore -->
