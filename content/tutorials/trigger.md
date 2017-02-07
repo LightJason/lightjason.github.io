@@ -20,9 +20,20 @@ On the other hand, the agent is
 
 ### What kind of trigger exists?
 
+An agent is a _logical program_ which defines some knowledge elements e.g. beliefbase and the beliefs, so there are different kind of triggers to distinguish the elements:
+
+* __add goal (+!)__ tells the agent try to reach the goal which is named by the trigger
+* __delete goal (-!)__ tells the agent that something is going wrong, the _delete goal_ is executed iif a plan was failed
+* __add belief (+)__ is created if a belief is pushed into the beliefbase
+* __delete belief (-)__ is created if a belief is removed from the beliefbase
 
 
 ## How can I use them?
+
+On a global viewpoint a trigger is created on a _semantic definition_, so there is no defined  type to call in a situation a certain trigger. It depends on your conceptional view of your multi-agent system and your individual execution model. 
+
+The usage is very simple, the agent class supports a [trigger-method](http://lightjason.github.io/AgentSpeak/sources/db/d62/interfaceorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IAgent_3_01T_01extends_01IAgent_3_04_4_01_4.html#af453e6a5f02ca05958925af4a8c04c10), so create your trigger and call this method.
+
 
 ### Implementation
 

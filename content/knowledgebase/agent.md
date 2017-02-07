@@ -62,24 +62,25 @@ Based on the first illustrated finite-state-machine we will show the action stru
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak line-numbers">!main.
 
 +!main <-
-	generic/print("execute main-goal");
-	!first; 
-	generic/print("achievement-goal in main: first");
-	!second;
-	generic/print("achievement-goal in main: second")
+    generic/print("execute main-goal");
+    !first; 
+    generic/print("achievement-goal in main: first");
+    !second;
+    generic/print("achievement-goal in main: second")
 .
 
 +!first <- 
-	generic/print("execute first-goal");
-	!first;
-	generic/print("achievement-goal in first: first");
+    generic/print("execute first-goal");
+    !first;
+    generic/print("achievement-goal in first: first")
 .
 
-+!second <- 
-	generic/print("execute second-goal");
-	!main;
-	generic/print("achievement-goal in second: main")
++!second <-
+    generic/print("execute second-goal");
+    !main;
+    generic/print("achievement-goal in second: main")
 .
+
 </code></pre>
 <!-- htmlmin:ignore -->
 
