@@ -1,0 +1,20 @@
+{{- $file := getJSON "https://api.github.com/repos/" (.Get 0) "/" (.Get 1) "/contents/" (.Get 2) -}}
+{{- $codetype := .Get 3 -}}
+
+{{- if index .Params 4 -}}
+
+    {{- $result := findRE (.Get 4) ($file.content | base64Decode) (index .Params 5 | default 1) -}}
+    {{- range $result -}}
+        <pre class="language-{{- $codetype -}} code-toolbar"><code class="language-{{- $codetype -}}">
+        {{- . -}}
+        </code></pre>
+    {{- end -}}
+
+{{- else -}}
+
+    <pre class="language-{{- $codetype -}} code-toolbar"><code class="language-{{- $codetype -}}">
+    {{- $file.content | base64Decode -}}
+    </code></pre>
+
+{{- end -}}
+

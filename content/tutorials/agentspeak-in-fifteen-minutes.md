@@ -427,9 +427,11 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
 If you struggled at some point or wish to obtain our exemplary solution with code documentation to this tutorial, you can download the archive containing the source code [here](/download/agentspeak-in-15min.zip). 
 
 __Be aware__ that if you build AgentSpeak from the _most recent_ sources, the values inside the ```groupId```, ```artifactId``` and ```version``` tags of the AgentSpeak dependency (inside of __your__ ```pom.xml```) will have to correspond to the _most recent_ [pom.xml](https://github.com/LightJason/AgentSpeak/blob/master/pom.xml#L27) in the AgentSpeak(L++) repository.
-As of this writing (January 2017) this would be
 
 <!-- htmlmin:ignore -->
+{{< githubfile "LightJason" "AgentSpeak" "pom.xml" "xml" "<groupId>(.|\n)*?</version>" >}}
+
+
 ```xml
 <dependency>
     <groupId>org.lightjason</groupId>
@@ -439,6 +441,5 @@ As of this writing (January 2017) this would be
 ```
 <!-- htmlmin:ignore -->
 
-but it might change in the future.
 
 [^runtime]: For creating a complex and fast runtime have a look at general object-orientated programming patterns. Here we only provide a short example to show you how you can work with AgentSpeak(L++) agents.
