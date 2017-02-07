@@ -11,7 +11,7 @@ This tutorial explain the functionality of _agent triggering_. For understanding
 
 A short definition of triggers in LightJason's agent concept it is
 
-> an event written in a first-order literal
+> an event written in a first-order logical literal
 
 On the other hand, the agent is
 
@@ -35,112 +35,46 @@ On a global viewpoint a trigger is created on a _semantic definition_, so there 
 The usage is very simple, the agent class supports a [trigger-method](http://lightjason.github.io/AgentSpeak/sources/db/d62/interfaceorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IAgent_3_01T_01extends_01IAgent_3_04_4_01_4.html#af453e6a5f02ca05958925af4a8c04c10), so create your trigger and call this method.
 
 
-### Implementation
+### Java Implementation
 
-
---
---
-
-## Trigger A Goal
-
-The agent class has got a [trigger method](http://lightjason.github.io/AgentSpeak/sources/db/d62/interfaceorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IAgent_3_01T_01extends_01IAgent_3_04_4_01_4.html#af453e6a5f02ca05958925af4a8c04c10) which runs a goal, The [CTrigger](http://lightjason.github.io/AgentSpeak/sources/d1/d5a/classorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1CTrigger.html) class uses four [trigger types](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html) ([addgoal](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html#a8f036453c557da7c573456ab30fea9cb), [deletegoal](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html#a27c788cd71ba696603248697b88c1aa7), [addbelief](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html#a3b940a57e1aef6525a6730ccdb929405), [deletebelief](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html#aedd88e304e671dc112395eeffe010645)) and a literal for execution. The third parameter is a boolean flag to run the immediately otherwise the goal will be run within the next cycle.
+A trigger is a combination of a _literal_ and a _trigger type_. Both elements are defined as classes [CTrigger](http://lightjason.github.io/AgentSpeak/sources/d1/d5a/classorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1CTrigger.html) and [ITrigger.EType](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html). The code shows the usage of a _add goal trigger_ which defines on the first argument {{< linelink "" "triggercreate" "2" >}} the type of the trigger and on the second argument the literal {{< linelink "" "triggercreate" "3-6" >}}
 
 <!-- htmlmin:ignore -->
-```java
-agent.trigger(
-    CTrigger.from(
-        ITrigger.EType.ADDGOAL,
-        CLiteral.from( 
-            "foo/goal",
-            CRawTerm.from( 1234 )
-        )        
-    )
-);
-```
+{{% source "java" "triggercreate" %}}
+CTrigger.from(
+	ITrigger.EType.ADDGOAL,
+   	CLiteral.from( 
+   		"special-goal",
+       CRawTerm.from( 1234 )
+    )        
+)
+{{% /source %}}
 <!-- htmlmin:ignore -->
 
 
-### Trigger on each cycle
 
-If you need a goal-trigger based on any external data, we recommend to overload the agent's ```call()``` method and put the trigger into it, e.g.
+### AgentSpeak Implementation
+
+The agent (in detail the ASL script) can handle the trigger iif a plan (an instantiated goal) exists that matchs of the literal. For this example the agents need to define a plan only which matchs the literal ({{< linelink "" "triggercall" "1" >}}) and executes a print message ({{< linelink "" "triggercall" "2" >}})
 
 <!-- htmlmin:ignore -->
-```java
-// overload agent-cycle
-@Override
-public final MyAgent call() throws Exception
-{
-    // create goal trigger based on a condition
-    if ( any condition )
-        this.trigger(
-            CTrigger.from(
-                ITrigger.EType.ADDGOAL,
-                CLiteral.from( 
-                    "condition-goal",
-                    CRawTerm.from( any value )
-                )        
-        );
-
-    // run default cycle
-    return super.call();
-}
-```
+{{% source "agentspeak" "triggercall" %}}
++!special-goal(X) <-
+    generic/print("Special goal with value", X, "triggered in cycle", Cycle)
+.
+{{% /source %}}
 <!-- htmlmin:ignore -->
 
-1. To try this out modify your ```MyAgent``` class as follows
+
+## Notes
+
+The ```trigger```-method allows you to control the agent from Java-side, so that your system can execute any plans inside the agent. You can push the trigger at any time to the agent and the agent will execute the trigger as soon as possible, except you tell the agent that the trigger should execute immediatly (see method documentation second argument). The agent can sleeping so in that case the trigger will discarded.
+
+
+## Reference Solution
+
+The referenced solution based on the [agentspeak-in-15min](agentspeak-in-fifteen-minutes) tutorial, so we extend this tutorial with trigger behaviour.    
     
-    <!-- htmlmin:ignore -->
-    ```java
-    package myagentproject;
-    
-    import org.lightjason.agentspeak.agent.IBaseAgent;
-    import org.lightjason.agentspeak.configuration.IAgentConfiguration;
-    import org.lightjason.agentspeak.language.CLiteral;
-    import org.lightjason.agentspeak.language.CRawTerm;
-    import org.lightjason.agentspeak.language.instantiable.plan.trigger.CTrigger;
-    import org.lightjason.agentspeak.language.instantiable.plan.trigger.ITrigger;
-    
-    /* complex agent */
-    public final class MyAgent extends IBaseAgent<MyAgent>
-    {
-        // constructor of the agent
-        // @param p_configuration agent configuration of the agent generator
-        public MyAgent( final IAgentConfiguration<MyAgent> p_configuration )
-        {
-            super( p_configuration );
-        }
-    
-        // overload agent-cycle
-        @Override
-        public final MyAgent call() throws Exception
-        {
-            // create goal trigger based on a condition
-            this.trigger(
-                CTrigger.from(
-                    ITrigger.EType.ADDGOAL,
-                    CLiteral.from(
-                        "special-goal",
-                        CRawTerm.from( 2342 )
-                    )
-                )
-            );
-    
-            // run default cycle
-            return super.call();
-        }
-    }
-    
-    ```
-    <!-- htmlmin:ignore -->
-    
-    and add the following to your ```agent.asl```
-    
-    <!-- htmlmin:ignore -->
-    <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">+!special-goal(X) <-
-        generic/print("Special goal with value", X, "triggered in cycle", Cycle)
-        .
-    </code></pre>
-    <!-- htmlmin:ignore -->
     
 2. Rebuild you JAR (```mvn package```) and run it with your modified ```agent.asl```. You should see the prints of the triggered ```special-goal```:
          

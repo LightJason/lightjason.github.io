@@ -10,7 +10,6 @@ Having [basic knowledge](/knowledgebase) about the [belief–desire–intention 
 1. [Develop an AgentSpeak Scenario in 15 Minutes](agentspeak-in-fifteen-minutes) a minimal example to develop an agent scenario in 15 minutes from scratch with the current developer source codes of AgentSpeak.
 2. [Communication](communication) is a tutorial on how to realise communication, because LightJason does not provide built-in communication mechanisms.
 3. [Triggering](trigger) is a tutorial to control the execution of an agent
-4. [Actions](actions) is a tutorial for creating any kind of actions
 4. [Efficient Beliefbase](efficient-beliefbase) is a tutorial for creating efficient beliefbase structures
 5. [Environment](environment) is a tutorial to create an environment (which is not necessarily required in LightJason)
 

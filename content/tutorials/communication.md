@@ -7,8 +7,6 @@ LightJason architecture does not support in general a build-in communication, be
 agent addressing / naming depends on the domain or underlying software architecture. To create a 
 communication structure you have to build-up your own naming model, a send action with a receiving plan and a data structure to map agent names / addresses to agent objects.
 
-If you struggled at some point or wish to obtain our exemplary solution to this tutorial, you can download the archive containing the source code [here](/download/communication-agent.zip). This tutorial depends on the tutorial [AgentSpeak-in-15min](agentspeak-in-fifteen-minutes), so the whole build process is explained within the basic tutorial.
-
 {{< toc >}}
 
 > __Don't reinvent the edge__
@@ -264,3 +262,41 @@ final class CVariableBuilder implements IVariableBuilder
     }
 }
 ```
+
+
+## Reference Solution
+
+If you struggled at some point or wish to obtain our exemplary solution to this tutorial, you can download the archive containing the source code [here](/download/communication-agent.zip). This tutorial depends on the tutorial [AgentSpeak-in-15min](agentspeak-in-fifteen-minutes), so the whole build process is explained within the basic tutorial. If you run the example the shown output can be different. 
+
+For the first run we start the program with 10 agents and 5 iterations:
+
+```commandline
+agent 0    received message [   pqepkellesxa   ] from [   agent 2   ] in cycle [   0   ]
+agent 0    received message [   vxhfapwtulty   ] from [   agent 5   ] in cycle [   0   ]
+agent 0    received message [   ilmhcdofoevm   ] from [   agent 6   ] in cycle [   0   ]
+
+agent 0    received message [   rjnvygvwsbqo   ] from [   agent 0   ] in cycle [   1   ]
+agent 0    received message [   dhcfpfhqbpop   ] from [   agent 1   ] in cycle [   1   ]
+agent 0    received message [   khtsbiripesx   ] from [   agent 7   ] in cycle [   1   ]
+agent 0    received message [   fjxdyjcwfdby   ] from [   agent 4   ] in cycle [   1   ]
+agent 0    received message [   anhdriizkknv   ] from [   agent 9   ] in cycle [   1   ]
+agent 0    received message [   ewklpggifoym   ] from [   agent 8   ] in cycle [   1   ]
+agent 0    received message [   rtxtdqfcuzpl   ] from [   agent 3   ] in cycle [   1   ]
+```
+
+and run it again with equal arguments
+
+```commandline
+agent 0    received message [   ggbiaiijtvtz   ] from [   agent 0   ] in cycle [   1   ]
+agent 0    received message [   mmlxwmifnedq   ] from [   agent 8   ] in cycle [   1   ]
+agent 0    received message [   qileeboovtlc   ] from [   agent 2   ] in cycle [   1   ]
+agent 0    received message [   ixruabyhlxfi   ] from [   agent 7   ] in cycle [   1   ]
+agent 0    received message [   hwkcdbjuqqyc   ] from [   agent 3   ] in cycle [   1   ]
+agent 0    received message [   benrjxxkrcog   ] from [   agent 1   ] in cycle [   1   ]
+agent 0    received message [   sqkuorfmknuq   ] from [   agent 6   ] in cycle [   1   ]
+agent 0    received message [   hcyrnovvacsb   ] from [   agent 9   ] in cycle [   1   ]
+agent 0    received message [   ldvxkosghaax   ] from [   agent 5   ] in cycle [   1   ]
+agent 0    received message [   vbykpbivcwow   ] from [   agent 4   ] in cycle [   1   ]
+```
+
+You can see, that the agent 0 received messages in cycle 0 and 1 and the ordering of the executed plans are different. This behaviour is desired, because all agents run in parallel and so the agent can receive the message before it own cycle is called otherwise the cycle is called and after that the agent receive the message. __So keep in mind that all execution is heavily asynchronized and parallel__

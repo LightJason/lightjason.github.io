@@ -1,6 +1,7 @@
 ---
 title: "Tutorial: Actions"
 jsonld: ["techarticle"]
+draft: true
 ---
 
 This tutorial explains the concept and usage of actions.

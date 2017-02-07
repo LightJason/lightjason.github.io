@@ -19,12 +19,12 @@ Mostly within a state the state-name is documented, also the arrow of a transiti
 
 ### Usage and Example
 
-State-Machine are a useful tool to describe [regular expressions](https://en.wikipedia.org/wiki/Regular_expression) and we would like to motivate this concept for explaining the functional principle:
+State-Machine are an useful tool to describe [regular expressions](https://en.wikipedia.org/wiki/Regular_expression) and we would like to motivate this concept for explaining the functional principle:
 
 > The main goal is to create a system, which can check strings that matchs the following criteria:
 > The strings starts with an arbitrary  sequence of the letter ```a``` or ```b``` (the sequence can be empty).
 > After the initial sequence follows a positiv number which depends on any digit. 
-> The end of the sequence is a sequence of the letter ```x``` with two letters at minimum. All letters within this string can be lower- or upper-case. Some valid example sequences: ```ab1x```, ```aaaaabbb169XXX```, ```AaAabbBB972xXxXXXX```
+> The end of the digit sequence is a sequence of the letter ```x``` with two letters at minimum. All letters within this string can be lower- or upper-case. Some valid example sequences: ```ab1x```, ```aaaaabbb169XXX```, ```AaAabbBB972xXxXXXX```
 
 Most programming languages defines such regular expression in a [perl notation](https://en.wikipedia.org/wiki/Regular_expression#Perl) or [posix notation](https://en.wikipedia.org/wiki/Regular_expression#POSIX_basic_and_extended). We use for the example the posix notation which is defined as: 
 
