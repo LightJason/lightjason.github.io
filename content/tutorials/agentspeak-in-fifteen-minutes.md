@@ -365,38 +365,37 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
     <!-- htmlmin:ignore -->
 
 3. Observe the CPU load and time with the print actions (code above) and without (code below): 
-
+<!-- htmlmin:ignore -->
+{{% source "agentspeak" %}}
+// initial-goal
+!main.
+   
+// initial plan (triggered by the initial goal)
++!main <-
+   !mynextgoal
+.   
+   
++!mynextgoal <-
+   !mynextgoal
+.
+{{% /source %}}
+<!-- htmlmin:ignore -->
+	
+	i.e. run
 	<!-- htmlmin:ignore -->
-   <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">// initial-goal
-    !main.
-    // initial plan (triggered by the initial goal)
-    +!main <-
-        !mynextgoal
-        .   
-    +!mynextgoal <-
-        !mynextgoal
-        .
-    </code></pre>
-    <!-- htmlmin:ignore -->
-
-    i.e. run
-    
-    <!-- htmlmin:ignore -->
-    ```commandline
-    java -jar target/myagentapp-1.0-SNAPSHOT.jar agent.asl 500 1000
-    ```
-    <!-- htmlmin:ignore -->
+	```commandline
+	java -jar target/myagentapp-1.0-SNAPSHOT.jar agent.asl 500 1000
+	```
+	<!-- htmlmin:ignore -->
     
     and compare it with
-    
     <!-- htmlmin:ignore -->
     ```commandline
     java -jar target/myagentapp-1.0-SNAPSHOT.jar agent_noprint.asl 500 1000
     ```
     <!-- htmlmin:ignore -->
     
-    On a recent dual-core 2C/4T laptop (benchmarked with the Linux/Unix tool ```time```) this yields
-    
+    On a recent dual-core 2C/4T laptop (benchmarked with the [Linux/Unix tool](https://linux.die.net/man/1/time) ```time```) this yields 
     <!-- htmlmin:ignore -->
     ```commandline
     time java -jar target/myagentapp-1.0-SNAPSHOT.jar agent.asl 500 1000
@@ -406,7 +405,6 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
     <!-- htmlmin:ignore -->
     
     vs.
-    
     <!-- htmlmin:ignore -->
     ```commandline
     time java -jar target/myagentapp-1.0-SNAPSHOT.jar agent_noprint.asl 500 1000

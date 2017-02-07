@@ -73,19 +73,4 @@ The ```trigger```-method allows you to control the agent from Java-side, so that
 
 ## Reference Solution
 
-The referenced solution based on the [agentspeak-in-15min](agentspeak-in-fifteen-minutes) tutorial, so we extend this tutorial with trigger behaviour.    
-    
-    
-2. Rebuild you JAR (```mvn package```) and run it with your modified ```agent.asl```. You should see the prints of the triggered ```special-goal```:
-         
-    <!-- htmlmin:ignore -->
-    ```bash
-    Hello World!
-    Special goal with value   2342   triggered in cycle   0
-    Hello World! (again)   1
-    Special goal with value   2342   triggered in cycle   1
-    Hello World! (again)   2
-    Special goal with value   2342   triggered in cycle   2
-    ...
-    ```
-    <!-- htmlmin:ignore -->
+The referenced solution based on the [agentspeak-in-15min](agentspeak-in-fifteen-minutes) tutorial, so we extend this tutorial with trigger behaviour. 
