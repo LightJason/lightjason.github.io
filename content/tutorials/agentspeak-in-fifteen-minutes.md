@@ -429,16 +429,7 @@ If you struggled at some point or wish to obtain our exemplary solution with cod
 __Be aware__ that if you build AgentSpeak from the _most recent_ sources, the values inside the ```groupId```, ```artifactId``` and ```version``` tags of the AgentSpeak dependency (inside of __your__ ```pom.xml```) will have to correspond to the _most recent_ [pom.xml](https://github.com/LightJason/AgentSpeak/blob/master/pom.xml#L27) in the AgentSpeak(L++) repository.
 
 <!-- htmlmin:ignore -->
-{{< githubfile "LightJason" "AgentSpeak" "pom.xml" "xml" "<groupId>(.|\n)*?</version>" >}}
-
-
-```xml
-<dependency>
-    <groupId>org.lightjason</groupId>
-    <artifactId>agentspeak</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-</dependency>
-```
+{{< githubfile "LightJason" "AgentSpeak" "pom.xml" "xml" "[[:space:]]{4}<groupId>(.|\n)*?</version>" 1 "<dependency>" "</dependency>" >}}
 <!-- htmlmin:ignore -->
 
 
