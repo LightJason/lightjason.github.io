@@ -176,6 +176,24 @@ div.footer a {
 }
 
 
+div.body h1 a:hover:after, 
+div.body h2 a:hover:after, 
+div.body h3 a:hover:after, 
+div.body h4 a:hover:after, 
+div.body h5 a:hover:after, 
+div.body h6 a:hover:after {
+    content: " \1f4ce";
+    color: #eee;
+}
+
+div.body h2:after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 40%;
+    background: #bfbfbf;
+}
+
 
 div.body h1, div.body h1 a,
 div.body h2, div.body h2 a,
@@ -196,13 +214,7 @@ div.body h4 { font-size: 130%; }
 div.body h5 { font-size: 100%; }
 div.body h6 { font-size: 100%; }
 
-div.body h2::after {
-    content: "";
-    display: block;
-    height: 1px;
-    width: 40%;
-    background: #9f9f9f;
-}
+
 
 div.body p, div.body dd, div.body li {
     line-height: 1.4em;

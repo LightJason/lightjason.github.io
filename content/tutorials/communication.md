@@ -5,10 +5,9 @@ jsonld: ["techarticle"]
 
 LightJason architecture does not support in general a build-in communication, because communication and 
 agent addressing / naming depends on the domain or underlying software architecture. To create a 
-communication structure you have to build-up your own naming model, a send action with a receiving plan and 
-a data structure to map agent names / addresses to agent objects.
+communication structure you have to build-up your own naming model, a send action with a receiving plan and a data structure to map agent names / addresses to agent objects.
 
-If you struggled at some point or wish to obtain our exemplary solution to this tutorial, you can download the archive containing the source code [here](/download/communication-agent.zip).
+If you struggled at some point or wish to obtain our exemplary solution to this tutorial, you can download the archive containing the source code [here](/download/communication-agent.zip). This tutorial depends on the tutorial [AgentSpeak-in-15min](agentspeak-in-fifteen-minutes), so the whole build process is explained within the basic tutorial.
 
 {{< toc >}}
 
@@ -60,17 +59,18 @@ package myagentproject;
 import org.lightjason.agentspeak.agent.IBaseAgent;
 import org.lightjason.agentspeak.configuration.IAgentConfiguration;
 
-public final class MyCommunicationAgent extends IBaseAgent< >MyCommunicationAgent>
+
+final class MyCommunicationAgent extends IBaseAgent<MyCommunicationAgent>
 {
     private final String m_name;
-    
-    public MyCommunicationAgent( final String p_name, final IAgentConfiguration<MyCommunicationAgent> p_configuration )
+
+    MyCommunicationAgent( final String p_name, final IAgentConfiguration<MyCommunicationAgent> p_configuration )
     {
         super( p_configuration );
         m_name = p_name;
     }
-    
-    public final String name()
+
+    final String name()
     {
         return m_name;
     }
@@ -100,50 +100,42 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public final class MyAgentGenerator extends IBaseAgentGenerator<MyCommunicationAgent>
+
+final class MyAgentGenerator extends IBaseAgentGenerator<MyCommunicationAgent>
 {
-
     private final CSend m_send;
-
     private final AtomicLong m_counter = new AtomicLong();
 
-    public MyAgentGenerator(final CSend p_send, final InputStream p_stream ) throws Exception
+    MyAgentGenerator( final CSend p_send, final InputStream p_stream ) throws Exception
     {
         super(
-                p_stream,
-
-                Stream.concat(
-                        CCommon.actionsFromPackage(),
-                        Stream.of( p_send )
-                ).collect( Collectors.toSet() ),
-
-                IAggregation.EMPTY,
-
-                new CVariableBuilder()
+            p_stream,
+            Stream.concat(
+                CCommon.actionsFromPackage(),
+                Stream.of( p_send )
+            ).collect( Collectors.toSet() ),
+            IAggregation.EMPTY,
+            new CVariableBuilder()
         );
 
         m_send = p_send;
-    }
-
-
-    public final void unregister( final MyCommunicationAgent p_agent )
-    {
-        m_send.unregister( p_agent );
     }
 
     @Override
     public final MyCommunicationAgent generatesingle( final Object... p_data )
     {
         return m_send.register(
-                new MyCommunicationAgent(
-
-                        MessageFormat.format( "agent {0}", m_counter.getAndIncrement() ),
-
-                        m_configuration
-                )
+            new MyCommunicationAgent(
+                MessageFormat.format( "agent {0}", m_counter.getAndIncrement() ),
+                m_configuration
+            )
         );
     }
 
+    final void unregister( final MyCommunicationAgent p_agent )
+    {
+        m_send.unregister( p_agent );
+    }
 }
 ```
 <!-- htmlmin:ignore -->
@@ -156,6 +148,7 @@ For communication basisc a _send_ action must be created. This actions needs als
 
 <!-- htmlmin:ignore -->
 ```java
+
 package myagentproject;
 
 import org.lightjason.agentspeak.action.IBaseAction;
@@ -175,21 +168,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public final class CSend extends IBaseAction
+final class CSend extends IBaseAction
 {
     private final Map<String, MyCommunicationAgent> m_agents = new ConcurrentHashMap<>();
-
-    public final MyCommunicationAgent register( final MyCommunicationAgent p_agent )
-    {
-        m_agents.put( p_agent.name(), p_agent );
-        return p_agent;
-    }
-
-    public final MyCommunicationAgent unregister( final MyCommunicationAgent p_agent )
-    {
-        m_agents.remove( p_agent.name() );
-        return p_agent;
-    }
 
     @Override
     public final IPath name()
@@ -205,7 +186,8 @@ public final class CSend extends IBaseAction
 
     @Override
     public final IFuzzyValue<Boolean> execute( final IContext p_context, final boolean p_parallel, final List<ITerm> p_argument,
-                                               final List<ITerm> p_return, final List<ITerm> p_annotation )
+                                               final List<ITerm> p_return, final List<ITerm> p_annotation
+    )
     {
         final IAgent<?> l_receiver = m_agents.get( p_argument.get( 0 ).<String>raw() );
         if ( l_receiver == null )
@@ -215,12 +197,14 @@ public final class CSend extends IBaseAction
             CTrigger.from(
                 ITrigger.EType.ADDGOAL,
 
-                CLiteral.from( "message/receive",
+                CLiteral.from(
+                    "message/receive",
 
-                    CLiteral.from( 
+                    CLiteral.from(
                         "message",
                         p_argument.subList( 1, p_argument.size() ).stream().map( i -> CRawTerm.from( i.raw() ) )
                     ),
+
 
                     CLiteral.from(
                         "from",
@@ -234,6 +218,17 @@ public final class CSend extends IBaseAction
         return CFuzzyValue.from( true );
     }
 
+    final MyCommunicationAgent register( final MyCommunicationAgent p_agent )
+    {
+        m_agents.put( p_agent.name(), p_agent );
+        return p_agent;
+    }
+
+    final MyCommunicationAgent unregister( final MyCommunicationAgent p_agent )
+    {
+        m_agents.remove( p_agent.name() );
+        return p_agent;
+    }
 }
 ```
 <!-- htmlmin:ignore -->
@@ -257,10 +252,11 @@ import org.lightjason.agentspeak.language.variable.IVariable;
 
 import java.util.stream.Stream;
 
-public final class CVariableBuilder implements IVariableBuilder
+
+final class CVariableBuilder implements IVariableBuilder
 {
     @Override
-    public final Stream<IVariable<?>> generate(IAgent<?> p_agent, IInstantiable p_runningcontext )
+    public final Stream<IVariable<?>> generate( IAgent<?> p_agent, IInstantiable p_runningcontext )
     {
         return Stream.of(
             new CConstant<>( "MyName", p_agent.<MyCommunicationAgent>raw().name() )
@@ -268,5 +264,3 @@ public final class CVariableBuilder implements IVariableBuilder
     }
 }
 ```
-
-

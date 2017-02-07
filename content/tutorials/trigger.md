@@ -3,13 +3,24 @@ title: "Tutorial: Triggering"
 jsonld: ["techarticle"]
 ---
 
-This tutorial explain the functionality of _agent triggering_.
+This tutorial explain the functionality of _agent triggering_. For understanding purpose of triggers you have to understand the concept of events which is a well-known concept in [UI programming](https://docs.oracle.com/javase/tutorial/uiswing/events/).
 
 {{< toc >}}
 
 ## What are triggers?
 
+A short definition of triggers in LightJason's agent concept it is
+
+> an event written in a first-order literal
+
+On the other hand, the agent is
+
+> an event listener which executes a plan iif an event is released
+
+
 ### What kind of trigger exists?
+
+
 
 ## How can I use them?
 

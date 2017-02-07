@@ -197,9 +197,9 @@ package myagentproject;
 import org.lightjason.agentspeak.agent.IBaseAgent;
 import org.lightjason.agentspeak.configuration.IAgentConfiguration;
 
-public final class MyAgent extends IBaseAgent<MyAgent>
+final class MyAgent extends IBaseAgent<MyAgent>
 {
-    public MyAgent( final IAgentConfiguration<MyAgent> p_configuration )
+    MyAgent( final IAgentConfiguration<MyAgent> p_configuration )
     {
         super( p_configuration );
     }
@@ -215,47 +215,27 @@ Create an agent generator class ```MyAgentGenerator.java``` in ```src/main/java/
 
 <!-- htmlmin:ignore -->
 ```java
+
 package myagentproject;
 
 import org.lightjason.agentspeak.common.CCommon;
 import org.lightjason.agentspeak.generator.IBaseAgentGenerator;
 import org.lightjason.agentspeak.language.score.IAggregation;
 
-import java.util.stream.Stream;
 import java.io.InputStream;
 import java.util.stream.Collectors;
 
-public final class MyAgentGenerator extends IBaseAgentGenerator<MyAgent>
+final class MyAgentGenerator extends IBaseAgentGenerator<MyAgent>
 {
-
-    public MyAgentGenerator( final InputStream p_stream ) throws Exception
+    MyAgentGenerator( final InputStream p_stream ) throws Exception
     {
         super(
             p_stream,
-            
-            Stream.concat(
-
-                CCommon.actionsFromPackage(),
-                Stream.concat(
-                    CCommon.actionsFromAgentClass( MyAgent.class ),
-                    Stream.of(
-                        new MyAction()
-                    )
-                )
-            // build the set with a collector
-            ).collect( Collectors.toSet() ),
-            // aggregation function for the optimization function, here
-            // we use an empty function
+            CCommon.actionsFromPackage().collect( Collectors.toSet() ),
             IAggregation.EMPTY
         );
     }
 
-    /**
-     * generator method of the agent
-     *
-     * @param p_data any data which can be put from outside to the generator method
-     * @return returns an agent
-     */
     @Override
     public final MyAgent generatesingle( final Object... p_data )
     {
@@ -277,57 +257,48 @@ We are using [Java streams](https://docs.oracle.com/javase/tutorial/collections/
 package myagentproject;
 
 import java.io.FileInputStream;
+import java.util.Collections;
 import java.util.Set;
+import java.util.logging.LogManager;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-/**
- * main application with runtime
- */
-public final class App
+
+final class App
 {
 
     static
     {
-        // disable logger
         LogManager.getLogManager().reset();
     }
-    
 
-    /**
-     * private constructor to avoid any instantiation
-     */
     private App()
     {
     }
 
-    /**
-     * main method
-     *
-     * @param p_args command-line arguments
-     */
-    public static void main( final String[] p_args ) throws Exception
+    public static void main( final String[] p_args )
     {
-        // parameter of the command-line arguments:
-        // 1. ASL file
-        // 2. number of agents
-        // 3. number of iterations (if not set maximum)
+        if ( p_args.length < 2 )
+            throw new RuntimeException( "arguments are not set: ASL script, number of agents" );
+
         final Set<MyAgent> l_agents;
         try
             (
                 final FileInputStream l_stream = new FileInputStream( p_args[0] );
             )
         {
-            l_agents = new MyAgentGenerator( l_stream )
-                .generatemultiple( Integer.parseInt( p_args[1] ) )
-                .collect( Collectors.toSet() );
-        } catch ( final Exception l_exception )
+            l_agents = Collections.unmodifiableSet(
+                new MyAgentGenerator( l_stream )
+                    .generatemultiple( Integer.parseInt( p_args[1] ) )
+                    .collect( Collectors.toSet() )
+            );
+        }
+        catch ( final Exception l_exception )
         {
             l_exception.printStackTrace();
             return;
         }
 
-        // runtime call (with parallel execution)
         IntStream
             .range(
                 0,
@@ -335,16 +306,17 @@ public final class App
                 ? Integer.MAX_VALUE
                 : Integer.parseInt( p_args[2] )
             )
-            .forEach( j -> l_agents.parallelStream().forEach( i -> {
-                try
-                {
-                    i.call();
-                }
-                catch ( final Exception l_exception )
-                {
-                    l_exception.printStackTrace();
-                }
-            } ) );
+            .forEach( j -> l_agents.parallelStream().forEach( i ->
+                                                              {
+                                                                  try
+                                                                  {
+                                                                      i.call();
+                                                                  }
+                                                                  catch ( final Exception l_exception )
+                                                                  {
+                                                                      l_exception.printStackTrace();
+                                                                  }
+                                                              } ) );
     }
 }
 ```
@@ -452,7 +424,7 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
     
 ## Reference Solution
 
-If you struggled at some point or wish to obtain our exemplary solution to this tutorial, you can download the archive containing the source code [here](/download/agentspeak-in-15min.zip). 
+If you struggled at some point or wish to obtain our exemplary solution with code documentation to this tutorial, you can download the archive containing the source code [here](/download/agentspeak-in-15min.zip). 
 
 __Be aware__ that if you build AgentSpeak from the _most recent_ sources, the values inside the ```groupId```, ```artifactId``` and ```version``` tags of the AgentSpeak dependency (inside of __your__ ```pom.xml```) will have to correspond to the _most recent_ [pom.xml](https://github.com/LightJason/AgentSpeak/blob/master/pom.xml#L27) in the AgentSpeak(L++) repository.
 As of this writing (January 2017) this would be
