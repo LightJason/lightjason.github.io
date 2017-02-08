@@ -133,33 +133,7 @@ For the following sections we assume that you are working inside the directory `
 4. Put the following code inside the ```<project>``` section, e.g. after ```</dependencies>```, to include the [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/examples/executable-jar.html) which creates an executable JAR when you build your project with ```mvn package``` 
 
     <!-- htmlmin:ignore -->
-    ```xml
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>2.4.3</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <!-- here you must provide the full name of the class which contains the main method -->
-                                    <mainClass>myagentproject.App</mainClass>
-                                </transformer>
-                            </transformers>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-    ```
+    {{< githubfile user="LightJason" repo="Examples" file="pom.xml" lang="xml" branch="tutorial-agentspeak-in-15min" filter="[[:space:]]{4}<build>(.|\n)*?</build>" >}}
     <!-- htmlmin:ignore -->
     
 5. Test-build your project by running ``mvn package`` inside ```Developer/myagentapp/```, i.e. where your ``pom.xml`` is located:
@@ -186,7 +160,7 @@ Each agent, which you use, must be inherited from our base class {{< lightbox "h
 Create an agent class ```MyAgent.java``` in ```src/main/java/myagentproject/``` as follows:
 
 <!-- htmlmin:ignore -->
-{{< githubfile user="LightJason" repo="Examples" file="src/main/java/myagentproject/MyAgent.java" lang="java" branch="tutorial-agentspeak-in-15min" >}}
+{{< githubfile user="LightJason" repo="Examples" file="src/main/java/myagentproject/MyAgent.java" lang="java" branch="tutorial-agentspeak-in-15min" clear="(/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/)|(//.*)" >}}
 <!-- htmlmin:ignore -->
 
 ### Agent Generator Class

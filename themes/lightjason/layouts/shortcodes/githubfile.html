@@ -3,8 +3,10 @@
 {{- $postfix := (.Get "postfix") | default "" -}}
 {{- $branch := delimit (slice "?ref=" (.Get "branch" | default "master")) "" | string -}}
 {{- $id := (.Get "id") -}}
+{{- $clear := (.Get "clear") -}}
 
 {{- $file := getJSON "https://api.github.com/repos/" (.Get "user") "/" (.Get "repo") "/contents/" (.Get "file") $branch -}}
+
 
 {{- if .Get "filter" -}}
 
@@ -12,7 +14,7 @@
     {{- range $result -}}
         <pre class="language-{{- $codetype -}}" {{ if $id }}id="{{ $id }}"{{ end }} {{ if eq $codetype "agentspeak" -}}data-language="AgentSpeak(L++)"{{- end }}><code class="language-{{- $codetype -}}">
 {{- $prefix }}
-{{ . }}
+{{ if $clear }}{{ . }}{{ else }}{{ . }}{{ end }}
 {{ $postfix -}}
         </code></pre>
     {{- end -}}

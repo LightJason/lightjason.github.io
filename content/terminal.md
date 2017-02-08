@@ -12,12 +12,12 @@ number of command ```p```-tags and result ```p```-tags must be equal
 
 Arguments of the Hugo _terminal_ shortcode (all arguments are optional):
 
-1. Argument is the _terminal prefix_ (default is empty)
-2. Argument is DOM-ID to create an unique referenced ID of the terminal (default is empty)
-3. Argument is the height of the terminal box (default is _10em_ [10 text-lines])
-4. Argument is the width of the terminal box (default is _100%_)
+1. Argument ```prefix``` is the _terminal prefix_ (default is empty)
+2. Argument ```id``` is DOM-ID to create an unique referenced ID of the terminal (default is empty)
+3. Argument ```height``` is the height of the terminal box (default is _10em_ [10 text-lines])
+4. Argument ```width``` is the width of the terminal box (default is _100%_)
 
-{{< terminal "~prefix:" "test""16em" >}}
+{{< terminal prefix="~prefix:" id="test" height="16em" >}}
 <p class="command">each line must be ^2000 within a p tag</p>
 <p class="result"></p>
 <p class="command">do typing with erororororor~10ror and some other text</p>
