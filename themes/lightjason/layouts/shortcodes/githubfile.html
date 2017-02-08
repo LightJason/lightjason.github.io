@@ -2,8 +2,8 @@
 {{- $prefix := (.Get "prefix") | default "" -}}
 {{- $postfix := (.Get "postfix") | default "" -}}
 {{- $branch := delimit (slice "?ref=" (.Get "branch" | default "master")) "" | string -}}
-{{- $id := (.Get "id") -}}
 {{- $clear := (.Get "clear") -}}
+{{- $id := (.Get "id") -}}
 
 {{- $file := getJSON "https://api.github.com/repos/" (.Get "user") "/" (.Get "repo") "/contents/" (.Get "file") $branch -}}
 
@@ -12,7 +12,7 @@
 
     {{- $result := findRE (.Get "filter") ($file.content | base64Decode) (.Get "result" | default 1 | int) -}}
     {{- range $result -}}
-        <pre class="language-{{- $codetype -}}" {{ if $id }}id="{{ $id }}"{{ end }} {{ if eq $codetype "agentspeak" -}}data-language="AgentSpeak(L++)"{{- end }}><code class="language-{{- $codetype -}}">
+        <pre class="language-{{- $codetype -}}" {{ if $id }}id="source-{{- $id -}}"{{ end }} {{ if eq $codetype "agentspeak" -}}data-language="AgentSpeak(L++)"{{- end }}><code class="language-{{- $codetype -}}">
 {{- $prefix }}
 {{ if $clear }}{{ . }}{{ else }}{{ . }}{{ end }}
 {{ $postfix -}}
@@ -21,7 +21,7 @@
 
 {{- else -}}
 
-    <pre class="language-{{- $codetype -}}" {{ if $id }}{{ $id }}{{ end }} {{ if eq $codetype "agentspeak" -}}data-language="AgentSpeak(L++)"{{- end }}><code class="language-{{- $codetype -}}">
+    <pre class="language-{{- $codetype -}}" {{ if $id }}id="source-{{- $id -}}"{{ end }} {{ if eq $codetype "agentspeak" -}}data-language="AgentSpeak(L++)"{{- end }}><code class="language-{{- $codetype -}}">
 {{- $prefix }}
 {{ $file.content | base64Decode }}
 {{ $postfix -}}

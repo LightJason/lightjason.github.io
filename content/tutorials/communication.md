@@ -73,7 +73,8 @@ For communication basisc a _send_ action must be created. This actions needs als
 The variable builder allows to create _individual variables and constants_ during runtin within a plan. In this case we crate the constant ```MyName``` which stores the individual agent name. The ```raw```-method allows to create an object reference with a safe-cast. The variable builder is added to the agent factory.
 
 <!-- htmlmin:ignore -->
-{{< githubfile user="LightJason" repo="Examples" file="src/main/java/myagentproject/CVariableBuilder.java" lang="java" branch="tutorial-agent-communication" >}}```
+{{< githubfile user="LightJason" repo="Examples" file="src/main/java/myagentproject/CVariableBuilder.java" lang="java" branch="tutorial-agent-communication" >}}
+<!-- htmlmin:ignore -->
 
 
 ## Reference Solution

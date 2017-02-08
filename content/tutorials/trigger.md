@@ -40,17 +40,8 @@ The usage is very simple, the agent class supports a [trigger-method](http://lig
 A trigger is a combination of a _literal_ and a _trigger type_. Both elements are defined as classes [CTrigger](http://lightjason.github.io/AgentSpeak/sources/d1/d5a/classorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1CTrigger.html) and [ITrigger.EType](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html). The code shows the usage of a _add goal trigger_ which defines on the first argument {{< linelink "" "triggercreate" "2" >}} the type of the trigger and on the second argument the literal {{< linelink "" "triggercreate" "3-6" >}}
 
 <!-- htmlmin:ignore -->
-{{% source "java" "triggercreate" %}}
-CTrigger.from(
-	ITrigger.EType.ADDGOAL,
-   	CLiteral.from( 
-   		"special-goal",
-       CRawTerm.from( 1234 )
-    )        
-)
-{{% /source %}}
+{{< githubfile user="LightJason" repo="Examples" file="src/main/java/myagentproject/App.java" lang="java" branch="tutorial-agent-trigger" id="triggercreate" >}}
 <!-- htmlmin:ignore -->
-
 
 
 ### AgentSpeak Implementation
@@ -58,11 +49,7 @@ CTrigger.from(
 The agent (in detail the ASL script) can handle the trigger iif a plan (an instantiated goal) exists that matchs of the literal. For this example the agents need to define a plan only which matchs the literal ({{< linelink "" "triggercall" "1" >}}) and executes a print message ({{< linelink "" "triggercall" "2" >}})
 
 <!-- htmlmin:ignore -->
-{{% source "agentspeak" "triggercall" %}}
-+!special-goal(X) <-
-    generic/print("Special goal with value", X, "triggered in cycle", Cycle)
-.
-{{% /source %}}
+{{< githubfile user="LightJason" repo="Examples" file="agent_trigger.asl" lang="agentspeak" branch="tutorial-agent-trigger" id="triggercall" >}}
 <!-- htmlmin:ignore -->
 
 
