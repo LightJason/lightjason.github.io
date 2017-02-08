@@ -48,10 +48,6 @@ For code hightlighting the JavaScript component [Prism.js](http://prismjs.com/) 
 	2. CES-function
 	4. PCA
 	4. Plan execution based on the data
-* Action Tutorial - Building action in an efficient way
-	1. Term represenatation of data
-	2. Term-to-Raw converting
-	3. Java-Object representation inside terms
 * Simulation-Tutorial
 	1. LibGDX with sprites & tilemaps
 	2. scenario configuration with YAML

@@ -44,7 +44,7 @@ For the following sections we assume that you are working inside the directory `
     ```
     <!-- htmlmin:ignore -->
 
-    or by downloading the [ZIP archive](https://github.com/LightJason/AgentSpeak/archive/master.zip) and extracting it to ```Developer```.
+    or by downloading the {{< githubzip user="LightJason" repo="AgentSpeak" text="ZIP archive" >}} and extracting it to ```Developer```.
     
     <!-- htmlmin:ignore -->
     ```commandline
