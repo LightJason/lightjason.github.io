@@ -1,10 +1,13 @@
+{{- $id := (.Get "id") -}}
 {{- $codetype := .Get "lang" -}}
 {{- $prefix := (.Get "prefix") | default "" -}}
 {{- $postfix := (.Get "postfix") | default "" -}}
-{{- $branch := delimit (slice "?ref=" (.Get "branch" | default "master")) "" | string -}}
-{{- $clear := (.Get "clear") -}}
-{{- $id := (.Get "id") -}}
 {{- $linenumbers := (.Get "linenumbers") | default "" -}}
+{{- $branch := delimit (slice "?ref=" (.Get "branch" | default "master")) "" | string -}}
+
+{{- $clear := "(/\\*(?sU).*\\*/)|(//.*)" -}}
+{{- $replace := "(\n|\t)+" -}}
+{{- $replacewith := "\n" -}}
 
 {{- $file := getJSON "https://api.github.com/repos/" (.Get "user") "/" (.Get "repo") "/contents/" (.Get "file") $branch -}}
 
@@ -15,7 +18,7 @@
     {{- range $result -}}
         <pre class="language-{{- $codetype }} {{ if gt (len $linenumbers) 0 -}}line-numbers{{- end -}}" {{ if $id }}id="source-{{- $id -}}"{{ end }} {{ if eq $codetype "agentspeak" -}}data-language="AgentSpeak(L++)"{{- end }}><code class="language-{{- $codetype -}}">
 {{- $prefix }}
-{{ if $clear }}{{ . }}{{ else }}{{ . }}{{ end }}
+{{ replaceRE $replace $replacewith (replaceRE $clear "" .) }}
 {{ $postfix -}}
         </code></pre>
     {{- end -}}
@@ -24,7 +27,7 @@
 
     <pre class="language-{{- $codetype }} {{ if gt (len $linenumbers) 0 -}}line-numbers{{- end -}}" {{ if $id }}id="source-{{- $id -}}"{{ end }} {{ if eq $codetype "agentspeak" -}}data-language="AgentSpeak(L++)"{{- end }}><code class="language-{{- $codetype -}}">
 {{- $prefix }}
-{{ $file.content | base64Decode }}
+{{ replaceRE $replace $replacewith (replaceRE $clear "" ($file.content | base64Decode)) }}
 {{ $postfix -}}
     </code></pre>
 
