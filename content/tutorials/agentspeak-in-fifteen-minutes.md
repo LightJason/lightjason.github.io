@@ -127,13 +127,13 @@ For the following sections we assume that you are working inside the directory `
 3. __For LightJason/AgentSpeak to run, it is crucial to enforce Java 1.8 support__ in your project. Add the following entry before the ```<dependencies>``` section:
 
 	<!-- htmlmin:ignore -->
-	{{< githubfile user="LightJason" repo="Examples" file="pom.xml" lang="xml" branch="tutorial-agentspeak-in-15min" filter="[[:space:]]{4}<properties>(.|\n)*?</properties>" >}}
+	{{< githubsource user="LightJason" repo="Examples" file="pom.xml" lang="xml" branch="tutorial-agentspeak-in-15min" filter="[[:space:]]{4}<properties>(.|\n)*?</properties>" >}}
     <!-- htmlmin:ignore -->
 
 4. Put the following code inside the ```<project>``` section, e.g. after ```</dependencies>```, to include the [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/examples/executable-jar.html) which creates an executable JAR when you build your project with ```mvn package``` 
 
     <!-- htmlmin:ignore -->
-    {{< githubfile user="LightJason" repo="Examples" file="pom.xml" lang="xml" branch="tutorial-agentspeak-in-15min" filter="[[:space:]]{4}<build>(.|\n)*?</build>" >}}
+    {{< githubsource user="LightJason" repo="Examples" file="pom.xml" lang="xml" branch="tutorial-agentspeak-in-15min" filter="[[:space:]]{4}<build>(.|\n)*?</build>" >}}
     <!-- htmlmin:ignore -->
     
 5. Test-build your project by running ``mvn package`` inside ```Developer/myagentapp/```, i.e. where your ``pom.xml`` is located:
@@ -160,7 +160,7 @@ Each agent, which you use, must be inherited from our base class {{< lightbox "h
 Create an agent class ```MyAgent.java``` in ```src/main/java/myagentproject/``` as follows:
 
 <!-- htmlmin:ignore -->
-{{< githubfile user="LightJason" repo="Examples" file="src/main/java/myagentproject/MyAgent.java" lang="java" branch="tutorial-agentspeak-in-15min" clear="(/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/)|(//.*)" >}}
+{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/MyAgent.java" lang="java" branch="tutorial-agentspeak-in-15min" clear="(/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/)|(//.*)" >}}
 <!-- htmlmin:ignore -->
 
 ### Agent Generator Class
@@ -170,7 +170,7 @@ Next create your own {{< lightbox "http://lightjason.github.io/AgentSpeak/source
 Create an agent generator class ```MyAgentGenerator.java``` in ```src/main/java/myagentproject/``` as follows:
 
 <!-- htmlmin:ignore -->
-{{< githubfile user="LightJason" repo="Examples" file="src/main/java/myagentproject/MyAgentGenerator.java" lang="java" branch="tutorial-agentspeak-in-15min" >}}
+{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/MyAgentGenerator.java" lang="java" branch="tutorial-agentspeak-in-15min" >}}
 <!-- htmlmin:ignore -->
 
 
@@ -181,7 +181,7 @@ The runtime is responsible for running the agents in each cycle.
 We are using [Java streams](https://docs.oracle.com/javase/tutorial/collections/streams/) to execute the agent, but you can use also a [thread-pool](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Executors.html), because all agents implement the [Callable](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Callable.html) interface (the [Future](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Future.html) object is the agent in the state $cycle + 1$)
 
 <!-- htmlmin:ignore -->
-{{< githubfile user="LightJason" repo="Examples" file="src/main/java/myagentproject/App.java" lang="java" branch="tutorial-agentspeak-in-15min" >}}
+{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/App.java" lang="java" branch="tutorial-agentspeak-in-15min" >}}
 <!-- htmlmin:ignore -->
 
 
@@ -191,7 +191,7 @@ Create a simple *Hello World* agent for testing purposes.
 Add a file ```agent.asl``` in the top-level directory of your project with the following content:
 
 <!-- htmlmin:ignore -->
-{{< githubfile user="LightJason" repo="Examples" file="agent.asl" lang="agentspeak" branch="tutorial-agentspeak-in-15min" >}}
+{{< githubsource user="LightJason" repo="Examples" file="agent.asl" lang="agentspeak" branch="tutorial-agentspeak-in-15min" >}}
 <!-- htmlmin:ignore -->
 
 The agent starts in cycle $0$ with the initial goal ```!main```. As the plan ```main``` matches, it gets executed, i.e. printing "Hello World" and adding ```mynextgoal``` to be triggered in the next cycle.
@@ -217,7 +217,7 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
 
 3. Observe the CPU load and time with the print actions (code above) and without (code below): 
 <!-- htmlmin:ignore -->
-{{< githubfile user="LightJason" repo="Examples" file="agent_noprint.asl" lang="agentspeak" branch="tutorial-agentspeak-in-15min" >}}
+{{< githubsource user="LightJason" repo="Examples" file="agent_noprint.asl" lang="agentspeak" branch="tutorial-agentspeak-in-15min" >}}
 <!-- htmlmin:ignore -->
 	
 	i.e. run
@@ -261,12 +261,12 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
     
 ## Reference Solution
 
-If you struggled at some point or wish to obtain our exemplary solution with code documentation to this tutorial, you can download the archive containing the source code [here](/download/agentspeak-in-15min.zip). 
+If you struggled at some point or wish to obtain our exemplary solution with code documentation to this tutorial, you can download the archive {{< githubzip user="LightJason" repo="Examples" branch="tutorial-agentspeak-in-15min" >}} containing the source code and a executable {{< githubdownload user="LightJason" repo="Examples" branch="jar-tutorial-agentspeak-in-15min" file="myagentapp-1.0-SNAPSHOT.jar" text="Jar file" >}}.
 
 __Be aware__ that if you build AgentSpeak from the _most recent_ sources, the values inside the ```groupId```, ```artifactId``` and ```version``` tags of the AgentSpeak dependency (inside of __your__ ```pom.xml```) will have to correspond to the _most recent_ [pom.xml](https://github.com/LightJason/AgentSpeak/blob/master/pom.xml#L27) in the AgentSpeak(L++) repository.
 
 <!-- htmlmin:ignore -->
-{{< githubfile user="LightJason" repo="AgentSpeak" file="pom.xml" lang="xml" filter="[[:space:]]{4}<groupId>(.|\n)*?</version>" prefix="<dependency>" postfix="</dependency>" >}}
+{{< githubsource user="LightJason" repo="AgentSpeak" file="pom.xml" lang="xml" filter="[[:space:]]{4}<groupId>(.|\n)*?</version>" prefix="<dependency>" postfix="</dependency>" >}}
 <!-- htmlmin:ignore -->
 
 

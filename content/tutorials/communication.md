@@ -29,7 +29,7 @@ communication structure you have to build-up your own naming model, a send actio
 For this example we create a small agent, which sends a random message to the agent with the name ```agent 0```. The initial-goal triggers the ```main```-plan, which generates the message and calls the send action.
 
 <!-- htmlmin:ignore -->
-{{< githubfile user="LightJason" repo="Examples" file="agent_with_messages.asl" lang="agentspeak" branch="tutorial-agent-communication" >}}
+{{< githubsource user="LightJason" repo="Examples" file="agent_with_messages.asl" lang="agentspeak" branch="tutorial-agent-communication" >}}
 <!-- htmlmin:ignore -->
 
 
@@ -40,7 +40,7 @@ For communication a _name resolution_ is needed, so the agents needs to get a na
 of a message
 
 <!-- htmlmin:ignore -->
-{{< githubfile user="LightJason" repo="Examples" file="src/main/java/myagentproject/MyCommunicationAgent.java" lang="java" branch="tutorial-agent-communication" >}}
+{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/MyCommunicationAgent.java" lang="java" branch="tutorial-agent-communication" >}}
 <!-- htmlmin:ignore -->
 
 ### Agent factory with name generating
@@ -52,7 +52,7 @@ but __keep in mind that the generate method can be called in parallel, so the co
 supports such [atomic variables](https://docs.oracle.com/javase/tutorial/essential/concurrency/atomicvars.html).
 
 <!-- htmlmin:ignore -->
-{{< githubfile user="LightJason" repo="Examples" file="src/main/java/myagentproject/MyAgentGenerator.java" lang="java" branch="tutorial-agent-communication" >}}
+{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/MyAgentGenerator.java" lang="java" branch="tutorial-agent-communication" >}}
 <!-- htmlmin:ignore -->
 
 
@@ -62,7 +62,7 @@ supports such [atomic variables](https://docs.oracle.com/javase/tutorial/essenti
 For communication basisc a _send_ action must be created. This actions needs also an _address resolution_ for the agent names, this can be an URL access or a string name. Within this example we use a map with string for the agent name and the value for the agent object. Each generated agent must be registered at this action so that other agents can send messages. The action tries to find the agent object based on the name, builds the goal-trigger and transfer the data to the other agent. On the next cycle call of the receiving agent the message goal-plan will be triggered.
 
 <!-- htmlmin:ignore -->
-{{< githubfile user="LightJason" repo="Examples" file="src/main/java/myagentproject/CSend.java" lang="java" branch="tutorial-agent-communication" >}}
+{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/CSend.java" lang="java" branch="tutorial-agent-communication" >}}
 <!-- htmlmin:ignore -->
 
 
@@ -73,15 +73,15 @@ For communication basisc a _send_ action must be created. This actions needs als
 The variable builder allows to create _individual variables and constants_ during runtin within a plan. In this case we crate the constant ```MyName``` which stores the individual agent name. The ```raw```-method allows to create an object reference with a safe-cast. The variable builder is added to the agent factory.
 
 <!-- htmlmin:ignore -->
-{{< githubfile user="LightJason" repo="Examples" file="src/main/java/myagentproject/CVariableBuilder.java" lang="java" branch="tutorial-agent-communication" >}}
+{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/CVariableBuilder.java" lang="java" branch="tutorial-agent-communication" >}}
 <!-- htmlmin:ignore -->
 
 
 ## Reference Solution
 
-If you struggled at some point or wish to obtain our exemplary solution to this tutorial, you can download the archive containing the source code [here](/download/communication-agent.zip). This tutorial depends on the tutorial [AgentSpeak-in-15min](agentspeak-in-fifteen-minutes), so the whole build process is explained within the basic tutorial. If you run the example the shown output can be different. 
+This tutorial depends on the tutorial [AgentSpeak-in-15min](agentspeak-in-fifteen-minutes), so the whole build process is explained within the basic tutorial. If you struggled at some point or wish to obtain our exemplary solution with code documentation to this tutorial, you can download the archive {{< githubzip user="LightJason" repo="Examples" branch="tutorial-agent-communication" >}} containing the source code and a executable {{< githubdownload user="LightJason" repo="Examples" branch="jar-tutorial-agent-communication" file="myagentapp-1.0-SNAPSHOT.jar" text="Jar file" >}}. 
 
-For the first run we start the program with 10 agents and 5 iterations:
+If you run the example the shown output can be different. For the first run we start the program with 10 agents and 5 iterations:
 
 ```commandline
 agent 0    received message [   pqepkellesxa   ] from [   agent 2   ] in cycle [   0   ]
