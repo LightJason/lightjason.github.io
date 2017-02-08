@@ -56,18 +56,44 @@ Parameter of the method will be packed / unpacked into terms automatically.
 
 Within the section both kind of actions are shown. The code of an action should be very efficient and minimalistic, because an action will called multiple times from an agent, because plan execution is in parallel, also agent execution is in parallel. 
 
-### Implementation
+### AgentSpeak(L++) Script
 
-#### AgentSpeak(L++) Script
+The agent script shows the usage of the own action, it can be used like a build-in action. The naming is equal to the ```name```-method or annotation.
 
+<!-- htmlmin:ignore -->
 {{< githubsource user="LightJason" repo="Examples" file="agent_with_action.asl" lang="agentspeak" branch="tutorial-agent-action" >}}
 <!-- htmlmin:ignore -->
 
 ### Term Data Representation
 
+The data representation can be comprehend by the standalone action.
+
+<!-- htmlmin:ignore -->
+{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/CStandAloneAction.java" lang="agentspeak" branch="tutorial-agent-action" >}}
+<!-- htmlmin:ignore -->
+
 
 ## Efficent Concurrency Action
+
+In detail to the standalone action __keep in mind, that the action is called multiple times__, because the plan and rule execution is done in parallel and multiple agent can run the action in parallel. The ```synchronized``` keyword is not a general solution for avoiding [race condition](https://en.wikipedia.org/wiki/Race_condition) because synchronization slows down the performance. 
+
+In common work the object-orientated design of the action class can be changed to removing synchronization. If you get race condition exceptions or performance problems, just redesign your architecture. A good design of concurrency architecture can be found on all [build-in actions](http://lightjason.github.io/AgentSpeak/sources/d8/da4/namespaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1buildin.html) of the framework
 
 ## Reference Solution
 
 This tutorial depends on the tutorial [AgentSpeak-in-15min](/tutorials/agentspeak-in-fifteen-minutes), so the whole build process is explained within the basic tutorial. If you struggled at some point or wish to obtain our exemplary solution with code documentation to this tutorial, you can download the archive {{< githubzip user="LightJason" repo="Examples" branch="tutorial-agent-action" >}} containing the source code and a executable {{< githubdownload user="LightJason" repo="Examples" branch="jar-tutorial-agent-action" file="myagentapp-1.0-SNAPSHOT.jar" text="Jar file" >}}. 
+
+We run the example with 5 agents and 1 cycle
+
+```commandline
+agent 981.414.120 calls standalone-action with parameter rvuoaiwqa
+agent 263.847.538 calls standalone-action with parameter tqhkgkrcpziag
+agent 1.675.634.764 calls standalone-action with parameter aefrnaopw
+agent uses string   aefrnaopw   gets from standalone action   9   and from object action   1675634757
+agent uses string   tqhkgkrcpziag   gets from standalone action   13   and from object action   263847551
+agent 1.053.779.425 calls standalone-action with parameter dwyziieavx
+agent uses string   rvuoaiwqa   gets from standalone action   9   and from object action   981414113
+agent uses string   dwyziieavx   gets from standalone action   10   and from object action   1053779435
+agent 1.128.132.589 calls standalone-action with parameter urm
+agent uses string   urm   gets from standalone action   3   and from object action   1128132590
+```
