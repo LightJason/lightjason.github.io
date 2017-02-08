@@ -55,6 +55,7 @@ img[src$='#centering'] {
     display: block;
     padding: 5px;
     margin: 0 auto;
+    max-width: 95%;
 }
 
 img[src$='#floatleft'] {
