@@ -110,16 +110,10 @@ For the following sections we assume that you are working inside the directory `
     
     ```Developer/myagentapp/``` is the directory in which your own MAS projects resides.
     
-2. Take a note of the current values of ```groupId```, ```artifactId``` and ```version``` from the AgentSpeak [pom.xml](https://github.com/LightJason/AgentSpeak/blob/master/pom.xml#L27) and put them inside the corresponding tags of the following excerpt (replace ```from AgentSpeak(L++) pom.xml``` with the correct value):
-    
-	<!-- htmlmin:ignore -->
-    ```xml
-	<dependency>
-	    <groupId>from AgentSpeak(L++) pom.xml</groupId>
-	    <artifactId>from AgentSpeak(L++) pom.xml</artifactId>
-	    <version>from AgentSpeak(L++) pom.xml</version>
-	</dependency>
-    ```
+2. Take a note of the current values of ```groupId```, ```artifactId``` and ```version``` from the AgentSpeak [pom.xml](https://github.com/LightJason/AgentSpeak/blob/master/pom.xml#L27):
+
+    <!-- htmlmin:ignore -->
+    {{< githubsource user="LightJason" repo="AgentSpeak" file="pom.xml" lang="xml" filter="[[:space:]]{4}<groupId>(.|\n)*?</version>" prefix="<dependency>" postfix="</dependency>" >}}
     <!-- htmlmin:ignore -->
     
     Inside ```Developer/myagentapp/``` open the ```pom.xml``` with your favourite (programming) editor, navigate to the ```<dependencies>``` section and add the completed excerpt above or below the already present ```<dependency>``` entries (for example, you will also find an entry for JUnit within this section).
@@ -263,11 +257,6 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
 
 If you struggled at some point or wish to obtain our exemplary solution with code documentation to this tutorial, you can download the archive {{< githubzip user="LightJason" repo="Examples" branch="tutorial-agentspeak-in-15min" >}} containing the source code and a executable {{< githubdownload user="LightJason" repo="Examples" branch="jar-tutorial-agentspeak-in-15min" file="myagentapp-1.0-SNAPSHOT.jar" text="Jar file" >}}.
 
-__Be aware__ that if you build AgentSpeak from the _most recent_ sources, the values inside the ```groupId```, ```artifactId``` and ```version``` tags of the AgentSpeak dependency (inside of __your__ ```pom.xml```) will have to correspond to the _most recent_ [pom.xml](https://github.com/LightJason/AgentSpeak/blob/master/pom.xml#L27) in the AgentSpeak(L++) repository.
-
-<!-- htmlmin:ignore -->
-{{< githubsource user="LightJason" repo="AgentSpeak" file="pom.xml" lang="xml" filter="[[:space:]]{4}<groupId>(.|\n)*?</version>" prefix="<dependency>" postfix="</dependency>" >}}
-<!-- htmlmin:ignore -->
 
 
 [^runtime]: For creating a complex and fast runtime have a look at general object-orientated programming patterns. Here we only provide a short example to show you how you can work with AgentSpeak(L++) agents.

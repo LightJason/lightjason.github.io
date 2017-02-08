@@ -79,7 +79,7 @@ The variable builder allows to create _individual variables and constants_ durin
 
 ## Reference Solution
 
-This tutorial depends on the tutorial [AgentSpeak-in-15min](agentspeak-in-fifteen-minutes), so the whole build process is explained within the basic tutorial. If you struggled at some point or wish to obtain our exemplary solution with code documentation to this tutorial, you can download the archive {{< githubzip user="LightJason" repo="Examples" branch="tutorial-agent-communication" >}} containing the source code and a executable {{< githubdownload user="LightJason" repo="Examples" branch="jar-tutorial-agent-communication" file="myagentapp-1.0-SNAPSHOT.jar" text="Jar file" >}}. 
+This tutorial depends on the tutorial [AgentSpeak-in-15min](/tutorials/agentspeak-in-fifteen-minutes), so the whole build process is explained within the basic tutorial. If you struggled at some point or wish to obtain our exemplary solution with code documentation to this tutorial, you can download the archive {{< githubzip user="LightJason" repo="Examples" branch="tutorial-agent-communication" >}} containing the source code and a executable {{< githubdownload user="LightJason" repo="Examples" branch="jar-tutorial-agent-communication" file="myagentapp-1.0-SNAPSHOT.jar" text="Jar file" >}}. 
 
 If you run the example the shown output can be different. For the first run we start the program with 10 agents and 5 iterations:
 
