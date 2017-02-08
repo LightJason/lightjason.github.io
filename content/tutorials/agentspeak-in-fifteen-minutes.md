@@ -127,12 +127,7 @@ For the following sections we assume that you are working inside the directory `
 3. __For LightJason/AgentSpeak to run, it is crucial to enforce Java 1.8 support__ in your project. Add the following entry before the ```<dependencies>``` section:
 
 	<!-- htmlmin:ignore -->
-    ```xml
-    <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
-    ``` 
+	{{< githubfile user="LightJason" repo="Examples" file="pom.xml" lang="xml" branch="tutorial-agentspeak-in-15min" filter="[[:space:]]{4}<properties>(.|\n)*?</properties>" >}}
     <!-- htmlmin:ignore -->
 
 4. Put the following code inside the ```<project>``` section, e.g. after ```</dependencies>```, to include the [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/examples/executable-jar.html) which creates an executable JAR when you build your project with ```mvn package``` 
@@ -191,20 +186,7 @@ Each agent, which you use, must be inherited from our base class {{< lightbox "h
 Create an agent class ```MyAgent.java``` in ```src/main/java/myagentproject/``` as follows:
 
 <!-- htmlmin:ignore -->
-```java
-package myagentproject;
-
-import org.lightjason.agentspeak.agent.IBaseAgent;
-import org.lightjason.agentspeak.configuration.IAgentConfiguration;
-
-final class MyAgent extends IBaseAgent<MyAgent>
-{
-    MyAgent( final IAgentConfiguration<MyAgent> p_configuration )
-    {
-        super( p_configuration );
-    }
-}
-```
+{{< githubfile user="LightJason" repo="Examples" file="src/main/java/myagentproject/MyAgent.java" lang="java" branch="tutorial-agentspeak-in-15min" >}}
 <!-- htmlmin:ignore -->
 
 ### Agent Generator Class
@@ -214,35 +196,7 @@ Next create your own {{< lightbox "http://lightjason.github.io/AgentSpeak/source
 Create an agent generator class ```MyAgentGenerator.java``` in ```src/main/java/myagentproject/``` as follows:
 
 <!-- htmlmin:ignore -->
-```java
-
-package myagentproject;
-
-import org.lightjason.agentspeak.common.CCommon;
-import org.lightjason.agentspeak.generator.IBaseAgentGenerator;
-import org.lightjason.agentspeak.language.score.IAggregation;
-
-import java.io.InputStream;
-import java.util.stream.Collectors;
-
-final class MyAgentGenerator extends IBaseAgentGenerator<MyAgent>
-{
-    MyAgentGenerator( final InputStream p_stream ) throws Exception
-    {
-        super(
-            p_stream,
-            CCommon.actionsFromPackage().collect( Collectors.toSet() ),
-            IAggregation.EMPTY
-        );
-    }
-
-    @Override
-    public final MyAgent generatesingle( final Object... p_data )
-    {
-        return new MyAgent( m_configuration );
-    }
-}
-```
+{{< githubfile user="LightJason" repo="Examples" file="src/main/java/myagentproject/MyAgentGenerator.java" lang="java" branch="tutorial-agentspeak-in-15min" >}}
 <!-- htmlmin:ignore -->
 
 
@@ -253,73 +207,7 @@ The runtime is responsible for running the agents in each cycle.
 We are using [Java streams](https://docs.oracle.com/javase/tutorial/collections/streams/) to execute the agent, but you can use also a [thread-pool](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Executors.html), because all agents implement the [Callable](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Callable.html) interface (the [Future](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Future.html) object is the agent in the state $cycle + 1$)
 
 <!-- htmlmin:ignore -->
-```java
-package myagentproject;
-
-import java.io.FileInputStream;
-import java.util.Collections;
-import java.util.Set;
-import java.util.logging.LogManager;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
-
-final class App
-{
-
-    static
-    {
-        LogManager.getLogManager().reset();
-    }
-
-    private App()
-    {
-    }
-
-    public static void main( final String[] p_args )
-    {
-        if ( p_args.length < 2 )
-            throw new RuntimeException( "arguments are not set: ASL script, number of agents" );
-
-        final Set<MyAgent> l_agents;
-        try
-            (
-                final FileInputStream l_stream = new FileInputStream( p_args[0] );
-            )
-        {
-            l_agents = Collections.unmodifiableSet(
-                new MyAgentGenerator( l_stream )
-                    .generatemultiple( Integer.parseInt( p_args[1] ) )
-                    .collect( Collectors.toSet() )
-            );
-        }
-        catch ( final Exception l_exception )
-        {
-            l_exception.printStackTrace();
-            return;
-        }
-
-        IntStream
-            .range(
-                0,
-                p_args.length < 3
-                ? Integer.MAX_VALUE
-                : Integer.parseInt( p_args[2] )
-            )
-            .forEach( j -> l_agents.parallelStream().forEach( i ->
-                                                              {
-                                                                  try
-                                                                  {
-                                                                      i.call();
-                                                                  }
-                                                                  catch ( final Exception l_exception )
-                                                                  {
-                                                                      l_exception.printStackTrace();
-                                                                  }
-                                                              } ) );
-    }
-}
-```
+{{< githubfile user="LightJason" repo="Examples" file="src/main/java/myagentproject/App.java" lang="java" branch="tutorial-agentspeak-in-15min" >}}
 <!-- htmlmin:ignore -->
 
 
@@ -329,18 +217,7 @@ Create a simple *Hello World* agent for testing purposes.
 Add a file ```agent.asl``` in the top-level directory of your project with the following content:
 
 <!-- htmlmin:ignore -->
-<pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">// initial-goal
-!main.
-// initial plan (triggered by the initial goal)
-+!main <-
-    generic/print("Hello World!");
-    !mynextgoal
-    .
-+!mynextgoal <-
-    generic/print("Hello World! (again)", Cycle);
-    !mynextgoal
-    .
-</code></pre>
+{{< githubfile user="LightJason" repo="Examples" file="agent.asl" lang="agentspeak" branch="tutorial-agentspeak-in-15min" >}}
 <!-- htmlmin:ignore -->
 
 The agent starts in cycle $0$ with the initial goal ```!main```. As the plan ```main``` matches, it gets executed, i.e. printing "Hello World" and adding ```mynextgoal``` to be triggered in the next cycle.
@@ -366,19 +243,7 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
 
 3. Observe the CPU load and time with the print actions (code above) and without (code below): 
 <!-- htmlmin:ignore -->
-{{% source "agentspeak" %}}
-// initial-goal
-!main.
-   
-// initial plan (triggered by the initial goal)
-+!main <-
-   !mynextgoal
-.   
-   
-+!mynextgoal <-
-   !mynextgoal
-.
-{{% /source %}}
+{{< githubfile user="LightJason" repo="Examples" file="agent_noprint.asl" lang="agentspeak" branch="tutorial-agentspeak-in-15min" >}}
 <!-- htmlmin:ignore -->
 	
 	i.e. run
@@ -427,7 +292,7 @@ If you struggled at some point or wish to obtain our exemplary solution with cod
 __Be aware__ that if you build AgentSpeak from the _most recent_ sources, the values inside the ```groupId```, ```artifactId``` and ```version``` tags of the AgentSpeak dependency (inside of __your__ ```pom.xml```) will have to correspond to the _most recent_ [pom.xml](https://github.com/LightJason/AgentSpeak/blob/master/pom.xml#L27) in the AgentSpeak(L++) repository.
 
 <!-- htmlmin:ignore -->
-{{< githubfile "LightJason" "AgentSpeak" "pom.xml" "xml" "[[:space:]]{4}<groupId>(.|\n)*?</version>" 1 "<dependency>" "</dependency>" >}}
+{{< githubfile user="LightJason" repo="AgentSpeak" file="pom.xml" lang="xml" filter="[[:space:]]{4}<groupId>(.|\n)*?</version>" prefix="<dependency>" postfix="</dependency>" >}}
 <!-- htmlmin:ignore -->
 
 
