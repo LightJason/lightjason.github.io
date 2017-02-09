@@ -30,7 +30,7 @@ The beliefbase consists of three different elements
 In general, beliefs can be stored in a persistent way. 
 So an literal object will be set into the storage and the views creates the tree structure. 
 
-![Beliefbase](/images/beliefbase.svg#centering)
+{{< img src="/images/beliefbase.svg" alt="beliefbase" width="30%" >}}
 
 In this example, there are two agents and both agents are referenced to the equal storage, but use different views.
 
@@ -53,7 +53,7 @@ But this type of beliefs consumes more memory and reduce performance during modi
 
 The on-demand beliefbase allows you to create a non-persistence belief definition, which is suitable to get access to the environment / underlying software architecture. It follows up the [lazy loading pattern](https://en.wikipedia.org/wiki/Lazy_loading))
 
-![Beliefbase](/images/ondemandbeliefbase.svg#centering)
+{{< img src="/images/ondemandbeliefbase.svg" alt="on-demand beliefbase" width="50%" >}}
 
 For some practical explanation, think about agents as:
  

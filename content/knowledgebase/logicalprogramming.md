@@ -109,7 +109,7 @@ fibonacci(N,R) :-
 
 In the section [design time](#designtime) we are talked about a symbolic representation of data. We can define such data in the agent script and during the execution of the agent we would like to modify the data. On an abstract point of view we are talking about [deductive reasoning](https://en.wikipedia.org/wiki/Deductive_reasoning), that means in slopping sentence: _We are generating new knowledge, based on the current knowledge of the agent_.
 
-![deduction](/images/deduction.svg#centering)
+{{< img src="/images/deduction.svg" alt="deduction" width="30%" >}}
 
 The description of the figure is that we are modelling the $\Delta$ during [design time](#designtime) with any kind of [facts](#facts-beliefs). During runtime the agent can modify the knowledge and generate implicit knowledge about the environment which is based on the previous knowledge $\Delta$. The implicit knowledge is named $belief(\Delta, \rho)$
 

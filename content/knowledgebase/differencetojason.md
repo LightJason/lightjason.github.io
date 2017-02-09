@@ -17,7 +17,8 @@ LightJason does not use __any code fragments__ of Jason, so there is no connecti
 
 The Jason agent cycle defines the _execution mechanism_ of an agent and is found on [Jason Book](http://jason.sourceforge.net/jBook/jBook/Home.html) figure 4.1 (page 68). The cycle execution depends on the ordering of the source code within the ASL file.
 
-![Jason Agent Cycle](/images/jasonagentcycle.svg#centering)
+{{< img src="/images/jasonagentcycle.svg" alt="Jason agent cycle" >}}
+
 
 ## LightJason Agent Cycle
 

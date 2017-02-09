@@ -15,7 +15,8 @@ A [Finite-State-Machine](https://en.wikipedia.org/wiki/Finite-state_machine) is 
 Mostly within a state the state-name is documented, also the arrow of a transition can be used for documentation.
 
 > This example show a similar state-machine with three states, that runs from the _initial state_ to a _final state_ (left to right). This example shows the _static structure_ of the state machine, so there is no runtime information with in the illustration
-> ![finite-state-machine](/images/fsm1.svg#centering)
+> {{< img src="/images/fsm1.svg" alt="finite-state-machine" width="30%" >}}
+ 
 
 ### Usage and Example
 
