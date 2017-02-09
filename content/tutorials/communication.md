@@ -29,7 +29,7 @@ communication structure you have to build-up your own naming model, a send actio
 For this example we create a small agent, which sends a random message to the agent with the name ```agent 0```. The initial-goal triggers the ```main```-plan, which generates the message and calls the send action.
 
 <!-- htmlmin:ignore -->
-{{< githubsource user="LightJason" repo="Examples" file="agent_with_messages.asl" lang="agentspeak" branch="tutorial-agent-communication" clear="(/\\*(?sU).*\\*/)|(//.*)" >}}
+{{< githubsource user="LightJason" repo="Examples" file="agent_with_messages.asl" lang="agentspeak" branch="tutorial-agent-communication" >}}
 <!-- htmlmin:ignore -->
 
 

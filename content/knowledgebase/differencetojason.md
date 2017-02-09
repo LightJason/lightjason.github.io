@@ -21,7 +21,7 @@ The Jason agent cycle defines the _execution mechanism_ of an agent and is found
 
 ## LightJason Agent Cycle
 
-On a general point of view we reduce the Jason agent cycle to the neccessary elements. This allows us to build a very efficient execution structure based on a _parallel data-flowing architecture_. On the other hand we generalize the cycle structure, so we can build a more flexible architecture. But __keep in mind_ the LightJaosn agent cycle is run in parallel with optional on-demand / lazy-binding data elements.
+On a general point of view we reduce the Jason agent cycle to the neccessary elements. This allows us to build a very efficient execution structure based on a _parallel data-streaming architecture_. On the other hand we generalize the cycle structure, so we can build a more flexible architecture. But __keep in mind_ the LightJaosn agent cycle is run in parallel with optional on-demand / lazy-binding data elements.
 
 ![LightJason Agent Cylce](/images/agentcycle.svg#centering)
 
@@ -38,9 +38,12 @@ A statistic will count fails and successful runs of the plans. The _cost aggrega
 
 ### Terms and Literals
 
-The LightJason architecture does not implement all elements of a _logical programming language_. We reduce the concept also, so that we can optimize the execution performance, so we define two elements only:
+The LightJason architecture does not implement all elements of a _logical programming language_. We reduce the concept also, so that we can optimize the execution performance. We define two elements only:
 
 * __literals__ which defines the logical literal with a functor, value and annotation list
 * __raw terms__ which defines a _wrapper_ around any native Java object type
 
 ### Beliefbase
+
+The beliefbase is not a single element to store all facts of the agent. The beliefbase is a _tree structure_ to organize the agent knowledge. Nodes of this _knowledge tree_ can be shared over many agents or can be used by _on-demand unfification_, so that the agent can perceive the environment in realtime.
+

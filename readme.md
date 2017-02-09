@@ -2,10 +2,11 @@
 
 This repository is used for publication of additional content of the LightJason project
 
-## Usage
+## Usage & Tools
 
 * [Hugo](https://gohugo.io/)
 * [Pandoc-Citeproc](http://pandoc.org/)
+* [SVG Optimiser](http://petercollingridge.appspot.com/svg-optimiser)
 
 ### Bibliographie
 
