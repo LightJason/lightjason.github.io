@@ -5,9 +5,9 @@
 {{- $linenumbers := (.Get "linenumbers") | default "" -}}
 {{- $branch := delimit (slice "?ref=" (.Get "branch" | default "master")) "" | string -}}
 
-{{- $clear := "(/\\*(?sU).*\\*/)|(//.*)" -}}
-{{- $replace := "(\n|\t)+" -}}
-{{- $replacewith := "\n" -}}
+{{- $clear := .Get "clear" | default "(/\\*(?sU).*\\*/)|(//.*)" -}}
+{{- $replace := .Get "replace" | default "(\n|\r)+" -}}
+{{- $replacewith := .Get "replacewith" | default "\n" -}}
 
 {{- $file := getJSON "https://api.github.com/repos/" (.Get "user") "/" (.Get "repo") "/contents/" (.Get "file") $branch -}}
 
@@ -17,18 +17,14 @@
     {{- $result := findRE (.Get "filter") ($file.content | base64Decode) (.Get "result" | default 1 | int) -}}
     {{- range $result -}}
         <pre class="language-{{- $codetype }} {{ if gt (len $linenumbers) 0 -}}line-numbers{{- end -}}" {{ if $id }}id="source-{{- $id -}}"{{ end }} {{ if eq $codetype "agentspeak" -}}data-language="AgentSpeak(L++)"{{- end }}><code class="language-{{- $codetype -}}">
-{{- $prefix }}
-{{ replaceRE $replace $replacewith (replaceRE $clear "" .) }}
-{{ $postfix -}}
+{{- replaceRE $replace $replacewith (delimit (slice $prefix "\n" (replaceRE $clear "" .) "\n" $postfix) "") -}}
         </code></pre>
     {{- end -}}
 
 {{- else -}}
 
     <pre class="language-{{- $codetype }} {{ if gt (len $linenumbers) 0 -}}line-numbers{{- end -}}" {{ if $id }}id="source-{{- $id -}}"{{ end }} {{ if eq $codetype "agentspeak" -}}data-language="AgentSpeak(L++)"{{- end }}><code class="language-{{- $codetype -}}">
-{{- $prefix }}
-{{ replaceRE $replace $replacewith (replaceRE $clear "" ($file.content | base64Decode)) }}
-{{ $postfix -}}
+{{- replaceRE $replace $replacewith (delimit (slice $prefix "\n" (replaceRE $clear "" ($file.content | base64Decode)) "\n" $postfix) "") -}}
     </code></pre>
 
 {{- end -}}

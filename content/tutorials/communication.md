@@ -22,7 +22,7 @@ communication structure you have to build-up your own naming model, a send actio
 > Java supports a [serialize interface](https://docs.oracle.com/javase/tutorial/jndi/objects/serial.html) 
 > so don't create self-defined string data structure, because for such message transfering there 
 > are a lot of other and well-known and estabilished components. Well known formats
-> are [JSON](https://de.wikipedia.org/wiki/JavaScript_Object_Notation), [YAML](https://de.wikipedia.org/wiki/YAML) or [XML/XSD with Jaxb](https://de.wikipedia.org/wiki/Java_Architecture_for_XML_Binding)
+> are [JSON](https://en.wikipedia.org/wiki/JavaScript_Object_Notation), [YAML](https://en.wikipedia.org/wiki/YAML) or [XML/XSD with Jaxb](https://en.wikipedia.org/wiki/Java_Architecture_for_XML_Binding)
 
 ## Agent
 
