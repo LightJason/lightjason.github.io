@@ -19,6 +19,7 @@
 !*.xml
 !*.txt
 !*.graffle
+!*.config
 
 # ignore generated files
 public/**
