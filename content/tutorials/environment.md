@@ -3,152 +3,53 @@ title: "Tutorial: Environment"
 jsonld: ["techarticle"]
 ---
 
-By default, there is no environment in LightJason, because of our system requirements and design; but you can easily write your own. __Keep in mind that all calls of the environment are done in parallel, so many agents might access the environment at the same time with different actions.__ Therefore you must create a thread-safe data structure for your environment. If the environment throws an exception, the action on the agent-side will fail.
+LightJason system architecture does not require any environment, but you can easily write your own. Based on the _asynchronous and parallel_ execution model in LightJason you have to create thread-safe data structures for your environment to avoid any [race condition](https://en.wikipedia.org/wiki/Race_condition). 
+
+__Keep in mind that all calls of the environment are done in parallel and asynchronously, so your environment must handle these access correctly.__
 
 {{< toc >}}
 
-## Simple Environment
+## Previous Knowledge
 
-1. You can create an environment class which any content, but for this tutorial we create two ```synchronized``` methods for a more efficient execution with concurrent data structures and a well-organised source code.
+We do the tutorial into three steps:
 
-	<!-- htmlmin:ignore -->
-    ```java
-    /* environment class */
-    public final class Environment
-    {
-    
-        /**
-         * method to do something with the agent but method
-         * is synchronized to avoid concurrency exceptions
-         * @param p_agent agent
-         */
-        public final synchronized void do_something( final IAgent<?> p_agent )
-        {
-            // do something with the agent
-            // throw an execption for action failing
-        }
-        
-        
-        /**
-         * method to do something with the agent and value but method
-         * is synchronized to avoid concurrency exceptions
-         * @param p_agent agent
-         * @param p_value double value
-         */ 
-        public final synchronized void do_somethingother( final IAgent<?> p_agent, final double p_value )
-        {
-            // do something with the agent and the value
-            // throw an execption for action failing
-        }
-        
-    }
-    ```
-    <!-- htmlmin:ignore -->
+1. create the basic agent structure based on the [AgentSpeak 15min](/tutorials/agentspeak-in-fifteen-minutes/), [Triggering](/tutorials/trigger/) and [Actions](/tutorials/actions/) tutorials
+2. we use the [object-actions (internal actions)](/tutorials/actions/#object-actions-internal-actions) to pass the calls from the agent to the evnironment
+3. we create a _thread-safe_ environment which can execute the _object-actions_ from the agent
 
-2. Modify the [agent generator](/tutorials/agentspeak-in-fifteen-minutes/#your-agent-generator-class) and pass the environment to the agent constructor.
+## Agent with actions
 
-	<!-- htmlmin:ignore -->
-    ```java
-    public final class MyAgentGenerator extends IBaseAgentGenerator<MyAgent>
-    {
-        /**
-         * environment reference
-         */
-        private final Environment m_environment;
-    
-        /**
-         * constructor of the generator
-         * @param p_environment environment reference        
-         * @param p_stream ASL code as any stream e.g. FileInputStream
-         */ 
-        public MyAgentGenerator( final Environment p_environment, final InputStream p_stream ) throws Exception
-        {
-            super(
-                p_stream,
-    
-                Stream.concat(
-                    CCommon.actionsFromPackage(),
-                    CCommon.actionsFromAgentClass( MyAgent.class ),              
-                ).collect( Collectors.toSet() ),
-    
-                IAggregation.EMPTY
-            );
-            m_environment = p_environment;
-        }
-    
-        @Override
-        public final MyAgent generatesingle( final Object... p_data )
-        {
-            // put the environment reference to the agent
-            return new MyAgent( m_configuration, m_environment );
-        }
-    }    
-    ```
-    <!-- htmlmin:ignore -->
+### Agent class
 
-3. Modify the [agent class constructor](/tutorials/agentspeak-in-fifteen-minutes/#a-id-agentclass-a-your-agent-class), so you can put an environment inside it and create a [class action](/tutorials/agentspeak-in-fifteen-minutes/#class-actions) to pass the data to/from the environment. If errors occur, throw an exception so the agent plan will fail.
+<!-- htmlmin:ignore -->
+{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/MyAgent.java" lang="java" branch="tutorial-environment" >}}
+<!-- htmlmin:ignore -->
 
-	<!-- htmlmin:ignore -->
-    ```java
-    /* agent class with inner actions which pass data to the environment */
-    @IAgentAction
-    public final class MyAgent extends IBaseAgent<MyAgent>;
-    {
-    
-        /**
-         * environment reference
-         */
-        private final Environment m_environment;
-    
-        /**
-         * constructor of the agent
-         * @param p_configuration agent configuration of the agent generator        
-         * @param p_environment environment reference
-         */
-        public MyAgent( final IAgentConfiguration<MyAgent> p_configuration, final Environment p_environment,  )
-        {
-            super( p_configuration );
-            m_environment = p_environment;
-        }
-        
-        /**
-         * methods which represent an action of the agent and pass the call
-         * through the environment
-         */
-        @IAgentActionFilter
-        @IAgentActionName( name = "env/action" )
-        private void envaction()
-        {
-            // method can throw an exception for action failing
-            m_environment.do_something( this );
-        }
-        
-        /**
-         * other method for an agent action
-         *
-         * @param p_value number value
-         */
-        @IAgentActionFilter
-        @IAgentActionName( name = "env/paramaction" )
-        private void envotheraction( final Number p_value )
-        {
-            // method can throw an exception for action failing
-            m_environment.do_somethingother( this, p_value.doubleValue() );
-        }
-    
-    }
-    ```
-    <!-- htmlmin:ignore -->
+### Agent AgentSpeak(L++) Script
 
-## Complex Environment
+<!-- htmlmin:ignore -->
+{{< githubsource user="LightJason" repo="Examples" file="agent_environment.asl" lang="agentspeak" branch="tutorial-environment" >}}
+<!-- htmlmin:ignore -->
+
+
+
+
+## Agent generator with environment
+
+<!-- htmlmin:ignore -->
+{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/MyAgentGenerator.java" lang="java" branch="tutorial-environment" >}}
+<!-- htmlmin:ignore -->
+
+
+## Environment
+
+<!-- htmlmin:ignore -->
+{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/CEnvironment.java" lang="java" branch="tutorial-environment" >}}
+<!-- htmlmin:ignore -->
+
 
 In most cases, you have got a bidirectional connection between agent and environment, so the agent should perceive the environment (reads data from the environment) and should also modify the environment (by executing actions).
-So we combine the [efficient beliefbase tutorial](/tutorials/efficient-beliefbase) with the [simple environment code](#create-simple-environment).
 
-## Multiple Environments
+## Reference Solution
 
-By the system design an agent can deal with multiple environments:
-Each environment can be referenced by an unique name, which is used for the literal functor.
-LightJason's [unifcation](/knowledgebase/logicalprogramming/#unifaction) and [variables](/knowledgebase/logicalprogramming/#variables) allow to store an environment object.
-The reference to the environment object can be passed to the action. The agent also has access to the beliefbase to get knowledge about the current environment state, which can changed at any time, e.g. by [communication](/tutorials/communication) or by the underlying software system.
-
+If you struggled at some point or wish to obtain our exemplary solution with code documentation to this tutorial, you can download the archive {{< githubzip user="LightJason" repo="Examples" branch="tutorial-environment" >}} containing the source code and a executable {{< githubdownload user="LightJason" repo="Examples" branch="jar-tutorial-environment" file="myagentapp-1.0-SNAPSHOT.jar" text="Jar file" >}}.
