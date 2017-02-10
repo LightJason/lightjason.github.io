@@ -19,10 +19,16 @@ We do the tutorial into three steps:
 
 ## Agent with actions
 
+The agent class must define the actions which passed the call to the environment. Based on this definition the action can be called inside the agent script
+
 ### Agent class
 
+In this example we implement the action as [object-actions (internal actions)](/tutorials/actions/#object-actions-internal-actions) on {{< linelink "" "agentclass" "20-25" >}}. The method name can be choosen arbitrary, so the annotation defines the action name. Arguments can be passed with the native Java type inside the method. 
+
+The method pass the data to the method of the environment object {{< linelink "" "agentclass" "24" >}}. The environment object is set by the constructor and stored inside the agent object {{< linelink "" "agentclass" "12, 14, 17" >}}. All agents references the same environment, because in Java als inheritance of objects are passed as references.
+
 <!-- htmlmin:ignore -->
-{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/MyAgent.java" lang="java" branch="tutorial-environment" >}}
+{{< githubsource id="agentclass" user="LightJason" repo="Examples" file="src/main/java/myagentproject/MyAgent.java" lang="java" branch="tutorial-environment" >}}
 <!-- htmlmin:ignore -->
 
 ### Agent AgentSpeak(L++) Script
