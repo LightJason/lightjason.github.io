@@ -33,6 +33,8 @@ The method pass the data to the method of the environment object {{< linelink ""
 
 ### Agent AgentSpeak(L++) Script
 
+The agent script can use the action ```env/move```. The parameter is the new position, but this can fail. 
+
 <!-- htmlmin:ignore -->
 {{< githubsource user="LightJason" repo="Examples" file="agent_environment.asl" lang="agentspeak" branch="tutorial-environment" >}}
 <!-- htmlmin:ignore -->
