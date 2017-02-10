@@ -32,3 +32,9 @@ div.bodywrapper {
     border: 1px solid #B1B4B6;
     text-align: center;
 }
+
+code, pre {
+    width: 95%;
+    font-size: 10pt;
+    white-space: pre-wrap !important;
+}
