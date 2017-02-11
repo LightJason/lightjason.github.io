@@ -21,6 +21,11 @@ jQuery(function() {
 	jQuery("#animate-literal-negation").hover( 
 		function() { jQuery(".svg-literal-negation").attr("fill", "red"); },
 		function() { jQuery(".svg-literal-negation").attr("fill", ""); } 
+	);
+
+	jQuery("#animate-literal-raw").hover( 
+		function() { jQuery(".svg-literal-raw").attr("fill", "blue"); },
+		function() { jQuery(".svg-literal-raw").attr("fill", ""); } 
 	);	
 	
 } );
