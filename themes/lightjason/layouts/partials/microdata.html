@@ -97,7 +97,7 @@
 	"description" : {{ .Params.description | default (replaceRE "\n+" " " (replace (.Summary | markdownify | plainify) "Contents [Hide]" "")) -}},
 	"provider" : {
 		"@type" : "Organization",
-		"nmae" : {{ .Site.Title -}},
+		"name" : {{ .Site.Title -}},
 		"sameAs" : {{ delimit (slice .Site.Params.domain.protocol .Site.Params.domain.name) "" }}
 	}
 }
