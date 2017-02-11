@@ -30,7 +30,7 @@ dependencies:
         # see release version https://www.npmjs.com/package/html-minifier-cli
         - npm install html-minifier -g
         # see release version https://github.com/svg/svgo
-        #- npm install -g svgo
+        #- npm install -g git+https://github.com/svg/svgo.git
 
 
 
