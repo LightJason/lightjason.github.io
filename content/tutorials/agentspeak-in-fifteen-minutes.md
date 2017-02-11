@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Develop an AgentSpeak Scenario in 15 Minutes"
-jsonld: ["techarticle"]
+jsonld: ["techarticle", "course"]
 ---
 
 This tutorial explains how to develop a simple, but full working scenario in 15 minutes with the most recent version of the AgentSpeak(L++) source code.
@@ -11,7 +11,7 @@ __Note: This tutorial aims at developers of multi-agent systems (MAS) and requir
 
 ## Tools You Need
 
-* Working Maven $\geq$ 3.1 [installation](http://maven.apache.org/install.html).
+* Working Maven greater than 3.0 [installation](http://maven.apache.org/install.html).
 * Java __JDK__ 1.8 installation which can be obtained [here](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 * Git installation (optional, but recommended)
   * Linux: Installing ``git`` via your favourite package manager should be sufficient.

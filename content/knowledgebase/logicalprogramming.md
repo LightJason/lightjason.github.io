@@ -1,6 +1,6 @@
 ---
 title: "Basic Knowledge: Logical Programming"
-jsonld: ["techarticle"]
+jsonld: ["techarticle", "course"]
 ---
 
 This tutorial gives a short introduction in [logical programming concepts](https://en.wikipedia.org/wiki/Logic_programming), which are needed to write the source code of an agent. 

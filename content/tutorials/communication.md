@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Communication"
-jsonld: ["techarticle"]
+jsonld: ["techarticle", "course"]
 ---
 
 LightJason architecture does not support in general a build-in communication, because communication and 

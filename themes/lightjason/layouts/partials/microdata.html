@@ -89,6 +89,21 @@
 {{- end }}
 
 
+{{- if in .Params.jsonld "course" }}
+,{
+	"@context" : "http://schema.org",
+	"@type" : "Course",
+	"name" : {{ .Title -}},
+	"description" : {{ .Params.description | default (replaceRE "\n+" " " (replace (.Summary | markdownify | plainify) "Contents [Hide]" "")) -}},
+	"provider" : {
+		"@type" : "Organization",
+		"nmae" : {{ .Site.Title -}},
+		"sameAs" : {{ delimit (slice .Site.Params.domain.protocol .Site.Params.domain.name) "" }}
+	}
+}
+{{- end }}
+
+
 {{- if isset .Site.Taxonomies .Section -}}
 ,{
 	"@context" : "http://schema.org",

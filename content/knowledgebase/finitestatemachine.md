@@ -1,6 +1,6 @@
 ---
 title: "Basic Knowledge: Finite-State-Machine"
-jsonld: ["techarticle"]
+jsonld: ["techarticle", "course"]
 ---
 
 ## State Machine
