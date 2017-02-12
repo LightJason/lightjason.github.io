@@ -17,8 +17,9 @@ jQuery(function() {
 
 
 	// defines hover effects for both agent-cycles
-	[ ".svg-agentcycle-checkcontext", ".svg-agentcycle-unify", 
-	 ".svg-agentcycle-execution", ".svg-agentcycle-beliefbase", ".svg-agentcycle-plans"
+	[ ".svg-agentcycle-checkcontext", ".svg-agentcycle-unify", ".svg-agentcycle-action",
+	 ".svg-agentcycle-execution", ".svg-agentcycle-beliefbase", ".svg-agentcycle-plans",
+	 ".svg-agentcycle-intentions"
 	].forEach( function(i) {
 		jQuery(i).hover( 
 			function() { jQuery(i).attr("fill", "#0f0"); },
