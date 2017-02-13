@@ -11,7 +11,7 @@ jQuery(function() {
 	});
 
 	jQuery("#animate-literal-raw").hover( 
-			function() { jQuery(".svg-literal-raw").attr("fill", "blue"); },
+			function() { jQuery(".svg-literal-raw").attr("fill", "#0a7bff"); },
 			function() { jQuery(".svg-literal-raw").attr("fill", ""); } 
 		);
 
