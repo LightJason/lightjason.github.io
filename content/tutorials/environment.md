@@ -23,9 +23,9 @@ The agent class must define the actions which passed the call to the environment
 
 ### Agent class
 
-In this example we implement the action as [object-actions (internal actions)](/tutorials/actions/#object-actions-internal-actions) on {{< linelink "" "agentclass" "20-25" >}}. The method name can be choosen arbitrary, so the annotation defines the action name. Arguments can be passed with the native Java type inside the method. 
+In this example we implement the action as [object-actions (internal actions)](/tutorials/actions/#object-actions-internal-actions) on {{< linelink "" "agentclass" "21-26" >}}. The method name can be choosen arbitrary, so the annotation defines the action name. Arguments can be passed with the native Java type inside the method. 
 
-The method pass the data to the method of the environment object {{< linelink "" "agentclass" "24" >}}. The environment object is set by the constructor and stored inside the agent object {{< linelink "" "agentclass" "12, 14, 17" >}}. All agents references the same environment, because in Java als inheritance of objects are passed as references.
+The method pass the data to the method of the environment object {{< linelink "" "agentclass" "25" >}}. The environment object is set by the constructor and stored inside the agent object {{< linelink "" "agentclass" "13, 15, 18" >}}. All agents references the same environment, because in Java all inheritance of objects are passed as references.
 
 <!-- htmlmin:ignore -->
 {{< githubsource id="agentclass" user="LightJason" repo="Examples" file="src/main/java/myagentproject/MyAgent.java" lang="java" branch="tutorial-environment" >}}
@@ -33,10 +33,10 @@ The method pass the data to the method of the environment object {{< linelink ""
 
 ### Agent AgentSpeak(L++) Script
 
-The agent script can use the action ```env/move```. The parameter is the new position, but this can fail. 
+The agent script can use the action ```env/move``` at {{< linelink "" "asl" "10" >}}. The parameter is the new position, but this can fail, so the whole can fail also. Here we encapsulate the action with a plan to handle failure execution. The failure execution start with the plan {{< linelink "" "asl" "15-20" >}}. Each of the _movement plans_ calls it self to create en _infinity loop_ of moving. In parallel the plan {{< linelink "" "asl" "21-23" >}} will be executed if another agents has been moved.
 
 <!-- htmlmin:ignore -->
-{{< githubsource user="LightJason" repo="Examples" file="agent_environment.asl" lang="agentspeak" branch="tutorial-environment" >}}
+{{< githubsource user="LightJason" repo="Examples" file="agent_environment.asl" lang="agentspeak" branch="tutorial-environment" id="asl" >}}
 <!-- htmlmin:ignore -->
 
 
