@@ -17,9 +17,34 @@ We do the tutorial into three steps:
 2. we use the [object-actions (internal actions)](/tutorials/actions/#object-actions-internal-actions) to pass the calls from the agent to the evnironment
 3. we create a _thread-safe_ environment which can execute the _object-actions_ from the agent
 
-## Agent with actions
 
-The agent class must define the actions which passed the call to the environment. Based on this definition the action can be called inside the agent script
+## Environment
+
+For this example we use a small structure within the agent should change there position. The agent can move one cell to the left or right, but the agent can move if the cell is free. The number of cells is $1.5 \cdot \text{number of agents}$ so there is a guarantee that there is a free cell. The agent position will be set by random on initialization. 
+
+{{< img src="/images/environment.svg" width="35%" >}}
+
+We need on the environment two structures for storing, both structures must be thread-safe
+
+* a storage for the agents (the cell definition) {{< linelink "" "env" "13" >}}
+* a map to store agent an positon for read access {{< linelink "" "env" "15" >}}
+
+For execution we need two methods
+
+* a method for initial set of the agent {{< linelink "" "env" "35-49" >}}
+* the method for moving, which is used for the agent action {{< linelink "" "env" "51-83" >}}
+
+With a trigger {{< linelink "" "env" "65-72" >}} we notify all other agents if an agents change the position {{< linelink "" "env" "78-79" >}}. If the agent cannot move, because the cell is not empty, we thrown an exception on {{< linelink "" "env" "82" >}} and this will fail the agent action.
+
+<!-- htmlmin:ignore -->
+{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/CEnvironment.java" lang="java" branch="tutorial-environment" id="env" >}}
+<!-- htmlmin:ignore -->
+
+
+
+## Agent with environment actions
+
+The agent class must define the actions which passed the call to the environment. Based on this definition the action can be called inside the agent script. 
 
 ### Agent class
 
@@ -41,22 +66,22 @@ The agent script can use the action ```env/move``` at {{< linelink "" "asl" "10"
 
 
 
-
 ## Agent generator with environment
 
-<!-- htmlmin:ignore -->
-{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/MyAgentGenerator.java" lang="java" branch="tutorial-environment" >}}
-<!-- htmlmin:ignore -->
-
-
-## Environment
+The agent generator is structured for a flexible environment, so with the constuctor the environment object is set into {{< linelink "" "generator" "12, 14, 31" >}}
 
 <!-- htmlmin:ignore -->
-{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/CEnvironment.java" lang="java" branch="tutorial-environment" >}}
+{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/MyAgentGenerator.java" lang="java" branch="tutorial-environment" id="generator" >}}
 <!-- htmlmin:ignore -->
 
+### Variable Builder
 
-In most cases, you have got a bidirectional connection between agent and environment, so the agent should perceive the environment (reads data from the environment) and should also modify the environment (by executing actions).
+For creating fast access to data of the environment (size) and agent name (hashcode) we use a variable builder, that gets the environment also as reference {{< linelink "" "variablebuilder" "13, 15, 17" >}}. The _generate_ method creates constants for each plan {{< linelink "" "variablebuilder" "20-27" >}}. In detail to the environment data {{< linelink "" "variablebuilder"  "25" >}} create a variable with the size of the environment
+
+<!-- htmlmin:ignore -->
+{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/CVariableBuilder.java" lang="java" branch="tutorial-environment" id="variablebuilder" >}}
+<!-- htmlmin:ignore -->
+
 
 ## Reference Solution
 

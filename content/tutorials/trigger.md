@@ -7,6 +7,10 @@ This tutorial explain the functionality of _agent triggering_. For understanding
 
 {{< toc >}}
 
+## Previous Knowledge
+
+The [AgentSpeak 15min](/tutorials/agentspeak-in-fifteen-minutes/) tutorial defines the basic knowledge and working scenario.
+
 ## What are triggers?
 
 A short definition of triggers in LightJason's agent concept it is

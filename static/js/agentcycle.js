@@ -16,7 +16,7 @@ jQuery(function() {
 		);
 
 
-	// defines hover effects for both agent-cycles
+	// defines hover effects for both agent-cycles (green symbols)
 	[ ".svg-agentcycle-checkcontext", ".svg-agentcycle-unify", ".svg-agentcycle-action",
 	 ".svg-agentcycle-execution", ".svg-agentcycle-beliefbase", ".svg-agentcycle-plans",
 	 ".svg-agentcycle-intentions", ".svg-agentcycle-trigger"
@@ -26,5 +26,13 @@ jQuery(function() {
 			function() { jQuery(i).attr("fill", "#dfd"); } 
 		);
 	});
-	
+
+
+	// defines hover effects for both agent-cycles (blue-grey symbols)
+	[ ".svg-agentcycle-triggeritem" ].forEach( function(i) {
+		jQuery(i).hover( 
+			function() { jQuery(i).attr("fill", "#0a7bff"); },
+			function() { jQuery(i).attr("fill", "#ccc"); } 
+		);
+	});	
 } );

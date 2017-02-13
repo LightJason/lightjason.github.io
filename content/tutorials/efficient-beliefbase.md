@@ -3,21 +3,21 @@ title: "Tutorial: Efficient Beliefbase"
 jsonld: ["techarticle"]
 ---
 
-In contrast to Prolog and original Jason, the beliefbase of LightJason is more than a list.
+In contrast to Prolog and original Jason, the beliefbase of LightJason is more than a list of facts.
 LightJason supports a hierarchical structure of beliefs. 
 We support a more organised data structure with efficient searching and unification of beliefs.
 
 {{< toc >}}
 
-A literal in LightJason can be structured like
+## Previous Knowledge
 
-<pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
-foo/value(5)
-</code></pre>
+This tutorial describs the usage of beliefbases in a more general usages but also with _on-demand access_. 
 
-and each part (separated by slash) references a beliefbase. This structure is comparable to a Unix directory, where the last item is the file (here: the literal).
+* the scenario starts with the [AgentSpeak 15min](/tutorials/agentspeak-in-fifteen-minutes/) tutorial
+* it is also nessessary to understand the basic structure of [literals](/knowledgebase/logicalprogramming/#a-name-atomliterals-atom-literals-a)
+* and the [extended literal](/knowledgebase/differencetojason/#terms-and-literals) structure in LightJason
 
-## Elements
+## What is the basic structure of a beliefbase?
 
 The beliefbase consists of three different elements
 

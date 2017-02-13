@@ -9,6 +9,14 @@ communication structure you have to build-up your own naming model, a send actio
 
 {{< toc >}}
 
+
+## Previous Knowledge
+
+The tutorial can be done into two steps:
+
+1. the basic agent definition from the [AgentSpeak 15min](/tutorials/agentspeak-in-fifteen-minutes/) tutorial
+2. the [triggering](/tutorials/trigger/) and [action](/tutorials/actions/) tutorial to create a _send-action_
+
 > __Don't reinvent the edge__
 > <br/>
 > Communication can be a _very expensive_ calling structure, especially on distributed systems. If
@@ -23,6 +31,7 @@ communication structure you have to build-up your own naming model, a send actio
 > so don't create self-defined string data structure, because for such message transfering there 
 > are a lot of other and well-known and estabilished components. Well known formats
 > are [JSON](https://en.wikipedia.org/wiki/JavaScript_Object_Notation), [YAML](https://en.wikipedia.org/wiki/YAML) or [XML/XSD with Jaxb](https://en.wikipedia.org/wiki/Java_Architecture_for_XML_Binding)
+ 
 
 ## Agent
 

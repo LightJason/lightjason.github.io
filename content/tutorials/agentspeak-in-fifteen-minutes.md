@@ -9,6 +9,11 @@ __Note: This tutorial aims at developers of multi-agent systems (MAS) and requir
 
 {{< toc >}}
 
+## Previous Knowledge
+
+The basic knowledge about agents and their execution mechanism from the [knowledgebase](/knowledgebase)
+
+
 ## Tools You Need
 
 * Working Maven greater than 3.0 [installation](http://maven.apache.org/install.html).

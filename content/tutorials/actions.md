@@ -7,6 +7,10 @@ This tutorial explains the concept and usage of actions. Actions are the _execut
 
 {{< toc >}}
 
+## Previous Knowledge
+
+The [AgentSpeak 15min](/tutorials/agentspeak-in-fifteen-minutes/) tutorial defines the basic knowledge and working scenario.
+
 ## What are actions?
 
 For actions there exists two point of views:
