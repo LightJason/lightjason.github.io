@@ -238,7 +238,7 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
     ```commandline
     time java -jar target/myagentapp-1.0-SNAPSHOT.jar agent.asl 500 1000
     ...
-    77.33s user 8.22s system 200% cpu 42.659 tota
+    77.33s user 8.22s system 200% cpu 42.659 total
     ```
     <!-- htmlmin:ignore -->
 
