@@ -22,11 +22,11 @@ The basic knowledge about agents and their execution mechanism from the [knowled
   * Linux: Installing ``git`` via your favourite package manager should be sufficient.
   * MacOS: Using [Homebrew](http://brew.sh) with ```brew install git```.
   * [Git for Windows](https://git-for-windows.github.io)
-  
+
 
 ## Introduction
 
-This tutorial gives you a _very short_ introduction into LightJason's AgentSpeak(L++) structure. Our [source code documentation](http://lightjason.github.io/AgentSpeak/sources/index.html) can help you in developing your own MAS project according to your individual requirements. 
+This tutorial gives you a _very short_ introduction into LightJason's AgentSpeak(L++) structure. Our [source code documentation](http://lightjason.github.io/AgentSpeak/sources/index.html) can help you in developing your own MAS project according to your individual requirements.
 
 __Note:__ Don't hesitate to ask questions via email or on the [issue tracker](https://github.com/LightJason/AgentSpeak/issues).
 
@@ -40,7 +40,7 @@ For the following sections we assume that you are working inside the directory `
 
 ## Build AgentSpeak(L++) from the Sources
 
-1. Obtain the current source code from [AgentSpeak(L++)](https://github.com/LightJason/AgentSpeak) and place it into ```Developer/AgentSpeak```. This can be done on the command line either via Git 
+1. Obtain the current source code from [AgentSpeak(L++)](https://github.com/LightJason/AgentSpeak) and place it into ```Developer/AgentSpeak```. This can be done on the command line either via Git
 
     <!-- htmlmin:ignore -->
     ```commandline
@@ -50,18 +50,18 @@ For the following sections we assume that you are working inside the directory `
     <!-- htmlmin:ignore -->
 
     or by downloading the {{< githubzip user="LightJason" repo="AgentSpeak" text="ZIP archive" >}} and extracting it to ```Developer```.
-    
+
     <!-- htmlmin:ignore -->
     ```commandline
     cd Developer
     unzip AgentSpeak-master.zip
     ```
     <!-- htmlmin:ignore -->
-    
+
     __Note:__ If you chose to download the _ZIP archive_, be aware that the resulting directory will be ```AgentSpeak-master```. Either rename it to ```AgentSpeak``` or keep this in mind in the following sections.
-    
+
     You should now have the following directory structure:
-    
+
     <!-- htmlmin:ignore -->
     ```commandline
     ├── Developer/
@@ -77,24 +77,24 @@ For the following sections we assume that you are working inside the directory `
     mvn install
     ```
     <!-- htmlmin:ignore -->
-    
+
     AgentSpeak will be installed as a local maven artifact in the directory ```~/.m2``` and can be imported as a dependency by your project.
-    
+
     The build process should terminate with a ```BUILD SUCCESS``` message.
 
 ## Maven Project Configuration
 
 1. Create an empty Maven project (see [Maven in 5 minutes tutorial](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)) inside the ```Developer``` directory:
-    
+
     <!-- htmlmin:ignore -->
     ```commandline
     cd Developer
     mvn archetype:generate -DgroupId=myagentproject -DartifactId=myagentapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
     <!-- htmlmin:ignore -->
-    
+
     Maven will then create a project template, resulting in the following directory structure:
-    
+
     <!-- htmlmin:ignore -->
     ```commandline
     ├── Developer/
@@ -112,29 +112,29 @@ For the following sections we assume that you are working inside the directory `
     │                       └── AppTest.java    
     ```
     <!-- htmlmin:ignore -->
-    
+
     ```Developer/myagentapp/``` is the directory in which your own MAS projects resides.
-    
+
 2. Take a note of the current values of ```groupId```, ```artifactId``` and ```version``` from the AgentSpeak [pom.xml](https://github.com/LightJason/AgentSpeak/blob/master/pom.xml#L27):
 
     <!-- htmlmin:ignore -->
     {{< githubsource user="LightJason" repo="AgentSpeak" file="pom.xml" lang="xml" filter="[[:space:]]{4}<groupId>(.|\n)*?</version>" prefix="<dependency>" postfix="</dependency>" >}}
     <!-- htmlmin:ignore -->
-    
+
     Inside ```Developer/myagentapp/``` open the ```pom.xml``` with your favourite (programming) editor, navigate to the ```<dependencies>``` section and add the completed excerpt above or below the already present ```<dependency>``` entries (for example, you will also find an entry for JUnit within this section).
-    
+
 3. __For LightJason/AgentSpeak to run, it is crucial to enforce Java 1.8 support__ in your project. Add the following entry before the ```<dependencies>``` section:
 
 	<!-- htmlmin:ignore -->
 	{{< githubsource user="LightJason" repo="Examples" file="pom.xml" lang="xml" branch="tutorial-agentspeak-in-15min" filter="[[:space:]]{4}<properties>(.|\n)*?</properties>" >}}
     <!-- htmlmin:ignore -->
 
-4. Put the following code inside the ```<project>``` section, e.g. after ```</dependencies>```, to include the [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/examples/executable-jar.html) which creates an executable JAR when you build your project with ```mvn package``` 
+4. Put the following code inside the ```<project>``` section, e.g. after ```</dependencies>```, to include the [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/examples/executable-jar.html) which creates an executable JAR when you build your project with ```mvn package```
 
     <!-- htmlmin:ignore -->
     {{< githubsource user="LightJason" repo="Examples" file="pom.xml" lang="xml" branch="tutorial-agentspeak-in-15min" filter="[[:space:]]{4}<build>(.|\n)*?</build>" >}}
     <!-- htmlmin:ignore -->
-    
+
 5. Test-build your project by running ``mvn package`` inside ```Developer/myagentapp/```, i.e. where your ``pom.xml`` is located:
 
     <!-- htmlmin:ignore -->
@@ -142,9 +142,9 @@ For the following sections we assume that you are working inside the directory `
     cd Developer/myagentapp/
     mvn package
     ```
-    
-    It should print ```BUILD SUCCESS```. 
-    
+
+    It should print ```BUILD SUCCESS```.
+
     The resulting, runnable JAR is located at  ```Developer/myagentapp/target/myagentapp-1.0-SNAPSHOT.jar```.
 
 6. Import your Maven project into your favourite IDE.
@@ -205,7 +205,7 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
     mvn package
     ```
     <!-- htmlmin:ignore -->
-     
+
 2. Run the program to create 500 agents based on the ```agent.asl``` and the agents will run 1000 cycles:
 
 	<!-- htmlmin:ignore -->
@@ -214,50 +214,50 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
     ```
     <!-- htmlmin:ignore -->
 
-3. Observe the CPU load and time with the print actions (code above) and without (code below): 
+3. Observe the CPU load and time with the print actions (code above) and without (code below):
 <!-- htmlmin:ignore -->
 {{< githubsource user="LightJason" repo="Examples" file="agent_noprint.asl" lang="agentspeak" branch="tutorial-agentspeak-in-15min" >}}
 <!-- htmlmin:ignore -->
-	
+
 	i.e. run
 	<!-- htmlmin:ignore -->
 	```commandline
 	java -jar target/myagentapp-1.0-SNAPSHOT.jar agent.asl 500 1000
 	```
 	<!-- htmlmin:ignore -->
-    
+
     and compare it with
     <!-- htmlmin:ignore -->
     ```commandline
     java -jar target/myagentapp-1.0-SNAPSHOT.jar agent_noprint.asl 500 1000
     ```
     <!-- htmlmin:ignore -->
-    
-    On a recent dual-core 2C/4T laptop (benchmarked with the [Linux/Unix tool](https://linux.die.net/man/1/time) ```time```) this yields 
+
+    On a recent dual-core 2C/4T laptop (benchmarked with the [Linux/Unix tool](https://linux.die.net/man/1/time) ```time```) this yields
     <!-- htmlmin:ignore -->
     ```commandline
     time java -jar target/myagentapp-1.0-SNAPSHOT.jar agent.asl 500 1000
     ...
-    74.76s user 6.61s system 161% cpu 50.367 total
+    77.33s user 8.22s system 200% cpu 42.659 tota
     ```
     <!-- htmlmin:ignore -->
-    
+
     vs.
     <!-- htmlmin:ignore -->
     ```commandline
     time java -jar target/myagentapp-1.0-SNAPSHOT.jar agent_noprint.asl 500 1000
     ...
-    45.54s user 1.34s system 307% cpu 15.247 total
+    37.77s user 1.14s system 327% cpu 11.888 total
     ```
     <!-- htmlmin:ignore -->
-    
-    It is therefore noteworthy, that 
+
+    It is noteworthy, that
     * the load gets well distributed across the CPU-cores and
     * too many prints have a negative impact on the performance, as you are then basically benchmarking your shell ;-)
-    
-    
 
-    
+
+
+
 ## Reference Solution
 
 If you struggled at some point or wish to obtain our exemplary solution with code documentation to this tutorial, you can download the archive {{< githubzip user="LightJason" repo="Examples" branch="tutorial-agentspeak-in-15min" >}} containing the source code and a executable {{< githubdownload user="LightJason" repo="Examples" branch="jar-tutorial-agentspeak-in-15min" file="myagentapp-1.0-SNAPSHOT.jar" text="Jar file" >}}.
