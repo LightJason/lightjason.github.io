@@ -29,10 +29,26 @@ jQuery(function() {
 
 
 	// defines hover effects for both agent-cycles (blue-grey symbols)
-	[ ".svg-agentcycle-triggeritem" ].forEach( function(i) {
+	[ ".svg-agentcycle-triggeritem", ".svg-agentcycle-events" ].forEach( function(i) {
 		jQuery(i).hover( 
 			function() { jQuery(i).attr("fill", "#0a7bff"); },
 			function() { jQuery(i).attr("fill", "#ccc"); } 
 		);
-	});	
+	});
+
+	// defines hover effects for both agent-cycles (orange symbols)
+	[ ".svg-agentcycle-planselect" ].forEach( function(i) {
+		jQuery(i).hover( 
+			function() { jQuery(i).attr("fill", "#ffad00"); },
+			function() { jQuery(i).attr("fill", "#ffe400"); } 
+		);
+	});
+
+	// defines hover effects for the literal in linkage with the beliefbase section
+		[ "literal-storage", "literal-view" ].forEach( function(i) {
+		jQuery("#animate-" + i).hover( 
+			function() { jQuery(".svg-" + i).attr("fill", "#f90"); },
+			function() { jQuery(".svg-" + i).attr("fill", ""); } 
+		);
+	});
 } );
