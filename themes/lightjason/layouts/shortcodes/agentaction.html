@@ -1,0 +1,14 @@
+{{- $docuurl := .Get 1 -}}
+{{- $docuextension := .Get 2 -}}
+{{- $header := default "2" (index .Params 3) -}}
+{{- $.Scratch.Set "group" "" -}}
+{{- $.Scratch.Set "first" "" -}}
+{{- range $n, $value := sort (getJSON (.Get 0)) "group" -}}
+    {{- if ne ($.Scratch.Get "group") $value.group -}}
+        {{- if $.Scratch.Get "first" -}}</ul>{{- end -}}
+        <h{{- $header }} id="{{- $value.group -}}">{{- $value.group -}}</h{{- $header -}}><ul>
+    {{- end -}}
+    {{- $.Scratch.Set "group" $value.group -}}
+    {{- $.Scratch.Set "first" "true" -}}
+    <li><a href="{{- $docuurl -}}{{- $value.id -}}{{- $docuextension -}}">{{- $value.name | chomp }}</a>: {{ $value.briefdescription | chomp -}}{{- if $value.detaildescription -}}<br/>{{- $value.detaildescription | chomp -}}{{- end -}}</li>
+{{- end -}}
