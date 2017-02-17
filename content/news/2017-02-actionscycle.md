@@ -4,7 +4,7 @@ title: "Update actions and agent cycle documentation"
 categories: ["Documentation"]
 ---
 
-Update [action](/knowledgebase/actions) and [agent cycle](/knowledgebase/differencetojason) description. <!--more-->
+Update [actions](/knowledgebase/actions) and [agent cycle](/knowledgebase/differencetojason) description within the knowledge base. <!--more-->
 
 The agent cycle images allows you to use a _mouse over effect_ to highlight elements. The action list links to the source code documentation. We will append the description of the actions soon.
 
