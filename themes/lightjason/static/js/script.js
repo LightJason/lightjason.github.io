@@ -85,4 +85,13 @@ jQuery(function() {
         jQuery(this).html( "<a href=\"#" + jQuery(this).attr("id") + "\">" + jQuery(this).html() + "</a>" );
     });
 
+
+    /**
+     * tooltip toggle
+     */
+    jQuery(".tooltiptoggle").hover( 
+        function() { jQuery(this).children(".tooltip:first").slideToggle(); },
+        function() { jQuery(this).children(".tooltip:first").slideToggle(); }
+    );
+
 });

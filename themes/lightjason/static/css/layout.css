@@ -21,6 +21,28 @@ ul, ol {
     padding: 0;
 }
 
+dt {
+  float: left;
+  margin-right: 0.5em;
+  padding-top: 0.125em;
+  padding-bottom: 0.125em;
+}
+ 
+dt::after { 
+  content: ": "; 
+}
+
+dd {
+    padding-top: 0.125em;
+    padding-bottom: 0.125em;
+}
+
+dd::after {
+  clear: left;
+  content: " ";
+  display: block;
+}
+
 iframe.video {
     display: block;
     margin-left: auto;
@@ -48,7 +70,8 @@ svg {
     display: block;
     padding: 5px;
     margin: 0 auto;
-    width: 100%;
+    width: 95%;
+    max-width: 95%;
     font-family: sans-serif;
 }
 
@@ -56,6 +79,7 @@ img[src$='#centering'] {
     display: block;
     padding: 5px;
     margin: 0 auto;
+    width: 95%;
     max-width: 95%;
 }
 
@@ -145,6 +169,17 @@ div.sidebarwrapper ul.socialmediaaction {
     list-style: none;
 }
 
+.tooltip {
+    border: 1px solid #a2a9b1;
+    background-color: #f8f9fa;
+    font-size: 80%;
+    display: none;
+}
+
+.tooltip dt {
+    font-weight: bold;
+}
+
 .socialmediaimg
 {
 	width: 40px;
@@ -215,12 +250,6 @@ div.body h3 { font-size: 150%; }
 div.body h4 { font-size: 130%; }
 div.body h5 { font-size: 100%; }
 div.body h6 { font-size: 100%; }
-
-
-
-div.body p, div.body dd, div.body li {
-    line-height: 1.4em;
-}
 
 
 

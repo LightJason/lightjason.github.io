@@ -5,10 +5,22 @@
 {{- $.Scratch.Set "first" "" -}}
 {{- range $n, $value := sort (getJSON (.Get 0)) "group" -}}
     {{- if ne ($.Scratch.Get "group") $value.group -}}
-        {{- if $.Scratch.Get "first" -}}</ul>{{- end -}}
-        <h{{- $header }} id="{{- $value.group -}}">{{- $value.group -}}</h{{- $header -}}><ul>
+        {{- if $.Scratch.Get "first" -}}</dl>{{- end -}}
+        <h{{- $header }} id="{{- $value.group -}}">{{- $value.group -}}</h{{- $header -}}><dl>
     {{- end -}}
     {{- $.Scratch.Set "group" $value.group -}}
     {{- $.Scratch.Set "first" "true" -}}
-    <li><a href="{{- $docuurl -}}{{- $value.id -}}{{- $docuextension -}}">{{- $value.name | chomp }}</a>: {{ $value.briefdescription | chomp -}}{{- if $value.detaildescription -}}<br/>{{- $value.detaildescription | chomp -}}{{- end -}}</li>
+    <dt class="tooltiptoggle"><a href="{{- $docuurl -}}{{- $value.id -}}{{- $docuextension -}}">{{- $value.name | chomp }}</a></dt>
+    <dd class="tooltiptoggle">{{ $value.briefdescription | chomp -}}
+        {{- if or $value.detaildescription (or $value.see (or $value.note $value.warning)) -}}
+        <div class="tooltip">
+            <dl>
+                {{- if $value.detaildescription -}}<dt>Detail Description</dt><dd>{{- $value.detaildescription | chomp -}}</dd>{{- end -}}
+                {{- if $value.warning -}}<dt>Warning</dt><dd>{{- $value.warning -}}</dd>{{- end -}}
+                {{- if $value.note -}}<dt>Note</dt><dd>{{- $value.note -}}</dd>{{- end -}}
+                {{- if $value.see -}}<dt>See</dt>{{- range $value.see -}}<dd><a href="{{- . -}}" />{{- . -}}</a></dd>{{- end -}}{{- end -}}
+            </dl>
+        </div>
+        {{- end -}}
+    </dd>
 {{- end -}}
