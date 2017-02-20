@@ -32,11 +32,6 @@ dt::after {
   content: ": "; 
 }
 
-dd {
-    padding-top: 0.125em;
-    padding-bottom: 0.125em;
-}
-
 dd::after {
   clear: left;
   content: " ";
@@ -169,7 +164,12 @@ div.sidebarwrapper ul.socialmediaaction {
     list-style: none;
 }
 
+.tooltiptoggle {
+    cursor: pointer;
+}
+
 .tooltip {
+    padding: 0.5em;
     border: 1px solid #a2a9b1;
     background-color: #f8f9fa;
     font-size: 80%;

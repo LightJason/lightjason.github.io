@@ -89,9 +89,8 @@ jQuery(function() {
     /**
      * tooltip toggle
      */
-    jQuery(".tooltiptoggle").hover( 
-        function() { jQuery(this).children(".tooltip:first").slideToggle(); },
-        function() { jQuery(this).children(".tooltip:first").slideToggle(); }
-    );
+    jQuery(".tooltiptoggle").click( function() { 
+        jQuery(this).children(".tooltip:first").slideToggle(); 
+    });
 
 });
