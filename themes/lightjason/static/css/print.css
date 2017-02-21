@@ -33,6 +33,10 @@ div.bodywrapper {
     text-align: center;
 }
 
+.tooltip {
+    display: block;
+}
+
 code, pre {
     width: 95%;
     font-size: 10pt;
