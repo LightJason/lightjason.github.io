@@ -2,6 +2,8 @@
 title: "Difference to Jason"
 ---
 
+{{% gitter knowledge %}}
+
 We describe the difference between LightJason and [Jason](http://jason.sourceforge.net/), because in general the LightJason framework is inspired by Jason, but it is __not__:
 
 * a copy of Jason
@@ -33,7 +35,7 @@ The LightJason AgentSpeak(L++) structure does not distinguish between _messages_
 * __triggers__ which are _pushed data_ for the agent
 * __on-demand access__ which is a component of the beliefbase to read knowledge on-demand during runtime
 
-All triggers will be cached, instantiate and execute in parallel during the cycle. During execution new incoming triggers will be stored inside the cache. 
+All triggers will be cached, instantiate and execute in parallel during the cycle. During execution new incoming triggers will be stored inside the cache.
 The execution can get access via unification to the beliefbase, so the beliefs can be unified during execution.
 A statistic will count fails and successful runs of the plans. The _cost aggregation_ component allows to define for each action a cost value, named _score_, which can be used by for an optimized execution.
 
@@ -54,4 +56,3 @@ The beliefbase is not a single element to store all facts of the agent. The beli
 * __storage__ a pysical or on-demand data structure to store / generate literals, which are defined by the <a href="#literal" id="animate-literal-storage">last element of the functor with negation, values and annotations</a> only
 * __view__ a flyweight pattern to define a <a href="#literal" id="animate-literal-view">path structure</a> for organization of literals / knowledge, the different path elements are separated by a ```/```. The path structure can be defined for each agent individually, so equal literal objects can be addressed by different paths
 * __beliefbases__ are a component to connect the _storage_ and the _view_ and generate trigger for the execution mechanism
-

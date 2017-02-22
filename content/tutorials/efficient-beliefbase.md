@@ -3,15 +3,17 @@ title: "Tutorial: Efficient Beliefbase"
 jsonld: ["techarticle"]
 ---
 
+{{% gitter tutorials %}}
+
 In contrast to Prolog and original Jason, the beliefbase of LightJason is more than a list of facts.
-LightJason supports a hierarchical structure of beliefs. 
+LightJason supports a hierarchical structure of beliefs.
 We support a more organised data structure with efficient searching and unification of beliefs.
 
 {{< toc >}}
 
 ## Previous Knowledge
 
-This tutorial describs the usage of beliefbases in a more general usages but also with _on-demand access_. 
+This tutorial describs the usage of beliefbases in a more general usages but also with _on-demand access_.
 
 * the scenario starts with the [AgentSpeak 15min](/tutorials/agentspeak-in-fifteen-minutes/) tutorial
 * it is also nessessary to understand the basic structure of [literals](/knowledgebase/logicalprogramming/#a-name-atomliterals-atom-literals-a)
@@ -27,28 +29,28 @@ The beliefbase consists of three different elements
 
 ### Persistence
 
-In general, beliefs can be stored in a persistent way. 
-So an literal object will be set into the storage and the views creates the tree structure. 
+In general, beliefs can be stored in a persistent way.
+So an literal object will be set into the storage and the views creates the tree structure.
 
 {{< img src="/images/beliefbase.svg" alt="beliefbase" width="30%" >}}
 
 In this example, there are two agents and both agents are referenced to the equal storage, but use different views.
 
-* Agent 1 gets access to the literal by the structure 
+* Agent 1 gets access to the literal by the structure
 <!-- htmlmin:ignore -->
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">foo/value(5)
 </code></pre>
 <!-- htmlmin:ignore -->
 
-* Agent 2 gets access to the literal by the structure 
+* Agent 2 gets access to the literal by the structure
 <!-- htmlmin:ignore -->
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">foo2/value(5)
 </code></pre>
 <!-- htmlmin:ignore -->
- 
+
 This structure allows the agent to store knowledge in a persistent way with generating the goals.
 But this type of beliefs consumes more memory and reduce performance during modification. On each cycle the storage can generate or delete beliefs which triggers the goals.
- 
+
 ### On-Demand
 
 The on-demand beliefbase allows you to create a non-persistence belief definition, which is suitable to get access to the environment / underlying software architecture. It follows up the [lazy loading pattern](https://en.wikipedia.org/wiki/Lazy_loading))
@@ -56,11 +58,11 @@ The on-demand beliefbase allows you to create a non-persistence belief definitio
 {{< img src="/images/ondemandbeliefbase.svg" alt="on-demand beliefbase" width="50%" >}}
 
 For some practical explanation, think about agents as:
- 
-> Agents are _individual and self-organized_ items, 
+
+> Agents are _individual and self-organized_ items,
 > which perceives their environment autonomous.
 
-We built this structure with _on-demand beliefbases_ into LightJason/AgentSpeak(L++), so you get access to a belief which will be created if you access it and after usage the literal object will be removed. This is a very efficient way for perceiving. We recommend the following workflow: 
+We built this structure with _on-demand beliefbases_ into LightJason/AgentSpeak(L++), so you get access to a belief which will be created if you access it and after usage the literal object will be removed. This is a very efficient way for perceiving. We recommend the following workflow:
 
 1. build an on-demand beliefbase for all dynamic access and changeable information e.g. environment, other agents
 2. create a plan which will run continuously, i.e. the plan runs in each cycle
@@ -69,7 +71,7 @@ We built this structure with _on-demand beliefbases_ into LightJason/AgentSpeak(
 
 #### Agent with on-demand beliefbase
 
-Java agent class with inner on-demand beliefbase class. The inner class can get access to all properties within the agent class. 
+Java agent class with inner on-demand beliefbase class. The inner class can get access to all properties within the agent class.
 The environment class contains attributes to generate data as literals for each agent.
 The on-demand beliefbase is only a wrapper for the environment literals.
 
@@ -80,7 +82,7 @@ public final class MyAgent extends IBaseAgent<MyAgent>
 {
     /**
      * environment reference
-     */ 
+     */
     private Environment m_environment;
 
     /*
@@ -92,12 +94,12 @@ public final class MyAgent extends IBaseAgent<MyAgent>
     {
         super( p_configuration );
         m_environment = p_environment;
-        
+
         m_beliefbase
             // the on-demand beliefbase referenced all beliefs with "env/"
             .add( new EnvironmentBeliefbase().create( "env" ) );
     }
-    
+
     /* inner class with on-demand beliefbase */
     private final class EnvironmentBeliefbase extends IDemandBeliefbase
     {

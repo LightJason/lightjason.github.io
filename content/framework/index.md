@@ -2,6 +2,8 @@
 title: "Framework"
 ---
 
+{{% gitter technical %}}
+
 The multi-agent framework is split up into different parts. Each component has got its own documentation. At this section, we would like to give an overview over all elements within the framework. All frameworks are published to [Maven Central](http://mvnrepository.com).
 
 The source codes are written in Java (latest release version) with a defined syntax structure and all code documentation will be created with [Doxygen](http://www.doxygen.org). We are also using unit testing and the [Git-Flow](http://nvie.com/posts/a-successful-git-branching-model/) developing model.
@@ -15,10 +17,10 @@ This component defines the main agent structure. It defines the whole syntax and
 	* [Testing Agent](https://github.com/LightJason/AgentSpeak/blob/master/src/test/resources/agent/complete.asl)
 	* [Agent](https://github.com/LightJason/AgentSpeak/blob/master/src/test/resources/agent/hanoi.asl) which plays [Tower of Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi)
 * Grammar / Syntax Definition
-	* [Agent](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/) 
-	* [PlanBundle](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/PlanBundle.g4/) 
+	* [Agent](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/)
+	* [PlanBundle](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/PlanBundle.g4/)
 * [Language Features](agentspeak)
-* [Source Documentation](https://lightjason.github.io/AgentSpeak/sources/) 
+* [Source Documentation](https://lightjason.github.io/AgentSpeak/sources/)
 * [OpenHub Code Statistic](https://www.openhub.net/p/LightJason-AgentSpeak)
 * [Libraries.io Statistic](https://libraries.io/github/LightJason/AgentSpeak)
 

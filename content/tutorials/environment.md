@@ -3,7 +3,9 @@ title: "Tutorial: Environment"
 jsonld: ["techarticle", "course"]
 ---
 
-LightJason system architecture does not require any environment, but you can easily write your own. Based on the _asynchronous and parallel_ execution model in LightJason you have to create thread-safe data structures for your environment to avoid any [race condition](https://en.wikipedia.org/wiki/Race_condition). 
+{{% gitter tutorials %}}
+
+LightJason system architecture does not require any environment, but you can easily write your own. Based on the _asynchronous and parallel_ execution model in LightJason you have to create thread-safe data structures for your environment to avoid any [race condition](https://en.wikipedia.org/wiki/Race_condition).
 
 __Keep in mind that all calls of the environment are done in parallel and asynchronously, so your environment must handle these access correctly.__
 
@@ -20,7 +22,7 @@ We do the tutorial into three steps:
 
 ## Environment
 
-For this example we use a small structure within the agent should change there position. The agent can move one cell to the left or right, but the agent can move if the cell is free. The number of cells is $1.5 \cdot \text{number of agents}$ so there is a guarantee that there is a free cell. The agent position will be set by random on initialization. 
+For this example we use a small structure within the agent should change there position. The agent can move one cell to the left or right, but the agent can move if the cell is free. The number of cells is $1.5 \cdot \text{number of agents}$ so there is a guarantee that there is a free cell. The agent position will be set by random on initialization.
 
 {{< img src="/images/environment.svg" width="35%" >}}
 
@@ -44,11 +46,11 @@ With a trigger {{< linelink "" "env" "65-72" >}} we notify all other agents if a
 
 ## Agent with environment actions
 
-The agent class must define the actions which passed the call to the environment. Based on this definition the action can be called inside the agent script. 
+The agent class must define the actions which passed the call to the environment. Based on this definition the action can be called inside the agent script.
 
 ### Agent class
 
-In this example we implement the action as [object-actions (internal actions)](/tutorials/actions/#object-actions-internal-actions) on {{< linelink "" "agentclass" "21-26" >}}. The method name can be choosen arbitrary, so the annotation defines the action name. Arguments can be passed with the native Java type inside the method. 
+In this example we implement the action as [object-actions (internal actions)](/tutorials/actions/#object-actions-internal-actions) on {{< linelink "" "agentclass" "21-26" >}}. The method name can be choosen arbitrary, so the annotation defines the action name. Arguments can be passed with the native Java type inside the method.
 
 The method pass the data to the method of the environment object {{< linelink "" "agentclass" "25" >}}. The environment object is set by the constructor and stored inside the agent object {{< linelink "" "agentclass" "13, 15, 18" >}}. All agents references the same environment, because in Java all inheritance of objects are passed as references.
 

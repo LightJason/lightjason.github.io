@@ -2,6 +2,8 @@
 title: "Tutorials"
 ---
 
+{{% gitter tutorials %}}
+
 In this Section we introduce LightJason/AgentSpeak(L++) from a *hands-on* perspective by providing tutorials for understanding the practical applications of our framework.
 
 ## Basic Tutorials
@@ -15,4 +17,3 @@ Having [basic knowledge](/knowledgebase) about the [belief–desire–intention 
 4. [Communication](communication) is a tutorial on how to realise communication
 5. [Environment](environment) is a tutorial to create an environment (which is not necessarily required in LightJason)
 6. [Efficient Beliefbase](efficient-beliefbase) is a tutorial for creating efficient beliefbase structures
-

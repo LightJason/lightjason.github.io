@@ -3,6 +3,8 @@ title: "Tutorial: Triggering"
 jsonld: ["techarticle", "course"]
 ---
 
+{{% gitter tutorials %}}
+
 This tutorial explain the functionality of _agent triggering_. For understanding purpose of triggers you have to understand the concept of events which is a well-known concept in [UI programming](https://docs.oracle.com/javase/tutorial/uiswing/events/).
 
 {{< toc >}}
@@ -34,7 +36,7 @@ An agent is a _logical program_ which defines some knowledge elements e.g. belie
 
 ## How can I use them?
 
-On a global viewpoint a trigger is created on a _semantic definition_, so there is no defined  type to call in a situation a certain trigger. It depends on your conceptional view of your multi-agent system and your individual execution model. 
+On a global viewpoint a trigger is created on a _semantic definition_, so there is no defined  type to call in a situation a certain trigger. It depends on your conceptional view of your multi-agent system and your individual execution model.
 
 The usage is very simple, the agent class supports a [trigger-method](http://lightjason.github.io/AgentSpeak/sources/db/d62/interfaceorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IAgent_3_01T_01extends_01IAgent_3_04_4_01_4.html#af453e6a5f02ca05958925af4a8c04c10), so create your trigger and call this method.
 

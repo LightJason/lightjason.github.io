@@ -3,7 +3,9 @@ title: "Basic Knowledge: Logical Programming"
 jsonld: ["techarticle", "course"]
 ---
 
-This tutorial gives a short introduction in [logical programming concepts](https://en.wikipedia.org/wiki/Logic_programming), which are needed to write the source code of an agent. 
+{{% gitter knowledge %}}
+
+This tutorial gives a short introduction in [logical programming concepts](https://en.wikipedia.org/wiki/Logic_programming), which are needed to write the source code of an agent.
 For a general understanding of logical programming it can be helpful to learn first Prolog, in detail we recommend [SWI-Prolog](http://www.swi-prolog.org/), because there are a lot of applications and good tutorials to understand the main mechanism of logical programming.
 
 {{< toc >}}
@@ -30,7 +32,7 @@ The root element is the [ITerm interface](https://lightjason.github.io/AgentSpea
 
 ### <a name="atomliterals">Atom & Literals</a>
 
-The simplest structure elements of a logical programming language are _atoms_ and part of the structure called  _literals_. 
+The simplest structure elements of a logical programming language are _atoms_ and part of the structure called  _literals_.
 In the Prolog definition and so in AgentSpeak(L) all literals / atoms are beginning with a lower-case letter. In contrast, by our definition the atom can also contain slashes ```/``` and minus ```-``` characters. For clarification see the following example:
 
 > We would like to define that the sun is shining
@@ -51,7 +53,7 @@ Based on the first example a negation is also possible:
 
 ### Variables
 
-Variables can be used to define literals with a _placeholder_ and (in contrast to atoms or literals) begins with an upper-case letter. 
+Variables can be used to define literals with a _placeholder_ and (in contrast to atoms or literals) begins with an upper-case letter.
 
 > Based on the [time example](#time) we added some variables to extract the hour and minute part of the literal
 > <pre><code class="language-prolog">time( current( hour( Hour ), minute( Minute ), pm() ) )</code></pre>
@@ -74,9 +76,9 @@ Rules, in contrast to [literals](#a-name-atomliterals-atom-literals-a), [variabl
 > One of the most famous examples for rules in logical programs is the [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_number). Mathematically this sequences is defined as
 > $$F\_n = F\_{n-1} + F\_{n-2}$$
 > $$F\_0 = F\_1 = F\_2 = 1$$
-> For the value $n=5$ the sequence is calculated as 
+> For the value $n=5$ the sequence is calculated as
 > $$F\_5 = F\_4 + F\_3 = (F\_3 + 1) + (1+1) = ((1+1)+1) + (1+1) = 5$$
-> Based on this calculation you can see that each function element $F\_n$ which is not defined as $1$ gets resolved in 
+> Based on this calculation you can see that each function element $F\_n$ which is not defined as $1$ gets resolved in
 > a recursive way. A Prolog rule, which calculates the Fibonacci number of any input can be written as follows:
 > <pre><code class="language-prolog">fibonacci(0,0).
 fibonacci(1,1).
@@ -89,19 +91,19 @@ fibonacci(N,R) :-
     fibonacci(N2,R2),
     R is R1 + R2
 .</code></pre>
-> One of the most important aspect of a Prolog program is, that the exit conditions are written first. The last item 
-> in the rule is the calculation to be made, iff no other condition can be matched. The last rule can be read in the 
+> One of the most important aspect of a Prolog program is, that the exit conditions are written first. The last item
+> in the rule is the calculation to be made, iff no other condition can be matched. The last rule can be read in the
 > following way (the comma is pronounced as a logical _and_):
 
-> > If (```N``` is greater than ```1```) _and_ (```N1``` can be set to ```N-1```) _and_ (```N2``` can be calculate to ```N-2```) _and_ 
+> > If (```N``` is greater than ```1```) _and_ (```N1``` can be set to ```N-1```) _and_ (```N2``` can be calculate to ```N-2```) _and_
 > > (the rule ```fibonacci(N1,R1)``` can be successfully executed) _and_ (the rule ```fibonacci(N2,R2)``` can be successfully executed) _and_
 > > (```R``` can be calculated to ```R1 + R2```) _then_ the rule will be finished successful
 
-> The order of the rule is very important, because Prolog tries to find a rule, which can be matched successfully, 
-> the first rule, that matches will be used. Variables will be set during runtime and the values will be passed 
-> back as a reference, which is named [side effect](https://en.wikipedia.org/wiki/Side_effect_(computer_science)). In imperative programming languages these side effects are undesired, but 
+> The order of the rule is very important, because Prolog tries to find a rule, which can be matched successfully,
+> the first rule, that matches will be used. Variables will be set during runtime and the values will be passed
+> back as a reference, which is named [side effect](https://en.wikipedia.org/wiki/Side_effect_(computer_science)). In imperative programming languages these side effects are undesired, but
 > can be very helpful in logical programming languages.  
-> 
+>
 > But an advice in writing such rules: The logical programming runtime will have to check in the worst-case all possibilities to calculate a solution. The system tries to find a successful solution with a [backtracking algorithm](https://en.wikipedia.org/wiki/Backtracking). This can be a [NP-complete problem](https://en.wikipedia.org/wiki/NP-completeness) and so a solution cannot be calculated efficiently.
 
 
@@ -121,9 +123,9 @@ In general the [unification](https://en.wikipedia.org/wiki/Unification_(computer
 > <pre><code class="language-prolog">time( current( hour( 2    ), minute( 0      ), pm() ) )
 > time( current( hour( Hour ), minute( Second ), _    ) )
 > </pre></code>
-> Based on this structure the systems tries to transfer the values from the first literal into the variables 
-> of the second literal, such that both literals are equal. If it is not possible the unification 
-> process will fail. On a successful execution the variable ```Hour``` stores the value $2$ and the variable 
+> Based on this structure the systems tries to transfer the values from the first literal into the variables
+> of the second literal, such that both literals are equal. If it is not possible the unification
+> process will fail. On a successful execution the variable ```Hour``` stores the value $2$ and the variable
 > ```Second``` the value $0$.
 
 The runtime of the logical programming language tries to find an executable structure, so that all unification components and [rules](#rules) can be finished successfully. The unification process can be used to generate new literals based on existing literals. In combination with [rules](#rules) the system can solve complex reasoning structures. If the system cannot find any possibility to solve the problem, the logical program will be stopped with a failure. The goal of the runtime is to find a successful solution.

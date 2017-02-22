@@ -3,6 +3,8 @@ title: "Tutorial: Develop an AgentSpeak Scenario in 15 Minutes"
 jsonld: ["techarticle", "course"]
 ---
 
+{{% gitter tutorials %}}
+
 This tutorial explains how to develop a simple, but full working scenario in 15 minutes with the most recent version of the AgentSpeak(L++) source code.
 
 __Note: This tutorial aims at developers of multi-agent systems (MAS) and requires some basic understanding in programming.__
