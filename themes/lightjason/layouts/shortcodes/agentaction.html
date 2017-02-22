@@ -3,7 +3,7 @@
 {{- $header := default "2" (index .Params 3) -}}
 {{- $.Scratch.Set "group" "" -}}
 {{- $.Scratch.Set "first" "" -}}
-{{- range $n, $value := sort (getJSON (.Get 0)) "group" -}}
+{{- range $n, $value := sort (getJSON (.Get 0)) "sort" -}}
     {{- if ne ($.Scratch.Get "group") $value.group -}}
         {{- if $.Scratch.Get "first" -}}</dl>{{- end -}}
         <h{{- $header }} id="{{- $value.group -}}">{{- $value.group -}}</h{{- $header -}}><dl>
