@@ -28,8 +28,6 @@ The basic knowledge about agents and their execution mechanism from the [knowled
 
 This tutorial gives you a _very short_ introduction into LightJason's AgentSpeak(L++) structure. Our [source code documentation](http://lightjason.github.io/AgentSpeak/sources/index.html) can help you in developing your own MAS project according to your individual requirements.
 
-__Note:__ Don't hesitate to ask questions via email or on the [issue tracker](https://github.com/LightJason/AgentSpeak/issues).
-
 This tutorial is structured as follows:
 First you will build AgentSpeak(L++) from source and install the resulting _AgentSpeak_ package on your system, making it available as a dependency for your own MAS project.
 Then you will create your own MAS project based on the template created by the Maven tool.

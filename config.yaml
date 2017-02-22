@@ -109,6 +109,12 @@ params:
             name 	   : "Tutorials"
             url		   : "/tutorials/"
             weight 	   : 40
+
+        -
+            name       : "Discussion"
+            url        : "https://gitter.im/LightJason"
+            weight     : 50
+
         -
             name 	   : "About"
             url		   : "/about/"
