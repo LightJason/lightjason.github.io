@@ -3,7 +3,7 @@ title: "Basic Knowledge: Finite-State-Machine"
 jsonld: ["techarticle", "course"]
 ---
 
-{{% gitter knowledge %}}
+{{% gitter "knowledge base" 150 %}}
 
 ## State Machine
 
