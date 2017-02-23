@@ -39,6 +39,7 @@ div.bodywrapper {
 
 .tooltip {
     display: block;
+    overflow: hidden;
 }
 
 code, pre {

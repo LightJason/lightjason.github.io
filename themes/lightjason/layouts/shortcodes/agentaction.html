@@ -10,15 +10,15 @@
     {{- end -}}
     {{- $.Scratch.Set "group" $value.group -}}
     {{- $.Scratch.Set "first" "true" -}}
-    <dt><a href="{{- $docuurl -}}{{- $value.id -}}{{- $docuextension -}}">{{- $value.name | chomp }}</a></dt>
+    <dt id="{{- $value.name | chomp | safeURL -}}"><a href="#{{- $value.name | chomp | safeURL -}}">{{- $value.name | chomp }}</a></dt>
     <dd class="tooltiptoggle">{{ $value.briefdescription | chomp -}}
-        {{- if or $value.detaildescription (or $value.see (or $value.note $value.warning)) -}}
         <dl class="tooltip">
             {{- if $value.detaildescription -}}<dt>Description</dt><dd>{{- $value.detaildescription | chomp -}}</dd>{{- end -}}
             {{- if $value.warning -}}<dt>Warning</dt>{{- range $value.warning -}}<dd>{{- . -}}</dd>{{- end -}}{{- end -}}
             {{- if $value.note -}}<dt>Note</dt>{{- range $value.note -}}<dd>{{- . -}}</dd>{{- end -}}{{- end -}}
-            {{- if $value.see -}}<dt>See</dt>{{- range $value.see -}}<dd><a href="{{- . -}}" />{{- . -}}</a></dd>{{- end -}}{{- end -}}
+            <dt>See</dt>
+            {{- range $value.see -}}<dd><a href="{{- . -}}" />{{- . -}}</a></dd>{{- end -}}
+            <dd><a href="{{- $docuurl -}}{{- $value.id -}}{{- $docuextension -}}">Source Code</dd>
         </dl>
-        {{- end -}}
     </dd>
 {{- end -}}

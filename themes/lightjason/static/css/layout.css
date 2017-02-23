@@ -180,6 +180,12 @@ div.sidebarwrapper ul.socialmediaaction {
     font-weight: bold;
 }
 
+.tooltip a {
+    font-size: 80%;
+}
+
+
+
 .socialmediaimg
 {
 	width: 40px;
