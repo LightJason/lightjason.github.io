@@ -1,9 +1,8 @@
 ---
 title: "Basic Knowledge: Actions"
 jsonld: ["techarticle"]
+gitter: "knowledge base"
 ---
-
-{{% gitter "knowledge base" 150 %}}
 
 This text gives you an overview over the main build-in actions in LightJason/AgentSpeak(L++).
 

@@ -1,9 +1,8 @@
 ---
 title: "Tutorial: Communication"
 jsonld: ["techarticle", "course"]
+gitter: "tutorials"
 ---
-
-{{% gitter tutorials %}}
 
 LightJason architecture does not support in general a build-in communication, because communication and
 agent addressing / naming depends on the domain or underlying software architecture. To create a

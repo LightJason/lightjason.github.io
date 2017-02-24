@@ -1,9 +1,8 @@
 ---
 title: "Tutorial: Develop an AgentSpeak Scenario in 15 Minutes"
 jsonld: ["techarticle", "course"]
+gitter: "tutorials"
 ---
-
-{{% gitter tutorials %}}
 
 This tutorial explains how to develop a simple, but full working scenario in 15 minutes with the most recent version of the AgentSpeak(L++) source code.
 

@@ -1,9 +1,8 @@
 ---
 title: "Tutorial: Efficient Beliefbase"
 jsonld: ["techarticle"]
+gitter: "tutorials"
 ---
-
-{{% gitter tutorials %}}
 
 In contrast to Prolog and original Jason, the beliefbase of LightJason is more than a list of facts.
 LightJason supports a hierarchical structure of beliefs.

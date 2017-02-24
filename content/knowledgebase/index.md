@@ -1,8 +1,7 @@
 ---
 title: "Knowledge Base"
+gitter: "knowledge base"
 ---
-
-{{% gitter "knowledge base" 150 %}}
 
 In this Section we provide basic knowledge helpful for understanding the theoretical concepts (and also the [practical tutorials](/tutorials)) of our framework.
 

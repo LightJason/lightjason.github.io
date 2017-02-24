@@ -25,6 +25,9 @@ params:
     bingverify         : "2EB13C5538E9973D8DFC39C6A455DEFE"
     googleverify       : "sVNU1mmaPgvbzlig03vdNtqHYnJNzvbdQYLCWqvtxRU"
     twitter            : "LightJasonAI"
+    gitter             :
+        user           : "LightJason"
+        defaultroom    : "Lobby"
 
     icon:
         icon           : "images/favicon.png"

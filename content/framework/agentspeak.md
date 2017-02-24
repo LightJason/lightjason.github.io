@@ -1,8 +1,7 @@
 ---
 title: "AgentSpeak(L++) Language Features"
+gitter: "framework"
 ---
-
-{{% gitter technical %}}
 
 We present here a short overview of language examples of our _AgentSpeak(L++)_ syntax. You can found the full [EBNF description](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form) of the language syntax on the project [documentation page](http://lightjason.github.io/AgentSpeak/). The Railroad / Syntax diagrams of the _AgentSpeak(L++)_ language:
 

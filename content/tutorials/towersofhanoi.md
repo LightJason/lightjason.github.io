@@ -1,10 +1,9 @@
 ---
 title: "Example: Towers of Hanoi"
 jsonld: ["techarticle", "course"]
+gitter: "tutorials"
 draft: true
 ---
-
-{{% gitter tutorials %}}
 
 Thsi example shows a single agents which play [towers of Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi). We have choosen this example, because it illustrates the difference of _recursion_ and _iteration_ of problem solving. On another point we demonstrate in this tutorial the resilience of LightJason's agents.
 

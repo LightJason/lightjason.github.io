@@ -1,8 +1,7 @@
 ---
 title: "Tutorials"
+gitter: "tutorials"
 ---
-
-{{% gitter "tutorials" %}}
 
 In this Section we introduce LightJason/AgentSpeak(L++) from a *hands-on* perspective by providing tutorials for understanding the practical applications of our framework.
 
