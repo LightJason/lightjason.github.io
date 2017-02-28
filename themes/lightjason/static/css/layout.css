@@ -163,9 +163,27 @@ div.sidebarwrapper .socialmedia li a {
    border: none;
 }
 
+div.sharebutton {
+    padding-top: 1em;
+    font-size: 125%;
+    font-weight: bold;
+}
+
+div.sharebutton ul {
+    margin-top: -1em;
+}
+
 div.sidebarwrapper ul.socialmediaaction {
     padding-top: 1em;
     list-style: none;
+}
+
+ul.socialmediaaction li a {
+    border: none;
+}
+
+ul.socialmediaaction li a:hover {
+    border: none;
 }
 
 .tooltiptoggle {

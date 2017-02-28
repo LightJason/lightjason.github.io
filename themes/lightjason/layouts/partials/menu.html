@@ -27,10 +27,13 @@
 		{{- end -}}
 
 		{{- partial "gitter" . -}}
-		<ul class="socialmediaaction">
-			<li>{{- partial "tweet" -}}</li>
-			<li>{{- partial "googleplus" . -}}</li>
-			<li>{{- partial "facebook" . -}}</li>
-		</ul>
+		<div class="sharebutton">
+			Share on
+			<ul class="horizontal socialmediaaction">
+				<li>{{- partial "facebook" . -}}</li>
+				<li>{{- partial "googleplus" . -}}</li>
+				<li>{{- partial "tweet" . -}}</li>
+			</ul>
+		</div>
 	</div>
 </div>
