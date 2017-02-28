@@ -1,5 +1,11 @@
 ---
 title: "About"
+previous:
+    url: "/tutorials/efficient-beliefbase"
+    text: "Efficient Beliefbase" 
+next :
+    url: "/contact"
+    text: "contact"
 ---
 
 This project arises during our PhD time, because our research deals with [multi-agent systems](https://en.wikipedia.org/wiki/Multi-agent_system).

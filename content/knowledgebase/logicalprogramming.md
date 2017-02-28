@@ -2,6 +2,12 @@
 title: "Basic Knowledge: Logical Programming"
 jsonld: ["techarticle", "course"]
 gitter: "knowledge base"
+previous :
+    url: "/knowledgebase"
+    text: "Knowledge Base"
+next :
+    url: "/knowledgebase/finitestatemachine"
+    text: "Finite-State-Machine"
 ---
 
 This tutorial gives a short introduction in [logical programming concepts](https://en.wikipedia.org/wiki/Logic_programming), which are needed to write the source code of an agent.

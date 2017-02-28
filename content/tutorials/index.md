@@ -1,6 +1,12 @@
 ---
 title: "Tutorials"
 gitter: "tutorials"
+previous :
+    url: "/knowledgebase/actions"
+    text: "Actions"
+next:
+    url: "/tutorials/agentspeak-in-fifteen-minutes"
+    text: "Develop an AgentSpeak Scenario in 15min"    
 ---
 
 In this Section we introduce LightJason/AgentSpeak(L++) from a *hands-on* perspective by providing tutorials for understanding the practical applications of our framework.

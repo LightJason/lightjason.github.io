@@ -2,6 +2,12 @@
 title: "Tutorial: Efficient Beliefbase"
 jsonld: ["techarticle"]
 gitter: "tutorials"
+previous:
+    url: "/tutorials/environment"
+    text: "Environment"  
+next:
+    url: "/about"
+    text: "About"      
 ---
 
 In contrast to Prolog and original Jason, the beliefbase of LightJason is more than a list of facts.

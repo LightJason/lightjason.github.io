@@ -2,6 +2,12 @@
 title: "Basic Knowledge: Actions"
 jsonld: ["techarticle"]
 gitter: "knowledge base"
+previous :
+    url: "/knowledgebase/differencetojason"
+    text: "Difference to Jason"
+next :
+    url: "/tutorials"
+    text: "Tutorials"
 ---
 
 This text gives you an overview over the main build-in actions in LightJason/AgentSpeak(L++).

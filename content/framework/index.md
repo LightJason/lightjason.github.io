@@ -1,6 +1,12 @@
 ---
 title: "Framework"
 gitter: framework
+previous :
+    url: "/publication"
+    text: "publication"
+next :
+    url: "/knowledgebase"
+    text: "knowledge base"
 ---
 
 The multi-agent framework is split up into different parts. Each component has got its own documentation. At this section, we would like to give an overview over all elements within the framework. All frameworks are published to [Maven Central](http://mvnrepository.com).

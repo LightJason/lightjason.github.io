@@ -21,6 +21,10 @@ ul, ol {
     padding: 0;
 }
 
+pre, code {
+    white-space: pre-wrap;
+}
+
 dt {
   float: left;
   margin-right: 0.5em;
@@ -107,7 +111,7 @@ div.sidebar {
     width: 260px;
     margin-left: -102%;
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 2.5em;
     color: #444;
 }
 

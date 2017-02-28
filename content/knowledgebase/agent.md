@@ -2,6 +2,12 @@
 title: "Basic Knowledge: From Finite-State-Machine and Logical Programming to an Agent"
 jsonld: ["techarticle", "course"]
 gitter: "knowledge base"
+previous :
+    url: "/knowledgebase/finitestatemachine"
+    text: "Finite-State-Machine"
+next :
+    url: "/knowledgebase/differencetojason"
+    text: "Difference to Jason"
 ---
 
 The main definition of our [BDI (Belief-Desire-Intention) framework](https://en.wikipedia.org/wiki/Belief%E2%80%93desire%E2%80%93intention_software_model) follows [Russell & Norvig - Artificial Intelligence: A Modern Approach](http://aima.cs.berkeley.edu/) with the structure of _goal-based agents_:

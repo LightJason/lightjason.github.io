@@ -1,6 +1,12 @@
 ---
 title: "Knowledge Base"
 gitter: "knowledge base"
+previous :
+    url: "/framework"
+    text: "framework"
+next :
+    url: "/knowledgebase/logicalprogramming"
+    text: "logical programming"
 ---
 
 In this Section we provide basic knowledge helpful for understanding the theoretical concepts (and also the [practical tutorials](/tutorials)) of our framework.

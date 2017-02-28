@@ -2,6 +2,12 @@
 title: "Difference to Jason"
 jsonld: ["techarticle", "course"]
 gitter: "knowledge base"
+previous :
+    url: "/knowledgebase/agent"
+    text: "Finite-State-Machine and Logical Programming to an Agent"
+next :
+    url: "/knowledgebase/actions"
+    text: "Actions"    
 ---
 
 We describe the difference between LightJason and [Jason](http://jason.sourceforge.net/), because in general the LightJason framework is inspired by Jason, but it is __not__:

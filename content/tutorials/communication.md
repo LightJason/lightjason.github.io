@@ -2,6 +2,12 @@
 title: "Tutorial: Communication"
 jsonld: ["techarticle", "course"]
 gitter: "tutorials"
+previous:
+    url: "/tutorials/actions"
+    text: "Actions"
+next:
+    url: "/tutorials/environment"
+    text: "Environment"              
 ---
 
 LightJason architecture does not support in general a build-in communication, because communication and
