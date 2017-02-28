@@ -1,8 +1,11 @@
 ---
 type: homepage
+next :
+    url: "/news"
+    text: "news"
 ---
 
-LightJason is a _concurrent BDI multi-agent framework_ for creating a multi-agent systems with Java. A [multi-agent system](https://en.wikipedia.org/wiki/Multi-agent_system) is part of the research of [artificial intelligence](https://en.wikipedia.org/wiki/Artificial_intelligence). We try to create a framework which allows to add AI algorithms to an existing software-architecture. The framework combines classical artificial intelligence with optimization and [fuzzy-logical](https://en.wikipedia.org/wiki/Fuzzy_logic) concepts on a high-scalable concurrency architecture. 
+LightJason is a _concurrent BDI multi-agent framework_ for creating a multi-agent systems with Java. A [multi-agent system](https://en.wikipedia.org/wiki/Multi-agent_system) is part of the research of [artificial intelligence](https://en.wikipedia.org/wiki/Artificial_intelligence). We try to create a framework which allows to add AI algorithms to an existing software-architecture. The framework combines classical artificial intelligence with optimization and [fuzzy-logical](https://en.wikipedia.org/wiki/Fuzzy_logic) concepts on a high-scalable concurrency architecture.
 
 The project is inspired by [AgentSpeak(L)](https://en.wikipedia.org/wiki/AgentSpeak) and  [Jason](http://jason.sourceforge.net), but designed and implemented from scratch.
 LightJason is fine-tuned to concurrent plan execution suitable for distributed frameworks and aims at efficient and scalable integration with existing platforms.
@@ -25,7 +28,7 @@ If you think there is anything missing or wish to contribute to our documentatio
 
 You can
 
+* talk with us and other community members at our [discussion board](https://gitter.im/LightJason)
 * send us [pull requests](https://help.github.com/articles/about-pull-requests/) for contributing to our [repositories](https://github.com/LightJason/) with corrections and further input (preferably)
-* create an [issue](https://github.com/LightJason/AgentSpeak/issues) or 
+* create an [issue](https://github.com/LightJason/AgentSpeak/issues) or
 * write us an [email](/contact).
-

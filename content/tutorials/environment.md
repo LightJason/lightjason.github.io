@@ -1,10 +1,17 @@
 ---
 title: "Tutorial: Environment"
 jsonld: ["techarticle", "course"]
+gitter: "tutorials"
+previous :
+    url: "/tutorials/communication"
+    text: "Communication"  
+next:
+    url: "/tutorials/efficient-beliefbase"
+    text: "Efficient Beliefbase"          
 ---
 
-The LightJason system architecture does not require any environment, but you can easily write your own. Based on the _asynchronous and parallel_ execution model in LightJason you have to create thread-safe data structures for your environment to avoid any [race condition](https://en.wikipedia.org/wiki/Race_condition).
 
+The LightJason system architecture does not require any environment, but you can easily write your own. Based on the _asynchronous and parallel_ execution model in LightJason you have to create thread-safe data structures for your environment to avoid any [race condition](https://en.wikipedia.org/wiki/Race_condition).
 __Keep in mind that all calls of the environment are done in parallel and asynchronously, so your environment must handle these accesses correctly.__
 
 {{< toc >}}
@@ -49,7 +56,6 @@ The agent class must define the actions which passed the call to the environment
 ### Agent class
 
 In this example we implement the action as [object-actions (internal actions)](/tutorials/actions/#object-actions-internal-actions) on {{< linelink "" "agentclass" "21-26" >}}. The method name can be arbitrarily chosen, so the annotation defines the action name. Arguments can be passed with the native Java type inside the method.
-
 The method passes the data to the method of the environment object {{< linelink "" "agentclass" "25" >}}. The environment object is set by the constructor and stored inside the agent object {{< linelink "" "agentclass" "13, 15, 18" >}}. All agents references the same environment, because in Java all inheritance of objects are passed as references.
 
 <!-- htmlmin:ignore -->

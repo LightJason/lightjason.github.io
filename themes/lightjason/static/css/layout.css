@@ -21,6 +21,10 @@ ul, ol {
     padding: 0;
 }
 
+pre, code {
+    white-space: pre-wrap;
+}
+
 dt {
   float: left;
   margin-right: 0.5em;
@@ -107,7 +111,7 @@ div.sidebar {
     width: 260px;
     margin-left: -102%;
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 2.5em;
     color: #444;
 }
 
@@ -159,9 +163,27 @@ div.sidebarwrapper .socialmedia li a {
    border: none;
 }
 
+div.sharebutton {
+    padding-top: 1em;
+    font-size: 125%;
+    font-weight: bold;
+}
+
+div.sharebutton ul {
+    margin-top: -1em;
+}
+
 div.sidebarwrapper ul.socialmediaaction {
     padding-top: 1em;
     list-style: none;
+}
+
+ul.socialmediaaction li a {
+    border: none;
+}
+
+ul.socialmediaaction li a:hover {
+    border: none;
 }
 
 .tooltiptoggle {
@@ -179,6 +201,12 @@ div.sidebarwrapper ul.socialmediaaction {
 .tooltip dt {
     font-weight: bold;
 }
+
+.tooltip a {
+    font-size: 80%;
+}
+
+
 
 .socialmediaimg
 {

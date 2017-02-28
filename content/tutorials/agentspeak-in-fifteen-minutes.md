@@ -1,6 +1,13 @@
 ---
 title: "Tutorial: Develop an AgentSpeak Scenario in 15 Minutes"
 jsonld: ["techarticle", "course"]
+gitter: "tutorials"
+previous :
+    url: "/tutorials"
+    text: "Tutorials"
+next :
+    url: "/tutorials/triggering"
+    text: "Triggering"    
 ---
 
 This tutorial explains how to develop a simple, but full working scenario in 15 minutes with the most recent version of the AgentSpeak(L++) source code.
@@ -27,8 +34,6 @@ The basic knowledge about agents and their execution mechanism from the [knowled
 ## Introduction
 
 This tutorial gives you a _very short_ introduction into LightJason's AgentSpeak(L++) structure. Our [source code documentation](http://lightjason.github.io/AgentSpeak/sources/index.html) can help you in developing your own MAS project according to your individual requirements.
-
-__Note:__ Don't hesitate to ask questions via email or on the [issue tracker](https://github.com/LightJason/AgentSpeak/issues).
 
 This tutorial is structured as follows:
 First you will build AgentSpeak(L++) from source and install the resulting _AgentSpeak_ package on your system, making it available as a dependency for your own MAS project.

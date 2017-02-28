@@ -1,6 +1,13 @@
 ---
 title: "Basic Knowledge: Finite-State-Machine"
 jsonld: ["techarticle", "course"]
+gitter: "knowledge base"
+previous :
+    url: "/knowledgebase/logicalprogramming"
+    text: "Logical Programming"
+next :
+    url: "/knowledgebase/agent"
+    text: "Finite-State-Machine and Logical Programming to an Agent"
 ---
 
 ## State Machine
@@ -16,7 +23,7 @@ Mostly within a state the state-name is documented, also the arrow of a transiti
 
 > This example show a similar state-machine with three states, that runs from the _initial state_ to a _final state_ (left to right). This example shows the _static structure_ of the state machine, so there is no runtime information with in the illustration
 > {{< img src="/images/fsm1.svg" alt="finite-state-machine" width="30%" >}}
- 
+
 
 ### Usage and Example
 
@@ -24,10 +31,10 @@ State-Machine are an useful tool to describe [regular expressions](https://en.wi
 
 > The main goal is to create a system, which can check strings that matchs the following criteria:
 > The strings starts with an arbitrary  sequence of the letter ```a``` or ```b``` (the sequence can be empty).
-> After the initial sequence follows a positiv number which depends on any digit. 
+> After the initial sequence follows a positiv number which depends on any digit.
 > The end of the digit sequence is a sequence of the letter ```x``` with two letters at minimum. All letters within this string can be lower- or upper-case. Some valid example sequences: ```ab1x```, ```aaaaabbb169XXX```, ```AaAabbBB972xXxXXXX```
 
-Most programming languages defines such regular expression in a [perl notation](https://en.wikipedia.org/wiki/Regular_expression#Perl) or [posix notation](https://en.wikipedia.org/wiki/Regular_expression#POSIX_basic_and_extended). We use for the example the posix notation which is defined as: 
+Most programming languages defines such regular expression in a [perl notation](https://en.wikipedia.org/wiki/Regular_expression#Perl) or [posix notation](https://en.wikipedia.org/wiki/Regular_expression#POSIX_basic_and_extended). We use for the example the posix notation which is defined as:
 
 ```(a|A|b|B)*  [0-9]+  (x|X){2,}```
 
@@ -37,7 +44,7 @@ Most programming languages defines such regular expression in a [perl notation](
 
 Based on this definition it is possible to define a state machine, which can check if  the string matchs the given structure. On the runtime the string is read character by character and based on the state machine a transition will be found, which matchs the character.
 
- 
+
 
 ## Petri Net
 

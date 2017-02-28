@@ -1,6 +1,13 @@
 ---
 title: "Tutorial: Actions"
 jsonld: ["techarticle"]
+gitter: "tutorials"
+previous :
+    url: "/tutorials/triggering"
+    text: "Triggering" 
+next :
+    url: "/tutorials/communication"
+    text: "Communication"     
 ---
 
 This tutorial explains the concept and usage of actions. Actions are the _executable mechanisms_. We support a lot of different actions, which supports some [basic functionality](/knowledgebase/actions). Actions are an important part within a multi-agent system e.g. for [communication](/tutorials/communication), modifying the [environment](/tutorials/environment) or the internal state of the agent.
@@ -41,7 +48,7 @@ There are some other methods inside the definition:
 
 ### Object-Actions - Internal Actions
 
-Object actions are methods inside the agent class or super classes of the agent class. LightJason can read all calss methods (not static or abstract methods) and create the actions on-fly. With black- and white-listing you can define a very detailed action generation. The visibility of a method can be public, private or protected. 
+Object actions are methods inside the agent class or super classes of the agent class. LightJason can read all calss methods (not static or abstract methods) and create the actions on-fly. With black- and white-listing you can define a very detailed action generation. The visibility of a method can be public, private or protected.
 For the usage there exists three annotation:
 
 * method annotation ```@IAgentActionName``` for defining action name
@@ -57,7 +64,7 @@ Parameter of the method will be packed / unpacked into terms automatically.
 
 ## How can I create an action?
 
-Within the section both kind of actions are shown. The code of an action should be very efficient and minimalistic, because an action will called multiple times from an agent, because plan execution is in parallel, also agent execution is in parallel. 
+Within the section both kind of actions are shown. The code of an action should be very efficient and minimalistic, because an action will called multiple times from an agent, because plan execution is in parallel, also agent execution is in parallel.
 
 ### AgentSpeak(L++) Script
 
@@ -78,13 +85,13 @@ The data representation can be comprehend by the standalone action.
 
 ## Efficent Concurrency Action
 
-In detail to the standalone action __keep in mind, that the action is called multiple times__, because the plan and rule execution is done in parallel and multiple agent can run the action in parallel. The ```synchronized``` keyword is not a general solution for avoiding [race condition](https://en.wikipedia.org/wiki/Race_condition) because synchronization slows down the performance. 
+In detail to the standalone action __keep in mind, that the action is called multiple times__, because the plan and rule execution is done in parallel and multiple agent can run the action in parallel. The ```synchronized``` keyword is not a general solution for avoiding [race condition](https://en.wikipedia.org/wiki/Race_condition) because synchronization slows down the performance.
 
 In common work the object-orientated design of the action class can be changed to removing synchronization. If you get race condition exceptions or performance problems, just redesign your architecture. A good design of concurrency architecture can be found on all [build-in actions](http://lightjason.github.io/AgentSpeak/sources/d8/da4/namespaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1buildin.html) of the framework
 
 ## Reference Solution
 
-This tutorial depends on the tutorial [AgentSpeak-in-15min](/tutorials/agentspeak-in-fifteen-minutes), so the whole build process is explained within the basic tutorial. If you struggled at some point or wish to obtain our exemplary solution with code documentation to this tutorial, you can download the archive {{< githubzip user="LightJason" repo="Examples" branch="tutorial-agent-action" >}} containing the source code and a executable {{< githubdownload user="LightJason" repo="Examples" branch="jar-tutorial-agent-action" file="myagentapp-1.0-SNAPSHOT.jar" text="Jar file" >}}. 
+This tutorial depends on the tutorial [AgentSpeak-in-15min](/tutorials/agentspeak-in-fifteen-minutes), so the whole build process is explained within the basic tutorial. If you struggled at some point or wish to obtain our exemplary solution with code documentation to this tutorial, you can download the archive {{< githubzip user="LightJason" repo="Examples" branch="tutorial-agent-action" >}} containing the source code and a executable {{< githubdownload user="LightJason" repo="Examples" branch="jar-tutorial-agent-action" file="myagentapp-1.0-SNAPSHOT.jar" text="Jar file" >}}.
 
 We run the example with 5 agents and 1 cycle
 

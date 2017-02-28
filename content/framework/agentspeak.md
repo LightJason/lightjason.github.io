@@ -1,6 +1,8 @@
 ---
 title: "AgentSpeak(L++) Language Features"
+gitter: "framework"
 ---
+
 We present here a short overview of language examples of our _AgentSpeak(L++)_ syntax. You can found the full [EBNF description](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form) of the language syntax on the project [documentation page](http://lightjason.github.io/AgentSpeak/). The Railroad / Syntax diagrams of the _AgentSpeak(L++)_ language:
 
 * [Agent Railroad / Syntax Diagram](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/)
@@ -15,7 +17,7 @@ The language does not support a looping directly, but we are using [lambda expre
 <!-- htmlmin:ignore -->
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">L = collection/list/range(1, 20);
 (L) -> Y : generic/print(Y);
-(L) -> Y | R : R = Y+1; 
+(L) -> Y | R : R = Y+1;
 </code></pre>
 <!-- htmlmin:ignore -->
 
@@ -31,7 +33,7 @@ actionA << actionB << actionC;
 </code></pre>
 <!-- htmlmin:ignore -->
 
-> If you don't want, that a plan is failing, if an action fails you can put at the end of this chain a ```true``` value. This models the behaviour _anything can go wrong, but the agent ignore the error(s)_. 
+> If you don't want, that a plan is failing, if an action fails you can put at the end of this chain a ```true``` value. This models the behaviour _anything can go wrong, but the agent ignore the error(s)_.
 
 <!-- htmlmin:ignore --><pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">actionA << true;
 </code></pre><!-- htmlmin:ignore -->

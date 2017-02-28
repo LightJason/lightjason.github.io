@@ -1,10 +1,17 @@
 ---
 title: "Tutorial: Communication"
 jsonld: ["techarticle", "course"]
+gitter: "tutorials"
+previous:
+    url: "/tutorials/actions"
+    text: "Actions"
+next:
+    url: "/tutorials/environment"
+    text: "Environment"              
 ---
 
-LightJason architecture does not support in general a build-in communication, because communication and 
-agent addressing / naming depends on the domain or underlying software architecture. To create a 
+LightJason architecture does not support in general a build-in communication, because communication and
+agent addressing / naming depends on the domain or underlying software architecture. To create a
 communication structure you have to build-up your own naming model, a send action with a receiving plan and a data structure to map agent names / addresses to agent objects.
 
 {{< toc >}}
@@ -21,17 +28,17 @@ The tutorial can be done into two steps:
 > <br/>
 > Communication can be a _very expensive_ calling structure, especially on distributed systems. If
 > you build your own communication structure
-> just think about multi-threading and performance aspects. Within this tutorial we cannot show you 
+> just think about multi-threading and performance aspects. Within this tutorial we cannot show you
 > all details of fast and efficient communication
-> data structure, so we would like to show you the basics only. On a distributed system you have to 
-> organize the naming schema and searching methods of names and objects. If you need to transfer 
-> messages over the network, just think about 
+> data structure, so we would like to show you the basics only. On a distributed system you have to
+> organize the naming schema and searching methods of names and objects. If you need to transfer
+> messages over the network, just think about
 > serialization and deserialization performance.
-> Java supports a [serialize interface](https://docs.oracle.com/javase/tutorial/jndi/objects/serial.html) 
-> so don't create self-defined string data structure, because for such message transfering there 
+> Java supports a [serialize interface](https://docs.oracle.com/javase/tutorial/jndi/objects/serial.html)
+> so don't create self-defined string data structure, because for such message transfering there
 > are a lot of other and well-known and estabilished components. Well known formats
 > are [JSON](https://en.wikipedia.org/wiki/JavaScript_Object_Notation), [YAML](https://en.wikipedia.org/wiki/YAML) or [XML/XSD with Jaxb](https://en.wikipedia.org/wiki/Java_Architecture_for_XML_Binding)
- 
+
 
 ## Agent
 
@@ -88,7 +95,7 @@ The variable builder allows to create _individual variables and constants_ durin
 
 ## Reference Solution
 
-This tutorial depends on the tutorial [AgentSpeak-in-15min](/tutorials/agentspeak-in-fifteen-minutes), so the whole build process is explained within the basic tutorial. If you struggled at some point or wish to obtain our exemplary solution with code documentation to this tutorial, you can download the archive {{< githubzip user="LightJason" repo="Examples" branch="tutorial-agent-communication" >}} containing the source code and a executable {{< githubdownload user="LightJason" repo="Examples" branch="jar-tutorial-agent-communication" file="myagentapp-1.0-SNAPSHOT.jar" text="Jar file" >}}. 
+This tutorial depends on the tutorial [AgentSpeak-in-15min](/tutorials/agentspeak-in-fifteen-minutes), so the whole build process is explained within the basic tutorial. If you struggled at some point or wish to obtain our exemplary solution with code documentation to this tutorial, you can download the archive {{< githubzip user="LightJason" repo="Examples" branch="tutorial-agent-communication" >}} containing the source code and a executable {{< githubdownload user="LightJason" repo="Examples" branch="jar-tutorial-agent-communication" file="myagentapp-1.0-SNAPSHOT.jar" text="Jar file" >}}.
 
 If you run the example the shown output can be different. For the first run we start the program with 10 agents and 5 iterations:
 

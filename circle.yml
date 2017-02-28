@@ -27,8 +27,8 @@ dependencies:
         # see relese version https://github.com/nodesource/distributions
         - "curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash"
         - sudo apt-get install -y nodejs
-        # see release version https://www.npmjs.com/package/html-minifier-cli
-        - npm install html-minifier -g
+        # see release version https://github.com/kangax/html-minifier
+        - npm install -g html-minifier
         # see release version https://github.com/svg/svgo
         - npm install -g git+https://github.com/svg/svgo.git
 

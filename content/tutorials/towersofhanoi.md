@@ -1,6 +1,7 @@
 ---
 title: "Example: Towers of Hanoi"
 jsonld: ["techarticle", "course"]
+gitter: "tutorials"
 draft: true
 ---
 
