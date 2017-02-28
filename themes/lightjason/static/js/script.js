@@ -93,4 +93,10 @@ jQuery(function() {
         jQuery(this).children(".tooltip:first").slideToggle(); 
     });
 
+
+    jQuery(".headroom").headroom({
+        "offset": 205,
+        "tolerance": 5
+    });
+
 });

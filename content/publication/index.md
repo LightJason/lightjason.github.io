@@ -2,8 +2,8 @@
 title: "Publication"
 view: ["publication"]
 previous :
-    url: "/news"
-    text: "news"
+    url: "/"
+    text: "home"
 next :
     url: "/framework"
     text: "framework"

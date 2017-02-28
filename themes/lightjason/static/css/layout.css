@@ -386,3 +386,28 @@ span.teletype-prefix {
 .videoprintlink {
     display: none;
 }
+
+
+
+.pageinfo {
+    background: #ccc;
+    will-change: transform;
+    transition: transform 200ms linear;
+}
+
+.header--fixed {
+    position: fixed;
+    z-index: 10;
+    right: 0;
+    left: 0;
+    top: 0;
+}
+
+.pageinfo--pinned {
+    display: block;
+    transform: translateY(0%);
+}
+.pageinfo--unpinned {
+    display: none;
+    transform: translateY(-100%);
+}
