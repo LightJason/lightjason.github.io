@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: Triggering"
+title: "Tutorial: Trigger"
 jsonld: ["techarticle", "course"]
 gitter: "tutorials"
 previous:

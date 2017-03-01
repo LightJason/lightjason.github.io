@@ -6,8 +6,8 @@ previous :
     url: "/tutorials"
     text: "Tutorials"
 next :
-    url: "/tutorials/triggering"
-    text: "Triggering"    
+    url: "/tutorials/trigger"
+    text: "Trigger"    
 ---
 
 This tutorial explains how to develop a simple, but full working scenario in 15 minutes with the most recent version of the AgentSpeak(L++) source code.

@@ -17,7 +17,7 @@ Having [basic knowledge](/knowledgebase) about the [belief–desire–intention 
 
 
 1. [Develop an AgentSpeak Scenario in 15 Minutes](agentspeak-in-fifteen-minutes) a minimal example to develop an agent scenario in 15 minutes from scratch with the current developer source codes of AgentSpeak.
-2. [Triggering](trigger) is a tutorial to control the execution of an agent
+2. [Trigger](trigger) is a tutorial to control the execution of an agent
 3. [Actions](actions) is a tutorial to define own actions
 4. [Communication](communication) is a tutorial on how to realise communication
 5. [Environment](environment) is a tutorial to create an environment (which is not necessarily required in LightJason)

@@ -2,7 +2,7 @@ div.sidebar, div.clear,
 div.sidebarwrapper,
 span.teletype-cursor,
 div.footer, #toccontainer,
-.category_control, .video, 
+.category_control, .video, .pagination,
 .gitter-chat-embed, .gitter-open-chat-button {
     display: none;
     visibility: hidden;

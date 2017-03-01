@@ -3,8 +3,8 @@ title: "Tutorial: Actions"
 jsonld: ["techarticle"]
 gitter: "tutorials"
 previous :
-    url: "/tutorials/triggering"
-    text: "Triggering" 
+    url: "/tutorials/trigger"
+    text: "Trigger" 
 next :
     url: "/tutorials/communication"
     text: "Communication"     

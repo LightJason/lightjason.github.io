@@ -1,7 +1,6 @@
 body {
     font-family: Pridi, serif;
     font-size: 18px;
-    background-color: white;
     color: #3E4349;
     margin: 0;
     padding: 0;
@@ -221,6 +220,7 @@ div.documentwrapper {
 
 div.bodywrapper {
     margin: 0 0 0 220px;
+
 }
 
 
@@ -388,13 +388,24 @@ span.teletype-prefix {
 }
 
 .pagination {
-    background: #ccc;
+    border: 1px solid #B1B4B6;
+    margin-top: 1.5em;
+    margin-bottom: 1.25em;
+    padding: 0.15em;
+    background-color: #eee;
+    font-size: 80%;
+    text-align: center;
+    margin-left: 2.5%;
+    width: 95%;
+    overflow: hidden;
 }
 
 .pagination .left {
-    float: left;
+    display: inline-block;
+    margin-right: 1em;
 }
 
 .pagination .right {
-    float: right;
+    display: inline-block;
+    margin-left: 1em;
 }
