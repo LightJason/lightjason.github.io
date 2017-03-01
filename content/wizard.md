@@ -10,12 +10,46 @@ draft: true
 <section>
 <strong>Information</strong>
 <p>This main information are needed to define your own application structure. Here you can define a general name and projekt description for this simulation. This data will be used for the <a href="https://maven.apache.org/">Maven</a> build process. The generated Maven build script is defined for Maven 3.1 or higher, so you need the correct version of Maven and a builded <i>LightJason AgentSpeak(L++) Maven</i> package.</p>
+<p><form>
+    <div class="form-group">
+        <label for="groupid">Group ID</label>
+        <input type="groupid" class="form-control" id="groupid" placeholder="org.lightjason" />
+        <small class="form-text text-muted">The group id specifies a main name only with letters for the main package e.g.: org.lightjason</small>
+    </div>
+    <div class="form-group">
+        <label for="artefactid">Artefact ID</label>
+        <input type="artefactid" class="form-control" id="artefactid" placeholder="myagentapp" />
+        <small class="form-text text-muted">The artefact id specifies the program name, which also is used for the file name</small>
+    </div>
+    <div class="form-group">
+        <label for="version">Version</label>
+        <input type="version" class="form-control" id="version" placeholder="1.0-SNAPSHOT" />
+        <small class="form-text text-muted">The version of the program it can be set to any number</small>
+    </div>
+</form></p>
 </section>
 
 <h3>Runtime</h3>
 <section>
 <strong>Information</strong>
-<p>The <a href="/tutorials/agentspeak-in-fifteen-minutes/#write-your-own-runtime">runtime</a> is the main structure to execute the simulation, so here can you define the main runtime. The runtime is build with <strong>parallel execution</strong>, so keep in mind, that the execution can be return different arguments. The runtime does not contains an (statistical) analysis of, so this must be written by yourself.</p> 
+<p>The <a href="/tutorials/agentspeak-in-fifteen-minutes/#write-your-own-runtime">runtime</a> is the main structure to execute the simulation, so here can you define the main runtime. The runtime is build with <strong>parallel execution</strong>, so keep in mind, that the execution can be return different arguments. The runtime does not contains an (statistical) analysis of, so this must be written by yourself.</p>
+<p><form>
+    <div class="form-check">
+        <label class="form-check-label">
+          <input name="setmodifyable" id="setmodifyable" type="checkbox" class="form-check-input" /> Agents can be added / removed during runtime 
+        </label>
+    </div>
+    <div class="form-check">
+        <label class="form-check-label">
+          <input name="communicate" id="communicate" type="checkbox" class="form-check-input" /> Agents should communicate by a name
+        </label>
+    </div>
+    <div class="form-check">
+        <label class="form-check-label">
+          <input name="logging" id="logging" type="checkbox" class="form-check-input" checked /> Logging disable
+        </label>
+    </div>       
+</form></p>
 </section>
 
 <h3>Agent & Generator</h3>
