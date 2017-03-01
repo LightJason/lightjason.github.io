@@ -93,4 +93,23 @@ jQuery(function() {
         jQuery(this).children(".tooltip:first").slideToggle(); 
     });
 
+
+    /**
+     * swipe-left to go to the next page
+     */
+    jQuery("body").hammer().bind("swipeleft", function(){
+        var lc = jQuery(this).data("nextpage");
+        if (lc)
+            window.location.href = jQuery(this).data("nextpage");
+    });
+
+    /**
+     * swipe-right to got to the previous page
+     */
+    jQuery("body").hammer().bind("swiperight", function(){
+        var lc = jQuery(this).data("previouspage");
+        if (lc)
+            window.location.href = jQuery(this).data("previouspage");
+    });
+
 });
