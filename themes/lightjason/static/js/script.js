@@ -99,8 +99,9 @@ jQuery(function() {
      */
     jQuery("body").hammer().bind("swipeleft", function(){
         var lc = jQuery(this).data("nextpage");
+        console.log(lc);
         if (lc)
-            window.location.href = jQuery(this).data("nextpage");
+            window.location.href = lc;
     });
 
     /**
@@ -109,7 +110,7 @@ jQuery(function() {
     jQuery("body").hammer().bind("swiperight", function(){
         var lc = jQuery(this).data("previouspage");
         if (lc)
-            window.location.href = jQuery(this).data("previouspage");
+            window.location.href = lc;
     });
 
 });
