@@ -387,7 +387,7 @@ span.teletype-prefix {
     display: none;
 }
 
-.pagination {
+.sitepagination {
     border: 1px solid #B1B4B6;
     margin-top: 1.5em;
     margin-bottom: 1.25em;
@@ -400,12 +400,12 @@ span.teletype-prefix {
     overflow: hidden;
 }
 
-.pagination .left {
+.sitepagination .left {
     display: inline-block;
     margin-right: 1em;
 }
 
-.pagination .right {
+.sitepagination .right {
     display: inline-block;
     margin-left: 1em;
 }
