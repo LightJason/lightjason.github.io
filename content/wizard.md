@@ -1,0 +1,49 @@
+---
+title: "Wizard"
+draft: true
+---
+
+{{< inlinejs "/codewizard.js" >}}
+{{< wizard >}}
+
+<h3>General</h3>
+<section>
+<strong>Information</strong>
+<p>This main information are needed to define your own application structure. Here you can define a general name and projekt description for this simulation. This data will be used for the <a href="https://maven.apache.org/">Maven</a> build process. The generated Maven build script is defined for Maven 3.1 or higher, so you need the correct version of Maven and a builded <i>LightJason AgentSpeak(L++) Maven</i> package.</p>
+</section>
+
+<h3>Runtime</h3>
+<section>
+<strong>Information</strong>
+<p>The <a href="/tutorials/agentspeak-in-fifteen-minutes/#write-your-own-runtime">runtime</a> is the main structure to execute the simulation, so here can you define the main runtime. The runtime is build with <strong>parallel execution</strong>, so keep in mind, that the execution can be return different arguments. The runtime does not contains an (statistical) analysis of, so this must be written by yourself.</p> 
+</section>
+
+<h3>Agent & Generator</h3>
+<section>
+<strong>Agent</strong>
+<p>
+An <a href="/tutorials/agentspeak-in-fifteen-minutes/#a-id-agentclass-a-agent-class">agent</a> is an object, which will be executed by the runtime. From an AgentScript(L++) file (ASL file) multiple agents can be generated, but an agent contains only the current state and if needed some individual action (methods).
+</p>
+<strong>Generator</strong>
+<p>
+For each AgentScript(L++) file (ASL file) is a <a href="/tutorials/agentspeak-in-fifteen-minutes/#agent-generator-class">generator</a> needed, because the generator parses the ASL file and generates the agents, but the parsing process is executed once. For multiple ASL files the same generator can be instatiate multiple times, but for each kind of agent objects a generator is needed.
+</p>
+</section>
+
+<h3>External Action</h3>
+<section>
+<strong>Information</strong>
+<p>
+The <a href="/tutorials/actions/#what-kind-of-actions-exists">external- or standalone-actions</a> are calls from the agent which can define any kind of behaviour. The action can be used to define any kind of calculation or logging, data export and import. Take a look on the current <a href="/knowledgebase/actions/">buildin actions</a> to get an overview.
+</p>
+</section>
+
+<h3>Code Generation</h3>
+<section>
+<strong>Information & Warning</strong><br/>
+<p>Here can create the code examples based on the LightJason framework. We recommand to understand the code especially consideration of performance and object-orientated programming and design. This wizad cannot create a full performant example for each domain definition and problem definition, so in some cases you must create your own structure.</p>
+The wizard should help beginners to understand the architecture of the framework without writing the full code yourself. Please read the <a href="/tutorials">tutorials</a> first to understand the main concepts of the code. All generated codes are for Java 1.8 or higher, so a downgrade is not possible.
+</section>
+
+
+{{< /wizard >}}

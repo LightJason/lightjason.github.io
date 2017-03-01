@@ -113,4 +113,19 @@ jQuery(function() {
             window.location.href = lc;
     });
 
+
+    /**
+     * define wizard
+     */
+    jQuery(".wizard").steps({ 
+        headerTag: "h3",
+        bodyTag: "section",
+        transitionEffect: "slideLeft",
+        enableFinishButton: true,
+        enablePagination: false,
+        enableAllSteps: true,
+        titleTemplate: "#title#",
+        cssClass: "tabcontrol"
+     });
+
 });
