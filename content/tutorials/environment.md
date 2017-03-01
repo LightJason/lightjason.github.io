@@ -10,38 +10,38 @@ next:
     text: "Efficient Beliefbase"          
 ---
 
-LightJason system architecture does not require any environment, but you can easily write your own. Based on the _asynchronous and parallel_ execution model in LightJason you have to create thread-safe data structures for your environment to avoid any [race condition](https://en.wikipedia.org/wiki/Race_condition).
 
-__Keep in mind that all calls of the environment are done in parallel and asynchronously, so your environment must handle these access correctly.__
+The LightJason system architecture does not require any environment, but you can easily write your own. Based on the _asynchronous and parallel_ execution model in LightJason you have to create thread-safe data structures for your environment to avoid any [race condition](https://en.wikipedia.org/wiki/Race_condition).
+__Keep in mind that all calls of the environment are done in parallel and asynchronously, so your environment must handle these accesses correctly.__
 
 {{< toc >}}
 
 ## Previous Knowledge
 
-We do the tutorial into three steps:
+The tutorial consists of three steps:
 
 1. create the basic agent structure based on the [AgentSpeak 15min](/tutorials/agentspeak-in-fifteen-minutes/), [Triggering](/tutorials/trigger/) and [Actions](/tutorials/actions/) tutorials
-2. we use the [object-actions (internal actions)](/tutorials/actions/#object-actions-internal-actions) to pass the calls from the agent to the evnironment
+2. we use the [object-actions (internal actions)](/tutorials/actions/#object-actions-internal-actions) to pass the calls from the agent to the environment
 3. we create a _thread-safe_ environment which can execute the _object-actions_ from the agent
 
 
 ## Environment
 
-For this example we use a small structure within the agent should change there position. The agent can move one cell to the left or right, but the agent can move if the cell is free. The number of cells is $1.5 \cdot \text{number of agents}$ so there is a guarantee that there is a free cell. The agent position will be set by random on initialization.
+For this example we use a small structure within which the agents should change their positions. The agents can move one cell to the left or right, but the agents can only move if the cell is free. The number of cells is $1.5 \cdot \text{number of agents}$ so there is a guarantee that there is a free cell. The agent position will be set at random on initialization.
 
 {{< img src="/images/environment.svg" width="35%" >}}
 
-We need on the environment two structures for storing, both structures must be thread-safe
+We need in the environment two structures for storing, both structures must be thread-safe
 
 * a storage for the agents (the cell definition) {{< linelink "" "env" "13" >}}
-* a map to store agent an positon for read access {{< linelink "" "env" "15" >}}
+* a map to store agent positions for read access {{< linelink "" "env" "15" >}}
 
 For execution we need two methods
 
 * a method for initial set of the agent {{< linelink "" "env" "35-49" >}}
 * the method for moving, which is used for the agent action {{< linelink "" "env" "51-83" >}}
 
-With a trigger {{< linelink "" "env" "65-72" >}} we notify all other agents if an agents change the position {{< linelink "" "env" "78-79" >}}. If the agent cannot move, because the cell is not empty, we thrown an exception on {{< linelink "" "env" "82" >}} and this will fail the agent action.
+With a trigger {{< linelink "" "env" "65-72" >}} we notify all other agents if an agent changes the position {{< linelink "" "env" "78-79" >}}. If the agent cannot move because the cell is not empty, we throw an exception on {{< linelink "" "env" "82" >}} and this will fail the agent action.
 
 <!-- htmlmin:ignore -->
 {{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/CEnvironment.java" lang="java" branch="tutorial-environment" id="env" >}}
@@ -55,9 +55,8 @@ The agent class must define the actions which passed the call to the environment
 
 ### Agent class
 
-In this example we implement the action as [object-actions (internal actions)](/tutorials/actions/#object-actions-internal-actions) on {{< linelink "" "agentclass" "21-26" >}}. The method name can be choosen arbitrary, so the annotation defines the action name. Arguments can be passed with the native Java type inside the method.
-
-The method pass the data to the method of the environment object {{< linelink "" "agentclass" "25" >}}. The environment object is set by the constructor and stored inside the agent object {{< linelink "" "agentclass" "13, 15, 18" >}}. All agents references the same environment, because in Java all inheritance of objects are passed as references.
+In this example we implement the action as [object-actions (internal actions)](/tutorials/actions/#object-actions-internal-actions) on {{< linelink "" "agentclass" "21-26" >}}. The method name can be arbitrarily chosen, so the annotation defines the action name. Arguments can be passed with the native Java type inside the method.
+The method passes the data to the method of the environment object {{< linelink "" "agentclass" "25" >}}. The environment object is set by the constructor and stored inside the agent object {{< linelink "" "agentclass" "13, 15, 18" >}}. All agents references the same environment, because in Java all inheritance of objects are passed as references.
 
 <!-- htmlmin:ignore -->
 {{< githubsource id="agentclass" user="LightJason" repo="Examples" file="src/main/java/myagentproject/MyAgent.java" lang="java" branch="tutorial-environment" >}}
@@ -65,7 +64,7 @@ The method pass the data to the method of the environment object {{< linelink ""
 
 ### Agent AgentSpeak(L++) Script
 
-The agent script can use the action ```env/move``` at {{< linelink "" "asl" "10" >}}. The parameter is the new position, but this can fail, so the whole can fail also. Here we encapsulate the action with a plan to handle failure execution. The failure execution start with the plan {{< linelink "" "asl" "15-20" >}}. Each of the _movement plans_ calls it self to create en _infinity loop_ of moving. In parallel the plan {{< linelink "" "asl" "21-23" >}} will be executed if another agents has been moved.
+The agent script can use the action ```env/move``` at {{< linelink "" "asl" "10" >}}. The parameter is the new position, but this can fail, so the whole can fail also. Here we encapsulate the action with a plan to handle failure execution. The failure execution starts with the plan {{< linelink "" "asl" "15-20" >}}. Each of the _movement plans_ calls itself to create an _infinity loop_ of moving. In parallel the plan {{< linelink "" "asl" "21-23" >}} will be executed if another agents have been moved.
 
 <!-- htmlmin:ignore -->
 {{< githubsource user="LightJason" repo="Examples" file="agent_environment.asl" lang="agentspeak" branch="tutorial-environment" id="asl" >}}
@@ -75,7 +74,7 @@ The agent script can use the action ```env/move``` at {{< linelink "" "asl" "10"
 
 ## Agent generator with environment
 
-The agent generator is structured for a flexible environment, so with the constuctor the environment object is set into {{< linelink "" "generator" "12, 14, 31" >}}
+The agent generator is structured for a flexible environment, so with the constructor the environment object is set into {{< linelink "" "generator" "12, 14, 31" >}}
 
 <!-- htmlmin:ignore -->
 {{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/MyAgentGenerator.java" lang="java" branch="tutorial-environment" id="generator" >}}
@@ -83,7 +82,7 @@ The agent generator is structured for a flexible environment, so with the constu
 
 ### Variable Builder
 
-For creating fast access to data of the environment (size) and agent name (hashcode) we use a variable builder, that gets the environment also as reference {{< linelink "" "variablebuilder" "13, 15, 17" >}}. The _generate_ method creates constants for each plan {{< linelink "" "variablebuilder" "20-27" >}}. In detail to the environment data {{< linelink "" "variablebuilder"  "25" >}} create a variable with the size of the environment
+For creating fast access to data of the environment (size) and agent name (hashcode) we use a variable builder that gets the environment also as reference {{< linelink "" "variablebuilder" "13, 15, 17" >}}. The _generate_ method creates constants for each plan {{< linelink "" "variablebuilder" "20-27" >}}. In detail to the environment data {{< linelink "" "variablebuilder"  "25" >}} create a variable with the size of the environment
 
 <!-- htmlmin:ignore -->
 {{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/CVariableBuilder.java" lang="java" branch="tutorial-environment" id="variablebuilder" >}}
