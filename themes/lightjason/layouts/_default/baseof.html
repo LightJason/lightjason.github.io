@@ -1,5 +1,4 @@
 {{ partial "header" . -}} 
-
 <div class="document">
 	<div id="nav">&#9776;</div>
 	<div class="documentwrapper">
@@ -9,7 +8,13 @@
 				{{ block "main" . -}}{{- end }} 
 				{{ partial "publication" . -}}
 			</div>
-			{{ partial "pagination" . -}}
+			{{- if .IsHome -}}
+				{{ range first 1 (where .Site.Pages "Type" "homepage") -}}
+					{{- partial "pagination" . -}}
+				{{- end -}}
+			{{- else -}}
+				{{- partial "pagination" . -}}
+			{{- end -}}
 		</div>
 	</div>	
 	{{ partial "menu" . -}}

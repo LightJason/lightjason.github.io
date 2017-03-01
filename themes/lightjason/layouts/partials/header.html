@@ -38,4 +38,4 @@
 	{{- partial "microdata" . -}}
 </head>
 
-<body {{ if .Params.previous -}}data-previouspage="{{- .Params.previous.url -}}"{{- end }} {{ if .Params.next -}}data-nextpage="{{- .Params.next.url -}}"{{- end -}}>
+<body {{ if .IsHome -}}{{- range first 1 (where .Site.Pages "Type" "homepage") -}}{{- if .Params.previous -}}data-previouspage="{{- .Params.previous.url -}}"{{- end }} {{ if .Params.next -}}data-nextpage="{{- .Params.next.url -}}"{{- end -}}{{- end -}}{{- else -}}{{- if .Params.previous -}}data-previouspage="{{- .Params.previous.url -}}"{{- end }} {{ if .Params.next -}}data-nextpage="{{- .Params.next.url -}}"{{- end -}}{{- end -}}>
