@@ -1,0 +1,25 @@
+{{- $id := (.Get "id") -}}
+{{- $branch := delimit (slice "?ref=" (.Get "branch" | default "master")) "" | string -}}
+{{- $file := getJSON "https://api.github.com/repos/" (.Get "user") "/" (.Get "repo") "/contents/" (.Get "file") $branch -}}
+
+<script>
+jQuery(function() {
+
+	jQuery({{- $id -}}).click(function() {
+		
+		console.log(
+			
+			Mustache.render(
+				{{- $file.content | base64Decode -}},
+				{
+					{{ .Inner | safeJS }}
+				}
+			)
+
+		);
+
+
+	});
+
+} );
+</script>

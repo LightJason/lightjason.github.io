@@ -3,25 +3,6 @@ title: "Wizard"
 draft: true
 ---
 
-<script>
-jQuery(function() {
-    
-    jQuery(".generate").click(function() {
-        console.log( 
-            Mustache.render(
-                "pom uses {{groupid}} with {{artefactid}} and {{version}}", 
-                { 
-                    groupid    : jQuery("#groupid").val(),
-                    artefactid : jQuery("#artefactid").val(),
-                    version    : jQuery("#version").val()
-                } 
-            ) 
-        );
-    });
-    
-} );
-</script>
-
 {{< wizard >}}
 
 <h3>General</h3>
@@ -111,3 +92,9 @@ The wizard should help beginners to understand the architecture of the framework
 </section>
 
 {{< /wizard >}}
+
+{{< githubtemplatezip user="LightJason" repo="lightjason.github.io" branch="templates" file="pom.xml" id=".generate" >}}
+groupid     : jQuery("#groupid").val(),
+artefactid  : jQuery("#artefactid").val(),
+version    : jQuery("#version").val()
+{{< /githubtemplatezip >}}
