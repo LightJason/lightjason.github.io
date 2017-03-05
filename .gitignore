@@ -1,4 +1,5 @@
 *.*
 !.gitignore
 !circle.yml
-!+.java
+!pom.xml
+!*.java
