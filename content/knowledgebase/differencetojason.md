@@ -18,7 +18,7 @@ We describe the difference between LightJason and [Jason](http://jason.sourcefor
 LightJason does not use __any code fragments__ of Jason, so there is no connection between the two frameworks. LightJason is __only inspired__ by the concept of Jason on a theoretical level. We build a fully new framework from scratch. The imags allows you to highlight elements by a _mouse over effect_ for better understanding.
 
 {{< toc >}}
-{{< inlinejs "/agentcycle.js" >}}
+{{< includejs "/agentcycle.js" >}}
 
 
 ## Jason Agent Cycle

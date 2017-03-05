@@ -10,6 +10,8 @@ next :
     text: "Difference to Jason"
 ---
 
+{{< includejs "/agentfsm.js" >}}
+
 The main definition of our [BDI (Belief-Desire-Intention) framework](https://en.wikipedia.org/wiki/Belief%E2%80%93desire%E2%80%93intention_software_model) follows [Russell & Norvig - Artificial Intelligence: A Modern Approach](http://aima.cs.berkeley.edu/) with the structure of _goal-based agents_:
 
 > An agent is anything that can be viewed as perceiving its environment through sensors and acting upon that environment through effectors _(Chapter 2.1, page 31)_
@@ -52,7 +54,6 @@ The state-machine of this agent which executes empty plans is shown in the follo
 The picture shows the _static model_ of the agent and the states represent a _set of beliefs_ which are created during runtime and the the transitions are the instantiation of the goal and the execution of the plans. The initial state is defined by the initial goal.
 <br/>
 Based on this static model the _runtime model_ shows the execution structure of the state-machine. The animation shows the continuous execution_ of the agent on each cycle. In this case the agent runs infinitely, but it switches between the ```main```-state and the ```first``` and ```second```-state, but these two states run in parallel (<a href="#agentfsm" id="animate-agentfsm">animate finite-state-machine</a>).
-{{< inlinejs "/agentfsm.js" >}}
 
 
 ## Action Behaviour

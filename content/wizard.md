@@ -3,7 +3,7 @@ title: "Wizard"
 draft: true
 ---
 
-{{< inlinejs "/codewizard.js" >}}
+{{< includejs "/codewizard.js" >}}
 {{< wizard >}}
 
 <h3>General</h3>
@@ -61,7 +61,13 @@ draft: true
         <label class="form-check-label">
           <input name="buildinaction" id="buildinaction" type="checkbox" class="form-check-input" checked /> Use <a href="/knowledgebase/actions">buildin actions</a>
         </label>
+    </div>
+    <div class="form-check">
+        <label class="form-check-label">
+          <input name="buildinaction" id="buildinaction" type="checkbox" class="form-check-input" checked /> add initial-goal
+        </label>
     </div>   
+
 </form></p>
 </section>
 
@@ -77,7 +83,13 @@ The <a href="/tutorials/actions/#what-kind-of-actions-exists">external- or stand
 <section>
 <strong>Information & Warning</strong><br/>
 <p>Here can create the code examples based on the LightJason framework. We recommand to understand the code especially consideration of performance and object-orientated programming and design. This wizad cannot create a full performant example for each domain definition and problem definition, so in some cases you must create your own structure.</p>
+<p>
 The wizard should help beginners to understand the architecture of the framework without writing the full code yourself. Please read the <a href="/tutorials">tutorials</a> first to understand the main concepts of the code. All generated codes are for Java 1.8 or higher, so a downgrade is not possible.
+</p>
+<br/><br/>
+<p>
+<button type="button" class="btn btn-secondary btn-lg btn-block">Generate Source code</button>
+</p>
 </section>
 
 
