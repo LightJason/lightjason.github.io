@@ -3,7 +3,25 @@ title: "Wizard"
 draft: true
 ---
 
-{{< includejs "/codewizard.js" >}}
+<script>
+jQuery(function() {
+    
+    jQuery(".generate").click(function() {
+        console.log( 
+            Mustache.render(
+                "pom uses {{groupid}} with {{artefactid}} and {{version}}", 
+                { 
+                    groupid    : jQuery("#groupid").val(),
+                    artefactid : jQuery("#artefactid").val(),
+                    version    : jQuery("#version").val()
+                } 
+            ) 
+        );
+    });
+    
+} );
+</script>
+
 {{< wizard >}}
 
 <h3>General</h3>
@@ -88,9 +106,8 @@ The wizard should help beginners to understand the architecture of the framework
 </p>
 <br/><br/>
 <p>
-<button type="button" class="btn btn-secondary btn-lg btn-block">Generate Source code</button>
+<button type="button" class="generate btn btn-secondary btn-lg btn-block">Generate Source code</button>
 </p>
 </section>
-
 
 {{< /wizard >}}
