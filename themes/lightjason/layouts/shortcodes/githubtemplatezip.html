@@ -6,18 +6,10 @@
 jQuery(function() {
 
 	jQuery({{- $id -}}).click(function() {
-		
-		console.log(
-			
-			Mustache.render(
-				{{- $file.content | base64Decode -}},
-				{
-					{{ .Inner | safeJS }}
-				}
-			)
 
-		);
-
+			var l_zip = new JSZip();
+			l_zip.file( "lightjason/pom.xml", Mustache.render( {{- $file.content | base64Decode -}}, { {{- .Inner | safeJS -}} } ) );
+			l_zip.generateAsync({ type: "blob" }).then( function(p_blob) { saveAs( p_blob, "lightjason.zip" ); } );
 
 	});
 

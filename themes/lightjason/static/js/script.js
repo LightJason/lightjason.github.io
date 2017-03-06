@@ -116,6 +116,7 @@ jQuery(function() {
 
     /**
      * define wizard
+     * @see http://search.maven.org/solrsearch/select?q=g:%22org.lightjason.agentspeak%22&core=gav
      */
     jQuery(".wizard").steps({ 
         headerTag: "h3",
@@ -130,7 +131,7 @@ jQuery(function() {
             
             var l_result = true;
             jQuery(this).find("section:nth(" + p_current + ")").find(".required").each(function() {
-                l_result = l_result && ( jQuery(this).val() != "");
+                l_result = l_result && ( jQuery(this).val().trim().length > 0 );
                 if ( jQuery(this).val() == "")
                     jQuery(this).addClass("error");
                 else
