@@ -125,7 +125,19 @@ jQuery(function() {
         enablePagination: false,
         enableAllSteps: true,
         titleTemplate: "#title#",
-        cssClass: "tabcontrol"
+        cssClass: "tabcontrol",
+        onStepChanging: function(p_event, p_current, p_new) {
+            
+            var l_result = true;
+            jQuery(this).find("section:nth(" + p_current + ")").find(".required").each(function() {
+                l_result = l_result && ( jQuery(this).val() != "");
+                if ( jQuery(this).val() == "")
+                    jQuery(this).addClass("error");
+                else
+                    jQuery(this).removeClass("error");
+            } );
+            return l_result;
+        }
      });
 
 });
