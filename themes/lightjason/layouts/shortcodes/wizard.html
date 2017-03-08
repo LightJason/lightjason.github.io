@@ -1,3 +1,48 @@
-<div class="wizard">
-	{{- .Inner -}}
-</div>
+{{- $generateid := (.Get "generateid") -}}
+{{- $wizardid := (.Get "wizardid") -}}
+{{- $branch := delimit (slice "?ref=" (.Get "branch" | default "master")) "" | string -}}
+{{- $file := getJSON "https://api.github.com/repos/" (.Get "user") "/" (.Get "repo") "/contents/" (.Get "file") $branch -}}
+
+<script>
+jQuery(function() {
+
+	/**
+     * define wizard
+     * @see http://search.maven.org/solrsearch/select?q=g:%22org.lightjason.agentspeak%22&core=gav
+     */
+    jQuery({{- $wizardid -}}).steps({ 
+        headerTag: "h3",
+        bodyTag: "section",
+        transitionEffect: "slideLeft",
+        enableFinishButton: true,
+        enablePagination: false,
+        enableAllSteps: true,
+        titleTemplate: "#title#",
+        cssClass: "tabcontrol",
+        onStepChanging: function(p_event, p_current, p_new) {
+            
+            var l_result = true;
+            jQuery(this).find("section:nth(" + p_current + ")").find(".required").each(function() {
+                l_result = l_result && ( jQuery(this).val().trim().length > 0 );
+                if ( jQuery(this).val() == "")
+                    jQuery(this).addClass("error");
+                else
+                    jQuery(this).removeClass("error");
+            } );
+            return l_result;
+        }
+     });
+
+	jQuery({{- $generateid -}}).click(function() {
+
+			var l_zip = new JSZip();
+			var l_package = {{- .Get "project" | safeJS -}};
+
+			l_zip.file( l_package+"/pom.xml", Mustache.render( {{- $file.content | base64Decode -}}, { {{- .Inner | safeJS -}} } ) );
+			
+			l_zip.generateAsync({ type: "blob" }).then( function(p_blob) { saveAs( p_blob, l_package+".zip" ); } );
+
+	});
+
+} );
+</script>

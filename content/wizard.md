@@ -3,7 +3,7 @@ title: "Wizard"
 draft: true
 ---
 
-{{< wizard >}}
+<div class="wizard">
 
 <h3>General</h3>
 <section>
@@ -92,10 +92,10 @@ The wizard should help beginners to understand the architecture of the framework
 </p>
 </section>
 
-{{< /wizard >}}
+</div>
 
-{{< githubtemplatezip user="LightJason" repo="lightjason.github.io" branch="templates" file="pom.xml" id=".generate" >}}
+{{< wizard user="LightJason" repo="lightjason.github.io" branch="templates" file="pom.xml" generateid=".generate" wizardid=".wizard" project="jQuery('#artefactid').val()" >}}
 groupid     : jQuery("#groupid").val(),
 artefactid  : jQuery("#artefactid").val(),
-version    : jQuery("#version").val()
-{{< /githubtemplatezip >}}
+version     : jQuery("#version").val()
+{{< /wizard >}}
