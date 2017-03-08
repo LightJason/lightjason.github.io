@@ -38,14 +38,16 @@ jQuery(function() {
 	jQuery({{- $generateid -}}).click(function() {
 
 			var l_zip = new JSZip();
-			var l_package = {{- .Get "project" | safeJS -}};
+            var l_configuration = { {{- $inner -}} };
+			var l_package = {{- .Get "package" | safeJS -}};
+            var l_name = {{- .Get "name" | safeJS -}};
 
             {{ range $filename := (split (.Get "file") ",") }}
                 {{- $file := getJSON "https://api.github.com/repos/" $user "/" $repo "/contents/" $filename $branch -}}
-                l_zip.file( l_package + "/" + {{- $filename -}}.replace(/PACKAGE/g, l_package), Mustache.render( {{- $file.content | base64Decode -}}, { {{- $inner -}} } ) );
+                l_zip.file( l_name + "/" + {{- $filename -}}.replace(/PACKAGE/g, l_package), Mustache.render( {{- $file.content | base64Decode -}}, l_configuration ) );
             {{ end }}
 			
-			l_zip.generateAsync({ type: "blob" }).then( function(p_blob) { saveAs( p_blob, l_package+".zip" ); } );
+			l_zip.generateAsync({ type: "blob" }).then( function(p_blob) { saveAs( p_blob, l_name + ".zip" ); } );
 
 	});
 

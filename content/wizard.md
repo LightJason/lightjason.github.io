@@ -94,8 +94,9 @@ The wizard should help beginners to understand the architecture of the framework
 
 </div>
 
-{{< wizard user="LightJason" repo="lightjason.github.io" branch="templates" file="pom.xml" generateid=".generate" wizardid=".wizard" project="jQuery('#artefactid').val()" >}}
+{{< wizard user="LightJason" repo="lightjason.github.io" branch="templates" file="pom.xml,src/main/java/PACKAGE/CRuntime.java" generateid=".generate" wizardid=".wizard" package="l_configuration.package" name="l_configuration.artefactid" >}}
 groupid     : jQuery("#groupid").val().replace(/\s+/g,''),
 artefactid  : jQuery("#artefactid").val().replace(/\s+/g,''),
-version     : jQuery("#version").val().replace(/\s+/g,'')
+version     : jQuery("#version").val().replace(/\s+/g,''),
+package     : jQuery("#groupid").val().replace(/\s+/g,'') + "." + jQuery("#artefactid").val().replace(/\s+/g,'')
 {{< /wizard >}}
