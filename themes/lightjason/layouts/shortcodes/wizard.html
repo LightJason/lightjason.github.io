@@ -1,7 +1,9 @@
 {{- $generateid := (.Get "generateid") -}}
 {{- $wizardid := (.Get "wizardid") -}}
+{{- $user := .Get "user" -}}
+{{- $repo := .Get "repo" -}}
 {{- $branch := delimit (slice "?ref=" (.Get "branch" | default "master")) "" | string -}}
-{{- $file := getJSON "https://api.github.com/repos/" (.Get "user") "/" (.Get "repo") "/contents/" (.Get "file") $branch -}}
+{{- $inner := .Inner | safeJS -}}
 
 <script>
 jQuery(function() {
@@ -38,7 +40,10 @@ jQuery(function() {
 			var l_zip = new JSZip();
 			var l_package = {{- .Get "project" | safeJS -}};
 
-			l_zip.file( l_package+"/pom.xml", Mustache.render( {{- $file.content | base64Decode -}}, { {{- .Inner | safeJS -}} } ) );
+            {{ range $filename := (split (.Get "file") ",") }}
+                {{- $file := getJSON "https://api.github.com/repos/" $user "/" $repo "/contents/" $filename $branch -}}
+                l_zip.file( l_package + "/" + {{- $filename -}}.replace(/PACKAGE/g, l_package), Mustache.render( {{- $file.content | base64Decode -}}, { {{- $inner -}} } ) );
+            {{ end }}
 			
 			l_zip.generateAsync({ type: "blob" }).then( function(p_blob) { saveAs( p_blob, l_package+".zip" ); } );
 

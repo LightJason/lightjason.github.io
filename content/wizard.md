@@ -11,18 +11,18 @@ draft: true
 <p>This main information are needed to define your own application structure. Here you can define a general name and projekt description for this simulation. This data will be used for the <a href="https://maven.apache.org/">Maven</a> build process. The generated Maven build script is defined for Maven 3.1 or higher, so you need the correct version of Maven and a builded <i>LightJason AgentSpeak(L++) Maven</i> package.</p>
 <p>
     <div class="form-group">
-        <label for="groupid">Group ID*</label>
-        <input type="groupid" class="form-control required" id="groupid" placeholder="org.lightjason" />
-        <small class="form-text text-muted">The group id specifies a main name only with letters for the main package e.g.: org.lightjason</small>
+        <label for="groupid">Project Domain*</label>
+        <input type="text" class="form-control required" id="groupid" placeholder="org.lightjason" />
+        <small class="form-text text-muted">The project domain specifies the package e.g.: org.lightjason</small>
     </div>
     <div class="form-group">
-        <label for="artefactid">Artefact ID*</label>
-        <input type="artefactid" class="form-control required" id="artefactid" placeholder="myagentapp" />
-        <small class="form-text text-muted">The artefact id specifies the program name, which also is used for the file name</small>
+        <label for="artefactid">Project Name*</label>
+        <input type="text" class="form-control required" id="artefactid" placeholder="myagentapp" />
+        <small class="form-text text-muted">The project name specifies the program name, which also is used for the file name</small>
     </div>
     <div class="form-group">
         <label for="version">Version*</label>
-        <input type="version" class="form-control required" id="version" placeholder="1.0-SNAPSHOT" />
+        <input type="text" class="form-control required" id="version" placeholder="1.0-SNAPSHOT" />
         <small class="form-text text-muted">The version of the program it can be set to any number</small>
     </div>
 </p>
@@ -95,7 +95,7 @@ The wizard should help beginners to understand the architecture of the framework
 </div>
 
 {{< wizard user="LightJason" repo="lightjason.github.io" branch="templates" file="pom.xml" generateid=".generate" wizardid=".wizard" project="jQuery('#artefactid').val()" >}}
-groupid     : jQuery("#groupid").val(),
-artefactid  : jQuery("#artefactid").val(),
-version     : jQuery("#version").val()
+groupid     : jQuery("#groupid").val().replace(/\s+/g,''),
+artefactid  : jQuery("#artefactid").val().replace(/\s+/g,''),
+version     : jQuery("#version").val().replace(/\s+/g,'')
 {{< /wizard >}}
