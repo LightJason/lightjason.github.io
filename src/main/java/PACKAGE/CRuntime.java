@@ -18,6 +18,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.LogManager;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
+import java.util.concurrent.Callable;
 
 
 /**
@@ -92,6 +94,12 @@ final class CRuntime
      */
     private static void execute( final int p_steps, final boolean p_parallel )
     {
+            if ( AGENTS.size() == 0 )
+            {
+                System.err.println( "no agents exists for execution" );
+                System.exit( -1 );
+            }
+
             IntStream.range( 0, p_steps )
                  .forEach( i -> CRuntime.optionalparallelstream( AGENTS.values().stream(), p_parallel ).forEach( CRuntime::execute ) );
 
