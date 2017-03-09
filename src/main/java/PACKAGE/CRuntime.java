@@ -26,22 +26,20 @@ import java.util.stream.IntStream;
 final class CRuntime
 {
     /**
-     * global set with all possible agent actions
-     */
-    private static final Set<IAction> ACTIONS;
-    /**
      * runtime agent collection
      */
     private static final Map<String, IAgent<?>> AGENTS = new ConcurrentHashMap<>();
+
+    /**
+     * global set with all possible agent actions
+     */
+    private static final Set<IAction> ACTIONS = Collections.unmodifiableSet( {{ actions }}.collect( Collectors.toSet() ) );
 
 
     static
     {
         // logger
         {{ disablelogger }}LogManager.getLogManager().reset();
-
-        // action initialize and storing within an unmodifyable structure
-        ACTIONS = Collections.unmodifiableSet( {{ actions }}.collect( Collectors.toSet() ) );
     }
 
 
@@ -51,6 +49,8 @@ final class CRuntime
     private CRuntime()
     {}
 
+
+    // === main ================================================================================================================================================
 
     /**
      * main method
@@ -82,7 +82,9 @@ final class CRuntime
     }
 
 
-        /**
+    // === runtime execution ===================================================================================================================================
+
+    /**
      * executes the simulation
      *
      * @param p_steps number of simulation steps
@@ -90,37 +92,44 @@ final class CRuntime
      */
     private static void execute( final int p_steps, final boolean p_parallel )
     {
-        if (p_parallel)
             IntStream.range( 0, p_steps )
-                 .forEach( i -> AGENTS.values()
-                                      .parallelStream()
-                                      .forEach( j -> {
-                                          try
-                                          {
-                                             j.call();
-                                          }
-                                          catch ( final Exception l_exception )
-                                          {
-                                             {{ disablelogger }}l_exception.printStackTrace();
-                                          }
-                                      } )
-                 );
-        else
-            IntStream.range( 0, p_steps )
-                 .forEach( i -> AGENTS.values()
-                                      .forEach( j -> {
-                                          try
-                                          {
-                                              j.call();
-                                          }
-                                          catch ( final Exception l_exception )
-                                          {
-                                              {{ disablelogger }}l_exception.printStackTrace();
-                                          }
-                                      } )
-                 );
+                 .forEach( i -> CRuntime.optionalparallelstream( AGENTS.values().stream(), p_parallel ).forEach( CRuntime::execute ) );
+
     }
 
+
+    /**
+     * creates an optional parallel stream
+     *
+     * @param p_stream input stream
+     * @param p_parallel parallel execution
+     * @tparam T stream element type
+     * @return stream
+     */
+    private static <T> Stream<T> optionalparallelstream( final Stream<T> p_stream, final boolean p_parallel )
+    {
+        return p_parallel ? p_stream.parallel() : p_stream;
+    }
+
+    /**
+     * execute callable object with catching exception
+     *
+     * @param p_object callable
+     */
+    private static void execute( final Callable<?> p_object )
+    {
+        try
+        {
+            p_object.call();
+        }
+        catch ( final Exception l_exception )
+        {
+            {{ disablelogger }}l_exception.printStackTrace();
+        }
+    }
+
+
+    // === command-line parsing ================================================================================================================================
 
     /**
      * parsing command-line arguments
