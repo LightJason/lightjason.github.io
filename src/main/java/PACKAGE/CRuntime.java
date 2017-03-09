@@ -69,9 +69,12 @@ final class CRuntime
         // generate agents
         Arrays.stream( l_cli.getOptionValue( "asl", "" ).split( ",") )
               .map( String::trim )
+              .filter( i -> !i.isEmpty() )
               .forEach( System.out::println );
 
         Arrays.stream( l_cli.getOptionValue( "agents", "" ).split(",") )
+              .map( String::trim )
+              .filter( i -> !i.isEmpty() )
               .mapToInt( Integer::parseInt )
               .forEach( System.out::println );
 
