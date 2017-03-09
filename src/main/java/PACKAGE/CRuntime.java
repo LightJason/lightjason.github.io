@@ -1,5 +1,6 @@
 package {{ package }};
 
+import com.codepoetics.protonpack.StreamUtils;
 import org.lightjason.agentspeak.agent.IAgent;
 import org.lightjason.agentspeak.action.IAction;
 import org.lightjason.agentspeak.common.CCommon;
@@ -9,7 +10,7 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 
-import java.io.FileInputStream;
+import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Map;
@@ -67,16 +68,19 @@ final class CRuntime
 
 
         // generate agents
-        Arrays.stream( l_cli.getOptionValue( "asl", "" ).split( ",") )
+        StreamUtils.zip(
+            Arrays.stream( l_cli.getOptionValue( "asl", "" ).split( ",") )
               .map( String::trim )
-              .filter( i -> !i.isEmpty() )
-              .forEach( System.out::println );
+              .filter( i -> !i.isEmpty() ),
 
-        Arrays.stream( l_cli.getOptionValue( "agents", "" ).split(",") )
+            Arrays.stream( l_cli.getOptionValue( "agents", "" ).split(",") )
               .map( String::trim )
               .filter( i -> !i.isEmpty() )
               .mapToInt( Integer::parseInt )
-              .forEach( System.out::println );
+              .boxed(),
+
+            ( i, j ) -> MessageFormat.format( "{0} - {1}", i, j )
+        ).forEach( System.out::println );
 
 
         // execute simulation
