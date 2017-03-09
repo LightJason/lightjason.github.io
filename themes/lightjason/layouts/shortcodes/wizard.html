@@ -8,6 +8,10 @@
 <script>
 jQuery(function() {
 
+    var keytoupper = function( p_object ) { var lo = {}; Object.keys( p_object ).forEach( function( i ) { lo[i.toUpperCase()] = p_object[i]; } ); return lo; }
+    var replacewithkey = function( p_string, p_object ) { var lc = p_string; Object.keys( p_object ).forEach( function( i ) { lc = lc.replace(i, p_object[i], "g" ); } ); return lc; }
+    var renderzip = function( p_zip, p_config ) { p_zip.file( p_config.prefix + "/" + replacewithkey( p_config.filename, p_config ), Mustache.render( p_config.filecontent, p_config ) ); }
+
 	/**
      * define wizard
      * @see http://search.maven.org/solrsearch/select?q=g:%22org.lightjason.agentspeak%22&core=gav
@@ -37,21 +41,36 @@ jQuery(function() {
 
 	jQuery({{- $generateid -}}).click(function() {
 
-            var keytoupper = function( p_object ) { var lo = {}; Object.keys( p_object ).forEach( function( i ) { lo[i.toUpperCase()] = p_object[i]; } ); return lo; }
-            var replacewithkey = function( p_string, p_object ) { var lc = p_string; Object.keys( p_object ).forEach( function( i ) { lc = lc.replace(i, p_object[i], "g" ); } ); return lc; }
-
-
+            var l_zip = new JSZip();
             var l_configuration = { {{- $inner -}} };
             l_configuration = jQuery.extend( {}, l_configuration, keytoupper(l_configuration) );
 
 
-            var l_zip = new JSZip();
-
             {{ range $filename := (split (.Get "file") ",") }}
+
                 {{- $file := getJSON "https://api.github.com/repos/" $user "/" $repo "/contents/" $filename $branch -}}
-                l_zip.file( l_configuration.prefix + "/" + replacewithkey( {{- $filename -}}, l_configuration ), Mustache.render( {{- $file.content | base64Decode -}}, l_configuration ) );
+
+                l_configuration.filename = {{- $filename -}};
+                l_configuration.filecontent = {{- $file.content | base64Decode -}};
+
+                if ( jQuery.type( l_configuration[{{- $filename -}}] ) !== "object" )
+                    renderzip( l_zip, l_configuration );
+                else
+                {
+                    l_configuration[{{- $filename -}}].list.forEach( function( i ) {
+
+                        var lo = l_configuration;
+                        lo[ l_configuration[{{- $filename -}}].target ] = i;
+                        lo = jQuery.extend( {}, lo, keytoupper(lo) );
+                        delete lo[{{- $filename -}}]
+
+                        renderzip( l_zip, lo );
+                    } );
+                }    
+
             {{ end }}
-			
+
+
 			l_zip.generateAsync({ type: "blob" }).then( function(p_blob) { saveAs( p_blob, l_configuration.prefix + ".zip" ); } );
 
 	});
