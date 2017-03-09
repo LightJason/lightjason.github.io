@@ -41,16 +41,6 @@ draft: true
     </div>
     <div class="form-check">
         <label class="form-check-label">
-          <input name="setmodifyable" id="setmodifyable" type="checkbox" class="form-check-input" /> Agents can be added / removed during runtime 
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
-          <input name="communicate" id="communicate" type="checkbox" class="form-check-input" /> Agents should communicate by a name
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
           <input name="disablelogging" id="disablelogging" type="checkbox" class="form-check-input" checked /> Logging disable
         </label>
     </div>       
