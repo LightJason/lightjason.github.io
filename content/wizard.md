@@ -8,7 +8,7 @@ draft: true
 <h3>General</h3>
 <section>
 <strong>Information</strong>
-<p>This main information are needed to define your own application structure. Here you can define a general name and projekt description for this simulation. This data will be used for the <a href="https://maven.apache.org/">Maven</a> build process. The generated Maven build script is defined for Maven 3.1 or higher, so you need the correct version of Maven and a builded <i>LightJason AgentSpeak(L++) Maven</i> package.</p>
+<p>This main information are needed to define your own application structure. Here you can define a general name and projekt description for this simulation. This data will be used for the <a href="https://maven.apache.org/">Maven</a> build process. The generated Maven build script is defined for Maven 3.0 or higher, so you need the correct version of Maven and a builded <i>LightJason AgentSpeak(L++) Maven</i> package.</p>
 <p>
     <div class="form-group">
         <label for="groupid">Project Domain*</label>
