@@ -37,17 +37,22 @@ jQuery(function() {
 
 	jQuery({{- $generateid -}}).click(function() {
 
-			var l_zip = new JSZip();
+            var keytoupper = function( p_object ) { var lo = {}; Object.keys( p_object ).forEach( function( i ) { lo[i.toUpperCase()] = p_object[i]; } ); return lo; }
+            var replacewithkey = function( p_string, p_object ) { var lc = p_string; Object.keys( p_object ).forEach( function( i ) { lc = lc.replace(i, p_object[i], "g" ); } ); return lc; }
+
+
             var l_configuration = { {{- $inner -}} };
-			var l_package = {{- .Get "package" | safeJS -}};
-            var l_name = {{- .Get "name" | safeJS -}};
+            l_configuration = jQuery.extend( {}, l_configuration, keytoupper(l_configuration) );
+
+
+            var l_zip = new JSZip();
 
             {{ range $filename := (split (.Get "file") ",") }}
                 {{- $file := getJSON "https://api.github.com/repos/" $user "/" $repo "/contents/" $filename $branch -}}
-                l_zip.file( l_name + "/" + {{- $filename -}}.replace(/PACKAGE/g, l_package), Mustache.render( {{- $file.content | base64Decode -}}, l_configuration ) );
+                l_zip.file( l_configuration.prefix + "/" + replacewithkey( {{- $filename -}}, l_configuration ), Mustache.render( {{- $file.content | base64Decode -}}, l_configuration ) );
             {{ end }}
 			
-			l_zip.generateAsync({ type: "blob" }).then( function(p_blob) { saveAs( p_blob, l_name + ".zip" ); } );
+			l_zip.generateAsync({ type: "blob" }).then( function(p_blob) { saveAs( p_blob, l_configuration.prefix + ".zip" ); } );
 
 	});
 

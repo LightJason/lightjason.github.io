@@ -84,12 +84,20 @@ The wizard should help beginners to understand the architecture of the framework
 
 </div>
 
-{{< wizard user="LightJason" repo="lightjason.github.io" branch="templates" file="pom.xml,src/main/java/PACKAGE/CRuntime.java" generateid=".generate" wizardid=".wizard" package="l_configuration.package" name="l_configuration.artefactid" >}}
+{{< wizard user="LightJason" repo="lightjason.github.io" branch="templates" file="pom.xml,src/main/java/PACKAGE/CRuntime.java,src/main/java/PACKAGE/CAGENTAgent.java" generateid=".generate" wizardid=".wizard" >}}
+
+agentspeakversion : "0.0.1-SNAPSHOT",
+
+package           : jQuery("#groupid").val().replace(/\s+/g,'') + "." + jQuery("#artefactid").val().replace(/\s+/g,''),
+prefix            : jQuery("#artefactid").val().replace(/\s+/g,''),
+
 groupid           : jQuery("#groupid").val().replace(/\s+/g,''),
 artefactid        : jQuery("#artefactid").val().replace(/\s+/g,''),
 version           : jQuery("#version").val().replace(/\s+/g,''),
-package           : jQuery("#groupid").val().replace(/\s+/g,'') + "." + jQuery("#artefactid").val().replace(/\s+/g,''),
+
 disablelogger     : jQuery("#disablelogger").prop("checked") ? "//" : "",
 actions           : jQuery("#buildinactions").prop("checked") ? "CCommon.actionsFromPackage()" : "Stream.of()",
-agentspeakversion : "0.0.1-SNAPSHOT"
+
+agent             : "My"
+
 {{< /wizard >}}
