@@ -15,12 +15,21 @@ import java.util.stream.IntStream;
  */
 final class CRuntime
 {
+    /**
+     * global set with all possible agent actions
+     */
+    private static final Set<IAction> ACTIONS;
+
 
     static
     {
-        // disable logger
-        LogManager.getLogManager().reset();
+        // logger
+        {{ disablelogger }}LogManager.getLogManager().reset();
+
+        // action initialize
+        ACTION = {{ actions }};
     }
+
 
     /**
      * private constructor to avoid any instantiation
@@ -37,60 +46,41 @@ final class CRuntime
      */
     public static void main( final String[] p_args )
     {
-        if ( p_args.length < 2 )
-            throw new RuntimeException( "arguments are not set: ASL script, number of agents" );
+        final CommandLine l_cli = CRuntime.parsearguments( p_args );
+    }
 
-        // global set with agents
-        final Set<IAgent<?>> l_agents;
 
+    /**
+     * parsing command-line arguments
+     */
+    private static CommandLine parsearguments( final String[] p_args )
+    {
+        // --- define CLI options ------------------------------------------------------------------------------------------------------------------------------
+        final Options l_clioptions = new Options();
+
+        l_clioptions.addOption( "help", false, "shows this information" );
+        l_clioptions.addOption( "asl", true, "comma-sparated list of ASL files" );
+
+
+        // --- process CLI arguments and initialize configuration ----------------------------------------------------------------------------------------------
+        final CommandLine l_cli;
         try
-            (
-                // stream woth ASL code
-                final FileInputStream l_stream = new FileInputStream( p_args[0] );
-            )
         {
-            l_agents = Collections.unmodifiableSet(
-                // create agent generator with send-action
-                new MyAgentGenerator( l_stream )
-                    // generate multiple agents
-                    .generatemultiple( Integer.parseInt( p_args[1] ) )
-                    // create set
-                    .collect( Collectors.toSet() )
-            );
+            l_cli = new DefaultParser().parse( l_clioptions, p_args );
         }
         catch ( final Exception l_exception )
         {
-            l_exception.printStackTrace();
+            System.err.println( "command-line arguments parsing error" );
+            System.exit( -1 );
             return;
         }
 
+        if ( l_cli.hasOption( "help" ) )
+        {
+            new HelpFormatter().printHelp( new java.io.File( CRuntime.class.getProtectionDomain().getCodeSource().getLocation().getPath() ).getName(), l_clioptions );
+            System.exit( 0 );
+        }
 
-        IntStream
-            // define cycle range, i.e. number of cycles to run sequentially
-            .range(
-                0,
-                p_args.length < 3
-                ? Integer.MAX_VALUE
-                : Integer.parseInt( p_args[2] )
-            )
-            .forEach( j ->
-                      {
-
-                          // iterate in parallel over all agents
-                          l_agents.parallelStream().forEach( i ->
-                                                             {
-                                                                 try
-                                                                 {
-                                                                     // call each agent, i.e. trigger a new agent cycle
-                                                                     i.call();
-                                                                 }
-                                                                 catch ( final Exception l_exception )
-                                                                 {
-                                                                     l_exception.printStackTrace();
-                                                                     throw new RuntimeException();
-                                                                 }
-                                                             } );
-                      } );
-
+        return l_cli;
     }
 }
