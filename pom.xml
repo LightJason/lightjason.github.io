@@ -16,7 +16,9 @@
     <dependencies>
 
         <dependency>
-            {{ lightjasondependency }}
+            <groupId>org.lightjason</groupId>
+            <artifactId>AgentSpeak</artifactId>
+            <version>{{ agentspeakversion }}</version>
         </dependency>
 
         <dependency>
