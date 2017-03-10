@@ -1,4 +1,4 @@
-package {{ package }};
+package {{ package }}.agents;
 
 import org.lightjason.agentspeak.action.binding.IAgentAction;
 import org.lightjason.agentspeak.action.binding.IAgentActionFilter;

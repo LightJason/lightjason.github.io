@@ -1,4 +1,4 @@
-package {{ package }};
+package {{ package }}.generators;
 
 import org.lightjason.agentspeak.action.IAction;
 import org.lightjason.agentspeak.generator.IBaseAgentGenerator;
