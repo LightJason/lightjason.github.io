@@ -26,7 +26,7 @@ import java.util.concurrent.Callable;
 /**
  * main application with runtime
  */
-final class CRuntime
+public final class CRuntime
 {
     /**
      * runtime agent collection
