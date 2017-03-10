@@ -92,7 +92,7 @@ The wizard should help beginners to understand the architecture of the framework
 
 </div>
 
-{{< wizard user="LightJason" repo="lightjason.github.io" branch="templates" file="pom.xml,src/main/java/PACKAGE/CRuntime.java,src/main/java/PACKAGE/CAGENTAgent.java" generateid="#generate" wizardid=".wizard" >}}
+{{< wizard user="LightJason" repo="lightjason.github.io" branch="templates" file="pom.xml,src/main/java/PACKAGE/CRuntime.java,src/main/java/PACKAGE/CAGENTAgent.java,src/main/java/PACKAGE/CAGENTGenerator.java" generateid="#generate" wizardid=".wizard" >}}
 
 agentspeakversion : "0.0.1-SNAPSHOT",
 
@@ -106,7 +106,8 @@ version           : jQuery("#version").val().replace(/\s+/g,''),
 disablelogger     : jQuery("#disablelogger").prop("checked") ? "//" : "",
 actions           : jQuery("#buildinactions").prop("checked") ? "CCommon.actionsFromPackage()" : "Stream.of()",
 
-"src/main/java/PACKAGE/CAGENTAgent.java" : { list : jQuery("#agentlist option").map(function() { return jQuery(this).val(); }).get(), target : "agent" }
+"src/main/java/PACKAGE/CAGENTAgent.java" : { list : jQuery("#agentlist option").map(function() { return jQuery(this).val(); }).get(), target : "agent" },
+"src/main/java/PACKAGE/CAGENTGenerator.java" : { list : jQuery("#agentlist option").map(function() { return jQuery(this).val(); }).get(), target : "agent" }
 
 {{< /wizard >}}
 
