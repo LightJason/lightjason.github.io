@@ -14,10 +14,9 @@ final class C{{ agent }}Generator extends IBaseAgentGenerator<C{{ agent }}Agent>
      * @param p_stream asl stream
      * @throws Exception on any error
      */
-    MyAgentGenerator( final InputStream p_stream ) throws Exception
+    C{{ agent }}Generator( final InputStream p_stream ) throws Exception
     {
         super( p_stream, IAggregation.EMPTY );
-
     }
 
     @Override
