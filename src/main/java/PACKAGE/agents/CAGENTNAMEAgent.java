@@ -8,7 +8,7 @@ import org.lightjason.agentspeak.configuration.IAgentConfiguration;
 
 
 @IAgentAction
-final class C{{ agent }}Agent extends IBaseAgent<C{{ agent }}Agent>
+final class C{{ agentname }}Agent extends IBaseAgent<C{{ agentname }}Agent>
 {
 
     /**
@@ -16,7 +16,7 @@ final class C{{ agent }}Agent extends IBaseAgent<C{{ agent }}Agent>
      *
      * @param p_configuration agent configuration of the agent generator
      */
-    C{{ agent }}Agent( final IAgentConfiguration<C{{ agent }}Agent> p_configuration )
+    C{{ agentname }}Agent( final IAgentConfiguration<C{{ agentname }}Agent> p_configuration )
     {
         super( p_configuration );
     }

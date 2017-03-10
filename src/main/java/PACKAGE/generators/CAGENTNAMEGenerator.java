@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.util.Set;
 
 
-final class C{{ agent }}Generator extends IBaseAgentGenerator<C{{ agent }}Agent>
+final class C{{ agentname }}Generator extends IBaseAgentGenerator<C{{ agentname }}Agent>
 {
 
     /**
@@ -18,15 +18,15 @@ final class C{{ agent }}Generator extends IBaseAgentGenerator<C{{ agent }}Agent>
      * @param p_stream asl stream
      * @throws Exception on any error
      */
-    C{{ agent }}Generator( final Set<IAction> p_actions, final InputStream p_stream ) throws Exception
+    C{{ agentname }}Generator( final Set<IAction> p_actions, final InputStream p_stream ) throws Exception
     {
         super( p_stream, p_actions, IAggregation.EMPTY );
     }
 
     @Override
-    public final C{{ agent }}Agent generatesingle( final Object... p_data )
+    public final C{{ agentname }}Agent generatesingle( final Object... p_data )
     {
-        return new C{{ agent }}Agent( m_configuration );
+        return new C{{ agentname }}Agent( m_configuration );
     }
 
 }
