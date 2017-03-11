@@ -21,7 +21,7 @@ java -jar {{{ artefactid }}}-{{{ version }}}.jar
 For any help information the option ```-help``` can be set and shows additional information
 
 ```
-java -jar {{{ artefactid }}-{{{ version }}}.jar -help
+java -jar {{{ artefactid }}}-{{{ version }}}.jar -help
 ```
 
 ### ASL Files
