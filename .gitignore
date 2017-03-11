@@ -2,4 +2,6 @@
 !.gitignore
 !circle.yml
 !pom.xml
+!*.md
+!*.asl
 !*.java

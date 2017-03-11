@@ -56,6 +56,14 @@ public final class CRuntime
     // === main ================================================================================================================================================
 
     /**
+     * generates build-in ASL files
+     */
+    private static void generateasl()
+    {
+
+    }
+
+    /**
      * main method
      *
      * @param p_args command-line arguments
@@ -63,8 +71,15 @@ public final class CRuntime
     public static void main( final String[] p_args )
     {
         final CommandLine l_cli = CRuntime.parsearguments( p_args );
-        if (l_cli == null)
+        if ( l_cli == null )
             System.exit( -1 );
+
+        // generate agents ASL files
+        if ( l_cli.hasOption("generate") )
+        {
+            CRuntime.generateasl();
+            System.exit( 0 );
+        }    
 
 
         // generate agents
@@ -155,6 +170,7 @@ public final class CRuntime
         final Options l_clioptions = new Options();
 
         l_clioptions.addOption( "help", false, "shows this information" );
+        l_clioptions.addOption( "generate", false, "generates within the current directory the agent ASL files" );
         l_clioptions.addOption( "sequential", false, "agents run in sequential order (default: parallel)" );
         l_clioptions.addOption( "asl", true, "comma-sparated list of ASL files" );
         l_clioptions.addOption( "agents", true, "comma-sparated list of generating agent numbers (equal to asl-flag)" );
