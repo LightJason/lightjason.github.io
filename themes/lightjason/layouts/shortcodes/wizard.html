@@ -10,7 +10,7 @@ jQuery(function() {
 
     var keytoupper = function( p_object ) { var lo = {}; Object.keys( p_object ).forEach( function( i ) { lo[i.toUpperCase()] = p_object[i]; } ); return lo; }
     var replacewithkey = function( p_string, p_object ) { var lc = p_string; Object.keys( p_object ).forEach( function( i ) { lc = lc.replace(i, p_object[i], "g" ); } ); return lc; }
-    var renderzip = function( p_zip, p_config ) { p_zip.file( p_config.prefix + "/" + replacewithkey( p_config.filename, p_config ), Mustache.render( p_config.filecontent, p_config ) ); }
+    var renderzip = function( p_zip, p_config ) { p_zip.file( p_config.prefix + "/" + replacewithkey( p_config.filename, p_config ).replace(/[.](?=.*[.])/g, "/"), Mustache.render( p_config.filecontent, p_config ) ); }
 
 	/**
      * define wizard

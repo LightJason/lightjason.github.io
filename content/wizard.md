@@ -93,7 +93,7 @@ The wizard should help beginners to understand the architecture of the framework
 
 </div>
 
-{{< wizard user="LightJason" repo="lightjason.github.io" branch="templates" file="pom.xml,readme.md,src/main/java/PACKAGE/CRuntime.java,src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java,src/main/java/PACKAGE/generators/CAGENTNAMEGenerator.java" generateid="#generate" wizardid=".wizard" >}}
+{{< wizard user="LightJason" repo="lightjason.github.io" branch="templates" file="pom.xml,readme.md,src/main/resources/PACKAGE/AGENTNAMEAgent.asl,src/main/java/PACKAGE/CRuntime.java,src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java,src/main/java/PACKAGE/generators/CAGENTNAMEAgentGenerator.java" generateid="#generate" wizardid=".wizard" >}}
 
 agentspeakversion : "0.0.1-SNAPSHOT",
 
@@ -106,9 +106,14 @@ version           : jQuery("#version").val().replace(/\s+/g,''),
 
 disablelogger     : jQuery("#disablelogger").prop("checked") ? "//" : "",
 actions           : jQuery("#buildinactions").prop("checked") ? "CCommon.actionsFromPackage()" : "Stream.of()",
+agentlist         : function() { var lo = []; var list = jQuery("#agentlist option").map(function() { return jQuery(this).val(); } ).get(); list.forEach( function(item, i) { lo.push( { name : item, last : i == list.len - 1, first : i == 0 } ); } ); return lo; },
+
 
 "src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java" : { list : jQuery("#agentlist option").map(function() { return jQuery(this).val(); }).get(), target : "agentname" },
-"src/main/java/PACKAGE/generators/CAGENTNAMEGenerator.java" : { list : jQuery("#agentlist option").map(function() { return jQuery(this).val(); }).get(), target : "agentname" }
+
+"src/main/java/PACKAGE/generators/CAGENTNAMEAgentGenerator.java" : { list : jQuery("#agentlist option").map(function() { return jQuery(this).val(); }).get(), target : "agentname" },
+
+"src/main/resources/PACKAGE/AGENTNAMEAgent.asl" : { list : jQuery("#agentlist option").map(function() { return jQuery(this).val(); }).get(), target : "agentname" }
 
 {{< /wizard >}}
 
