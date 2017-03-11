@@ -1,13 +1,13 @@
-# Mutli-Agent Simulation - {{ artifactid }}
+# Mutli-Agent Simulation - {{ artefactid }}
 
-This package contains a full working scenario of [LightJason](http://lightjason.org) multi-agent framework.
+This package contains a full working scenario of [LightJason](http://lightjason.org) multi-agent framework. The packages is _automatically generated__.
 
 ## Usage
 
 The jar file can be executed directly, with
 
 ```
-java -jar {{ artifactid }}-{{ version }}.jar
+java -jar {{ artefactid }}-{{ version }}.jar
 ```
 
 ### Help
@@ -15,7 +15,7 @@ java -jar {{ artifactid }}-{{ version }}.jar
 For any help information the option ```-help``` can be set and shows additional information
 
 ```
-java -jar {{ artifactid }}-{{ version }}.jar -help
+java -jar {{ artefactid }}-{{ version }}.jar -help
 ```
 
 ### ASL Files
@@ -23,6 +23,6 @@ java -jar {{ artifactid }}-{{ version }}.jar -help
 For generating agents (ASL files) the jar can be executed with
 
 ```
-java -jar {{ artifactid }}-{{ version }}.jar -generate
+java -jar {{ artefactid }}-{{ version }}.jar -generate
 ```
 
