@@ -103,10 +103,12 @@ prefix            : jQuery("#artefactid").val().replace(/\s+/g,''),
 groupid           : jQuery("#groupid").val().replace(/\s+/g,''),
 artefactid        : jQuery("#artefactid").val().replace(/\s+/g,''),
 version           : jQuery("#version").val().replace(/\s+/g,''),
+description       : "",
+url               : "",
 
 disablelogger     : jQuery("#disablelogger").prop("checked") ? "//" : "",
 actions           : jQuery("#buildinactions").prop("checked") ? "CCommon.actionsFromPackage()" : "Stream.of()",
-agentlist         : function() { var lo = []; var list = jQuery("#agentlist option").map(function() { return jQuery(this).val(); } ).get(); list.forEach( function(item, i) { lo.push( { name : item, last : i == list.len - 1, first : i == 0 } ); } ); return lo; },
+agentlist         : function() { var lo = []; var list = jQuery("#agentlist option").map(function() { return jQuery(this).val(); } ).get(); list.forEach( function(item, i) { lo.push( { name : item, description :  "", last : i == list.len - 1, first : i == 0 } ); } ); return lo; },
 
 
 "src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java" : { list : jQuery("#agentlist option").map(function() { return jQuery(this).val(); }).get(), target : "agentname" },
