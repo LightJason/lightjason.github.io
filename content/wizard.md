@@ -79,11 +79,12 @@ The <a href="/tutorials/actions/#what-kind-of-actions-exists">external- or stand
 
 <h3>Code Generation</h3>
 <section>
-<strong>Information & Warning</strong><br/>
+<strong>Information</strong><br/>
 <p>Here can create the code examples based on the LightJason framework. We recommand to understand the code especially consideration of performance and object-orientated programming and design. This wizad cannot create a full performant example for each domain definition and problem definition, so in some cases you must create your own structure.</p>
 <p>
-The wizard should help beginners to understand the architecture of the framework without writing the full code yourself. Please read the <a href="/tutorials">tutorials</a> first to understand the main concepts of the code. All generated codes are for Java 1.8 or higher, so a downgrade is not possible.
+The wizard should help beginners to understand the architecture of the framework without writing the full <a href="https://en.wikipedia.org/wiki/Boilerplate_code">boilerplate code</a> yourself. Please read the <a href="/tutorials">tutorials</a> first to understand the main concepts of the code. All generated codes are for Java 1.8 or higher, so a downgrade is not possible.
 </p>
+<p><strong>We recommand that the <code>readme.md</code> within in the zip file is read before start working.</strong></p>
 <br/><br/>
 <p>
 <button type="button" class="btn btn-secondary btn-lg btn-block" id="generate">Generate Source code</button>
@@ -92,7 +93,7 @@ The wizard should help beginners to understand the architecture of the framework
 
 </div>
 
-{{< wizard user="LightJason" repo="lightjason.github.io" branch="templates" file="pom.xml,src/main/java/PACKAGE/CRuntime.java,src/main/java/PACKAGE/CAGENTAgent.java,src/main/java/PACKAGE/CAGENTGenerator.java" generateid="#generate" wizardid=".wizard" >}}
+{{< wizard user="LightJason" repo="lightjason.github.io" branch="templates" file="pom.xml,readme.md,src/main/java/PACKAGE/CRuntime.java,src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java,src/main/java/PACKAGE/generators/CAGENTNAMEGenerator.java" generateid="#generate" wizardid=".wizard" >}}
 
 agentspeakversion : "0.0.1-SNAPSHOT",
 
@@ -106,8 +107,8 @@ version           : jQuery("#version").val().replace(/\s+/g,''),
 disablelogger     : jQuery("#disablelogger").prop("checked") ? "//" : "",
 actions           : jQuery("#buildinactions").prop("checked") ? "CCommon.actionsFromPackage()" : "Stream.of()",
 
-"src/main/java/PACKAGE/CAGENTAgent.java" : { list : jQuery("#agentlist option").map(function() { return jQuery(this).val(); }).get(), target : "agent" },
-"src/main/java/PACKAGE/CAGENTGenerator.java" : { list : jQuery("#agentlist option").map(function() { return jQuery(this).val(); }).get(), target : "agent" }
+"src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java" : { list : jQuery("#agentlist option").map(function() { return jQuery(this).val(); }).get(), target : "agentname" },
+"src/main/java/PACKAGE/generators/CAGENTNAMEGenerator.java" : { list : jQuery("#agentlist option").map(function() { return jQuery(this).val(); }).get(), target : "agentname" }
 
 {{< /wizard >}}
 
