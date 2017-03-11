@@ -10,6 +10,8 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 
+import java.io.IOException;
+import java.nio.file.StandardCopyOption;
 import java.text.MessageFormat;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
@@ -59,8 +61,9 @@ public final class CRuntime
 
     /**
      * generates build-in ASL files
+     * @return execution flag
      */
-    private static void generateasl()
+    private static boolean generateasl()
     {
         Stream.of(
             {{ #agentlist }}
@@ -70,7 +73,7 @@ public final class CRuntime
                try
                {
                    Files.copy(
-                       CRuntime.class.getResourceAsStream( i ), FileSystems.getDefault().getPath( i ), StandardCopyOption.REPLACE_EXISTING 
+                       CRuntime.class.getResourceAsStream( i ), FileSystems.getDefault().getPath( i ), StandardCopyOption.REPLACE_EXISTING
                    );
                }
                catch ( final IOException l_exception )
@@ -78,6 +81,8 @@ public final class CRuntime
                    {{ disablelogger }}l_exception.printStackTrace();
                }
         } );
+
+        return true;
     }
 
     /**
@@ -92,11 +97,8 @@ public final class CRuntime
             System.exit( -1 );
 
         // generate agents ASL files
-        if ( l_cli.hasOption("generate") )
-        {
-            CRuntime.generateasl();
-            System.exit( 0 );
-        }    
+        if ( l_cli.hasOption("generate") && ( CRuntime.generateasl() ) )
+            System.exit( 0 );  
 
 
         // generate agents
