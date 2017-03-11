@@ -64,7 +64,7 @@ public final class CRuntime
     {
         Stream.of(
             {{ #agentlist }}
-                "{{ name }}" {{ #last }},{{ /last }}
+                "{{ name }}Agent.asl" {{ #last }},{{ /last }}
             {{ /agentlist }}
         ).forEach( i -> {
                try
