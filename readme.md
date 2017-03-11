@@ -1,6 +1,10 @@
 # Mutli-Agent Simulation - {{ artefactid }}
 
-This package contains a full working scenario of [LightJason](http://lightjason.org) multi-agent framework. The packages is _automatically generated__.
+This project [{{ artefactid }}]({{ url }}) contains a full working scenario of [LightJason](http://lightjason.org) multi-agent framework. The scenario description is:
+
+> {{ description }}
+
+The packages is _automatically generated_.
 
 ## Usage
 
@@ -26,3 +30,10 @@ For generating agents (ASL files) the jar can be executed with
 java -jar {{ artefactid }}-{{ version }}.jar -generate
 ```
 
+## Agents
+
+The following agents are generated 
+
+{{ #agentlist }}
+ * ```{{ name }}Agent.asl``` {{ description }}
+{{ /agentlist }}

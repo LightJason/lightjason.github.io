@@ -4,7 +4,11 @@
     <artifactId>{{ artefactid }}</artifactId>
     <packaging>jar</packaging>
     <version>{{ version }}</version>
+
+    <!-- project meta information -->
     <name>{{ artefactid }}</name>
+    <description>{{ description }}</description>
+    <description>{{ url }}</description>
 
     <prerequisites>
         <maven>3.0</maven>
