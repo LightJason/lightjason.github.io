@@ -8,7 +8,7 @@
     <!-- project meta information -->
     <name>{{ artefactid }}</name>
     <description>{{ description }}</description>
-    <description>{{ url }}</description>
+    <url>{{ url }}</url>
 
     <prerequisites>
         <maven>3.0</maven>
