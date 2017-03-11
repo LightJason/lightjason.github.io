@@ -28,7 +28,7 @@
         <dependency>
             <groupId>org.lightjason</groupId>
             <artifactId>AgentSpeak</artifactId>
-            <version>{{ agentspeakversion }}</version>
+            <version>{{{ agentspeakversion }}}</version>
         </dependency>
 
         <!-- stream additional structure -->
