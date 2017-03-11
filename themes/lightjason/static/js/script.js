@@ -90,7 +90,7 @@ jQuery(function() {
      * tooltip toggle
      */
     jQuery(".tooltiptoggle").click( function() { 
-        jQuery(this).children(".tooltip:first").slideToggle(); 
+        jQuery(this).children(".tooltipcontent:first").slideToggle(); 
     });
 
 

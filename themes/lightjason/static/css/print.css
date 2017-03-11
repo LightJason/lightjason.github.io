@@ -10,6 +10,11 @@ div.footer, #toccontainer,
     height: 0 !important;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;
+  font-weight: 500;
+}
+
 div.document {
     width: 100%;
     margin: 0 auto 0 auto;
@@ -38,7 +43,7 @@ div.bodywrapper {
     text-align: center;
 }
 
-.tooltip {
+.tooltipcontent {
     display: block;
     overflow: hidden;
 }

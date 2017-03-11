@@ -190,7 +190,7 @@ ul.socialmediaaction li a:hover {
     cursor: pointer;
 }
 
-.tooltip {
+.tooltipcontent {
     padding: 0.5em;
     border: 1px solid #a2a9b1;
     background-color: #f8f9fa;
@@ -198,11 +198,11 @@ ul.socialmediaaction li a:hover {
     display: none;
 }
 
-.tooltip dt {
+.tooltipcontent dt {
     font-weight: bold;
 }
 
-.tooltip a {
+.tooltipcontent a {
     font-size: 80%;
 }
 
