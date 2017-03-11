@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.util.Set;
 
 
-public final class C{{ agentname }}Generator extends IBaseAgentGenerator<C{{ agentname }}Agent>
+public final class C{{ agentname }}AgentGenerator extends IBaseAgentGenerator<C{{ agentname }}Agent>
 {
 
     /**
@@ -19,7 +19,7 @@ public final class C{{ agentname }}Generator extends IBaseAgentGenerator<C{{ age
      * @param p_stream asl stream
      * @throws Exception on any error
      */
-    public C{{ agentname }}Generator( final Set<IAction> p_actions, final InputStream p_stream ) throws Exception
+    public C{{ agentname }}AgentGenerator( final Set<IAction> p_actions, final InputStream p_stream ) throws Exception
     {
         super( p_stream, p_actions, IAggregation.EMPTY );
     }

@@ -11,6 +11,8 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 
 import java.text.MessageFormat;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Map;
@@ -60,7 +62,22 @@ public final class CRuntime
      */
     private static void generateasl()
     {
-
+        Stream.of(
+            {{ #agentlist }}
+                "{{ name }}" {{ #last }},{{ /last }}
+            {{ /agentlist }}
+        ).forEach( i -> {
+               try
+               {
+                   Files.copy(
+                       CRuntime.class.getResourceAsStream( i ), FileSystems.getDefault().getPath( i ), StandardCopyOption.REPLACE_EXISTING 
+                   );
+               }
+               catch ( final IOException l_exception )
+               {
+                   {{ disablelogger }}l_exception.printStackTrace();
+               }
+        } );
     }
 
     /**
