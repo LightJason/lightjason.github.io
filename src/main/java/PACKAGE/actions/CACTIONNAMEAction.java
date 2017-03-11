@@ -1,4 +1,4 @@
-package {{ package }}.actions
+package {{{ package }}}.actions
 
 import org.lightjason.agentspeak.action.IBaseAction;
 import org.lightjason.agentspeak.common.CPath;
@@ -11,18 +11,18 @@ import org.lightjason.agentspeak.language.execution.fuzzy.IFuzzyValue;
 import java.util.List;
 
 
-public final class C{{ actionname }}Action  extends IBaseAction
+public final class C{{{ actionname }}}Action  extends IBaseAction
 {
     @Override
     public final IPath name()
     {
-        return CPath.from( "{{ actionasl }}" );
+        return CPath.from( "{{{ actionasl }}}" );
     }
 
     @Override
     public final int minimalArgumentNumber()
     {
-        return {{ actionarguments }};
+        return {{{ actionarguments }}};
     }
 
     @Override

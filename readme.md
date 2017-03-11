@@ -1,9 +1,9 @@
 # Mutli-Agent Simulation - {{ artefactid }}
 
-This project {{ #url }}[{{ artefactid }}]({{{ url }}}){{ /url }}{{ ^url }}{{ artefactid }}{{ /url }} contains a full working scenario of [LightJason](http://lightjason.org) multi-agent framework. The scenario description is:
+This project {{ #url }}[{{{ artefactid }}}]({{{ url }}}){{ /url }}{{ ^url }}{{{ artefactid }}}{{ /url }} contains a full working scenario of [LightJason](http://lightjason.org) multi-agent framework. The scenario description is:
 
 {{ #description }}
-> {{ description }}
+> {{{ description }}}
 {{ /description }}
 
 The packages is _automatically generated_.
@@ -13,7 +13,7 @@ The packages is _automatically generated_.
 The jar file can be executed directly, with
 
 ```
-java -jar {{ artefactid }}-{{ version }}.jar
+java -jar {{{ artefactid }}}-{{{ version }}}.jar
 ```
 
 ### Help
@@ -21,7 +21,7 @@ java -jar {{ artefactid }}-{{ version }}.jar
 For any help information the option ```-help``` can be set and shows additional information
 
 ```
-java -jar {{ artefactid }}-{{ version }}.jar -help
+java -jar {{{ artefactid }}-{{{ version }}}.jar -help
 ```
 
 ### ASL Files
@@ -29,7 +29,7 @@ java -jar {{ artefactid }}-{{ version }}.jar -help
 For generating agents (ASL files) the jar can be executed with
 
 ```
-java -jar {{ artefactid }}-{{ version }}.jar -generate
+java -jar {{{ artefactid }}}-{{{ version }}}.jar -generate
 ```
 
 ## Agents
@@ -37,5 +37,5 @@ java -jar {{ artefactid }}-{{ version }}.jar -generate
 The following agents are generated 
 
 {{ #agentlist }}
- * ```{{ name }}Agent.asl``` {{ description }}
+ * ```{{{ name }}}Agent.asl``` {{{ description }}}
 {{ /agentlist }}

@@ -1,4 +1,4 @@
-package {{ package }};
+package {{{ package }}};
 
 import com.codepoetics.protonpack.StreamUtils;
 import org.lightjason.agentspeak.agent.IAgent;
@@ -40,13 +40,13 @@ public final class CRuntime
     /**
      * global set with all possible agent actions
      */
-    private static final Set<IAction> ACTIONS = Collections.unmodifiableSet( {{ actions }}.collect( Collectors.toSet() ) );
+    private static final Set<IAction> ACTIONS = Collections.unmodifiableSet( {{{ actions }}}.collect( Collectors.toSet() ) );
 
 
     static
     {
         // logger
-        {{ disablelogger }}LogManager.getLogManager().reset();
+        {{{ disablelogger }}}LogManager.getLogManager().reset();
     }
 
 
@@ -67,7 +67,7 @@ public final class CRuntime
     {
         Stream.of(
             {{ #agentlist }}
-                "{{ name }}Agent.asl" {{ #last }},{{ /last }}
+                "{{{ name }}}Agent.asl" {{ #last }},{{ /last }}
             {{ /agentlist }}
         ).forEach( i -> {
                try
@@ -78,7 +78,7 @@ public final class CRuntime
                }
                catch ( final IOException l_exception )
                {
-                   {{ disablelogger }}l_exception.printStackTrace();
+                   {{{ disablelogger }}}l_exception.printStackTrace();
                }
         } );
 
@@ -173,7 +173,7 @@ public final class CRuntime
         }
         catch ( final Exception l_exception )
         {
-            {{ disablelogger }}l_exception.printStackTrace();
+            {{{ disablelogger }}}l_exception.printStackTrace();
         }
     }
 

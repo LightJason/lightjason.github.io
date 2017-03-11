@@ -1,14 +1,14 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>{{ groupid }}</groupId>
-    <artifactId>{{ artefactid }}</artifactId>
+    <groupId>{{{ groupid }}}</groupId>
+    <artifactId>{{{ artefactid }}}</artifactId>
     <packaging>jar</packaging>
-    <version>{{ version }}</version>
+    <version>{{{ version }}}</version>
 
     <!-- project meta information -->
-    <name>{{ artefactid }}</name>
-    <description>{{ description }}</description>
-    <url>{{ url }}</url>
+    <name>{{{ artefactid }}}</name>
+    <description>{{{ description }}}</description>
+    <url>{{{ url }}}</url>
 
     <prerequisites>
         <maven>3.0</maven>
@@ -157,7 +157,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>{{ package }}.CRuntime</mainClass>
+                                    <mainClass>{{{ package }}}.CRuntime</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
