@@ -29,6 +29,22 @@ draft: true
 <p>(*) Mandatory</p>
 </section>
 
+<h3>Meta-Information</h3>
+<section>
+<strong>Information</strong>
+<p></p>
+<p>
+    <div class="form-group">
+        <label for="url">Project URL</label>
+        <input type="text" class="form-control" id="url" placeholder="http://project.org" />
+    </div>
+        <div class="form-group">
+        <label for="url">Project Description</label>
+        <textarea class="form-control" id="description" placeholder="a long project description" rows=3></textarea>
+    </div>
+</p>
+</section>
+
 <h3>Runtime</h3>
 <section>
 <strong>Information</strong>
@@ -36,12 +52,12 @@ draft: true
 <p>
     <div class="form-check">
         <label class="form-check-label">
-          <input name="buildinactions" id="buildinactions" type="checkbox" class="form-check-input" checked /> Use <a href="/knowledgebase/actions">buildin actions</a>
+          <input id="buildinactions" type="checkbox" class="form-check-input" checked /> Use <a href="/knowledgebase/actions">buildin actions</a>
         </label>
     </div>
     <div class="form-check">
         <label class="form-check-label">
-          <input name="disablelogging" id="disablelogging" type="checkbox" class="form-check-input" checked /> Logging disable
+          <input id="disablelogging" type="checkbox" class="form-check-input" checked /> Logging disable
         </label>
     </div>       
 </p>
@@ -103,8 +119,8 @@ prefix            : jQuery("#artefactid").val().replace(/\s+/g,''),
 groupid           : jQuery("#groupid").val().replace(/\s+/g,''),
 artefactid        : jQuery("#artefactid").val().replace(/\s+/g,''),
 version           : jQuery("#version").val().replace(/\s+/g,''),
-description       : "",
-url               : "",
+description       : jQuery("#description").val(),
+url               : jQuery("#url").val(),
 
 disablelogger     : jQuery("#disablelogger").prop("checked") ? "//" : "",
 actions           : jQuery("#buildinactions").prop("checked") ? "CCommon.actionsFromPackage()" : "Stream.of()",
