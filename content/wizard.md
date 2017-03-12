@@ -32,7 +32,7 @@ draft: true
 <h3>Meta-Information</h3>
 <section>
 <strong>Information</strong>
-<p></p>
+<p>The meta-information contains project description and project url. The data are not neccessary and will if exists added to the readme and project configuraton.</p>
 <p>
     <div class="form-group">
         <label for="url">Project URL</label>
@@ -40,7 +40,7 @@ draft: true
     </div>
         <div class="form-group">
         <label for="url">Project Description</label>
-        <textarea class="form-control" id="description" placeholder="a long project description" rows=3></textarea>
+        <textarea class="form-control" id="description" placeholder="long project description" rows=3></textarea>
     </div>
 </p>
 </section>
@@ -59,7 +59,14 @@ draft: true
         <label class="form-check-label">
           <input id="disablelogging" type="checkbox" class="form-check-input" checked /> Logging disable
         </label>
-    </div>       
+    </div>
+    <div class="form-check">   
+        <label class="form-check-label">AgentSpeak Version
+            <select class="form-control" id="agentspeakversion">
+                <option value="0.0.1-SNAPSHOT">0.0.1-SNAPSHOT (developer version)</option>
+            </select>
+        </label>            
+    </div>     
 </p>
 </section>
 
@@ -77,7 +84,7 @@ draft: true
     </div>
     <div class="btn-toolbar" role="group" aria-label="Agent Configuration">        
         <select class="form-control" id="agentlist"><option value="Default">Default</option></select>
-        <input type="text" class="form-control" id="newagent" placeholder="new agent name">
+        <input type="text" class="form-control" id="newagent" placeholder="new agent name" />
         <button type="button" class="btn btn-secondary" id="addagent">Add (+)</button>
         <button type="button" class="btn btn-secondary" id="removeagent">Remove (-)</button>
     </div>
@@ -90,6 +97,22 @@ draft: true
 <strong>Information</strong>
 <p>
 The <a href="/tutorials/actions/#what-kind-of-actions-exists">external- or standalone-actions</a> are calls from the agent which can define any kind of behaviour. The action can be used to define any kind of calculation or logging, data export and import. Take a look on the current <a href="/knowledgebase/actions/">buildin actions</a> to get an overview.
+</p>
+<p>
+    <div class="alert alert-danger alert-dismissible fade collapse" role="alert" id="externalactionempty">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Error!</strong> External action is empty, cannot remove data
+    </div>
+    <div class="btn-toolbar" role="group" aria-label="External Action Configuration">        
+        <select class="form-control" id="externalactionlist"></select>
+        <input type="text" class="form-control" id="newexternalaction" placeholder="new action name"/>
+        <input type="text" class="form-control" id="argumentsexternalaction" value="0"/>
+        <button type="button" class="btn btn-secondary" id="addexternalaction">Add (+)</button>
+        <button type="button" class="btn btn-secondary" id="removeexternalaction">Remove (-)</button>
+    </div>
+    <small class="form-text text-muted">External actions with action name and neccessary number of arguments</small>
 </p>
 </section>
 
@@ -111,7 +134,7 @@ The wizard should help beginners to understand the architecture of the framework
 
 {{< wizard user="LightJason" repo="lightjason.github.io" branch="templates" file="pom.xml,readme.md,src/main/resources/PACKAGE/AGENTNAMEAgent.asl,src/main/java/PACKAGE/CRuntime.java,src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java,src/main/java/PACKAGE/generators/CAGENTNAMEAgentGenerator.java" generateid="#generate" wizardid=".wizard" >}}
 
-agentspeakversion : "0.0.1-SNAPSHOT",
+agentspeakversion : jQuery("#agentspeakversion").find("option:selected").val(),
 
 package           : jQuery("#groupid").val().replace(/\s+/g,'') + "." + jQuery("#artefactid").val().replace(/\s+/g,''),
 prefix            : jQuery("#artefactid").val().replace(/\s+/g,''),
@@ -161,6 +184,22 @@ jQuery(function() {
             jQuery("#agentlist").find("option:selected").remove(); 
         else
             jQuery("#agentnotremovable").addClass("show");
+    });
+    
+    jQuery("#addexternalaction").click( function() {
+    
+        var lcName = jQuery("#newexternalaction").val().trim();
+        var lnArguments = parseInt(jQuery("#argumentsexternalaction").val().trim());
+        
+        jQuery("#externalactionlist").append( jQuery("<option>", { value: JSON.stringify( { name : lcName, arguments: lnArguments } ), text: lcName } ) );
+            
+    });
+    
+    jQuery("#removeexternalaction").click( function() {
+        if ( jQuery("#externalactionlist option").length > 0 )
+            jQuery("#externalactionlist").find("option:selected").remove(); 
+        else
+            jQuery("#externalactionempty").addClass("show");
     });
 
 } );
