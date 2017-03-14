@@ -10,8 +10,11 @@
 	<meta  charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=0.95, maximum-scale=0.95" />
 
+	{{ template "_internal/google_analytics.html" . }}
 
-	<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript" async></script>
+	<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript" crossorigin="anonymous" async></script>
+	<script type="text/x-mathjax-config" defer>MathJax.Hub.Config({tex2jax:{inlineMath:[["$","$"]],displayMath:[["$$","$$"]],processEscapes:!0,processEnvironments:!1,skipTags:["script","noscript","style","textarea","pre","code"],TeX:{equationNumbers:{autoNumber:"AMS"},extensions:["autoload-all.js"]}}})</script>
+
 	<script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js" crossorigin="anonymous" async></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js" crossorigin="anonymous" async></script>
 
@@ -56,10 +59,6 @@
 	<link href="{{- .Site.BaseURL -}}css/print.css" type="text/css" rel="stylesheet" media="print" />
 	<link href="{{- .Site.BaseURL -}}css/mobile.css" type="text/css" rel="stylesheet" media="screen and (max-width: 1000px)" />
 	<link href="{{- .Site.BaseURL -}}css/jquery.steps.css" type="text/css" rel="stylesheet" media="screen" />
-
-
-	{{ template "_internal/google_analytics.html" . }}
-	<script type="text/x-mathjax-config" defer>MathJax.Hub.Config({tex2jax:{inlineMath:[["$","$"]],displayMath:[["$$","$$"]],processEscapes:!0,processEnvironments:!1,skipTags:["script","noscript","style","textarea","pre","code"],TeX:{equationNumbers:{autoNumber:"AMS"},extensions:["autoload-all.js"]}}})</script>
 
 	<link href="{{- .Site.BaseURL -}}{{- .Site.Params.icon.icon -}}" type="{{- .Site.Params.icon.type -}}" rel="shortcut icon" />
 	<link href="{{- .Site.BaseURL -}}news/index.xml" type="application/rss+xml" rel="alternate" title="{{- .Site.Title -}}" />
