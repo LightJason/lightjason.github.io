@@ -40,7 +40,7 @@ public final class C{{{ actionname }}}Action  extends IBaseAction
             return CFuzzyValue.from( false );
 
         // get first argument e.g. as string
-        final String l_string = l_arguments.get( 0 ).<String>raw()
+        final String l_string = l_arguments.get( 0 ).<String>raw();
 
         // iterate over all other arguments
         l_arguments.stream()
