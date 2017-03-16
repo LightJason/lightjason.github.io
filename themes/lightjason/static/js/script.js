@@ -99,7 +99,6 @@ jQuery(function() {
      */
     jQuery("body").hammer().bind("swipeleft", function(){
         var lc = jQuery(this).data("nextpage");
-        console.log(lc);
         if (lc)
             window.location.href = lc;
     });

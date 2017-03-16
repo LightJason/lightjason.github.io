@@ -132,7 +132,7 @@ The wizard should help beginners to understand the architecture of the framework
 
 </div>
 
-{{< wizard user="LightJason" repo="lightjason.github.io" branch="templates" file="pom.xml,readme.md,src/main/resources/PACKAGE/AGENTNAMEAgent.asl,src/main/java/PACKAGE/CRuntime.java,src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java,src/main/java/PACKAGE/generators/CAGENTNAMEAgentGenerator.java" generateid="#generate" wizardid=".wizard" >}}
+{{< wizard user="LightJason" repo="lightjason.github.io" branch="templates" file="pom.xml,readme.md,src/main/resources/PACKAGE/AGENTNAMEAgent.asl,src/main/java/PACKAGE/CRuntime.java,src/main/java/PACKAGE/actions/CACTIONNAMEAction.java,src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java,src/main/java/PACKAGE/generators/CAGENTNAMEAgentGenerator.java" generateid="#generate" wizardid=".wizard" >}}
 
 agentspeakversion : jQuery("#agentspeakversion").find("option:selected").val(),
 
@@ -154,7 +154,9 @@ agentlist         : function() { var lo = []; var list = jQuery("#agentlist opti
 
 "src/main/java/PACKAGE/generators/CAGENTNAMEAgentGenerator.java" : { list : jQuery("#agentlist option").map(function() { return jQuery(this).val(); }).get(), target : "agentname" },
 
-"src/main/resources/PACKAGE/AGENTNAMEAgent.asl" : { list : jQuery("#agentlist option").map(function() { return jQuery(this).val(); }).get(), target : "agentname" }
+"src/main/resources/PACKAGE/AGENTNAMEAgent.asl" : { list : jQuery("#agentlist option").map(function() { return jQuery(this).val(); }).get(), target : "agentname" },
+
+"src/main/java/PACKAGE/actions/CACTIONNAMEAction.java" : { list : jQuery("#externalactionlist option").map(function() { return jQuery(this).val(); }).get(), target : function( p_config, p_item ) { var lo = JSON.parse( p_item ); p_config["actionname"] = lo.name;  p_config["actionarguments"] = lo.arguments; delete p_config["actions"]; return p_config; } }
 
 {{< /wizard >}}
 
