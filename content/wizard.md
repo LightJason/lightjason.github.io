@@ -245,8 +245,18 @@ jQuery(function() {
         if ( ( lc_name.length == 0 ) || ( lc_return.length == 0 ) )    
             return;
         
-        console.log( jQuery("#agentlist").find("option:selected").val() );
-    
+
+        var lo_agent = JSON.parse( jQuery("#agentlist").find("option:selected").val() );
+        if ( !Array.isArray(lo_agent.internalaction) )
+            lo_agent.internalaction = [];
+            
+        lo_agent.internalaction.push({
+            "name"     : lc_name,
+            "return"   : lc_return,
+            "argument" : jQuery("#interalactionparameter").val().trim() 
+        });
+        jQuery("#agentlist").find("option:selected").val( JSON.stringify( lo_agent ) ); 
+         
     });
     
 } );
