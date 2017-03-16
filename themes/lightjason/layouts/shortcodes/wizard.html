@@ -61,10 +61,13 @@ jQuery(function() {
                     l_configuration[{{- $filename -}}].list.forEach( function( i ) {
 
                         var lo = l_configuration;
-                        lo[ l_configuration[{{- $filename -}}].target ] = i;
-                        lo = jQuery.extend( {}, lo, keytoupper(lo) );
+                        if ( lo[{{- $filename -}}].target instanceof Function )
+                            lo = lo[{{- $filename -}}].target( lo, i );
+                        else
+                            lo[ lo[{{- $filename -}}].target ] = i;
+                        
                         delete lo[{{- $filename -}}]
-
+                        lo = jQuery.extend( {}, lo, keytoupper(lo) );
                         renderzip( l_zip, lo );
                     } );
                 }    
