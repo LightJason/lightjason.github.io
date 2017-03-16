@@ -16,7 +16,7 @@ public final class C{{{ actionname }}}Action  extends IBaseAction
     @Override
     public final IPath name()
     {
-        return CPath.from( "{{{ actionasl }}}" );
+        return CPath.from( "{{{ actionname }}}" );
     }
 
     @Override
