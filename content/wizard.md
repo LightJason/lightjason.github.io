@@ -84,7 +84,7 @@ draft: true
     </div>
     Agents Types<br/>
     <div class="btn-toolbar" role="group" aria-label="Agent Configuration">        
-        <select class="form-control" id="agentlist"><option value="Default">Default</option></select>
+        <select class="form-control" id="agentlist"><option value='{ "name" : "Default" }'>Default</option></select>
         <input type="text" class="form-control" id="newagent" placeholder="new agent name" />
         <button type="button" class="btn btn-secondary" id="addagent">Add (+)</button>
         <button type="button" class="btn btn-secondary" id="removeagent">Remove (-)</button>
@@ -171,11 +171,11 @@ actions           : jQuery("#buildinactions").prop("checked") ? "CCommon.actions
 agentlist         : function() { var lo = []; var list = jQuery("#agentlist option").map(function() { return jQuery(this).val(); } ).get(); list.forEach( function(item, i) { lo.push( { name : item, description :  "", last : i == list.len - 1, first : i == 0 } ); } ); return lo; },
 
 
-"src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java" : { list : jQuery("#agentlist option").map(function() { return jQuery(this).val(); }).get(), target : "agentname" },
+"src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java" : { list : jQuery("#agentlist option").map(function() { return jQuery(this).val(); }).get(), target : function( p_config, p_item ) { var lo = JSON.parse( p_item ); p_config["agentname"] = lo.name; return p_config; } },
 
 "src/main/java/PACKAGE/generators/CAGENTNAMEAgentGenerator.java" : { list : jQuery("#agentlist option").map(function() { return jQuery(this).val(); }).get(), target : "agentname" },
 
-"src/main/resources/PACKAGE/AGENTNAMEAgent.asl" : { list : jQuery("#agentlist option").map(function() { return jQuery(this).val(); }).get(), target : "agentname" },
+"src/main/resources/PACKAGE/AGENTNAMEAgent.asl" : { list : jQuery("#agentlist option").map(function() { return jQuery(this).val(); }).get(), target : function( p_config, p_item ) { var lo = JSON.parse( p_item ); p_config["agentname"] = lo.name; return p_config; } },
 
 "src/main/java/PACKAGE/actions/CACTIONNAMEAction.java" : { list : jQuery("#externalactionlist option").map(function() { return jQuery(this).val(); }).get(), target : function( p_config, p_item ) { var lo = JSON.parse( p_item ); p_config["actionname"] = lo.name;  p_config["actionarguments"] = lo.arguments; delete p_config["actions"]; return p_config; } }
 
@@ -197,7 +197,7 @@ jQuery(function() {
             else    
             {
                 jQuery("#newagent").val(null);
-                jQuery("#agentlist").append( jQuery( "<option>", { value: lc, text: lc } ) ); 
+                jQuery("#agentlist").append( jQuery( "<option>", { value: JSON.stringify( { name : lc } ), text: lc } ) ); 
             }
 
     } );
@@ -208,6 +208,8 @@ jQuery(function() {
         else
             jQuery("#agenterror").addClass("show");
     });
+    
+    
     
     jQuery("#addexternalaction").click( function() {
     
@@ -224,6 +226,28 @@ jQuery(function() {
         else
             jQuery("#externalactionempty").addClass("show");
     });
+    
+    
 
+    jQuery("#addinternalaction").click( function() {
+    
+        jQuery("#interalactionreturn").removeClass("error");
+        jQuery("#newinteralaction").removeClass("error"); 
+    
+        var lc_return = jQuery("#interalactionreturn").val().trim();
+        if ( lc_return.length == 0 )
+            jQuery("#interalactionreturn").addClass("error");
+        
+        var lc_name = jQuery("#newinteralaction").val().trim();
+        if ( lc_name.length == 0 )
+            jQuery("#newinteralaction").addClass("error");
+            
+        if ( ( lc_name.length == 0 ) || ( lc_return.length == 0 ) )    
+            return;
+        
+        console.log( jQuery("#agentlist").find("option:selected").val() );
+    
+    });
+    
 } );
 </script>
