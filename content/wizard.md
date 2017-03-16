@@ -82,7 +82,7 @@ draft: true
         </button>
         <strong>Error!</strong> You need at least one agent, so the agent at the list cannot be removed
     </div>
-    Agents<br/>
+    Agents Types<br/>
     <div class="btn-toolbar" role="group" aria-label="Agent Configuration">        
         <select class="form-control" id="agentlist"><option value="Default">Default</option></select>
         <input type="text" class="form-control" id="newagent" placeholder="new agent name" />
@@ -125,7 +125,7 @@ The <a href="/tutorials/actions/#what-kind-of-actions-exists">external- or stand
         </button>
         <strong>Error!</strong> External action is empty, cannot remove data
     </div>
-    <div class="form-check">
+    Action Definition<br/>
     <div class="btn-toolbar" role="group" aria-label="External Action Configuration">        
         <select class="form-control" id="externalactionlist"></select>
         <input type="text" class="form-control" id="newexternalaction" placeholder="new action name"/>
