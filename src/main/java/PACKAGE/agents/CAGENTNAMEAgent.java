@@ -1,13 +1,15 @@
 package {{{ package }}}.agents;
 
+{{ #internalaction }}
 import org.lightjason.agentspeak.action.binding.IAgentAction;
 import org.lightjason.agentspeak.action.binding.IAgentActionFilter;
 import org.lightjason.agentspeak.action.binding.IAgentActionName;
+{{ /internalaction }}
 import org.lightjason.agentspeak.agent.IBaseAgent;
 import org.lightjason.agentspeak.configuration.IAgentConfiguration;
 
 
-@IAgentAction
+{{ #internalaction }}@IAgentAction{{ /internalaction }}
 public final class C{{{ agentname }}}Agent extends IBaseAgent<C{{{ agentname }}}Agent>
 {
 
@@ -21,4 +23,13 @@ public final class C{{{ agentname }}}Agent extends IBaseAgent<C{{{ agentname }}}
         super( p_configuration );
     }
 
+    {{ #internalaction }}
+    @IAgentActionFilter
+    @IAgentActionName( name = "{{{ name }}}" )
+    private {{{ return }}} {{{ name }}}( {{{ argument }}} )
+    {
+
+    }
+
+    {{ /internalaction }}
 }
