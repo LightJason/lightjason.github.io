@@ -48,11 +48,14 @@ public final class CRuntime
      */
     private static final Set<IAction> ACTIONS = Collections.unmodifiableSet(
                                                     Stream.concat(
-                                                        CCommon.actionsFromPackage(),
                                                         Stream.of(
+                                                            {{ #externalactionlist }}
+                                                            new C{{{ . }}}Action(),
+                                                            {{ /externalactionlist }}
                                                             new CSendAction( AGENTS ),
                                                             new CBroadcastAction( AGENTS )
-                                                        )
+                                                        ),
+                                                        CCommon.actionsFromPackage()
                                                     ).collect( Collectors.toSet() )
     );
 
