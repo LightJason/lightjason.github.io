@@ -1,6 +1,6 @@
 package {{{ package }}}.agents;
 
-package {{{ package }}}.environment.IEnvironment;
+import {{{ package }}}.environment.IEnvironment;
 
 {{ #internalaction }}
 import org.lightjason.agentspeak.action.binding.IAgentAction;
