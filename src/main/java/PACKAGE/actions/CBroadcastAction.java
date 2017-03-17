@@ -62,12 +62,12 @@ public final class CBroadcastAction extends IBaseAction
                                                        ) )
                                                        .collect( Collectors.toList() );
 
-        final Pattern l_regex = Pattern.compile( l_arguments.get( 0 ).raw() );
+        final Pattern l_regex = Pattern.compile( l_arguments.get( 0 ).<String>raw() );
         m_agents.entrySet()
                 .parallelStream()
                 .filter( i -> l_regex.matcher( i.getKey() ).matches() )
                 .map( Map.Entry::getValue )
-                .forEach( i -> l_trigger.stream().forEach( j -> i.trigger( j ) ) );
+                .forEach( i -> l_trigger.forEach( j -> i.trigger( j ) ) );
 
         return CFuzzyValue.from( true );
     }

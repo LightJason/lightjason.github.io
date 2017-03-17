@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 
-final class CSendAction extends IBaseAction
+public final class CSendAction extends IBaseAction
 {
 
     private final Map<String, IAgent<?>> m_agents;

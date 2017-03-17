@@ -40,7 +40,15 @@ public final class CRuntime
     /**
      * global set with all possible agent actions
      */
-    private static final Set<IAction> ACTIONS = Collections.unmodifiableSet( {{{ buildinactions }}}.collect( Collectors.toSet() ) );
+    private static final Set<IAction> ACTIONS = Collections.unmodifiableSet(
+                                                    Stream.concat(
+                                                        CCommon.actionsFromPackage(),
+                                                        Stream.of(
+                                                            new CSendAction( AGENTS ),
+                                                            new CBroadcastAction( AGENTS )
+                                                        )
+                                                    ).collect( Collectors.toSet() )
+    );
 
 
     static
