@@ -183,16 +183,16 @@ receivefunctor     : jQuery("#receivefunctor").val(),
 sendfunctor        : jQuery("#sendfunctor").val(),
 broadcastfunctor   : jQuery("#broadcastfunctor").val(),
 externalactionlist : createValueListFromSelect( "#externalactionlist", function(i) { return JSON.parse(i).name; } ),
-agentlist          : function() { return createValueListFromSelect( "#agentlist", function(i) { return JSON.parse(i).name; } ).map( function( p_item, i, p_array ) { return { name : p_item, description :  "", last : i == p_array.len - 1, first : i == 0 }; } ) },
+agentlist          : function() { return createValueListFromSelect( "#agentlist", function(i) { return JSON.parse(i); } ).map( function( po, i, pa ) { return { name : po.name, description :  po.description, last : i == pa.len - 1, first : i == 0 }; } ) },
 
 
-"src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java" : { list : createValueListFromSelect( "#agentlist" ), target : function( p_config, p_item ) { var lo = JSON.parse( p_item ); p_config["agentname"] = lo.name; p_config["internalaction"] = lo.internalaction; return p_config; } },
+"src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java" : { list : createValueListFromSelect( "#agentlist" ), target : function( p_config, po ) { var lo = JSON.parse( po ); p_config["agentname"] = lo.name; p_config["internalaction"] = lo.internalaction; return p_config; } },
 
-"src/main/java/PACKAGE/generators/CAGENTNAMEAgentGenerator.java" : { list : createValueListFromSelect( "#agentlist" ), target : function( p_config, p_item ) { var lo = JSON.parse( p_item ); p_config["agentname"] = lo.name; return p_config; } },
+"src/main/java/PACKAGE/generators/CAGENTNAMEAgentGenerator.java" : { list : createValueListFromSelect( "#agentlist" ), target : function( p_config, po ) { var lo = JSON.parse( po ); p_config["agentname"] = lo.name; return p_config; } },
 
-"src/main/resources/PACKAGE/AGENTNAMEAgent.asl" : { list : createValueListFromSelect( "#agentlist" ), target : function( p_config, p_item ) { var lo = JSON.parse( p_item ); p_config["agentname"] = lo.name; return p_config; } },
+"src/main/resources/PACKAGE/AGENTNAMEAgent.asl" : { list : createValueListFromSelect( "#agentlist" ), target : function( p_config, po ) { var lo = JSON.parse( po ); p_config["agentname"] = lo.name; return p_config; } },
 
-"src/main/java/PACKAGE/actions/CACTIONNAMEAction.java" : { list : createValueListFromSelect( "#externalactionlist" ), target : function( p_config, p_item ) { var lo = JSON.parse( p_item ); p_config["actionname"] = lo.name;  p_config["actionarguments"] = lo.arguments; return p_config; } }
+"src/main/java/PACKAGE/actions/CACTIONNAMEAction.java" : { list : createValueListFromSelect( "#externalactionlist" ), target : function( p_config, po ) { var lo = JSON.parse( po ); p_config["actionname"] = lo.name;  p_config["actionarguments"] = lo.arguments; return p_config; } }
 
 {{< /wizard >}}
 
@@ -228,13 +228,25 @@ jQuery(function() {
     
     });
 
+    jQuery("#agentdescription").change( function() {
+    
+        var lo_domagent = jQuery("#agentlist").find("option:selected");
+        
+        var lo = JSON.parse( lo_domagent.val() );
+        lo.description = jQuery(this).val();
+        lo_domagent.val( JSON.stringify(lo) );
+    });
+
     jQuery("#agentlist").change( function() {
     
         jQuery("#internalactionlist").empty();
+        jQuery("#agentdescription").val(null);
 
         var lo = JSON.parse( jQuery(this).val() );
         if ( lo.internalaction )
             lo.internalaction.forEach( function(i) { jQuery("#internalactionlist").append( jQuery( "<option>", { value: i.name, text: i.name } ) ); } );
+        if ( lo.description )
+            jQuery("#agentdescription").val( lo.description );
     
     });
 
@@ -260,7 +272,7 @@ jQuery(function() {
         
 
         var lo_agent = JSON.parse( jQuery("#agentlist").find("option:selected").val() );
-        if ( !Array.isArray(lo_agent.internalaction) )
+        if ( a.ia(lo_agent.internalaction) )
             lo_agent.internalaction = [];
             
         lo_agent.internalaction.push({
