@@ -168,7 +168,7 @@ url               : jQuery("#url").val(),
 
 disablelogger     : jQuery("#disablelogger").prop("checked") ? "//" : "",
 actions           : jQuery("#buildinactions").prop("checked") ? "CCommon.actionsFromPackage()" : "Stream.of()",
-agentlist         : function() { var lo = []; var list = jQuery("#agentlist option").map(function() { return JSON.parse(jQuery(this).val()).name; } ).get(); list.forEach( function(item, i) { lo.push( { name : item, description :  "", last : i == list.len - 1, first : i == 0 } ); } ); return lo; },
+agentlist         : function() { return createValueListFromSelect( "#agentlist", function(i) { return JSON.parse(i).name; } ).map( function( p_item, i, p_array ) { return { name : p_item, description :  "", last : i == p_array.len - 1, first : i == 0 }; } ) },
 
 
 "src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java" : { list : createValueListFromSelect( "#agentlist" ), target : function( p_config, p_item ) { var lo = JSON.parse( p_item ); p_config["agentname"] = lo.name; p_config["internalaction"] = lo.internalaction; return p_config; } },

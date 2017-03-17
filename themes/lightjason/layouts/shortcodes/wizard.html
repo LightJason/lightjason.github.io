@@ -44,8 +44,10 @@ jQuery(function() {
 
             var l_configsandbox = function() {
                 
-                var createValueListFromSelect = function( p_id ) {
-                    return  jQuery(p_id + " option").map(function() { return jQuery(this).val(); }).get();
+                var createValueListFromSelect = function( p_id, p_call ) {
+                    return  p_call instanceof Function
+                            ? jQuery(p_id + " option").map(function() { return p_call( jQuery(this).val() ); }).get()
+                            : jQuery(p_id + " option").map(function() { return jQuery(this).val(); }).get();
                 };
 
                 return { {{- $inner -}} };    
