@@ -177,6 +177,7 @@ disablelogger      : jQuery("#disablelogger").prop("checked") ? "//" : "",
 receivefunctor     : jQuery("#receivefunctor").val(),
 sendfunctor        : jQuery("#sendfunctor").val(),
 broadcastfunctor   : jQuery("#broadcastfunctor").val(),
+externalactionlist : createValueListFromSelect( "#externalactionlist", function(i) { return JSON.parse(i).name; } ),
 agentlist          : function() { return createValueListFromSelect( "#agentlist", function(i) { return JSON.parse(i).name; } ).map( function( p_item, i, p_array ) { return { name : p_item, description :  "", last : i == p_array.len - 1, first : i == 0 }; } ) },
 
 
