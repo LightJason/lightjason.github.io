@@ -1,7 +1,7 @@
 package {{{ package }}};
 
-import {{{ package }}}.CBroadcastAction;
-import {{{ package }}}.CSendAction;
+import {{{ package }}}.actions.CBroadcastAction;
+import {{{ package }}}.actions.CSendAction;
 
 import com.codepoetics.protonpack.StreamUtils;
 import org.lightjason.agentspeak.agent.IAgent;
