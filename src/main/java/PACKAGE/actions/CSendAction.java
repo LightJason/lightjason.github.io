@@ -24,7 +24,7 @@ final class CSendAction extends IBaseAction
 
     private final Map<String, IAgent<?>> m_agents;
 
-    public CSend( final Map<String, IAgent<?>> p_agents )
+    public CSendAction( final Map<String, IAgent<?>> p_agents )
     {
         m_agents = p_agents;
     }
