@@ -153,7 +153,7 @@ The wizard should help beginners to understand the architecture of the framework
 
 </div>
 
-{{< wizard user="LightJason" repo="lightjason.github.io" branch="templates" file="pom.xml,readme.md,src/main/resources/PACKAGE/AGENTNAMEAgent.asl,src/main/java/PACKAGE/CRuntime.java,src/main/java/PACKAGE/actions/CACTIONNAMEAction.java,src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java,src/main/java/PACKAGE/generators/CAGENTNAMEAgentGenerator.java" generateid="#generate" wizardid=".wizard" >}}
+{{< wizard user="LightJason" repo="lightjason.github.io" branch="templates" file="pom.xml,readme.md,src/main/resources/PACKAGE/AGENTNAMEAgent.asl,src/main/java/PACKAGE/CRuntime.java,src/main/java/PACKAGE/environment/IEnvironment.java,src/main/java/PACKAGE/environment/CEnvironment.java,src/main/java/PACKAGE/actions/CACTIONNAMEAction.java,src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java,src/main/java/PACKAGE/generators/CAGENTNAMEAgentGenerator.java" generateid="#generate" wizardid=".wizard" >}}
 
 agentspeakversion : jQuery("#agentspeakversion").find("option:selected").val(),
 
