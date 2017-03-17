@@ -6,7 +6,7 @@ import {{{ package }}}.actions.CSendAction;
 import {{{ package }}}.actions.C{{{ . }}}Action;
 {{ /externalactionlist }}
 {{ #agentlist }}
-import {{{ package }}}.generators.C{{{ name }}}AgentGenerators;
+import {{{ package }}}.generators.C{{{ name }}}AgentGenerator;
 {{ /agentlist }}
 
 import com.codepoetics.protonpack.StreamUtils;
@@ -213,7 +213,7 @@ public final class CRuntime
         l_clioptions.addOption( "sequential", false, "agents run in sequential order [default: parallel]" );
         l_clioptions.addOption( "asl", true, "comma-sparated list of ASL files" );
         l_clioptions.addOption( "agents", true, "comma-sparated list of generating agent numbers (equal to asl-flag)" );
-        l_clioptions.addOPtion( "generator", true, "comma-separated list of generator names [elements: {{ #agentlist }}{{{ name }}}{{ #last }}|{{ /last }}{{ /agentlist }}]" );
+        l_clioptions.addOption( "generator", true, "comma-separated list of generator names [elements: {{ #agentlist }}{{{ name }}}{{ #last }}|{{ /last }}{{ /agentlist }}]" );
         l_clioptions.addOption( "steps", true, "number of simulation steps [default: integer maximum]" );
 
 
