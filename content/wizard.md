@@ -102,7 +102,7 @@ draft: true
     Action Definition<br/>
     <div class="btn-toolbar" role="group" aria-label="Agent Internal Actions">
         <select class="form-control" id="internalactionlist"></select>
-        <input type="text" class="form-control" id="interalactionreturn" value="void" />
+        <input type="text" class="form-control" id="interalactionreturn" value="void" placeholder="void" />
         <input type="text" class="form-control" id="newinteralaction" placeholder="new action name" />
         <input type="text" class="form-control" id="interalactionparameter" placeholder="double p_value, String p_text" />
         <button type="button" class="btn btn-secondary" id="addinternalaction">Add (+)</button>
@@ -205,10 +205,22 @@ jQuery(function() {
     } );
     
     jQuery("#removeagent").click( function() {
+
         if ( jQuery("#agentlist option").length > 1 )
             jQuery("#agentlist").find("option:selected").remove(); 
         else
             jQuery("#agenterror").addClass("show");
+    
+    });
+
+    jQuery("#agentlist").change( function() {
+    
+        jQuery("#internalactionlist").empty();
+
+        var lo = JSON.parse( jQuery(this).val() );
+        if ( lo.internalaction )
+            lo.internalaction.forEach( function(i) { jQuery("#internalactionlist").append( jQuery( "<option>", { value: i.name, text: i.name } ) ); } );
+    
     });
 
 
@@ -244,6 +256,10 @@ jQuery(function() {
 
         jQuery("#agentlist").find("option:selected").val( JSON.stringify( lo_agent ) ); 
         jQuery("#internalactionlist").append( jQuery( "<option>", { value: lc_name, text: lc_name } ) );
+
+        jQuery("#interalactionparameter").val(null);
+        jQuery("#interalactionreturn").val( jQuery("#interalactionreturn").attr("placeholder") );
+        jQuery("#newinteralaction").val(null)
     });
     
     
