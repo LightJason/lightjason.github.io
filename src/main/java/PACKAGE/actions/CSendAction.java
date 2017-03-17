@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 
-final class CSend extends IBaseAction
+final class CSendAction extends IBaseAction
 {
 
     private final Map<String, IAgent<?>> m_agents;
