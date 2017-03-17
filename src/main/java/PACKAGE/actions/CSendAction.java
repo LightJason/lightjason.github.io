@@ -16,7 +16,7 @@ import org.lightjason.agentspeak.language.instantiable.plan.trigger.ITrigger;
 
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 
 final class CSendAction extends IBaseAction
@@ -58,7 +58,10 @@ final class CSendAction extends IBaseAction
                    .skip( 1 )
                    .map( ITerm::raw )
                    .map( CRawTerm::from )
-                   .map( i -> CTrigger.from( "{{{ receivefunctor }}}", CLiteral.from( "content", i ), l_sender ) )
+                   .map( i -> CTrigger.from(
+                                ITrigger.EType.ADDGOAL,
+                                CLiteral.from( "{{{ receivefunctor }}}", CLiteral.from( "message", i ), l_sender )
+                   ) )
                    .forEach( i -> l_receiver.trigger( i ) );
 
         return CFuzzyValue.from( true );
