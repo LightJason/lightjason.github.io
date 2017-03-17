@@ -38,7 +38,7 @@ draft: true
         <label for="url">Project URL</label>
         <input type="text" class="form-control" id="url" placeholder="http://project.org" />
     </div>
-        <div class="form-group">
+    <div class="form-group">
         <label for="url">Project Description</label>
         <textarea class="form-control" id="description" placeholder="long project description" rows=3></textarea>
     </div>
@@ -52,11 +52,6 @@ draft: true
 <p>
     <div class="form-check">
         <label class="form-check-label">
-          <input id="buildinactions" type="checkbox" class="form-check-input" checked /> Use <a href="/knowledgebase/actions">buildin actions</a>
-        </label>
-    </div>
-    <div class="form-check">
-        <label class="form-check-label">
           <input id="disablelogging" type="checkbox" class="form-check-input" checked /> Logging disable
         </label>
     </div>
@@ -66,6 +61,18 @@ draft: true
                 <option value="0.0.1-SNAPSHOT">0.0.1-SNAPSHOT (developer version)</option>
             </select>
         </label>            
+    </div>
+    <div class="form-group">
+        <label for="url">Plan literal for receiving messages</label>
+        <input type="text" class="form-control required" id="receivefunctor" placeholder="message/receive" value="message/receive" />
+    </div>
+    <div class="form-group">
+        <label for="url">Action name for sending messages</label>
+        <input type="text" class="form-control required" id="sendfunctor" placeholder="message/send" value="message/send" />
+    </div>    
+    <div class="form-group">
+        <label for="url">Action name for broadcast messages</label>
+        <input type="text" class="form-control required" id="broadcastfunctor" placeholder="message/broadcast" value="message/broadcast" />
     </div>     
 </p>
 </section>
@@ -153,22 +160,24 @@ The wizard should help beginners to understand the architecture of the framework
 
 </div>
 
-{{< wizard user="LightJason" repo="lightjason.github.io" branch="templates" file="pom.xml,readme.md,src/main/resources/PACKAGE/AGENTNAMEAgent.asl,src/main/java/PACKAGE/CRuntime.java,src/main/java/PACKAGE/environment/IEnvironment.java,src/main/java/PACKAGE/environment/CEnvironment.java,src/main/java/PACKAGE/actions/CACTIONNAMEAction.java,src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java,src/main/java/PACKAGE/generators/CAGENTNAMEAgentGenerator.java" generateid="#generate" wizardid=".wizard" >}}
+{{< wizard user="LightJason" repo="lightjason.github.io" branch="templates" file="pom.xml,readme.md,src/main/resources/PACKAGE/AGENTNAMEAgent.asl,src/main/java/PACKAGE/CRuntime.java,src/main/java/PACKAGE/environment/IEnvironment.java,src/main/java/PACKAGE/environment/CEnvironment.java,src/main/java/PACKAGE/actions/CSendAction.java,src/main/java/PACKAGE/actions/CBroadcastAction.java,src/main/java/PACKAGE/actions/CACTIONNAMEAction.java,src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java,src/main/java/PACKAGE/generators/CAGENTNAMEAgentGenerator.java" generateid="#generate" wizardid=".wizard" >}}
 
-agentspeakversion : jQuery("#agentspeakversion").find("option:selected").val(),
+agentspeakversion  : jQuery("#agentspeakversion").find("option:selected").val(),
 
-package           : jQuery("#groupid").val().replace(/\s+/g,'') + "." + jQuery("#artefactid").val().replace(/\s+/g,''),
-prefix            : jQuery("#artefactid").val().replace(/\s+/g,''),
+package            : jQuery("#groupid").val().replace(/\s+/g,'') + "." + jQuery("#artefactid").val().replace(/\s+/g,''),
+prefix             : jQuery("#artefactid").val().replace(/\s+/g,''),
 
-groupid           : jQuery("#groupid").val().replace(/\s+/g,''),
-artefactid        : jQuery("#artefactid").val().replace(/\s+/g,''),
-version           : jQuery("#version").val().replace(/\s+/g,''),
-description       : jQuery("#description").val(),
-url               : jQuery("#url").val(),
+groupid            : jQuery("#groupid").val().replace(/\s+/g,''),
+artefactid         : jQuery("#artefactid").val().replace(/\s+/g,''),
+version            : jQuery("#version").val().replace(/\s+/g,''),
+description        : jQuery("#description").val(),
+url                : jQuery("#url").val(),
 
-disablelogger     : jQuery("#disablelogger").prop("checked") ? "//" : "",
-actions           : jQuery("#buildinactions").prop("checked") ? "CCommon.actionsFromPackage()" : "Stream.of()",
-agentlist         : function() { return createValueListFromSelect( "#agentlist", function(i) { return JSON.parse(i).name; } ).map( function( p_item, i, p_array ) { return { name : p_item, description :  "", last : i == p_array.len - 1, first : i == 0 }; } ) },
+disablelogger      : jQuery("#disablelogger").prop("checked") ? "//" : "",
+receivefunctor     : jQuery("#receivefunctor").val(),
+sendfunctor        : jQuery("#sendfunctor").val(),
+broadcastfunctor   : jQuery("#broadcastfunctor").val(),
+agentlist          : function() { return createValueListFromSelect( "#agentlist", function(i) { return JSON.parse(i).name; } ).map( function( p_item, i, p_array ) { return { name : p_item, description :  "", last : i == p_array.len - 1, first : i == 0 }; } ) },
 
 
 "src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java" : { list : createValueListFromSelect( "#agentlist" ), target : function( p_config, p_item ) { var lo = JSON.parse( p_item ); p_config["agentname"] = lo.name; p_config["internalaction"] = lo.internalaction; return p_config; } },
@@ -177,7 +186,7 @@ agentlist         : function() { return createValueListFromSelect( "#agentlist",
 
 "src/main/resources/PACKAGE/AGENTNAMEAgent.asl" : { list : createValueListFromSelect( "#agentlist" ), target : function( p_config, p_item ) { var lo = JSON.parse( p_item ); p_config["agentname"] = lo.name; return p_config; } },
 
-"src/main/java/PACKAGE/actions/CACTIONNAMEAction.java" : { list : createValueListFromSelect( "#externalactionlist" ), target : function( p_config, p_item ) { var lo = JSON.parse( p_item ); p_config["actionname"] = lo.name;  p_config["actionarguments"] = lo.arguments; delete p_config["actions"]; return p_config; } }
+"src/main/java/PACKAGE/actions/CACTIONNAMEAction.java" : { list : createValueListFromSelect( "#externalactionlist" ), target : function( p_config, p_item ) { var lo = JSON.parse( p_item ); p_config["actionname"] = lo.name;  p_config["actionarguments"] = lo.arguments; return p_config; } }
 
 {{< /wizard >}}
 
@@ -272,6 +281,8 @@ jQuery(function() {
         var lnArguments = parseInt(jQuery("#argumentsexternalaction").val().trim());
         
         jQuery("#externalactionlist").append( jQuery("<option>", { value: JSON.stringify( { name : lcName, arguments: lnArguments } ), text: lcName } ) );
+
+        jQuery("#newexternalaction").val(null);
             
     });
     
