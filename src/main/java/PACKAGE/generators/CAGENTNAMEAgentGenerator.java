@@ -1,6 +1,6 @@
 package {{{ package }}}.generators;
 
-package {{{ package }}}.environment.IEnvironment;
+import {{{ package }}}.environment.IEnvironment;
 
 import org.lightjason.agentspeak.action.IAction;
 import org.lightjason.agentspeak.generator.IBaseAgentGenerator;
