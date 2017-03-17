@@ -39,7 +39,7 @@ draft: true
         <input type="text" class="form-control" id="url" placeholder="http://project.org" />
     </div>
     <div class="form-group">
-        <label for="url">Project Description</label>
+        <label for="description">Project Description</label>
         <textarea class="form-control" id="description" placeholder="long project description" rows=3></textarea>
     </div>
 </p>
@@ -97,6 +97,11 @@ draft: true
         <button type="button" class="btn btn-secondary" id="removeagent">Remove (-)</button>
     </div>
     <small class="form-text text-muted">Agents (minimum one agent), new agent name, add to / remove from list</small>
+    <br/>
+    <div class="form-group">
+        <label for="agentdescription">Agent Description</label>
+        <textarea class="form-control" id="agentdescription" placeholder="long agent description" rows=3></textarea>
+    </div>
 </p>
 <br/>
 <p>
@@ -106,7 +111,7 @@ draft: true
         </button>
         <strong>Error!</strong> You need at least one agent, so the agent at the list cannot be removed
     </div>
-    Action Definition<br/>
+    Internal Action Definition<br/>
     <div class="btn-toolbar" role="group" aria-label="Agent Internal Actions">
         <select class="form-control" id="internalactionlist"></select>
         <input type="text" class="form-control" id="interalactionreturn" value="void" placeholder="void" />
@@ -132,7 +137,7 @@ The <a href="/tutorials/actions/#what-kind-of-actions-exists">external- or stand
         </button>
         <strong>Error!</strong> External action is empty, cannot remove data
     </div>
-    Action Definition<br/>
+    External Action Definition<br/>
     <div class="btn-toolbar" role="group" aria-label="External Action Configuration">        
         <select class="form-control" id="externalactionlist"></select>
         <input type="text" class="form-control" id="newexternalaction" placeholder="new action name"/>
