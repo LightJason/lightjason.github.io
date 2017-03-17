@@ -171,19 +171,21 @@ actions           : jQuery("#buildinactions").prop("checked") ? "CCommon.actions
 agentlist         : function() { var lo = []; var list = jQuery("#agentlist option").map(function() { return JSON.parse(jQuery(this).val()).name; } ).get(); list.forEach( function(item, i) { lo.push( { name : item, description :  "", last : i == list.len - 1, first : i == 0 } ); } ); return lo; },
 
 
-"src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java" : { list : jQuery("#agentlist option").map(function() { return jQuery(this).val(); }).get(), target : function( p_config, p_item ) { var lo = JSON.parse( p_item ); p_config["agentname"] = lo.name; p_config["internalaction"] = lo.internalaction; return p_config; } },
+"src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java" : { list : createValueListFromSelect( "#agentlist" ), target : function( p_config, p_item ) { var lo = JSON.parse( p_item ); p_config["agentname"] = lo.name; p_config["internalaction"] = lo.internalaction; return p_config; } },
 
-"src/main/java/PACKAGE/generators/CAGENTNAMEAgentGenerator.java" : { list : jQuery("#agentlist option").map(function() { return jQuery(this).val(); }).get(), target : function( p_config, p_item ) { var lo = JSON.parse( p_item ); p_config["agentname"] = lo.name; return p_config; } },
+"src/main/java/PACKAGE/generators/CAGENTNAMEAgentGenerator.java" : { list : createValueListFromSelect( "#agentlist" ), target : function( p_config, p_item ) { var lo = JSON.parse( p_item ); p_config["agentname"] = lo.name; return p_config; } },
 
-"src/main/resources/PACKAGE/AGENTNAMEAgent.asl" : { list : jQuery("#agentlist option").map(function() { return jQuery(this).val(); }).get(), target : function( p_config, p_item ) { var lo = JSON.parse( p_item ); p_config["agentname"] = lo.name; return p_config; } },
+"src/main/resources/PACKAGE/AGENTNAMEAgent.asl" : { list : createValueListFromSelect( "#agentlist" ), target : function( p_config, p_item ) { var lo = JSON.parse( p_item ); p_config["agentname"] = lo.name; return p_config; } },
 
-"src/main/java/PACKAGE/actions/CACTIONNAMEAction.java" : { list : jQuery("#externalactionlist option").map(function() { return jQuery(this).val(); }).get(), target : function( p_config, p_item ) { var lo = JSON.parse( p_item ); p_config["actionname"] = lo.name;  p_config["actionarguments"] = lo.arguments; delete p_config["actions"]; return p_config; } }
+"src/main/java/PACKAGE/actions/CACTIONNAMEAction.java" : { list : createValueListFromSelect( "#externalactionlist" ), target : function( p_config, p_item ) { var lo = JSON.parse( p_item ); p_config["actionname"] = lo.name;  p_config["actionarguments"] = lo.arguments; delete p_config["actions"]; return p_config; } }
 
 {{< /wizard >}}
 
 <script>
 jQuery(function() {
 
+    // --- agent section ---------------------------------------------------------------------------------------------------
+    
     jQuery("#addagent").click( function() {
     
         jQuery("#newagent").removeClass("error"); 
@@ -208,27 +210,11 @@ jQuery(function() {
         else
             jQuery("#agenterror").addClass("show");
     });
-    
-    
-    
-    jQuery("#addexternalaction").click( function() {
-    
-        var lcName = jQuery("#newexternalaction").val().trim();
-        var lnArguments = parseInt(jQuery("#argumentsexternalaction").val().trim());
-        
-        jQuery("#externalactionlist").append( jQuery("<option>", { value: JSON.stringify( { name : lcName, arguments: lnArguments } ), text: lcName } ) );
-            
-    });
-    
-    jQuery("#removeexternalaction").click( function() {
-        if ( jQuery("#externalactionlist option").length > 0 )
-            jQuery("#externalactionlist").find("option:selected").remove(); 
-        else
-            jQuery("#externalactionempty").addClass("show");
-    });
-    
-    
 
+
+
+    // --- internal action - agent section ---------------------------------------------------------------------------------
+    
     jQuery("#addinternalaction").click( function() {
     
         jQuery("#interalactionreturn").removeClass("error");
@@ -257,6 +243,26 @@ jQuery(function() {
         });
         jQuery("#agentlist").find("option:selected").val( JSON.stringify( lo_agent ) ); 
          
+    });
+    
+    
+
+    // --- external action -------------------------------------------------------------------------------------------------
+    
+    jQuery("#addexternalaction").click( function() {
+    
+        var lcName = jQuery("#newexternalaction").val().trim();
+        var lnArguments = parseInt(jQuery("#argumentsexternalaction").val().trim());
+        
+        jQuery("#externalactionlist").append( jQuery("<option>", { value: JSON.stringify( { name : lcName, arguments: lnArguments } ), text: lcName } ) );
+            
+    });
+    
+    jQuery("#removeexternalaction").click( function() {
+        if ( jQuery("#externalactionlist option").length > 0 )
+            jQuery("#externalactionlist").find("option:selected").remove(); 
+        else
+            jQuery("#externalactionempty").addClass("show");
     });
     
 } );

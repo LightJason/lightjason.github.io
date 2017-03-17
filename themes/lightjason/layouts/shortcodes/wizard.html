@@ -42,8 +42,17 @@ jQuery(function() {
 
 	jQuery({{- $generateid -}}).click(function() {
 
+            var l_configsandbox = function() {
+                
+                var createValueListFromSelect = function( p_id ) {
+                    return  jQuery(p_id + " option").map(function() { return jQuery(this).val(); }).get();
+                };
+
+                return { {{- $inner -}} };    
+            };
+
             var l_zip = new JSZip();
-            var l_configuration = { {{- $inner -}} };
+            var l_configuration = l_configsandbox();
             l_configuration = jQuery.extend( {}, l_configuration, keytoupper(l_configuration) );
 
 
