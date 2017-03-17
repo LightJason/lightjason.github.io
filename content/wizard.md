@@ -241,8 +241,9 @@ jQuery(function() {
             "return"   : lc_return,
             "argument" : jQuery("#interalactionparameter").val().trim() 
         });
+
         jQuery("#agentlist").find("option:selected").val( JSON.stringify( lo_agent ) ); 
-         
+        jQuery("#internalactionlist").append( jQuery( "<option>", { value: lc_name, text: lc_name } ) );
     });
     
     
