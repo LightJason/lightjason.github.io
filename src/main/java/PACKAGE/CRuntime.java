@@ -2,6 +2,9 @@ package {{{ package }}};
 
 import {{{ package }}}.actions.CBroadcastAction;
 import {{{ package }}}.actions.CSendAction;
+{{ #externalactionlist }}
+import {{{ package }}}.actions.C{{{ . }}}Action;
+{{ /externalactionlist }}
 
 import com.codepoetics.protonpack.StreamUtils;
 import org.lightjason.agentspeak.agent.IAgent;
