@@ -5,6 +5,9 @@ import {{{ package }}}.actions.CSendAction;
 {{ #externalactionlist }}
 import {{{ package }}}.actions.C{{{ . }}}Action;
 {{ /externalactionlist }}
+{{ #agentlist }}
+    import {{{ package }}}.generators.C{{{ name }}}AgentGenerators;
+{{ /agentlist }}
 
 import com.codepoetics.protonpack.StreamUtils;
 import org.lightjason.agentspeak.agent.IAgent;
@@ -206,10 +209,11 @@ public final class CRuntime
         final Options l_clioptions = new Options();
 
         l_clioptions.addOption( "help", false, "shows this information" );
-        l_clioptions.addOption( "generate", false, "generates within the current directory the agent ASL files" );
+        l_clioptions.addOption( "create", false, "creates within the current directory the agent ASL files" );
         l_clioptions.addOption( "sequential", false, "agents run in sequential order (default: parallel)" );
         l_clioptions.addOption( "asl", true, "comma-sparated list of ASL files" );
         l_clioptions.addOption( "agents", true, "comma-sparated list of generating agent numbers (equal to asl-flag)" );
+        l_clioptions.addOPtion( "generator", true, "comma-separated list of generator names ({{ #agentlist }}{{{ name }}{{ #last }}, {{ /last }}){{ /agentlist }}" );
         l_clioptions.addOption( "steps", true, "number of simulation steps (default: integer maximum)" );
 
 

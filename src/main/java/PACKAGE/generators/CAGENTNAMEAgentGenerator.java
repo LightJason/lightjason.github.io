@@ -1,5 +1,7 @@
 package {{{ package }}}.generators;
 
+package {{{ package }}}.environment.IEnvironment;
+
 import org.lightjason.agentspeak.action.IAction;
 import org.lightjason.agentspeak.generator.IBaseAgentGenerator;
 import org.lightjason.agentspeak.language.score.IAggregation;
@@ -11,23 +13,18 @@ import java.util.Set;
 
 public final class C{{{ agentname }}}AgentGenerator extends IBaseAgentGenerator<C{{{ agentname }}}Agent>
 {
+    private final IEnvironment m_environment;
 
-    /**
-     * constructor of the generator
-     *
-     * @param p_actions set with actions
-     * @param p_stream asl stream
-     * @throws Exception on any error
-     */
-    public C{{{ agentname }}}AgentGenerator( final Set<IAction> p_actions, final InputStream p_stream ) throws Exception
+    public C{{{ agentname }}}AgentGenerator( final InputStream p_stream, final IEnvironment p_environment, final Set<IAction> p_actions ) throws Exception
     {
         super( p_stream, p_actions, IAggregation.EMPTY );
+        m_environment = p_environment;
     }
 
     @Override
     public final C{{{ agentname }}}Agent generatesingle( final Object... p_data )
     {
-        return new C{{{ agentname }}}Agent( m_configuration );
+        return new C{{{ agentname }}}Agent( m_configuration, m_environment );
     }
 
 }
