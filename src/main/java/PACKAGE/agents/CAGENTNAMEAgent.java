@@ -16,7 +16,7 @@ import org.lightjason.agentspeak.configuration.IAgentConfiguration;
  * a type of agent
  */
 {{ #internalaction }}@IAgentAction{{ /internalaction }}
-public final class C{{{ agentname }}}Agent IEnvironmentAgent<C{{{ agentname }}}Agent>
+public final class C{{{ agentname }}}Agent extends IEnvironmentAgent<C{{{ agentname }}}Agent>
 {
 
     /**
