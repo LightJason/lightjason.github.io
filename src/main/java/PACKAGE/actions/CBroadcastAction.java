@@ -20,15 +20,27 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 
+/**
+ * external broadcast action for sending
+ * messages to a set of agents based on
+ * a regular expression
+ */
 public final class CBroadcastAction extends IBaseAction
 {
+    /**
+     * map with agent names and agent objects
+     */
     private final Map<String, IAgent<?>> m_agents;
 
+    /**
+     * constructor
+     *
+     * @param p_agents map with agent names and objects
+     */
     public CBroadcastAction( final Map<String, IAgent<?>> p_agents )
     {
         m_agents = p_agents;
     }
-
 
     @Override
     public final IPath name()
@@ -43,9 +55,8 @@ public final class CBroadcastAction extends IBaseAction
     }
 
     @Override
-    public IFuzzyValue<Boolean> execute( final IContext p_context, final boolean p_parallel, final List<ITerm> p_argument, final List<ITerm> p_return,
-                                         final List<ITerm> p_annotation
-    )
+    public final IFuzzyValue<Boolean> execute( final IContext p_context, final boolean p_parallel, final List<ITerm> p_argument, 
+                                               final List<ITerm> p_return, final List<ITerm> p_annotation )
     {
         final List<ITerm> l_arguments = CCommon.flatcollection( p_argument ).collect( Collectors.toList() );
         if ( l_arguments.size() < 2 )

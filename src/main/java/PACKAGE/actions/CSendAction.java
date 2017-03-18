@@ -19,11 +19,22 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 
+/**
+ * external send action for sending messages
+ * to a specified agent based on the name
+ */
 public final class CSendAction extends IBaseAction
 {
-
+    /**
+     * map with agent names and agent objects
+     */
     private final Map<String, IAgent<?>> m_agents;
 
+    /**
+     * constructor
+     *
+     * @param p_agents map with agent names and objects
+     */
     public CSendAction( final Map<String, IAgent<?>> p_agents )
     {
         m_agents = p_agents;

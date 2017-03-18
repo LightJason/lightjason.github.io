@@ -13,7 +13,9 @@ import org.lightjason.agentspeak.language.execution.fuzzy.IFuzzyValue;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+/**
+ * external action {{{ actionname }}}
+ */
 public final class C{{{ actionname }}}Action  extends IBaseAction
 {
     @Override
