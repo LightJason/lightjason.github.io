@@ -1,5 +1,6 @@
 package {{{ package }}}.generators;
 
+import {{{ package }}}.agents.IEnvironmentAgent;
 import {{{ package }}}.environment.IEnvironment;
 
 import org.lightjason.agentspeak.common.CCommon;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 /**
  * generator of a specified type of agents
  */
-public final class C{{{ agentname }}}AgentGenerator extends IBaseAgentGenerator<C{{{ agentname }}}Agent>
+public final class C{{{ agentname }}}AgentGenerator extends IBaseAgentGenerator<IEnvironmentAgent<C{{{ agentname }}}Agent>>
 {
     /**
      * environment reference

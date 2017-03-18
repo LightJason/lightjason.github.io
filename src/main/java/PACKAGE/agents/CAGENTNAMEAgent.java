@@ -16,12 +16,8 @@ import org.lightjason.agentspeak.configuration.IAgentConfiguration;
  * a type of agent
  */
 {{ #internalaction }}@IAgentAction{{ /internalaction }}
-public final class C{{{ agentname }}}Agent extends IBaseAgent<C{{{ agentname }}}Agent>
+public final class C{{{ agentname }}}Agent IEnvironmentAgent<C{{{ agentname }}}Agent>
 {
-    /**
-     * reference to environment
-     */
-    private final IEnvironment m_environment;
 
     /**
      * constructor
@@ -29,10 +25,9 @@ public final class C{{{ agentname }}}Agent extends IBaseAgent<C{{{ agentname }}}
      * @param p_configuration agent configuration
      * @param p_environment environment reference
      */
-    public C{{{ agentname }}}Agent( final IAgentConfiguration<C{{{ agentname }}}Agent> p_configuration, final IEnvironment p_environment )
+    public C{{{ agentname }}}Agent( final IAgentConfiguration<IEnvironmentAgent<C{{{ agentname }}}Agent>> p_configuration, final IEnvironment p_environment )
     {
-        super( p_configuration );
-        m_environment = p_environment;
+        super( p_configuration, p_environment );
     }
 
     {{ #internalaction }}
@@ -42,6 +37,6 @@ public final class C{{{ agentname }}}Agent extends IBaseAgent<C{{{ agentname }}}
     {
 
     }
-
+    
     {{ /internalaction }}
 }
