@@ -32,7 +32,7 @@ public final class C{{{ agentname }}}AgentGenerator extends IBaseAgentGenerator<
      */
     public C{{{ agentname }}}AgentGenerator( final InputStream p_stream, final IEnvironment p_environment, final Stream<IAction> p_defaultaction ) throws Exception
     {
-        super( p_stream, Stream.concat( p_actions, CCommon.actionsFromClass( C{{{ agentname }}}Agent.class )  ).collect( Collectors.toSet() ), IAggregation.EMPTY );
+        super( p_stream, Stream.concat( p_defaultaction, CCommon.actionsFromAgentClass( C{{{ agentname }}}Agent.class )  ).collect( Collectors.toSet() ), IAggregation.EMPTY );
         m_environment = p_environment;
     }
 

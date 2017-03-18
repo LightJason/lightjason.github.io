@@ -29,7 +29,7 @@ java -jar {{{ artefactid }}}-{{{ version }}}.jar -help
 For generating agents (ASL files) the jar can be executed with
 
 ```
-java -jar {{{ artefactid }}}-{{{ version }}}.jar -generate
+java -jar {{{ artefactid }}}-{{{ version }}}.jar -create
 ```
 
 ## Agents
