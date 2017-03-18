@@ -4,6 +4,7 @@ import {{{ package }}}.environment.IEnvironment;
 
 import org.lightjason.agentspeak.common.CCommon;
 import org.lightjason.agentspeak.action.IAction;
+import org.lightjason.agentspeak.agent.IAgent;
 import org.lightjason.agentspeak.generator.IBaseAgentGenerator;
 import org.lightjason.agentspeak.language.score.IAggregation;
 import {{{ package }}}.agents.C{{{ agentname }}}Agent;
@@ -46,6 +47,7 @@ public final class C{{{ agentname }}}AgentGenerator extends IBaseAgentGenerator<
     {
         super( p_stream, Stream.concat( p_defaultaction, CCommon.actionsFromAgentClass( C{{{ agentname }}}Agent.class )  ).collect( Collectors.toSet() ), IAggregation.EMPTY );
         m_environment = p_environment;
+        m_agents = p_agents;
     }
 
     @Override

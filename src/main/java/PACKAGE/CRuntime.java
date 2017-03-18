@@ -88,7 +88,7 @@ public final class CRuntime
     {
         Stream.of(
             {{ #agentlist }}
-                "{{{ name }}}Agent.asl" {{ ^last }},{{ /last }}
+                "{{{ name }}}Agent.asl"{{ ^last }},{{ /last }}
             {{ /agentlist }}
         ).forEach( i -> {
                try
@@ -118,7 +118,7 @@ public final class CRuntime
             System.exit( -1 );
 
         // creates agents ASL files
-        if ( l_cli.hasOption("create") && ( CRuntime.generateasl() ) )
+        if ( l_cli.hasOption("create") && ( CRuntime.createasl() ) )
             System.exit( 0 );  
 
 
