@@ -80,15 +80,15 @@ public final class CRuntime
     // === main ================================================================================================================================================
 
     /**
-     * generates build-in ASL files
+     * creates build-in ASL files
      *
      * @return execution flag
      */
-    private static boolean generateasl()
+    private static boolean createasl()
     {
         Stream.of(
             {{ #agentlist }}
-                "{{{ name }}}Agent.asl" {{ #last }},{{ /last }}
+                "{{{ name }}}Agent.asl" {{ ^last }},{{ /last }}
             {{ /agentlist }}
         ).forEach( i -> {
                try
@@ -117,8 +117,8 @@ public final class CRuntime
         if ( l_cli == null )
             System.exit( -1 );
 
-        // generate agents ASL files
-        if ( l_cli.hasOption("generate") && ( CRuntime.generateasl() ) )
+        // creates agents ASL files
+        if ( l_cli.hasOption("create") && ( CRuntime.generateasl() ) )
             System.exit( 0 );  
 
 
@@ -214,7 +214,7 @@ public final class CRuntime
         l_clioptions.addOption( "sequential", false, "agents run in sequential order [default: parallel]" );
         l_clioptions.addOption( "asl", true, "comma-sparated list of ASL files" );
         l_clioptions.addOption( "agents", true, "comma-sparated list of generating agent numbers (equal to asl-flag)" );
-        l_clioptions.addOption( "generator", true, "comma-separated list of generator names [elements: {{ #agentlist }}{{{ name }}}{{ #last }}|{{ /last }}{{ /agentlist }}]" );
+        l_clioptions.addOption( "generator", true, "comma-separated list of generator names [elements: {{ #agentlist }}{{{ name }}}{{ ^last }}|{{ /last }}{{ /agentlist }}]" );
         l_clioptions.addOption( "steps", true, "number of simulation steps [default: integer maximum]" );
 
 
