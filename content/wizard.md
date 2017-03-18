@@ -182,8 +182,8 @@ disablelogger      : jQuery("#disablelogger").prop("checked") ? "//" : "",
 receivefunctor     : jQuery("#receivefunctor").val(),
 sendfunctor        : jQuery("#sendfunctor").val(),
 broadcastfunctor   : jQuery("#broadcastfunctor").val(),
-externalactionlist : createValueListFromSelect( "#externalactionlist", function(i) { return JSON.parse(i).name; } ),
-agentlist          : function() { return createValueListFromSelect( "#agentlist", function(i) { return JSON.parse(i); } ).map( function( po, i, pa ) { return { name : po.name, description :  po.description, last : i == pa.len - 1, first : i == 0 }; } ) },
+externalactionlist : createValueListFromSelect( "#externalactionlist", function(i) { return JSON.parse(i); } ),
+agentlist          : function() { return createValueListFromSelect( "#agentlist", function(i) { return JSON.parse(i); } ).map( function( po, i, pa ) { return { name : po.name, description :  po.description, last : i == pa.length - 1, first : i == 0 }; } ) },
 
 
 "src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java" : { list : createValueListFromSelect( "#agentlist" ), target : function( p_config, po ) { var lo = JSON.parse( po ); p_config["agentname"] = lo.name; p_config["internalaction"] = lo.internalaction; return p_config; } },
@@ -272,7 +272,7 @@ jQuery(function() {
         
 
         var lo_agent = JSON.parse( jQuery("#agentlist").find("option:selected").val() );
-        if ( a.ia(lo_agent.internalaction) )
+        if ( !Array.isArray(lo_agent.internalaction) )
             lo_agent.internalaction = [];
             
         lo_agent.internalaction.push({

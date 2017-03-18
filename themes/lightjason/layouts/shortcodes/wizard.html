@@ -57,7 +57,6 @@ jQuery(function() {
             var lo_configuration = lf_configsandbox();
             lo_configuration = jQuery.extend( {}, lo_configuration, lf_keytoupper(lo_configuration) );
 
-
             {{ range $filename := (split (.Get "file") ",") }}
 
                 {{- $file := getJSON "https://api.github.com/repos/" $user "/" $repo "/contents/" $filename $branch -}}
