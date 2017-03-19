@@ -1,7 +1,10 @@
 package {{{ package }}}.environment;
 
 import java.text.MessageFormat;
+import java.util.Arrays;
 import java.util.Locale;
+import java.util.stream.Collectors;
+
 
 /**
  * enum of environments
@@ -33,7 +36,20 @@ public enum EEnvironment
      */
     public static EEnvironment from( final String p_name )
     {
-        return EEnvironment.valueof( p_name.toUpperCase( Locale.ROOT ) );
+        return EEnvironment.valueOf(  p_name.toUpperCase( Locale.ROOT ) );
     }
 
+    /**
+     * returns a string with a
+     * comma-separated list of enum elements
+     *
+     * @return string list
+     */
+    public static String list()
+    {
+        return Arrays.stream( EEnvironment.values() )
+                     .map( Enum::name )
+                     .map( i -> i.toLowerCase( Locale.ROOT ) )
+                     .collect( Collectors.joining( ", ") );
+    }
 }

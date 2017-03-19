@@ -5,9 +5,6 @@ import {{{ package }}}.actions.CSendAction;
 {{ #externalactionlist }}
 import {{{ package }}}.actions.C{{{ . }}}Action;
 {{ /externalactionlist }}
-{{ #agentlist }}
-import {{{ package }}}.generators.C{{{ name }}}AgentGenerator;
-{{ /agentlist }}
 import {{{ package }}}.environment.EEnvironment;
 import {{{ package }}}.environment.IEnvironment;
 import {{{ package }}}.generators.EGenerator;
@@ -21,12 +18,10 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
-import xx.yy.generators.EGenerator;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.StandardCopyOption;
-import java.text.MessageFormat;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.util.AbstractMap;
@@ -131,7 +126,7 @@ public final class CRuntime
 
 
         // generate envrionment and agents
-        final IEnvironment l_environment = new CEnvironment();
+        final IEnvironment l_environment = EEnvironment.from( l_cli.getOptionValue( "env", "default" ) ).generate();
 
         StreamUtils.zip(
 
@@ -169,7 +164,7 @@ public final class CRuntime
                     }
                     catch ( final Exception l_exception )
                     {
-                        l_exception.printStackTrace();
+                        {{{ disablelogger }}}l_exception.printStackTrace();
                         return null;
                     }
                 } )
@@ -257,8 +252,8 @@ public final class CRuntime
 
         l_clioptions.addOption( "help", false, "shows this information" );
         l_clioptions.addOption( "create", false, "creates within the current directory the agent ASL files" );
-        l_clioptions.addOption( "sequential", false, "agents run in sequential order [default: parallel]" );
-        l_clioptions.addOption( "env", true, "environment definition [default:  default, elements: " );
+        l_clioptions.addOption( "sequential", false, "agents run in sequential order [default value: parallel]" );
+        l_clioptions.addOption( "env", true, "environment definition [default value:  default, elements: " + EEnvironment.list() );
         l_clioptions.addOption( "asl", true, "comma-sparated list of ASL files" );
         l_clioptions.addOption( "agents", true, "comma-sparated list of generating agent numbers (equal to asl-flag)" );
         l_clioptions.addOption( "generator", true, "comma-separated list of generator names [elements: {{ #agentlist }}{{ #function_tolower }}{{{ name }}}{{ /function_tolower }}{{ ^last }}|{{ /last }}{{ /agentlist }}]" );
