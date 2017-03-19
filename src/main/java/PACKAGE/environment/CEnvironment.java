@@ -1,5 +1,7 @@
 package {{{ package }}}.environment;
 
+import {{{ package }}}.agents.IEnvironmentAgent;
+
 /**
  * environment class
  */

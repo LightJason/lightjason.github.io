@@ -46,11 +46,11 @@ public enum EGenerator
     }
 
     /**
-     * returns a generate on
-     * case-ignore string name
+     * returns a generate enum on
+     * case-insensitive ignore string name
      *
      * @param p_name string name
-     * @return generator
+     * @return generator enum
      */
     public static EGenerator from( final String p_name )
     {
