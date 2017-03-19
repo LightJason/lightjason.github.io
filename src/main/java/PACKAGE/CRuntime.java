@@ -253,7 +253,7 @@ public final class CRuntime
         l_clioptions.addOption( "help", false, "shows this information" );
         l_clioptions.addOption( "create", false, "creates within the current directory the agent ASL files" );
         l_clioptions.addOption( "sequential", false, "agents run in sequential order [default value: parallel]" );
-        l_clioptions.addOption( "env", true, "environment definition [default value:  default, elements: " + EEnvironment.list() );
+        l_clioptions.addOption( "env", true, "environment definition [default value: default, elements: " + EEnvironment.list() );
         l_clioptions.addOption( "asl", true, "comma-sparated list of ASL files" );
         l_clioptions.addOption( "agents", true, "comma-sparated list of generating agent numbers (equal to asl-flag)" );
         l_clioptions.addOption( "generator", true, "comma-separated list of generator names [elements: {{ #agentlist }}{{ #function_tolower }}{{{ name }}}{{ /function_tolower }}{{ ^last }}|{{ /last }}{{ /agentlist }}]" );
