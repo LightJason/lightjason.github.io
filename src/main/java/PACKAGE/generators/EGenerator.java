@@ -7,6 +7,7 @@ import {{{ package }}}.environment.IEnvironment;
 
 import java.io.InputStream;
 import java.text.MessageFormat;
+import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Stream;
 

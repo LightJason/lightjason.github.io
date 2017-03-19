@@ -18,15 +18,19 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
+import xx.yy.generators.EGenerator;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.StandardCopyOption;
 import java.text.MessageFormat;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
+import java.util.AbstractMap;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.LogManager;
@@ -122,20 +126,59 @@ public final class CRuntime
             System.exit( 0 );  
 
 
-        // generate agents
+
+        // generate envrionment and agents
+        final IEnvironment l_environment = new CEnvironment();
+
         StreamUtils.zip(
-            Arrays.stream( l_cli.getOptionValue( "asl", "" ).split( ",") )
-              .map( String::trim )
-              .filter( i -> !i.isEmpty() ),
 
-            Arrays.stream( l_cli.getOptionValue( "agents", "" ).split(",") )
-              .map( String::trim )
-              .filter( i -> !i.isEmpty() )
-              .mapToInt( Integer::parseInt )
-              .boxed(),
+            // read counter values to generate the set of agents
+            Arrays.stream( l_cli.getOptionValue( "agents", "" ).split( ",") )
+                  .map( String::trim )
+                  .filter( i -> !i.isEmpty() )
+                  .mapToInt( Integer::parseInt )
+                  .boxed(),
 
-            ( i, j ) -> MessageFormat.format( "{0} - {1}", i, j )
-        ).forEach( System.out::println );
+
+            StreamUtils.zip(
+
+                // read the generator type for each ASL file
+                Arrays.stream( l_cli.getOptionValue( "generator", "" ).split(",") )
+                    .map( String::trim )
+                    .filter( i -> !i.isEmpty() ),
+
+                // read each ASL file
+                Arrays.stream( l_cli.getOptionValue( "asl", "" ).split( ",") )
+                    .map( String::trim )
+                    .filter( i -> !i.isEmpty() ),
+
+                // create a tuple for each ASL the generator and ASL file
+                ( i, j ) -> new AbstractMap.SimpleImmutableEntry<>( EGenerator.from( i ), j )
+            )
+                // read the file data and cretae the generator
+                .map( i -> {
+                    try
+                    (
+                        final FileInputStream l_stream = new FileInputStream( i.getValue() );
+                    )
+                    {
+                        return i.getKey().generate( l_stream, l_environment, ACTIONS.stream(), AGENTS );
+                    }
+                    catch ( final Exception l_exception )
+                    {
+                        l_exception.printStackTrace();
+                        return null;
+                    }
+                } )
+                .filter( Objects::nonNull ),
+
+            // create a tuple of generator and number of agents
+            (i, j) -> new AbstractMap.SimpleImmutableEntry<>( j, i )
+        )
+
+            // generate the agents
+            .forEach( i -> i.getKey().generatemultiple( i.getValue() ) );
+
 
 
         // execute simulation
@@ -214,7 +257,7 @@ public final class CRuntime
         l_clioptions.addOption( "sequential", false, "agents run in sequential order [default: parallel]" );
         l_clioptions.addOption( "asl", true, "comma-sparated list of ASL files" );
         l_clioptions.addOption( "agents", true, "comma-sparated list of generating agent numbers (equal to asl-flag)" );
-        l_clioptions.addOption( "generator", true, "comma-separated list of generator names [elements: {{ #agentlist }}{{{ name }}}{{ ^last }}|{{ /last }}{{ /agentlist }}]" );
+        l_clioptions.addOption( "generator", true, "comma-separated list of generator names [elements: {{ #agentlist }}{{ #function_tolower }}{{{ name }}}{{ /function_tolower }}{{ ^last }}|{{ /last }}{{ /agentlist }}]" );
         l_clioptions.addOption( "steps", true, "number of simulation steps [default: integer maximum]" );
 
 
