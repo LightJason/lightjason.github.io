@@ -54,7 +54,7 @@ public final class C{{{ agentname }}}AgentGenerator extends IBaseAgentGenerator<
     @Override
     public final C{{{ agentname }}}Agent generatesingle( final Object... p_data )
     {
-        final C{{{ agentname }}}Agent l_agent = new C{{{ agentname }}}Agent( m_configuration, m_environment );
+        final C{{{ agentname }}}Agent l_agent = m_environment.initializeagent( new C{{{ agentname }}}Agent( m_configuration, m_environment ) );
         m_agents.putIfAbsent( MessageFormat.format( "{0} {1}", "{{{ agentname }}}", m_counter.getAndIncrement() ), l_agent );
         return l_agent;
     }
