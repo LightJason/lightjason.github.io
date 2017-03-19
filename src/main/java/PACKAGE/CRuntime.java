@@ -3,7 +3,7 @@ package {{{ package }}};
 import {{{ package }}}.actions.CBroadcastAction;
 import {{{ package }}}.actions.CSendAction;
 {{ #externalactionlist }}
-import {{{ package }}}.actions.C{{{ . }}}Action;
+import {{{ package }}}.actions.C{{{ name }}}Action;
 {{ /externalactionlist }}
 import {{{ package }}}.environment.EEnvironment;
 import {{{ package }}}.environment.IEnvironment;
@@ -56,7 +56,7 @@ public final class CRuntime
                                                     Stream.concat(
                                                         Stream.of(
                                                             {{ #externalactionlist }}
-                                                            new C{{{ . }}}Action(),
+                                                            new C{{{ name }}}Action(),
                                                             {{ /externalactionlist }}
                                                             new CSendAction( AGENTS ),
                                                             new CBroadcastAction( AGENTS )
@@ -254,7 +254,7 @@ public final class CRuntime
         l_clioptions.addOption( "help", false, "shows this information" );
         l_clioptions.addOption( "create", false, "creates within the current directory the agent ASL files" );
         l_clioptions.addOption( "sequential", false, "agents run in sequential order [default value: parallel]" );
-        l_clioptions.addOption( "env", true, MessageFormat.format( "environment definition [default value: default, elements: {0}]", EEnvironment.list() );
+        l_clioptions.addOption( "env", true, MessageFormat.format( "environment definition [default value: default, elements: {0}]", EEnvironment.list() ) );
         l_clioptions.addOption( "asl", true, "comma-sparated list of ASL files" );
         l_clioptions.addOption( "agents", true, "comma-sparated list of generating agent numbers (equal to asl-flag)" );
         l_clioptions.addOption( "generator", true, MessageFormat.format( "comma-separated list of generator names [elements: {0}]", EGenerator.list() ) );
