@@ -19,6 +19,7 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 
+import java.text.MessageFormat;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.StandardCopyOption;
@@ -253,10 +254,10 @@ public final class CRuntime
         l_clioptions.addOption( "help", false, "shows this information" );
         l_clioptions.addOption( "create", false, "creates within the current directory the agent ASL files" );
         l_clioptions.addOption( "sequential", false, "agents run in sequential order [default value: parallel]" );
-        l_clioptions.addOption( "env", true, "environment definition [default value: default, elements: " + EEnvironment.list() );
+        l_clioptions.addOption( "env", true, MessageFormat.format( "environment definition [default value: default, elements: {0}]", EEnvironment.list() );
         l_clioptions.addOption( "asl", true, "comma-sparated list of ASL files" );
         l_clioptions.addOption( "agents", true, "comma-sparated list of generating agent numbers (equal to asl-flag)" );
-        l_clioptions.addOption( "generator", true, "comma-separated list of generator names [elements: {{ #agentlist }}{{ #function_tolower }}{{{ name }}}{{ /function_tolower }}{{ ^last }}|{{ /last }}{{ /agentlist }}]" );
+        l_clioptions.addOption( "generator", true, MessageFormat.format( "comma-separated list of generator names [elements: {0}]", EGenerator.list() ) );
         l_clioptions.addOption( "steps", true, "number of simulation steps [default: integer maximum]" );
 
 

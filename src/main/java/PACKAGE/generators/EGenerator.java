@@ -7,9 +7,11 @@ import {{{ package }}}.environment.IEnvironment;
 
 import java.io.InputStream;
 import java.text.MessageFormat;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
 
 /**
@@ -55,6 +57,20 @@ public enum EGenerator
     public static EGenerator from( final String p_name )
     {
         return EGenerator.valueOf( p_name.toUpperCase( Locale.ROOT ) );
+    }
+
+    /**
+     * returns a string with a
+     * comma-separated list of enum elements
+     *
+     * @return string list
+     */
+    public static String list()
+    {
+        return Arrays.stream( EGenerator.values() )
+                     .map( Enum::name )
+                     .map( i -> i.toLowerCase( Locale.ROOT ) )
+                     .collect( Collectors.joining( ", ") );
     }
 
 }
