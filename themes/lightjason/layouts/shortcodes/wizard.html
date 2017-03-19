@@ -55,7 +55,14 @@ jQuery(function() {
 
             var lo_zip = new JSZip();
             var lo_configuration = lf_configsandbox();
-            lo_configuration = jQuery.extend( {}, lo_configuration, lf_keytoupper(lo_configuration) );
+            lo_configuration = jQuery.extend( 
+                {
+                    "function_toupper" : function() { return function( pc_text, po_render ) { return po_render( pc_text ).toUpperCase(); } },
+                    "function_tolower" : function() { return function( pc_text, po_render ) { return po_render( pc_text ).toLowerCase(); } }
+                }, 
+                lo_configuration, 
+                lf_keytoupper(lo_configuration)
+            );
 
             {{ range $filename := (split (.Get "file") ",") }}
 
