@@ -221,6 +221,8 @@ jQuery(function() {
     
     jQuery("#removeagent").click( function() {
 
+        jQuery("#newagent").removeClass("error"); 
+
         if ( jQuery("#agentlist option").length > 1 )
             jQuery("#agentlist").find("option:selected").remove(); 
         else
@@ -238,6 +240,8 @@ jQuery(function() {
     });
 
     jQuery("#agentlist").change( function() {
+
+        jQuery("#newagent").removeClass("error"); 
     
         jQuery("#internalactionlist").empty();
         jQuery("#agentdescription").val(null);
@@ -287,6 +291,23 @@ jQuery(function() {
         jQuery("#interalactionparameter").val(null);
         jQuery("#interalactionreturn").val( jQuery("#interalactionreturn").attr("placeholder") );
         jQuery("#newinteralaction").val(null)
+    });
+
+    jQuery("#removeinternalaction").click( function() {
+
+        jQuery("#interalactionreturn").removeClass("error");
+        jQuery("#newinteralaction").removeClass("error"); 
+
+        var lc_name = jQuery("#internalactionlist").find("option:selected").val();
+        jQuery("#internalactionlist").find("option:selected").remove();
+
+        var lo_agent = JSON.parse( jQuery("#agentlist").find("option:selected").val() );
+        if ( !Array.isArray(lo_agent.internalaction) )
+            return;
+
+        lo_agent.internalaction = lo_agent.internalaction.filter(function(i) { return i.name != lc_name; } );
+        jQuery("#agentlist").find("option:selected").val( JSON.stringify( lo_agent ) );          
+    
     });
     
     
