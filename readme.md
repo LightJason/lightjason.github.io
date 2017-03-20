@@ -1,4 +1,4 @@
-# Mutli-Agent Simulation - {{ artefactid }}
+# Multi-Agent Simulation - {{ artefactid }}
 
 This project {{ #url }}[{{{ artefactid }}}]({{{ url }}}){{ /url }}{{ ^url }}{{{ artefactid }}}{{ /url }} contains a full working scenario of [LightJason](http://lightjason.org) multi-agent framework. The scenario description is:
 
