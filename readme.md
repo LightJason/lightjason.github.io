@@ -24,13 +24,23 @@ For any help information the option ```-help``` can be set and shows additional 
 java -jar {{{ artefactid }}}-{{{ version }}}.jar -help
 ```
 
-### ASL Files
+### ASL Files Generating
 
 For generating agents (ASL files) the jar can be executed with
 
 ```
 java -jar {{{ artefactid }}}-{{{ version }}}.jar -create
 ```
+
+### Simulation Example
+
+First run the ASL generating, after that run the simulation with 
+
+```
+java -jar {{{ artefactid }}}-{{{ version }}}.jar -asl {{{ agentlist.0.name }}}Agent.asl -agents 2 -generator {{ #function_tolower }}{{{ agentlist.0.name }}}{{ /function_tolower }} -steps 5
+```
+
+it creates 2 agents based on the ASl script ```{{{ agentlist.0.name }}}Agent.asl``` with the generator ```{{ #function_tolower }}{{{ agentlist.0.name }}}{{ /function_tolower }}``` and runs the simulation 5 steps.
 
 ## Agents
 

@@ -185,7 +185,8 @@ public final class CRuntime
         )
 
                 // generate the agents
-                .forEach( i -> i.getKey().generatemultiple( i.getValue() ) );
+                .flatMap( i -> i.getKey().generatemultiple( i.getValue() ) )
+                .forEach( i -> {} );
 
         return l_agents.values();
     }
