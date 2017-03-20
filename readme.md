@@ -37,10 +37,10 @@ java -jar {{{ artefactid }}}-{{{ version }}}.jar -create
 First run the ASL generating, after that run the simulation with 
 
 ```
-java -jar {{{ artefactid }}}-{{{ version }}}.jar -asl {{{ agentlist.[0] }}}Agent.asl -agents 2 -generator {{ #function_tolower }}{{{ agentlist.[0] }}}{{ /function_tolower }} -steps 5
+java -jar {{{ artefactid }}}-{{{ version }}}.jar -asl {{{ firstagentname }}}Agent.asl -agents 2 -generator {{ #function_tolower }}{{{ firstagentname }}}{{ /function_tolower }} -steps 5
 ```
 
-it creates 2 agents based on the ASl script ```{{{ agentlist.0.name }}}Agent.asl``` with the generator ```{{ #function_tolower }}{{{ agentlist.0.name }}}{{ /function_tolower }}``` and runs the simulation 5 steps.
+it creates 2 agents based on the ASl script ```{{{ firstagentname }}}Agent.asl``` with the generator ```{{ #function_tolower }}{{{ firstagentname }}}{{ /function_tolower }}``` and runs the simulation 5 steps.
 
 ## Agents
 
