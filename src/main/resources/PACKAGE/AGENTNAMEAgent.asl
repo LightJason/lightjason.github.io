@@ -8,7 +8,7 @@
     NumberData = 1;
     StringData = "FooBar";
 
-    {{{ sendfunctor }}}( "agentname 0", NumberData, StringData );
+    {{{ sendfunctor }}}( "{{{ agentname }}} 0", NumberData, StringData );
     {{{ broadcastfunctor }}}( "regular expression of agent names", NumberData, StringData )
 .    
 

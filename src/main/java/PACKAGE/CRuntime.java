@@ -25,12 +25,7 @@ import java.io.IOException;
 import java.nio.file.StandardCopyOption;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
-import java.util.AbstractMap;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.LogManager;
 import java.util.stream.Collectors;
@@ -44,27 +39,6 @@ import java.util.concurrent.Callable;
  */
 public final class CRuntime
 {
-    /**
-     * runtime agent collection
-     */
-    private static final Map<String, IAgent<?>> AGENTS = new ConcurrentHashMap<>();
-
-    /**
-     * global set with all possible agent actions
-     */
-    private static final Set<IAction> ACTIONS = Collections.unmodifiableSet(
-                                                    Stream.concat(
-                                                        Stream.of(
-                                                            {{ #externalactionlist }}
-                                                            new C{{{ name }}}Action(),
-                                                            {{ /externalactionlist }}
-                                                            new CSendAction( AGENTS ),
-                                                            new CBroadcastAction( AGENTS )
-                                                        ),
-                                                        CCommon.actionsFromPackage()
-                                                    ).collect( Collectors.toSet() )
-    );
-
 
     static
     {
@@ -91,7 +65,7 @@ public final class CRuntime
     {
         Stream.of(
             {{ #agentlist }}
-                "{{{ name }}}Agent.asl"{{ ^last }},{{ /last }}
+            "{{{ name }}}Agent.asl"{{ ^last }},{{ /last }}
             {{ /agentlist }}
         ).forEach( i -> {
                try
@@ -125,66 +99,95 @@ public final class CRuntime
             System.exit( 0 );  
 
 
-
-        // generate envrionment and agents
-        final IEnvironment l_environment = EEnvironment.from( l_cli.getOptionValue( "env", "default" ) ).generate();
-
-        StreamUtils.zip(
-
-            // read counter values to generate the set of agents
-            Arrays.stream( l_cli.getOptionValue( "agents", "" ).split( ",") )
-                  .map( String::trim )
-                  .filter( i -> !i.isEmpty() )
-                  .mapToInt( Integer::parseInt )
-                  .boxed(),
-
-
-            StreamUtils.zip(
-
-                // read the generator type for each ASL file
-                Arrays.stream( l_cli.getOptionValue( "generator", "" ).split(",") )
-                    .map( String::trim )
-                    .filter( i -> !i.isEmpty() ),
-
-                // read each ASL file
-                Arrays.stream( l_cli.getOptionValue( "asl", "" ).split( ",") )
-                    .map( String::trim )
-                    .filter( i -> !i.isEmpty() ),
-
-                // create a tuple for each ASL the generator and ASL file
-                ( i, j ) -> new AbstractMap.SimpleImmutableEntry<>( EGenerator.from( i ), j )
-            )
-                // read the file data and cretae the generator
-                .map( i -> {
-                    try
-                    (
-                        final FileInputStream l_stream = new FileInputStream( i.getValue() );
-                    )
-                    {
-                        return i.getKey().generate( l_stream, l_environment, ACTIONS.stream(), AGENTS );
-                    }
-                    catch ( final Exception l_exception )
-                    {
-                        {{{ disablelogger }}}l_exception.printStackTrace();
-                        return null;
-                    }
-                } )
-                .filter( Objects::nonNull ),
-
-            // create a tuple of generator and number of agents
-            (i, j) -> new AbstractMap.SimpleImmutableEntry<>( j, i )
-        )
-
-            // generate the agents
-            .forEach( i -> i.getKey().generatemultiple( i.getValue() ) );
-
-
-
         // execute simulation
         CRuntime.execute(
+            CRuntime.initialize( l_cli ),
             l_cli.hasOption( "steps" ) ? Integer.parseInt( l_cli.getOptionValue( "steps" ) ) : Integer.MAX_VALUE,
             l_cli.hasOption( "sequential" )
         );       
+    }
+
+    /**
+     * initialize the simulation structure, generate data-structure
+     * for all agents with name, environment, actions and return
+     * collection with agents for execution
+     *
+     * @param p_cli command-line parameter
+     * @return collection with agents for execution
+     */
+    private static Collection<IAgent<?>> initialize( final CommandLine p_cli )
+    {
+        // runtime agent collection
+        final Map<String, IAgent<?>> l_agents = new ConcurrentHashMap<>();
+
+        // generate envrionment and agents
+        final IEnvironment l_environment = EEnvironment.from( p_cli.getOptionValue( "env", "default" ) ).generate();
+
+        // global set with all possible agent actions
+        final Set<IAction> l_actions = Collections.unmodifiableSet(
+                Stream.concat(
+                        Stream.of(
+                                {{ #externalactionlist }}
+                                new C{{{ name }}}Action(),
+                                {{ /externalactionlist }}
+                                new CSendAction( l_agents ),
+                                new CBroadcastAction( l_agents )
+                        ),
+                        CCommon.actionsFromPackage()
+                ).collect( Collectors.toSet() )
+        );
+
+
+        StreamUtils.zip(
+
+                // read counter values to generate the set of agents
+                Arrays.stream( p_cli.getOptionValue( "agents", "" ).split( ",") )
+                        .map( String::trim )
+                        .filter( i -> !i.isEmpty() )
+                        .mapToInt( Integer::parseInt )
+                        .boxed(),
+
+
+                StreamUtils.zip(
+
+                        // read the generator type for each ASL file
+                        Arrays.stream( p_cli.getOptionValue( "generator", "" ).split(",") )
+                                .map( String::trim )
+                                .filter( i -> !i.isEmpty() ),
+
+                        // read each ASL file
+                        Arrays.stream( p_cli.getOptionValue( "asl", "" ).split( ",") )
+                                .map( String::trim )
+                                .filter( i -> !i.isEmpty() ),
+
+                        // create a tuple for each ASL the generator and ASL file
+                        ( i, j ) -> new AbstractMap.SimpleImmutableEntry<>( EGenerator.from( i ), j )
+                )
+                        // read the file data and create the generator
+                        .map( i -> {
+                            try
+                                    (
+                                            final FileInputStream l_stream = new FileInputStream( i.getValue() );
+                                    )
+                            {
+                                return i.getKey().generate( l_stream, l_environment, l_actions.stream(), l_agents );
+                            }
+                            catch ( final Exception l_exception )
+                            {
+                                l_exception.printStackTrace();
+                                return null;
+                            }
+                        } )
+                        .filter( Objects::nonNull ),
+
+                // create a tuple of generator and number of agents
+                (i, j) -> new AbstractMap.SimpleImmutableEntry<>( j, i )
+        )
+
+                // generate the agents
+                .forEach( i -> i.getKey().generatemultiple( i.getValue() ) );
+
+        return l_agents.values();
     }
 
 
@@ -193,22 +196,22 @@ public final class CRuntime
     /**
      * executes the simulation
      *
+     * @param p_agents collection with all agents
      * @param p_steps number of simulation steps
      * @param p_parallel run agents in parallel
      */
-    private static void execute( final int p_steps, final boolean p_parallel )
+    private static void execute( final Collection<IAgent<?>> p_agents, final int p_steps, final boolean p_parallel )
     {
-            if ( AGENTS.size() == 0 )
+            if ( p_agents.size() == 0 )
             {
                 System.err.println( "no agents exists for execution" );
                 System.exit( -1 );
             }
 
             IntStream.range( 0, p_steps )
-                 .forEach( i -> CRuntime.optionalparallelstream( AGENTS.values().stream(), p_parallel ).forEach( CRuntime::execute ) );
+                 .forEach( i -> CRuntime.optionalparallelstream( p_agents.stream(), p_parallel ).forEach( CRuntime::execute ) );
 
     }
-
 
     /**
      * creates an optional parallel stream
@@ -236,7 +239,7 @@ public final class CRuntime
         }
         catch ( final Exception l_exception )
         {
-            {{{ disablelogger }}}l_exception.printStackTrace();
+            l_exception.printStackTrace();
         }
     }
 
