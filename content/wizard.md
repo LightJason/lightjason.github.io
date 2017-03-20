@@ -1,6 +1,5 @@
 ---
-title: "Wizard"
-draft: true
+title: "Simulation Wizard"
 ---
 
 <div class="wizard">
@@ -184,6 +183,7 @@ sendfunctor        : jQuery("#sendfunctor").val(),
 broadcastfunctor   : jQuery("#broadcastfunctor").val(),
 externalactionlist : createValueListFromSelect( "#externalactionlist", function(i) { return JSON.parse(i); } ),
 agentlist          : function() { return createValueListFromSelect( "#agentlist", function(i) { return JSON.parse(i); } ).map( function( po, i, pa ) { return { name : po.name, description :  po.description, last : i == pa.length - 1, first : i == 0 }; } ) },
+firstagentname	 : createValueListFromSelect( "#agentlist", function(i) { return JSON.parse(i).name; } )[0],
 
 
 "src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java" : { list : createValueListFromSelect( "#agentlist" ), target : function( p_config, po ) { var lo = JSON.parse( po ); p_config["agentname"] = lo.name; p_config["internalaction"] = lo.internalaction; return p_config; } },
