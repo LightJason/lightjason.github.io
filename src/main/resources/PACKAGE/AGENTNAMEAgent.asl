@@ -8,8 +8,8 @@
     NumberData = 1;
     StringData = "FooBar";
 
-    {{{ sendfunctor }}}( "{{{ agentname }}} 0", NumberData, StringData );
-    {{{ broadcastfunctor }}}( "regular expression of agent names", NumberData, StringData )
+    {{ #function_tolower }}{{{ sendfunctor }}}{{ /function_tolower }}( "{{{ agentname }}} 0", NumberData, StringData );
+    {{ #function_tolower }}{{{ broadcastfunctor }}}{{ /function_tolower }}( "regular expression of agent names", NumberData, StringData )
 .    
 
 

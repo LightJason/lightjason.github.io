@@ -45,7 +45,7 @@ public final class CBroadcastAction extends IBaseAction
     @Override
     public final IPath name()
     {
-        return CPath.from( "{{{ broadcastfunctor }}}" );
+        return CPath.from( "{{ #function_tolower }}{{{ broadcastfunctor }}}{{ /function_tolower }}" );
     }
 
     @Override

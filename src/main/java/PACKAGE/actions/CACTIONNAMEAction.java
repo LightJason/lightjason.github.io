@@ -21,7 +21,7 @@ public final class C{{{ actionname }}}Action  extends IBaseAction
     @Override
     public final IPath name()
     {
-        return CPath.from( "{{{ actionname }}}" );
+        return CPath.from( "{{ #function_tolower }}{{{ actionname }}}{{ /function_tolower }}" );
     }
 
     @Override

@@ -43,7 +43,7 @@ public final class CSendAction extends IBaseAction
     @Override
     public final IPath name()
     {
-        return CPath.from( "{{{ sendfunctor }}}" );
+        return CPath.from( "{{ #function_tolower }}{{{ sendfunctor }}}{{ /function_tolower }}" );
     }
 
     @Override
