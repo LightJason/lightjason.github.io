@@ -8,7 +8,6 @@ import org.lightjason.agentspeak.configuration.IAgentConfiguration;
  * abstract class to define an
  * agent with environment
  */
-{{ #environmentactionlist }}@IAgentAction{{ /environmentactionlist }}
 public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends IBaseAgent<IEnvironmentAgent<T>>
 {
     /**
