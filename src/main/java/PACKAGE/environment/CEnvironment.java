@@ -9,9 +9,15 @@ public final class CEnvironment implements IEnvironment
 {
 
     @Override
-    public final <T extends IEnvironmentAgent<?>> T initializeagent( final T p_agent )
+    public final <T extends IEnvironmentAgent<?>> T initializeagent( final IEnvironmentAgent<?> p_agent )
     {
         return p_agent;
     }
+
+    {{ #environmentactionlist }}
+    @Override
+    <T extends IEnvironmentAgent<?>> {{{ return }}} {{{ name }}}( final T p_agent{{{ #argument }}}, {{{ argument }}}{{{ /argument }}} );
+
+    {{ /environmentactionlist }}
 
 }

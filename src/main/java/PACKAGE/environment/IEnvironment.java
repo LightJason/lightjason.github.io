@@ -19,4 +19,9 @@ public interface IEnvironment
      */
     <T extends IEnvironmentAgent<?>> T initializeagent( final T p_agent );
 
+    {{ #environmentactionlist }}
+    <T extends IEnvironmentAgent<?>> {{{ return }}} {{{ name }}}( final T p_agent{{{ #argument }}}, {{{ argument }}}{{{ /argument }}} );
+
+    {{ /environmentactionlist }}
+
 }

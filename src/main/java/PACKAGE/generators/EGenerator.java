@@ -68,7 +68,7 @@ public enum EGenerator
     public static String list()
     {
         return Arrays.stream( EGenerator.values() )
-                     .map( Enum::name )
+                     .map( i -> i.name() )
                      .map( i -> i.toLowerCase( Locale.ROOT ) )
                      .collect( Collectors.joining( ", ") );
     }

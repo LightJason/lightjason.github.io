@@ -48,7 +48,7 @@ public enum EEnvironment
     public static String list()
     {
         return Arrays.stream( EEnvironment.values() )
-                     .map( Enum::name )
+                     .map( i -> i.name() )
                      .map( i -> i.toLowerCase( Locale.ROOT ) )
                      .collect( Collectors.joining( ", ") );
     }
