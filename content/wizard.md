@@ -140,7 +140,7 @@ The <a href="/tutorials/actions/#what-kind-of-actions-exists">external- or stand
     <div class="btn-toolbar" role="group" aria-label="External Action Configuration">        
         <select class="form-control" id="externalactionlist"></select>
         <input type="text" class="form-control" id="newexternalaction" placeholder="new action name"/>
-        <input type="text" class="form-control" id="argumentsexternalaction" value="0"/>
+        <input type="text" class="form-control" id="externalactionarguments" value="0"/>
         <button type="button" class="btn btn-secondary" id="addexternalaction">Add (+)</button>
         <button type="button" class="btn btn-secondary" id="removeexternalaction">Remove (-)</button>
     </div>
@@ -158,6 +158,22 @@ can suppor different environment types (you need to add some further environment
 all access to the environment must be thread-safe and mostly not in a synchronized way, because of performance issues. It make sense that you take a look on thread-safe Java data structure to develop the details of your environment.</strong>
 </p>
 <p>
+    <div class="alert alert-danger alert-dismissible fade collapse" role="alert" id="environmentactionerror">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Error!</strong> <span class="message"></span>
+    </div>
+    Environment Action Definition<br/>
+    <div class="btn-toolbar" role="group" aria-label="Agent Environment Actions">
+        <select class="form-control" id="environmentactionlist"></select>
+        <input type="text" class="form-control" id="environmentactionreturn" value="void" placeholder="void" />
+        <input type="text" class="form-control" id="newenvironmentaction" placeholder="new action name" />
+        <input type="text" class="form-control" id="environmentactionparameter" placeholder="double p_value, String p_text" />
+        <button type="button" class="btn btn-secondary" id="addenvironmentaction">Add (+)</button>
+        <button type="button" class="btn btn-secondary" id="removeenvironmentaction">Remove (-)</button>
+    </div>
+    <small class="form-text text-muted">Return type, action name and parameter must follow the <a href="https://docs.oracle.com/javase/tutorial/java/javaOO/methods.html">Java type</a> definition and will be defined as a comma separated list</small>
 </p>
 </section>
 
@@ -286,9 +302,6 @@ jQuery(function() {
     
     jQuery("#addinternalaction").click( function() {
     
-        jQuery("#interalactionreturn").removeClass("error");
-        jQuery("#newinteralaction").removeClass("error"); 
-    
         var lc_return = jQuery("#interalactionreturn").val().trim();
         var lc_name = jQuery("#newinteralaction").val().trim().toLowerCase();
 
@@ -337,22 +350,60 @@ jQuery(function() {
     
     jQuery("#addexternalaction").click( function() {
 
-        if ( showmessage("#externalactionerror", "External action name is empty, cannot add data", jQuery("#internalactionlist option").length == 0, "#newexternalaction" ) )
+        var lc_name = jQuery("#newexternalaction").val().trim();
+
+        if ( showmessage("#externalactionerror", "External action name is empty, cannot add data", lc_name.length == 0, "#newexternalaction" ) )
             return;
 
-        var ln_arguments = Math.round( Math.abs( parseInt(jQuery("#argumentsexternalaction").val().trim()) ) );
-        jQuery("#externalactionlist").append( jQuery("<option>", { value: JSON.stringify( { name : lc_name, arguments: ln_arguments } ), text: lc_name } ) );
+        var ln_arguments = Math.round( Math.abs( parseInt(jQuery("#externalactionarguments").val().trim()) ) );
+        ln_arguments = ln_arguments ? ln_arguments : 0;
 
+        jQuery("#externalactionlist").append( jQuery("<option>", { value: JSON.stringify( { name : lc_name, arguments: ln_arguments } ), text: lc_name } ) );
         jQuery("#newexternalaction").val(null);
             
     });
     
     jQuery("#removeexternalaction").click( function() {
 
-        if ( showmessage("#externalactionerro", "External action is empty, cannot remove data", jQuery("#externalactionlist option").length == 0 ) )
+        if ( showmessage("#externalactionerror", "External action is empty, cannot remove data", jQuery("#externalactionlist option").length == 0 ) )
             return;
 
         jQuery("#externalactionlist").find("option:selected").remove(); 
+
+    });
+
+
+    // --- environment action ----------------------------------------------------------------------------------------------
+
+    jQuery("#addenvironmentaction").click( function() {
+
+        var lc_return = jQuery("#environmentactionreturn").val().trim();
+        var lc_name = jQuery("#newenvironmentaction").val().trim().toLowerCase();
+
+        if (  ( showmessage("#environmentactionerror", "Action return argument need not to be empty", lc_return.length == 0, "#interalactionreturn" ) )
+           || ( showmessage("#environmentactionerror", "Action name need not to be empty", lc_name.length == 0, "#newinteralaction" ) )  )
+           return;
+
+        jQuery("#environmentactionlist").append( jQuery( "<option>", {         
+            text  : lc_name, 
+            value : {
+                        "name"     : lc_name,
+                        "return"   : lc_return,
+                        "argument" : jQuery("#environmentactionparameter").val().trim() 
+            }
+        } ) );
+
+        jQuery("#environmentactionparameter").val(null);
+        jQuery("#environmentactionreturn").val( jQuery("#environmentactionreturn").attr("placeholder") );
+        jQuery("#newenvironmentaction").val(null)
+    })
+
+    jQuery("#removeenvironmentaction").click( function() {
+
+        if ( showmessage("#environmentactionerror", "Environment action is empty, cannot remove data", jQuery("#environmentactionlist option").length == 0 ) )
+            return;
+
+        jQuery("#environmentactionlist").find("option:selected").remove(); 
 
     });
     
