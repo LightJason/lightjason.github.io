@@ -212,6 +212,7 @@ sendfunctor             : jQuery("#sendfunctor").val(),
 broadcastfunctor        : jQuery("#broadcastfunctor").val(),
 externalactionlist      : createValueListFromSelect( "#externalactionlist", function(i) { return JSON.parse(i); } ),
 environmentactionlist   : createValueListFromSelect( "#environmentactionlist", function(i) { return JSON.parse(i); } ),
+environmentactionexist  : jQuery("#environmentactionlist option").length > 0,
 agentlist               : function() { return createValueListFromSelect( "#agentlist", function(i) { return JSON.parse(i); } ).map( function( po, i, pa ) { return { name : po.name, description : po.description, last : i == pa.length - 1, first : i == 0 }; } ) },
 firstagentname	        : createValueListFromSelect( "#agentlist", function(i) { return JSON.parse(i).name; } )[0],
 
@@ -382,16 +383,17 @@ jQuery(function() {
         var lc_return = jQuery("#environmentactionreturn").val().trim();
         var lc_name = jQuery("#newenvironmentaction").val().trim().toLowerCase();
 
-        if (  ( showmessage("#environmentactionerror", "Action return argument need not to be empty", lc_return.length == 0, "#interalactionreturn" ) )
+        if (  ( showmessage("#environmentactionerror", "Action return argument need not to be empty", lc_return.length == 0, "#environmentactionreturn" ) )
            || ( showmessage("#environmentactionerror", "Action name need not to be empty", lc_name.length == 0, "#newinteralaction" ) )  )
            return;
 
         jQuery("#environmentactionlist").append( jQuery( "<option>", {         
             text  : lc_name, 
             value : JSON.stringify({
-                        "name"     : lc_name,
-                        "return"   : lc_return,
-                        "argument" : jQuery("#environmentactionparameter").val().trim() 
+                        "name"       : lc_name,
+                        "return"     : lc_return,
+                        "passreturn" : lc_return != "void",
+                        "argument"   : jQuery("#environmentactionparameter").val().trim() 
             })
         } ) );
 
