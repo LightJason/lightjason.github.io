@@ -1,14 +1,22 @@
 package {{{ package }}}.agents;
 
+{{ #environmentactionexist }}
+import org.lightjason.agentspeak.action.binding.IAgentAction;
+import org.lightjason.agentspeak.action.binding.IAgentActionFilter;
+import org.lightjason.agentspeak.action.binding.IAgentActionName;
+{{ /environmentactionexist }}
+
 import {{{ package }}}.environment.IEnvironment;
 import org.lightjason.agentspeak.agent.IBaseAgent;
 import org.lightjason.agentspeak.configuration.IAgentConfiguration;
+
+environmentactionexist
 
 /**
  * abstract class to define an
  * agent with environment
  */
-{{ #environmentactionlist }}@IAgentAction{{ /environmentactionlist }}
+{{ #environmentactionexist }}@IAgentAction{{ /environmentactionexist }}
 public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends IBaseAgent<IEnvironmentAgent<T>>
 {
     /**
@@ -30,7 +38,6 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
 
 
     {{ #environmentactionlist }}
-    @Override
     @IAgentActionFilter
     @IAgentActionName( name = "{{{ name }}}" )
     private {{{ return }}} {{{ name }}}( {{{ argument }}} )
