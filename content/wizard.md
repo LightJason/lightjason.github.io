@@ -195,24 +195,25 @@ The wizard should help beginners to understand the architecture of the framework
 
 {{< wizard user="LightJason" repo="lightjason.github.io" branch="templates" file="pom.xml,readme.md,src/main/java/PACKAGE/actions/CACTIONNAMEAction.java,src/main/java/PACKAGE/actions/CBroadcastAction.java,src/main/java/PACKAGE/actions/CSendAction.java,src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java,src/main/java/PACKAGE/agents/IEnvironmentAgent.java,src/main/java/PACKAGE/CRuntime.java,src/main/java/PACKAGE/environment/CEnvironment.java,src/main/java/PACKAGE/environment/EEnvironment.java,src/main/java/PACKAGE/environment/IEnvironment.java,src/main/java/PACKAGE/generators/CAGENTNAMEAgentGenerator.java,src/main/java/PACKAGE/generators/EGenerator.java,src/main/resources/PACKAGE/AGENTNAMEAgent.asl" generateid="#generate" wizardid=".wizard" >}}
 
-agentspeakversion  : jQuery("#agentspeakversion").find("option:selected").val(),
+agentspeakversion       : jQuery("#agentspeakversion").find("option:selected").val(),
 
-package            : jQuery("#groupid").val().replace(/\s+/g,'') + "." + jQuery("#artefactid").val().replace(/\s+/g,''),
-prefix             : jQuery("#artefactid").val().replace(/\s+/g,''),
+package                 : jQuery("#groupid").val().replace(/\s+/g,'') + "." + jQuery("#artefactid").val().replace(/\s+/g,''),
+prefix                  : jQuery("#artefactid").val().replace(/\s+/g,''),
 
-groupid            : jQuery("#groupid").val().replace(/\s+/g,''),
-artefactid         : jQuery("#artefactid").val().replace(/\s+/g,''),
-version            : jQuery("#version").val().replace(/\s+/g,''),
-description        : jQuery("#description").val(),
-url                : jQuery("#url").val(),
+groupid                 : jQuery("#groupid").val().replace(/\s+/g,''),
+artefactid              : jQuery("#artefactid").val().replace(/\s+/g,''),
+version                 : jQuery("#version").val().replace(/\s+/g,''),
+description             : jQuery("#description").val(),
+url                     : jQuery("#url").val(),
 
-disablelogger      : jQuery("#disablelogger").prop("checked") ? "//" : "",
-receivefunctor     : jQuery("#receivefunctor").val(),
-sendfunctor        : jQuery("#sendfunctor").val(),
-broadcastfunctor   : jQuery("#broadcastfunctor").val(),
-externalactionlist : createValueListFromSelect( "#externalactionlist", function(i) { return JSON.parse(i); } ),
-agentlist          : function() { return createValueListFromSelect( "#agentlist", function(i) { return JSON.parse(i); } ).map( function( po, i, pa ) { return { name : po.name, description :  po.description, last : i == pa.length - 1, first : i == 0 }; } ) },
-firstagentname	 : createValueListFromSelect( "#agentlist", function(i) { return JSON.parse(i).name; } )[0],
+disablelogger           : jQuery("#disablelogger").prop("checked") ? "//" : "",
+receivefunctor          : jQuery("#receivefunctor").val(),
+sendfunctor             : jQuery("#sendfunctor").val(),
+broadcastfunctor        : jQuery("#broadcastfunctor").val(),
+externalactionlist      : createValueListFromSelect( "#externalactionlist", function(i) { return JSON.parse(i); } ),
+environmentactionlist   : createValueListFromSelect( "#environmentactionlist", function(i) { return JSON.parse(i); } ),
+agentlist               : function() { return createValueListFromSelect( "#agentlist", function(i) { return JSON.parse(i); } ).map( function( po, i, pa ) { return { name : po.name, description : po.description, last : i == pa.length - 1, first : i == 0 }; } ) },
+firstagentname	        : createValueListFromSelect( "#agentlist", function(i) { return JSON.parse(i).name; } )[0],
 
 
 "src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java" : { list : createValueListFromSelect( "#agentlist" ), target : function( p_config, po ) { var lo = JSON.parse( po ); p_config["agentname"] = lo.name; p_config["internalaction"] = lo.internalaction; return p_config; } },
@@ -314,9 +315,10 @@ jQuery(function() {
             lo_agent.internalaction = [];
             
         lo_agent.internalaction.push({
-            "name"     : lc_name,
-            "return"   : lc_return,
-            "argument" : jQuery("#interalactionparameter").val().trim() 
+            "name"       : lc_name,
+            "return"     : lc_return,
+            "passreturn" : lc_return != "void",
+            "argument"   : jQuery("#interalactionparameter").val().trim() 
         });
 
         jQuery("#agentlist").find("option:selected").val( JSON.stringify( lo_agent ) ); 
@@ -386,11 +388,11 @@ jQuery(function() {
 
         jQuery("#environmentactionlist").append( jQuery( "<option>", {         
             text  : lc_name, 
-            value : {
+            value : JSON.stringify({
                         "name"     : lc_name,
                         "return"   : lc_return,
                         "argument" : jQuery("#environmentactionparameter").val().trim() 
-            }
+            })
         } ) );
 
         jQuery("#environmentactionparameter").val(null);
