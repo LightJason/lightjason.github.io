@@ -35,7 +35,7 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
     @IAgentActionName( name = "{{{ name }}}" )
     private {{{ return }}} {{{ name }}}( {{{ argument }}} )
     {
-        m_environment.{{{ name }}}( this );
+        m_environment.{{{ name }}}( this{{ #argument }},{{ /argument }} );
     }
 
     {{ /environmentactionlist }}
