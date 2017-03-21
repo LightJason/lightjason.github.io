@@ -16,7 +16,10 @@ public final class CEnvironment implements IEnvironment
 
     {{ #environmentactionlist }}
     @Override
-    <T extends IEnvironmentAgent<?>> {{{ return }}} {{{ name }}}( final T p_agent{{{ #argument }}}, {{{ argument }}}{{{ /argument }}} );
+    public final <T extends IEnvironmentAgent<?>> {{{ return }}} {{{ name }}}( final T p_agent{{ #argument }}, {{{ argument }}}{{ /argument }} )
+    {
+
+    }
 
     {{ /environmentactionlist }}
 
