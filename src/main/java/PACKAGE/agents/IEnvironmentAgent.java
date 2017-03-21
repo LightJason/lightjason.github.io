@@ -10,7 +10,6 @@ import {{{ package }}}.environment.IEnvironment;
 import org.lightjason.agentspeak.agent.IBaseAgent;
 import org.lightjason.agentspeak.configuration.IAgentConfiguration;
 
-environmentactionexist
 
 /**
  * abstract class to define an
