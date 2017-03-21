@@ -86,7 +86,7 @@ title: "Simulation Wizard"
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <strong>Error!</strong> You need at least one agent, so the agent at the list cannot be removed
+        <strong>Error!</strong> <span class="message"></span>
     </div>
     Agents Types<br/>
     <div class="btn-toolbar" role="group" aria-label="Agent Configuration">        
@@ -108,7 +108,7 @@ title: "Simulation Wizard"
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <strong>Error!</strong> You need at least one agent, so the agent at the list cannot be removed
+        <strong>Error!</strong> <span class="message"></span>
     </div>
     Internal Action Definition<br/>
     <div class="btn-toolbar" role="group" aria-label="Agent Internal Actions">
@@ -130,11 +130,11 @@ title: "Simulation Wizard"
 The <a href="/tutorials/actions/#what-kind-of-actions-exists">external- or standalone-actions</a> are calls from the agent which can define any kind of behaviour. The action can be used to define any kind of calculation or logging, data export and import. Take a look on the current <a href="/knowledgebase/actions/">buildin actions</a> to get an overview.
 </p>
 <p>
-    <div class="alert alert-danger alert-dismissible fade collapse" role="alert" id="externalactionempty">
+    <div class="alert alert-danger alert-dismissible fade collapse" role="alert" id="externalactionerror">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <strong>Error!</strong> External action is empty, cannot remove data
+        <strong>Error!</strong> <span class="message"></span>
     </div>
     External Action Definition<br/>
     <div class="btn-toolbar" role="group" aria-label="External Action Configuration">        
@@ -145,6 +145,19 @@ The <a href="/tutorials/actions/#what-kind-of-actions-exists">external- or stand
         <button type="button" class="btn btn-secondary" id="removeexternalaction">Remove (-)</button>
     </div>
     <small class="form-text text-muted">External actions with action name and neccessary number of arguments</small>
+</p>
+</section>
+
+<h3>Environment</h3>
+<section>
+<strong>Information</strong>
+<p>
+The environment defines a <i>shared data structure</i> for all agents, so in this configuration you can define a set
+of actions which will definied within each agent. All agents get access to the same environment instance and the simulation
+can suppor different environment types (you need to add some further environment classes). <strong>Please keep in mind that
+all access to the environment must be thread-safe and mostly not in a synchronized way, because of performance issues. It make sense that you take a look on thread-safe Java data structure to develop the details of your environment.</strong>
+</p>
+<p>
 </p>
 </section>
 
@@ -199,19 +212,37 @@ firstagentname	 : createValueListFromSelect( "#agentlist", function(i) { return 
 <script>
 jQuery(function() {
 
+    // --- helper fucntion section -----------------------------------------------------------------------------------------    
+
+    var showmessage = function( pc_id, pc_text, pl_condition )
+    {
+        jQuery(pc_id).removeClass("show");
+        Array.prototype.slice.call(arguments, 3).forEach(function(i) { jQuery(i).removeClass("error"); });
+
+        if (pl_condition)
+        {
+            Array.prototype.slice.call(arguments, 3).forEach(function(i) { jQuery(i).addClass("error"); });
+            jQuery(pc_id + " > .message").text( pc_text );
+            jQuery(pc_id).addClass("show");
+        }
+
+        return pl_condition;
+    }
+
+
+    var checkjsonoption = function( pc_id, pc_key, px_value )
+    {
+        return jQuery(pc_id + " option").filter(function(i) { return JSON.parse(jQuery(this).val())[pc_key] == px_value;  } ).length > 0;
+    }
+
+
     // --- agent section ---------------------------------------------------------------------------------------------------
     
     jQuery("#addagent").click( function() {
     
-        jQuery("#newagent").removeClass("error"); 
-    
         var lc = jQuery("#newagent").val().trim();
-        if ( lc.length == 0 )
-            jQuery("#newagent").addClass("error");
-        else
-            if ( jQuery("#agentlist option[value='" + lc + "']").length > 0 )
-                jQuery("#newagent").addClass("error");
-            else    
+        if (  ( !showmessage("#agenterror", "Agent name need not to be empty", lc.length == 0, "#newagent" ) ) 
+           && ( !showmessage("#agenterror", "Agent with an equal name exists", checkjsonoption("#agentlist", "name", lc ), "#newagent" ) )  )
             {
                 jQuery("#newagent").val(null);
                 jQuery("#agentlist").append( jQuery( "<option>", { value: JSON.stringify( { name : lc } ), text: lc } ) ); 
@@ -221,13 +252,9 @@ jQuery(function() {
     
     jQuery("#removeagent").click( function() {
 
-        jQuery("#newagent").removeClass("error"); 
-
-        if ( jQuery("#agentlist option").length > 1 )
+        if ( !showmessage("#agenterror", "You need at least one agent, so the agent at the list cannot be removed", jQuery("#agentlist option").length == 1 ) )
             jQuery("#agentlist").find("option:selected").remove(); 
-        else
-            jQuery("#agenterror").addClass("show");
-    
+
     });
 
     jQuery("#agentdescription").change( function() {
@@ -237,11 +264,10 @@ jQuery(function() {
         var lo = JSON.parse( lo_domagent.val() );
         lo.description = jQuery(this).val();
         lo_domagent.val( JSON.stringify(lo) );
+
     });
 
     jQuery("#agentlist").change( function() {
-
-        jQuery("#newagent").removeClass("error"); 
     
         jQuery("#internalactionlist").empty();
         jQuery("#agentdescription").val(null);
@@ -264,16 +290,11 @@ jQuery(function() {
         jQuery("#newinteralaction").removeClass("error"); 
     
         var lc_return = jQuery("#interalactionreturn").val().trim();
-        if ( lc_return.length == 0 )
-            jQuery("#interalactionreturn").addClass("error");
-        
         var lc_name = jQuery("#newinteralaction").val().trim().toLowerCase();
-        if ( lc_name.length == 0 )
-            jQuery("#newinteralaction").addClass("error");
-            
-        if ( ( lc_name.length == 0 ) || ( lc_return.length == 0 ) )    
-            return;
-        
+
+        if (  ( showmessage("#internalactionerror", "Action return argument need not to be empty", lc_return.length == 0, "#interalactionreturn" ) )
+           || ( showmessage("#internalactionerror", "Action name need not to be empty", lc_name.length == 0, "#newinteralaction" ) )  )
+           return;
 
         var lo_agent = JSON.parse( jQuery("#agentlist").find("option:selected").val() );
         if ( !Array.isArray(lo_agent.internalaction) )
@@ -295,8 +316,8 @@ jQuery(function() {
 
     jQuery("#removeinternalaction").click( function() {
 
-        jQuery("#interalactionreturn").removeClass("error");
-        jQuery("#newinteralaction").removeClass("error"); 
+        if ( showmessage("#internalactionerror", "Internal action is empty, cannot remove data", jQuery("#internalactionlist option").length == 0 ) )
+            return;
 
         var lc_name = jQuery("#internalactionlist").find("option:selected").val();
         jQuery("#internalactionlist").find("option:selected").remove();
@@ -315,21 +336,24 @@ jQuery(function() {
     // --- external action -------------------------------------------------------------------------------------------------
     
     jQuery("#addexternalaction").click( function() {
-    
-        var lcName = jQuery("#newexternalaction").val().trim();
-        var lnArguments = parseInt(jQuery("#argumentsexternalaction").val().trim());
-        
-        jQuery("#externalactionlist").append( jQuery("<option>", { value: JSON.stringify( { name : lcName, arguments: lnArguments } ), text: lcName } ) );
+
+        if ( showmessage("#externalactionerror", "External action name is empty, cannot add data", jQuery("#internalactionlist option").length == 0, "#newexternalaction" ) )
+            return;
+
+        var ln_arguments = Math.round( Math.abs( parseInt(jQuery("#argumentsexternalaction").val().trim()) ) );
+        jQuery("#externalactionlist").append( jQuery("<option>", { value: JSON.stringify( { name : lc_name, arguments: ln_arguments } ), text: lc_name } ) );
 
         jQuery("#newexternalaction").val(null);
             
     });
     
     jQuery("#removeexternalaction").click( function() {
-        if ( jQuery("#externalactionlist option").length > 0 )
-            jQuery("#externalactionlist").find("option:selected").remove(); 
-        else
-            jQuery("#externalactionempty").addClass("show");
+
+        if ( showmessage("#externalactionerro", "External action is empty, cannot remove data", jQuery("#externalactionlist option").length == 0 ) )
+            return;
+
+        jQuery("#externalactionlist").find("option:selected").remove(); 
+
     });
     
 } );
