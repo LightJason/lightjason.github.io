@@ -9,7 +9,7 @@ public final class CEnvironment implements IEnvironment
 {
 
     @Override
-    public final <T extends IEnvironmentAgent<?>> T initializeagent( final IEnvironmentAgent<?> p_agent )
+    public final <T extends IEnvironmentAgent<?>> T initializeagent( final T p_agent )
     {
         return p_agent;
     }
