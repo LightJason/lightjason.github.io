@@ -1,5 +1,6 @@
 package {{{ package }}}.agents;
 
+import org.lightjason.agentspeak.beliefbase.IBeliefbaseOnDemand;
 {{ #environmentactionexist }}
 import org.lightjason.agentspeak.action.binding.IAgentAction;
 import org.lightjason.agentspeak.action.binding.IAgentActionFilter;
@@ -10,6 +11,8 @@ import org.lightjason.agentspeak.agent.IBaseAgent;
 import org.lightjason.agentspeak.configuration.IAgentConfiguration;
 import org.lightjason.agentspeak.language.ILiteral;
 
+import java.util.Collection;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
@@ -35,6 +38,9 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
     {
         super( p_configuration );
         m_environment = p_environment;
+
+        // add environment beliefbase to the agent with the prefix "env"
+        m_beliefbase.add( new CEnvironmentBeliefbase().create( "env", m_beliefbase ) );
     }
 
     /**
@@ -59,4 +65,49 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
     }
 
     {{ /environmentactionlist }}
+
+
+    /**
+     * on-demand beliefbase to get access
+     * to the environment data
+     */
+    private final class CEnvironmentBeliefbase extends IBeliefbaseOnDemand<IEnvironmentAgent<T>>
+    {
+
+        @Override
+        public final Stream<ILiteral> streamLiteral()
+        {
+            return m_environment.literal( IEnvironmentAgent.this );
+        }
+
+        @Override
+        public final Collection<ILiteral> literal( final String p_key )
+        {
+            return m_environment.literal( IEnvironmentAgent.this )
+                                .filter(i -> p_key.equals( i.functor() ) )
+                                .collect( Collectors.toSet() );
+        }
+
+        @Override
+        public final boolean empty()
+        {
+            return m_environment.literal( IEnvironmentAgent.this )
+                                .findFirst()
+                                .isPresent();
+        }
+
+        @Override
+        public final int size()
+        {
+            return (int) m_environment.literal( IEnvironmentAgent.this ).count();
+        }
+
+        @Override
+        public final boolean containsLiteral( final String p_key)
+        {
+            return m_environment.literal( IEnvironmentAgent.this )
+                                .anyMatch(i -> p_key.equals( i.functor() ) );
+        }
+
+    }
 }

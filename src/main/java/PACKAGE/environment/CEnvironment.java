@@ -31,7 +31,7 @@ public final class CEnvironment implements IEnvironment
     @Override
     public final <T extends IEnvironmentAgent<?>> {{{ return }}} {{{ name }}}( final T p_agent{{ #argument }}, {{{ argument }}}{{ /argument }} )
     {
-
+        {{ #returndefault }}return {{{ returndefault }}};{{ /returndefault }}
     }
 
     {{ /environmentactionlist }}

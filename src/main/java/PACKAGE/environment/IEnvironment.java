@@ -26,8 +26,8 @@ public interface IEnvironment
 
 
     /**
-     * returns the literal structure of the environment
-     * based on the calling agent
+     * returns the literal structure of
+     * the environment based on the calling agent
      *
      * @param p_agent calling agent
      * @return literal stream
