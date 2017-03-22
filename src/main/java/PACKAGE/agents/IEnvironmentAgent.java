@@ -5,10 +5,12 @@ import org.lightjason.agentspeak.action.binding.IAgentAction;
 import org.lightjason.agentspeak.action.binding.IAgentActionFilter;
 import org.lightjason.agentspeak.action.binding.IAgentActionName;
 {{ /environmentactionexist }}
-
 import {{{ package }}}.environment.IEnvironment;
 import org.lightjason.agentspeak.agent.IBaseAgent;
 import org.lightjason.agentspeak.configuration.IAgentConfiguration;
+import org.lightjason.agentspeak.language.ILiteral;
+
+import java.util.stream.Stream;
 
 
 /**
@@ -33,6 +35,18 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
     {
         super( p_configuration );
         m_environment = p_environment;
+    }
+
+    /**
+     * returns a literal stream to get a view
+     * of the agent depends on the calling agent
+     *
+     * @param p_agent calling agent
+     * @return literal stream
+     */
+    public Stream<ILiteral> literal( final IEnvironmentAgent<?> p_agent )
+    {
+        return Stream.of();
     }
 
 
