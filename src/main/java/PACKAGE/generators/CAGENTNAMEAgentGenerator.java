@@ -31,9 +31,7 @@ public final class C{{{ agentname }}}AgentGenerator extends IEnvironmentAgentGen
      */
     public C{{{ agentname }}}AgentGenerator( final InputStream p_stream, final Stream<IAction> p_defaultaction, final IEnvironment p_environment, final Map<String, IAgent<?>> p_agents ) throws Exception
     {
-        super(p_stream, Stream.concat( p_defaultaction, CCommon.actionsFromAgentClass( C{{{ agentname }}}Agent.class ) ), IAggregation.EMPTY, p_environment, p_agents);
-        m_environment = p_environment;
-        m_agents = p_agents;
+        super(p_stream, Stream.concat( p_defaultaction, CCommon.actionsFromAgentClass( C{{{ agentname }}}Agent.class ) ), IAggregation.EMPTY, p_environment, p_agents );
     }
 
     @Override
