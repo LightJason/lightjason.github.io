@@ -250,7 +250,7 @@ jQuery(function() {
 
     var checkjsonoption = function( pc_id, pc_key, px_value )
     {
-        return jQuery(pc_id + " option").filter(function(i) { return JSON.parse(jQuery(this).val())[pc_key] == px_value;  } ).length > 0;
+        return jQuery(pc_id + " option").filter(function(i) { return JSON.parse(jQuery(this).val())[pc_key] == px_value;  } );
     }
 
 
@@ -260,7 +260,7 @@ jQuery(function() {
     
         var lc = jQuery("#newagent").val().trim();
         if (  ( !showmessage("#agenterror", "Agent name need not to be empty", lc.length == 0, "#newagent" ) ) 
-           && ( !showmessage("#agenterror", "Agent with an equal name exists", checkjsonoption("#agentlist", "name", lc ), "#newagent" ) )  )
+           && ( !showmessage("#agenterror", "Agent with an equal name exists", checkjsonoption("#agentlist", "name", lc ).length > 0, "#newagent" ) )  )
             {
                 jQuery("#newagent").val(null);
                 jQuery("#agentlist").append( jQuery( "<option>", { value: JSON.stringify( { name : lc } ), text: lc } ) ); 
@@ -308,7 +308,8 @@ jQuery(function() {
         var lc_name = jQuery("#newinteralaction").val().trim().toLowerCase();
 
         if (  ( showmessage("#internalactionerror", "Action return argument need not to be empty", lc_return.length == 0, "#interalactionreturn" ) )
-           || ( showmessage("#internalactionerror", "Action name need not to be empty", lc_name.length == 0, "#newinteralaction" ) )  )
+           || ( showmessage("#internalactionerror", "Action name need not to be empty", lc_name.length == 0, "#newinteralaction" ) )
+           || ( showmessage("#internalactionerror", "An actions with an equal name exists", jQuery("#internalactionlist option[value='" + lc_name + "']").length > 0 ) )  )
            return;
 
         var lo_agent = JSON.parse( jQuery("#agentlist").find("option:selected").val() );
@@ -355,7 +356,8 @@ jQuery(function() {
 
         var lc_name = jQuery("#newexternalaction").val().trim();
 
-        if ( showmessage("#externalactionerror", "External action name is empty, cannot add data", lc_name.length == 0, "#newexternalaction" ) )
+        if (  ( showmessage("#externalactionerror", "External action name is empty, cannot add data", lc_name.length == 0, "#newexternalaction" ) )
+           || ( showmessage("#externalactionerror", "An actions with an equal name exists", checkjsonoption("#externalactionlist", "name", lc_name ).length > 0, "#newexternalaction" ) )  )
             return;
 
         var ln_arguments = Math.round( Math.abs( parseInt(jQuery("#externalactionarguments").val().trim()) ) );
@@ -384,16 +386,17 @@ jQuery(function() {
         var lc_name = jQuery("#newenvironmentaction").val().trim().toLowerCase();
 
         if (  ( showmessage("#environmentactionerror", "Action return argument need not to be empty", lc_return.length == 0, "#environmentactionreturn" ) )
-           || ( showmessage("#environmentactionerror", "Action name need not to be empty", lc_name.length == 0, "#newinteralaction" ) )  )
+           || ( showmessage("#environmentactionerror", "Action name need not to be empty", lc_name.length == 0, "#newenvironmentaction" ) )  )
            return;
 
         jQuery("#environmentactionlist").append( jQuery( "<option>", {         
             text  : lc_name, 
             value : JSON.stringify({
-                        "name"       : lc_name,
-                        "return"     : lc_return,
-                        "passreturn" : lc_return != "void",
-                        "argument"   : jQuery("#environmentactionparameter").val().trim() 
+                        "name"         : lc_name,
+                        "return"       : lc_return,
+                        "passreturn"   : lc_return != "void",
+                        "argument"     : jQuery("#environmentactionparameter").val().trim(),
+                        "passargument" : jQuery("#environmentactionparameter").val().trim().split(/,(?![^\<]*\>)/g).map(function(i) { return i.split(" ").pop(-1); }).join(", ")
             })
         } ) );
 
