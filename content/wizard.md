@@ -389,14 +389,41 @@ jQuery(function() {
            || ( showmessage("#environmentactionerror", "Action name need not to be empty", lc_name.length == 0, "#newenvironmentaction" ) )  )
            return;
 
+        var lc_returndefault = null;
+        switch (lc_return)
+        {
+            case "char" :
+            case "byte" :
+            case "short" :
+            case "int" :
+            case "long" :
+            case "float" :
+            case "double" :
+                lc_returndefault = "0";
+                break;
+
+            case "boolean" :
+                lc_returndefault = "false";
+                break;
+
+            case "void" :
+                lc_returndefault = null;
+                break;
+
+            default:
+                lc_returndefault = "null";
+                break;
+        }
+
         jQuery("#environmentactionlist").append( jQuery( "<option>", {         
             text  : lc_name, 
             value : JSON.stringify({
-                        "name"         : lc_name,
-                        "return"       : lc_return,
-                        "passreturn"   : lc_return != "void",
-                        "argument"     : jQuery("#environmentactionparameter").val().trim(),
-                        "passargument" : jQuery("#environmentactionparameter").val().trim().split(/,(?![^\<]*\>)/g).map(function(i) { return i.split(" ").pop(-1); }).join(", ")
+                        "name"          : lc_name,
+                        "return"        : lc_return,
+                        "returndefault" : lc_returndefault,
+                        "passreturn"    : lc_return != "void",
+                        "argument"      : jQuery("#environmentactionparameter").val().trim(),
+                        "passargument"  : jQuery("#environmentactionparameter").val().trim().split(/,(?![^\<]*\>)/g).map(function(i) { return i.split(" ").pop(-1); }).join(", ")
             })
         } ) );
 
