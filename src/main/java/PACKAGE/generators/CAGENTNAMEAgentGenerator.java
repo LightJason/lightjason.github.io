@@ -41,7 +41,7 @@ public final class C{{{ agentname }}}AgentGenerator extends IEnvironmentAgentGen
                 new C{{{ agentname }}}Agent( 
                     m_configuration, 
                     m_environment,
-                    MessageFormat.format( "{0} {1}", "{{{ agentname }}}", m_counter.getAndIncrement() ) 
+                    MessageFormat.format( "{0} {1}", "{{{ agentname }}}Agent", m_counter.getAndIncrement() ) 
                 )
         );
     }
