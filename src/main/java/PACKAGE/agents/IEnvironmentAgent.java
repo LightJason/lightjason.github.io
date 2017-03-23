@@ -9,6 +9,8 @@ import org.lightjason.agentspeak.action.binding.IAgentActionName;
 import {{{ package }}}.environment.IEnvironment;
 import org.lightjason.agentspeak.agent.IBaseAgent;
 import org.lightjason.agentspeak.configuration.IAgentConfiguration;
+import org.lightjason.agentspeak.language.CLiteral;
+import org.lightjason.agentspeak.language.CRawTerm;
 import org.lightjason.agentspeak.language.ILiteral;
 
 import java.util.Collection;
@@ -27,16 +29,22 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
      * reference to environment
      */
     protected final IEnvironment m_environment;
+    /**
+     * agent name
+     */
+    private final String m_name;    
 
     /**
      * ctor
      *
      * @param p_configuration agent configuration
      * @param p_environment environment reference
+     * @param p_name agent name
      */
-    protected IEnvironmentAgent( final IAgentConfiguration<IEnvironmentAgent<T>> p_configuration, final IEnvironment p_environment )
+    protected IEnvironmentAgent( final IAgentConfiguration<IEnvironmentAgent<T>> p_configuration, final IEnvironment p_environment, final String p_name )
     {
         super( p_configuration );
+        m_name = p_name;
         m_environment = p_environment;
 
         // add environment beliefbase to the agent with the prefix "env"
@@ -52,7 +60,33 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
      */
     public Stream<ILiteral> literal( final IEnvironmentAgent<?> p_agent )
     {
-        return Stream.of();
+        return Stream.of( 
+                CLiteral.from( "agent", 
+                               CLiteral.from( "name", CRawTerm.from( m_name ) ) 
+                ) 
+        );
+    }
+
+        /**
+     * returns the agent name
+     *
+     * @return agent name
+     */
+    public final String name()
+    {
+        return m_name;
+    }
+
+    @Override
+    public final int hashCode()
+    {
+        return m_name.hashCode();
+    }
+
+    @Override
+    public final boolean equals( final Object p_object )
+    {
+        return ( p_object != null ) && ( p_object instanceof IEnvironmentAgent<?> ) && ( p_object.hashCode() == this.hashCode() );
     }
 
 

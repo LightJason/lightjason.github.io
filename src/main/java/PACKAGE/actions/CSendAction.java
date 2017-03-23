@@ -1,5 +1,7 @@
 package {{{ package }}}.actions;
 
+import {{{ package }}}.agents.IEnvironmentAgent;
+
 import org.lightjason.agentspeak.action.IBaseAction;
 import org.lightjason.agentspeak.agent.IAgent;
 import org.lightjason.agentspeak.common.CPath;
@@ -64,7 +66,7 @@ public final class CSendAction extends IBaseAction
         if ( l_receiver == null )
             return CFuzzyValue.from( false );
 
-        final ITerm l_sender = CLiteral.from( "from", CRawTerm.from(l_arguments.get( 0 ).<String>raw() ) );
+        final ITerm l_sender = CLiteral.from( "from", CRawTerm.from( p_context.agent().<IEnvironmentAgent<?>>raw().name() ) );
         l_arguments.stream()
                    .skip( 1 )
                    .map( ITerm::raw )

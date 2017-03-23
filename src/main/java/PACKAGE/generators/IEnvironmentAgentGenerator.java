@@ -130,13 +130,12 @@ public abstract class IEnvironmentAgentGenerator<T extends IEnvironmentAgent<?>>
     /**
      * initialize the agent for the simulation
      *
-     * @param p_name agent name
      * @param p_agent agent object
      * @return agent object
      */
-    protected final T initializeagent( final String p_name, final T p_agent )
+    protected final T initializeagent( final T p_agent )
     {
-        m_agents.putIfAbsent( p_name, p_agent );
+        m_agents.putIfAbsent( p_agent.name(), p_agent );
         return m_environment.initializeagent( p_agent );
     }
 
