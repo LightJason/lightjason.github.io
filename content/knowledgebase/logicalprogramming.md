@@ -80,7 +80,8 @@ Rules, in contrast to [literals](#a-name-atomliterals-atom-literals-a), [variabl
 
 > One of the most famous examples for rules in logical programs is the [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_number). Mathematically this sequences is defined as
 > $$F\_n = F\_{n-1} + F\_{n-2}$$
-> $$F\_0 = F\_1 = F\_2 = 1$$
+> $$F\_0 = 0$$
+> $$F\_1 = F\_2 = 1$$
 > For the value $n=5$ the sequence is calculated as
 > $$F\_5 = F\_4 + F\_3 = (F\_3 + 1) + (1+1) = ((1+1)+1) + (1+1) = 5$$
 > Based on this calculation you can see that each function element $F\_n$ which is not defined as $1$ gets resolved in
@@ -109,7 +110,7 @@ fibonacci(N,R) :-
 > back as a reference, which is named [side effect](https://en.wikipedia.org/wiki/Side_effect_(computer_science)). In imperative programming languages these side effects are undesired, but
 > can be very helpful in logical programming languages.  
 >
-> But an advice in writing such rules: The logical programming runtime will have to check in the worst-case all possibilities to calculate a solution. The system tries to find a successful solution with a [backtracking algorithm](https://en.wikipedia.org/wiki/Backtracking). This can be a [NP-complete problem](https://en.wikipedia.org/wiki/NP-completeness) and so a solution cannot be calculated efficiently.
+>  But an advice in writing such rules: In the worst-case, the logical programming runtime will have to check all possibilities to calculate a solution. The system tries to find a successful solution with a [backtracking algorithm](https://en.wikipedia.org/wiki/Backtracking). This can be a [NP-complete problem](https://en.wikipedia.org/wiki/NP-completeness) and so a solution cannot be calculated efficiently.
 
 
 ## Runtime

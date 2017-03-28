@@ -22,21 +22,21 @@ The tutorial consists of three steps:
 
 1. create the basic agent structure based on the [AgentSpeak 15min](/tutorials/agentspeak-in-fifteen-minutes/), [Triggering](/tutorials/trigger/) and [Actions](/tutorials/actions/) tutorials
 2. we use the [object-actions (internal actions)](/tutorials/actions/#object-actions-internal-actions) to pass the calls from the agent to the environment
-3. we create a _thread-safe_ environment which can execute the _object-actions_ from the agent
+3. we create a _thread-safe_ environment which can execute the _object-actions_ from the agent.
 
 
 ## Environment
 
-For this example we use a small structure within which the agents should change their positions. The agents can move one cell to the left or right, but the agents can only move if the cell is free. The number of cells is $1.5 \cdot \text{number of agents}$ so there is a guarantee that there is a free cell. The agent position will be set at random on initialization.
+For this example we use a small structure within which the agents should change their positions. The agents can move from one cell to the left or right, but the agents can only move if the cell is free. The number of cells is $1.5 \cdot \text{number of agents}$, so there are guaranteed free cells. The agent position will be set at random on initialization.
 
 {{< img src="/images/environment.svg" width="35%" >}}
 
-We need in the environment two structures for storing, both structures must be thread-safe
+In the environment, we need two structures for storing, both structures must be thread-safe:
 
 * a storage for the agents (the cell definition) {{< linelink "" "env" "13" >}}
 * a map to store agent positions for read access {{< linelink "" "env" "15" >}}
 
-For execution we need two methods
+For execution we need two methods:
 
 * a method for initial set of the agent {{< linelink "" "env" "35-49" >}}
 * the method for moving, which is used for the agent action {{< linelink "" "env" "51-83" >}}
@@ -91,7 +91,7 @@ For creating fast access to data of the environment (size) and agent name (hashc
 
 ## Reference Solution
 
-If you struggled at some point or wish to obtain our exemplary solution with code documentation to this tutorial, you can download the archive {{< githubzip user="LightJason" repo="Examples" branch="tutorial-environment" >}} containing the source code and a executable {{< githubdownload user="LightJason" repo="Examples" branch="jar-tutorial-environment" file="myagentapp-1.0-SNAPSHOT.jar" text="Jar file" >}}.
+If you struggled at some point or wish to obtain our exemplary solution with code documentation of this tutorial, you can download the archive {{< githubzip user="LightJason" repo="Examples" branch="tutorial-environment" >}} containing the source code and a executable {{< githubdownload user="LightJason" repo="Examples" branch="jar-tutorial-environment" file="myagentapp-1.0-SNAPSHOT.jar" text="Jar file" >}}.
 
 
 We run the example with 5 agents and 5 cycles (different runs returns different outputs)
