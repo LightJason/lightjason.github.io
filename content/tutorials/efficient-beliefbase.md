@@ -12,7 +12,7 @@ next:
 
 In contrast to Prolog and original Jason, the beliefbase of LightJason is more than a list of facts.
 LightJason supports a hierarchical structure of beliefs.
-We support a more organised data structure with efficient searching and unification of beliefs.
+We support more organised data structure with efficient searching and unification of beliefs.
 
 {{< toc >}}
 
@@ -65,9 +65,9 @@ The on-demand beliefbase allows you to create a non-persistence belief definitio
 For some practical explanation, think about agents as:
 
 > Agents are _individual and self-organized_ items,
-> which perceives their environment autonomous.
+> which perceives their environment autonomously.
 
-We built this structure with _on-demand beliefbases_ into LightJason/AgentSpeak(L++), so you get access to a belief which will be created if you access it and after usage the literal object will be removed. This is a very efficient way for perceiving. We recommend the following workflow:
+We built this structure with _on-demand beliefbases_ into LightJason/AgentSpeak(L++), so you get access to a belief which will be created if you access it and after usage the literal, object will be removed. This is a very efficient way for perceiving. We recommend the following workflow:
 
 1. build an on-demand beliefbase for all dynamic access and changeable information e.g. environment, other agents
 2. create a plan which will run continuously, i.e. the plan runs in each cycle

@@ -10,7 +10,7 @@ next:
     text: "Actions"      
 ---
 
-This tutorial explain the functionality of _agent triggering_. For understanding purpose of triggers you have to understand the concept of events which is a well-known concept in [UI programming](https://docs.oracle.com/javase/tutorial/uiswing/events/).
+This tutorial explain the functionality of _agent triggering_. For understanding purpose of triggers you have to understand the concept of events, which is a well-known concept in [UI programming](https://docs.oracle.com/javase/tutorial/uiswing/events/).
 
 {{< toc >}}
 
@@ -20,13 +20,13 @@ The [AgentSpeak 15min](/tutorials/agentspeak-in-fifteen-minutes/) tutorial defin
 
 ## What are triggers?
 
-A short definition of triggers in LightJason's agent concept it is
+A short definition of triggers in LightJason's agent concept: it is
 
 > an event written in a first-order logical literal
 
 On the other hand, the agent is
 
-> an event listener which executes a plan iif an event is released
+> an event listener which executes a plan if an event is released
 
 
 ### What kind of trigger exists?
@@ -48,7 +48,7 @@ The usage is very simple, the agent class supports a [trigger-method](http://lig
 
 ### Java Implementation
 
-A trigger is a combination of a _literal_ and a _trigger type_. Both elements are defined as classes [CTrigger](http://lightjason.github.io/AgentSpeak/sources/d1/d5a/classorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1CTrigger.html) and [ITrigger.EType](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html). The code shows the usage of a _add goal trigger_ which defines on the first argument {{< linelink "" "triggercreate" "2" >}} the type of the trigger and on the second argument the literal {{< linelink "" "triggercreate" "3-6" >}}
+A trigger is a combination of a _literal_ and a _trigger type_. Both elements are defined as classes [CTrigger](http://lightjason.github.io/AgentSpeak/sources/d1/d5a/classorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1CTrigger.html) and [ITrigger.EType](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html). The code shows the usage of a _add goal trigger_ which defines on the first argument {{< linelink "" "triggercreate" "2" >}}, the type of the trigger and on the second argument, the literal {{< linelink "" "triggercreate" "3-6" >}}
 
 <!-- htmlmin:ignore -->
 {{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/App.java" lang="java" branch="tutorial-agent-trigger" id="triggercreate" >}}
@@ -66,14 +66,14 @@ The agent (in detail the ASL script) can handle the trigger iif a plan (an insta
 
 ## Notes
 
-The ```trigger```-method allows you to control the agent from Java-side, so that your system can execute any plans inside the agent. You can push the trigger at any time to the agent and the agent will execute the trigger as soon as possible, except you tell the agent that the trigger should execute immediatly (see method documentation second argument). The agent can sleeping so in that case the trigger will discarded.
+The ```trigger```-method allows you to control the agent from Java-side, so that your system can execute any plans inside the agent. You can push the trigger at any time to the agent and the agent will execute the trigger as soon as possible, except you tell the agent that the trigger should execute immediatly (see the second argument of the method documentation). The agent can sleep, so in that case the trigger will discarded.
 
 
 ## Reference Solution
 
-The referenced solution based on the [agentspeak-in-15min](/tutorials/agentspeak-in-fifteen-minutes) tutorial, so we extend this tutorial with trigger behaviour. If you struggled at some point or wish to obtain our exemplary solution with code documentation to this tutorial, you can download the archive {{< githubzip user="LightJason" repo="Examples" branch="tutorial-agent-trigger" >}} containing the source code and a executable {{< githubdownload user="LightJason" repo="Examples" branch="jar-tutorial-agent-trigger" file="myagentapp-1.0-SNAPSHOT.jar" text="Jar file" >}}.
+The referenced solution based on the [agentspeak-in-15min](/tutorials/agentspeak-in-fifteen-minutes) tutorial, so we extend this tutorial with trigger behaviour. If you struggled at some point or wish to obtain our exemplary solution with code documentation of this tutorial, you can download the archive {{< githubzip user="LightJason" repo="Examples" branch="tutorial-agent-trigger" >}} containing the source code and a executable {{< githubdownload user="LightJason" repo="Examples" branch="jar-tutorial-agent-trigger" file="myagentapp-1.0-SNAPSHOT.jar" text="Jar file" >}}.
 
-We run the program with 3 agents and 4 cycles two times and get the following output, first run
+We run the program two times with 3 agents and 4 cycles and get the following output, first run
 
 ```commandline
 Hello World on agent   1.947.742.554

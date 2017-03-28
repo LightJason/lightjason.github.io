@@ -17,11 +17,11 @@ A [Finite-State-Machine](https://en.wikipedia.org/wiki/Finite-state_machine) is 
 * a __state__ is presented by a circle and defines a _stable execution point_
 * a __final state__ is defined by a circle with a _double outline_
 * the state-machine defines a single __initial state__ with a triangle
-* a __transition__ is presented by an arrow which starts in a state and ends in a state. A transition symbols a an active execution call like a function
+* a __transition__ is presented by an arrow which starts in a state and ends in a state. A transition symbol is an active execution call like a function
 
-Mostly within a state the state-name is documented, also the arrow of a transition can be used for documentation.
+Mostly the state-name is documented within a state, also the arrow of a transition can be used for documentation.
 
-> This example show a similar state-machine with three states, that runs from the _initial state_ to a _final state_ (left to right). This example shows the _static structure_ of the state machine, so there is no runtime information with in the illustration
+> This example show a similar state-machine with three states, that runs from the _initial state_ to a _final state_ (left to right). This example shows the _static structure_ of the state machine, so there is no runtime information within the illustration
 > {{< img src="/images/fsm1.svg" alt="finite-state-machine" width="30%" >}}
 
 
@@ -31,7 +31,7 @@ State-Machine are an useful tool to describe [regular expressions](https://en.wi
 
 > The main goal is to create a system, which can check strings that matchs the following criteria:
 > The strings starts with an arbitrary  sequence of the letter ```a``` or ```b``` (the sequence can be empty).
-> After the initial sequence follows a positiv number which depends on any digit.
+> After the initial sequence follows a positiv number which can be any digit.
 > The end of the digit sequence is a sequence of the letter ```x``` with two letters at minimum. All letters within this string can be lower- or upper-case. Some valid example sequences: ```ab1x```, ```aaaaabbb169XXX```, ```AaAabbBB972xXxXXXX```
 
 Most programming languages defines such regular expression in a [perl notation](https://en.wikipedia.org/wiki/Regular_expression#Perl) or [posix notation](https://en.wikipedia.org/wiki/Regular_expression#POSIX_basic_and_extended). We use for the example the posix notation which is defined as:
