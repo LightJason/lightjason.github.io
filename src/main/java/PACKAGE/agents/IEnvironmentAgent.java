@@ -125,9 +125,9 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
         @Override
         public final boolean empty()
         {
-            return m_environment.literal( IEnvironmentAgent.this )
-                                .findFirst()
-                                .isPresent();
+            return !m_environment.literal( IEnvironmentAgent.this )
+                                 .findFirst()
+                                 .isPresent();
         }
 
         @Override
