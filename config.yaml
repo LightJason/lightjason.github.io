@@ -112,7 +112,9 @@ params:
             name 	   : "Tutorials"
             url		   : "/tutorials/"
             weight 	   : 40
-
+            sublink:
+                url    : "/tutorials/wizard"
+                name   : "Wizard"     
         -
             name 	   : "About"
             url		   : "/about/"
