@@ -62,3 +62,5 @@ The beliefbase is not a single element to store all facts of the agent. The beli
 * __storage__ is a pysical or on-demand data structure to store / generate literals, which are defined by the <a href="#literal" id="animate-literal-storage">last element of the functor with negation, values and annotations</a> only
 * __view__ is a flyweight pattern to define a <a href="#literal" id="animate-literal-view">path structure</a> for organization of literals / knowledge, the different path elements are separated by a ```/```. The path structure can be defined for each agent individually, so equal literal objects can be addressed by different paths
 * __beliefbases__ are components to connect the _storage_ and the _view_ and generate trigger for the execution mechanism
+
+For a more detailed description see the [efficient beliefbase](/tutorials/efficient-beliefbase/) tutorial, which explain useage and different types of data structures. On a general point of view the beliefbase can help you to organize the knowledge of your agents, so that you can create _semantic knowledge sets_ or [ontologies](https://en.wikipedia.org/wiki/Ontology) for any kind of information.
