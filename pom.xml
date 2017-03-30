@@ -27,7 +27,7 @@
         <!-- LightJason AgentSpeak(L++) dependency -->
         <dependency>
             <groupId>org.lightjason</groupId>
-            <artifactId>AgentSpeak</artifactId>
+            <artifactId>agentspeak</artifactId>
             <version>{{{ agentspeakversion }}}</version>
         </dependency>
 
