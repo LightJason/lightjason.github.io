@@ -79,7 +79,7 @@ The agent script shows the usage of the own action, it can be used like a build-
 The data representation can be comprehend by the standalone action.
 
 <!-- htmlmin:ignore -->
-{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/CStandAloneAction.java" lang="agentspeak" branch="tutorial-agent-action" >}}
+{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/CStandAloneAction.java" lang="java" branch="tutorial-agent-action" >}}
 <!-- htmlmin:ignore -->
 
 
