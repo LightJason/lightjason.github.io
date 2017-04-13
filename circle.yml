@@ -33,6 +33,13 @@ dependencies:
         - npm install -g git+https://github.com/fizker/minifier.git
 
 
+checkout:
+    post:
+        - git clean -xdf
+        - git fetch -p
+        - git gc --prune=now
+
+
 test:
     override:
         - hugo
