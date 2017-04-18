@@ -7,11 +7,10 @@ import org.lightjason.agentspeak.action.binding.IAgentAction;
 import org.lightjason.agentspeak.action.binding.IAgentActionFilter;
 import org.lightjason.agentspeak.action.binding.IAgentActionName;
 {{ /internalaction }}
-import org.lightjason.agentspeak.common.CCommon;
 import org.lightjason.agentspeak.action.IAction;
 import org.lightjason.agentspeak.agent.IAgent;
+import org.lightjason.agentspeak.common.CCommon;
 import org.lightjason.agentspeak.configuration.IAgentConfiguration;
-import org.lightjason.agentspeak.generator.IBaseAgentGenerator;
 import org.lightjason.agentspeak.language.score.IAggregation;
 
 import java.io.InputStream;
@@ -53,7 +52,7 @@ public final class C{{{ agentname }}}Agent extends IEnvironmentAgent<C{{{ agentn
         /**
      * generator of a specified type of agents
      */
-    public static final class CGenerator extends IEnvironmentAgentGenerator<C{{{ agentname }}}Agent>
+    public static final class CGenerator extends IGenerator<C{{{ agentname }}}Agent>
     {
 
         /**
