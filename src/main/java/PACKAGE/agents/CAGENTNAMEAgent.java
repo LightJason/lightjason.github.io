@@ -10,6 +10,7 @@ import org.lightjason.agentspeak.action.binding.IAgentActionName;
 import org.lightjason.agentspeak.common.CCommon;
 import org.lightjason.agentspeak.action.IAction;
 import org.lightjason.agentspeak.agent.IAgent;
+import org.lightjason.agentspeak.configuration.IAgentConfiguration;
 import org.lightjason.agentspeak.generator.IBaseAgentGenerator;
 import org.lightjason.agentspeak.language.score.IAggregation;
 
