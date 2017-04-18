@@ -1,14 +1,22 @@
 package {{{ package }}}.agents;
 
+import {{{ package }}}.environment.IEnvironment;
+
 {{ #internalaction }}
 import org.lightjason.agentspeak.action.binding.IAgentAction;
 import org.lightjason.agentspeak.action.binding.IAgentActionFilter;
 import org.lightjason.agentspeak.action.binding.IAgentActionName;
 {{ /internalaction }}
+import org.lightjason.agentspeak.common.CCommon;
+import org.lightjason.agentspeak.action.IAction;
+import org.lightjason.agentspeak.agent.IAgent;
+import org.lightjason.agentspeak.generator.IBaseAgentGenerator;
 import org.lightjason.agentspeak.language.score.IAggregation;
-import org.lightjason.agentspeak.configuration.IAgentConfiguration;
-import {{{ package }}}.environment.IEnvironment;
 
+import java.io.InputStream;
+import java.text.MessageFormat;
+import java.util.Map;
+import java.util.stream.Stream;
 
 /**
  * agent class to represent

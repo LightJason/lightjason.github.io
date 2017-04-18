@@ -7,7 +7,7 @@ import {{{ package }}}.actions.C{{{ name }}}Action;
 {{ /externalactionlist }}
 import {{{ package }}}.environment.EEnvironment;
 import {{{ package }}}.environment.IEnvironment;
-import {{{ package }}}.generators.EGenerator;
+import {{{ package }}}.agents.EGenerator;
 
 import com.codepoetics.protonpack.StreamUtils;
 import org.lightjason.agentspeak.agent.IAgent;

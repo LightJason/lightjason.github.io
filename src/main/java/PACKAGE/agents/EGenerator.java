@@ -1,4 +1,4 @@
-package {{{ package }}}.generators;
+package {{{ package }}}.agents;
 
 import org.lightjason.agentspeak.action.IAction;
 import org.lightjason.agentspeak.agent.IAgent;
