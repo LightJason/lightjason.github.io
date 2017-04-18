@@ -200,7 +200,7 @@ The wizard should help beginners to understand the architecture of the framework
 
 </div>
 
-{{< wizard user="LightJason" repo="lightjason.github.io" branch="templates" file="pom.xml,readme.md,src/main/java/PACKAGE/actions/CACTIONNAMEAction.java,src/main/java/PACKAGE/actions/CBroadcastAction.java,src/main/java/PACKAGE/actions/CSendAction.java,src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java,src/main/java/PACKAGE/agents/IEnvironmentAgent.java,src/main/java/PACKAGE/CRuntime.java,src/main/java/PACKAGE/environment/CEnvironment.java,src/main/java/PACKAGE/environment/EEnvironment.java,src/main/java/PACKAGE/environment/IEnvironment.java,src/main/java/PACKAGE/generators/CAGENTNAMEAgentGenerator.java,src/main/java/PACKAGE/generators/EGenerator.java,src/main/java/PACKAGE/generators/IEnvironmentAgentGenerator.java,src/main/resources/PACKAGE/AGENTNAMEAgent.asl" generateid="#generate" wizardid=".wizard" >}}
+{{< wizard user="LightJason" repo="lightjason.github.io" branch="templates" file="pom.xml,readme.md,src/main/java/PACKAGE/actions/CACTIONNAMEAction.java,src/main/java/PACKAGE/actions/CBroadcastAction.java,src/main/java/PACKAGE/actions/CSendAction.java,src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java,src/main/java/PACKAGE/agents/IEnvironmentAgent.java,src/main/java/PACKAGE/CRuntime.java,src/main/java/PACKAGE/environment/CEnvironment.java,src/main/java/PACKAGE/environment/EEnvironment.java,src/main/java/PACKAGE/environment/IEnvironment.java,src/main/java/PACKAGE/agents/EGenerator.java,src/main/java/PACKAGE/agents/IEnvironmentAgentGenerator.java,src/main/resources/PACKAGE/AGENTNAMEAgent.asl" generateid="#generate" wizardid=".wizard" >}}
 
 agentspeakversion       : jQuery("#agentspeakversion").find("option:selected").val(),
 
@@ -225,8 +225,6 @@ firstagentname	        : createValueListFromSelect( "#agentlist", function(i) { 
 
 
 "src/main/java/PACKAGE/agents/CAGENTNAMEAgent.java" : { list : createValueListFromSelect( "#agentlist" ), target : function( p_config, po ) { var lo = JSON.parse( po ); p_config["agentname"] = lo.name; p_config["internalaction"] = lo.internalaction; return p_config; } },
-
-"src/main/java/PACKAGE/generators/CAGENTNAMEAgentGenerator.java" : { list : createValueListFromSelect( "#agentlist" ), target : function( p_config, po ) { var lo = JSON.parse( po ); p_config["agentname"] = lo.name; return p_config; } },
 
 "src/main/resources/PACKAGE/AGENTNAMEAgent.asl" : { list : createValueListFromSelect( "#agentlist" ), target : function( p_config, po ) { var lo = JSON.parse( po ); p_config["agentname"] = lo.name; return p_config; } },
 
