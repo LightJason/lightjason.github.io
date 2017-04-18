@@ -40,7 +40,7 @@ public enum EGenerator
         switch ( this )
         {
             {{ #agentlist }}
-            case {{ #function_toupper }}{{{ name }}}{{ /function_toupper }} : return new C{{{ name }}}AgentGenerator( p_stream, p_defaultaction, p_environment, p_agents );
+            case {{ #function_toupper }}{{{ name }}}{{ /function_toupper }} : return new C{{{ name }}}Agent.CGenerator( p_stream, p_defaultaction, p_environment, p_agents );
             {{ /agentlist }}
 
             default :

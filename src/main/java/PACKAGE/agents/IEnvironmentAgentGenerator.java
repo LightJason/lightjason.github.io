@@ -1,4 +1,4 @@
-package {{{ package }}}.generators;
+package {{{ package }}}.agents;
 
 import {{{ package }}}.agents.IEnvironmentAgent;
 import {{{ package }}}.environment.IEnvironment;
