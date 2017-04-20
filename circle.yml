@@ -42,7 +42,7 @@ checkout:
 
 test:
     override:
-        - hugo
+        - hugo --ignoreCache --cleanDestinationDir
     post:    
         - svgo --config=data/svgo.config public/images/
         - find public -type f -name "*.htm*" -exec data/minify.sh \{\} \;
