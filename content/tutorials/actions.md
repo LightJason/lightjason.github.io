@@ -74,12 +74,27 @@ The agent script shows the usage of the own action, it can be used like a build-
 {{< githubsource user="LightJason" repo="Examples" file="agent_with_action.asl" lang="agentspeak" branch="tutorial-agent-action" >}}
 <!-- htmlmin:ignore -->
 
-### Term Data Representation
+### Standalone-Actions - External Actions
 
 The data representation can be comprehend by the standalone action.
 
 <!-- htmlmin:ignore -->
 {{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/CStandAloneAction.java" lang="java" branch="tutorial-agent-action" >}}
+<!-- htmlmin:ignore -->
+
+
+### Object-Actions - Internal Actions
+
+On object / internal action the pack & unpack process of values is done automatically. The actions are written inside the agent class and must be annotated
+
+<!-- htmlmin:ignore -->
+{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/CMyAgent.java" lang="java" branch="tutorial-agent-action" >}}
+<!-- htmlmin:ignore -->
+
+The action instantiation is done by the generator in
+
+<!-- htmlmin:ignore -->
+{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/CMyAgentGenerator.java" lang="java" branch="tutorial-agent-action" >}}
 <!-- htmlmin:ignore -->
 
 
