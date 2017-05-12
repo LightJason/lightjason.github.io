@@ -88,13 +88,13 @@ The data representation can be comprehend by the standalone action.
 On object / internal action the pack & unpack process of values is done automatically. The actions are written inside the agent class and must be annotated
 
 <!-- htmlmin:ignore -->
-{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/CMyAgent.java" lang="java" branch="tutorial-agent-action" >}}
+{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/MyAgent.java" lang="java" branch="tutorial-agent-action" >}}
 <!-- htmlmin:ignore -->
 
 The action instantiation is done by the generator in
 
 <!-- htmlmin:ignore -->
-{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/CMyAgentGenerator.java" lang="java" branch="tutorial-agent-action" >}}
+{{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/MyAgentGenerator.java" lang="java" branch="tutorial-agent-action" >}}
 <!-- htmlmin:ignore -->
 
 
