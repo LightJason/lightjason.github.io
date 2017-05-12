@@ -14,35 +14,9 @@ The multi-agent framework is split up into different parts. Each component has g
 The source codes are written in Java (latest release version) with a defined syntax structure and all code documentation will be created with [Doxygen](http://www.doxygen.org). We are also using unit testing and the [Git-Flow](http://nvie.com/posts/a-successful-git-branching-model/) developing model.
 
 
-## AgentSpeak(L++) ![AgentSpeak(L++)](https://camo.githubusercontent.com/91d144939950611f83510276f546163e62f3f0f1/68747470733a2f2f636972636c6563692e636f6d2f67682f4c696768744a61736f6e2f4167656e74537065616b2e7376673f7374796c653d736869656c64) [![Coverage Status](https://coveralls.io/repos/github/LightJason/AgentSpeak/badge.svg?branch=master)](https://coveralls.io/github/LightJason/AgentSpeak?branch=master)
-
-This component defines the main agent structure. It defines the whole syntax and the base agent structure. It also supports an agent generator and configuration, so that you can create a set of agents by an ASL-file. Based on the interface structure, you can redefine all elements if you like. A full [railroad diagram](https://en.wikipedia.org/wiki/Syntax_diagram) of our _AgentSpeak(L++)_ syntax can be found on the feature page.
-
-* Agent Examples
-	* [Testing Agent](https://github.com/LightJason/AgentSpeak/blob/master/src/test/resources/agent/complete.asl)
-	* [Agent](https://github.com/LightJason/AgentSpeak/blob/master/src/test/resources/agent/hanoi.asl) which plays [Tower of Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi)
-* Grammar / Syntax Definition
-	* [Agent](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/)
-	* [PlanBundle](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/PlanBundle.g4/)
-* [Language Features](agentspeak)
-* [Source Documentation](https://lightjason.github.io/AgentSpeak/sources/)
-* [OpenHub Code Statistic](https://www.openhub.net/p/LightJason-AgentSpeak)
-* [Libraries.io Statistic](https://libraries.io/github/LightJason/AgentSpeak)
-
-### Benchmarking Emergency Scenario
-
-The video present a performance test of our framework with 15.000 agents on an emergency scenarion. The video is running in realtime on a single computer (iMac with 2,9 GHz Intel Core i5, 16 GB RAM and OSX El Captain 10.11.6).
-
-> The agents calculates their landmarks to the exit point (position 140 / 140 in the middle) on a grid world with 250x250 cells and starts walking. If a cell is block by another agent, the agents tries to go to the right side, if not possible to the left side, if this is not possible, the agent stops walking and waits a random time for continuing walking. If the agent don't reach a landmark within 5 times, he skips the landmark and start walking to the next one except the exit point.
-
-{{< video "https://player.vimeo.com/video/202120833" "https://vimeo.com/lightjason/emergencyscenario" >}}
-
-
-## REST-API ![REST-API](https://camo.githubusercontent.com/a72dbacc13be27a0b87b8be9177f52180610b50f/68747470733a2f2f636972636c6563692e636f6d2f67682f4c696768744a61736f6e2f524553542e7376673f7374796c653d736869656c64) [![Coverage Status](https://coveralls.io/repos/github/LightJason/REST/badge.svg?branch=master)](https://coveralls.io/github/LightJason/REST?branch=master)
-
-
-A [REST-API (ReSTful)](https://en.wikipedia.org/wiki/Representational_state_transfer) is a system to define communication over [HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) for distributed systems. We are supporting such a REST-API to control a set of agents which can be also grouped.
-
-* [Source Documentation](https://lightjason.github.io/REST/sources/index.html)
-* [OpenHub Code Statistic](https://www.openhub.net/p/LightJason-REST)
-* [Libraries.io Statistic](https://libraries.io/github/LightJason/REST)
+|  __Component__  | __Status__ | __Development__ | __Description__ |
+|:---------------:|:----------:|-----------------|-----------------|
+| [AgentSpeak(L++)](agentspeak) | [![CircleCI](https://circleci.com/gh/LightJason/AgentSpeak.svg?style=shield)](https://circleci.com/gh/LightJason/AgentSpeak) <br/> [![Coverage Status](https://coveralls.io/repos/github/LightJason/AgentSpeak/badge.svg?branch=master)](https://coveralls.io/github/LightJason/AgentSpeak?branch=master) | The component is before the first release, we are in the _testing phase_ and increase test-cases to find any problem, all necessary elements are existing and mainly tested | This component defines the main agent structure. It defines the whole syntax and the base agent structure. It also supports an agent generator and configuration, so that you can create a set of agents by an ASL-file. Based on the interface structure, you can redefine all elements if you like. |
+| [SocialForce](https://github.com/LightJason/SocialForce) | [![CircleCI](https://circleci.com/gh/LightJason/SocialForce.svg?style=shield)](https://circleci.com/gh/LightJason/SocialForce) <br/> [![Coverage Status](https://coveralls.io/repos/github/LightJason/SocialForce/badge.svg?branch=master)](https://coveralls.io/github/LightJason/SocialForce?branch=master) | Currently the first initialized code fragment without any working component| We extend with this component the [social force model](https://en.wikipedia.org/wiki/Social_force_model) of Dirk Helbing, to build a more abstract, efficient and generalized component for [crowd](https://en.wikipedia.org/wiki/Crowd_simulation) simulation. The main idea is to split the force into two components _mind-force_ and _physical-force_  |
+| [Twill](https://github.com/LightJason/Twill) | [![CircleCI](https://circleci.com/gh/LightJason/Twill.svg?style=shield)](https://circleci.com/gh/LightJason/Twill) <br/> [![Coverage Status](https://coveralls.io/repos/github/LightJason/Twill/badge.svg?branch=master)](https://coveralls.io/github/LightJason/Twill?branch=master) | Currently the first idea of the framework component | Th compoents create a container to run any agent on a [Hadoop cluster system](https://en.wikipedia.org/wiki/Apache_Hadoop), we use [Apache Twill](http://twill.apache.org/) framework which based on [YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) |
+| [REST](https://github.com/LightJason/REST) | [![CircleCI](https://circleci.com/gh/LightJason/REST.svg?style=shield)](https://circleci.com/gh/LightJason/REST) <br/> [![Coverage Status](https://coveralls.io/repos/github/LightJason/REST/badge.svg?branch=master)](https://coveralls.io/github/LightJason/REST?branch=master) | The componentn is in _current developmenting_, the main functionality is implemented, but the system is not tested completely and some features can be missing  | The [REST-API (ReSTful)](https://en.wikipedia.org/wiki/Representational_state_transfer) is a system to define communication over [HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) for distributed systems. We are supporting such a REST-API to control a set of agents and agent generators. So the whole multi-agent simulation can be controled via a web interface based on a servlet container on a Java web server e.g. [GlassFish](https://en.wikipedia.org/wiki/GlassFish), [Jetty](https://en.wikipedia.org/wiki/Jetty_(web_server)) or [Tomcat](https://en.wikipedia.org/wiki/Apache_Tomcat) |

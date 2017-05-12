@@ -24,6 +24,20 @@ pre, code {
     white-space: pre-wrap;
 }
 
+table, th, td {
+   border: 1px solid #999;
+   padding: 0.35em;
+   border-collapse: collapse;
+}
+
+tr:nth-child(even) {
+  background: #eee;
+}
+
+th {
+  text-align: center;
+}
+
 dt {
   float: left;
   margin-right: 0.5em;
