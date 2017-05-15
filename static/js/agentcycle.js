@@ -3,7 +3,7 @@
 jQuery(function() {
 
 	// defines hover effects for literal
-	[ "literal-annotation", "literal-values", "literal-functor", "literal-negation" ].forEach( function(i) {
+	[ "literal-values", "literal-functor", "literal-negation" ].forEach( function(i) {
 		jQuery("#animate-"+i).hover( 
 			function() { jQuery(".svg-"+i).attr("fill", "red"); },
 			function() { jQuery(".svg-"+i).attr("fill", ""); } 

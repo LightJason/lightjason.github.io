@@ -3,6 +3,7 @@
 
 baseurl		 	       : "https://lightjason.github.io/"
 metadataformat		   : "yaml"
+ignoreFiles            : [ "\\.graffle$", "\\.sh$", "\\.config" ] 
 defaultContentLanguage : "en-GB"
 theme 			       : "lightjason"
 title                  : "LightJason"
