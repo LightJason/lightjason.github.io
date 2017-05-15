@@ -20,7 +20,7 @@ dependencies:
     pre:
         - sudo apt-get install zsh
         # see release version https://github.com/spf13/hugo/releases
-        - wget -O hugo.deb https://github.com/spf13/hugo/releases/download/v0.20.7/hugo_0.20.7-64bit.deb
+        - wget -O hugo.deb https://github.com/spf13/hugo/releases/download/v0.20.7/hugo_0.20.7_Linux-64bit.deb
         - sudo dpkg -i hugo.deb
         # see relese version https://github.com/nodesource/distributions
         - "curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash"
