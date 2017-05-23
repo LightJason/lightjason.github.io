@@ -67,11 +67,17 @@ params:
     footer:
         links:
             -
-                name   : "AgentSpeak(L++) Repository"
+                name   : "AgentSpeak(L++)"
                 url    : "https://github.com/LightJason/AgentSpeak"
             -
-                name   : "REST-API Repository"
+                name   : "SocialForce"
+                url    : "https://github.com/LightJason/SocialForce"                
+            -
+                name   : "REST-API"
                 url    : "https://github.com/LightJason/REST"
+            -
+                name   : "Twill-API"
+                url    : "https://github.com/LightJason/Twill"                
 
 
     socialmedia:
