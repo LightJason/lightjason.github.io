@@ -10,7 +10,7 @@ This repository is used for publication of additional content of the LightJason 
 
 ### Bibliographie
 
-The bibliographie is stored under ```data/references.bib``` as an UTF-8 encoded [Bibtex](http://www.bibtex.org/) file, convert after changes the Bibtex file into a [BibJason](http://okfnlabs.org/bibjson/) file with
+The bibliographie is stored under ```data/references.bib``` as an UTF-8 encoded [Bibtex](http://www.bibtex.org/) file, convert after changes the Bibtex file into a [BibJSON](http://okfnlabs.org/bibjson/) file with
 
 ```
 pandoc-citeproc --bib2json static/references.bib > data/references.json
