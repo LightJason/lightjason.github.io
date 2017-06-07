@@ -209,7 +209,6 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
          *
          * @param p_stream ASL input stream
          * @param p_actions action stream
-         * @param p_aggregation aggregation function
          * @param p_variablebuilder variable builder
          * @param p_environment environment reference
          * @param p_agents agent map
