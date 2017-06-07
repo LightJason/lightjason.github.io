@@ -43,7 +43,6 @@ Standalone actions, which are named in the Jason definition _external actions_, 
 
 There are some other methods inside the definition:
 
-* the ```score``` method allows to define a cost-value of an action for the aggregation function
 * the ```variables``` method returns a list of variables if the action generates variables
 
 ### Object-Actions - Internal Actions

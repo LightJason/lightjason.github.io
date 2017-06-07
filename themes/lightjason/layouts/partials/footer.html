@@ -4,7 +4,7 @@
 		{{- range .Site.Params.footer.links -}}
 			<li><a href="{{ .url }}">{{- .name -}}</a></li>
 		{{- end -}}
-		<li>&copy; {{ .Now.Format "Jan 2006" -}}</li>
+		<li>&copy; {{ .Date.Format .Site.Params.date_format -}}</li>
 	</ul>
 </div>
 </body>
