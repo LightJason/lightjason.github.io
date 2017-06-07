@@ -17,7 +17,6 @@ import org.lightjason.agentspeak.language.CLiteral;
 import org.lightjason.agentspeak.language.CRawTerm;
 import org.lightjason.agentspeak.language.ILiteral;
 import org.lightjason.agentspeak.language.execution.IVariableBuilder;
-import org.lightjason.agentspeak.language.score.IAggregation;
 
 import {{{ package }}}.environment.IEnvironment;
 
@@ -186,21 +185,18 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
          *
          * @param p_stream ASL input stream
          * @param p_actions action stream
-         * @param p_aggregation aggregation function
          * @param p_environment environment reference
          * @param p_agents agent map
          * @throws Exception on any error
          */
         protected IGenerator( final InputStream p_stream, final Stream<IAction> p_actions,
-                              final IAggregation p_aggregation, final IEnvironment p_environment,
-                              final Map<String, IAgent<?>> p_agents ) throws Exception
+                              final IEnvironment p_environment, final Map<String, IAgent<?>> p_agents ) throws Exception
         {
             super( p_stream,
                    Stream.concat(
                        CCommon.actionsFromAgentClass( IEnvironmentAgent.class ),
                        p_actions
-                   ).collect(Collectors.toSet() ),
-                   p_aggregation
+                   ).collect(Collectors.toSet() )
             );
 
             m_agents = p_agents;
@@ -220,8 +216,8 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
          * @throws Exception on any error
          */
         protected IGenerator( final InputStream p_stream, final Stream<IAction> p_actions,
-                              final IAggregation p_aggregation, final IVariableBuilder p_variablebuilder,
-                              final IEnvironment p_environment, final Map<String, IAgent<?>> p_agents )
+                              final IVariableBuilder p_variablebuilder, final IEnvironment p_environment, 
+                              final Map<String, IAgent<?>> p_agents )
         throws Exception
         {
             super( p_stream,
@@ -229,7 +225,6 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
                        CCommon.actionsFromAgentClass( IEnvironmentAgent.class ),
                        p_actions
                    ).collect(Collectors.toSet() ),
-                   p_aggregation,
                    p_variablebuilder
             );
 
@@ -243,7 +238,6 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
          *
          * @param p_stream ASL input stream
          * @param p_actions action stream
-         * @param p_aggregation aggregation function
          * @param p_planbundle planbundles
          * @param p_variablebuilder variable builder
          * @param p_environment environment reference
@@ -251,16 +245,14 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
          * @throws Exception on any error
          */
         protected IGenerator( final InputStream p_stream, final Stream<IAction> p_actions,
-                              final IAggregation p_aggregation, final Set<IPlanBundle> p_planbundle,
-                              final IVariableBuilder p_variablebuilder, final IEnvironment p_environment,
-                              final Map<String, IAgent<?>> p_agents ) throws Exception
+                              final Set<IPlanBundle> p_planbundle, final IVariableBuilder p_variablebuilder, 
+                              final IEnvironment p_environment, final Map<String, IAgent<?>> p_agents ) throws Exception
         {
             super( p_stream,
                    Stream.concat(
                        CCommon.actionsFromAgentClass( IEnvironmentAgent.class ),
                        p_actions
                    ).collect(Collectors.toSet() ),
-                   p_aggregation,
                    p_planbundle,
                    p_variablebuilder
             );

@@ -11,7 +11,6 @@ import org.lightjason.agentspeak.action.IAction;
 import org.lightjason.agentspeak.agent.IAgent;
 import org.lightjason.agentspeak.common.CCommon;
 import org.lightjason.agentspeak.configuration.IAgentConfiguration;
-import org.lightjason.agentspeak.language.score.IAggregation;
 
 import java.io.InputStream;
 import java.text.MessageFormat;
@@ -65,7 +64,7 @@ public final class C{{{ agentname }}}Agent extends IEnvironmentAgent<C{{{ agentn
          */
         public CGenerator(final InputStream p_stream, final Stream<IAction> p_defaultaction, final IEnvironment p_environment, final Map<String, IAgent<?>> p_agents ) throws Exception
         {
-            super(p_stream, Stream.concat( p_defaultaction, CCommon.actionsFromAgentClass( C{{{ agentname }}}Agent.class ) ), IAggregation.EMPTY, p_environment, p_agents );
+            super(p_stream, Stream.concat( p_defaultaction, CCommon.actionsFromAgentClass( C{{{ agentname }}}Agent.class ) ), p_environment, p_agents );
         }
 
         @Override
