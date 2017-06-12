@@ -12,6 +12,8 @@ import org.lightjason.agentspeak.agent.IAgent;
 import org.lightjason.agentspeak.common.CCommon;
 import org.lightjason.agentspeak.configuration.IAgentConfiguration;
 
+import javax.annotation.Nullable;
+import javax.annotation.Nonnull;
 import java.io.InputStream;
 import java.text.MessageFormat;
 import java.util.Map;
@@ -32,7 +34,7 @@ public final class C{{{ agentname }}}Agent extends IEnvironmentAgent<C{{{ agentn
      * @param p_environment environment reference
      * @param p_name name of the agent
      */
-    private C{{{ agentname }}}Agent( final IAgentConfiguration<IEnvironmentAgent<C{{{ agentname }}}Agent>> p_configuration, final IEnvironment p_environment, final String p_name )
+    private C{{{ agentname }}}Agent( @Nonnull final IAgentConfiguration<IEnvironmentAgent<C{{{ agentname }}}Agent>> p_configuration, @Nonnull final IEnvironment p_environment, @Nonnull final String p_name )
     {
         super( p_configuration, p_environment, p_name );
     }
@@ -62,13 +64,14 @@ public final class C{{{ agentname }}}Agent extends IEnvironmentAgent<C{{{ agentn
          * @param p_environment environment reference
          * @param p_agents map with agents and names
          */
-        public CGenerator(final InputStream p_stream, final Stream<IAction> p_defaultaction, final IEnvironment p_environment, final Map<String, IAgent<?>> p_agents ) throws Exception
+        public CGenerator( @Nonnull final InputStream p_stream, @Nonnull final Stream<IAction> p_defaultaction, @Nonnull final IEnvironment p_environment, @Nonnull final Map<String, IAgent<?>> p_agents ) throws Exception
         {
             super(p_stream, Stream.concat( p_defaultaction, CCommon.actionsFromAgentClass( C{{{ agentname }}}Agent.class ) ), p_environment, p_agents );
         }
 
+        @Nullable
         @Override
-        public final C{{{ agentname }}}Agent generatesingle( final Object... p_data )
+        public final C{{{ agentname }}}Agent generatesingle( @Nullable final Object... p_data )
         {
             return this.initializeagent(
                     new C{{{ agentname }}}Agent(
