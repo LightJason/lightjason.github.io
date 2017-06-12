@@ -20,6 +20,7 @@ import org.lightjason.agentspeak.language.execution.IVariableBuilder;
 
 import {{{ package }}}.environment.IEnvironment;
 
+import javax.annotation.Nonnull;
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.Map;
@@ -214,7 +215,7 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
          * @throws Exception on any error
          */
         protected IGenerator( @Nonnull final InputStream p_stream, @Nonnull final Stream<IAction> p_actions,
-                              @Nonnull final IVariableBuilder p_variablebuilder, @Nonnull final @Nonnull IEnvironment p_environment, 
+                              @Nonnull final IVariableBuilder p_variablebuilder, @Nonnull final IEnvironment p_environment, 
                               @Nonnull final Map<String, IAgent<?>> p_agents )
         throws Exception
         {
