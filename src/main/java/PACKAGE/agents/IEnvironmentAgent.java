@@ -56,7 +56,8 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
      * @param p_environment environment reference
      * @param p_name agent name
      */
-    protected IEnvironmentAgent( final IAgentConfiguration<IEnvironmentAgent<T>> p_configuration, final IEnvironment p_environment, final String p_name )
+    @SuppressWarnings( "unchecked" )
+    protected IEnvironmentAgent( @Nonnull final IAgentConfiguration<IEnvironmentAgent<T>> p_configuration, @Nonnull  final IEnvironment p_environment, @Nonnull  final String p_name )
     {
         super( p_configuration );
         m_name = p_name;
@@ -73,7 +74,8 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
      * @param p_agent calling agent
      * @return literal stream
      */
-    public Stream<ILiteral> literal( final IEnvironmentAgent<?> p_agent )
+    @Nonnull 
+    public Stream<ILiteral> literal( @Nonnull final IEnvironmentAgent<?> p_agent )
     {
         return Stream.of( 
                 CLiteral.from( "agent", 
@@ -82,11 +84,12 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
         );
     }
 
-        /**
+    /**
      * returns the agent name
      *
      * @return agent name
      */
+    @Nonnull
     public final String name()
     {
         return m_name;
@@ -105,15 +108,6 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
     }
 
 
-    {{ #environmentactionlist }}
-    @IAgentActionFilter
-    @IAgentActionName( name = "{{{ name }}}" )
-    private {{{ return }}} {{{ name }}}( {{{ argument }}} )
-    {
-        {{ #passreturn }}return{{ /passreturn }} m_environment.{{{ name }}}( this{{ #passargument }}, {{{ passargument }}} {{ /passargument }} );
-    }
-
-    {{ /environmentactionlist }}
 
     // ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -123,15 +117,16 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
      */
     private final class CEnvironmentBeliefbase extends IBeliefbaseOnDemand<IEnvironmentAgent<T>>
     {
-
+        @Nonnull
         @Override
         public final Stream<ILiteral> streamLiteral()
         {
             return m_environment.literal( IEnvironmentAgent.this );
         }
 
+        @Nonnull
         @Override
-        public final Collection<ILiteral> literal( final String p_key )
+        public final Collection<ILiteral> literal( @Nonnull final String p_key )
         {
             return m_environment.literal( IEnvironmentAgent.this )
                                 .filter(i -> p_key.equals( i.functor() ) )
@@ -153,7 +148,7 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
         }
 
         @Override
-        public final boolean containsLiteral( final String p_key)
+        public final boolean containsLiteral( @Nonnull final String p_key)
         {
             return m_environment.literal( IEnvironmentAgent.this )
                                 .anyMatch(i -> p_key.equals( i.functor() ) );
@@ -193,8 +188,8 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
          * @param p_agents agent map
          * @throws Exception on any error
          */
-        protected IGenerator( final InputStream p_stream, final Stream<IAction> p_actions,
-                              final IEnvironment p_environment, final Map<String, IAgent<?>> p_agents ) throws Exception
+        protected IGenerator( @Nonnull final InputStream p_stream, @Nonnull final Stream<IAction> p_actions,
+                              @Nonnull final IEnvironment p_environment, @Nonnull final Map<String, IAgent<?>> p_agents ) throws Exception
         {
             super( p_stream,
                    Stream.concat(
@@ -218,9 +213,9 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
          * @param p_agents agent map
          * @throws Exception on any error
          */
-        protected IGenerator( final InputStream p_stream, final Stream<IAction> p_actions,
-                              final IVariableBuilder p_variablebuilder, final IEnvironment p_environment, 
-                              final Map<String, IAgent<?>> p_agents )
+        protected IGenerator( @Nonnull final InputStream p_stream, @Nonnull final Stream<IAction> p_actions,
+                              @Nonnull final IVariableBuilder p_variablebuilder, @Nonnull final @Nonnull IEnvironment p_environment, 
+                              @Nonnull final Map<String, IAgent<?>> p_agents )
         throws Exception
         {
             super( p_stream,
@@ -247,9 +242,9 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
          * @param p_agents agent map
          * @throws Exception on any error
          */
-        protected IGenerator( final InputStream p_stream, final Stream<IAction> p_actions,
-                              final Set<IPlanBundle> p_planbundle, final IVariableBuilder p_variablebuilder, 
-                              final IEnvironment p_environment, final Map<String, IAgent<?>> p_agents ) throws Exception
+        protected IGenerator( @Nonnull final InputStream p_stream, @Nonnull final Stream<IAction> p_actions,
+                              @Nonnull final Set<IPlanBundle> p_planbundle, @Nonnull final IVariableBuilder p_variablebuilder, 
+                              @Nonnull final IEnvironment p_environment, @Nonnull final Map<String, IAgent<?>> p_agents ) throws Exception
         {
             super( p_stream,
                    Stream.concat(
@@ -271,7 +266,8 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
          * @param p_agent agent object
          * @return agent object
          */
-        protected final T initializeagent( final T p_agent )
+        @Nonnull
+        protected final T initializeagent( @Nonnull final T p_agent )
         {
             m_agents.putIfAbsent( p_agent.name(), p_agent );
             return m_environment.initializeagent( p_agent );
