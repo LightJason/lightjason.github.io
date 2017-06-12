@@ -30,6 +30,10 @@ import java.util.stream.Collectors;
 public final class CSendAction extends IBaseAction
 {
     /**
+     * serial id
+     */
+    private static final long serialVersionUID = -444388639290879293L;
+    /**
      * map with agent names and agent objects
      */
     private final Map<String, IAgent<?>> m_agents;

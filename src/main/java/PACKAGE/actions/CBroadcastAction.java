@@ -32,6 +32,10 @@ import java.util.stream.Collectors;
 public final class CBroadcastAction extends IBaseAction
 {
     /**
+     * serial id
+     */
+    private static final long serialVersionUID = 923344428639087998L;      
+    /**
      * map with agent names and agent objects
      */
     private final Map<String, IAgent<?>> m_agents;

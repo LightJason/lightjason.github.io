@@ -37,6 +37,10 @@ import java.util.stream.Stream;
 public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends IBaseAgent<IEnvironmentAgent<T>>
 {
     /**
+     * serial id
+     */
+    private static final long serialVersionUID = 639087239899834442L;    
+    /**
      * reference to environment
      */
     protected final IEnvironment m_environment;
