@@ -67,17 +67,18 @@ public final class CRuntime
             {{ #agentlist }}
             "{{{ name }}}Agent.asl"{{ ^last }},{{ /last }}
             {{ /agentlist }}
-        ).forEach( i -> {
-               try
-               {
-                   Files.copy(
-                       CRuntime.class.getResourceAsStream( i ), FileSystems.getDefault().getPath( i ), StandardCopyOption.REPLACE_EXISTING
-                   );
-               }
-               catch ( final IOException l_exception )
-               {
-                   {{{ disablelogger }}}l_exception.printStackTrace();
-               }
+        ).forEach( i ->
+        {
+            try
+            {
+                Files.copy(
+                    CRuntime.class.getResourceAsStream( i ), FileSystems.getDefault().getPath( i ), StandardCopyOption.REPLACE_EXISTING
+                );
+            }
+            catch ( final IOException l_exception )
+            {
+                {{{ disablelogger }}}l_exception.printStackTrace();
+            }
         } );
 
         return true;
@@ -95,8 +96,8 @@ public final class CRuntime
             System.exit( -1 );
 
         // creates agents ASL files
-        if ( l_cli.hasOption("create") && ( CRuntime.createasl() ) )
-            System.exit( 0 );  
+        if ( l_cli.hasOption( "create" ) && ( CRuntime.createasl() ) )
+            System.exit( 0 );
 
 
         // execute simulation
@@ -104,7 +105,7 @@ public final class CRuntime
             CRuntime.initialize( l_cli ),
             l_cli.hasOption( "steps" ) ? Integer.parseInt( l_cli.getOptionValue( "steps" ) ) : Integer.MAX_VALUE,
             l_cli.hasOption( "sequential" )
-        );       
+        );
     }
 
     /**
@@ -139,54 +140,54 @@ public final class CRuntime
 
 
         StreamUtils.zip(
+            // read counter values to generate the set of agents
+            Arrays.stream( p_cli.getOptionValue( "agents", "" ).split( "," ) )
+                    .map( String::trim )
+                    .filter( i -> !i.isEmpty() )
+                    .mapToInt( Integer::parseInt )
+                    .boxed(),
 
-                // read counter values to generate the set of agents
-                Arrays.stream( p_cli.getOptionValue( "agents", "" ).split( ",") )
+
+            StreamUtils.zip(
+                // read the generator type for each ASL file
+                Arrays.stream( p_cli.getOptionValue( "generator", "" ).split( "," ) )
                         .map( String::trim )
-                        .filter( i -> !i.isEmpty() )
-                        .mapToInt( Integer::parseInt )
-                        .boxed(),
+                        .filter( i -> !i.isEmpty() ),
 
+                // read each ASL file
+                Arrays.stream( p_cli.getOptionValue( "asl", "" ).split( "," ) )
+                        .map( String::trim )
+                        .filter( i -> !i.isEmpty() ),
 
-                StreamUtils.zip(
+                // create a tuple for each ASL the generator and ASL file
+                ( i, j ) -> new AbstractMap.SimpleImmutableEntry<>( EGenerator.from( i ), j )
+            )
+                // read the file data and create the generator
+                .map( i ->
+                {
+                    try
+                            (
+                                    final FileInputStream l_stream = new FileInputStream( i.getValue() );
+                            )
+                    {
+                        return i.getKey().generate( l_stream, l_environment, l_actions.stream(), l_agents );
+                    }
+                    catch ( final Exception l_exception )
+                    {
+                        l_exception.printStackTrace();
+                        return null;
+                    }
+                } )
+                .filter( Objects::nonNull ),
 
-                        // read the generator type for each ASL file
-                        Arrays.stream( p_cli.getOptionValue( "generator", "" ).split(",") )
-                                .map( String::trim )
-                                .filter( i -> !i.isEmpty() ),
-
-                        // read each ASL file
-                        Arrays.stream( p_cli.getOptionValue( "asl", "" ).split( ",") )
-                                .map( String::trim )
-                                .filter( i -> !i.isEmpty() ),
-
-                        // create a tuple for each ASL the generator and ASL file
-                        ( i, j ) -> new AbstractMap.SimpleImmutableEntry<>( EGenerator.from( i ), j )
-                )
-                        // read the file data and create the generator
-                        .map( i -> {
-                            try
-                                    (
-                                            final FileInputStream l_stream = new FileInputStream( i.getValue() );
-                                    )
-                            {
-                                return i.getKey().generate( l_stream, l_environment, l_actions.stream(), l_agents );
-                            }
-                            catch ( final Exception l_exception )
-                            {
-                                l_exception.printStackTrace();
-                                return null;
-                            }
-                        } )
-                        .filter( Objects::nonNull ),
-
-                // create a tuple of generator and number of agents
-                (i, j) -> new AbstractMap.SimpleImmutableEntry<>( j, i )
+            // create a tuple of generator and number of agents
+            ( i, j ) -> new AbstractMap.SimpleImmutableEntry<>( j, i )
         )
-
-                // generate the agents
-                .flatMap( i -> i.getKey().generatemultiple( i.getValue() ) )
-                .forEach( i -> {} );
+            // generate the agents
+            .flatMap( i -> i.getKey().generatemultiple( i.getValue() ) )
+            .forEach( i -> 
+            {
+            } );
 
         return l_agents.values();
     }
@@ -203,15 +204,14 @@ public final class CRuntime
      */
     private static void execute( final Collection<IAgent<?>> p_agents, final int p_steps, final boolean p_parallel )
     {
-            if ( p_agents.size() == 0 )
-            {
-                System.err.println( "no agents exists for execution" );
-                System.exit( -1 );
-            }
+        if ( p_agents.size() == 0 )
+        {
+            System.err.println( "no agents exists for execution" );
+            System.exit( -1 );
+        }
 
-            IntStream.range( 0, p_steps )
-                 .forEach( i -> CRuntime.optionalparallelstream( p_agents.stream(), p_parallel ).forEach( CRuntime::execute ) );
-
+        IntStream.range( 0, p_steps )
+                .forEach( i -> CRuntime.optionalparallelstream( p_agents.stream(), p_parallel ).forEach( CRuntime::execute ) );
     }
 
     /**

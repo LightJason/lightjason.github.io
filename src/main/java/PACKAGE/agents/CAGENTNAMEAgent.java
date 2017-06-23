@@ -34,7 +34,8 @@ public final class C{{{ agentname }}}Agent extends IEnvironmentAgent<C{{{ agentn
      * @param p_environment environment reference
      * @param p_name name of the agent
      */
-    private C{{{ agentname }}}Agent( @Nonnull final IAgentConfiguration<IEnvironmentAgent<C{{{ agentname }}}Agent>> p_configuration, @Nonnull final IEnvironment p_environment, @Nonnull final String p_name )
+    private C{{{ agentname }}}Agent( @Nonnull final IAgentConfiguration<IEnvironmentAgent<C{{{ agentname }}}Agent>> p_configuration, 
+                                     @Nonnull final IEnvironment p_environment, @Nonnull final String p_name )
     {
         super( p_configuration, p_environment, p_name );
     }
@@ -63,10 +64,12 @@ public final class C{{{ agentname }}}Agent extends IEnvironmentAgent<C{{{ agentn
          * @param p_defaultaction default actions
          * @param p_environment environment reference
          * @param p_agents map with agents and names
+         * @throws Exception on parsing error
          */
-        public CGenerator( @Nonnull final InputStream p_stream, @Nonnull final Stream<IAction> p_defaultaction, @Nonnull final IEnvironment p_environment, @Nonnull final Map<String, IAgent<?>> p_agents ) throws Exception
+        public CGenerator( @Nonnull final InputStream p_stream, @Nonnull final Stream<IAction> p_defaultaction, @Nonnull final IEnvironment p_environment, 
+                           @Nonnull final Map<String, IAgent<?>> p_agents ) throws Exception
         {
-            super(p_stream, Stream.concat( p_defaultaction, CCommon.actionsFromAgentClass( C{{{ agentname }}}Agent.class ) ), p_environment, p_agents );
+            super( p_stream, Stream.concat( p_defaultaction, CCommon.actionsFromAgentClass( C{{{ agentname }}}Agent.class ) ), p_environment, p_agents );
         }
 
         @Nullable

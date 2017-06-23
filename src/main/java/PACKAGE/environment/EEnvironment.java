@@ -15,10 +15,11 @@ public enum EEnvironment
 
     /**
      * generates an environment instance
+     * @return environment instance
      */
     public final IEnvironment generate()
     {
-        switch (this)
+        switch ( this )
         {
             case DEFAULT : return new CEnvironment();
 
@@ -26,7 +27,7 @@ public enum EEnvironment
                 throw new RuntimeException( MessageFormat.format( "environment [{0}] not exists", this ) );
         }
     }
-    
+
     /**
      * returns a environment enum environment
      * case-insensitive ignore string name
@@ -50,6 +51,6 @@ public enum EEnvironment
         return Arrays.stream( EEnvironment.values() )
                      .map( i -> i.name() )
                      .map( i -> i.toLowerCase( Locale.ROOT ) )
-                     .collect( Collectors.joining( ", ") );
+                     .collect( Collectors.joining( ", " ) );
     }
 }

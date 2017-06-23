@@ -34,7 +34,7 @@ public final class CBroadcastAction extends IBaseAction
     /**
      * serial id
      */
-    private static final long serialVersionUID = 923344428639087998L;      
+    private static final long serialVersionUID = 923344428639087998L;
     /**
      * map with agent names and agent objects
      */
@@ -66,7 +66,8 @@ public final class CBroadcastAction extends IBaseAction
 
     @Nonnull
     @Override
-    public final IFuzzyValue<Boolean> execute( final boolean p_parallel, @Nonnull final IContext p_context, @Nonnull final List<ITerm> p_argument, @Nonnull final List<ITerm> p_return )
+    public final IFuzzyValue<Boolean> execute( final boolean p_parallel, @Nonnull final IContext p_context, 
+                                               @Nonnull final List<ITerm> p_argument, @Nonnull final List<ITerm> p_return )
     {
         final List<ITerm> l_arguments = CCommon.flatten( p_argument ).collect( Collectors.toList() );
         if ( l_arguments.size() < 2 )

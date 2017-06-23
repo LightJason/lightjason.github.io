@@ -34,8 +34,7 @@ public enum EGenerator
      * @throws Exception is thrown on any error
      */
     public final IBaseAgentGenerator<?> generate( final InputStream p_stream, final IEnvironment p_environment,
-                                                  final Stream<IAction> p_defaultaction, final Map<String, IAgent<?>> p_agents 
-    ) throws Exception
+                                                  final Stream<IAction> p_defaultaction, final Map<String, IAgent<?>> p_agents ) throws Exception
     {
         switch ( this )
         {
@@ -71,7 +70,7 @@ public enum EGenerator
         return Arrays.stream( EGenerator.values() )
                      .map( i -> i.name() )
                      .map( i -> i.toLowerCase( Locale.ROOT ) )
-                     .collect( Collectors.joining( ", ") );
+                     .collect( Collectors.joining( ", " ) );
     }
 
 }

@@ -40,7 +40,7 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
     /**
      * serial id
      */
-    private static final long serialVersionUID = 639087239899834442L;    
+    private static final long serialVersionUID = 639087239899834442L;
     /**
      * reference to environment
      */
@@ -48,7 +48,7 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
     /**
      * agent name
      */
-    private final String m_name;    
+    private final String m_name;
 
     /**
      * ctor
@@ -57,8 +57,8 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
      * @param p_environment environment reference
      * @param p_name agent name
      */
-    @SuppressWarnings( "unchecked" )
-    protected IEnvironmentAgent( @Nonnull final IAgentConfiguration<IEnvironmentAgent<T>> p_configuration, @Nonnull  final IEnvironment p_environment, @Nonnull  final String p_name )
+    protected IEnvironmentAgent( @Nonnull final IAgentConfiguration<IEnvironmentAgent<T>> p_configuration, 
+                                 @Nonnull final IEnvironment p_environment, @Nonnull final String p_name )
     {
         super( p_configuration );
         m_name = p_name;
@@ -75,14 +75,10 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
      * @param p_agent calling agent
      * @return literal stream
      */
-    @Nonnull 
+    @Nonnull
     public Stream<ILiteral> literal( @Nonnull final IEnvironmentAgent<?> p_agent )
     {
-        return Stream.of( 
-                CLiteral.from( "agent", 
-                               CLiteral.from( "name", CRawTerm.from( m_name ) ) 
-                ) 
-        );
+        return Stream.of( CLiteral.from( "agent", CLiteral.from( "name", CRawTerm.from( m_name ) ) ) );
     }
 
     /**
@@ -130,16 +126,14 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
         public final Collection<ILiteral> literal( @Nonnull final String p_key )
         {
             return m_environment.literal( IEnvironmentAgent.this )
-                                .filter(i -> p_key.equals( i.functor() ) )
+                                .filter( i -> p_key.equals( i.functor() ) )
                                 .collect( Collectors.toSet() );
         }
 
         @Override
         public final boolean empty()
         {
-            return !m_environment.literal( IEnvironmentAgent.this )
-                                 .findFirst()
-                                 .isPresent();
+            return !m_environment.literal( IEnvironmentAgent.this ).findFirst().isPresent();
         }
 
         @Override
@@ -149,10 +143,10 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
         }
 
         @Override
-        public final boolean containsLiteral( @Nonnull final String p_key)
+        public final boolean containsLiteral( @Nonnull final String p_key )
         {
             return m_environment.literal( IEnvironmentAgent.this )
-                                .anyMatch(i -> p_key.equals( i.functor() ) );
+                                .anyMatch( i -> p_key.equals( i.functor() ) );
         }
 
     }
@@ -163,7 +157,7 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
     /**
      * abstract agent generatorclass for all agents
      */
-    protected static abstract class IGenerator<T extends IEnvironmentAgent<?>> extends IBaseAgentGenerator<IEnvironmentAgent<T>>
+    protected abstract static class IGenerator<T extends IEnvironmentAgent<?>> extends IBaseAgentGenerator<IEnvironmentAgent<T>>
     {
         /**
          * agent number counter
@@ -196,7 +190,7 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
                    Stream.concat(
                        CCommon.actionsFromAgentClass( IEnvironmentAgent.class ),
                        p_actions
-                   ).collect(Collectors.toSet() )
+                   ).collect( Collectors.toSet() )
             );
 
             m_agents = p_agents;
@@ -215,15 +209,14 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
          * @throws Exception on any error
          */
         protected IGenerator( @Nonnull final InputStream p_stream, @Nonnull final Stream<IAction> p_actions,
-                              @Nonnull final IVariableBuilder p_variablebuilder, @Nonnull final IEnvironment p_environment, 
-                              @Nonnull final Map<String, IAgent<?>> p_agents )
-        throws Exception
+                              @Nonnull final IVariableBuilder p_variablebuilder, @Nonnull final IEnvironment p_environment,
+                              @Nonnull final Map<String, IAgent<?>> p_agents ) throws Exception
         {
             super( p_stream,
                    Stream.concat(
                        CCommon.actionsFromAgentClass( IEnvironmentAgent.class ),
                        p_actions
-                   ).collect(Collectors.toSet() ),
+                   ).collect( Collectors.toSet() ),
                    p_variablebuilder
             );
 
@@ -244,14 +237,14 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
          * @throws Exception on any error
          */
         protected IGenerator( @Nonnull final InputStream p_stream, @Nonnull final Stream<IAction> p_actions,
-                              @Nonnull final Set<IPlanBundle> p_planbundle, @Nonnull final IVariableBuilder p_variablebuilder, 
+                              @Nonnull final Set<IPlanBundle> p_planbundle, @Nonnull final IVariableBuilder p_variablebuilder,
                               @Nonnull final IEnvironment p_environment, @Nonnull final Map<String, IAgent<?>> p_agents ) throws Exception
         {
             super( p_stream,
                    Stream.concat(
                        CCommon.actionsFromAgentClass( IEnvironmentAgent.class ),
                        p_actions
-                   ).collect(Collectors.toSet() ),
+                   ).collect( Collectors.toSet() ),
                    p_planbundle,
                    p_variablebuilder
             );
