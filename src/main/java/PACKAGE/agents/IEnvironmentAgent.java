@@ -57,7 +57,7 @@ public abstract class IEnvironmentAgent<T extends IEnvironmentAgent<?>> extends 
      * @param p_environment environment reference
      * @param p_name agent name
      */
-    protected IEnvironmentAgent( @Nonnull final IAgentConfiguration<IEnvironmentAgent<T>> p_configuration, 
+    protected IEnvironmentAgent( @Nonnull final IAgentConfiguration<IEnvironmentAgent<T>> p_configuration,
                                  @Nonnull final IEnvironment p_environment, @Nonnull final String p_name )
     {
         super( p_configuration );

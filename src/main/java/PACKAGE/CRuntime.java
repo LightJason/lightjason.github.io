@@ -185,7 +185,7 @@ public final class CRuntime
         )
             // generate the agents
             .flatMap( i -> i.getKey().generatemultiple( i.getValue() ) )
-            .forEach( i -> 
+            .forEach( i ->
             {
             } );
 
