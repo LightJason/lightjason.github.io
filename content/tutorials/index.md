@@ -21,4 +21,4 @@ Having [basic knowledge](/knowledgebase) about the [belief–desire–intention 
 3. [Actions](actions) is a tutorial to define own actions
 4. [Communication](communication) is a tutorial on how to realise communication
 5. [Environment](environment) is a tutorial to create an environment (which is not necessarily required in LightJason)
-6. [Efficient Beliefbase](efficient-beliefbase) is a tutorial for creating efficient beliefbase structures
+
