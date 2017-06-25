@@ -45,10 +45,11 @@ jQuery(function() {
 	});
 
 	// defines hover effects for the literal in linkage with the beliefbase section
-		[ "literal-storage", "literal-view" ].forEach( function(i) {
+	[ "literal-storage", "literal-view" ].forEach( function(i) {
 		jQuery("#animate-" + i).hover( 
 			function() { jQuery(".svg-" + i).attr("fill", "#f90"); },
 			function() { jQuery(".svg-" + i).attr("fill", ""); } 
 		);
 	});
+	
 } );
