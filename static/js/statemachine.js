@@ -10,16 +10,12 @@ jQuery(function() {
 
         if ( pc_item.startsWith(pc_transition) )
             jQuery( pc_prefix + pc_item ).attr( "stroke", pc_transitioncolor );  
-    }
+    };
 
 
     // state-machine execution algorithm (based on dom ids)
     var lx_statemachineexecution = function( po_model, pn_time, pc_prefix, pc_activecolor, pc_state, pc_statecolorreset, pc_transition, pc_transitioncolorreset )
     {
-        // reset on first index
-        if ( po_model.index == 0 )
-            lx_layout( pc_prefix, po_model.item[po_model.item.length-1], pc_state, pc_statecolorreset, pc_transition, pc_transitioncolorreset );
-
         // if wait-state
         if ( po_model.wait )
         {
@@ -49,14 +45,19 @@ jQuery(function() {
         wait        : false,
         string      : "aaabbb169XxX",
         item        : ["state-1", "path-1to1", "state-1", "path-1to1", "state-1", "path-1to1", "state-1", "path-1to1", "state-1", "path-1to1", "state-1", "path-1to1", "state-1", "path-1to2", "state-2", "path-2to2", "state-2", "path-2to2", "state-2", "path-2to3", "state-3", "path-3to4", "state-4" ]
-    }
+    };
+
+    // non-valid finite-state execution
+    var lo_nonvalid = {
+    };
 
     // animate of string
     jQuery("#animate-valid").click( function() {
         if ( lo_valid.timout )
             return;
 
-        lx_statemachineexecution( lo_valid, 250, "#", "#f90", "state", "#fff", "path", "#000" );
+        lx_layout( "#", lo_valid.item[lo_valid.item.length-1], "state", "#fff", "path", "#000" );
+        lx_statemachineexecution( lo_valid, 750, "#", "#f90", "state", "#fff", "path", "#000" );
     });
 
     // defines hover effects for the text linkage
