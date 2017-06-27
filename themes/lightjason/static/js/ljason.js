@@ -7,21 +7,12 @@
 var LJason = (function (px_modul) {
 
     // ---- state-machine --------------------------------------------------------------------------------------------------------------------------------------
-    var statemachinelayout = function( pc_prefix, pc_item, pc_state, pc_statecolor, pc_transition, pc_transitioncolor )
-    {
-        if ( pc_item.startsWith(pc_state) )
-            jQuery( pc_prefix + pc_item ).attr( "fill", pc_statecolor );
-
-        if ( pc_item.startsWith(pc_transition) )
-            jQuery( pc_prefix + pc_item ).attr( "stroke", pc_transitioncolor );  
-    };
-
     var statemachineexecute = function( po_model )
     {
         // if wait-state
         if ( po_model.wait )
         {
-            po_model.execution.forEach( function(i) { statemachinelayout( po_model.prefix, i[po_model.index], po_model.statestring, po_model.statecolor, po_model.transitionstring, po_model.transitioncolor ); });
+            po_model.execution.forEach( function(i) { po_model.callbackColor( po_model.prefix, i[po_model.index], po_model.statestring, po_model.statecolor, po_model.transitionstring, po_model.transitioncolor ); });
 
             po_model.index++;
             po_model.wait = !po_model.wait;
@@ -30,7 +21,7 @@ var LJason = (function (px_modul) {
         }
 
         po_model.wait = !po_model.wait;
-        po_model.execution.forEach( function(i) { statemachinelayout( po_model.prefix, i[po_model.index], po_model.statestring, po_model.activecolor, po_model.transitionstring, po_model.activecolor ); });
+        po_model.execution.forEach( function(i) { po_model.callbackColor( po_model.prefix, i[po_model.index], po_model.statestring, po_model.activecolor, po_model.transitionstring, po_model.activecolor ); });
         
         if ( po_model.index < po_model.execution[0].length - 1 )
         {
@@ -63,20 +54,28 @@ var LJason = (function (px_modul) {
                 time: 750,
                 execution: [[]],
                 timeout: undefined,
-                activecolor: "#00f",
+                activecolor: "#0e7",
                 statecolor: "#fff",
                 transitioncolor: "#000",
                 statestring: "state",
                 transitionstring: "path",
                 callbackStart: undefined,
                 callbackFinish: undefined,
-                callbackNext: undefined
+                callbackNext: undefined,
+                callbackColor: function( pc_prefix, pc_item, pc_state, pc_statecolor, pc_transition, pc_transitioncolor ) 
+                {
+                    if ( pc_item.startsWith(pc_state) )
+                        jQuery( pc_prefix + pc_item ).attr( "fill", pc_statecolor );
+
+                    if ( pc_item.startsWith(pc_transition) )
+                        jQuery( pc_prefix + pc_item ).attr( "stroke", pc_transitioncolor );
+                }
             }, po_options || {} );
         
         if (typeof(lo.callbackStart) === "function")
             lo.callbackStart( lo );    
-
-        statemachineexecute(lo );
+            
+        statemachineexecute( lo );
         return lo;
     };
 

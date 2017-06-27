@@ -5,6 +5,7 @@ jQuery(function() {
     // valid finite-state execution
     var lo_valid = {
         string      : "aaabbb169XxX",
+        callbackStart: function(i) { jQuery( i.prefix + i.execution[0][i.execution[0].length - 1 ] ).attr("fill", i.statecolor); },
         execution   : [["state-1", "path-1to1", "state-1", "path-1to1", "state-1", "path-1to1", "state-1", "path-1to1", "state-1", "path-1to1", "state-1", "path-1to1", "state-1", "path-1to2", "state-2", "path-2to2", "state-2", "path-2to2", "state-2", "path-2to3", "state-3", "path-3to4", "state-4" ]]
     };
 
