@@ -75,7 +75,7 @@ The agent script shows the usage of the own action, it can be used like a build-
 
 ### Standalone-Actions - External Actions
 
-The data representation can be comprehend by the standalone action.
+The data representation can be comprehend by the standalone action. A necessary property is the ```serialVersionUID``` which is defined by the Java [Serializable](https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html) interface, this allows to serialize the action.
 
 <!-- htmlmin:ignore -->
 {{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/CStandAloneAction.java" lang="java" branch="tutorial-agent-action" >}}
