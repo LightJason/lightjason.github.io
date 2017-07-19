@@ -4,7 +4,7 @@ title: "Action documentation"
 categories: ["Documentation"]
 ---
 
-We are working on a full documentation of all [buildin actions](/knowledgebase/actions) in LightJason. <!--more-->
+We are working on a full documentation of all [built-in actions](/knowledgebase/actions) in LightJason. <!--more-->
 
 The documentation contains the main description of each action, a short code example, the reference to the source code of the action and optional additional information of the functionality of the action.
 

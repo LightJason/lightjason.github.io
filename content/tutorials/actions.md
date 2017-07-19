@@ -67,7 +67,7 @@ Within the section both kind of actions are shown. The code of an action should 
 
 ### AgentSpeak(L++) Script
 
-The agent script shows the usage of the own action, it can be used like a build-in action. The naming is equal to the ```name```-method or annotation.
+The agent script shows the usage of the own action, it can be used like a built-in action. The naming is equal to the ```name```-method or annotation.
 
 <!-- htmlmin:ignore -->
 {{< githubsource user="LightJason" repo="Examples" file="agent_with_action.asl" lang="agentspeak" branch="tutorial-agent-action" >}}
@@ -101,7 +101,7 @@ The action instantiation is done by the generator in
 
 In detail to the standalone action __keep in mind, that the action is called multiple times__, because the plan and rule execution is done in parallel and multiple agent can run the action in parallel. The ```synchronized``` keyword is not a general solution for avoiding [race condition](https://en.wikipedia.org/wiki/Race_condition) because synchronization slows down the performance.
 
-In common work the object-orientated design of the action class can be changed to removing synchronization. If you get race condition exceptions or performance problems, just redesign your architecture. A good design of concurrency architecture can be found on all [build-in actions](http://lightjason.github.io/AgentSpeak/sources/d8/da4/namespaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1buildin.html) of the framework.
+In common work the object-orientated design of the action class can be changed to removing synchronization. If you get race condition exceptions or performance problems, just redesign your architecture. A good design of concurrency architecture can be found on all [built-in actions](http://lightjason.github.io/AgentSpeak/sources/d7/d4b/namespaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1builtin.htm) of the framework.
 
 ## Reference Solution
 

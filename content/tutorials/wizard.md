@@ -14,7 +14,7 @@ __Note:__ We are currently testing the wizard with different workflows and examp
 <h3>General</h3>
 <section>
 <strong>Information</strong>
-<p>This main information are needed to define your own application structure. Here you can define a general name and projekt description for this simulation. This data will be used for the <a href="https://maven.apache.org/">Maven</a> build process. The generated Maven build script is defined for Maven 3.0 or higher, so you need the correct version of Maven and a builded <i>LightJason AgentSpeak(L++) Maven</i> package.</p>
+<p>This main information are needed to define your own application structure. Here you can define a general name and projekt description for this simulation. This data will be used for the <a href="https://maven.apache.org/">Maven</a> build process. The generated Maven build script is defined for Maven 3.0 or higher, so you need the correct version of Maven and a built <i>LightJason AgentSpeak(L++) Maven</i> package.</p>
 <p>
     <div class="form-group">
         <label for="groupid">Project Domain*</label>
@@ -134,7 +134,7 @@ __Note:__ We are currently testing the wizard with different workflows and examp
 <section>
 <strong>Information</strong>
 <p>
-The <a href="/tutorials/actions/#what-kind-of-actions-exists">external- or standalone-actions</a> are calls from the agent which can define any kind of behaviour. The action can be used to define any kind of calculation or logging, data export and import. Take a look on the current <a href="/knowledgebase/actions/">buildin actions</a> to get an overview.
+The <a href="/tutorials/actions/#what-kind-of-actions-exists">external- or standalone-actions</a> are calls from the agent which can define any kind of behaviour. The action can be used to define any kind of calculation or logging, data export and import. Take a look on the current <a href="/knowledgebase/actions/">built-in actions</a> to get an overview.
 </p>
 <p>
     <div class="alert alert-danger alert-dismissible fade collapse" role="alert" id="externalactionerror">
