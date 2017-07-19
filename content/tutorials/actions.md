@@ -35,7 +35,7 @@ There are two kind of actions, both can be also used in similar context. The usa
 
 ### Standalone-Actions - External Actions
 
-Standalone actions, which are named in the Jason definition _external actions_, are classes which implement the [IAction](https://lightjason.github.io/AgentSpeak/sources/dc/d53/interfaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1IAction.html) interface. But we recommand to use the base implementation [IBaseAction](https://lightjason.github.io/AgentSpeak/sources/da/d94/classorg_1_1lightjason_1_1agentspeak_1_1action_1_1IBaseAction.html). For getting an overview of the structure, take a look on the {{< lightbox "https://lightjason.github.io/AgentSpeak/sources/dd/d3e/classorg_1_1lightjason_1_1agentspeak_1_1action_1_1IBaseAction__coll__graph.svg" "IBaseAction inheritance diagram" >}}. The recommand parts of an action are:
+Standalone actions, which are named in the Jason definition _external actions_, are classes which implement the [IAction](https://lightjason.github.io/AgentSpeak/sources/dc/d53/interfaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1IAction.html) interface. But we recommand to use the base implementation [IBaseAction](http://lightjason.github.io/AgentSpeak/sources/da/d94/classorg_1_1lightjason_1_1agentspeak_1_1action_1_1IBaseAction.htm). For getting an overview of the structure, take a look on the {{< lightbox "https://lightjason.github.io/AgentSpeak/sources/dd/d3e/classorg_1_1lightjason_1_1agentspeak_1_1action_1_1IBaseAction__coll__graph.svg" "IBaseAction inheritance diagram" >}}. The recommand parts of an action are:
 
 * a ```name``` which represent the call on the agent script
 * the number of ```minimal arguments``` for checking the correct number of arguments during parsing
