@@ -18,4 +18,4 @@ This text gives you an overview over the main built-in actions in LightJason/Age
 
 The action list shows all existing built-in actions and if you click on the brief description, you get a detailed information with a code example.
 
-{{< agentaction "http://lightjason.github.io/AgentSpeak/sources/action.json" "https://lightjason.github.io/AgentSpeak/sources/" ".html" >}}
+{{< agentaction "http://lightjason.github.io/AgentSpeak/sources/action.json" "https://lightjason.github.io/AgentSpeak/sources/" ".htm" >}}
