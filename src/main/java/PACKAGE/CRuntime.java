@@ -57,7 +57,7 @@ public final class CRuntime
     // === main ================================================================================================================================================
 
     /**
-     * creates build-in ASL files
+     * creates built-in ASL files
      *
      * @return execution flag
      */
