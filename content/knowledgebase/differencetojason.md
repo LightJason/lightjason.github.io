@@ -43,7 +43,7 @@ The LightJason AgentSpeak(L++) structure does not distinguish between _messages_
 
 All triggers will be cached, instantiate and execute in parallel during the cycle. During execution new incoming triggers will be stored inside the cache.
 The execution can get access via unification to the beliefbase, so the beliefs can be unified during execution.
-A statistic will count fails and successful runs of the plans. The _cost aggregation_ component allows to define for each action a cost value, named _score_, which can be used for an optimized execution.
+A statistic will count fails and successful runs of the plans. The _variable builder_ allows to define any grounded variables and constants on runtime e.g. position data. The structure can be used for faster access to any data without unification. 
 
 ### Terms and Literals
 
