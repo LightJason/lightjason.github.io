@@ -76,46 +76,42 @@ The referenced solution based on the [agentspeak-in-15min](/tutorials/agentspeak
 We run the program two times with 3 agents and 4 cycles and get the following output, first run
 
 ```commandline
-Hello World on agent   1.947.742.554
-Hello World on agent   1.063.980.005
-Hello World on agent   751.667.802
-Hello World again in cycle   1   on agent   1.947.742.554
-special goal with value   74.1958139935533   triggered in cycle   1   on agent   1.947.742.554
-Hello World again in cycle   1   on agent   751.667.802
-special goal with value   91.4937051630679   triggered in cycle   1   on agent   751.667.802
-special goal with value   69.25366960123473   triggered in cycle   1   on agent   1.063.980.005
-Hello World again in cycle   1   on agent   1.063.980.005
-Hello World again in cycle   2   on agent   1.947.742.554
-special goal with value   84.62165681593554   triggered in cycle   2   on agent   1.947.742.554
-special goal with value   45.02418617261314   triggered in cycle   2   on agent   1.063.980.005
-Hello World again in cycle   2   on agent   1.063.980.005
-Hello World again in cycle   2   on agent   751.667.802
-special goal with value   55.45082951862753   triggered in cycle   3   on agent   1.947.742.554
-Hello World again in cycle   3   on agent   1.947.742.554
-Hello World again in cycle   3   on agent   751.667.802
-special goal with value   36.29125934123333   triggered in cycle   3   on agent   1.063.980.005
-Hello World again in cycle   3   on agent   1.063.980.005
+Hello World on agent   980.697.799
+Hello World on agent   595.995.566
+Hello World on agent   1.142.993.467
+Hello World again on agent   595.995.566
+Hello World again on agent   980.697.799
+special goal with value   2.2248289532471044   triggered on agent   980.697.799
+Hello World again on agent   1.142.993.467
+special goal with value   76.80922753529944   triggered on agent   1.142.993.467
+Hello World again on agent   980.697.799
+Hello World again on agent   595.995.566
+special goal with value   37.108561892490954   triggered on agent   595.995.566
+Hello World again on agent   1.142.993.467
+Hello World again on agent   980.697.799
+special goal with value   2.0871955837920453   triggered on agent   980.697.799
+Hello World again on agent   595.995.566
+special goal with value   98.1913332685896   triggered on agent   595.995.566
+Hello World again on agent   1.142.993.467
 ```
 
 second run
 
 ```commandline
-Hello World on agent   1.134.917.509
-Hello World on agent   997.055.773
-Hello World on agent   1.947.742.554
-Hello World again in cycle   1   on agent   1.134.917.509
-Hello World again in cycle   1   on agent   997.055.773
-special goal with value   78.7078311643193   triggered in cycle   1   on agent   997.055.773
-Hello World again in cycle   1   on agent   1.947.742.554
-Hello World again in cycle   2   on agent   1.134.917.509
-special goal with value   96.71357720851132   triggered in cycle   2   on agent   1.134.917.509
-Hello World again in cycle   2   on agent   997.055.773
-special goal with value   91.03853574178903   triggered in cycle   2   on agent   997.055.773
-Hello World again in cycle   2   on agent   1.947.742.554
-special goal with value   44.63147387811583   triggered in cycle   2   on agent   1.947.742.554
-Hello World again in cycle   3   on agent   1.134.917.509
-Hello World again in cycle   3   on agent   997.055.773
-Hello World again in cycle   3   on agent   1.947.742.554
+Hello World on agent   212.890.971
+Hello World on agent   1.082.569.346
+Hello World on agent   1.258.955.623
+Hello World again on agent   212.890.971
+Hello World again on agent   1.082.569.346
+Hello World again on agent   1.258.955.623
+special goal with value   92.44063483887761   triggered on agent   1.258.955.623
+Hello World again on agent   212.890.971
+Hello World again on agent   1.082.569.346
+Hello World again on agent   1.258.955.623
+Hello World again on agent   212.890.971
+Hello World again on agent   1.082.569.346
+special goal with value   61.76316960019202   triggered on agent   1.082.569.346
+Hello World again on agent   1.258.955.623
 ```
 
 Based on the random execution of the trigger the results are different.

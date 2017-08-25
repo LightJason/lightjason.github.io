@@ -97,53 +97,46 @@ If you struggled at some point or wish to obtain our exemplary solution with cod
 We run the example with 5 agents and 5 cycles (different runs returns different outputs)
 
 ```commandline
-agent   1.476.690.107   is on position   2   move to    3
-agent   1.758.056.825   is on position   0   move to    1
-agent   966.974.341   is on position   5   move to    1
-agent   90.603.167   is on position   3   move to    4
-agent   889.488.859   get information that other agent has moved from   0   to   1
-agent   889.488.859   is on position   6   move to    2
-
-agent   1.476.690.107   cannot move from   2   to    3   try to move to   1.0
-agent   1.476.690.107   get information that other agent has moved from   3   to   4
-agent   1.476.690.107   get information that other agent has moved from   0   to   1
-agent   966.974.341   cannot move from   5   to    1   try to move to   4.0
-agent   966.974.341   get information that other agent has moved from   3   to   4
-agent   966.974.341   get information that other agent has moved from   0   to   1
-agent   1.758.056.825   get information that other agent has moved from   3   to   4
-agent   889.488.859   cannot move from   6   to    2   try to move to   5.0
-agent   1.758.056.825   is on position   1   move to    2
-agent   889.488.859   get information that other agent has moved from   3   to   4
-agent   90.603.167   get information that other agent has moved from   0   to   1
-agent   90.603.167   is on position   4   move to    0
-
-agent   90.603.167   is on position   0   move to    1
-agent   966.974.341   is on position   5   move to    4.0
-agent   1.758.056.825   cannot move from   1   to    2   try to move to   0.0
-agent   1.758.056.825   get information that other agent has moved from   4   to   0
-agent   966.974.341   get information that other agent has moved from   4   to   0
-agent   1.476.690.107   is on position   2   move to    1.0
-agent   1.476.690.107   get information that other agent has moved from   4   to   0
-agent   889.488.859   is on position   6   move to    5.0
-agent   889.488.859   get information that other agent has moved from   4   to   0
-
-agent   966.974.341   is on position   4   move to    0
-agent   966.974.341   get information that other agent has moved from   6   to   5
-agent   1.476.690.107   get information that other agent has moved from   6   to   5
-agent   1.476.690.107   cannot move from   2   to    1.0   try to move to   1.0
-agent   1.476.690.107   get information that other agent has moved from   5   to   4
-agent   1.758.056.825   get information that other agent has moved from   6   to   5
-agent   889.488.859   is on position   5   move to    1
-agent   1.758.056.825   is on position   1   move to    0.0
-agent   889.488.859   get information that other agent has moved from   5   to   4
-agent   1.758.056.825   get information that other agent has moved from   5   to   4
-agent   90.603.167   get information that other agent has moved from   5   to   4
-agent   90.603.167   get information that other agent has moved from   6   to   5
-agent   90.603.167   cannot move from   0   to    1   try to move to   4.0
-
-agent   90.603.167   is on position   0   move to    4.0
-agent   966.974.341   cannot move from   4   to    0   try to move to   3.0
-agent   1.476.690.107   is on position   2   move to    1.0
-agent   1.758.056.825   cannot move from   1   to    0.0   try to move to   0.0
-agent   889.488.859   cannot move from   5   to    1   try to move to   4.0
+agent   2.003.087.617   is on position   6   move to    2
+agent   544.479.674   is on position   2   move to    3
+agent   793.503.139   is on position   5   move to    1
+agent   2.135.449.562   is on position   3   move to    4
+agent   1.713.875.358   get information that other agent has moved from   3   to   4
+agent   1.713.875.358   get information that other agent has moved from   5   to   1
+agent   1.713.875.358   is on position   0   move to    1
+agent   2.135.449.562   get information that other agent has moved from   5   to   1
+agent   2.135.449.562   is on position   4   move to    0
+agent   544.479.674   get information that other agent has moved from   3   to   4
+agent   544.479.674   get information that other agent has moved from   5   to   1
+agent   544.479.674   cannot move from   2   to    3   try to move to   1.0
+agent   2.003.087.617   get information that other agent has moved from   3   to   4
+agent   2.003.087.617   get information that other agent has moved from   5   to   1
+agent   2.003.087.617   cannot move from   6   to    2   try to move to   5.0
+agent   793.503.139   is on position   1   move to    2
+agent   793.503.139   get information that other agent has moved from   3   to   4
+agent   1.713.875.358   cannot move from   0   to    1   try to move to   4.0
+agent   2.003.087.617   is on position   6   move to    5.0
+agent   544.479.674   is on position   2   move to    1.0
+agent   2.135.449.562   cannot move from   4   to    0   try to move to   3.0
+agent   793.503.139   cannot move from   1   to    2   try to move to   0.0
+agent   1.713.875.358   is on position   0   move to    4.0
+agent   1.713.875.358   get information that other agent has moved from   6   to   5
+agent   2.003.087.617   is on position   5   move to    1
+agent   2.135.449.562   get information that other agent has moved from   6   to   5
+agent   2.135.449.562   is on position   4   move to    3.0
+agent   544.479.674   get information that other agent has moved from   6   to   5
+agent   544.479.674   cannot move from   2   to    1.0   try to move to   1.0
+agent   793.503.139   is on position   1   move to    0.0
+agent   793.503.139   get information that other agent has moved from   6   to   5
+agent   1.713.875.358   cannot move from   0   to    4.0   try to move to   4.0
+agent   1.713.875.358   get information that other agent has moved from   4   to   3
+agent   2.003.087.617   get information that other agent has moved from   4   to   3
+agent   2.135.449.562   is on position   3   move to    4
+agent   2.003.087.617   cannot move from   5   to    1   try to move to   4.0
+agent   544.479.674   get information that other agent has moved from   4   to   3
+agent   544.479.674   is on position   2   move to    1.0
+agent   793.503.139   get information that other agent has moved from   4   to   3
+agent   793.503.139   cannot move from   1   to    0.0   try to move to   0.0
+agent   1.713.875.358   get information that other agent has moved from   3   to   4
+agent   1.713.875.358   is on position   0   move to    4.0
 ```

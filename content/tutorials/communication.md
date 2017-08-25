@@ -100,32 +100,31 @@ This tutorial depends on the tutorial [AgentSpeak-in-15min](/tutorials/agentspea
 If you run the example the shown output can be different. For the first run we start the program with 10 agents and 5 iterations:
 
 ```commandline
-agent 0    received message [   pqepkellesxa   ] from [   agent 2   ] in cycle [   0   ]
-agent 0    received message [   vxhfapwtulty   ] from [   agent 5   ] in cycle [   0   ]
-agent 0    received message [   ilmhcdofoevm   ] from [   agent 6   ] in cycle [   0   ]
-
-agent 0    received message [   rjnvygvwsbqo   ] from [   agent 0   ] in cycle [   1   ]
-agent 0    received message [   dhcfpfhqbpop   ] from [   agent 1   ] in cycle [   1   ]
-agent 0    received message [   khtsbiripesx   ] from [   agent 7   ] in cycle [   1   ]
-agent 0    received message [   fjxdyjcwfdby   ] from [   agent 4   ] in cycle [   1   ]
-agent 0    received message [   anhdriizkknv   ] from [   agent 9   ] in cycle [   1   ]
-agent 0    received message [   ewklpggifoym   ] from [   agent 8   ] in cycle [   1   ]
-agent 0    received message [   rtxtdqfcuzpl   ] from [   agent 3   ] in cycle [   1   ]
+agent 0    received message [   pcfhmqrkdcfo   ] from [   agent 2   ]
+agent 0    received message [   eiwnfjhiqmcn   ] from [   agent 9   ]
+agent 0    received message [   wevkklxbfbkp   ] from [   agent 4   ]
+agent 0    received message [   mzlcztwrppss   ] from [   agent 8   ]
+agent 0    received message [   tvnqxtlxfbuj   ] from [   agent 7   ]
+agent 0    received message [   wgjgrponcrqp   ] from [   agent 1   ]
+agent 0    received message [   kmplxsurilpd   ] from [   agent 0   ]
+agent 0    received message [   sufdpibrcjvc   ] from [   agent 3   ]
+agent 0    received message [   mxxiktkorrrd   ] from [   agent 5   ]
+agent 0    received message [   zczagzgobfsf   ] from [   agent 6   ]
 ```
 
 and run it again with equal arguments
 
 ```commandline
-agent 0    received message [   ggbiaiijtvtz   ] from [   agent 0   ] in cycle [   1   ]
-agent 0    received message [   mmlxwmifnedq   ] from [   agent 8   ] in cycle [   1   ]
-agent 0    received message [   qileeboovtlc   ] from [   agent 2   ] in cycle [   1   ]
-agent 0    received message [   ixruabyhlxfi   ] from [   agent 7   ] in cycle [   1   ]
-agent 0    received message [   hwkcdbjuqqyc   ] from [   agent 3   ] in cycle [   1   ]
-agent 0    received message [   benrjxxkrcog   ] from [   agent 1   ] in cycle [   1   ]
-agent 0    received message [   sqkuorfmknuq   ] from [   agent 6   ] in cycle [   1   ]
-agent 0    received message [   hcyrnovvacsb   ] from [   agent 9   ] in cycle [   1   ]
-agent 0    received message [   ldvxkosghaax   ] from [   agent 5   ] in cycle [   1   ]
-agent 0    received message [   vbykpbivcwow   ] from [   agent 4   ] in cycle [   1   ]
+agent 0    received message [   eafmluuggwde   ] from [   agent 6   ]
+agent 0    received message [   nfckpeggfkwa   ] from [   agent 5   ]
+agent 0    received message [   rtlbasuuoucp   ] from [   agent 9   ]
+agent 0    received message [   jfnsinsfkpkr   ] from [   agent 1   ]
+agent 0    received message [   lxedhrtkymxm   ] from [   agent 4   ]
+agent 0    received message [   dyrpqwemcast   ] from [   agent 3   ]
+agent 0    received message [   sxkbsmxrvttn   ] from [   agent 7   ]
+agent 0    received message [   vvitgoirttnt   ] from [   agent 0   ]
+agent 0    received message [   flwnyyekgmul   ] from [   agent 8   ]
+agent 0    received message [   issvvzansmbl   ] from [   agent 2   ]
 ```
 
-You can see, that the agent 0 received messages in cycle 0 and 1 and the ordering of the executed plans are different. This behaviour is desired, because all agents run in parallel and so the agent can receive the message before it own cycle is called otherwise the cycle is called and after that the agent receive the message. __So keep in mind that all execution is heavily asynchronized and parallel__.
+You can see, that the agent 0 received messages in different ordering, so the executed plans are different. This behaviour is desired, because all agents run in parallel and so the agent can receive the message before it own cycle is called otherwise the cycle is called and after that the agent receive the message. __So keep in mind that all execution is heavily asynchronized and parallel__.
