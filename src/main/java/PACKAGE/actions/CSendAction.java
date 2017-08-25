@@ -34,6 +34,10 @@ public final class CSendAction extends IBaseAction
      */
     private static final long serialVersionUID = -444388639290879293L;
     /**
+     * action name
+     */
+    private static final IPath NAME = CPath.from( "{{ #function_tolower }}{{{ sendfunctor }}}{{ /function_tolower }}" );
+    /**
      * map with agent names and agent objects
      */
     private final Map<String, IAgent<?>> m_agents;
@@ -52,7 +56,7 @@ public final class CSendAction extends IBaseAction
     @Override
     public final IPath name()
     {
-        return CPath.from( "{{ #function_tolower }}{{{ sendfunctor }}}{{ /function_tolower }}" );
+        return NAME;
     }
 
     @Nonnegative

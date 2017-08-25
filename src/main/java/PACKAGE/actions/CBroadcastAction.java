@@ -36,6 +36,10 @@ public final class CBroadcastAction extends IBaseAction
      */
     private static final long serialVersionUID = 923344428639087998L;
     /**
+    * action name
+     */
+    private static final IPath NAME = CPath.from( "{{ #function_tolower }}{{{ broadcastfunctor }}}{{ /function_tolower }}" ); 
+    /**
      * map with agent names and agent objects
      */
     private final Map<String, IAgent<?>> m_agents;
@@ -54,7 +58,7 @@ public final class CBroadcastAction extends IBaseAction
     @Override
     public final IPath name()
     {
-        return CPath.from( "{{ #function_tolower }}{{{ broadcastfunctor }}}{{ /function_tolower }}" );
+        return NAME;
     }
 
     @Nonnegative

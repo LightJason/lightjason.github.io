@@ -20,11 +20,20 @@ import java.util.stream.Collectors;
  */
 public final class C{{{ actionname }}}Action  extends IBaseAction
 {
+    /**
+     * serial id
+     */
+    private static final long serialVersionUID = 1L;
+    /**
+     * action name
+     */
+    private static final IPath NAME = CPath.from( "{{ #function_tolower }}{{{ actionname }}}{{ /function_tolower }}" );
+
     @Nonnull
     @Override
     public final IPath name()
     {
-        return CPath.from( "{{ #function_tolower }}{{{ actionname }}}{{ /function_tolower }}" );
+        return NAME;
     }
 
     @Nonnegative

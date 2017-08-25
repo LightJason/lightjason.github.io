@@ -26,7 +26,10 @@ import java.util.stream.Stream;
 {{ #internalaction }}@IAgentAction{{ /internalaction }}
 public final class C{{{ agentname }}}Agent extends IEnvironmentAgent<C{{{ agentname }}}Agent>
 {
-
+    /**
+     * serial id
+     */
+    private static final long serialVersionUID = 1L;
     /**
      * constructor
      *
