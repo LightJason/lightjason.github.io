@@ -1,6 +1,6 @@
 ---
-title: "Publication"
-view: ["publication"]
+title: "Publications"
+view: ["publications"]
 previous :
     url: "/"
     text: "home"
