@@ -9,9 +9,9 @@ next :
     text: "knowledge base"
 ---
 
-The multi-agent framework is split up into different parts. Each component has got its own documentation. At this section, we would like to give an overview over all elements within the framework. All frameworks are published to [Maven Central](http://mvnrepository.com).
+The multi-agent framework is split up into different parts. Each component is provided with separate documentation. In this section, we give an overview of all framework elements. The whole framework is published to [Maven Central](http://mvnrepository.com).
 
-The source codes are written in Java (latest release version) with a defined syntax structure and all code documentation will be created with [Doxygen](http://www.doxygen.org). We are also using unit testing and the [Git-Flow](http://nvie.com/posts/a-successful-git-branching-model/) developing model.
+The source codes are written in Java (latest release version) with a defined syntax structure; all code documentation is created with [Doxygen](http://www.doxygen.org). We are also using unit testing and the [Git-Flow](http://nvie.com/posts/a-successful-git-branching-model/) developing model.
 
 
 |  __Component__  | __Status__ | __Development__ | __Description__ |
