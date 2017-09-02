@@ -8,11 +8,11 @@ next :
     text: "contact"
 ---
 
-This project arises during our PhD time, because our research deals with [multi-agent systems](https://en.wikipedia.org/wiki/Multi-agent_system).
-Our research projects consider _traffic_ and _crowd simulation_, but we try to simulate _complex manner of human behaviour_.
+We started this project as part of our Ph.D. work, because our research deals with [multi-agent systems](https://en.wikipedia.org/wiki/Multi-agent_system).
+Our research projects consider _traffic_ and _crowd simulation_, and we try to simulate more _more complex human-like behaviour_.
 
 > [Malte](/contact)'s research depends on _complex overtaking
-> manoeuvre_ and _norm usage_ with the on a high
+> manoeuvre_ and _norm usage_  on a high
 > abstraction level. The research contains a more
 > application-based structure, but it is a great and
 > helpful work, in which way a multi-agent system can
