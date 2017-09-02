@@ -1,5 +1,5 @@
 ---
-title: "Basic Knowledge: Logical Programming"
+title: "Basic Knowledge: Logic Programming"
 jsonld: ["techarticle", "course"]
 gitter: "knowledge base"
 previous :
@@ -10,17 +10,17 @@ next :
     text: "Finite-State-Machine"
 ---
 
-This tutorial gives a short introduction in [logical programming concepts](https://en.wikipedia.org/wiki/Logic_programming), which are needed to write the source code of an agent.
-For a general understanding of logical programming it can be helpful to learn first Prolog, in detail we recommend [SWI-Prolog](http://www.swi-prolog.org/), because there are a lot of applications and good tutorials to understand the main mechanism of logical programming.
+This tutorial gives a short introduction in [logic programming concepts](https://en.wikipedia.org/wiki/Logic_programming), which are needed to write the source code of an agent.
+For a general understanding of logic programming it can be helpful start by considering Prolog, in detail we recommend [SWI-Prolog](http://www.swi-prolog.org/), because there are many applications and good tutorials to understand the main mechanism of logic programming.
 
 {{< toc >}}
 
 ## Design Time
 
-On logical programs we are talking about a _symbolic definition_. We are writing source code in _symbols_, _facts_ and _rules_.
-The difference between [imperative programming](https://en.wikipedia.org/wiki/Imperative_programming) and a logical program is, that latter does not define _how the problem should be solved_. It only defines the facts and rules which are needed to calculate the solution. In a more general way it defines the _constraints_ which are needed to solve the problem. On this definition the runtime creates an internal structure to solve the problem.
+On logic programs we are talking about a _symbolic definition_. We are writing source code in _symbols_, _facts_ and _rules_.
+The difference between [imperative programming](https://en.wikipedia.org/wiki/Imperative_programming) and a logic program is, that latter does not define _how the problem should be solved_. It only defines the facts and rules which are needed to calculate the solution. In a more general way it defines the _constraints_ which are needed to solve the problem. On this definition the runtime creates an internal structure to solve the problem.
 
-In LightJason's agent developing process, you have to write an _agent script_ in our AgentSpeak(L++) programming language, which describes the behaviour of the agent. The script describes _what and when the agent should do_. This process is named _design time_, because you design the behaviour without knowledge about the real execution process. During _design time_ there are some concepts to understand related to the structure of our logical programming language, which are shown in the following.
+In LightJason's agent developing process, you have to write an _agent script_ in our AgentSpeak(L++) programming language, which describes the behaviour of the agent. The script describes _what and when the agent should do_. This process is named _design time_, because you design the behaviour without knowledge about the real execution process. During _design time_ there are some concepts to understand related to the structure of our logic programming language, which are shown in the following.
 
 
 ### Terms
@@ -28,7 +28,7 @@ In LightJason's agent developing process, you have to write an _agent script_ in
 In short: _Everything is a term._
 All elements within the source code are terms, so the super (generic) data structure is a term. In our framework we distinguish two different types of terms:
 
-* *raw terms* are terms with a native Java datatype. In such a term any Java data structure can be stored, but it cannot be used by the normal behaviour mechanisms of the logical programming language.
+* *raw terms* are terms with a native Java datatype. In such a term any Java data structure can be stored, but it cannot be used by the normal behaviour mechanisms of the logic programming language.
 Unifying and assignments are nonetheless possible on these raw data structures
 * *other terms* like literals are structured objects which are here described
 
@@ -37,7 +37,7 @@ The root element is the [ITerm interface](https://lightjason.github.io/AgentSpea
 
 ### <a name="atomliterals">Atom & Literals</a>
 
-The simplest structure elements of a logical programming language are _atoms_ and part of the structure called  _literals_.
+The simplest structure elements of a logic programming language are _atoms_ and part of the structure called  _literals_.
 In the Prolog definition and so in AgentSpeak(L) all literals / atoms are beginning with a lower-case letter. In contrast, by our definition the atom can also contain slashes ```/``` and minus ```-``` characters. For clarification see the following example:
 
 > We would like to define that the sun is shining
@@ -64,7 +64,7 @@ Variables can be used to define literals with a _placeholder_ and (in contrast t
 > <pre><code class="language-prolog">time( current( hour( Hour ), minute( Minute ), pm() ) )</code></pre>
 > The upper-case variables ```Hour``` and ```Minute``` are parts of the literal and the system can set the values into. This structure is named [unification](#unification)
 
-Within a logical programming language exists a specialised variable which is _only_ the underscore ```_```. This variable can be sloppy named as _trash can_. You can use this special variable for defining a variable which value should be ignored.
+Within a logic programming language exists a specialised variable which is _only_ the underscore ```_```. This variable can be sloppy named as _trash can_. You can use this special variable for defining a variable which value should be ignored.
 
 > In contradistinction to the time example above, we would like to ignore the ```pm()``` part, so we say, that we would like to get the current time and ignoring the 12-hour clock part
 > <pre><code class="language-prolog">time( current( hour( Hour ), minute( Minute ), _ ) )</code></pre>
@@ -76,9 +76,9 @@ Based on the definition of [variables](#variables) and [literals](#atomliterals)
 
 ### Rules
 
-Rules, in contrast to [literals](#a-name-atomliterals-atom-literals-a), [variables](#variables) and [facts](#facts-beliefs), are an _executable structure_. Rules can be seen as a _static function_ in a logical programming language with some additional structure.
+Rules, in contrast to [literals](#a-name-atomliterals-atom-literals-a), [variables](#variables) and [facts](#facts-beliefs), are an _executable structure_. Rules can be seen as a _static function_ in a logic programming language with some additional structure.
 
-> One of the most famous examples for rules in logical programs is the [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_number). Mathematically this sequences is defined as
+> One of the most famous examples for rules in logic programs is the [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_number). Mathematically this sequences is defined as
 > $$F\_n = F\_{n-1} + F\_{n-2}$$
 > $$F\_0 = 0$$
 > $$F\_1 = F\_2 = 1$$
@@ -108,9 +108,9 @@ fibonacci(N,R) :-
 > The order of the rule is very important, because Prolog tries to find a rule, which can be matched successfully,
 > the first rule, that matches will be used. Variables will be set during runtime and the values will be passed
 > back as a reference, which is named [side effect](https://en.wikipedia.org/wiki/Side_effect_(computer_science)). In imperative programming languages these side effects are undesired, but
-> can be very helpful in logical programming languages.  
+> can be very helpful in logic programming languages.  
 >
->  But an advice in writing such rules: In the worst-case, the logical programming runtime will have to check all possibilities to calculate a solution. The system tries to find a successful solution with a [backtracking algorithm](https://en.wikipedia.org/wiki/Backtracking). This can be a [NP-complete problem](https://en.wikipedia.org/wiki/NP-completeness) and so a solution cannot be calculated efficiently.
+>  But an advice in writing such rules: In the worst-case, the logic programming runtime will have to check all possibilities to calculate a solution. The system tries to find a successful solution with a [backtracking algorithm](https://en.wikipedia.org/wiki/Backtracking). This can be a [NP-complete problem](https://en.wikipedia.org/wiki/NP-completeness) and so a solution cannot be calculated efficiently.
 
 
 ## Runtime
@@ -134,4 +134,4 @@ In general the [unification](https://en.wikipedia.org/wiki/Unification_(computer
 > process will fail. On a successful execution the variable ```Hour``` stores the value $2$ and the variable
 > ```Second``` the value $0$.
 
-The runtime of the logical programming language tries to find an executable structure, so that all unification components and [rules](#rules) can be finished successfully. The unification process can be used to generate new literals based on existing literals. In combination with [rules](#rules) the system can solve complex reasoning structures. If the system cannot find any possibility to solve the problem, the logical program will be stopped with a failure. The goal of the runtime is to find a successful solution.
+The runtime of the logic programming language tries to find an executable structure, so that all unification components and [rules](#rules) can be finished successfully. The unification process can be used to generate new literals based on existing literals. In combination with [rules](#rules) the system can solve complex reasoning structures. If the system cannot find any possibility to solve the problem, the logic program will be stopped with a failure. The goal of the runtime is to find a successful solution.
