@@ -105,8 +105,8 @@ params:
                 url    : "/news/index.xml"
                 name   : "RSS"
         -
-            name 	   : "Publication"
-            url		   : "/publication/"
+            name 	   : "Publications"
+            url		   : "/publications/"
             weight 	   : 10
         -
             name 	   : "Framework"
