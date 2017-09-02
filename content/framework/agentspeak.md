@@ -16,23 +16,23 @@ This is the main component with the agent functionality. The component allows to
 
 ## Benchmarking Emergency Scenario
 
-The video present a performance test of our framework with 15.000 agents on an emergency scenarion. The video is running in realtime on a single computer (iMac with 2,9 GHz Intel Core i5, 16 GB RAM and OSX El Captain 10.11.6).
+The video present a performance test of our framework with 15.000 agents on an emergency scenario. The video shows the system running in realtime on a single computer (iMac with 2,9 GHz Intel Core i5, 16 GB RAM and OSX El Captain 10.11.6).
 
-> The agents calculates their landmarks to the exit point (position 140 / 140 in the middle) on a grid world with 250x250 cells and starts walking. If a cell is block by another agent, the agents tries to go to the right side, if not possible to the left side, if this is not possible, the agent stops walking and waits a random time for continuing walking. If the agent don't reach a landmark within 5 times, he skips the landmark and start walking to the next one except the exit point.
+> The agents calculate their landmarks to the exit point (position 140 / 140 in the middle) on a grid world with 250x250 cells and startswalking. If a cell is block by another agent, agents try to move to the right-side cell, if this is not possible to the left side cell; if neither is possible, the agent stops walking and waits for a random time until trying again to continue walking. If the agent don't reach a landmark within five attempts, it skips the landmark and starts walking to the next one except the exit point.
 
 {{< video "https://player.vimeo.com/video/202120833" "https://vimeo.com/lightjason/emergencyscenario" >}}
 
 
 ## Language Features
 
-We present here a short overview of language examples of our _AgentSpeak(L++)_ syntax. You can found the full [EBNF description](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form) of the language syntax on the project [documentation page](http://lightjason.github.io/AgentSpeak/). The Railroad / Syntax diagrams of the _AgentSpeak(L++)_ language:
+We present a short overview of language examples of the _AgentSpeak(L++)_ syntax. You can found the full [EBNF description](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form) of the language syntax on the project [documentation page](http://lightjason.github.io/AgentSpeak/). The Railroad / Syntax diagrams of the _AgentSpeak(L++)_ language:
 
 * [Agent Railroad / Syntax Diagram](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/)
 * [PlanBundle Railroad / Syntax Diagram](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/PlanBundle.g4/)
 
 ### <a name="lambdaexpression"></a>Lambda Expression
 
-The language does not support a looping directly, but we are using [lambda expression](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#945f3fc449518a73b9f5f32868db466c) which care based on the theoretical structure of a [lambda calculus](https://en.wikipedia.org/wiki/Lambda_calculus). In a short word we use a defintion like a _for each_ call, so each element in a variable can be looped.
+The language does not support looping directly; however, we support [lambda expression](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#945f3fc449518a73b9f5f32868db466c) which are based on [lambda calculus](https://en.wikipedia.org/wiki/Lambda_calculus). Similar to a _for each_ call, each element in an input list (variable) can be looped.
 
 > The example creates a list of the number _[1,20)_ and we are looping over the elements, first in sequential order and call the _print_ action for each element and in the second call we are summarize each value to the variable _R_. _R_ is in this case the _returning variable_
 
@@ -43,7 +43,7 @@ The language does not support a looping directly, but we are using [lambda expre
 </code></pre>
 <!-- htmlmin:ignore -->
 
-### <a name="repairaction"></a>Explicit Repair-Action
+### <a name="repairaction"></a>Explicit Repair Action
 
 In generell supports the implementation _repair planning_ with the default behaviour ```-!```. In this additional structure we support also [repair action chains](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#503f34271b101269197f766a6b90e4a9).
 
@@ -91,7 +91,7 @@ But in the _AgentSpeak(L++)_ the ordering of rules and plans are not relevant fo
 </code></pre>
 <!-- htmlmin:ignore -->
 
-### <a name="multiassignment"></a>Multi Assignments
+### <a name="multiassignment"></a>Multi-Assignments
 
 The [multi-assignment](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#aaf72be46bb3458f45cf02c8858d96be) allowed to extract elements from a list into different variables. It is similar to the [head-tail-notation of Prolog](https://en.wikibooks.org/wiki/Prolog/Lists) but here we can create complex structures.
 
@@ -103,6 +103,6 @@ The [multi-assignment](http://lightjason.github.io/AgentSpeak/rrd-output/html/or
 </code></pre>
 <!-- htmlmin:ignore -->
 
-### <a name="parallelism"></a>Parallelism & Thread-Safe Variables
+### <a name="parallelism"></a>Parallelism and Thread-Safe Variables
 
 The main sign for parallelism ist the _at-sign (@)_ character. If the @ is put in front of an action or variable the action will be executioned in parallel and the variable will be thread-safe. Not each action supports a parallel execution
