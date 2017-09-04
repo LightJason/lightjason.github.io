@@ -2,8 +2,8 @@
 title: "Framework"
 gitter: framework
 previous :
-    url: "/publication"
-    text: "publication"
+    url: "/publications"
+    text: "publications"
 next :
     url: "/knowledgebase"
     text: "knowledge base"

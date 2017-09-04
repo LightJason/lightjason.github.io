@@ -19,7 +19,7 @@ pandoc-citeproc --bib2json static/references.bib > data/references.json
 #### Additional Feature
 
 * if you add a key with name ```URL``` to the Bibtex entry the URL can point to of the PDF file, and will create a download link on the publication list
-* if you add a key with name ```Note``` you can reference a comment file e.g. the key-value named ```foo``` a file under ```content/publication/foo.md``` must existst with any additional comments of the reference
+* if you add a key with name ```Note``` you can reference a comment file e.g. the key-value named ```foo``` a file under ```content/publications/foo.md``` must existst with any additional comments of the reference
 
 ### Deployment
 

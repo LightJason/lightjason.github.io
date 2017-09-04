@@ -4,5 +4,5 @@ title: "Update publication"
 categories: ["Project"]
 ---
 
-We have updated the our [publication list](/publication) and the PDF files for downloading.
+We have updated the our [publication list](/publications) and the PDF files for downloading.
 

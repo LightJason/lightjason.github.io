@@ -1,6 +1,6 @@
 [
   {
-    "URL": "/publication/2014-emas.pdf",
+    "URL": "/publications/2014-emas.pdf",
     "author": [
       {
         "family": "Ahlbrecht",
@@ -23,8 +23,8 @@
         "given": "J. P."
       }
     ],
-    "collection-title": "Lecture Notes in Artificial Intelligence (LNAI)",
-    "container-title": "Engineering Multiagent Systems II",
+    "collection-title": "Lecture notes in artificial intelligence (lnai)",
+    "container-title": "Engineering multiagent systems ii",
     "editor": [
       {
         "family": "Dalpiaz",
@@ -57,7 +57,7 @@
     "volume": "8758"
   },
   {
-    "URL": "/publication/2016-ifi-techreport.pdf",
+    "URL": "/publications/2016-ifi-techreport.pdf",
     "author": [
       {
         "family": "Aschermann",
@@ -83,11 +83,12 @@
     "number": "IfI Technical Report IfI-16-04",
     "publisher": "Department of Computer Science, TU Clausthal",
     "publisher-place": "Clausthal-Zellerfeld, Germany",
-    "title": "LightJason: A BDI Framework Inspired by Jason",
+    "title": "LightJason: A bdi framework inspired by jason",
+    "title-short": "LightJason",
     "type": "report"
   },
   {
-    "URL": "/publication/2016-eumas.pdf",
+    "URL": "/publications/2016-eumas.pdf",
     "author": [
       {
         "family": "Aschermann",
@@ -102,7 +103,7 @@
         "given": "Jörg P."
       }
     ],
-    "container-title": "Multi-Agent Systems and Agreement Technologies: 14th Europ. Conf., EUMAS 2016, and 4rd Int. Conf., AT 2016, Valencia, Spain, 2016",
+    "container-title": "Multi-agent systems and agreement technologies: 14th europ. conf., eumas 2016, and 4rd int. Conf., at 2016, valencia, spain, 2016",
     "id": "Kraus+2016eumas",
     "issued": {
       "date-parts": [
@@ -113,7 +114,8 @@
     },
     "page": "tbd",
     "publisher": "Springer International Publishing",
-    "title": "LightJason: A BDI Framework inspired by Jason",
+    "title": "LightJason: A bdi framework inspired by jason",
+    "title-short": "LightJason",
     "type": "paper-conference"
   },
   {
