@@ -7,7 +7,7 @@ previous:
     text: "Develop an AgentSpeak Scenario in 15min"
 next:
     url: "/tutorials/actions"
-    text: "Actions"      
+    text: "Actions"
 ---
 
 This tutorial explain the functionality of _agent triggering_. For understanding purpose of triggers you have to understand the concept of events, which is a well-known concept in [UI programming](https://docs.oracle.com/javase/tutorial/uiswing/events/).
