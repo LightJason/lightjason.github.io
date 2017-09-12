@@ -1,5 +1,5 @@
 ---
-title: "Advanced Knowledge: Plan Decorators"
+title: "Advanced Knowledge: Plan Annotations"
 jsonld: ["techarticle"]
 gitter: "knowledge base"
 previous :

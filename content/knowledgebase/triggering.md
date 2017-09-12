@@ -6,8 +6,8 @@ previous :
     url: "/knowledgebase/actions"
     text: "Actions"
 next :
-    url: "/knowledgebase/decorators"
-    text: "Plan Decorators"
+    url: "/knowledgebase/annotations"
+    text: "Plan Annotations"
 ---
 
 {{< toc >}}
@@ -16,14 +16,14 @@ next :
 
 The order of execution (parallel, sequential) of sub-plans, triggered inside their parent plan differs depending on the trigger symbol `!` or `!!`:
 
-* The trigger `!planname` marks a plan `+!planname` to be executed in the **next** cycle (*postponed execution*).
+* The trigger `!planname` marks a plan `+!planname` to be executed in the **next** cycle $\to$ *postponed execution*.
 
 > **Note:** Adding `!planname` multiple times in one cycle will result in `+!planname` to be executed only **once** in the next cycle because the same trigger gets only added once.
 
-* In contrast, `!!planname` executes the matching plan in **this** (read: the same) cycle (*immediate execution*).
+* In contrast, `!!planname` executes the matching plan in **this** (read: the same) cycle $\to$ *immediate execution*.
  
 > **Note:** As every plan body is executed sequentially, for each given `!!planname` the plan `+!planname` will be executed in that sequence.<br>
-> **For advanced users**: With the decorator `@parallel` a plan can be modified to execute all plan-body statements in parallel ($\to$ see [parallel decorators](/knowledgebase/decorators/#parallel).)
+> **For advanced users**: With the annotation `@parallel` a plan can be modified to execute all plan-body statements in parallel ($\to$ see [parallel annotation](/knowledgebase/annotations/#parallel)).
 
 If the plan signature `+!planname` contains a variable `N`, e.g. `+!planname(N)`, multiple different instances of triggers will be created (one for each unique `N`).
 

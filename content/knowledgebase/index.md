@@ -22,5 +22,5 @@ In this Section we provide basic and advanced knowledge helpful for understandin
 
 * Advanced knowledge
   1. [Plan Triggering Techniques](triggering) provides insights into different ways to trigger plans in AgentSpeak(L++)
-  2. [Plan Decorators](decorators) presents available decorators to modify the execution behaviour of plans
+  2. [Plan Annotations](annotations) shows how to modify the execution behaviour of plans
   3. [Failing is Intentional](failing) explains techniques to mitigate failing plans and actions, as failing is part of ~~humans~~ agents interacting with each other in a shared environment.

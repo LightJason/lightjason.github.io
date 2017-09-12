@@ -3,8 +3,8 @@ title: "Basic Knowledge: Failing is Intentional"
 jsonld: ["techarticle"]
 gitter: "knowledge base"
 previous :
-    url: "/knowledgebase/decorators"
-    text: "Plan Decorators"
+    url: "/knowledgebase/annotations"
+    text: "Plan Annotations"
 next :
     url: "/tutorials"
     text: "Tutorials"
