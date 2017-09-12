@@ -1,16 +1,16 @@
 ---
-title: "Basic Knowledge: Logic Programming"
+title: "Theoretical Introduction: Logic Programming"
 jsonld: ["techarticle", "course"]
 gitter: "knowledge base"
 previous :
-    url: "/knowledgebase"
-    text: "Knowledge Base"
+    url: "/knowledgebase/differencetojason"
+    text: "Theoretical Introduction: Difference to Jason"
 next :
     url: "/knowledgebase/finitestatemachine"
-    text: "Finite-State-Machine"
+    text: "Theoretical Introduction: Finite-State-Machine"
 ---
 
-This tutorial gives a short introduction in [logic programming concepts](https://en.wikipedia.org/wiki/Logic_programming), which are needed to write the source code of an agent.
+This article gives a short introduction in [logic programming concepts](https://en.wikipedia.org/wiki/Logic_programming), which are needed to write the source code of an agent.
 For a general understanding of logic programming it can be helpful start by considering Prolog, in detail we recommend [SWI-Prolog](http://www.swi-prolog.org/), because there are many applications and good tutorials to understand the main mechanism of logic programming.
 
 {{< toc >}}

@@ -3,8 +3,8 @@ title: "Advanced Knowledge: Plan Triggering Techniques"
 jsonld: ["techarticle"]
 gitter: "knowledge base"
 previous :
-    url: "/knowledgebase/actions"
-    text: "Actions"
+    url: "/knowledgebase/builtinactions"
+    text: "Built-in Actions"
 next :
     url: "/knowledgebase/annotations"
     text: "Plan Annotations"

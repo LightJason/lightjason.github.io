@@ -1,5 +1,5 @@
 ---
-title: "Basic Knowledge: Actions"
+title: "Basic Knowledge: Built-in Actions"
 jsonld: ["techarticle"]
 gitter: "knowledge base"
 previous :

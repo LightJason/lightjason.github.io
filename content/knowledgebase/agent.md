@@ -1,13 +1,13 @@
 ---
-title: "Basic Knowledge: From Finite-State-Machine and Logical Programming to an Agent"
+title: "Theoretical Introduction: From Finite-State-Machine and Logical Programming to an Agent"
 jsonld: ["techarticle", "course"]
 gitter: "knowledge base"
 previous :
     url: "/knowledgebase/finitestatemachine"
-    text: "Finite-State-Machine"
+    text: "Theoretical Introduction: Finite-State-Machine"
 next :
     url: "/knowledgebase/differencetojason"
-    text: "Difference to Jason"
+    text: "Theoretical Introduction: Difference to Jason"
 ---
 
 {{< includejs "/agentfsm.js" >}}

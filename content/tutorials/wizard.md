@@ -134,7 +134,7 @@ __Note:__ We are currently testing the wizard with different workflows and examp
 <section>
 <strong>Information</strong>
 <p>
-The <a href="/tutorials/actions/#what-kind-of-actions-exists">external- or standalone-actions</a> are calls from the agent which can define any kind of behaviour. The action can be used to define any kind of calculation or logging, data export and import. Take a look on the current <a href="/knowledgebase/actions/">built-in actions</a> to get an overview.
+The <a href="/tutorials/actions/#what-kind-of-actions-exists">external- or standalone-actions</a> are calls from the agent which can define any kind of behaviour. The action can be used to define any kind of calculation or logging, data export and import. Take a look on the current <a href="/knowledgebase/builtinactions/">built-in actions</a> to get an overview.
 </p>
 <p>
     <div class="alert alert-danger alert-dismissible fade collapse" role="alert" id="externalactionerror">
