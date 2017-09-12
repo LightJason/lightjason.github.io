@@ -45,6 +45,6 @@ There are two kinds of variables
 
 **Example**
 
-```prolog
+```agentspeak
 NewDuration = 90
 ```
