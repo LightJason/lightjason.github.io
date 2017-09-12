@@ -44,4 +44,5 @@ code.remark-inline-code {
 duration(60)
 light(red)
 ```
+
 Here `60` and `red` would be terms.
