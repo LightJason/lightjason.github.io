@@ -12,7 +12,7 @@ next :
 
 {{< toc >}}
 
-## ! vs !!
+## `!` vs `!!`
 
 The order of execution (parallel, sequential) of sub-plans, triggered inside their parent plan differs depending on the trigger symbol `!` or `!!`:
 
@@ -72,7 +72,7 @@ Whereas, having a plan-body containing
 !!largerThan5(3)
 ```
 
-the two plans will be executed immediately chained in the given order, i.e. `+!largerThan5(23)` -> `+!largerThan5(3)`.
+the two plans will be executed immediately chained in the given order, i.e. `+!largerThan5(23)` $\to$ `+!largerThan5(3)`.
 
 #### Failure Related Behaviour
 
@@ -117,18 +117,17 @@ This could be avoided by defining one or both plans to be executed in the *this*
 !!largerThan5(23)
 ```
 
-or
+will execute the plan triggered in the second row in this cycle, or
 
 ```agentspeak
 !!largerThan5(23);
 !!largerThan5(23)
 ```
 
-which will result in
+which will execute both plans in this cycle.
+In both cases the result will be
 
 ```commandline
 23.0   is NOT larger than 5
 23.0   is NOT larger than 5
 ```
-
-printed in different cycles.
