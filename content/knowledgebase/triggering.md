@@ -3,8 +3,8 @@ title: "Advanced Knowledge: Plan Triggering Techniques"
 jsonld: ["techarticle"]
 gitter: "knowledge base"
 previous :
-    url: "/knowledgebase/builtinactions"
-    text: "Built-in Actions"
+    url: "/knowledgebase/unification"
+    text: "Basic Knowledge: Unification"
 next :
     url: "/knowledgebase/annotations"
     text: "Plan Annotations"
@@ -14,7 +14,7 @@ next :
 
 ## `!` vs `!!`
 
-The order of execution (parallel, sequential) of sub-plans, triggered inside their parent plan differs depending on the trigger symbol `!` or `!!`:
+The order of execution (parallel, sequential) of sub-[plans](../plans), triggered inside their parent plan differs depending on the trigger symbol `!` or `!!`:
 
 * The trigger `!planname` marks a plan `+!planname` to be executed in the **next** cycle $\to$ *postponed execution*.
 

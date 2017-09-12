@@ -3,11 +3,11 @@ title: "Basic Knowledge: Built-in Actions"
 jsonld: ["techarticle"]
 gitter: "knowledge base"
 previous :
-    url: "/knowledgebase/differencetojason"
-    text: "Difference to Jason"
+    url: "/knowledgebase/actions"
+    text: "Basic Knowledge: Actions"
 next :
-    url: "/knowledgebase/triggering"
-    text: "Plan Triggering Techniques"
+    url: "/knowledgebase/unification"
+    text: "Basic Knowledge: Unification"
 ---
 
 This page provides an overview of built-in actions in LightJason/AgentSpeak(L++).
