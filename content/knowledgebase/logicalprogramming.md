@@ -40,7 +40,7 @@ The root element is the [ITerm interface](https://lightjason.github.io/AgentSpea
 
 ### <a name="atomliterals">Atoms & Literals</a>
 
-The simplest structural elements of a logic programming language are _atoms_ which are part of [literals](#atomliterals).
+The simplest structural elements of a logic programming language are _atoms_ which are part of _literals_.
 In the Prolog definition and consequently also in AgentSpeak(L++) all *literals* and *atoms* begin with a lower-case letter. 
 Additionally, atoms can also contain slashes ```/``` and minus ```-``` characters. For clarification see the following example:
 
