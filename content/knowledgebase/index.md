@@ -23,16 +23,16 @@ In this Section we provide basic and advanced knowledge helpful for understandin
 <br>
 
 ## Basic Knowledge
-  1. [Atoms](atoms)
-  2. [Terms](terms)
-  3. [Literals](literals)
-  4. [Variables](variables)
-  5. [Plans and Logic Rules](plansandrules)
-  6. [Goals](goals)
-  7. [Beliefs and Facts](beliefsandfacts)
-  8. [Actions](actions)
+  1. [Atoms](atoms) the basic building blocks
+  2. [Terms](terms) fit all value- and data-types
+  3. [Literals](literals) comprise complex information
+  4. [Variables](variables) placeholder to store dynamic information at runtime
+  5. [Plans and Logic Rules](plansandrules) to describe complex behaviour
+  6. [Goals](goals) mark plans to be executed
+  7. [Beliefs and Facts](beliefsandfacts) to store information the agent perceived or deduced from the environment
+  8. [Actions](actions) to interact with other agents or the environment
   9. [Built-in Actions](builtinactions) provides a reference to all built-in actions available to LightJason agent programmers
-  10. [Unification](unification)
+  10. [Unification](unification) to get current values from literals
 
 <br>
 

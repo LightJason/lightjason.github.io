@@ -22,23 +22,27 @@ The difference between [imperative programming](https://en.wikipedia.org/wiki/Im
 
 In LightJason's agent developing process, you have to write an _agent script_ in our AgentSpeak(L++) programming language, which describes the behaviour of the agent. The script describes _what and when the agent should do_. This process is named _design time_, because you design the behaviour without knowledge about the real execution process. During _design time_ there are some concepts to understand related to the structure of our logic programming language, which are shown in the following.
 
+> **Note:** The following sections are also covered in our knowledge base.<br>
+> For more information see [$\to$ Terms](../terms/), [$\to$ Atoms](../atoms/), [$\to$ Literals](../literals/), [$\to$ Variables](../variables), [$\to$ Facts and Beliefs](../beliefsandfacts), [$\to$ Rules](../rules) and [$\to$ Unification](../unification).
 
 ### Terms
 
 In short: _Everything is a term._
-All elements within the source code are terms, so the super (generic) data structure is a term. In our framework we distinguish two different types of terms:
 
-* *raw terms* are terms with a native Java datatype. In such a term any Java data structure can be stored, but it cannot be used by the normal behaviour mechanisms of the logic programming language.
-Unifying and assignments are nonetheless possible on these raw data structures
-* *other terms* like literals are structured objects which are here described
+All elements within the AgentSpeak(L++) code are [terms](#terms), forming the building blocks of a super (generic) data structure. In our framework we distinguish two different types of terms:
 
-In our language implementation we created an inheritance model to build the software architecture for these structured elements.
+* *Raw terms* are terms with a native Java data type. In such a term any Java data structure can be stored, but it cannot be used by the normal behaviour mechanisms of the logic programming language.
+Unification and assignments are nonetheless possible on these raw data structures.
+* *Other terms* like literals are structured objects which are described in the following.
+
+In LightJason an inheritance model exists to build a software architecture for these structured elements.
 The root element is the [ITerm interface](https://lightjason.github.io/AgentSpeak/sources/d9/d34/interfaceorg_1_1lightjason_1_1agentspeak_1_1language_1_1ITerm.html) and the {{< lightbox "https://lightjason.github.io/AgentSpeak/sources/d4/dc1/interfaceorg_1_1lightjason_1_1agentspeak_1_1language_1_1ITerm__inherit__graph_org.svg" "ITerm inheritance diagram" >}} shows the structure of the relations.
 
-### <a name="atomliterals">Atom & Literals</a>
+### <a name="atomliterals">Atoms & Literals</a>
 
-The simplest structure elements of a logic programming language are _atoms_ and part of the structure called  _literals_.
-In the Prolog definition and so in AgentSpeak(L) all literals / atoms are beginning with a lower-case letter. In contrast, by our definition the atom can also contain slashes ```/``` and minus ```-``` characters. For clarification see the following example:
+The simplest structural elements of a logic programming language are _atoms_ which are part of [literals](#literals).
+In the Prolog definition and consequently also in AgentSpeak(L++) all *literals* and *atoms* begin with a lower-case letter. 
+Additionally, atoms can also contain slashes ```/``` and minus ```-``` characters. For clarification see the following example:
 
 > We would like to define that the sun is shining
 > <pre><code class="language-prolog ">sun( shining() )</pre></code>
@@ -46,8 +50,8 @@ In the Prolog definition and so in AgentSpeak(L) all literals / atoms are beginn
 
 <a name="time"></a>Another example is a time definition:
 
-> We would like to say it is currently 2 a clock post meridian (pm)
-> <pre><code class="language-prolog">time( current( hour(2), minute(0), pm() ) )</pre></code>
+> We would like to say it is currently 2 o'clock post meridian (pm)
+> <pre><code class="language-prolog">time( current( hour(2), minute(0), period( pm() ) ) )</pre></code>
 > You can see, that a literal can store a list of other literals or values inside the brackets.
 
 Based on the first example a negation is also possible:
@@ -58,25 +62,26 @@ Based on the first example a negation is also possible:
 
 ### Variables
 
-Variables can be used to define literals with a _placeholder_ and (in contrast to atoms or literals) begins with an upper-case letter.
+Variables are specialised [terms](#terms) to store information during runtime.
+They can be used to define literals with a _placeholder_ and (in contrast to [atoms](#atoms) or [literals](#literals)) begin with an upper-case letter.
 
-> Based on the [time example](#time) we added some variables to extract the hour and minute part of the literal
-> <pre><code class="language-prolog">time( current( hour( Hour ), minute( Minute ), pm() ) )</code></pre>
-> The upper-case variables ```Hour``` and ```Minute``` are parts of the literal and the system can set the values into. This structure is named [unification](#unification)
+> Based on the [time example](#time) we added some variables to extract the hour, minute and period part of the literal
+> <pre><code class="language-prolog">time( current( hour( Hour ), minute( Minute ), period( Period ) ) )</code></pre>
+> **Note:** The upper-case variables ```Hour```, ```Minute``` and ```Period``` can be assigned to values automatically. This mechanism is called [unification](#unification).
 
-Within a logic programming language exists a specialised variable which is _only_ the underscore ```_```. This variable can be sloppy named as _trash can_. You can use this special variable for defining a variable which value should be ignored.
+Within a logic programming language exists a specialised variable which is _just_ the underscore ```_```. This variable can be sloppy named as _trash can_. You can use this special variable for defining a variable which value should be ignored.
 
-> In contradistinction to the time example above, we would like to ignore the ```pm()``` part, so we say, that we would like to get the current time and ignoring the 12-hour clock part
-> <pre><code class="language-prolog">time( current( hour( Hour ), minute( Minute ), _ ) )</code></pre>
+> In contradistinction to the time example above, we would like to ignore the period, i.e. the ```am()```/```pm()``` part, so we say, that we would like to get the current time and ignoring the 12-hour clock period.
+> <pre><code class="language-prolog">time( current( hour( Hour ), minute( Minute ), period( _ ) ) )</code></pre>
 > With this definition we can get a very flexible structure for extracting some information from the literals.
 
-### Facts & Beliefs
+### Beliefs and Facts
 
-Based on the definition of [variables](#variables) and [literals](#atomliterals) we are defining a _fact_ as a _literal without variables_. A fact is a literal which define a state or an information (independend whether the information is correct or wrong). In relation to a multi-agent system a _belief_ is a _fact about the knowledge or the environment_. So the fact defines a state or a point of view of an object without any information about the correctness.
+Based on the definition of [variables](#variables) and [literals](#atomliterals) we are defining a _fact_ as a _literal without variables_. A fact is a literal which define a state or an information (independent whether the information is correct or wrong). In relation to a multi-agent system a _belief_ is a _fact about the knowledge or the environment_. So the fact defines a state or a point of view of an object without any information about the correctness.
 
 ### Rules
 
-Rules, in contrast to [literals](#a-name-atomliterals-atom-literals-a), [variables](#variables) and [facts](#facts-beliefs), are an _executable structure_. Rules can be seen as a _static function_ in a logic programming language with some additional structure.
+Rules, in contrast to [literals](#literals), [variables](#variables) and [facts](#beliefs-and-facts), are an _executable structure_. Rules can be seen as _static functions_ in a logic programming language with some additional structure.
 
 > One of the most famous examples for rules in logic programs is the [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_number). Mathematically this sequences is defined as
 > $$F\_n = F\_{n-1} + F\_{n-2}$$
@@ -119,19 +124,23 @@ In the section [design time](#designtime) we are talked about a symbolic represe
 
 {{< img src="/images/deduction.svg" alt="deduction" width="30%" >}}
 
-The description of the figure is that we are modelling the $\Delta$ during [design time](#designtime) with any kind of [facts](#facts-beliefs). During runtime the agent can modify the knowledge and generate implicit knowledge about the environment which is based on the previous knowledge $\Delta$. The implicit knowledge is named $belief(\Delta, \rho)$
+The description of the figure is that we are modelling the $\Delta$ during [design time](#designtime) with any kind of [facts](#beliefs-and-facts). During runtime the agent can modify the knowledge and generate implicit knowledge about the environment which is based on the previous knowledge $\Delta$. The implicit knowledge is named $belief(\Delta, \rho)$
 
 ### Unification
 
-In general the [unification](https://en.wikipedia.org/wiki/Unification_(computer_science)) is the process for _setting values from one literal into the variables of another literal_. Based on the [time example](#time) the procedure can look as follows:
+[Unification](https://en.wikipedia.org/wiki/Unification_(computer_science)) is the process for _setting values from one literal into the variables of another literal_, e.g. determining the current value of `Colour` in `light(Colour)`.
+
+>**Note:** `Colour` is a variable!
+
+Based on the previous [time example](#time) the procedure can look as follows:
 
 > We have two literals, one literal with values and another literal with variables
-> <pre><code class="language-prolog">time( current( hour( 2    ), minute( 0      ), pm() ) )
-> time( current( hour( Hour ), minute( Second ), _    ) )
+> <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">time( current( hour( 2    ), minute( 0      ), period( pm() ) ) )
+> time( current( hour( Hour ), minute( Minute ), period( _    ) ) )
 > </pre></code>
 > Based on this structure the systems tries to transfer the values from the first literal into the variables
 > of the second literal, such that both literals are equal. If it is not possible the unification
 > process will fail. On a successful execution the variable ```Hour``` stores the value $2$ and the variable
-> ```Second``` the value $0$.
+> ```Minute``` the value $0$.
 
-The runtime of the logic programming language tries to find an executable structure, so that all unification components and [rules](#rules) can be finished successfully. The unification process can be used to generate new literals based on existing literals. In combination with [rules](#rules) the system can solve complex reasoning structures. If the system cannot find any possibility to solve the problem, the logic program will be stopped with a failure. The goal of the runtime is to find a successful solution.
+The runtime of the logic programming language tries to find an executable structure, so that all unification components and [rules](#rules) can be finished successfully. The unification process can be used to generate new literals based on existing literals. In combination with _rules_ the system can solve complex reasoning structures. If the system cannot find any possibility to solve the problem, the logic program will be stopped with a failure. The goal of the runtime is to find a successful solution.

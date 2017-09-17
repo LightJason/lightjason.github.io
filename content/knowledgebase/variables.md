@@ -10,7 +10,8 @@ next :
     text: "Basic Knowledge: Plans and Logic Rules"
 ---
 
-Variables are special terms to store data during runtime
+Variables are specialised [terms](../terms) to store information during runtime.
+They can be used to define literals with a _placeholder_ and (in contrast to [atoms](../atoms) or [literals](../literals)) begin with an upper-case letter.
 
 <style>
 svg.railroad-diagram path {
@@ -38,13 +39,11 @@ code.remark-inline-code {
 
 There are two kinds of variables
 
-* Regular variables start with an **upper-case** letter
-* The _garbage bin_ variable `_` can be used as a substitute in cases where the content of the variable is not of interest, but a variable has to be provided.
+* _regular variables_, which start with an **upper-case** letter and
+* the _garbage bin_ variable `_`, which can be used as a substitute in cases where the content of the variable is not of interest, but a variable has to be provided.
 
-> **Note:** A more developer-specific explanation of variables can be found [$\to$ here](https://lightjason.github.io/knowledgebase/logicalprogramming/#variables).
+**Examples:**
 
-**Example**
-
-```agentspeak
-NewDuration = 90
-```
+> Based on the [time example](#time) we added some variables to extract the hour and minute part of the literal
+> <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">time( current( hour( Hour ), minute( Minute ), period( Period ) ) )</code></pre>
+> **Note:** The upper-case variables ```Hour```, ```Minute``` and ```Period``` can be assigned to values automatically. This mechanism is called [$\to$ unification](../unification).

@@ -52,52 +52,63 @@ To transform an imperative function to a logical plan, proceed as follows:
 * Statements have to be separated by a semicolon `;`, except the last one!
 * A plan has to be terminated by a full stop symbol `.`
 
-## Rules
+### Plan Example
 
-Rules are similar to plans, but without context and trigger event.
-They can be seen as a _static function_ in a logic programming language with some additional structure.
+> Consider the following Java method to change the phase duration of a traffic light:
 
-<svg class="railroad-diagram" width="626" height="112" viewBox="0 0 626 80" id="svg_d0404623ab035c7e30f997d91d173a52"><path d="M20 30v20m10-20v20M20 40h20.5m-.5 0h10m0 0a10 10 0 0 0 10-10 10 10 0 0 1 10-10m0 0h108m0 0a10 10 0 0 1 10 10 10 10 0 0 0 10 10M50 40h20" transform="translate(.5 .5)"/><g class="non-terminal" transform="translate(.5 .5)"><path d="M70 29h108v22H70z"/><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#4ab6864fc58ecd8b598ee10dfe2ac311"><text x="124" y="44">annotations</text></a></g><path d="M178 40h20m0 0h10" transform="translate(.5 .5)"/><g class="non-terminal" transform="translate(.5 .5)"><path d="M208 29h76v22h-76z"/><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#f0d674f1e0ed4292267f149c5983db02"><text x="246" y="44">literal</text></a></g><path d="M284 40h10m0 0h10m0 0h10" transform="translate(.5 .5)"/><g class="non-terminal" transform="translate(.5 .5)"><path d="M314 29h188v22H314z"/><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#d42b51522492f1bfb748a7056a67ec99"><text x="408" y="44">logicalruledefinition</text></a></g><path d="M502 40h10m-198 0a10 10 0 0 0-10 10 10 10 0 0 0 10 10m0 0h188m0 0a10 10 0 0 0 10-10 10 10 0 0 0-10-10m10 0h10m0 0h10" transform="translate(.5 .5)"/><g class="non-terminal" transform="translate(.5 .5)"><path d="M532 29h44v22h-44z"/><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#40679521b5da0954b705341a2859f782"><text x="554" y="44">DOT</text></a></g><path d="M576 40h10m0 0h20m-10-10v20m10-20v20" transform="translate(.5 .5)"/></svg>
-
-## Examples
-
-### Plans
-
-Consider the following Java method to change the phase duration of a traffic light:
-
-```java
+> ```java
 public static boolean phaseduration( int newduration )
 {
   if ( newduration < 1 )   // Plan condition: plan fails if
       return false;        // new duration is unreasonably small
-    
+>    
   System.out.println( "For safety, changing light to RED" );
   System.out.println( "Changing phase duration to " + newduration );
   return true;             // Plan succeeded
 }
-```
-
-transformed into a plan, by considering the above procedure, will result in
-
-```agentspeak
-+!phaseduration(NewDuration)
+> ```
+> 
+> transformed into a plan, by considering the above procedure, will result in
+> 
+> <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">+!phaseduration(NewDuration)
     : NewDuration < 1 <-    // path 1: plan condition to always fail
         fail                // fail simply marks the plan as failed.
-
+>
     : NewDuration >= 1 <-   // path 2: plan condition to change light and succeed
         generic/print( "For safety, changing light to RED" );
         generic/print( "Changing phase duration to", NewDuration )
 .
-```
+</code></pre>
 
-### Rules
 
-```agentspeak
-fibonacci(N,R) :-
-    N > 1,
-    N1 is N-1,
-    N2 is N-2,
-    fibonacci(N1,R1),
-    fibonacci(N2,R2),
-    R is R1 + R2
-```
+## Rules
+
+Rules, in contrast to [literals](../literals), [variables](../variables) and [facts](../beliefsandfacts), are an _executable structure_.
+
+<svg class="railroad-diagram" width="626" height="112" viewBox="0 0 626 80" id="svg_d0404623ab035c7e30f997d91d173a52"><path d="M20 30v20m10-20v20M20 40h20.5m-.5 0h10m0 0a10 10 0 0 0 10-10 10 10 0 0 1 10-10m0 0h108m0 0a10 10 0 0 1 10 10 10 10 0 0 0 10 10M50 40h20" transform="translate(.5 .5)"/><g class="non-terminal" transform="translate(.5 .5)"><path d="M70 29h108v22H70z"/><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#4ab6864fc58ecd8b598ee10dfe2ac311"><text x="124" y="44">annotations</text></a></g><path d="M178 40h20m0 0h10" transform="translate(.5 .5)"/><g class="non-terminal" transform="translate(.5 .5)"><path d="M208 29h76v22h-76z"/><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#f0d674f1e0ed4292267f149c5983db02"><text x="246" y="44">literal</text></a></g><path d="M284 40h10m0 0h10m0 0h10" transform="translate(.5 .5)"/><g class="non-terminal" transform="translate(.5 .5)"><path d="M314 29h188v22H314z"/><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#d42b51522492f1bfb748a7056a67ec99"><text x="408" y="44">logicalruledefinition</text></a></g><path d="M502 40h10m-198 0a10 10 0 0 0-10 10 10 10 0 0 0 10 10m0 0h188m0 0a10 10 0 0 0 10-10 10 10 0 0 0-10-10m10 0h10m0 0h10" transform="translate(.5 .5)"/><g class="non-terminal" transform="translate(.5 .5)"><path d="M532 29h44v22h-44z"/><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#40679521b5da0954b705341a2859f782"><text x="554" y="44">DOT</text></a></g><path d="M576 40h10m0 0h20m-10-10v20m10-20v20" transform="translate(.5 .5)"/></svg>
+
+Rules
+
+* can be seen as _static functions_ in a logic programming language with some additional structure.
+* are similar to plans, but without context and trigger event.
+
+### Rule Example
+
+> One of the most famous examples for rules in logic programs is the [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_number). Mathematically this sequences is defined as
+> $$F\_n = F\_{n-1} + F\_{n-2}$$
+> $$F\_0 = 0$$
+> $$F\_1 = F\_2 = 1$$
+> For the value $n=5$ the sequence is calculated as
+> $$F\_5 = F\_4 + F\_3 = (F\_3 + 1) + (1+1) = ((1+1)+1) + (1+1) = 5$$
+> Based on this calculation you can see that each function element $F\_n$ which is not defined as $1$ gets resolved in
+> a recursive way. A rule, which calculates the Fibonacci number of any input can be written as follows:
+<pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">fibonacci(X,R)
+    // order of the rules are indeterministic, so for avoid indeterministic behaviour
+    // add the condition, when the rule can be executed first
+    :- X <= 2;  R = 1
+    :- X > 2;   TA = X - 1; TB = X - 2; $fibonacci(TA,A); $fibonacci(TB,B); R = A+B
+.
+!main <-
+    $fibonacci(8, FIB)
+.
+</code></pre>
