@@ -40,7 +40,7 @@ The root element is the [ITerm interface](https://lightjason.github.io/AgentSpea
 
 ### <a name="atomliterals">Atoms & Literals</a>
 
-The simplest structural elements of a logic programming language are _atoms_ which are part of [literals](#literals).
+The simplest structural elements of a logic programming language are _atoms_ which are part of [literals](#atomliterals).
 In the Prolog definition and consequently also in AgentSpeak(L++) all *literals* and *atoms* begin with a lower-case letter. 
 Additionally, atoms can also contain slashes ```/``` and minus ```-``` characters. For clarification see the following example:
 
@@ -63,7 +63,7 @@ Based on the first example a negation is also possible:
 ### Variables
 
 Variables are specialised [terms](#terms) to store information during runtime.
-They can be used to define literals with a _placeholder_ and (in contrast to [atoms](#atoms) or [literals](#literals)) begin with an upper-case letter.
+They can be used to define literals with a _placeholder_ and (in contrast to [atoms or literals](#atomliterals)) begin with an upper-case letter.
 
 > Based on the [time example](#time) we added some variables to extract the hour, minute and period part of the literal
 > <pre><code class="language-prolog">time( current( hour( Hour ), minute( Minute ), period( Period ) ) )</code></pre>
@@ -81,7 +81,7 @@ Based on the definition of [variables](#variables) and [literals](#atomliterals)
 
 ### Rules
 
-Rules, in contrast to [literals](#literals), [variables](#variables) and [facts](#beliefs-and-facts), are an _executable structure_. Rules can be seen as _static functions_ in a logic programming language with some additional structure.
+Rules, in contrast to [literals](#atomliterals), [variables](#variables) and [facts](#beliefs-and-facts), are an _executable structure_. Rules can be seen as _static functions_ in a logic programming language with some additional structure.
 
 > One of the most famous examples for rules in logic programs is the [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_number). Mathematically this sequences is defined as
 > $$F\_n = F\_{n-1} + F\_{n-2}$$
