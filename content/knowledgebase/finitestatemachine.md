@@ -23,8 +23,8 @@ A [Finite-State Machine](https://en.wikipedia.org/wiki/Finite-state_machine) is 
 
 Mostly the state name is documented within a state, also the arrow of a transition can be used for documentation.
 
-> This example show a similar state-machine with three states, that runs from the _initial state_ to a _final state_ (left to right). This example shows the _static structure_ of the state machine, so there is no runtime information within the illustration
-> {{< img src="/images/fsm1.svg" alt="finite-state-machine" width="30%" >}}
+> This example show a similar state machine with three states, that runs from the _initial state_ to a _final state_ (left to right). This example shows the _static structure_ of the state machine, so there is no runtime information within the illustration
+> {{< img src="/images/fsm1.svg" alt="finite-state machine" width="30%" >}}
 
 
 ### Usage and Example
@@ -44,7 +44,7 @@ Most programming languages define such regular expression in a [perl notation](h
 * The second block ```[0-9]+``` defines _all elements between 0 and 9_ and the ```+```-operator sets the number of elements $\geq 1$
 * The third block ```(x|X){2,}``` defines similar to the first both letter cases and the ```{2,}``` defines the number of elements with $\geq 2$
 
-Based on this definition it is possible to define a state machine which can check if the string matchs the given structure. On the runtime the string is read character by character and based on the state machine a transition from <a href="#regex" id="animate-state-1">start state</a> to <a href="#regex" id="animate-state-4">final state</a> will be found. If the state-machine terminates in the <a href="#regex" id="animate-state-error">error state</a> or on any other state, the string does not match. For example:
+Based on this definition it is possible to define a state machine which can check if the string matchs the given structure. On the runtime the string is read character by character and based on the state machine a transition from <a href="#regex" id="animate-state-1">start state</a> to <a href="#regex" id="animate-state-4">final state</a> will be found. If the state machine terminates in the <a href="#regex" id="animate-state-error">error state</a> or on any other state, the string does not match. For example:
 
 * <a href="#regex" id="animate-valid">animate state machine with the valid string:</a> <span id="show-valid"><span class="checked">aaabbb169XxX</span><span class="unchecked"></span></span>
 * <a href="#regex" id="animate-nonvalid">animate state machine with the non-valid string:</a> <span id="show-nonvalid"><span class="checked">AA2b</span><span class="unchecked"></span></span>
