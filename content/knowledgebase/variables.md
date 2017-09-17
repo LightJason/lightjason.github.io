@@ -44,6 +44,6 @@ There are two kinds of variables
 
 **Examples:**
 
-> Based on the [time example](../logicalprogramming/#time) we added some variables to extract the hour and minute part of the literal
+> Based on the [time example](../literals/#time) we added some variables to extract the hour and minute part of the literal
 > <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">time( current( hour( Hour ), minute( Minute ), period( Period ) ) )</code></pre>
 > **Note:** The upper-case variables ```Hour```, ```Minute``` and ```Period``` can be assigned to values automatically. This mechanism is called [$\to$ unification](../unification).
