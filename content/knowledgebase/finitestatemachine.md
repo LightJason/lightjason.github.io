@@ -14,14 +14,14 @@ next :
 
 ## State Machine
 
-A [Finite-State-Machine](https://en.wikipedia.org/wiki/Finite-state_machine) is a system with explicit defined states and transitions between the states with the following syntax:
+A [Finite-State-Machine](https://en.wikipedia.org/wiki/Finite-state_machine) is a system with explicitly defined states and transitions between the states with the following syntax:
 
 * a __state__ is presented by a circle and defines a _stable execution point_
 * a __final state__ is defined by a circle with a _double outline_
-* the state-machine defines a single __initial state__ with a triangle
+* the state machine defines a single __initial state__ with a triangle
 * a __transition__ is presented by an arrow which starts in a state and ends in a state. A transition symbol is an active execution call like a function
 
-Mostly the state-name is documented within a state, also the arrow of a transition can be used for documentation.
+Mostly the state name is documented within a state, also the arrow of a transition can be used for documentation.
 
 > This example show a similar state-machine with three states, that runs from the _initial state_ to a _final state_ (left to right). This example shows the _static structure_ of the state machine, so there is no runtime information within the illustration
 > {{< img src="/images/fsm1.svg" alt="finite-state-machine" width="30%" >}}
@@ -29,14 +29,14 @@ Mostly the state-name is documented within a state, also the arrow of a transiti
 
 ### Usage and Example
 
-State-Machine are an useful tool to describe [regular expressions](https://en.wikipedia.org/wiki/Regular_expression) and we would like to motivate this concept for explaining the functional principle:
+State machines are an useful tool to describe [regular expressions](https://en.wikipedia.org/wiki/Regular_expression) and we would like to motivate this concept for explaining the functional principle:
 
-> The main goal is to create a system, which can check strings that matchs the following criteria:
-> The strings starts with an arbitrary  sequence of the letter ```a``` or ```b``` (the sequence can be empty).
-> After the initial sequence follows a positiv number which can be any digit.
+> The main goal is to create a system which can check strings that matchs the following criteria:
+> The strings starts with an arbitrary sequence of the letter ```a``` or ```b``` (the sequence can be empty).
+> After the initial sequence follows a positive number which can be any digit.
 > The end of the digit sequence is a sequence of the letter ```x``` with two letters at minimum. All letters within this string can be lower- or upper-case. Some valid example sequences: ```ab1x```, ```aaabbb169Xx```, ```AaAabbBB972xXxXXXX```
 
-Most programming languages defines such regular expression in a [perl notation](https://en.wikipedia.org/wiki/Regular_expression#Perl) or [posix notation](https://en.wikipedia.org/wiki/Regular_expression#POSIX_basic_and_extended). We use for the example the posix notation which is defined as:
+Most programming languages define such regular expression in a [perl notation](https://en.wikipedia.org/wiki/Regular_expression#Perl) or [posix notation](https://en.wikipedia.org/wiki/Regular_expression#POSIX_basic_and_extended). We use for the example the posix notation which is defined as:
 
 ```(a|A|b|B)*  [0-9]+  (x|X){2,}```
 
@@ -44,7 +44,7 @@ Most programming languages defines such regular expression in a [perl notation](
 * The second block ```[0-9]+``` defines _all elements between 0 and 9_ and the ```+```-operator sets the number of elements $\geq 1$
 * The third block ```(x|X){2,}``` defines similar to the first both letter cases and the ```{2,}``` defines the number of elements with $\geq 2$
 
-Based on this definition it is possible to define a state machine, which can check if the string matchs the given structure. On the runtime the string is read character by character and based on the state machine a transition from <a href="#regex" id="animate-state-1">start state</a> to <a href="#regex" id="animate-state-4">final state</a> will be found. If the state-machine terminates in the <a href="#regex" id="animate-state-error">error state</a> or on any other state, the string does not match. For example:
+Based on this definition it is possible to define a state machine which can check if the string matchs the given structure. On the runtime the string is read character by character and based on the state machine a transition from <a href="#regex" id="animate-state-1">start state</a> to <a href="#regex" id="animate-state-4">final state</a> will be found. If the state-machine terminates in the <a href="#regex" id="animate-state-error">error state</a> or on any other state, the string does not match. For example:
 
 * <a href="#regex" id="animate-valid">animate state-machine with the valid string:</a> <span id="show-valid"><span class="checked">aaabbb169XxX</span><span class="unchecked"></span></span>
 * <a href="#regex" id="animate-nonvalid">animate state-machine with the non-valid string:</a> <span id="show-nonvalid"><span class="checked">AA2b</span><span class="unchecked"></span></span>
