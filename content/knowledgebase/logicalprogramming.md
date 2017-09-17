@@ -23,7 +23,7 @@ The difference between [imperative programming](https://en.wikipedia.org/wiki/Im
 In LightJason's agent developing process, you have to write an _agent script_ in our AgentSpeak(L++) programming language, which describes the behaviour of the agent. The script describes _what and when the agent should do_. This process is named _design time_, because you design the behaviour without knowledge about the real execution process. During _design time_ there are some concepts to understand related to the structure of our logic programming language, which are shown in the following.
 
 > **Note:** The following sections are also covered in our knowledge base.<br>
-> For more information see [$\to$ Terms](../terms/), [$\to$ Atoms](../atoms/), [$\to$ Literals](../literals/), [$\to$ Variables](../variables), [$\to$ Facts and Beliefs](../beliefsandfacts), [$\to$ Rules](../rules) and [$\to$ Unification](../unification).
+> For more information see [$\to$ Terms](../terms/), [$\to$ Atoms](../atoms/), [$\to$ Literals](../literals/), [$\to$ Variables](../variables), [$\to$ Facts and Beliefs](../beliefsandfacts), [$\to$ Rules](../plansandrules) and [$\to$ Unification](../unification).
 
 ### Terms
 
