@@ -10,7 +10,7 @@ next :
     text: "Basic Knowledge: Built-in Actions"
 ---
 
-Actions enrich agents twofold: First they provide further functionality, for example to compute complex calculations which could be implemented better, i.e. simpler, more scalable, in an imperative programming language. Second they allow agents to interact with their environment and other agents.
+Actions enrich agents twofold: First they provide further functionality, for example to compute complex calculations which could be implemented better, i.e. simpler, more scalable, in an imperative programming language. Secondly they allow agents to interact with their environment and other agents.
 We imagine actions to be the sensors and actuators to perceive and manipulate other objects in the environment.
 
 Actions can be called analogously to functions inside the [plan](../plans)-body or -condition.
