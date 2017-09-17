@@ -22,7 +22,7 @@ We are defining furthermore along the book of [Michael Wooldrige - An Introducti
 > * _Proactiveness:_ Intelligent agents are able to exhibit goal-directed behaviour by talking the initiative in order to satisfy their design objectives
 > * _Social ability:_ Intelligent agents are capable of interacting with other agents (and possible humans) in order to satisfy their design objectives
 
-The technical execution structure of the agent uses the concepts of [PRS (Procedural Reasoning System)](https://en.wikipedia.org/wiki/Procedural_reasoning_system) and architecture of [dMARS (Distributed Multi-Agent Reasoning System)](https://en.wikipedia.org/wiki/Distributed_multi-agent_reasoning_system), so we are definiting the agent as a [Finite-State Machine](finitestatemachine) in a [Logical Programming language](logicalprogramming) with the following definition:
+The technical execution structure of the agent uses the concepts of [PRS (Procedural Reasoning System)](https://en.wikipedia.org/wiki/Procedural_reasoning_system) and architecture of [dMARS (Distributed Multi-Agent Reasoning System)](https://en.wikipedia.org/wiki/Distributed_multi-agent_reasoning_system), so we are definiting the agent as a [Finite-State Machine](../finitestatemachine) in a [Logical Programming language](../logicalprogramming) with the following definition:
 
 * the __initial state__ is optionally defined with the _initial goal_
 * a __state__ is a set of beliefs if a cycle is not running
