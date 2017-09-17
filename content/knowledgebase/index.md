@@ -9,7 +9,7 @@ next :
     text: "Theoretical Introduction: Logic Programming"
 ---
 
-In this Section we provide basic and advanced knowledge helpful for understanding the theoretical concepts of our framework.
+In this section we provide basic and advanced knowledge helpful for understanding the theoretical concepts of our framework.
 
 > **Note:** For a more *hands-on* experience $\to$ see [practical tutorials](/tutorials).
 

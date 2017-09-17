@@ -11,14 +11,14 @@ next :
 ---
 
 This article gives a short introduction in [logic programming concepts](https://en.wikipedia.org/wiki/Logic_programming), which are needed to write the source code of an agent.
-For a general understanding of logic programming it can be helpful start by considering Prolog, in detail we recommend [SWI-Prolog](http://www.swi-prolog.org/), because there are many applications and good tutorials to understand the main mechanism of logic programming.
+For a general understanding of logic programming it can be helpful to start by considering Prolog, in detail we recommend [SWI-Prolog](http://www.swi-prolog.org/), because there are many applications and good tutorials to understand the main mechanism of logic programming.
 
 {{< toc >}}
 
 ## Design Time
 
 On logic programs we are talking about a _symbolic definition_. We are writing source code in _symbols_, _facts_ and _rules_.
-The difference between [imperative programming](https://en.wikipedia.org/wiki/Imperative_programming) and a logic program is, that latter does not define _how the problem should be solved_. It only defines the facts and rules which are needed to calculate the solution. In a more general way it defines the _constraints_ which are needed to solve the problem. On this definition the runtime creates an internal structure to solve the problem.
+The difference between [imperative programming](https://en.wikipedia.org/wiki/Imperative_programming) and a logic program is that the latter does not define _how the problem should be solved_. It only defines the facts and rules which are needed to calculate the solution. In a more general way it defines the _constraints_ which are needed to solve the problem. On this definition the runtime creates an internal structure to solve the problem.
 
 In LightJason's agent developing process, you have to write an _agent script_ in our AgentSpeak(L++) programming language, which describes the behaviour of the agent. The script describes _what and when the agent should do_. This process is named _design time_, because you design the behaviour without knowledge about the real execution process. During _design time_ there are some concepts to understand related to the structure of our logic programming language, which are shown in the following.
 
@@ -50,13 +50,13 @@ Additionally, atoms can also contain slashes ```/``` and minus ```-``` character
 
 <a name="time"></a>Another example is a time definition:
 
-> We would like to say it is currently 2 o'clock post meridian (pm)
+> We would like to say it is currently 2 o'clock post meridiem (pm)
 > <pre><code class="language-prolog">time( current( hour(2), minute(0), period( pm() ) ) )</pre></code>
 > You can see, that a literal can store a list of other literals or values inside the brackets.
 
 Based on the first example a negation is also possible:
 
-> We would to say it is currently not raining
+> We would like to say it is currently not raining
 > <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">~raining()</pre></code>
 > The tilde ```~``` in front of a atom defines the [strong negation](https://en.wikipedia.org/wiki/Stable_model_semantics#Strong_negation)
 

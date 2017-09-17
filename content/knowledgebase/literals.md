@@ -47,13 +47,13 @@ Additionally, atoms can also contain slashes ```/``` and minus ```-``` character
 
 <a name="time"></a>Another example is a time definition:
 
-> We would like to say it is currently 2 o'clock post meridian (pm)
+> We would like to say it is currently 2 o'clock post meridiem (pm)
 > <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">time( current( hour(2), minute(0), period( pm() ) ) )</pre></code>
 > You can see, that a literal can store a list of other literals or values inside the brackets.
 
 Based on the first example a negation is also possible:
 
-> We would to say it is currently not raining
+> We would like to say it is currently not raining
 > <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">~raining()</pre></code>
 > The tilde ```~``` in front of a atom defines the [strong negation](https://en.wikipedia.org/wiki/Stable_model_semantics#Strong_negation)
 
