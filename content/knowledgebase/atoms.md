@@ -4,10 +4,10 @@ jsonld: ["techarticle"]
 gitter: "knowledge base"
 previous :
     url: "/knowledgebase/differencetojason"
-    text: "Theoretical Introduction: Difference to Jason"
+    text: "kb: Background - Difference to Jason"
 next :
     url: "/knowledgebase/terms"
-    text: "Basic Knowledge: Terms"
+    text: "kb: Basic - Terms"
 ---
 
 Atoms are **unsplittable** elements and represent the _basic building blocks_.

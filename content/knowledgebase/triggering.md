@@ -4,10 +4,10 @@ jsonld: ["techarticle"]
 gitter: "knowledge base"
 previous :
     url: "/knowledgebase/unification"
-    text: "Basic Knowledge: Unification"
+    text: "kb: Basic - Unification"
 next :
     url: "/knowledgebase/annotations"
-    text: "Plan Annotations"
+    text: "kb: Advanced - Plan Annotations"
 ---
 
 {{< toc >}}

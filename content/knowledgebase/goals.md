@@ -4,10 +4,10 @@ jsonld: ["techarticle"]
 gitter: "knowledge base"
 previous :
     url: "/knowledgebase/plansandrules"
-    text: "Basic Knowledge: Plans and Logic Rules"
+    text: "kb: Basic - Plans and Logic Rules"
 next :
     url: "/knowledgebase/beliefsandfacts"
-    text: "Basic Knowledge: Beliefs and Facts"
+    text: "kb: Basic - Beliefs and Facts"
 ---
 
 Goals define which plans an agent should try to instantiate and execute.

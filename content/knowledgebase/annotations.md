@@ -4,10 +4,10 @@ jsonld: ["techarticle"]
 gitter: "knowledge base"
 previous :
     url: "/knowledgebase/triggering"
-    text: "Plan Triggering Techniques"
+    text: "kb: Advanced - Plan Triggering Techniques"
 next :
     url: "/knowledgebase/failing"
-    text: "Failing is Intentional"
+    text: "kb: Advanced - Failing is Intentional"
 ---
 
 > Note: Under construction

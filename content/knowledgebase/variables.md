@@ -4,10 +4,10 @@ jsonld: ["techarticle"]
 gitter: "knowledge base"
 previous :
     url: "/knowledgebase/literals"
-    text: "Basic Knowledge: Literals"
+    text: "kb: Basic - Literals"
 next :
     url: "/knowledgebase/plansandrules"
-    text: "Basic Knowledge: Plans and Logic Rules"
+    text: "kb: Basic - Plans and Logic Rules"
 ---
 
 Variables are specialised [terms](../terms) to store information during runtime.

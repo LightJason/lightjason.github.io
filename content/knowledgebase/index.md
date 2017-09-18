@@ -6,17 +6,17 @@ previous :
     text: "Framework"
 next :
     url: "/knowledgebase/logicalprogramming/"
-    text: "Theoretical Introduction: Logic Programming"
+    text: "kb: Background - Logic Programming"
 ---
 
-In this section we provide basic and advanced knowledge helpful for understanding the theoretical concepts of our framework.
+In this section we provide a background of multi-agent modelling, a gentle introduction into logic programming and basic and advanced knowledge helpful for understanding the theoretical concepts of our framework.
 
 > **Note:** For a more *hands-on* experience $\to$ see [practical tutorials](/tutorials).
 
-## Theoretical Introduction
+## Background and Introduction
   1. [Logic Programming](logicalprogramming) for understanding the difference to imperative programming. Explanation of the basic concepts for using this paradigm to describe the agent behaviour
   2. [Finite-State Machine](finitestatemachine) for understanding the runtime model of the agent behaviour
-  3. [Finite-State Machine and Logic Programming of an agent](agent) to understand how we combine the parts into our agent definition
+  3. [Finite-State Machine and Logic Programming of an agent](agent) to understand how we combine the parts previously discussed into our agent definition
   4. [Difference to Jason](differencetojason) shows the main differences between [Jason](http://jason.sourceforge.net) and our framework
 
 

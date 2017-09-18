@@ -4,10 +4,10 @@ jsonld: ["techarticle", "course"]
 gitter: "knowledge base"
 previous :
     url: "/knowledgebase/finitestatemachine"
-    text: "Theoretical Introduction: Finite-State Machine"
+    text: "kb: Background - Finite-State Machine"
 next :
     url: "/knowledgebase/differencetojason"
-    text: "Theoretical Introduction: Difference to Jason"
+    text: "kb: Background - Difference to Jason"
 ---
 
 {{< includejs "/agentfsm.js" >}}

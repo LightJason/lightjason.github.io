@@ -4,10 +4,10 @@ jsonld: ["techarticle", "course"]
 gitter: "knowledge base"
 previous :
     url: "/knowledgebase/differencetojason"
-    text: "Theoretical Introduction: Difference to Jason"
+    text: "kb: Background - Difference to Jason"
 next :
     url: "/knowledgebase/finitestatemachine"
-    text: "Theoretical Introduction: Finite-State-Machine"
+    text: "kb: Background - Finite-State-Machine"
 ---
 
 This article gives a short introduction in [logic programming concepts](https://en.wikipedia.org/wiki/Logic_programming), which are needed to write the source code of an agent.

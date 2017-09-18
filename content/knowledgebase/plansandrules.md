@@ -4,10 +4,10 @@ jsonld: ["techarticle"]
 gitter: "knowledge base"
 previous :
     url: "/knowledgebase/variables"
-    text: "Basic Knowledge: Variables"
+    text: "kb: Basic - Variables"
 next :
     url: "/knowledgebase/goals"
-    text: "Basic Knowledge: Goals"
+    text: "kb: Basic - Goals"
 ---
 
 {{< toc >}}

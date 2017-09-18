@@ -4,10 +4,10 @@ jsonld: ["techarticle"]
 gitter: "knowledge base"
 previous :
     url: "/knowledgebase/actions"
-    text: "Basic Knowledge: Actions"
+    text: "kb: Basic - Actions"
 next :
     url: "/knowledgebase/unification"
-    text: "Basic Knowledge: Unification"
+    text: "kb: Basic - Unification"
 ---
 
 This page provides an overview of built-in actions in LightJason/AgentSpeak(L++).

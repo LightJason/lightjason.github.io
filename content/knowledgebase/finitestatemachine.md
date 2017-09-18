@@ -4,10 +4,10 @@ jsonld: ["techarticle", "course"]
 gitter: "knowledge base"
 previous :
     url: "/knowledgebase/logicalprogramming"
-    text: "Theoretical Introduction: Logical Programming"
+    text: "kb: Background - Logical Programming"
 next :
     url: "/knowledgebase/agent"
-    text: "Theoretical Introduction: Finite-State Machine and Logical Programming to an Agent"
+    text: "kb: Background - Finite-State Machine and Logical Programming to an Agent"
 ---
 
 {{< includejs "/statemachine.js" >}}

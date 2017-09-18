@@ -4,10 +4,10 @@ jsonld: ["techarticle"]
 gitter: "knowledge base"
 previous :
     url: "/knowledgebase/atoms"
-    text: "Basic Knowledge: Atoms"
+    text: "kb: Basic - Atoms"
 next :
     url: "/knowledgebase/literals"
-    text: "Basic Knowledge: Literals"
+    text: "kb: Basic - Literals"
 ---
 
 Terms can represent **any value- and data-type** within the language.

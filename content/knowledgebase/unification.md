@@ -4,10 +4,10 @@ jsonld: ["techarticle"]
 gitter: "knowledge base"
 previous :
     url: "/knowledgebase/builtinactions"
-    text: "Basic Knowledge: Built-in Actions"
+    text: "kb: Basic - Built-in Actions"
 next :
     url: "/knowledgebase/triggering"
-    text: "Advanced Knowledge: Plan Triggering Techniques"
+    text: "kb: Advanced - Plan Triggering Techniques"
 ---
 
 [Unification](https://en.wikipedia.org/wiki/Unification_(computer_science)) is the process for _setting values from one literal into the variables of another literal_, e.g. determining the current value of `Colour` in `light(Colour)`.

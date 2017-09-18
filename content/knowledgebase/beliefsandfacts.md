@@ -4,10 +4,10 @@ jsonld: ["techarticle"]
 gitter: "knowledge base"
 previous :
     url: "/knowledgebase/goals"
-    text: "Basic Knowledge: Goals"
+    text: "kb: Basic - Goals"
 next :
     url: "/knowledgebase/actions"
-    text: "Basic Knowledge: Actions"
+    text: "kb: Basic - Actions"
 ---
 
 Any literal can be a belief or fact:

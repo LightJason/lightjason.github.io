@@ -4,10 +4,10 @@ jsonld: ["techarticle"]
 gitter: "knowledge base"
 previous :
     url: "/knowledgebase/beliefsandfacts"
-    text: "Basic Knowledge: Beliefs and Facts"
+    text: "kb: Basic - Beliefs and Facts"
 next :
     url: "/knowledgebase/builtinactions"
-    text: "Basic Knowledge: Built-in Actions"
+    text: "kb: Basic - Built-in Actions"
 ---
 
 Actions enrich agents twofold: First they provide further functionality, for example to compute complex calculations which could be implemented better, i.e. simpler, more scalable, in an imperative programming language. Secondly they allow agents to interact with their environment and other agents.

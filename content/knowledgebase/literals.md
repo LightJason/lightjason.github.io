@@ -4,10 +4,10 @@ jsonld: ["techarticle"]
 gitter: "knowledge base"
 previous :
     url: "/knowledgebase/terms"
-    text: "Basic Knowledge: Terms"
+    text: "kb: Basic - Terms"
 next :
     url: "/knowledgebase/variables"
-    text: "Basic Knowledge: Variables"
+    text: "kb: Basic - Variables"
 ---
 
 Literals are the conclusion of terms and atoms. They have to start with a **lower-case letter**!
