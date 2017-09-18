@@ -49,6 +49,7 @@ We currently support two built-in annotations, i.e. `@parallel` and `@atomic`, w
 
 ## `@atomic`
 
-
+The `@atomic` annotation defines a plan to _always succeed_ by default.
+This behaviour is useful in cases where failure of [actions](../actions) can be expected but do not constitute erroneous behaviour or results.
 
 ## `@parallel`
