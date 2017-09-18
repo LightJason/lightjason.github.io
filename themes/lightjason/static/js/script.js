@@ -97,19 +97,21 @@ jQuery(function() {
     /**
      * swipe-left to go to the next page
      */
-    jQuery("body").hammer().bind("swipeleft", function(){
-        var lc = jQuery(this).data("nextpage");
-        if (lc)
-            window.location.href = lc;
-    });
+    if (window.innerWidth <= 1000)
+        jQuery("body").hammer().bind("swipeleft", function(){
+            var lc = jQuery(this).data("nextpage");
+            if (lc)
+                window.location.href = lc;
+        });
 
     /**
      * swipe-right to got to the previous page
      */
-    jQuery("body").hammer().bind("swiperight", function(){
-        var lc = jQuery(this).data("previouspage");
-        if (lc)
-            window.location.href = lc;
-    });
+    if (window.innerWidth <= 1000)
+        jQuery("body").hammer().bind("swiperight", function(){
+            var lc = jQuery(this).data("previouspage");
+            if (lc)
+                window.location.href = lc;
+        });
 
 });
