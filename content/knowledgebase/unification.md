@@ -74,7 +74,7 @@ time( current( hour( 4  ), minute( 30 ), period( pm() ) ) ).
 </code></pre>
 in Bob's belief base, describing the two periods a day can have and two appointments he has.<br>
 Alice would like to know whether Bob has an appointment after 4 o'clock in the afternoon.
-To get only the values of the second `time(...)` belief, Bob's could unify the values as follows (as he already knows a constraint, provided by Alice)
+To get only the values of the second `time(...)` belief, Bob could unify the values as follows (as he already knows two constraints, provided by Alice):
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">>>periods(AM, PM);  // unify possible periods into variables AM and PM to use them in the unification below
 > >>( time( current( hour( Hour ), minute( Minute ), period( Period ) ) ), Period == PM && Hour >= 4);
 </code></pre>
