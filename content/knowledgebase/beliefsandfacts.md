@@ -10,7 +10,7 @@ next :
     text: "kb: Basic - Actions"
 ---
 
-Any literal can be a belief or fact:
+Any [&#8594; literal](../literals) can be a belief or fact:
 
 * Any information can be stored as a belief or fact (the distinction depends on the used context).
 * Both are denoted as literals.
@@ -47,7 +47,7 @@ code.remark-inline-code {
 </style>
 <svg class="railroad-diagram" width="286" height="128" viewBox="0 0 286 92"><path d="M20.5 21.5v20m10-20v20m-10-10H41M40.5 31.5h10M50.5 31.5h20"/><g class="non-terminal" transform="translate(.5 .5)"><path d="M70 31h4M126 31h4M74 20h52v22H74z"/><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#883acd43c77567e1c3baced84ccf6ed7"><text x="100" y="35">PLUS</text></a></g><path d="M130.5 31.5h20M50.5 31.5a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"/><g class="non-terminal" transform="translate(.5 .5)"><path d="M70 50h60v22H70z"/><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#ffc0d9b54a1fe677c4c9e6b050e67c81"><text x="100" y="65">MINUS</text></a></g><path d="M130.5 61.5a10 10 0 0 0 10-10v-10a10 10 0 0 1 10-10M150.5 31.5h10"/><g class="non-terminal" transform="translate(.5 .5)"><path d="M160 20h76v22h-76z"/><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#f0d674f1e0ed4292267f149c5983db02"><text x="198" y="35">literal</text></a></g><path d="M236.5 31.5h10M246.5 31.5h20m-10-10v20m10-20v20"/></svg>
 
-> **Note:** A more developer-specific explanation of beliefs and facts can be found [$\to$ here](https://lightjason.github.io/knowledgebase/logicalprogramming/#facts-beliefs).
+> **Note:** A more developer-specific explanation of beliefs and facts can be found in the article [&#8594; Logic Programming](https://lightjason.github.io/knowledgebase/logicalprogramming/#facts-beliefs).
 
 
 **Examples**

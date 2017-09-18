@@ -16,14 +16,14 @@ next :
 
 The order of execution (parallel, sequential) of sub-[plans](../plans), triggered inside their parent plan differs depending on the trigger symbol `!` or `!!`:
 
-* The trigger `!planname` marks a plan `+!planname` to be executed in the **next** cycle $\to$ *postponed execution*.
+* The trigger `!planname` marks a plan `+!planname` to be executed in the **next** cycle &#8594; *postponed execution*.
 
 > **Note:** Adding `!planname` multiple times in one cycle will result in `+!planname` to be executed only **once** in the next cycle because the same trigger gets only added once.
 
-* In contrast, `!!planname` executes the matching plan in **this** (read: the same) cycle $\to$ *immediate execution*.
+* In contrast, `!!planname` executes the matching plan in **this** (read: the same) cycle &#8594; *immediate execution*.
  
 > **Note:** As every plan body is executed sequentially, for each given `!!planname` the plan `+!planname` will be executed in that sequence.<br>
-> **For advanced users**: With the annotation `@parallel` a plan can be modified to execute all plan-body statements in parallel ($\to$ see [parallel annotation](/knowledgebase/annotations/#parallel)).
+> **For advanced users**: With the annotation `@parallel` a plan can be modified to execute all plan-body statements in parallel (see [&#8594; parallel annotations](/knowledgebase/annotations/#parallel)).
 
 If the plan signature `+!planname` contains a variable `N`, e.g. `+!planname(N)`, multiple different instances of triggers will be created (one for each unique `N`).
 
@@ -72,7 +72,7 @@ Whereas, having a plan-body containing
 !!largerThan5(3)
 ```
 
-the two plans will be executed immediately chained in the given order, i.e. `+!largerThan5(23)` $\to$ `+!largerThan5(3)`.
+the two plans will be executed immediately chained in the given order, i.e. `+!largerThan5(23)` &#8594; `+!largerThan5(3)`.
 
 #### Failure Related Behaviour
 
@@ -91,7 +91,7 @@ the output will be just
 
 because the plan `+!largerThan5(3)` fails (as intended).
 
-Further execution in the current plan-context stops, i.e `+!largerThan5(23)` will **not** be executed and the parent plan will also fail ($\to$ see [Failing is Intentional](/knowledgebase/failing) on how to handle failing actions and sub-plans).
+Further execution in the current plan-context stops, i.e `+!largerThan5(23)` will **not** be executed and the parent plan will also fail (see [&#8594; Failing is Intentional](/knowledgebase/failing) on how to handle failing [&#8594; actions](../actions) and sub-plans).
 
 ### Duplicated Triggers
 

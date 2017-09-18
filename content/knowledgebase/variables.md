@@ -10,8 +10,8 @@ next :
     text: "kb: Basic - Plans and Logic Rules"
 ---
 
-Variables are specialised [terms](../terms) to store information during runtime.
-They can be used to define literals with a _placeholder_ and (in contrast to [atoms](../atoms) or [literals](../literals)) begin with an upper-case letter.
+Variables are specialised [&#8594; terms](../terms) to store information during runtime.
+They can be used to define [&#8594; literals](../literals) with a _placeholder_ and (in contrast to [&#8594; atoms](../atoms) or literals) begin with an upper-case letter.
 
 <style>
 svg.railroad-diagram path {
@@ -44,6 +44,6 @@ There are two kinds of variables
 
 **Examples:**
 
-> Based on the [time example](../literals/#time) we added some variables to extract the hour and minute part of the literal
+> Based on the [&#8594; time example](../literals/#time) we added some variables to extract the hour and minute part of the literal
 > <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">time( current( hour( Hour ), minute( Minute ), period( Period ) ) )</code></pre>
-> **Note:** The upper-case variables ```Hour```, ```Minute``` and ```Period``` can be assigned to values automatically. This mechanism is called [$\to$ unification](../unification).
+> **Note:** The upper-case variables ```Hour```, ```Minute``` and ```Period``` can be assigned to values automatically. This mechanism is called [&#8594; unification](../unification).

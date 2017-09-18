@@ -11,7 +11,7 @@ next :
 
 In this section we provide a background of multi-agent modelling, a gentle introduction into logic programming and basic and advanced knowledge helpful for understanding the theoretical concepts of our framework.
 
-> **Note:** For a more *hands-on* experience $\to$ see [practical tutorials](/tutorials).
+> **Note:** For a more *hands-on* experience see [&#8594; practical tutorials](/tutorials).
 
 ## Background and Introduction
   1. [Logic Programming](logicalprogramming) for understanding the difference to imperative programming. Explanation of the basic concepts for using this paradigm to describe the agent behaviour

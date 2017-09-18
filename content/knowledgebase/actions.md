@@ -13,13 +13,13 @@ next :
 Actions enrich agents twofold: First they provide further functionality, for example to compute complex calculations which could be implemented better, i.e. simpler, more scalable, in an imperative programming language. Secondly they allow agents to interact with their environment and other agents.
 We imagine actions to be the sensors and actuators to perceive and manipulate other objects in the environment.
 
-Actions can be called analogously to functions inside the [plan](../plansandrules)-body or -condition.
+Actions can be called analogously to functions inside the body or condition of a [&#8594; plan](../plansandrules).
 
-> **Note:** A list of already [built-in actions](../builtinactions) can be found on the next page.
+> **Note:** A list of already [&#8594; built-in actions](../builtinactions) can be found on the next page.
 
 <p></p>
 
-> **Note for developers:** See our tutorial about [$\to$ actions](/tutorials/actions/) for a practical guide on how to use and create new actions.
+> **Note for developers:** See our [&#8594; tutorial about actions](/tutorials/actions/) for a practical guide on how to use and create new actions.
 
 
 **Example**

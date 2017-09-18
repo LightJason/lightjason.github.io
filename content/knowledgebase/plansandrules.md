@@ -13,7 +13,7 @@ next :
 {{< toc >}}
 
 
-In contrast to [literals](../literals), [variables](../variables) and [beliefs and facts](../beliefsandfacts), plans and rules are _executable structures_.
+In contrast to [&#8594; literals](../literals), [&#8594; variables](../variables) and [&#8594; beliefs and facts](../beliefsandfacts), plans and rules are _executable structures_.
 
 ## Plans
  
@@ -82,8 +82,6 @@ public static boolean phaseduration( int newduration )
 
 
 ## Rules
-
-Rules, in contrast to [literals](../literals), [variables](../variables) and [facts](../beliefsandfacts), are an _executable structure_.
 
 <svg class="railroad-diagram" width="626" height="112" viewBox="0 0 626 80" id="svg_d0404623ab035c7e30f997d91d173a52"><path d="M20 30v20m10-20v20M20 40h20.5m-.5 0h10m0 0a10 10 0 0 0 10-10 10 10 0 0 1 10-10m0 0h108m0 0a10 10 0 0 1 10 10 10 10 0 0 0 10 10M50 40h20" transform="translate(.5 .5)"/><g class="non-terminal" transform="translate(.5 .5)"><path d="M70 29h108v22H70z"/><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#4ab6864fc58ecd8b598ee10dfe2ac311"><text x="124" y="44">annotations</text></a></g><path d="M178 40h20m0 0h10" transform="translate(.5 .5)"/><g class="non-terminal" transform="translate(.5 .5)"><path d="M208 29h76v22h-76z"/><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#f0d674f1e0ed4292267f149c5983db02"><text x="246" y="44">literal</text></a></g><path d="M284 40h10m0 0h10m0 0h10" transform="translate(.5 .5)"/><g class="non-terminal" transform="translate(.5 .5)"><path d="M314 29h188v22H314z"/><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#d42b51522492f1bfb748a7056a67ec99"><text x="408" y="44">logicalruledefinition</text></a></g><path d="M502 40h10m-198 0a10 10 0 0 0-10 10 10 10 0 0 0 10 10m0 0h188m0 0a10 10 0 0 0 10-10 10 10 0 0 0-10-10m10 0h10m0 0h10" transform="translate(.5 .5)"/><g class="non-terminal" transform="translate(.5 .5)"><path d="M532 29h44v22h-44z"/><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#40679521b5da0954b705341a2859f782"><text x="554" y="44">DOT</text></a></g><path d="M576 40h10m0 0h20m-10-10v20m10-20v20" transform="translate(.5 .5)"/></svg>
 
