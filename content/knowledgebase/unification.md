@@ -22,7 +22,7 @@ Note: `Colour` is a variable! Based on the previous [&#8594; time example](../li
 > process will fail. On a successful execution the variable ```Hour``` stores the number $2$, the variable
 > ```Minute``` the number $0$ and the variable ```Period``` the [&#8594; atom](../atoms) `pm`.
 
-The runtime of the logic programming language tries to find an executable structure, so that all unification components and [&#8594; rules](../rules) can be finished successfully. The unification process can be used to generate new literals based on existing literals. In combination with _rules_ the system can solve complex reasoning structures. If the system cannot find any possibility to solve the problem, the logic program will be stopped with a failure. The goal of the runtime is to find a successful solution.
+The runtime of the logic programming language tries to find an executable structure, so that all unification components and [&#8594; rules](../plansandrules) can be finished successfully. The unification process can be used to generate new literals based on existing literals. In combination with _rules_ the system can solve complex reasoning structures. If the system cannot find any possibility to solve the problem, the logic program will be stopped with a failure. The goal of the runtime is to find a successful solution.
 
 
 <style>
