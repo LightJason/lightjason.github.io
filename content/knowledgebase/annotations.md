@@ -65,7 +65,7 @@ rule
 .
 </code></pre>
 
-> **Note**: Multiple annotations can be applied to a plan, i.e.
+> **Note**: Multiple annotations can be applied, e.g. for a plan
 > <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">@annotation1
 @annotation2
 +!plan <-
@@ -114,7 +114,7 @@ This behaviour is useful to speed up execution of independent actions and sub-pl
 
 > **Notes:**
 
-> * If **one** of the parallel executed body elements fail, the whole plan fails.
+> * If **any** of the parallel executed body elements fails, the whole plan fails.
 > * The annotation only applies to plans triggered by `!!` and executed in the **current** cycle. Plans triggered via `!` will be independently executed in the *following* cycle. For more information on triggering see [&#8594; Plan Triggering Techniques](../triggering).
 
 **Usage:**
