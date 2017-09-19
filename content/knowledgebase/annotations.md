@@ -65,7 +65,7 @@ rule
 .
 </code></pre>
 
-> **Note**: Multiple annotations can be applied, e.g. for a plan
+> **Note**: Multiple annotations can be combined, e.g. for plans
 > <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">@annotation1
 @annotation2
 +!plan <-
