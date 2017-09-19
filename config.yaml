@@ -1,7 +1,7 @@
 # --- main configuration -------------------------------------------
 # see http://www.emoji-cheat-sheet.com/
 
-baseurl		 	       : "https://lightjason.github.io/"
+baseurl		 	       : "http://lightjason.org/"
 metadataformat		   : "yaml"
 ignoreFiles            : [ "\\.graffle$", "\\.sh$", "\\.config" ] 
 defaultContentLanguage : "en-GB"
