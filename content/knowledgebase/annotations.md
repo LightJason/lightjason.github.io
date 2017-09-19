@@ -84,7 +84,7 @@ This behaviour is useful to speed up execution of independent actions and sub-pl
 > **Notes:**
 
 > * If **one** of the parallel executed body elements fail, the whole plan fails.
-> * The annotation only applies to plans triggered by `!!` and executed in the current cycle. Plans triggered via `!` will be executed in the following cycle (and by default in parallel). For more information on triggering see [&#8594; Plan Triggering Techniques](../triggering).
+> * The annotation only applies to plans triggered by `!!` and executed in the **current** cycle. Plans triggered via `!` will be independently executed in the *following* cycle. For more information on triggering see [&#8594; Plan Triggering Techniques](../triggering).
 
 **Usage:**
 
