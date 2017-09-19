@@ -4,7 +4,7 @@ jsonld: ["techarticle"]
 gitter: "knowledge base"
 previous :
     url: "/knowledgebase/annotations"
-    text: "kb: Advanced - Plan Annotations"
+    text: "kb: Advanced - Plan and Rule Annotations"
 next :
     url: "/tutorials"
     text: "Tutorials"

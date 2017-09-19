@@ -7,7 +7,7 @@ previous :
     text: "kb: Basic - Unification"
 next :
     url: "/knowledgebase/annotations"
-    text: "kb: Advanced - Plan Annotations"
+    text: "kb: Advanced - Plan and Rule Annotations"
 ---
 
 {{< toc >}}
