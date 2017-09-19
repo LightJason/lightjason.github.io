@@ -186,7 +186,7 @@ plan failed!
 ```
 
 (ordering of output might vary).
-It can be observed that, despite executing every element in `+!plan`'s body, the whole plan still fails, as `+!subplan1` fails.
+It can be observed that, despite executing every element in the body of `+!plan`, the whole plan still fails, as `+!subplan1` fails.
 
 Further adding `@atomic` to `+!plan` will result in successful execution of `+!plan`, returning
 
