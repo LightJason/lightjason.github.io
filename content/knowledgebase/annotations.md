@@ -78,13 +78,13 @@ The plan will succeed regardless of failing actions or sub-plans.
 
 ## `@parallel`
 
-The `@parallel` annotation defines a plan to execute every action and goal in its body in parallel, via [fork-join](https://en.wikipedia.org/wiki/Fork%E2%80%93join_model) mechanism.
+The `@parallel` annotation defines a plan to execute every action and [&#8594; goal](../goals) in its body in parallel, via [fork-join](https://en.wikipedia.org/wiki/Fork%E2%80%93join_model) mechanism.
 This behaviour is useful to speed up execution of independent actions and sub-plans.
 
 > **Notes:**
 
 > * If **one** of the parallel executed body elements fail, the whole plan fails.
-> * The annotation only applies to plans triggered by `!!` and executed in the current cycle. Plans triggered via `!` will be executed in the following cycle (and by default in parallel).
+> * The annotation only applies to plans triggered by `!!` and executed in the current cycle. Plans triggered via `!` will be executed in the following cycle (and by default in parallel). For more information on triggering see [&#8594; Plan Triggering Techniques](../triggering).
 
 **Usage:**
 
@@ -95,6 +95,8 @@ This behaviour is useful to speed up execution of independent actions and sub-pl
 </code></pre>
 
 ## Examples
+
+The agent script
 
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">!main.
 
@@ -157,7 +159,7 @@ The same effect could also be achieved by preventing `!subplan1` to fail via `@a
 The complete example discussed above would be
 
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">!main.
-    
+
 +!main <-
     !!plan << generic/print("plan failed!")
 .
