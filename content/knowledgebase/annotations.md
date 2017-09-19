@@ -49,7 +49,7 @@ code.remark-inline-code {
 
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">@annotation
 +!plan <-
-    ...
+    …
 .
 </code></pre>
 
@@ -61,7 +61,7 @@ code.remark-inline-code {
 rule
     :- conditions
     :- conditions
-    ...
+    …
 .
 </code></pre>
 
@@ -69,7 +69,7 @@ rule
 > <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">@annotation1
 @annotation2
 +!plan <-
-    ...
+    …
 .
 </code></pre>
 
@@ -88,7 +88,7 @@ This behaviour is useful in cases where failure of [&#8594; actions](../actions)
 
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">@atomic
 +!plan <-
-    ...
+    …
 .
 </code></pre>
 
@@ -121,7 +121,7 @@ This behaviour is useful to speed up execution of independent actions and sub-pl
 
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">@parallel
 +!plan <-
-    ...
+    …
 .
 </code></pre>
 
