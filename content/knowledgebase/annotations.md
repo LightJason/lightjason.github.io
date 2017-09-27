@@ -132,23 +132,16 @@ The agent script
 
 <!-- htmlmin:ignore -->
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">!main.
-
+</code><code class="language-agentspeak">
 +!main <-
     !!plan << generic/print("plan failed!")
 .
-
-+!plan <-
-    generic/print("foo");
-    !!subplan1;
-    !!subplan2;
-    generic/print("bar")
-.
-
+</code><code class="language-agentspeak">
 +!subplan1 <-
     generic/print("sub-plan1");
     fail
 .
-
+</code><code class="language-agentspeak">
 +!subplan2 <-
     generic/print("sub-plan2")
 .
@@ -200,11 +193,11 @@ The complete example discussed above would be
 
 <!-- htmlmin:ignore -->
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">!main.
-
+</code><code class="language-agentspeak">
 +!main <-
     !!plan << generic/print("plan failed!")
 .
-
+</code><code class="language-agentspeak">
 @atomic
 @parallel
 +!plan <-
@@ -213,12 +206,12 @@ The complete example discussed above would be
     !!subplan2;
     generic/print("bar")
 .
-
+</code><code class="language-agentspeak">
 +!subplan1 <-
     generic/print("sub-plan1");
     fail
 .
-
+</code><code class="language-agentspeak">
 +!subplan2 <-
     generic/print("sub-plan2")
 .
