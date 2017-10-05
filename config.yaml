@@ -47,7 +47,14 @@ params:
                 given  : "Malte"
             image      : "http://meclab.in.tu-clausthal.de/images/people/malte_aschermann.png"
             email      : "malte@lightjason.org"
-            work       : ["Modeling", "Testing", "Scenariodesign"]
+            work       : ["Modeling", "Testing", "Scenariodesign", "Teaching / Documentation"]
+        -
+            name:
+                family : "Dennisen"
+                given  : "Sophie"
+            image  : "http://meclab.in.tu-clausthal.de/images/people/sdennisen.jpg"
+            email  : "sophie@lightjason.org"
+            work   : ["Modeling", "Testing / Usage", "Scenariodesign", "Teaching / Documentation"]
         -
             name:
                 family : "Kraus"

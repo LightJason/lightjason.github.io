@@ -20,6 +20,13 @@ Our research projects consider _traffic_ and _crowd simulation_, and we try to s
 
 <p/>
 
+> [Sophies](/contact)'s research depends on [social-choice theorie](https://en.wikipedia.org/wiki/Social_choice_theory)
+> which is the first usage of LightJason implementation.
+> The generic aspects of this work is the individual model
+> of human decision for optimizing the whole system fitness
+
+<p/>
+
 > [Philipp](/contact)'s focus of research is the _high scalability_ of such
 > complex simulation systems with data mining / big
 > data and software developing aspects.
