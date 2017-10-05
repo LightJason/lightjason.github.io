@@ -138,5 +138,9 @@ params:
             name 	   : "Contact"
             url 	   : "/contact/"
             weight 	   : 1000
+        -
+            name       : "Credits"
+            url        : "/credits/"
+            weight     : 10000    
 
 # ----------------------------------------------------------------------
