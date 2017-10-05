@@ -20,10 +20,9 @@ Our research projects consider _traffic_ and _crowd simulation_, and we try to s
 
 <p/>
 
-> [Sophies](/contact)'s research depends on [social-choice theorie](https://en.wikipedia.org/wiki/Social_choice_theory)
+> [Sophie](/contact)'s research depends on [social-choice theory](https://en.wikipedia.org/wiki/Social_choice_theory)
 > which is the first usage of LightJason implementation.
-> The generic aspects of this work is the individual model
-> of human decision for optimizing the whole system fitness
+> The generic aspect of this work is the aggregation of individual preferences into a collective decision.
 
 <p/>
 
