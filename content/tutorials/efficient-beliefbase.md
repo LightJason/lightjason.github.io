@@ -18,7 +18,7 @@ LightJason supports a hierarchical organized structure of beliefs, so you can ma
 
 ## Previous Knowledge
 
-This tutorial describs the usage of beliefbases in a more general usages.
+This tutorial describes the usage of beliefbases in a more general usage.
 
 * the scenario starts with the [AgentSpeak 15min](/tutorials/agentspeak-in-fifteen-minutes/) tutorial
 * it is also nessessary to understand the basic structure of [literals](/knowledgebase/logicalprogramming/#a-name-atomliterals-atom-literals-a)
@@ -56,7 +56,7 @@ In this example, there are two agents and both agents are referenced to the equa
 <!-- htmlmin:ignore -->
 
 This structure allows the agent to store knowledge in a persistent way with generating the goals.
-But this type of beliefs consumes less memory and reduce performance during modification. On each cycle the storage can generate or delete beliefs which triggers the goals.
+But this type of beliefs consumes less memory and reduces performance during modification. On each cycle the storage can generate or delete beliefs which triggers the goals.
 
 ### On-Demand
 
@@ -90,7 +90,7 @@ The default beliefbase structure will be created within the _configuration struc
 
 The {{< linelink "" "beliefbase" "4" >}} creates the base structure, the first call creates a _persistent beliefbase_ with a _multi-storage_ (for literals and views). After that a view is created with the ```create``` call. The call expects a name for the view and tree node name. For the root structure an existing name ```BELIFBASEROOTNAME``` exists. 
 
-After that the initial beliefs are added in {{< linelink "" "beliefbase" "5" >}} the beliefbase and {{< linelink "" "beliefbase" "7" >}} all trigger, which are created on the initial beliefs, are reseted. At the end the root beliefbase view is returned. Within your generator you can overload this method to define your own structure.
+After that the initial beliefs are added in {{< linelink "" "beliefbase" "5" >}} the beliefbase and {{< linelink "" "beliefbase" "7" >}} all triggers, which are created on the initial beliefs, are reset. At the end the root beliefbase view is returned. Within your generator you can overload this method to define your own structure.
 
 On dynamic structures you can add and remove at any time a view from an agent to create dynamic information groups
 
@@ -98,7 +98,7 @@ On dynamic structures you can add and remove at any time a view from an agent to
 ### ASL Belief Access
 
 On the ASL side all beliefs are defined by the prefix which is created by the structure of
-the views. For the structure of a literal take a look on the [knowledge base](/knowledgebase/differencetojason/#terms-and-literals). A short is example shows the structure:
+the views. For the structure of a literal take a look on the [knowledge base](/knowledgebase/differencetojason/#terms-and-literals). A short example shows the structure:
 
 <!-- htmlmin:ignore -->
 <pre data-language="AgentSpeak(L++)" id="source-beliefbaseuse"><code class="language-agentspeak">
@@ -157,7 +157,7 @@ public interface IEnvironment
 ```
 <!-- htmlmin:ignore -->
 
-We define within the interface the ```literal``` method which get an agent as argument and returns a stream of literal (or an empty stream of no literals are exist). The agent, which is passed by the argument, is the agent which tries to get access to a literal, so the method returns all literals, which are existing for the calling agent. An efficient way is, that you create these literals on-fly.
+We define within the interface the ```literal``` method which gets an agent as argument and returns a stream of literal (or an empty stream of no literals are exist). The agent, which is passed by the argument, is the agent which tries to get access to a literal, so the method returns all literals, which are existing for the calling agent. An efficient way is to create these literals on-fly.
 
 Based on this we must modify the agent, so that on the constructor call the _on-demand beliefbase_ is bind {{< linelink "" "agent" "11-12" >}}  to the environment and agent. The agent class gets an inner class for defining the _on-demand beliefbase_ {{< linelink "" "agent" "16-54" >}}. The idea is, that each agent gets a reference to the environment {{< linelink "" "agent" "4" >}} and uses the ```literal``` method {{< linelink "" "agent" "22, 28, 36, 44, 50" >}} with a self reference to get the individual literals from the environment. 
 
@@ -227,11 +227,11 @@ public final class MyAgent extends IBaseAgent<MyAgent>
 
 ## Tips
 
-On a general point of view, just see a beliefbase as a _linkage structure_ for getting or storing literals, so here are some ideas for represent data:
+From a general point of view, just see a beliefbase as a _linkage structure_ for getting or storing literals, so here are some ideas for represent data:
 
-* A on-demand beliefbase can be Wikipedia, so on each call the functor of the literal can be used to run a search on Wikipedia and return the article data as a literal structure
+* An on-demand beliefbase can be Wikipedia, so on each call the functor of the literal can be used to run a search on Wikipedia and return the article data as a literal structure
 * A persistent single beliefbase can be a database, where each row can be a literal and the primary key defines the functor of the literal
-* A persitent multiple beliefbase can be a file directory, each view defines a directory and each filename a functor of a literal
+* A persistent multiple beliefbase can be a file directory, each view defines a directory and each filename a functor of a literal
 * A XML file can be also used for a persistent multiple beliefbase, each view defines a colletion of nodes and the literal defines a leaf node, where the tag is defined by the literal functor
 
-A well-structure knowledge beliefbase architecture can increase the performance of your agents, so think about the organization of the beliefbase and all depended data structure. The beliefbase storage or on-demand structure must be a thread-safe component for read and write access.
+A well-structured knowledge beliefbase architecture can increase the performance of your agents, so think about the organization of the beliefbase and all dependent data structures. The beliefbase storage or on-demand structure must be a thread-safe component for read and write access.
