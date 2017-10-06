@@ -159,7 +159,7 @@ For the following sections we assume that you are working inside the directory `
 __Note:__ The file names and paths provided in the following sections are relative to your project folder. For example ```src/main/java/myagentproject/MyAgent.java``` refers to the file ```MyAgent.java``` located at ```Developer/myagentapp/src/main/java/myagentproject/```.
 
 ### <a id="agentclass"></a> Agent Class
-Each agent, which you use, must be inherited from our base class {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d3/d39/interfaceorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IAgent_3_01T_01extends_01IAgent_3_04_4_01_4__coll__graph.svg" "IAgent" >}} interface, but we recommend our {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d6/df3/classorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IBaseAgent_3_01T_01extends_01IAgent_3_04_4_01_4__coll__graph_org.svg" "IBaseAgent" >}} with a complete execution mechanism. __Please note__ that you need to pass your agent class as a generic parameter to the definition of a LightJason agent class. A necessary property is the ```serialVersionUID``` which is defined by the Java [Serializable](https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html) interface, this allows to serialize the agent e.g. to transfer the agent over the network
+Each agent you use must be inherited from our base class {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d3/d39/interfaceorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IAgent_3_01T_01extends_01IAgent_3_04_4_01_4__coll__graph.svg" "IAgent" >}} interface, but we recommend our {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d6/df3/classorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IBaseAgent_3_01T_01extends_01IAgent_3_04_4_01_4__coll__graph_org.svg" "IBaseAgent" >}} with a complete execution mechanism. __Please note__ that you need to pass your agent class as a generic parameter to the definition of a LightJason agent class. A necessary property is the ```serialVersionUID``` which is defined by the Java [Serializable](https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html) interface, this allows to serialize the agent e.g. to transfer the agent over the network
 
 Create an agent class ```MyAgent.java``` in ```src/main/java/myagentproject/``` as follows:
 
@@ -256,7 +256,7 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
     ```
     <!-- htmlmin:ignore -->
 
-    It is noteworthy, that
+    It is noteworthy that
     * the load gets well distributed across the CPU-cores and
     * too many prints have a negative impact on the performance, as you are then basically benchmarking your shell ;-)
 
