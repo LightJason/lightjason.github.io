@@ -62,7 +62,7 @@ of a message
 ### Agent factory with name generating
 
 The agent factory must create the agent object and a unique name. Within this example we use one factory only, so
-each factory create a _send_ action and the send action contains the name resolution. Based on this, the action must
+each factory creates a _send_ action and the send action contains the name resolution. Based on this, the action must
 be accessable within the factory to register each agent. The name definition is here with the schema ```agent <number>```
 but __keep in mind that the generate method can be called in parallel, so the counter must be thread-safe.__ Java
 supports such [atomic variables](https://docs.oracle.com/javase/tutorial/essential/concurrency/atomicvars.html).
@@ -75,7 +75,7 @@ supports such [atomic variables](https://docs.oracle.com/javase/tutorial/essenti
 
 ## Send-Action with address resolution
 
-For communication basisc a _send_ action must be created. This actions needs also an _address resolution_ for the agent names, this can be an URL access or a string name. Within this example we use a map with string for the agent name and the value for the agent object. Each generated agent must be registered at this action so that other agents can send messages. The action tries to find the agent object based on the name, builds the goal-trigger and transfer the data to the other agent. On the next cycle call of the receiving agent, the message goal-plan will be triggered.
+For communication basics a _send_ action must be created. This actions needs also an _address resolution_ for the agent names, this can be an URL access or a string name. Within this example we use a map with string for the agent name and the value for the agent object. Each generated agent must be registered at this action so that other agents can send messages. The action tries to find the agent object based on the name, builds the goal-trigger and transfer the data to the other agent. On the next cycle call of the receiving agent, the message goal-plan will be triggered.
 
 <!-- htmlmin:ignore -->
 {{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/CSend.java" lang="java" branch="tutorial-agent-communication" >}}
@@ -127,4 +127,4 @@ agent 0    received message [   flwnyyekgmul   ] from [   agent 8   ]
 agent 0    received message [   issvvzansmbl   ] from [   agent 2   ]
 ```
 
-You can see, that the agent 0 received messages in different ordering, so the executed plans are different. This behaviour is desired, because all agents run in parallel and so the agent can receive the message before it own cycle is called otherwise the cycle is called and after that the agent receive the message. __So keep in mind that all execution is heavily asynchronized and parallel__.
+You can see, that the agent 0 received messages in different ordering, so the executed plans are different. This behaviour is desired, because all agents run in parallel and so the agent can receive the message before its own cycle is called otherwise the cycle is called and after that the agent receives the message. __So keep in mind that all execution is heavily asynchronized and parallel__.
