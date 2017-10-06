@@ -16,9 +16,9 @@ This is the main component with the agent functionality. The component allows to
 
 ## Benchmarking Emergency Scenario
 
-The video present a performance test of our framework with 15.000 agents on an emergency scenario. The video shows the system running in realtime on a single computer (iMac with 2,9 GHz Intel Core i5, 16 GB RAM and OSX El Captain 10.11.6).
+The video presents a performance test of our framework with 15.000 agents on an emergency scenario. The video shows the system running in realtime on a single computer (iMac with 2,9 GHz Intel Core i5, 16 GB RAM and OSX El Captain 10.11.6).
 
-> The agents calculate their landmarks to the exit point (position 140 / 140 in the middle) on a grid world with 250x250 cells and startswalking. If a cell is block by another agent, agents try to move to the right-side cell, if this is not possible to the left side cell; if neither is possible, the agent stops walking and waits for a random time until trying again to continue walking. If the agent don't reach a landmark within five attempts, it skips the landmark and starts walking to the next one except the exit point.
+> The agents calculate their landmarks to the exit point (position 140 / 140 in the middle) on a grid world with 250x250 cells and startswalking. If a cell is blocked by another agent, agents try to move to the right-side cell, if this is not possible to the left side cell; if neither is possible, the agent stops walking and waits for a random time until trying again to continue walking. If the agent doesn't reach a landmark within five attempts, it skips the landmark and starts walking to the next one except the exit point.
 
 {{< video "https://player.vimeo.com/video/202120833" "https://vimeo.com/lightjason/emergencyscenario" >}}
 
@@ -45,9 +45,9 @@ The language does not support looping directly; however, we support [lambda expr
 
 ### <a name="repairaction"></a>Explicit Repair Action
 
-In generell supports the implementation _repair planning_ with the default behaviour ```-!```. In this additional structure we support also [repair action chains](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#503f34271b101269197f766a6b90e4a9).
+In general supports the implementation _repair planning_ with the default behaviour ```-!```. In this additional structure we support also [repair action chains](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#503f34271b101269197f766a6b90e4a9).
 
-> The example shows the execution of three actions _actionA_, _actionB_, _actionC_. The system execute the _actionA_ first, if the action fails, _actionB_ will be executed, if this also fails _actionC_ will be executed. If _actionC_ fails also, the whole plan fails.
+> The example shows the execution of three actions _actionA_, _actionB_, _actionC_. The system executes the _actionA_ first, if the action fails, _actionB_ will be executed, if this also fails _actionC_ will be executed. If _actionC_ fails also, the whole plan fails.
 
 <!-- htmlmin:ignore -->
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
@@ -55,7 +55,7 @@ actionA << actionB << actionC;
 </code></pre>
 <!-- htmlmin:ignore -->
 
-> If you don't want, that a plan is failing, if an action fails you can put at the end of this chain a ```true``` value. This models the behaviour _anything can go wrong, but the agent ignore the error(s)_.
+> If you don't want that a plan is failing, if an action fails you can put at the end of this chain a ```true``` value. This models the behaviour _anything can go wrong, but the agent ignores the error(s)_.
 
 <!-- htmlmin:ignore --><pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">actionA << true;
 </code></pre><!-- htmlmin:ignore -->
@@ -64,7 +64,7 @@ actionA << actionB << actionC;
 
 In general Prolog uses only logical rules, _AgentSpeak(L)_ and _AgentSpeak(L++)_ use rules and also adds a plan structure. Within a Prolog structure the ordering of rules and plans are neccessary of the execution semantic (see in [Learn Prolog Now!](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-htmlse10)).
 
-But in the _AgentSpeak(L++)_ the ordering of rules and plans are not relevant for the execution semantic. On this case within the source code plan and rule structures are grouped.
+But in _AgentSpeak(L++)_ the ordering of rules and plans are not relevant for the execution semantic. On this case within the source code plan and rule structures are grouped.
 
 > This example shows the [Ackermann function](https://en.wikipedia.org/wiki/Ackermann_function). The first line defines the [rule](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#d0404623ab035c7e30f997d91d173a52) name (literal) similar to Prolog. Each rule will be added by the ```:-``` rule-sign under the literal. In classical Prolog the rule-literal must be for each different rule and Prolog executes the rules in sequential order. In our case we change this behaviour, so that each rule, which can be executed, will be executed. So we put a condition first to the rule, so this condition will deny or allow the execution. After that the rule-body will be added. For calling a rule from a plan or a rule, you need to put a ```$```-sign in front of the rule-name.
 
