@@ -25,7 +25,7 @@ For actions there exists two point of views:
 1. software-based, so an action is a method (within a class) which will be executed during the agent cycle with the current agent-based execution context
 2. agent-based, the action is represent by a literal within a rule or plan, but during execution the same action can be run more than one times in parallel
 
-Based on this two definitions, on the Java-side a method must be written and be combined with the literal information for the AgentSpeak(L++) script, so that the agent can get access to the method. LightJason supports for this structure an interface, method annotations and reading mechanism to create all action objects.
+Based on these two definitions, on the Java-side a method must be written and be combined with the literal information for the AgentSpeak(L++) script, so that the agent can get access to the method. LightJason supports for this structure an interface, method annotations and reading mechanism to create all action objects.
 
 
 
@@ -56,14 +56,14 @@ For the usage there exists three annotation:
     * ```classes``` a list of class objects for which the filtering should be defined (default empty for all classes)
 * method annotation ```@IAgentActionFilter``` with the ```classes``` argument for definining class filtering of a method (see ```@IAgentAction```)
 
-Parameter of the method will be packed / unpacked into terms automatically.
+Parameters of the method will be packed / unpacked into terms automatically.
 
 
 
 
 ## How can I create an action?
 
-Within the section both kind of actions are shown. The code of an action should be very efficient and minimalistic, because an action will called multiple times from an agent, because plan execution and also agent execution are in parallel.
+Within the section both kind of actions are shown. The code of an action should be very efficient and minimalistic, because an action will be called multiple times from an agent, because plan execution and also agent execution are in parallel.
 
 ### AgentSpeak(L++) Script
 
@@ -75,7 +75,7 @@ The agent script shows the usage of the own action, it can be used like a built-
 
 ### Standalone-Actions - External Actions
 
-The data representation can be comprehend by the standalone action. A necessary property is the ```serialVersionUID``` which is defined by the Java [Serializable](https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html) interface, this allows to serialize the action.
+The data representation can be comprehended by the standalone action. A necessary property is the ```serialVersionUID``` which is defined by the Java [Serializable](https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html) interface, this allows to serialize the action.
 
 <!-- htmlmin:ignore -->
 {{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/CStandAloneAction.java" lang="java" branch="tutorial-agent-action" >}}
@@ -99,7 +99,7 @@ The action instantiation is done by the generator in
 
 ## Efficent Concurrency Action
 
-In detail to the standalone action __keep in mind, that the action is called multiple times__, because the plan and rule execution is done in parallel and multiple agent can run the action in parallel. The ```synchronized``` keyword is not a general solution for avoiding [race condition](https://en.wikipedia.org/wiki/Race_condition) because synchronization slows down the performance.
+In detail to the standalone action __keep in mind, that the action is called multiple times__, because the plan and rule execution is done in parallel and multiple agents can run the action in parallel. The ```synchronized``` keyword is not a general solution for avoiding [race condition](https://en.wikipedia.org/wiki/Race_condition) because synchronization slows down the performance.
 
 In common work the object-orientated design of the action class can be changed to removing synchronization. If you get race condition exceptions or performance problems, just redesign your architecture. A good design of concurrency architecture can be found on all [built-in actions](http://lightjason.github.io/AgentSpeak/sources/d7/d4b/namespaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1builtin.htm) of the framework.
 
