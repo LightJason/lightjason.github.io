@@ -17,7 +17,7 @@ Our research projects consider _traffic_ and _crowd simulation_, and we try to s
 > application-based structure, but it is a great and
 > helpful work, in which way a multi-agent system can
 > be used in complex simulation scenarios.<br>
-> As an alumni of the DFG project [SocialCars](https://socialcars.github.io), his current academic research is focused on the field of _(de-&#x2060;)centralized cooperative traffic management_ and [documented on the project's GitHub-site]((https://socialcars.github.io/b-decentralized-cooperative/#b2-1-malte-aschermann-https-github-com-masc-a-mechanism-for-automatic-coordination-of-cooperative-driving-manoeuvres-fairness-vs-efficiency)). 
+> As an alumni of the DFG project [SocialCars](https://socialcars.github.io), his current academic research is focused on the field of _(de-&#x2060;)centralized cooperative traffic management_ and [documented on the project's GitHub-site](https://socialcars.github.io/b-decentralized-cooperative/#b2-1-malte-aschermann-https-github-com-masc-a-mechanism-for-automatic-coordination-of-cooperative-driving-manoeuvres-fairness-vs-efficiency). 
 
 <p/>
 
