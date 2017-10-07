@@ -16,13 +16,15 @@ Our research projects consider _traffic_ and _crowd simulation_, and we try to s
 > abstraction level. The research contains a more
 > application-based structure, but it is a great and
 > helpful work, in which way a multi-agent system can
-> be used in complex simulation scenarios.
+> be used in complex simulation scenarios.<br>
+> As an alumni of the DFG project [SocialCars](https://socialcars.github.io), his current academic research is focused on the field of _(de-&#x2060;)centralized cooperative traffic management_ and [documented on the project's GitHub-site]((https://socialcars.github.io/b-decentralized-cooperative/#b2-1-malte-aschermann-https-github-com-masc-a-mechanism-for-automatic-coordination-of-cooperative-driving-manoeuvres-fairness-vs-efficiency)). 
 
 <p/>
 
 > [Sophie](/contact)'s research depends on [social-choice theory](https://en.wikipedia.org/wiki/Social_choice_theory)
 > which is the first usage of LightJason implementation.
-> The generic aspect of this work is the aggregation of individual preferences into a collective decision.
+> The generic aspect of this work is the aggregation of individual preferences into a collective decision.<br>
+> As a member of the DFG project [SocialCars](https://socialcars.github.io), her current academic research is (like Malte's) also embedded in the field of _(de-&#x2060;)centralized cooperative traffic management_ and [documented on the project's GitHub-site](https://socialcars.github.io/b-decentralized-cooperative/#b2-2-sophie-dennisen-https-github-com-sdennisen-collective-decision-making-mechanisms-in-urban-traffic).
 
 <p/>
 
