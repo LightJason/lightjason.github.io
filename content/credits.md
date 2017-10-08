@@ -4,12 +4,12 @@ previous :
     url: "/contact"
     text: "contact"
 ---
-We would like to give a credit for some people which help us on our work. Each of these persons give use some ideas, discussion or feedback to optimize our work continously
+We would like to give credit to some people who helped us with our work by providing us with ideas, discussion or feedback to optimize our work continuously.
 
-* Christoph Kuper - with his bachelor thesis, which gives a first draft of the architektur of a multi-agent system framework
-* Jetbrains - with the development tool and license support
-* Jörg P. Müller - as our professor for discussion, publication and feeback on the platform
-* Marcel Spitzer - with his master research project for creating an algorithm of measurement consistency of a multi-agent system
-* Ehsan Tatasadi - as student assistant for a lot of help on implementation and developing
+* Christoph Kuper - for his bachelor thesis, which provided us with a first draft of the architecture of a multi-agent system framework
+* Jetbrains - for the development tools and license support
+* Jörg P. Müller (as our Ph.D. supervisor) - for discussion, publication and feedback on the platform
+* Marcel Spitzer - for his master research project in which he created an algorithm for measuring consistency of a multi-agent system
+* Ehsan Tatasadi - for helping us with implementation and development
 
 __Thank you!__
