@@ -16,9 +16,9 @@ This is the main component with the agent functionality. The component allows to
 
 ## Benchmarking Emergency Scenario
 
-The video presents a performance test of our framework with 15.000 agents on an emergency scenario. The video shows the system running in realtime on a single computer (iMac with 2,9 GHz Intel Core i5, 16 GB RAM and OSX El Captain 10.11.6).
+The video presents a performance test of our framework with 15.000 agents on an emergency scenario. The video shows the system running in real-time on a single computer (iMac with 2,9 GHz Intel Core i5, 16 GB RAM and OSX El Captain 10.11.6).
 
-> The agents calculate their landmarks to the exit point (position 140 / 140 in the middle) on a grid world with 250x250 cells and startswalking. If a cell is blocked by another agent, agents try to move to the right-side cell, if this is not possible to the left side cell; if neither is possible, the agent stops walking and waits for a random time until trying again to continue walking. If the agent doesn't reach a landmark within five attempts, it skips the landmark and starts walking to the next one except the exit point.
+> The agents calculate their landmarks to the exit point (position 140 / 140 in the middle) on a grid world with 250x250 cells and starts walking. If a cell is blocked by another agent, agents try to move to the right-side cell, if this is not possible to the left side cell; if neither is possible, the agent stops walking and waits for a random time until trying again to continue walking. If the agent doesn't reach a landmark within five attempts, it skips the landmark and starts walking to the next one except the exit point.
 
 {{< video "https://player.vimeo.com/video/202120833" "https://vimeo.com/lightjason/emergencyscenario" >}}
 
@@ -105,4 +105,4 @@ The [multi-assignment](http://lightjason.github.io/AgentSpeak/rrd-output/html/or
 
 ### <a name="parallelism"></a>Parallelism and Thread-Safe Variables
 
-The main sign for parallelism ist the _at-sign (@)_ character. If the @ is put in front of an action or variable the action will be executioned in parallel and the variable will be thread-safe. Not each action supports a parallel execution
+The sign for parallelism is the _at-sign (@)_ character. If the `@` is put in front of an action or variable the action will be executed in parallel and the variable will be thread-safe. **Note:** Not every action supports a parallel execution.
