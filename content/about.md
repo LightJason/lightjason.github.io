@@ -45,9 +45,11 @@ We tried a lot of different types of frameworks like [TerraME](http://www.terram
 From another point of view, we had compared the main _popular programming language indices_ [Tiobe](http://www.tiobe.com/tiobe-index/), [RedMonk](http://redmonk.com/sogrady/2016/02/19/language-rankings-1-16/) and [PopularitY](http://pypl.github.io/PYPL.html) in 2015 / 2016 and we found out, that agent-programming languages are not listed on any index, only _logical programming (Prolog)_ is found on Tiobe.
 Our goal for this system is to create a practically usable and well documented framework which can also be used by non-software-developers and included in already existing projects. We try to explain the ideas, concepts and technical background in a clean and understandable way to get a better approval of agent-programming and modelling.
 
-> All content of the website is defined under the 
-[Creative Commons License (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/)
-> <br/><br/>
-> ![cc](https://mirrors.creativecommons.org/presskit/icons/cc.svg#floatcentering)
-> ![by](https://mirrors.creativecommons.org/presskit/icons/by.svg#floatcentering)
-> ![sa](https://mirrors.creativecommons.org/presskit/icons/sa.svg#floatcentering)
+> Except where otherwise noted,
+
+> * source code displayed on this site is licensed under a [GNU Lesser General Public License v3.0](https://www.gnu.org/licenses/lgpl.html),
+> * all other content on this site is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/).
+>   <br/><br/>
+>   ![cc](https://mirrors.creativecommons.org/presskit/icons/cc.svg#floatcentering)
+>   ![by](https://mirrors.creativecommons.org/presskit/icons/by.svg#floatcentering)
+>   ![sa](https://mirrors.creativecommons.org/presskit/icons/sa.svg#floatcentering)
