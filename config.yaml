@@ -19,7 +19,7 @@ taxonomies:
 params:
     description        : "Concurrent BDI multi-agent system"
     metadescription    : "LightJason is an artificial intelligence BDI multi-agent framework for adding AI with optimization and fuzzy-logical concepts to existing software-architecture"
-    keywords           : "AI, BDI, Agent, Multiagentsystem, Concurrency, Java, Development, Artificial Intelligence, Software, Psychology, Sociology, Simulation"
+    keywords           : "AI, BDI, Agent, Multi-Agent System, Concurrency, Java, Development, Artificial Intelligence, Software, Psychology, Sociology, Simulation"
     contact            : "info@lightjason.org"
     license            : "https://creativecommons.org/licenses/by-sa/4.0/"
     nonexistingdate    : "2017-01-01T12:00:00+01:00"
@@ -47,14 +47,14 @@ params:
                 given  : "Malte"
             image      : "http://meclab.in.tu-clausthal.de/images/people/malte_aschermann.png"
             email      : "malte@lightjason.org"
-            work       : ["Modeling", "Testing", "Scenariodesign", "Teaching / Documentation"]
+            work       : ["Modelling", "Testing", "Scenario Design", "Teaching / Documentation"]
         -
             name:
                 family : "Dennisen"
                 given  : "Sophie"
             image  : "http://meclab.in.tu-clausthal.de/images/people/sdennisen.jpg"
             email  : "sophie@lightjason.org"
-            work   : ["Modeling", "Testing / Usage", "Scenariodesign", "Teaching / Documentation"]
+            work   : ["Modelling", "Testing / Usage", "Scenario Design", "Teaching / Documentation"]
         -
             name:
                 family : "Kraus"
