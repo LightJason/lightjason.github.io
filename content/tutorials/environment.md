@@ -6,8 +6,8 @@ previous :
     url: "/tutorials/communication"
     text: "Communication"  
 next:
-    url: "/tutorials/efficient-beliefbase"
-    text: "Efficient Beliefbase"          
+    url: "/about"
+    text: "About"          
 ---
 
 
