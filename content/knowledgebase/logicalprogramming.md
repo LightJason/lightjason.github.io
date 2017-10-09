@@ -17,10 +17,10 @@ For a general understanding of logic programming it can be helpful to start by c
 
 ## Design Time
 
-On logic programs we are talking about a _symbolic definition_. We are writing source code in _symbols_, _facts_ and _rules_.
-The difference between [imperative programming](https://en.wikipedia.org/wiki/Imperative_programming) and a logic program is that the latter does not define _how the problem should be solved_. It only defines the facts and rules which are needed to calculate the solution. In a more general way it defines the _constraints_ which are needed to solve the problem. On this definition the runtime creates an internal structure to solve the problem.
+When discussing logic programs, we are talking about a _symbolic definition_. We are writing source code in _symbols_, _facts_ and _rules_.
+The difference between [imperative programming](https://en.wikipedia.org/wiki/Imperative_programming) and a logic program is that the latter does not define _how the problem should be solved_. It only defines the facts and rules needed to calculate the solution. In a more general way it defines the _constraints_ which are needed to solve the problem. Based on this definition, the runtime creates an internal structure to solve the problem.
 
-In LightJason's agent developing process, you have to write an _agent script_ in our AgentSpeak(L++) programming language, which describes the behaviour of the agent. The script describes _what and when the agent should do_. This process is named _design time_, because you design the behaviour without knowledge about the real execution process. During _design time_ there are some concepts to understand related to the structure of our logic programming language, which are shown in the following.
+In LightJason's agent developing process, you have to write an _agent script_ in our AgentSpeak(L++) programming language which describes the behaviour of the agent. The script describes _what and when the agent should do_. This process is named _design time_, because you design the behaviour without knowledge about the real execution process. During _design time_ there are some concepts to understand related to the structure of our logic programming language, which are shown in the following.
 
 > **Note:** The following sections are also covered in our knowledge base.<br>
 > For more information see [&#8594; Terms](../terms/), [&#8594; Atoms](../atoms/), [&#8594; Literals](../literals/), [&#8594; Variables](../variables), [&#8594; Facts and Beliefs](../beliefsandfacts), [&#8594; Rules](../plansandrules) and [&#8594; Unification](../unification).
@@ -115,7 +115,7 @@ fibonacci(N,R) :-
 > back as a reference, which is named [side effect](https://en.wikipedia.org/wiki/Side_effect_(computer_science)). In imperative programming languages these side effects are undesired, but
 > can be very helpful in logic programming languages.  
 >
->  But an advice in writing such rules: In the worst-case, the logic programming runtime will have to check all possibilities to calculate a solution. The system tries to find a successful solution with a [backtracking algorithm](https://en.wikipedia.org/wiki/Backtracking). This can be a [NP-complete problem](https://en.wikipedia.org/wiki/NP-completeness) and so a solution cannot be calculated efficiently.
+>  But an advice regarding writing such rules: In the worst-case, the logic programming runtime will have to check all possibilities to calculate a solution. The system tries to find a successful solution with a [backtracking algorithm](https://en.wikipedia.org/wiki/Backtracking). This can be a [NP-complete problem](https://en.wikipedia.org/wiki/NP-completeness) and so a solution cannot be calculated efficiently.
 
 
 ## Runtime
@@ -124,7 +124,7 @@ In the section [design time](#designtime) we are talked about a symbolic represe
 
 {{< img src="/images/deduction.svg" alt="deduction" width="30%" >}}
 
-The description of the figure is that we are modelling the $\Delta$ during [design time](#designtime) with any kind of [facts](#beliefs-and-facts). During runtime the agent can modify the knowledge and generate implicit knowledge about the environment which is based on the previous knowledge $\Delta$. The implicit knowledge is named $belief(\Delta, \rho)$
+The description of the figure is that we are modelling the $\Delta$ during [design time](#designtime) with any kind of [facts](#beliefs-and-facts). During runtime, the agent can modify the knowledge and generate implicit knowledge about the environment which is based on the previous knowledge $\Delta$. The implicit knowledge is named $belief(\Delta, \rho)$
 
 ### Unification
 
@@ -143,4 +143,4 @@ Based on the previous [time example](#time) the procedure can look as follows:
 > process will fail. On a successful execution the variable ```Hour``` stores the value $2$ and the variable
 > ```Minute``` the value $0$.
 
-The runtime of the logic programming language tries to find an executable structure, so that all unification components and [rules](#rules) can be finished successfully. The unification process can be used to generate new literals based on existing literals. In combination with _rules_ the system can solve complex reasoning structures. If the system cannot find any possibility to solve the problem, the logic program will be stopped with a failure. The goal of the runtime is to find a successful solution.
+The runtime of the logic programming language tries to find an executable structure so that all unification components and [rules](#rules) can be finished successfully. The unification process can be used to generate new literals based on existing literals. In combination with _rules_ the system can solve complex reasoning structures. If the system cannot find any possibility to solve the problem, the logic program will be stopped with a failure. The goal of the runtime is to find a successful solution.
