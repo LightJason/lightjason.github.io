@@ -140,7 +140,7 @@ Based on the previous [time example](#time) the procedure can look as follows:
 > </pre></code>
 > Based on this structure the systems tries to transfer the values from the first literal into the variables
 > of the second literal, such that both literals are equal. If it is not possible the unification
-> process will fail. On a successful execution the variable ```Hour``` stores the value $2$ and the variable
+> process will fail. During a successful execution the variable ```Hour``` stores the value $2$ and the variable
 > ```Minute``` the value $0$.
 
 The runtime of the logic programming language tries to find an executable structure so that all unification components and [rules](#rules) can be finished successfully. The unification process can be used to generate new literals based on existing literals. In combination with _rules_ the system can solve complex reasoning structures. If the system cannot find any possibility to solve the problem, the logic program will be stopped with a failure. The goal of the runtime is to find a successful solution.
