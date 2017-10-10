@@ -10,7 +10,7 @@ next :
     text: "Communication"
 ---
 
-This tutorial explains the concept and usage of actions. Actions are the _executable mechanisms_. We support a lot of different actions, which supports some [basic functionality](/knowledgebase/builtinactions). Actions are an important part within a multi-agent system e.g. for [communication](/tutorials/communication), modifying the [environment](/tutorials/environment) or the internal state of the agent.
+This tutorial explains the concept and usage of actions. Actions are the _executable mechanisms_. We support a lot of different actions which support some [basic functionality](/knowledgebase/builtinactions). Actions are an important part within a multi-agent system e.g. for [communication](/tutorials/communication), modifying the [environment](/tutorials/environment) or the internal state of the agent.
 
 {{< toc >}}
 
@@ -20,24 +20,24 @@ The [AgentSpeak 15min](/tutorials/agentspeak-in-fifteen-minutes/) tutorial defin
 
 ## What are actions?
 
-For actions there exists two point of views:
+For actions, there exist two points of view:
 
 1. software-based, so an action is a method (within a class) which will be executed during the agent cycle with the current agent-based execution context
-2. agent-based, the action is represent by a literal within a rule or plan, but during execution the same action can be run more than one times in parallel
+2. agent-based, the action is represented by a literal within a rule or plan, but during execution the same action can be run more than one times in parallel
 
 Based on these two definitions, on the Java-side a method must be written and be combined with the literal information for the AgentSpeak(L++) script, so that the agent can get access to the method. LightJason supports for this structure an interface, method annotations and reading mechanism to create all action objects.
 
 
 
-## What kind of actions exists?
+## What kinds of actions do exist?
 
-There are two kind of actions, both can be also used in similar context. The usage of the action based on the software-design and so there is no general approach to use the action.
+There are two kinds of actions, both can also be used in similar context. The usage of an action is based on the software-design, so there is no general approach to use an action.
 
 ### Standalone-Actions - External Actions
 
 Standalone actions, which are named in the Jason definition _external actions_, are classes which implement the [IAction](https://lightjason.github.io/AgentSpeak/sources/dc/d53/interfaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1IAction.html) interface. But we recommand to use the base implementation [IBaseAction](http://lightjason.github.io/AgentSpeak/sources/da/d94/classorg_1_1lightjason_1_1agentspeak_1_1action_1_1IBaseAction.htm). For getting an overview of the structure, take a look on the {{< lightbox "https://lightjason.github.io/AgentSpeak/sources/dd/d3e/classorg_1_1lightjason_1_1agentspeak_1_1action_1_1IBaseAction__coll__graph.svg" "IBaseAction inheritance diagram" >}}. The recommand parts of an action are:
 
-* a ```name``` which represent the call on the agent script
+* a ```name``` which represents the call on the agent script
 * the number of ```minimal arguments``` for checking the correct number of arguments during parsing
 * the ```execution``` which defines the functionality of the action
 
@@ -48,7 +48,7 @@ There are some other methods inside the definition:
 ### Object-Actions - Internal Actions
 
 Object actions are methods inside the agent class or super classes of the agent class. LightJason can read all class methods (not static or abstract methods) and create the actions on-fly. With black- and white-listing you can define a very detailed action generation. The visibility of a method can be public, private or protected.
-For the usage there exists three annotation:
+For the usage there exist three types of annotations:
 
 * method annotation ```@IAgentActionName``` for defining action name
 * class annotation ```@IAgentAction```, which can get two arguments:
@@ -63,11 +63,11 @@ Parameters of the method will be packed / unpacked into terms automatically.
 
 ## How can I create an action?
 
-Within the section both kind of actions are shown. The code of an action should be very efficient and minimalistic, because an action will be called multiple times from an agent, because plan execution and also agent execution are in parallel.
+Within this section both kinds of actions are shown. The code of an action should be very efficient and minimalistic, because an action will be called multiple times from an agent, because plan execution and also agent execution are in parallel.
 
 ### AgentSpeak(L++) Script
 
-The agent script shows the usage of the own action, it can be used like a built-in action. The naming is equal to the ```name```-method or annotation.
+The agent script shows the usage of a standalone action, it can be used like a built-in action. The naming is equal to the ```name```-method or annotation.
 
 <!-- htmlmin:ignore -->
 {{< githubsource user="LightJason" repo="Examples" file="agent_with_action.asl" lang="agentspeak" branch="tutorial-agent-action" >}}
@@ -75,7 +75,7 @@ The agent script shows the usage of the own action, it can be used like a built-
 
 ### Standalone-Actions - External Actions
 
-The data representation can be comprehended by the standalone action. A necessary property is the ```serialVersionUID``` which is defined by the Java [Serializable](https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html) interface, this allows to serialize the action.
+The data representation can be comprehended by the standalone action. A necessary property is the ```serialVersionUID``` which is defined by the Java [Serializable](https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html) interface, this allows to serialise the action.
 
 <!-- htmlmin:ignore -->
 {{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/CStandAloneAction.java" lang="java" branch="tutorial-agent-action" >}}
@@ -84,7 +84,7 @@ The data representation can be comprehended by the standalone action. A necessar
 
 ### Object-Actions - Internal Actions
 
-On object / internal action the pack & unpack process of values is done automatically. The actions are written inside the agent class and must be annotated
+In object / internal actions, the pack & unpack process of values is done automatically. The actions are written inside the agent class and must be annotated
 
 <!-- htmlmin:ignore -->
 {{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/MyAgent.java" lang="java" branch="tutorial-agent-action" >}}
@@ -99,9 +99,9 @@ The action instantiation is done by the generator in
 
 ## Efficent Concurrency Action
 
-In detail to the standalone action __keep in mind, that the action is called multiple times__, because the plan and rule execution is done in parallel and multiple agents can run the action in parallel. The ```synchronized``` keyword is not a general solution for avoiding [race condition](https://en.wikipedia.org/wiki/Race_condition) because synchronization slows down the performance.
+Regarding the standalone action, __keep in mind that the action is called multiple times__ because the plan and rule execution is done in parallel and multiple agents can run the action in parallel. The ```synchronized``` keyword is not a general solution for avoiding [race condition](https://en.wikipedia.org/wiki/Race_condition) because synchronization slows down the performance.
 
-In common work the object-orientated design of the action class can be changed to removing synchronization. If you get race condition exceptions or performance problems, just redesign your architecture. A good design of concurrency architecture can be found on all [built-in actions](http://lightjason.github.io/AgentSpeak/sources/d7/d4b/namespaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1builtin.htm) of the framework.
+In common work, the object-orientated design of the action class can be changed to remove synchronisation. If you get race condition exceptions or performance problems, just redesign your architecture. A good design of concurrency architecture can be found in all [built-in actions](http://lightjason.github.io/AgentSpeak/sources/d7/d4b/namespaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1builtin.htm) of the framework.
 
 ## Reference Solution
 
