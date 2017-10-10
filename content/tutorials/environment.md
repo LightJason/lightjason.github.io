@@ -27,7 +27,7 @@ The tutorial consists of three steps:
 
 ## Environment
 
-For this example we use a small structure within which the agents should change their positions. The agents can move from one cell to the left or right, but the agents can only move if the cell is free. The number of cells is $1.5 \cdot \text{number of agents}$, so there are guaranteed free cells. The agent position will be set at random on initialization.
+For this example we use a small structure within which the agents should change their positions. The agents can move from one cell to the left or right, but the agents can only move if the cell is free. The number of cells is $1.5 \cdot \text{number of agents}$, so there are guaranteed free cells. The agent position will be set at random on initialisation.
 
 {{< img src="/images/environment.svg" width="35%" >}}
 
@@ -82,7 +82,7 @@ The agent generator is structured for a flexible environment, so with the constr
 
 ### Variable Builder
 
-For creating fast access to data of the environment (size) and agent name (hashcode) we use a variable builder that gets the environment also as reference {{< linelink "" "variablebuilder" "13, 15, 17" >}}. The _generate_ method creates constants for each plan {{< linelink "" "variablebuilder" "20-27" >}}. In detail to the environment data {{< linelink "" "variablebuilder"  "25" >}} create a variable with the size of the environment
+For creating fast access to data of the environment (size) and agent name (hashcode) we use a variable builder that gets the environment also as reference {{< linelink "" "variablebuilder" "13, 15, 17" >}}. The _generate_ method creates constants for each plan {{< linelink "" "variablebuilder" "20-27" >}}. Regarding the environment data, {{< linelink "" "variablebuilder"  "25" >}} creates a variable with the size of the environment
 
 <!-- htmlmin:ignore -->
 {{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/CVariableBuilder.java" lang="java" branch="tutorial-environment" id="variablebuilder" >}}
