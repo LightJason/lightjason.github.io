@@ -57,7 +57,7 @@ A trigger is a combination of a _literal_ and a _trigger type_. Both elements ar
 
 ### AgentSpeak Implementation
 
-The agent (in detail the ASL script) can handle the trigger iif a plan (an instantiated goal) exists which matches the literal. For this example the agents need only to define a pla which matches the literal ({{< linelink "" "triggercall" "1" >}}) and executes a print message ({{< linelink "" "triggercall" "2" >}})
+The agent (in detail the ASL script) can handle the trigger iif a plan (an instantiated goal) exists which matches the literal. For this example the agents need only to define a plan which matches the literal ({{< linelink "" "triggercall" "11" >}}) and executes a print message ({{< linelink "" "triggercall" "12" >}})
 
 <!-- htmlmin:ignore -->
 {{< githubsource user="LightJason" repo="Examples" file="agent_trigger.asl" lang="agentspeak" branch="tutorial-agent-trigger" id="triggercall" >}}
