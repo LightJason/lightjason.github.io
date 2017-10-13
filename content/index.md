@@ -5,7 +5,7 @@ next:
     text: "Publications"
 ---
 
-LightJason is a _concurrent BDI multi-agent framework_ for creating multi-agent systems with Java. [Multi-agent systems](https://en.wikipedia.org/wiki/Multi-agent_system) are generally considered a sub-discipline of [Artificial Intelligence](https://en.wikipedia.org/wiki/Artificial_intelligence). We try to create a framework which allows to add AI algorithms to an existing software architecture. The framework combines classical Artificial Intelligence methods with optimization and [fuzzy-logics](https://en.wikipedia.org/wiki/Fuzzy_logic) concepts on a high-scalable concurrency architecture.
+LightJason is a _concurrent BDI multi-agent framework_ for creating multi-agent systems with Java. [Multi-agent systems](https://en.wikipedia.org/wiki/Multi-agent_system) are generally considered a sub-discipline of [Artificial Intelligence](https://en.wikipedia.org/wiki/Artificial_intelligence). We try to create a framework which allows to add AI algorithms to an existing software architecture. The framework combines classical Artificial Intelligence methods with optimisation and [fuzzy-logics](https://en.wikipedia.org/wiki/Fuzzy_logic) concepts on a high-scalable concurrency architecture.
 
 The project is inspired by [AgentSpeak(L)](https://en.wikipedia.org/wiki/AgentSpeak) and  [Jason](http://jason.sourceforge.net), but designed and implemented from scratch.
 LightJason is fine-tuned to concurrent plan execution suitable for distributed computing environments and aims at efficient and scalable integration with existing platforms.
