@@ -21,3 +21,58 @@ AgentSpeak(L++) does not support looping directly; however, we support [lambda e
 (L) -> Y | R : R = Y+1;
 </code></pre>
 <!-- htmlmin:ignore -->
+
+**Practical Example**
+
+This concept especially makes sense in situations where efficient processing of multiple elements is desired.
+Consider an agent _Alice_ with a custom action `myfriends( Phonebook )` which returns a list of her closest friends from her phone book. If Alice would want to send an invitation to each of her closest friends, she could use a _lambda expression_ to send a message to each of them:
+<!-- htmlmin:ignore -->
+<pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">+!main
+<-
+  L = myfriends( Phonebook );
+  (L) -> Friend : message/send( Friend, content( "invitation to my birthday, next week" ) )
+.
+</code></pre>
+<!-- htmlmin:ignore -->
+
+<br>
+
+_But, can we optimise this further?_
+
+Alice probably would not want to wait until the message gets delivered. In practice she would hand all the envelopes to the postal clerk at the same time to have her mind free for other tasks.
+
+The same can be achieved by adding the [&#8594; annotation](../annotations) `@` to the lamda expression to instruct LightJason to execute the expression in parallel:
+<!-- htmlmin:ignore -->
+<pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">+!main
+<-
+  L = myfriends( Phonebook );
+  @(L) -> Friend : message/send( Friend, content( "invitation to my birthday, next week" ) )
+.
+</code></pre>
+<!-- htmlmin:ignore -->
+
+<br>
+
+_But, what if some of her friend have be invited via different kind of messenger?_
+
+Here the feature that LightJason executes [&#8594; plans](../plansandrules) with different plan signatures in parallel comes into play.
+Alice simply creates a plan `+!sendinvitation( Friend )` to do the job. This plan gets executed in the next cycle (see [&#8594; advanced triggering](../triggering)) and can also decide on how each friend can be reached best.
+
+> **Note:** Alice removed the `@` from the lambda expression as the plans will be executed in the next cylce in parallel.
+
+<!-- htmlmin:ignore -->
+<pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">+!main
+<-
+  L = myfriends( Phonebook );
+  (L) -> Friend : !sendinvitation( Friend ) )
+.
+</code><code class="language-agentspeak">
++!sendinvitation( Friend )
+  : isreachablebyemail( Friend ) <-
+    message/send/email( Friend, content( "invitation to my birthday, next week" ) )
+  : isreachablebyjabber( Friend ) <-
+  	message/send/jabber( Friend, content( "invitation to my birthday, next week" ) )
+.
+</code></pre>
+<!-- htmlmin:ignore -->
+
