@@ -54,7 +54,7 @@ For the usage there exists three annotation:
 * class annotation ```@IAgentAction```, which can get two arguments:
     * ```access``` with the values ```BLACKLIST``` or ```WHITELIST``` to define the filter mechanism (default: ```BLACKLIST```)
     * ```classes``` a list of class objects for which the filtering should be defined (default empty for all classes)
-* method annotation ```@IAgentActionFilter``` with the ```classes``` argument for definining class filtering of a method (see ```@IAgentAction```)
+* method annotation ```@IAgentActionFilter``` with the ```classes``` argument for defining class filtering of a method (see ```@IAgentAction```)
 
 Parameters of the method will be packed / unpacked into terms automatically.
 

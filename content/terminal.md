@@ -5,7 +5,7 @@ draft: true
 
 Command formatting can be found on the plugin page on [GitHub](https://github.com/stvwhtly/jquery-teletype-plugin#deleting-characters-)
 
-> The terminal command seperates with ```p```-tags _commands_ annd _command results_. Results are optional, but if the results are used the
+> The terminal command separates with ```p```-tags _commands_ and _command results_. Results are optional, but if the results are used the
 number of command ```p```-tags and result ```p```-tags must be equal
 
 ## Basic
@@ -33,7 +33,7 @@ Arguments of the Hugo _terminal_ shortcode (all arguments are optional):
 For resetting and/or start typing there exists a single Hugo shortcode with two arguments
 
 1. DOM-ID of the terminal tag (see above)
-2. HTML code between the link tags, should be a plain text normaly
+2. HTML code between the link tags, should be a plain text normally
 
 {{< terminalreset "test" "start / reset terminal typing" >}}
 
