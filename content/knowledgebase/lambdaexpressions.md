@@ -64,7 +64,7 @@ Alice simply creates a plan `+!sendinvitation( Friend )` to do the job. This pla
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">+!main
 <-
   L = myfriends( Phonebook );
-  (L) -> Friend : !sendinvitation( Friend ) )
+  (L) -> Friend : !sendinvitation( Friend )
 .
 </code><code class="language-agentspeak">
 +!sendinvitation( Friend )
