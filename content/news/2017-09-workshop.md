@@ -7,7 +7,7 @@ categories: ["Project"]
 We created a _traffic simulation game_ for the [Socal Cars Multi-Agent Workshop](https://www.socialcars.org/).
 <!--more-->
 
-The last 3 months were hard work for us, so a very large thank-you to my colleague Malte and my student assistant Ehsan for a great job.
+The last 3 months were hard work for us, so a very large thank-you to my colleague Malte, Sophie and my student assistant Ehsan for a great job.
 Our task was: 
 
 > Preparing a workshop for PhD students which shows a multi-agent simulation. We decided on a _traffic game_ with the following definition:

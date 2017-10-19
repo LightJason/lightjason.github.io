@@ -30,11 +30,11 @@ We present a short overview of language examples of the _AgentSpeak(L++)_ syntax
 * [Agent Railroad / Syntax Diagram](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/)
 * [PlanBundle Railroad / Syntax Diagram](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/PlanBundle.g4/)
 
-### <a name="lambdaexpression"></a>Lambda Expression
+### <a name="lambdaexpression"></a>Lambda Expressions
 
-The language does not support looping directly; however, we support [lambda expression](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#945f3fc449518a73b9f5f32868db466c) which are based on [lambda calculus](https://en.wikipedia.org/wiki/Lambda_calculus). Similar to a _for each_ call, each element in an input list (variable) can be looped.
+The language does not support looping directly; however, we support [lambda expressions](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#945f3fc449518a73b9f5f32868db466c) which are based on [lambda calculus](https://en.wikipedia.org/wiki/Lambda_calculus). Similar to a _for each_ call, each element in an input list (variable) can be looped.
 
-> The example creates a list of the number _[1,20)_ and we are looping over the elements, first in sequential order and call the _print_ action for each element and in the second call we are summarize each value to the variable _R_. _R_ is in this case the _returning variable_
+> The example below creates a list of the number _[1,20)_ and we are looping over the elements, first in sequential order and call the _print_ action for each element and in the second call we are summarize each value to the variable _R_. _R_ is in this case the _returning variable_
 
 <!-- htmlmin:ignore -->
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">L = collection/list/range(1, 20);
@@ -43,31 +43,29 @@ The language does not support looping directly; however, we support [lambda expr
 </code></pre>
 <!-- htmlmin:ignore -->
 
-### <a name="repairaction"></a>Explicit Repair Action
+### <a name="repairaction"></a>Explicit Repair Actions
 
-In general supports the implementation _repair planning_ with the default behaviour ```-!```. In this additional structure we support also [repair action chains](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#503f34271b101269197f766a6b90e4a9).
+AgentSpeak(L++) supports the implementation of _repair planning_ with the default behaviour ```-!```. With this additional structure we also support [repair action chains](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#503f34271b101269197f766a6b90e4a9).
 
-> The example shows the execution of three actions _actionA_, _actionB_, _actionC_. The system executes the _actionA_ first, if the action fails, _actionB_ will be executed, if this also fails _actionC_ will be executed. If _actionC_ fails also, the whole plan fails.
-
+> The following example shows the execution of three actions _actionA_, _actionB_, _actionC_. The system executes the _actionA_ first, if the action fails, _actionB_ will be executed, if this also fails _actionC_ will be executed. If the last action in the statement fails (here: _actionC_), the whole plan fails.
 <!-- htmlmin:ignore -->
-<pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">
-actionA << actionB << actionC;
+<pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">actionA << actionB << actionC;
 </code></pre>
 <!-- htmlmin:ignore -->
 
-> If you don't want that a plan is failing, if an action fails you can put at the end of this chain a ```true``` value. This models the behaviour _anything can go wrong, but the agent ignores the error(s)_.
+<p/>
 
+> You can also use this technique, if you don't want a plan to fail: If an action might fail you can append a ```<< true``` to its invocation. This models the behaviour _anything can go wrong, but the agent ignores the error(s)_.
 <!-- htmlmin:ignore --><pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">actionA << true;
 </code></pre><!-- htmlmin:ignore -->
 
-### <a name="multiplanrule"></a>Multi-Plan and Rule Definition
+### <a name="multiplanrule"></a>Multi-Plan and Rule Definitions
 
-In general Prolog uses only logical rules, _AgentSpeak(L)_ and _AgentSpeak(L++)_ use rules and also adds a plan structure. Within a Prolog structure the ordering of rules and plans are neccessary of the execution semantic (see in [Learn Prolog Now!](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-htmlse10)).
+In general Prolog uses only logical rules. _AgentSpeak(L)_ and _AgentSpeak(L++)_ also use rules but additionally provide a plan structure. Within a Prolog structure the ordering is relevant to the execution semantic (see in [Learn Prolog Now!](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-htmlse10)).
 
-But in _AgentSpeak(L++)_ the ordering of rules and plans are not relevant for the execution semantic. On this case within the source code plan and rule structures are grouped.
+But in _AgentSpeak(L++)_ the ordering of rules and plans are **not** relevant for the execution semantic. Furthermore plan and rule structures can be grouped within the source code to simplify modelling different paths of execution.
 
 > This example shows the [Ackermann function](https://en.wikipedia.org/wiki/Ackermann_function). The first line defines the [rule](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#d0404623ab035c7e30f997d91d173a52) name (literal) similar to Prolog. Each rule will be added by the ```:-``` rule-sign under the literal. In classical Prolog the rule-literal must be for each different rule and Prolog executes the rules in sequential order. In our case we change this behaviour, so that each rule, which can be executed, will be executed. So we put a condition first to the rule, so this condition will deny or allow the execution. After that the rule-body will be added. For calling a rule from a plan or a rule, you need to put a ```$```-sign in front of the rule-name.
-
 <!-- htmlmin:ignore -->
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">ackermann(N, M, R)
     :- N == 0; M > 0; R = M+1
@@ -76,18 +74,19 @@ But in _AgentSpeak(L++)_ the ordering of rules and plans are not relevant for th
 </code></pre>
 <!-- htmlmin:ignore -->
 
+<p/>
+
 > The second example shows the structure for [plans](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#5fc25157650d0cb24f02216d904584df). For plans it is similar to the rule structure, but the ```<-``` plan-sign is used and a condition of the plan execution can be added. Here exist three plans, the first will be executed, iif there is a belief ```hello``` with a string value, the second plan will be executed, iif there exists a belief ```hello``` with a numeric value which is greater than $1000$ and the third plan will be run every time (default plan).
-
-<!-- htmlmin:ignore -->
-<pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">+!main
-
+> <!-- htmlmin:ignore --><pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">+!main
+</code><code class="language-agentspeak">
     : >>( hallo(X), generic/type/isstring(X) ) <-
             generic/print("---", "first plan", "---", "unification variables", X)
-
+</code><code class="language-agentspeak">
     : >>( hallo(X), generic/type/isnumeric(X) && X > 1000 )  <-
         generic/print("---", "second plan", "---", "unification variables", X)
-
-    <- generic/print("---", "third (default) plan", "---").
+</code><code class="language-agentspeak">
+    <- generic/print("---", "third (default) plan", "---")
+.
 </code></pre>
 <!-- htmlmin:ignore -->
 

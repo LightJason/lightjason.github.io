@@ -134,7 +134,7 @@ For the following sections we assume that you are working inside the directory `
 	{{< githubsource user="LightJason" repo="Examples" file="pom.xml" lang="xml" branch="tutorial-agentspeak-in-15min" filter="[[:space:]]{4}<properties>(.|\n)*?</properties>" >}}
     <!-- htmlmin:ignore -->
 
-4. Put the following code inside the ```<project>``` section, e.g. after ```</dependencies>```. This sets the current Maven comoponents e.g. documentation build, packaging with [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/examples/executable-jar.html) which creates an executable JAR when you build your project with ```mvn package```. The comment-out section defines the LightJason styleguide checking for the project
+4. Put the following code inside the ```<project>``` section, e.g. after ```</dependencies>```. This sets the current Maven comoponents e.g. documentation build, packaging with [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/examples/executable-jar.html) which creates an executable JAR when you build your project with ```mvn package```. The commented out section defines the LightJason styleguide checking for the project
 
     <!-- htmlmin:ignore -->
     {{< githubsource user="LightJason" repo="Examples" file="pom.xml" lang="xml" branch="tutorial-agentspeak-in-15min" filter="[[:space:]]{4}<build>(.|\n)*?</build>" >}}

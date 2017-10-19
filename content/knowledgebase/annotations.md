@@ -6,8 +6,8 @@ previous :
     url: "/knowledgebase/triggering"
     text: "kb: Advanced - Plan Triggering Techniques"
 next :
-    url: "/knowledgebase/failing"
-    text: "kb: Advanced - Failing is Intentional"
+    url: "/knowledgebase/lambdaexpressions"
+    text: "kb: Advanced - Lambda Expressions"
 ---
 
 Analogously to [Java](https://en.wikipedia.org/wiki/Java_annotation), AgentSpeak(L++) also supports the concept of [annotations](https://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#4ab6864fc58ecd8b598ee10dfe2ac311).
