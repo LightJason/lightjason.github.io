@@ -15,11 +15,11 @@ We imagine actions to be the sensors and actuators to perceive and manipulate ot
 
 Actions can be called analogously to functions inside the body or condition of a [&#8594; plan](../plansandrules).
 
-> **Note:** A list of already [&#8594; built-in actions](../builtinactions) can be found on the next page.
+> **Notes:** 
 
-<p></p>
-
-> **Note for developers:** See our [&#8594; tutorial about actions](/tutorials/actions/) for a practical guide on how to use and create new actions.
+> * A list of already [&#8594; built-in actions](../builtinactions) can be found on the next page.
+> * An elegant way to handle failing plans are explained in the article about [&#8594; explicit repair actions](../repairactions).
+> * **For developers:** See our [&#8594; tutorial about actions](/tutorials/actions/) for a practical guide on how to use and create new actions.
 
 
 **Example**

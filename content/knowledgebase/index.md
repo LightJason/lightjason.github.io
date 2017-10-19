@@ -37,6 +37,9 @@ In this section we provide a background of multi-agent modelling, a gentle intro
 <br>
 
 ## Advanced Knowledge
-  1. [Plan Triggering Techniques](triggering) provides insights into different ways to trigger plans in AgentSpeak(L++)
-  2. [Plan Annotations](annotations) shows how to modify the execution behaviour of plans
-  3. [Failing is Intentional](failing) explains techniques to mitigate failing plans and actions, as failing is part of ~~humans~~ agents interacting with each other in a shared environment.
+  1. [Multi-Assignments](multiassignments) explains how to assign the output of actions to a list containing multiple variables
+  2. [Plan Triggering Techniques](triggering) provides insights into different ways to trigger plans in AgentSpeak(L++)
+  3. [Plan Annotations](annotations) shows how to modify the execution behaviour of plans
+  4. [Lambda Expressions](lambdaexpressions) are useful to implement loops over iterable structures likes lists
+  5. [Explicit Repair Actions](repairactions) can be used to catch failing actions
+  6. [Failing is Intentional](failing) explains techniques to mitigate failing plans and actions, as failing is part of ~~humans~~ agents interacting with each other in a shared environment.

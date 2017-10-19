@@ -3,8 +3,8 @@ title: "Advanced Knowledge: Plan Triggering Techniques"
 jsonld: ["techarticle"]
 gitter: "knowledge base"
 previous :
-    url: "/knowledgebase/unification"
-    text: "kb: Basic - Unification"
+    url: "/knowledgebase/multiassignments"
+    text: "kb: Advanced - Multi-Assignments"
 next :
     url: "/knowledgebase/annotations"
     text: "kb: Advanced - Plan and Rule Annotations"

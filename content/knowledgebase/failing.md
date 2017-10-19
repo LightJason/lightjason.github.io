@@ -3,8 +3,8 @@ title: "Advanced Knowledge: Failing is Intentional"
 jsonld: ["techarticle"]
 gitter: "knowledge base"
 previous :
-    url: "/knowledgebase/annotations"
-    text: "kb: Advanced - Plan and Rule Annotations"
+    url: "/knowledgebase/repairactions"
+    text: "kb: Advanced - Explicit Repair Actions"
 next :
     url: "/tutorials"
     text: "Tutorials"
