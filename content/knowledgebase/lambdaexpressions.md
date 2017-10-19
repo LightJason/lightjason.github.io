@@ -53,7 +53,7 @@ The same can be achieved by adding the [&#8594; annotation](../annotations) `@` 
 
 <br>
 
-_But, what if some of her friend have be invited via different kind of messenger?_
+_But, what if some of her friends have to be invited via different kinds of messengers?_
 
 Here the feature that LightJason executes [&#8594; plans](../plansandrules) with different plan signatures in parallel comes into play.
 Alice simply creates a plan `+!sendinvitation( Friend )` to do the job. This plan gets executed in the next cycle (see [&#8594; advanced triggering](../triggering)) and can also decide on how each friend can be reached best.
