@@ -41,7 +41,7 @@ _But, can we optimise this further?_
 
 Alice probably would not want to wait until the message gets delivered. In practice she would hand all the envelopes to the postal clerk at the same time to have her mind free for other tasks.
 
-The same can be achieved by adding the [&#8594; annotation](../annotations) `@` to the lamda expression to instruct LightJason to execute the expression in parallel:
+The same can be achieved by adding the [&#8594; annotation](../annotations) `@` to the lambda expression to instruct LightJason to execute the expression in parallel:
 <!-- htmlmin:ignore -->
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">+!main
 <-
@@ -58,7 +58,7 @@ _But, what if some of her friends have to be invited via different kinds of mess
 Here the feature that LightJason executes [&#8594; plans](../plansandrules) with different plan signatures in parallel comes into play.
 Alice simply creates a plan `+!sendinvitation( Friend )` to do the job. This plan gets executed in the next cycle (see [&#8594; advanced triggering](../triggering)) and can also decide on how each friend can be reached best.
 
-> **Note:** Alice removed the `@` from the lambda expression as the plans will be executed in the next cylce in parallel.
+> **Note:** Alice removed the `@` from the lambda expression as the plans will be executed in the next cycle in parallel.
 
 <!-- htmlmin:ignore -->
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">+!main
