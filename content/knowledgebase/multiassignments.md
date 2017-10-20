@@ -21,7 +21,7 @@ The [multi-assignment](http://lightjason.github.io/AgentSpeak/rrd-output/html/or
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">L = collection/list/range(1, 20);
 [A|B|C|_|D|E|F|G] = L;
 </code></pre>
-> <!-- htmlmin:ignore -->
+<!-- htmlmin:ignore -->
 > Resulting in
 >
 > * _A_ &#8592; 1
