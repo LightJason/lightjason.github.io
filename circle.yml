@@ -1,67 +1,85 @@
-general:
-    branches:
-        only:
-            - developing
-        ignore:
-            - master
-            - /dev-.*/
+version: 2
 
-machine:
-    timezone:
-        Europe/Berlin
+jobs:
+    build:
+        docker:
+            - image: image: circleci/node:latest
 
-    environment:
-        GIT_AUTHOR_NAME: CircleCI
-        GIT_AUTHOR_EMAIL: info@lightjason.org
-        GIT_COMMITTER_NAME: CircleCI
-        GIT_COMMITTER_EMAIL: info@lightjason.org
+        branches:
+            only:
+                - developing
+            ignore:
+                - master
+                - /dev-.*/     
 
-dependencies:
-    pre:
-        - sudo apt-get install zsh
-        # see release version https://github.com/spf13/hugo/releases
-        - wget -O hugo.deb https://github.com/spf13/hugo/releases/download/v0.27.1/hugo_0.27.1_Linux-64bit.deb
-        - sudo dpkg -i hugo.deb
-        # see relese version https://github.com/nodesource/distributions
-        - "curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash"
-        - sudo apt-get install -y nodejs
-        # see release version https://github.com/kangax/html-minifier
-        - npm install -g html-minifier
-        # see release version https://github.com/svg/svgo
-        - npm install -g git+https://github.com/svg/svgo.git
-        # see release version https://github.com/fizker/minifier
-        - npm install -g git+https://github.com/fizker/minifier.git
+        shell: /bin/bash           
 
 
-checkout:
-    post:
-        - git clean -xdf
-        - git fetch -p
-        - git gc --prune=now
+        environment:
+            TZ: "/usr/share/zoneinfo/Europe/Berlin"
 
 
-test:
-    override:
-        - hugo --ignoreCache --cleanDestinationDir
-    post:    
-        - svgo --config=data/svgo.config public/images/
-        - find public -type f -name "*.htm*" -exec data/minify.sh \{\} \;
-        - find public -type f -name "*.css" -exec data/minify.sh \{\} \;
-        - find public -type f -name "*.js" -exec data/minifyjs.sh \{\} \;
-        - mv -f public /tmp
+        steps:
+            # https://github.com/spf13/hugo/releases
+            - run:
+                name: Download Hugo
+                command: wget -O hugo.deb https://github.com/spf13/hugo/releases/download/v0.27.1/hugo_0.27.1_Linux-64bit.deb
+            - run:
+                name: Install Hugo
+                command: sudo dpkg -i hugo.deb
+            # https://github.com/kangax/html-minifier    
+            - run:
+                name: Install HTML-Minifier
+                command: npm install -g html-minifier
+            # https://github.com/svg/svgo
+            - run:
+                name: Install SVGO
+                command: npm install -g git+https://github.com/svg/svgo.git
+            # https://github.com/fizker/minifier
+            - run:
+                name: Install Minifier
+                command: npm install -g git+https://github.com/fizker/minifier.git
+            - checkout
+            - run:
+                name: Git Clean
+                command: git clean -xdf
+            - run:
+                name: Git Remove Unused Branches
+                command: git fetch -p
+            - run:
+                name: Git Prune
+                command: git gc --prune=now
+            - run:
+                name: Build Hugo Website
+                command: hugo --ignoreCache --cleanDestinationDir
+            - run:
+                name: Minify SVGs
+                command: svgo --config=data/svgo.config public/images/
+            - run:
+                name: Minify HTML
+                command: find public -type f -name "*.htm*" -exec data/minify.sh \{\} \;
+            - run:
+                name: Minify CSS
+                command: find public -type f -name "*.css" -exec data/minify.sh \{\} \;
+            - run:
+                name: Minify JS
+                command: find public -type f -name "*.js" -exec data/minifyjs.sh \{\} \;
+            - store_artifacts:
+                path: ~/public  
 
-deployment:
-    production:
-        branch: developing
-        commands:
-            - git push origin :master || true
-            - git brach -D master || true       
-            - git checkout --orphan master
-            - rm -Rf *
-            - mv -f /tmp/public/* .
-            - echo -e 'general:\n    branches:\n        ignore:\n            - master\n' > circle.yml
-            - echo -e '*.*\n!.gitignore\n!circle.yml\n!*.html\n!*.xml\n!*.css\n!*.js\n!*.json\n!*.bib\n!*.zip\n!*.png\n!*.gif\n!*.pdf\n!*.svg\n!*.txt\n' > .gitignore
-            - echo -e '# LightJason\n\nCurrent website of the [LightJason](http://lightjason.org) project' > readme.md
-            - git add --all .
-            - export GIT_COMMIT_MESSAGE="$(git show -s --pretty=format:%s $CIRCLE_SHA1)" && git commit -m "webpage update [$GIT_COMMIT_MESSAGE]"
-            - git push origin master
+#- mv -f public /tmp
+#deployment:
+#    production:
+#        branch: developing
+#        commands:
+#            - git push origin :master || true
+#            - git brach -D master || true       
+#            - git checkout --orphan master
+#            - rm -Rf *
+#            - mv -f /tmp/public/* .
+#            - echo -e 'general:\n    branches:\n        ignore:\n            - master\n' > circle.yml
+#            - echo -e '*.*\n!.gitignore\n!circle.yml\n!*.html\n!*.xml\n!*.css\n!*.js\n!*.json\n!*.bib\n!*.zip\n!*.png\n!*.gif\n!*.pdf\n!*.svg\n!*.txt\n' > .gitignore
+#            - echo -e '# LightJason\n\nCurrent website of the [LightJason](http://lightjason.org) project' > readme.md
+#            - git add --all .
+#            - export GIT_COMMIT_MESSAGE="$(git show -s --pretty=format:%s $CIRCLE_SHA1)" && git commit -m "webpage update [$GIT_COMMIT_MESSAGE]"
+#            - git push origin master
