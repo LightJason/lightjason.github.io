@@ -30,15 +30,15 @@ jobs:
             # https://github.com/kangax/html-minifier    
             - run:
                 name: Install HTML-Minifier
-                command: npm install -g html-minifier
+                command: sudo npm install -g html-minifier
             # https://github.com/svg/svgo
             - run:
                 name: Install SVGO
-                command: npm install -g git+https://github.com/svg/svgo.git
+                command: sudo npm install -g git+https://github.com/svg/svgo.git
             # https://github.com/fizker/minifier
             - run:
                 name: Install Minifier
-                command: npm install -g git+https://github.com/fizker/minifier.git
+                command: sudo npm install -g git+https://github.com/fizker/minifier.git
             - checkout
             - run:
                 name: Git Clean
