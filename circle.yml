@@ -65,21 +65,40 @@ jobs:
                 name: Minify JS
                 command: find public -type f -name "*.js" -exec data/minifyjs.sh \{\} \;
             - store_artifacts:
-                path: ~/public  
-
-#- mv -f public /tmp
-#deployment:
-#    production:
-#        branch: developing
-#        commands:
-#            - git push origin :master || true
-#            - git brach -D master || true       
-#            - git checkout --orphan master
-#            - rm -Rf *
-#            - mv -f /tmp/public/* .
-#            - echo -e 'general:\n    branches:\n        ignore:\n            - master\n' > circle.yml
-#            - echo -e '*.*\n!.gitignore\n!circle.yml\n!*.html\n!*.xml\n!*.css\n!*.js\n!*.json\n!*.bib\n!*.zip\n!*.png\n!*.gif\n!*.pdf\n!*.svg\n!*.txt\n' > .gitignore
-#            - echo -e '# LightJason\n\nCurrent website of the [LightJason](http://lightjason.org) project' > readme.md
-#            - git add --all .
-#            - export GIT_COMMIT_MESSAGE="$(git show -s --pretty=format:%s $CIRCLE_SHA1)" && git commit -m "webpage update [$GIT_COMMIT_MESSAGE]"
-#            - git push origin master
+                path: public/
+            - run:
+                name: Moving Artifacts to Temporary
+                command: mv -f public /tmp
+            - run:
+                name: Delete Remote Master Branch
+                command: git push origin :master || true
+            - run:
+                name: Delete Local Master Branch
+                command: git brach -D master || true  
+            - run:
+                name: Initialize Orphan Master Branch
+                command: git checkout --orphan master
+            - run:
+                name: Remove Non-Usable Data
+                command: rm -Rf *
+            - run:
+                name: Moving Artifacts back to Repository
+                command: mv -f /tmp/public/* .
+            - run:
+                name: Create Circle-CI Configuration
+                command: echo -e 'general:\n    branches:\n        ignore:\n            - master\n' > circle.yml
+            - run:
+                name: Create GitIgnore
+                command: echo -e '*.*\n!.gitignore\n!circle.yml\n!*.html\n!*.xml\n!*.css\n!*.js\n!*.json\n!*.bib\n!*.zip\n!*.png\n!*.gif\n!*.pdf\n!*.svg\n!*.txt\n' > .gitignore
+            - run:
+                name: Create Readme
+                command: echo -e '# LightJason\n\nCurrent website of the [LightJason](http://lightjason.org) project' > readme.md
+            - run: 
+                name: Git Branch Add
+                command: git add --all .
+            - run:
+                name: Git Branch Commit
+                command: GIT_COMMIT_MESSAGE="$(git show -s --pretty=format:%s $CIRCLE_SHA1)" && git commit -m "webpage update [$GIT_COMMIT_MESSAGE]"
+            - run:
+                name: Git Push
+                command: git push origin master
