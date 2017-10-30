@@ -20,6 +20,16 @@ jobs:
 
 
         steps:
+            - checkout
+            - run:
+                name: Git Clean
+                command: git clean -xdf
+            - run:
+                name: Git Remove Unused Branches
+                command: git fetch -p
+            - run:
+                name: Git Prune
+                command: git gc --prune=now
             # https://github.com/spf13/hugo/releases
             - run:
                 name: Download Hugo
@@ -39,16 +49,6 @@ jobs:
             - run:
                 name: Install Minifier
                 command: npm install https://github.com/fizker/minifier.git
-            - checkout
-            - run:
-                name: Git Clean
-                command: git clean -xdf
-            - run:
-                name: Git Remove Unused Branches
-                command: git fetch -p
-            - run:
-                name: Git Prune
-                command: git gc --prune=now
             - run:
                 name: Build Hugo Website
                 command: hugo --ignoreCache --cleanDestinationDir
