@@ -18,6 +18,12 @@ jobs:
         environment:
             TZ: "/usr/share/zoneinfo/Europe/Berlin"
 
+            GIT_AUTHOR_NAME: CircleCI
+            GIT_AUTHOR_EMAIL: info@lightjason.org
+            GIT_COMMITTER_NAME: CircleCI
+            GIT_COMMITTER_EMAIL: info@lightjason.org
+
+
 
         steps:
             - checkout
@@ -64,8 +70,11 @@ jobs:
             - run:
                 name: Minify JS
                 command: find public -type f -name "*.js" -exec data/minifyjs.sh \{\} \;
+            - run:
+                name: Build Artifacts
+                command: tar -cvjSf site.tar.bz2 public/*    
             - store_artifacts:
-                path: public/
+                path: site.tar.bz2
             - run:
                 name: Moving Artifacts to Temporary
                 command: mv -f public /tmp
