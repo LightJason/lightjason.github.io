@@ -33,10 +33,10 @@ jobs:
             # https://github.com/spf13/hugo/releases
             - run:
                 name: Download Hugo
-                command: wget -O hugo.deb https://github.com/spf13/hugo/releases/download/v0.27.1/hugo_0.27.1_Linux-64bit.deb
+                command: wget -O /tmp/hugo.deb https://github.com/spf13/hugo/releases/download/v0.27.1/hugo_0.27.1_Linux-64bit.deb
             - run:
                 name: Install Hugo
-                command: sudo dpkg -i hugo.deb
+                command: sudo dpkg -i /tmp/hugo.deb
             # https://github.com/kangax/html-minifier    
             - run:
                 name: Install HTML-Minifier
@@ -54,7 +54,7 @@ jobs:
                 command: hugo --ignoreCache --cleanDestinationDir
             - run:
                 name: Minify SVGs
-                command: svgo --config=data/svgo.config public/images/
+                command: node_modules/svgo/bin/svgo --config=data/svgo.config public/images/
             - run:
                 name: Minify HTML
                 command: find public -type f -name "*.htm*" -exec data/minify.sh \{\} \;
