@@ -3,7 +3,7 @@ version: 2
 jobs:
     build:
         docker:
-            - image: image: circleci/node:latest
+            - image: circleci/node:latest
 
         branches:
             only:
