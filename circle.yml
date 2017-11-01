@@ -26,6 +26,7 @@ jobs:
 
 
         steps:
+            # start build
             - checkout
             - run:
                 name: Git Clean
@@ -78,12 +79,10 @@ jobs:
             - run:
                 name: Moving Artifacts to Temporary
                 command: mv -f public /tmp
-            - run:
-                name: Delete Remote Master Branch
-                command: git push origin :master || true
+            # start deployment    
             - run:
                 name: Delete Local Master Branch
-                command: git brach -D master || true  
+                command: git branch -D master || true  
             - run:
                 name: Initialize Orphan Master Branch
                 command: git checkout --orphan master
@@ -110,7 +109,10 @@ jobs:
                 command: GIT_COMMIT_MESSAGE="$(git show -s --pretty=format:%s $CIRCLE_SHA1)" && git commit -m "webpage update [$GIT_COMMIT_MESSAGE]"
             - add_ssh_keys:
                 fingerprints:
-                    - "68:f3:5d:d1:2e:72:7e:73:14:40:07:7e:82:04:4a:37"    
+                    - "68:f3:5d:d1:2e:72:7e:73:14:40:07:7e:82:04:4a:37"
+            - run:
+                name: Delete Remote Master Branch
+                command: git push origin :master || true                     
             - run:
                 name: Deployment
                 command: git push origin master
