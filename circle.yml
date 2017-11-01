@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-    build:
+    build-job:
         docker:
             - image: circleci/node:latest
 
@@ -108,6 +108,9 @@ jobs:
             - run:
                 name: Git Branch Commit
                 command: GIT_COMMIT_MESSAGE="$(git show -s --pretty=format:%s $CIRCLE_SHA1)" && git commit -m "webpage update [$GIT_COMMIT_MESSAGE]"
+            - add_ssh_keys:
+                fingerprints:
+                    - "68:f3:5d:d1:2e:72:7e:73:14:40:07:7e:82:04:4a:37"    
             - run:
-                name: Git Push
+                name: Deployment
                 command: git push origin master
