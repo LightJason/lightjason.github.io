@@ -3,7 +3,7 @@
 
 baseurl		 	       : "https://lightjason.github.io/"
 metadataformat		   : "yaml"
-ignoreFiles            : [ "\\.graffle$", "\\.sh$", "\\.config" ] 
+ignoreFiles            : [ "\\.graffle$", "\\.sh$", "\\.config" ]
 defaultContentLanguage : "en-GB"
 theme 			       : "lightjason"
 title                  : "LightJason"
@@ -55,12 +55,21 @@ params:
             image  : "http://meclab.in.tu-clausthal.de/images/people/sdennisen.jpg"
             email  : "sophie@lightjason.org"
             work   : ["Modelling", "Testing / Usage", "Scenario Design", "Teaching / Documentation"]
+            links:
+                -
+                    name  : "Xing"
+                    image : "https://www.xing.com/img/buttons/9_de_btn.gif"
+                    url   : "http://xing.to/sdennisen"
+                -
+                    name  : "LinkedIn"
+                    image : "https://static.licdn.com/scds/common/u/img/webpromo/btn_liprofile_blue_80x15_de_DE.png?locale="
+                    url   : "http://www.linkedin.com/in/sdennisen"  
         -
             name:
                 family : "Kraus"
                 given  : "Philipp"
             image      : "http://www.gravatar.com/avatar/2de3ae533823dae934d3b45b239f797c"
-            email      : "philipp@lightjson.org"
+            email      : "philipp@lightjason.org"
             work       : ["Architect", "Developer", "Tutorials", "Webmaster (Admin-C)"]
             links:
                 -
@@ -79,13 +88,13 @@ params:
                 url    : "https://github.com/LightJason/AgentSpeak"
             -
                 name   : "SocialForce"
-                url    : "https://github.com/LightJason/SocialForce"                
+                url    : "https://github.com/LightJason/SocialForce"
             -
                 name   : "REST-API"
                 url    : "https://github.com/LightJason/REST"
             -
                 name   : "Twill-API"
-                url    : "https://github.com/LightJason/Twill"                
+                url    : "https://github.com/LightJason/Twill"
 
 
     socialmedia:
@@ -129,7 +138,7 @@ params:
             weight 	   : 40
             sublink:
                 url    : "/tutorials/wizard"
-                name   : "Wizard"     
+                name   : "Wizard"
         -
             name 	   : "About"
             url		   : "/about/"
@@ -141,6 +150,6 @@ params:
         -
             name       : "Credits"
             url        : "/credits/"
-            weight     : 10000    
+            weight     : 10000
 
 # ----------------------------------------------------------------------
