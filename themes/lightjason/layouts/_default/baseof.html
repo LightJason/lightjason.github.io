@@ -6,7 +6,6 @@
 			<div class="body">
 				<h1 id="root"><a href="#root">{{ if .Title -}}{{ .Title }}{{ else }}{{ .Site.Title }}{{- end }}</a></h1>
 				{{ block "main" . -}}{{- end }} 
-				{{ partial "publications" . -}}
 			</div>
 			{{- if .IsHome -}}
 				{{ range first 1 (where .Site.Pages "Type" "homepage") -}}

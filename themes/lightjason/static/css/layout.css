@@ -2017,3 +2017,141 @@ svg.railroad-diagram rect {
 svg.railroad-diagram .non-terminal {
   fill: #14811a;
 }
+
+a.anchor {
+  color: #085aa2;
+}
+
+a.anchor:hover {
+  color: #085aa2;
+}
+
+.hidden, .hiddenthesis, .hiddenpaper-conference, .hiddenchapter, .hiddenbook, .hiddenarticle-journal {
+  display: none;
+}
+
+.visible /*:nth-of-type(even)*/ {
+  background-color: #f0f0f0;
+}
+
+.title, .author, .editor, .publishing {
+  display: none;
+}
+
+.editor {
+  float: left;
+  word-break: break-all;
+}
+
+.bibtex {
+  position: absolute;
+  right: 5px;
+  vertical-align: top;
+  bottom: 5px;
+  font-size: 75%;
+}
+
+li.publication {
+  padding-left: 5px;
+  position: relative;
+}
+
+form.publicationform {
+  margin-left: 2em;
+}
+
+input.link {
+    background:none!important;
+    border:none; 
+    padding:0!important;
+    top: 2px;
+    font-size: 100%;
+    color: #c72445;
+    text-decoration: none;
+    cursor: pointer;
+    vertical-align: text-top;
+    height: 18px;
+}
+
+a:not([href]):not([tabindex]) {
+  color: #3782BE;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+a:not([href]):not([tabindex]):hover {
+  color: #085aa2;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+p.publicationtext {
+  max-width: -webkit-calc(100% - 4em);
+  max-width: -moz-calc(100% - 4em);
+  max-width: calc(100% - 4em);
+}
+
+p.publicationtext > a:first-child {
+  text-decoration: none;
+}
+
+input[type=radio] + label {
+  font-style: italic;
+  color: #7c7c7c;
+} 
+
+input[type=radio]:checked + label {
+  color: #085aa2;
+} 
+
+input#search {
+  width: 350px;
+}
+
+@media screen and (max-width: 1380px) {
+  input#search {
+    width: -webkit-calc(100% - 120px);
+    width: -moz-calc(100% - 120px);
+    width: calc(100% - 120px);
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  input#search {
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 955px) {
+  input#search {
+    width: -webkit-calc(100% - 120px);
+    width: -moz-calc(100% - 120px);
+    width: calc(100% - 120px);
+    max-width: 100%;
+  }
+}
+
+ul.publication {
+  list-style: none;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+ul.publication > li > a:first-child {
+  margin-left: -1.5em;
+  float: left;
+  text-decoration: none;
+}
+
+ul.publication > li > a:first-child:hover {
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+

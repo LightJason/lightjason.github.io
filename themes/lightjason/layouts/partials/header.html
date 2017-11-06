@@ -38,6 +38,11 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-java.min.js" crossorigin="anonymous" async></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-prolog.min.js" crossorigin="anonymous" async></script>
 
+	{{ if in .Params.view "publications" }}
+	    <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.1/clipboard.min.js" integrity="sha256-El0fEiD3YOM7uIVZztyQzmbbPlgEj0oJVxRWziUh4UE=" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="{{- .Site.BaseURL -}}js/publication.js"></script>
+	{{ end }}
+
 	<script src="{{- .Site.BaseURL -}}js/jquery.hammer.js" type="text/javascript" defer></script>
 	<script src="{{- .Site.BaseURL -}}js/prism-agentspeak.js" type="text/javascript" async></script>
 	<script src="{{- .Site.BaseURL -}}js/toc.min.js" type="text/javascript" async></script>
