@@ -1,0 +1,159 @@
+{{ if .IsNamedParams }}
+    {{ if and (isset .Params "author") (not (isset .Params "id")) }}
+        {{ $author := .Get "author" }}
+        <ul class="publication">
+            {{ range $publication := $.Site.Data.references }}
+                {{ $.Scratch.Set "matchingpub" false }}
+                {{ range where $publication.author "family" $author }}
+                    {{ $.Scratch.Set "matchingpub" true }}
+                {{ end }}
+                {{ if $.Scratch.Get "matchingpub" }}
+                    <li>
+                        <a name="{{- $publication.id | plainify -}}" href="/publications/#publication-{{- $publication.id | plainify -}}">&#x1f4d6;&nbsp;</a>
+
+                        {{ delimit (apply (apply $publication.author "partial" "author" ".") "chomp" ".") "; " }}
+
+                        {{- if (isset $publication "issued") | and (not (eq $publication.issued "")) }}
+                            ({{ index $publication.issued "date-parts" 0 0 }}).
+                        {{- else -}}
+                            .
+                        {{ end -}}
+
+                        {{- if (not (isset $publication "URL")) | or (eq $publication.URL "") }}
+                            {{ $publication.title -}}.
+                        {{- else }}
+                            <a href="{{ $publication.URL }}">{{ $publication.title -}}</a>.
+                        {{- end }}
+
+                        {{- if (isset $publication "collection-title") | and (not (eq (index $publication "collection-title") "")) | and (isset $publication "container-title") | and (not (eq (index $publication "container-title") "")) }}
+                            {{ index $publication "collection-title" }} - {{ index $publication "container-title" }},
+                        {{ end -}}
+
+                        {{- if (isset $publication "page") | and (not (eq $publication.page "")) }}
+                            pp. {{ $publication.page -}},
+                        {{ end -}}
+
+                        {{- if (isset $publication "number") | and (not (eq $publication.number "")) }}
+                            {{ $publication.number -}}.
+                        {{ end -}}
+
+                        {{- if (isset $publication "volume") | and (not (eq $publication.volume "")) }}
+                            volume {{ $publication.volume -}}.
+                        {{ end -}}
+
+                        {{- if (isset $publication "publisher") | and (not (eq $publication.publisher "")) }}
+                            {{ $publication.publisher -}}.
+                        {{ end -}}
+                        
+                        {{- if (isset $publication "publisher-place") }}
+                            ({{- index $publication "publisher-place" -}}).
+                        {{- end -}}
+
+                        {{- if (isset $publication "note") }}
+                            {{ $publication.note -}}.
+                        {{ end -}}
+                    </li>
+                {{ end }}
+            {{ end }}
+        </ul>
+    {{ end }}
+
+    {{ if and (isset .Params "id") (not (isset .Params "author")) }}
+    {{ $id := .Get "id" }}
+        {{ range where $.Site.Data.references "id" $id }}
+            <a name="{{- .id | plainify -}}" href="/publications/#publication-{{- .id | plainify -}}">&#x1f4d6;&nbsp;</a>
+
+            {{ delimit (apply (apply .author "partial" "author" ".") "chomp" ".") "; " }}
+
+            {{- if (isset . "issued") | and (not (eq .issued "")) }}
+                ({{ index .issued "date-parts" 0 0 }}).
+            {{- else -}}
+                .
+            {{ end -}}
+
+            {{- if (not (isset . "URL")) | or (eq .URL "") }}
+                {{ .title -}}.
+            {{- else }}
+                <a href="{{ .URL }}">{{ .title -}}</a>.
+            {{- end }}
+
+            {{- if (isset . "collection-title") | and (not (eq (index . "collection-title") "")) | and (isset . "container-title") | and (not (eq (index . "container-title") "")) }}
+                {{ index . "collection-title" }} - {{ index . "container-title" }},
+            {{ end -}}
+
+            {{- if (isset . "page") | and (not (eq .page "")) }}
+                pp. {{ .page -}},
+            {{ end -}}
+
+            {{- if (isset . "number") | and (not (eq .number "")) }}
+                {{ .number -}}.
+            {{ end -}}
+
+            {{- if (isset . "volume") | and (not (eq .volume "")) }}
+                volume {{ .volume -}}.
+            {{ end -}}
+
+            {{- if (isset . "publisher") | and (not (eq .publisher "")) }}
+                {{ .publisher -}}.
+            {{ end -}}
+            
+            {{- if (isset . "publisher-place") }}
+                ({{- index . "publisher-place" -}}).
+            {{- end -}}
+
+            {{- if (isset . "note") }}
+                {{ .note -}}.
+            {{ end -}}
+        {{ end }}
+    {{ end }}
+{{ else }}
+    <ul class="publication">
+        {{ range $publication := $.Site.Data.references }}
+                <li>
+                    <a name="{{- $publication.id | plainify -}}" href="/publications/#publication-{{- $publication.id | plainify -}}">&#x1f4d6;&nbsp;</a>
+
+                    {{ delimit (apply (apply $publication.author "partial" "author" ".") "chomp" ".") "; " }}
+
+                    {{- if (isset $publication "issued") | and (not (eq $publication.issued "")) }}
+                        ({{ index $publication.issued "date-parts" 0 0 }}).
+                    {{- else -}}
+                        .
+                    {{ end -}}
+
+                    {{- if (not (isset $publication "URL")) | or (eq $publication.URL "") }}
+                        {{ $publication.title -}}.
+                    {{- else }}
+                        <a href="{{ $publication.URL }}">{{ $publication.title -}}</a>.
+                    {{- end }}
+
+                    {{- if (isset $publication "collection-title") | and (not (eq (index $publication "collection-title") "")) | and (isset $publication "container-title") | and (not (eq (index $publication "container-title") "")) }}
+                        {{ index $publication "collection-title" }} - {{ index $publication "container-title" }},
+                    {{ end -}}
+
+                    {{- if (isset $publication "page") | and (not (eq $publication.page "")) }}
+                        pp. {{ $publication.page -}},
+                    {{ end -}}
+
+                    {{- if (isset $publication "number") | and (not (eq $publication.number "")) }}
+                        {{ $publication.number -}}.
+                    {{ end -}}
+
+                    {{- if (isset $publication "volume") | and (not (eq $publication.volume "")) }}
+                        volume {{ $publication.volume -}}.
+                    {{ end -}}
+
+                    {{- if (isset $publication "publisher") | and (not (eq $publication.publisher "")) }}
+                        {{ $publication.publisher -}}.
+                    {{ end -}}
+                    
+                    {{- if (isset $publication "publisher-place") }}
+                        ({{- index $publication "publisher-place" -}}).
+                    {{- end -}}
+
+                    {{- if (isset $publication "note") }}
+                        {{ $publication.note -}}.
+                    {{ end -}}
+                </li>
+        {{ end }}
+    </ul>
+{{ end }}
