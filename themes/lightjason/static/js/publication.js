@@ -237,13 +237,19 @@
                     
                     // editors
                     if ( po.editor ) {
-                      lo.append( " Eds: ");
-                      lo.append(
+                      lo.append( " Eds: ")
+                        .append(
                           po.editor ? po.editor.map( function(i) { 
                               return i.given && i.family 
                                   ? i.family + ( i["dropping-particle"] ? " " + i["dropping-particle"] : "" ) + ", " + i.given[0] + "."
                                   : null; 
                           }).filter(function(i) { return i != null; }).join(", ") : ""
+                      );
+                    }
+
+                    if ( po.note ) {
+                      lo.append( " " ).append(
+                          jQuery('<a>').attr( "href", po.note ).html( "[&#8594; read more]" )
                       );
                     }
                     return lo;

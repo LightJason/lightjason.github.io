@@ -9,7 +9,7 @@
                 {{ end }}
                 {{ if $.Scratch.Get "matchingpub" }}
                     <li>
-                        <a name="{{- $publication.id | plainify -}}" href="/publications/#publication-{{- $publication.id | plainify -}}">&#x1f4d6;&nbsp;</a>
+                        <a class="publicationanchor" name="{{- $publication.id | plainify -}}" href="/publications/#publication-{{- $publication.id | plainify -}}">&#x1f4d6;&nbsp;</a>
 
                         {{ delimit (apply (apply $publication.author "partial" "author" ".") "chomp" ".") "; " }}
 
@@ -61,7 +61,7 @@
     {{ if and (isset .Params "id") (not (isset .Params "author")) }}
     {{ $id := .Get "id" }}
         {{ range where $.Site.Data.references "id" $id }}
-            <a name="{{- .id | plainify -}}" href="/publications/#publication-{{- .id | plainify -}}">&#x1f4d6;&nbsp;</a>
+            <a class="publicationanchor" name="{{- .id | plainify -}}" href="/publications/#publication-{{- .id | plainify -}}">&#x1f4d6;&nbsp;</a>
 
             {{ delimit (apply (apply .author "partial" "author" ".") "chomp" ".") "; " }}
 
@@ -110,7 +110,7 @@
     <ul class="publication">
         {{ range $publication := $.Site.Data.references }}
                 <li>
-                    <a name="{{- $publication.id | plainify -}}" href="/publications/#publication-{{- $publication.id | plainify -}}">&#x1f4d6;&nbsp;</a>
+                    <a class="publicationanchor" name="{{- $publication.id | plainify -}}" href="/publications/#publication-{{- $publication.id | plainify -}}">&#x1f4d6;&nbsp;</a>
 
                     {{ delimit (apply (apply $publication.author "partial" "author" ".") "chomp" ".") "; " }}
 

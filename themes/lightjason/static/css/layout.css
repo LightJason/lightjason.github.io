@@ -2141,17 +2141,14 @@ ul.publication {
 ul.publication > li > a:first-child {
   margin-left: -1.5em;
   float: left;
+}
+
+a.publicationanchor {
   text-decoration: none;
 }
 
-ul.publication > li > a:first-child:hover {
+a.publicationanchor:hover {
   text-decoration: none;
 }
-
-
-
-
-
-
 
 

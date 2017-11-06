@@ -2,6 +2,8 @@
 title: "EMAS 2014 - A scalable runtime platform for multiagent-based simulation"
 ---
 
+> {{< printpublication id="Ahlbrecht2014emas" >}}
+
 Within this publication we present an architecture of a _scalable multi-agent framework_. This idea based on the problem, that all current frameworks at one point are not constructed for a large number of agents nor flexible enough to create a very detailed behaviour, or add to an existing platform.
 
 Based on this problem, we try to separate different elements on a multi-agent system:
