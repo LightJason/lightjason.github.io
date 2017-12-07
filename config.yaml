@@ -86,15 +86,6 @@ params:
             -
                 name   : "AgentSpeak(L++)"
                 url    : "https://github.com/LightJason/AgentSpeak"
-            -
-                name   : "SocialForce"
-                url    : "https://github.com/LightJason/SocialForce"
-            -
-                name   : "REST-API"
-                url    : "https://github.com/LightJason/REST"
-            -
-                name   : "Twill-API"
-                url    : "https://github.com/LightJason/Twill"
 
 
     socialmedia:
@@ -103,13 +94,17 @@ params:
             url        : "https://github.com/LightJason"
             weight     : 10
         -
+            name	   : "docker"
+            url		   : "https://hub.docker.com/u/lightjason"
+            weight	   : 30            
+        -
             name	   : "twitter"
             url		   : "http://twitter.com/LightJasonAI"
-            weight	   : 20
+            weight	   : 30
         -
             name       : "vimeo"
             url        : "https://vimeo.com/lightjason"
-            weight	   : 30
+            weight	   : 40
 
 
     menu:

@@ -1,6 +1,7 @@
 ---
 title: "Multi-Agent System - Scratchpad"
 date: 2017-11-15T08:57:40+01:00
+categories: ["Project"]
 ---
 
 Based on the [SocialCars workshop](2017-09-workshop) we held in September, we generalised LightJason even more to become a modern, generic and full-fledged multi-agent system. <!--more-->

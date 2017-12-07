@@ -173,6 +173,15 @@ div.sidebarwrapper .socialmedia {
     padding-top: 1em;
 }
 
+div.sidebarwrapper .socialmedia {
+  margin-left: 6px;
+}
+
+div.sidebarwrapper .socialmedia li {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
 div.sidebarwrapper .socialmedia li a {
    border: none;
 }
@@ -192,11 +201,7 @@ div.sidebarwrapper ul.socialmediaaction {
     list-style: none;
 }
 
-ul.socialmediaaction li a {
-    border: none;
-}
-
-ul.socialmediaaction li a:hover {
+ul.socialmediaaction li a, ul.socialmediaaction li a:hover {
     border: none;
 }
 
