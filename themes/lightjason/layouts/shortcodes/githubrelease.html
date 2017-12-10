@@ -1,0 +1,26 @@
+{{- $filter := .Get "filter" -}}
+{{- $zip := .Get "zip" -}}
+{{- $targz := .Get "targz" -}}
+{{- $releases := getJSON "https://api.github.com/repos/" (.Get "user") "/" (.Get "repo") "/releases" -}}
+
+{{- $.Scratch.Add "notfound" true -}}
+<ul>
+{{- range $release := $releases -}}
+    {{- if and ($.Scratch.Get "notfound") (in .name $filter) -}}
+        {{- $.Scratch.Set "notfound" false -}}
+
+        {{- range $asset := $release.assets -}}
+            <li><a href="{{- $asset.browser_download_url -}}">{{- $asset.name -}}</a></li>
+        {{- end -}}
+
+        {{- if $zip -}}
+            <li><a href="{{- $release.zipball_url -}}">Zip Source</a></li>
+        {{- end -}}
+
+        {{- if $targz -}}
+            <li><a href="{{- $release.tarball_url -}}">Tar-GZip Source</a></li>
+        {{- end -}}
+        
+   {{- end -}}     
+{{- end -}}
+</ul>

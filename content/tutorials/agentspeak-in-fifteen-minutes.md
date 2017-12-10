@@ -267,6 +267,6 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
 
 If you struggled at some point or wish to obtain our exemplary solution with code documentation of this tutorial, you can download the archive {{< githubzip user="LightJason" repo="Examples" branch="tutorial-agentspeak-in-15min" >}} containing the source code and a executable {{< githubdownload user="LightJason" repo="Examples" branch="jar-tutorial-agentspeak-in-15min" file="myagentapp-1.0-SNAPSHOT.jar" text="Jar file" >}}.
 
-
+{{< githubrelease user="LightJason" repo="Examples" filter="agentspeak-in-15min" targz="true" >}}
 
 [^runtime]: For creating a complex and fast runtime, have a look at general object-orientated programming patterns. Here we only provide a short example to show you how you can work with AgentSpeak(L++) agents.
