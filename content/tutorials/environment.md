@@ -91,8 +91,9 @@ For creating fast access to data of the environment (size) and agent name (hashc
 
 ## Reference Solution
 
-If you struggled at some point or wish to obtain our exemplary solution with code documentation of this tutorial, you can download the archive {{< githubzip user="LightJason" repo="Examples" branch="tutorial-environment" >}} containing the source code and a executable {{< githubdownload user="LightJason" repo="Examples" branch="jar-tutorial-environment" file="myagentapp-1.0-SNAPSHOT.jar" text="Jar file" >}}.
+If you struggled at some point or wish to obtain our exemplary solution with code documentation of this tutorial, you can download the archive containing the source code and an executable jar file:
 
+{{< githubrelease user="LightJason" repo="Examples" filter="tutorial-environment" zip="true" names="myagentapp-1.0-SNAPSHOT.jar=Jar Executable" >}}
 
 We run the example with 5 agents and 5 cycles (different runs returns different outputs)
 

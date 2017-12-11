@@ -71,7 +71,9 @@ The ```trigger```-method allows you to control the agent from Java-side, so that
 
 ## Reference Solution
 
-The reference solution is based on the [agentspeak-in-15min](/tutorials/agentspeak-in-fifteen-minutes) tutorial; we extended this tutorial with trigger behaviour. If you struggled at some point or wish to obtain our exemplary solution with code documentation of this tutorial, you can download the archive {{< githubzip user="LightJason" repo="Examples" branch="tutorial-agent-trigger" >}} containing the source code and a executable {{< githubdownload user="LightJason" repo="Examples" branch="jar-tutorial-agent-trigger" file="myagentapp-1.0-SNAPSHOT.jar" text="Jar file" >}}.
+The reference solution is based on the [agentspeak-in-15min](/tutorials/agentspeak-in-fifteen-minutes) tutorial; we extended this tutorial with trigger behaviour. If you struggled at some point or wish to obtain our exemplary solution with code documentation of this tutorial, you can download the archive containing the source code and an executable jar file:
+
+{{< githubrelease user="LightJason" repo="Examples" filter="tutorial-agent-trigger" zip="true" names="myagentapp-1.0-SNAPSHOT.jar=Jar Executable" >}}
 
 We run the program two times with 3 agents and 4 cycles and get the following output, first run
 

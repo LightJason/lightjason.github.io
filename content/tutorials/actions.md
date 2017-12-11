@@ -105,7 +105,9 @@ In common work, the object-orientated design of the action class can be changed 
 
 ## Reference Solution
 
-This tutorial depends on the tutorial [AgentSpeak-in-15min](/tutorials/agentspeak-in-fifteen-minutes), so the whole build process is explained within the basic tutorial. If you struggled at some point or wish to obtain our exemplary solution with code documentation of this tutorial, you can download the archive {{< githubzip user="LightJason" repo="Examples" branch="tutorial-agent-action" >}} containing the source code and a executable {{< githubdownload user="LightJason" repo="Examples" branch="jar-tutorial-agent-action" file="myagentapp-1.0-SNAPSHOT.jar" text="Jar file" >}}.
+This tutorial depends on the tutorial [AgentSpeak-in-15min](/tutorials/agentspeak-in-fifteen-minutes), so the whole build process is explained within the basic tutorial. If you struggled at some point or wish to obtain our exemplary solution with code documentation of this tutorial, you can download the archive containing the source code and an executable jar file:
+
+{{< githubrelease user="LightJason" repo="Examples" filter="tutorial-agent-action" zip="true" names="myagentapp-1.0-SNAPSHOT.jar=Jar Executable" >}}
 
 We run the example with 5 agents and 1 cycle
 
