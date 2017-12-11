@@ -3,7 +3,7 @@ version: 2
 jobs:
     build:
         docker:
-            - image: circleci/node:latest
+            - image: lightjason/lightjason.github.io:latest
 
         branches:
             only:
@@ -26,7 +26,6 @@ jobs:
 
 
         steps:
-            # start build
             - checkout
             - run:
                 name: Git Clean
@@ -37,25 +36,6 @@ jobs:
             - run:
                 name: Git Prune
                 command: git gc --prune=now
-            # https://github.com/spf13/hugo/releases
-            - run:
-                name: Download Hugo
-                command: wget -O /tmp/hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.31.1/hugo_0.31.1_Linux-64bit.deb
-            - run:
-                name: Install Hugo
-                command: sudo dpkg -i /tmp/hugo.deb
-            # https://github.com/kangax/html-minifier    
-            - run:
-                name: Install HTML-Minifier
-                command: npm install html-minifier
-            # https://github.com/svg/svgo
-            - run:
-                name: Install SVGO
-                command: npm install https://github.com/svg/svgo.git
-            # https://github.com/fizker/minifier
-            - run:
-                name: Install Minifier
-                command: npm install https://github.com/fizker/minifier.git
             - run:
                 name: Build Hugo Website
                 command: hugo --ignoreCache --cleanDestinationDir
