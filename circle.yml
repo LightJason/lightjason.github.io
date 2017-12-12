@@ -40,7 +40,7 @@ jobs:
                 command: hugo --ignoreCache --cleanDestinationDir
             - run:
                 name: Minify SVGs
-                command: node_modules/svgo/bin/svgo --config=data/svgo.config public/images/
+                command: data/minifysvg.sh public/images/
             - run:
                 name: Minify HTML
                 command: find public -type f -name "*.htm*" -exec data/minify.sh \{\} \;
