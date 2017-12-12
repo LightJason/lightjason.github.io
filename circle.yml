@@ -2,6 +2,7 @@ version: 2
 
 jobs:
     build:
+        working_directory: ~/website
         docker:
             - image: lightjason/lightjason.github.io:latest
 
