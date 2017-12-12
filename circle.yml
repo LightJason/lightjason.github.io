@@ -10,9 +10,7 @@ jobs:
                 - developing
             ignore:
                 - master
-                - /dev-.*/     
-
-        shell: /bin/bash           
+                - /dev-.*/              
 
 
         environment:

@@ -1,6 +1,6 @@
 #!/bin/zsh -e
 
-MINIFY="../node_modules/minifier/index.js"
+MINIFY=$(which minify)
 
 TMP=$(mktemp)
 $MINIFY --no-comments --output $TMP $1
