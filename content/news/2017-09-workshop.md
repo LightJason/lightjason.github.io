@@ -24,6 +24,10 @@ Some additional features are
 * other vehicles are also modelled as agents
 * each vehicle can pull out or pull in
 
-You can [download an executable Jar](https://github.com/LightJason/Examples/raw/jar-workshop-trafficsimulation/trafficsimulation-1.0-SNAPSHOT.jar), the [source codes](https://github.com/LightJason/Examples/tree/workshop-trafficsimulation) in our example repository. If you run the Jar file you can found any configuration under ```~/.lightjason/trafficsimulation```. Within the configuration you can enable all agents. Documentation of MAS, LightJason and the scenario are built-in as a slide-show. All parts of the game are open-source and we will publish it later as an online game.
+You can download the source code and binary jar file
+
+{{< githubrelease user="LightJason" repo="Examples" filter="workshop-trafficsimulation" zip="true" names="trafficsimulation-1.0-SNAPSHOT.jar=Jar Executable" >}}
+
+If you run the Jar file you can found any configuration under ```~/.lightjason/trafficsimulation```. Within the configuration you can enable all agents. Documentation of MAS, LightJason and the scenario are built-in as a slide-show. All parts of the game are open-source and we will publish it later as an online game.
 
 {{< video "https://player.vimeo.com/video/236143206" "https://vimeo.com/lightjason/trafficgame" >}}
