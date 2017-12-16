@@ -170,6 +170,8 @@ div.sidebarwrapper .logo .subtitle {
 }
 
 .socialmediabadge {
+  border: 1px solid #c2c9d1;
+  margin: 2px;
   min-height: 18px;
   max-height: 18px;
 }
