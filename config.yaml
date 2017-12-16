@@ -87,6 +87,10 @@ params:
                 name   : "AgentSpeak(L++)"
                 url    : "https://github.com/LightJason/AgentSpeak"
 
+            -
+                name   : "Research Gate"
+                url    : "https://www.researchgate.net/project/LightJason"    
+
 
     socialmedia:
         -
