@@ -169,6 +169,11 @@ div.sidebarwrapper .logo .subtitle {
     padding-bottom: 1em;
 }
 
+.socialmediabadge {
+  min-height: 18px;
+  max-height: 18px;
+}
+
 div.sidebarwrapper .socialmedia {
     padding-top: 1em;
 }

@@ -63,7 +63,11 @@ params:
                 -
                     name  : "LinkedIn"
                     image : "https://static.licdn.com/scds/common/u/img/webpromo/btn_liprofile_blue_80x15_de_DE.png?locale="
-                    url   : "http://www.linkedin.com/in/sdennisen"  
+                    url   : "http://www.linkedin.com/in/sdennisen" 
+                -
+                    name  : "ResearchGate"
+                    image : "https://www.researchgate.net/images/public/profile_share_badge.png"
+                    url   : "https://www.researchgate.net/profile/Sophie_Dennisen"                      
         -
             name:
                 family : "Kraus"
@@ -80,6 +84,10 @@ params:
                     name  : "LinkedIn"
                     image : "https://static.licdn.com/scds/common/u/img/webpromo/btn_liprofile_blue_80x15_de_DE.png?locale="
                     url   : "http://www.linkedin.com/in/philipp-kraus"
+                -
+                    name  : "ResearchGate"
+                    image : "https://www.researchgate.net/images/public/profile_share_badge.png"
+                    url   : "https://www.researchgate.net/profile/Philipp_Kraus2" 
 
     footer:
         links:
@@ -88,7 +96,7 @@ params:
                 url    : "https://github.com/LightJason/AgentSpeak"
 
             -
-                name   : "Research Gate"
+                name   : "ResearchGate"
                 url    : "https://www.researchgate.net/project/LightJason"    
 
 

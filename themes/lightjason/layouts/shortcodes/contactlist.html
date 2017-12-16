@@ -12,7 +12,7 @@
 {{- range .links -}}
 	<a href="{{- .url -}}" target="_blank">
 	{{- if .image -}}	
-	<img src="{{- .image -}}" alt="{{- .name -}}" />
+	<img src="{{- .image -}}" class="socialmediabadge" alt="{{- .name -}}" />
 	{{- else -}}
 	{{- .name -}}
 	{{- end -}}
