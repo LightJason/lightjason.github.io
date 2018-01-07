@@ -3,37 +3,94 @@ title: "Benchmark"
 draft: true
 ---
 
-<div id="executiontime"></div>
-<div id="memoryconsumption"></div>
+<div><canvas id="executiontime" /></div>
+<div><canvas id="agentinitializetime" /></div>
+<div><canvas id="memoryconsumption" /></div>
 
 <script>
+const timescaling = function(t) { return t / 1000000 };
+const memoryscaling = function(m) { return m / Math.pow(1024, 2); };
+const timebyloggingrate = function(t,r) { return t * r / 1000; };
+
+const timeplot = function( id, frame, title, legend, inputdata ) {
+        new Chart(jQuery( "#" + id ), {
+            type: "line",
+            data: {
+                labels: inputdata.scenariosize.map( n => Object.values(n).reduce((x, y) => x + y, 0) ),
+                datasets: [{
+                    label: "mean " + legend + " time",
+                    data: inputdata.time[frame].map(n => timescaling(n.mean) ),
+                    fill: false,
+                    borderColor: [
+                        "rgba(125,125,255,1)",
+                    ],
+                    borderWidth: 3
+                },{
+                    label: "maximum " + legend + " time",
+                    data: inputdata.time[frame].map(n => timescaling(n.max) ),
+                    fill: false,
+                    borderColor: [
+                        "rgba(255,100,135,1)",
+                    ],
+                    borderWidth: 2
+                },{
+                    label: "minimum " + legend + " time",
+                    data: inputdata.time[frame].map(n => timescaling(n.min) ),
+                    fill: false,
+                    borderColor: [
+                        "rgba(50,200,75,1)",
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: title
+                },
+                legend: {
+                    position: "bottom"
+                },
+                scales: {
+                    yAxes: [{
+                        type: "logarithmic",
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+};
+
 jQuery.ajax({
         url: "/synchronizedcount5.json",
         crossDomain: true
     })
-    .done(function(i) {
-        console.log(i);
+    .done(function(data) {
+        console.log(data);
 
-        // execution time
-        bb.generate({
-            bindto: "#executiontime",
+        timeplot( "executiontime", "execution", "Agent Execution Time", "execution", data );
+        timeplot( "agentinitializetime", "agentinitialize", "Agent Initializing Time", "initializing", data );
+
+
+
+
+/*        
+        // initializing time
+bb.generate({
+            bindto: "#initialzingtime",
             zoom: {
                 enabled: true
             },
             data: {
                 columns: [
-                    ["mean execution time"].concat(i.time.execution.filter(function(n) {
-                        return n;
-                    }).map(function(n) {
-                        return Math.log10(n.mean);
-                    })), ["max execution time"].concat(i.time.execution.filter(function(n) {
-                        return n;
-                    }).map(function(n) {
-                        return Math.log10(n.max);
-                    })), ["min execution time"].concat(i.time.execution.filter(function(n) {
-                        return n;
-                    }).map(function(n) {
-                        return Math.log10(n.max);
+                    ["mean initializing time"].concat(data.time.agentinitialize.map(function(n) {
+                        return Math.log10( timescaling(n.mean) );
+                    })), ["max initializing time"].concat(data.time.agentinitialize.map(function(n) {
+                        return Math.log10( timescaling(n.max) );
+                    })), ["min initializing time"].concat(data.time.agentinitialize.map(function(n) {
+                        return Math.log10( timescaling(n.max) );
                     }))
                 ]
             },
@@ -45,7 +102,7 @@ jQuery.ajax({
                     },
                     tick: {
                         format: function(n) {
-                            return i.scenariosize.map(function(n) {
+                            return data.scenariosize.map(function(n) {
                                 return Object.values(n).reduce((x, y) => x + y, 0);
                             })[n];
                         }
@@ -53,7 +110,7 @@ jQuery.ajax({
                 },
                 y: {
                     label: {
-                        text: "seconds",
+                        text: "agent initialize in milliseconds",
                         position: "outer-middle"
                     },
                     tick: {
@@ -72,6 +129,7 @@ jQuery.ajax({
                 }
             }
         });
+        
 
         // memory consumption
         bb.generate({
@@ -81,17 +139,19 @@ jQuery.ajax({
             },
             data: {
                 columns: [
-                    ["used memory"].concat(i.memory.usedmemory), ["free memory"].concat(i.memory.freememory), ["total memory"].concat(i.memory.totalmemory)
+                    ["used memory"].concat(data.memory.usedmemory), ["free memory"].concat(data.memory.freememory), ["total memory"].concat(data.memory.totalmemory)
                 ]
             },
             axis: {
                 x: {
                     label: {
-                        text: "simulation time in minutes",
+                        text: "benchmarking time in seconds",
                         position: "outer-center"
                     },
                     tick: {
-                        // missing
+                        format: function(n) {
+                            return timebyloggingrate(n, data.configuration.memoryloggingrate).toFixed(2);
+                        }
                     }
                 },
                 y: {
@@ -101,7 +161,7 @@ jQuery.ajax({
                     },
                     tick: {
                         format: function(n) {
-                            return (n / Math.pow(1024, 2)).toFixed(2);
+                            return memoryscaling(n).toFixed(2);
                         }
                     }
                 }
@@ -121,5 +181,6 @@ jQuery.ajax({
             }
 
         });
+        */
     });
 </script>
