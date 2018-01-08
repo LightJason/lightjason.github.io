@@ -14,7 +14,7 @@ draft: true
             <div style="display: table-cell; width: 50%;"><canvas id="agentinitializetime" /></div>
         </div>
         <div style="display: table-row;">
-            <div style="display: table-cell; width: 50%"><canvas id="executiondistribution" /></div>    
+            <div style="display: table-cell; width: 50%"><canvas id="cycletimedistribution" /></div>    
             <div style="display: table-cell; width: 50%"><canvas id="memoryconsumption" /></div>
         </div>
     </div>
@@ -28,15 +28,23 @@ const timescaling = function(t) { return t / 1000000 };
 const memoryscaling = function(m) { return m / Math.pow(1024, 2); };
 const timebyloggingrate = function(t,r) { return t * r / 1000; };
 
-const timeplot = function( id, frame, title, inputdata, yticklabel ) {
-    new Chart(jQuery( "#" + id ), {
+const timeplot = function( dom, frame, title, inputdata, yticklabel ) {
+    new Chart(jQuery( dom ), {
         type: "line",
         data: {
             labels: inputdata.scenariosize.map( n => Object.values(n).reduce((x, y) => x + y, 0) ),
             datasets: [{
+                label: "minimum time",
+                data: inputdata.time[frame].map(n => timescaling(n.min) ),
+                fill: false,
+                borderColor: [
+                    "rgba(50,200,75,1)",
+                ],
+                borderWidth: 2
+            },{
                 label: "mean time",
                 data: inputdata.time[frame].map(n => timescaling(n.mean) ),
-                fill: false,
+                fill: "-1",
                 borderColor: [
                     "rgba(125,125,255,1)",
                 ],
@@ -44,17 +52,9 @@ const timeplot = function( id, frame, title, inputdata, yticklabel ) {
             },{
                 label: "maximum time",
                 data: inputdata.time[frame].map(n => timescaling(n.max) ),
-                fill: false,
+                fill: "-1",
                 borderColor: [
                     "rgba(255,100,135,1)",
-                ],
-                borderWidth: 2
-            },{
-                label: "minimum time",
-                data: inputdata.time[frame].map(n => timescaling(n.min) ),
-                fill: false,
-                borderColor: [
-                    "rgba(50,200,75,1)",
                 ],
                 borderWidth: 2
             }]
@@ -91,17 +91,27 @@ const timeplot = function( id, frame, title, inputdata, yticklabel ) {
     });
 };
 
-const memoryplot = function( id, title, inputdata, yticklabel ) {
-    new Chart(jQuery( "#" + id ), {
+const memoryplot = function( dom, title, inputdata, yticklabel ) {
+    new Chart(jQuery( dom ), {
         type: "line",
         data: {
             labels: Array.from(Array(inputdata.memory.totalmemory.length).keys()).map( n => timebyloggingrate(n, inputdata.configuration.memoryloggingrate).toFixed(0) ),
             datasets: [{
+                label: "free memory",
+                steppedLine: true,
+                radius: 0,
+                data: inputdata.memory.freememory.map( n => memoryscaling(n) ),
+                fill: false,
+                borderColor: [
+                    "rgba(50,200,75,1)",
+                ],
+                borderWidth: 2
+            },{
                 label: "used memory",
                 steppedLine: true,
                 radius: 0,
                 data: inputdata.memory.usedmemory.map( n => memoryscaling(n) ),
-                fill: false,
+                fill: "-1",
                 borderColor: [
                     "rgba(125,125,255,1)",
                 ],
@@ -111,19 +121,9 @@ const memoryplot = function( id, title, inputdata, yticklabel ) {
                 steppedLine: true,
                 radius: 0,
                 data: inputdata.memory.totalmemory.map( n => memoryscaling(n) ),
-                fill: false,
+                fill: "-1",
                 borderColor: [
                     "rgba(255,100,135,1)",
-                ],
-                borderWidth: 2
-            },{
-                label: "free memory",
-                steppedLine: true,
-                radius: 0,
-                data: inputdata.memory.freememory.map( n => memoryscaling(n) ),
-                fill: false,
-                borderColor: [
-                    "rgba(50,200,75,1)",
                 ],
                 borderWidth: 2
             }]
@@ -158,10 +158,68 @@ const memoryplot = function( id, title, inputdata, yticklabel ) {
     });
 };
 
-const configurationtable = function( id, inputdata ) {
-    const l_runtimdata = inputdata.configuration.runtime.split( " " );
+const cycleplot = function( dom, title, inputdata, yticklabel ) {
 
-    jQuery( "#" + id ).append(
+    const bordercolormap = colormap({ colormap: "rainbow-soft", format: "rgbaString", nshades: Object.keys(inputdata.time.cycle).length });
+    const backgroundcolormap = colormap({ colormap: "rainbow-soft", format: "rgbaString", alpha: 0.35, nshades: Object.keys(inputdata.time.cycle).length }); 
+
+    new Chart(jQuery( dom ), {
+        type: "boxplot",
+        data: {
+            labels: inputdata.scenariosize.map( n => Object.values(n).reduce((x, y) => x + y, 0) ),
+            datasets: Object.keys(inputdata.time.cycle[0])
+                .map(function(i, idx) { 
+                    return { 
+                        label: i,
+                        borderColor: Array.apply(null, Array(bordercolormap.length)).map(function() { return bordercolormap[idx] }),
+                        backgroundColor: Array.apply(null, Array(backgroundcolormap.length)).map(function() { return backgroundcolormap[idx] }),
+                        data: inputdata.time.cycle.map(n => n[i] ).map(function(n) {
+                            return {
+                                min: timescaling( n["min"] ),
+                                max: timescaling( n["max"] ),
+                                median: timescaling( n["50-percentile"] || (0.5*(n["max"] - n["min"])) ),
+                                q1: timescaling( n["25-percentile"] || (0.25*(n["max"] - n["min"])) ),
+                                q3: timescaling( n["75-percentile"] || (0.75*(n["max"] - n["min"])) )
+                            }
+                        })
+                    } 
+                } )
+        },
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+                text: title
+            },
+            legend: {
+                position: "bottom"
+            },
+            scales: {
+                xAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: "number of agents"
+                    },
+                }],
+                yAxes: [{
+                    type: "arrayLogarithmic",
+                    scaleLabel: {
+                        display: true,
+                        labelString: "cycle execution time"
+                    },
+                    ticks: {
+                        beginAtZero: true,
+                        callback: yticklabel || function(v, i) { return i % 3 ? "" : v.toFixed(2); }
+                    }
+                }]
+            }
+        }
+    });
+};
+
+const configurationtable = function( dom, inputdata ) {
+    const l_runtimdata = inputdata.configuration.runtime.split( " " );
+    jQuery( dom ).append(
         jQuery( "<table>" )
             .append( 
                 jQuery( "<tr>" ).append( jQuery( "<th colspan=\"4\">" ).text( "Benchmark Configuration" ) )
@@ -225,9 +283,10 @@ jQuery.ajax({
     .done(function(data) {
         console.log(data);
 
-        configurationtable( "configuration", data );
-        timeplot( "executiontime", "execution", "Agent Execution Time", data );
-        timeplot( "agentinitializetime", "agentinitialize", "Agent Initializing Time", data );
-        memoryplot( "memoryconsumption", "Memory Consumption", data );
+        configurationtable( "#configuration", data );
+        timeplot( "#executiontime", "execution", "agent execution time", data );
+        timeplot( "#agentinitializetime", "agentinitialize", "agent initializing time", data );
+        cycleplot( "#cycletimedistribution", "agent cycle time distribution", data );
+        memoryplot( "#memoryconsumption", "memory consumption", data );
     });    
 </script>
