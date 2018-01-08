@@ -3,18 +3,26 @@ title: "Benchmark"
 draft: true
 ---
 
-<div style="display: table; width: 100%;">
-    <div style="display: table-row;">
-        <div style="display: table-cell; width: 50%;"><canvas id="executiontime" /></div>
-        <div style="display: table-cell; width: 50%;"><canvas id="agentinitializetime" /></div>
+<p>
+    <div id="configuration"></div>
+</p>
+<br/>
+<p>
+    <div style="display: table; width: 100%;">
+        <div style="display: table-row;">
+            <div style="display: table-cell; width: 50%;"><canvas id="executiontime" /></div>
+            <div style="display: table-cell; width: 50%;"><canvas id="agentinitializetime" /></div>
+        </div>
+        <div style="display: table-row;">
+            <div style="display: table-cell; width: 50%"><canvas id="executiondistribution" /></div>    
+            <div style="display: table-cell; width: 50%"><canvas id="memoryconsumption" /></div>
+        </div>
     </div>
-    <div style="display: table-row;">
-        <div style="display: table-cell;"><canvas id="memoryconsumption" /></div>
-    </div>
-</div>
+</p>    
 
 <script>
 // http://bootstrap-table.wenzhixin.net.cn/getting-started/
+// https://github.com/datavisyn/chartjs-chart-boxplot
 
 const timescaling = function(t) { return t / 1000000 };
 const memoryscaling = function(m) { return m / Math.pow(1024, 2); };
@@ -150,6 +158,53 @@ const memoryplot = function( id, title, inputdata, yticklabel ) {
     });
 };
 
+const configurationtable = function( id, inputdata ) {
+    const l_runtimdata = inputdata.configuration.runtime.split( " " );
+
+    jQuery( "#" + id ).append(
+        jQuery( "<table>" )
+            .append( 
+                jQuery( "<tr>" ).append( jQuery( "<th colspan=\"4\">" ).text( "Benchmark Configuration" ) )
+             )
+            .append(
+                jQuery("<tr>")
+                    .append( jQuery( "<th>" ).text( "Operating System" ) )
+                    .append( jQuery( "<td>" ).text( inputdata.configuration.osname ) )
+                    .append( jQuery( "<td>" ).text( inputdata.configuration.osversion ) )
+                    .append( jQuery( "<td>" ).text( inputdata.configuration.osarchitecture ) )
+            )
+            .append(
+                jQuery( "<tr>" )
+                    .append( jQuery( "<th>" ).text( "Java System" ) )
+                    .append( jQuery( "<td>" ).text( inputdata.configuration.vmvendor ) )
+                    .append( jQuery( "<td>" ).text( inputdata.configuration.vmname ) )
+                    .append( jQuery( "<td>" ).text( inputdata.configuration.javaversion + " (" + inputdata.configuration.vmversion + ")" ) )
+            )
+            .append(  
+                jQuery( "<tr>" )
+                    .append( jQuery( "<th>" ).text( "Machine Processors" ) )
+                    .append( jQuery( "<td colspan=\"3\">" ).text( inputdata.configuration.processors ) ) 
+            )
+            .append(
+                l_runtimdata[0].includes("synchronized")
+                    ? jQuery( "<tr>" )
+                        .append( jQuery( "<th>" ).text( "Runtime" ) )
+                        .append( jQuery( "<td colspan=\"3\">" ).text( l_runtimdata[0] ) )
+                    : jQuery( "<tr>" )
+                        .append( jQuery( "<th>" ).text( "Runtime / Threadnumber" ) )
+                        .append( jQuery( "<td colspan=\"1\">" ).text( l_runtimdata[0] ) )
+                        .append( jQuery( "<td colspan=\"2\">" ).text( l_runtimdata[1] ) )       
+            )
+            .append(  
+                jQuery( "<tr>" )
+                    .append( jQuery( "<th>" ).text( "Iteration / Warm-Up / Execution" ) )
+                    .append( jQuery( "<td>" ).text( inputdata.configuration.iteration ) )
+                    .append( jQuery( "<td>" ).text( inputdata.configuration.warmup ) )
+                    .append( jQuery( "<td>" ).text( inputdata.configuration.runs ) )
+            )         
+    );
+};
+
 
 
 
@@ -160,6 +215,7 @@ jQuery.ajax({
     .done(function(data) {
         console.log(data);
 
+        configurationtable( "configuration", data );
         timeplot( "executiontime", "execution", "Agent Execution Time", data );
         timeplot( "agentinitializetime", "agentinitialize", "Agent Initializing Time", data );
         memoryplot( "memoryconsumption", "Memory Consumption", data );
