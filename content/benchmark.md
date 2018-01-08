@@ -166,7 +166,22 @@ const configurationtable = function( id, inputdata ) {
             .append( 
                 jQuery( "<tr>" ).append( jQuery( "<th colspan=\"4\">" ).text( "Benchmark Configuration" ) )
              )
+            .append(  
+                jQuery( "<tr>" )
+                    .append( jQuery( "<th>" ).text( "Machine Processors" ) )
+                    .append( jQuery( "<td colspan=\"3\">" ).text( inputdata.configuration.processors ) ) 
+            )
             .append(
+                l_runtimdata[0].includes("synchronized")
+                    ? jQuery( "<tr>" )
+                        .append( jQuery( "<th>" ).text( "Runtime" ) )
+                        .append( jQuery( "<td colspan=\"3\">" ).text( l_runtimdata[0] ) )
+                    : jQuery( "<tr>" )
+                        .append( jQuery( "<th>" ).text( "Runtime / Threadnumber" ) )
+                        .append( jQuery( "<td colspan=\"1\">" ).text( l_runtimdata[0] ) )
+                        .append( jQuery( "<td colspan=\"2\">" ).text( l_runtimdata[1] ) )       
+            )             
+            .append(                
                 jQuery("<tr>")
                     .append( jQuery( "<th>" ).text( "Operating System" ) )
                     .append( jQuery( "<td>" ).text( inputdata.configuration.osname ) )
@@ -182,26 +197,21 @@ const configurationtable = function( id, inputdata ) {
             )
             .append(  
                 jQuery( "<tr>" )
-                    .append( jQuery( "<th>" ).text( "Machine Processors" ) )
-                    .append( jQuery( "<td colspan=\"3\">" ).text( inputdata.configuration.processors ) ) 
-            )
-            .append(
-                l_runtimdata[0].includes("synchronized")
-                    ? jQuery( "<tr>" )
-                        .append( jQuery( "<th>" ).text( "Runtime" ) )
-                        .append( jQuery( "<td colspan=\"3\">" ).text( l_runtimdata[0] ) )
-                    : jQuery( "<tr>" )
-                        .append( jQuery( "<th>" ).text( "Runtime / Threadnumber" ) )
-                        .append( jQuery( "<td colspan=\"1\">" ).text( l_runtimdata[0] ) )
-                        .append( jQuery( "<td colspan=\"2\">" ).text( l_runtimdata[1] ) )       
-            )
-            .append(  
-                jQuery( "<tr>" )
                     .append( jQuery( "<th>" ).text( "Iteration / Warm-Up / Execution" ) )
                     .append( jQuery( "<td>" ).text( inputdata.configuration.iteration ) )
                     .append( jQuery( "<td>" ).text( inputdata.configuration.warmup ) )
                     .append( jQuery( "<td>" ).text( inputdata.configuration.runs ) )
-            )         
+            )
+            .append(
+                jQuery( "<tr>" )
+                    .append( jQuery( "<th>" ).text( "Runtime Arguments" ) )
+                    .append( 
+                        jQuery( "<td colspan=\"3\">" )
+                            .append(
+                                jQuery( "<ul>" ).html( inputdata.configuration.runtimearguments.map( n => "<li>" + n + "</li>" ) )
+                            )
+                    )
+            )      
     );
 };
 
