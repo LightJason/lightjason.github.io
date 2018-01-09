@@ -2,6 +2,7 @@
 
 const benchmark = (function() {
     const colormapid = "rainbow-soft";
+    const maintainaspectratio = !new MobileDetect(window.navigator.userAgent);
     const timescaling = function(t) { return t / 1000000 };
     const memoryscaling = function(m) { return m / Math.pow(1024, 2); };
     const timebyloggingrate = function(t,r) { return t * r / 1000; };
@@ -37,6 +38,7 @@ const benchmark = (function() {
                 },
                 options: {
                     responsive: true,
+                    maintainAspectRatio: maintainaspectratio,
                     pan: {
                         enabled: true
                     },
@@ -113,6 +115,7 @@ const benchmark = (function() {
                 },
                 options: {
                     responsive: true,
+                    maintainAspectRatio: maintainaspectratio,
                     pan: {
                         enabled: true
                     },
@@ -168,6 +171,7 @@ const benchmark = (function() {
                 },
                 options: {
                     responsive: true,
+                    maintainAspectRatio: maintainaspectratio,
                     pan: {
                         enabled: true
                     },

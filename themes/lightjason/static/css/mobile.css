@@ -114,7 +114,21 @@ td {
 td {
 	border-top: none;
 }
+
 tr td:first-child {
 	border-top: 1px solid #ddd;
 	font-weight: bold;
+}
+
+.benchmark-infoblock {
+    float: none;
+}
+
+.benchmark-table, .benchmark-row, .benchmark-cell {
+    display: block;
+    width: 100%;
+}
+
+.benchmark-cell {
+    min-height: 350px;
 }
