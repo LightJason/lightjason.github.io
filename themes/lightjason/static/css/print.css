@@ -67,7 +67,7 @@ code, pre {
 }
 
 .benchmark-row {
-    page-break-after: always;
+    page-break-after: auto;
 }
 
 .benchmark-row:last-child {
