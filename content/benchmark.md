@@ -24,39 +24,30 @@ draft: true
 // http://bootstrap-table.wenzhixin.net.cn/getting-started/
 // https://github.com/datavisyn/chartjs-chart-boxplot
 
+const colormapid = "rainbow-soft";
 const timescaling = function(t) { return t / 1000000 };
 const memoryscaling = function(m) { return m / Math.pow(1024, 2); };
 const timebyloggingrate = function(t,r) { return t * r / 1000; };
+const statisticobject = function(o) {
+    return {
+        min: timescaling( o["min"] ),
+        max: timescaling( o["max"] ),
+        median: timescaling( o["50-percentile"] || (0.5*(o["max"] - o["min"])) ),
+        q1: timescaling( o["25-percentile"] || (0.25*(o["max"] - o["min"])) ),
+        q3: timescaling( o["75-percentile"] || (0.75*(o["max"] - o["min"])) )
+    }
+};
 
 const timeplot = function( dom, frame, title, inputdata, yticklabel ) {
+
     new Chart(jQuery( dom ), {
-        type: "line",
+        type: "boxplot",
         data: {
             labels: inputdata.scenariosize.map( n => Object.values(n).reduce((x, y) => x + y, 0) ),
             datasets: [{
-                label: "minimum time",
-                data: inputdata.time[frame].map(n => timescaling(n.min) ),
-                fill: false,
-                borderColor: [
-                    "rgba(50,200,75,1)",
-                ],
-                borderWidth: 2
-            },{
-                label: "mean time",
-                data: inputdata.time[frame].map(n => timescaling(n.mean) ),
-                fill: "-1",
-                borderColor: [
-                    "rgba(125,125,255,1)",
-                ],
-                borderWidth: 3
-            },{
-                label: "maximum time",
-                data: inputdata.time[frame].map(n => timescaling(n.max) ),
-                fill: "-1",
-                borderColor: [
-                    "rgba(255,100,135,1)",
-                ],
-                borderWidth: 2
+                borderColor: Array.apply(null, Array(inputdata.time[frame].length)).map(function() { return "rgba(125,125,255,1)" }),
+                backgroundColor: Array.apply(null, Array(inputdata.time[frame].length)).map(function() { return "rgba(125,125,255,0.35)" }),
+                data: inputdata.time[frame].map( n => statisticobject(n) )
             }]
         },
         options: {
@@ -76,7 +67,7 @@ const timeplot = function( dom, frame, title, inputdata, yticklabel ) {
                     },
                 }],
                 yAxes: [{
-                    type: "logarithmic",
+                    type: "arrayLogarithmic",
                     scaleLabel: {
                         display: true,
                         labelString: "time in miliseconds"
@@ -160,8 +151,8 @@ const memoryplot = function( dom, title, inputdata, yticklabel ) {
 
 const cycleplot = function( dom, title, inputdata, yticklabel ) {
 
-    const bordercolormap = colormap({ colormap: "rainbow-soft", format: "rgbaString", nshades: Object.keys(inputdata.time.cycle).length });
-    const backgroundcolormap = colormap({ colormap: "rainbow-soft", format: "rgbaString", alpha: 0.35, nshades: Object.keys(inputdata.time.cycle).length }); 
+    const bordercolormap = colormap({ colormap: colormapid, format: "rgbaString", nshades: Object.keys(inputdata.time.cycle).length });
+    const backgroundcolormap = colormap({ colormap: colormapid, format: "rgbaString", alpha: 0.35, nshades: Object.keys(inputdata.time.cycle).length }); 
 
     new Chart(jQuery( dom ), {
         type: "boxplot",
@@ -173,15 +164,7 @@ const cycleplot = function( dom, title, inputdata, yticklabel ) {
                         label: i,
                         borderColor: Array.apply(null, Array(bordercolormap.length)).map(function() { return bordercolormap[idx] }),
                         backgroundColor: Array.apply(null, Array(backgroundcolormap.length)).map(function() { return backgroundcolormap[idx] }),
-                        data: inputdata.time.cycle.map(n => n[i] ).map(function(n) {
-                            return {
-                                min: timescaling( n["min"] ),
-                                max: timescaling( n["max"] ),
-                                median: timescaling( n["50-percentile"] || (0.5*(n["max"] - n["min"])) ),
-                                q1: timescaling( n["25-percentile"] || (0.25*(n["max"] - n["min"])) ),
-                                q3: timescaling( n["75-percentile"] || (0.75*(n["max"] - n["min"])) )
-                            }
-                        })
+                        data: inputdata.time.cycle.map(n => n[i] ).map( n => statisticobject(n) )
                     } 
                 } )
         },
@@ -205,7 +188,7 @@ const cycleplot = function( dom, title, inputdata, yticklabel ) {
                     type: "arrayLogarithmic",
                     scaleLabel: {
                         display: true,
-                        labelString: "cycle execution time"
+                        labelString: "time in miliseconds"
                     },
                     ticks: {
                         beginAtZero: true,
