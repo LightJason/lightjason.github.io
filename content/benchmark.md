@@ -8,5 +8,6 @@ draft: true
 Thie minimal benchmark runs a set of agents, which are counting down from 5 to 0. We are following the paper / report [Scalable Multi-Agent Simulation based
 on MapReduce](https://www.in.tu-clausthal.de/fileadmin/homes/techreports/ifi1603ahlbrecht.pdf) of this example, but we are don't using any scalibility technologies
 like [Map & Reduce](https://en.wikipedia.org/wiki/MapReduce). For the runtime behaviour a _synchronized_ version is used for comparing to the report benchmark, so
-all agents are running in parallel until all agents has been finished their cycle, after that the next cycle begins. 
+all agents are running in parallel until all agents has been finished their cycle, after that the next cycle begins. The warm-up phase used the first 5 cycles and
+each run will be executed 3 times. 16 different agent sets will be executed, we try to build a more logarithm increase of the agent number.
 {{< /benchmark >}}
