@@ -29,25 +29,30 @@ const timescaling = function(t) { return t / 1000000 };
 const memoryscaling = function(m) { return m / Math.pow(1024, 2); };
 const timebyloggingrate = function(t,r) { return t * r / 1000; };
 const statisticobject = function(o) {
+    const diff = o["max"] - o["min"];
     return {
         min: timescaling( o["min"] ),
         max: timescaling( o["max"] ),
-        median: timescaling( o["50-percentile"] || (0.5*(o["max"] - o["min"])) ),
-        q1: timescaling( o["25-percentile"] || (0.25*(o["max"] - o["min"])) ),
-        q3: timescaling( o["75-percentile"] || (0.75*(o["max"] - o["min"])) )
+        median: timescaling( o["50-percentile"] || (0.5*diff) ),
+        q1: timescaling( o["25-percentile"] || (0.25*diff) ),
+        q3: timescaling( o["75-percentile"] || (0.75*diff) )
     }
 };
 
-const timeplot = function( dom, frame, title, inputdata, yticklabel ) {
-
+const timeplot = function( dom, frame, title, inputdata, yticklabel, bordercolor, backgroundcolor, linecolor ) {
     new Chart(jQuery( dom ), {
         type: "boxplot",
         data: {
             labels: inputdata.scenariosize.map( n => Object.values(n).reduce((x, y) => x + y, 0) ),
             datasets: [{
-                borderColor: Array.apply(null, Array(inputdata.time[frame].length)).map(function() { return "rgba(125,125,255,1)" }),
-                backgroundColor: Array.apply(null, Array(inputdata.time[frame].length)).map(function() { return "rgba(125,125,255,0.35)" }),
+                borderColor: Array.apply(null, Array(inputdata.time[frame].length)).map(function() { return bordercolor || "rgba(125,125,255,1)" }),
+                backgroundColor: Array.apply(null, Array(inputdata.time[frame].length)).map(function() { return backgroundcolor || "rgba(125,125,255,0.35)" }),
                 data: inputdata.time[frame].map( n => statisticobject(n) )
+            }, {
+                type: "line",
+                data: inputdata.time[frame].map( n => timescaling( n.mean ) ),
+                borderColor: [ ( linecolor || "rgba(0,0,0,0.5)" ) ],
+                fill: false
             }]
         },
         options: {
