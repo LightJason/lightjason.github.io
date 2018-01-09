@@ -59,6 +59,12 @@ const timeplot = function( dom, frame, title, inputdata, yticklabel, bordercolor
         },
         options: {
             responsive: true,
+            pan: {
+                enabled: true
+            },
+            zoom: {
+                enabled: true
+            },
             title: {
                 display: true,
                 text: title
@@ -128,6 +134,12 @@ const memoryplot = function( dom, title, inputdata, yticklabel ) {
         },
         options: {
             responsive: true,
+            pan: {
+                enabled: true
+            },
+            zoom: {
+                enabled: true
+            },            
             title: {
                 display: true,
                 text: title
@@ -177,6 +189,12 @@ const cycleplot = function( dom, title, inputdata, yticklabel ) {
         },
         options: {
             responsive: true,
+            pan: {
+                enabled: true
+            },
+            zoom: {
+                enabled: true
+            },
             title: {
                 display: true,
                 text: title
