@@ -1,6 +1,11 @@
 ---
 title: "Benchmark"
-draft: true
+previous :
+    url: "/framework"
+    text: "framework"
+next :
+    url: "/knowledgebase"
+    text: "knowledge base"
 ---
 
 The listed benchmarks depends on the [benchmarking framework](https://github.com/LightJason/Benchmark) and a [benchmark docker container](https://hub.docker.com/r/lightjason/benchmark/)

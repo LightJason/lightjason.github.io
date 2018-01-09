@@ -136,20 +136,24 @@ params:
             url		   : "/framework/"
             weight 	   : 20
         -
+            name 	   : "Benchmark"
+            url		   : "/benchmark/"
+            weight 	   : 30            
+        -
             name 	   : "Knowledge Base"
             url		   : "/knowledgebase/"
-            weight 	   : 30
+            weight 	   : 40
         -
             name 	   : "Tutorials"
             url		   : "/tutorials/"
-            weight 	   : 40
+            weight 	   : 50
             sublink:
                 url    : "/tutorials/wizard"
                 name   : "Wizard"
         -
             name 	   : "About"
             url		   : "/about/"
-            weight 	   : 500
+            weight 	   : 600
         -
             name 	   : "Contact"
             url 	   : "/contact/"

@@ -5,8 +5,8 @@ previous :
     url: "/publications"
     text: "publications"
 next :
-    url: "/knowledgebase"
-    text: "knowledge base"
+    url: "/benchmark"
+    text: "benchmark"
 ---
 
 The multi-agent framework is split up into different parts. Each component is provided with separate documentation. In this section, we give an overview of all framework elements. The whole framework is published at [Maven Central](http://mvnrepository.com).

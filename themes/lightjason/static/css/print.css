@@ -53,3 +53,22 @@ code, pre {
     font-size: 10pt;
     white-space: pre-wrap !important;
 }
+
+.benchmark-infoblock {
+    float: none;
+}
+
+.benchmark-table, .benchmark-row, .benchmark-cell {
+    display: block;
+    width: 100%;
+    padding-top: 2.5em;
+    padding-bottom: 2.5em;
+}
+
+.benchmark-row {
+    page-break-after: always;
+}
+
+.benchmark-row:last-child {
+    page-break-after: avoid;
+}
