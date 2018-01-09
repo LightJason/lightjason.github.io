@@ -33,9 +33,9 @@ const statisticobject = function(o) {
     return {
         min: timescaling( o["min"] ),
         max: timescaling( o["max"] ),
-        median: timescaling( o["50-percentile"] || (0.5*diff) ),
-        q1: timescaling( o["25-percentile"] || (0.25*diff) ),
-        q3: timescaling( o["75-percentile"] || (0.75*diff) )
+        median: timescaling( o["50-percentile"] || ( o["min"] + 0.5*diff) ),
+        q1: timescaling( o["25-percentile"] || ( o["min"] + 0.25*diff) ),
+        q3: timescaling( o["75-percentile"] || ( o["min"] + 0.75*diff) )
     }
 };
 
@@ -45,10 +45,12 @@ const timeplot = function( dom, frame, title, inputdata, yticklabel, bordercolor
         data: {
             labels: inputdata.scenariosize.map( n => Object.values(n).reduce((x, y) => x + y, 0) ),
             datasets: [{
+                label: "distribution",
                 borderColor: Array.apply(null, Array(inputdata.time[frame].length)).map(function() { return bordercolor || "rgba(125,125,255,1)" }),
                 backgroundColor: Array.apply(null, Array(inputdata.time[frame].length)).map(function() { return backgroundcolor || "rgba(125,125,255,0.35)" }),
                 data: inputdata.time[frame].map( n => statisticobject(n) )
             }, {
+                label: "mean",
                 type: "line",
                 data: inputdata.time[frame].map( n => timescaling( n.mean ) ),
                 borderColor: [ ( linecolor || "rgba(0,0,0,0.5)" ) ],
