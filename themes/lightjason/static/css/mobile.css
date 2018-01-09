@@ -126,6 +126,7 @@ tr td:first-child {
 
 .benchmark-table, .benchmark-row, .benchmark-cell {
     display: block;
+    text-align: center;
     width: 100%;
 }
 

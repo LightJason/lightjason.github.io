@@ -61,6 +61,7 @@ code, pre {
 .benchmark-table, .benchmark-row, .benchmark-cell {
     display: block;
     width: 100%;
+    text-align: center;
     padding-top: 2.5em;
     padding-bottom: 2.5em;
 }
