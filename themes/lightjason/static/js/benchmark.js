@@ -209,6 +209,7 @@ const benchmark = (function() {
             const l_runtimdata = inputdata.configuration.runtime.split( " " );
             jQuery( dom ).append(
                 jQuery( "<table>" )
+                    .addClass("benchmark-info")
                     .append( 
                         jQuery( "<tr>" ).append( jQuery( "<th colspan=\"4\">" ).text( "Benchmark Configuration" ) )
                      )

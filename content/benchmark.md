@@ -3,35 +3,10 @@ title: "Benchmark"
 draft: true
 ---
 
-<p>
-    <div id="configuration"></div>
-</p>
-<br/>
-<p>
-    <div style="display: table; width: 100%;">
-        <div style="display: table-row;">
-            <div style="display: table-cell; width: 50%;"><canvas id="executiontime" /></div>
-            <div style="display: table-cell; width: 50%;"><canvas id="agentinitializetime" /></div>
-        </div>
-        <div style="display: table-row;">
-            <div style="display: table-cell; width: 50%"><canvas id="cycletimedistribution" /></div>    
-            <div style="display: table-cell; width: 50%"><canvas id="memoryconsumption" /></div>
-        </div>
-    </div>
-</p>    
-
-<script>
-jQuery.ajax({
-        url: "/synchronizedcount5.json",
-        crossDomain: true
-    })
-    .done(function(data) {
-        console.log(data);
-
-        benchmark.configurationtable( "#configuration", data );
-        benchmark.timeplot( "#executiontime", "execution", "agent execution time", data );
-        benchmark.timeplot( "#agentinitializetime", "agentinitialize", "agent initializing time", data );
-        benchmark.cycleplot( "#cycletimedistribution", "agent cycle time distribution", data );
-        benchmark.memoryplot( "#memoryconsumption", "memory consumption", data );
-    });    
-</script>
+## Minimal Counting Benchmark
+{{< benchmark id="foo" url="/synchronizedcount5.json" >}}
+Thie minimal benchmark runs a set of agents, which are counting down from 5 to 0. We are following the paper / report [Scalable Multi-Agent Simulation based
+on MapReduce](https://www.in.tu-clausthal.de/fileadmin/homes/techreports/ifi1603ahlbrecht.pdf) of this example, but we are don't using any scalibility technologies
+like [Map & Reduce](https://en.wikipedia.org/wiki/MapReduce). For the runtime behaviour a _synchronized_ version is used for comparing to the report benchmark, so
+all agents are running in parallel until all agents has been finished their cycle, after that the next cycle begins. 
+{{< /benchmark >}}

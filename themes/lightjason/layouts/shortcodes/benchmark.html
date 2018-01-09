@@ -1,0 +1,33 @@
+<div id="{{- delimit (slice "benchmark" (.Get "id")) "-" -}}">
+        <p>
+            <div class="benchmark-infoblock" id="{{- delimit (slice "benchmark" "configuration" (.Get "id")) "-" -}}"></div>
+            <div>{{- .Inner | markdownify -}}</div>
+        </p>
+        <br/>
+        <p>
+            <div class="benchmark-table">
+                <div class="benchmark-row">
+                    <div class="benchmark-cell"><canvas id="{{- delimit (slice "benchmark" "executiontime" (.Get "id")) "-" -}}" /></div>
+                    <div class="benchmark-cell"><canvas id="{{- delimit (slice "benchmark" "initializingtime" (.Get "id")) "-" -}}" /></div>
+                </div>
+                <br/>
+                <div class="benchmark-row">
+                    <div class="benchmark-cell"><canvas id="{{- delimit (slice "benchmark" "cycledistribution" (.Get "id")) "-" -}}" /></div>    
+                    <div class="benchmark-cell"><canvas id="{{- delimit (slice "benchmark" "memoryconsumption" (.Get "id")) "-" -}}" /></div>
+                </div>
+            </div>
+        </p>    
+        <script>
+        jQuery.ajax({
+                url: "{{- .Get "url" -}}",
+                crossDomain: true
+            })
+            .done(function(data) {    
+                benchmark.configurationtable( "#{{ delimit (slice "benchmark" "configuration" (.Get "id")) "-" }}", data );
+                benchmark.timeplot( "#{{ delimit (slice "benchmark" "executiontime" (.Get "id")) "-" }}", "execution", "agent execution time", data );
+                benchmark.timeplot( "#{{- delimit (slice "benchmark" "initializingtime" (.Get "id")) "-" -}}", "agentinitialize", "agent initializing time", data );
+                benchmark.cycleplot( "#{{- delimit (slice "benchmark" "cycledistribution" (.Get "id")) "-" -}}", "agent cycle time distribution", data );
+                benchmark.memoryplot( "#{{- delimit (slice "benchmark" "memoryconsumption" (.Get "id")) "-" -}}", "memory consumption", data );
+            });    
+        </script>
+    </div>

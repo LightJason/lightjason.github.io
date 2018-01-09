@@ -2163,4 +2163,25 @@ a.publicationanchor:hover {
   text-decoration: none;
 }
 
+.benchmark-info {
+  font-size: 65%;
+}
 
+.benchmark-infoblock {
+  float: left; 
+  padding-right: 0.5em;
+}
+
+.benchmark-table {
+  display: table; 
+  width: 100%;
+}
+
+.benchmark-row {
+  display: table-row;
+}
+
+.benchmark-cell {
+  display: table-cell; 
+  width: 50%;
+}
