@@ -1,33 +1,51 @@
-<div id="{{- delimit (slice "benchmark" (.Get "id")) "-" -}}">
+{{- $id := .Get "id" -}}
+{{- $releases := getJSON "https://api.github.com/repos/" (.Get "user") "/" (.Get "repo") "/releases" -}}
+{{- $.Scratch.Add "notfound" true -}}
+
+<div id="{{- delimit (slice "benchmark" $id) "-" -}}">
         <p>
-            <div class="benchmark-infoblock" id="{{- delimit (slice "benchmark" "configuration" (.Get "id")) "-" -}}"></div>
+            <div class="benchmark-infoblock" id="{{- delimit (slice "benchmark" "configuration" $id) "-" -}}"></div>
             <div>{{- .Inner | markdownify -}}</div>
         </p>
         <br/>
         <p>
             <div class="benchmark-table">
                 <div class="benchmark-row">
-                    <div class="benchmark-cell"><canvas id="{{- delimit (slice "benchmark" "executiontime" (.Get "id")) "-" -}}" /></div>
-                    <div class="benchmark-cell"><canvas id="{{- delimit (slice "benchmark" "initializingtime" (.Get "id")) "-" -}}" /></div>
+                    <div class="benchmark-cell"><canvas id="{{- delimit (slice "benchmark" "executiontime" $id) "-" -}}" /></div>
+                    <div class="benchmark-cell"><canvas id="{{- delimit (slice "benchmark" "initializingtime" $id) "-" -}}" /></div>
                 </div>
                 <br/>
                 <div class="benchmark-row">
-                    <div class="benchmark-cell"><canvas id="{{- delimit (slice "benchmark" "cycledistribution" (.Get "id")) "-" -}}" /></div>    
-                    <div class="benchmark-cell"><canvas id="{{- delimit (slice "benchmark" "memoryconsumption" (.Get "id")) "-" -}}" /></div>
+                    <div class="benchmark-cell"><canvas id="{{- delimit (slice "benchmark" "cycledistribution" $id) "-" -}}" /></div>    
+                    <div class="benchmark-cell"><canvas id="{{- delimit (slice "benchmark" "memoryconsumption" $id) "-" -}}" /></div>
                 </div>
             </div>
-        </p>    
-        <script>
-        jQuery.ajax({
-                url: "{{- .Get "url" -}}",
-                crossDomain: true
-            })
-            .done(function(data) {    
-                benchmark.configurationtable( "#{{ delimit (slice "benchmark" "configuration" (.Get "id")) "-" }}", data );
-                benchmark.timeplot( "#{{ delimit (slice "benchmark" "executiontime" (.Get "id")) "-" }}", "execution", "agent execution time", data );
-                benchmark.timeplot( "#{{- delimit (slice "benchmark" "initializingtime" (.Get "id")) "-" -}}", "agentinitialize", "agent initializing time", data );
-                benchmark.cycleplot( "#{{- delimit (slice "benchmark" "cycledistribution" (.Get "id")) "-" -}}", "agent cycle time distribution", data );
-                benchmark.memoryplot( "#{{- delimit (slice "benchmark" "memoryconsumption" (.Get "id")) "-" -}}", "memory consumption", data );
-            });    
-        </script>
+        </p>
+
+        {{- range $release := $releases -}}
+            {{- if and ($.Scratch.Get "notfound") (in .name $id) -}}
+                {{- $.Scratch.Set "notfound" false -}}
+    
+                {{- range $asset := $release.assets -}}
+
+                    {{- if (in $asset.name ".json") -}}
+                        <script>
+                            jQuery.ajax({
+                                    url: "{{- $asset.browser_download_url -}}",
+                                    crossDomain: true
+                                })
+                                .done(function(data) {    
+                                    benchmark.configurationtable( "#{{ delimit (slice "benchmark" "configuration" $id) "-" }}", data );
+                                    benchmark.timeplot( "#{{ delimit (slice "benchmark" "executiontime" $id) "-" }}", "execution", "agent execution time", data );
+                                    benchmark.timeplot( "#{{- delimit (slice "benchmark" "initializingtime" $id) "-" -}}", "agentinitialize", "agent initializing time", data );
+                                    benchmark.cycleplot( "#{{- delimit (slice "benchmark" "cycledistribution" $id) "-" -}}", "agent cycle time distribution", data );
+                                    benchmark.memoryplot( "#{{- delimit (slice "benchmark" "memoryconsumption" $id) "-" -}}", "memory consumption", data );
+                                });    
+                        </script>
+                    {{- end -}}
+
+                {{- end -}}     
+    
+            {{- end -}}     
+        {{- end -}}
     </div>

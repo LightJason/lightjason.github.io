@@ -223,7 +223,7 @@ const benchmark = (function() {
                             .append( jQuery( "<td colspan=\"3\">" ).text( inputdata.configuration.processors ) ) 
                     )
                     .append(
-                        l_runtimdata[0].includes("synchronized")
+                        ["synchronized", "workstealing", "cached", "single"].some(function(i) { return l_runtimdata[0].includes(i) })  
                             ? jQuery( "<tr>" )
                                 .append( jQuery( "<th>" ).text( "Runtime" ) )
                                 .append( jQuery( "<td colspan=\"3\">" ).text( l_runtimdata[0] ) )

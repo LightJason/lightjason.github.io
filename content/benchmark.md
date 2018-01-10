@@ -15,7 +15,7 @@ and the main informations about the scenario / machine are shown within the tabl
 
 
 ## Minimal Counting Benchmark
-{{< benchmark id="foo" url="/synchronizedcount5.json" >}}
+{{< benchmark id="synchronizedcount5" user="LightJason" repo="Benchmark" >}}
 Thie minimal benchmark runs a set of agents, which are counting down from 5 to 0. We are following the paper / report [Scalable Multi-Agent Simulation based
 on MapReduce](https://www.in.tu-clausthal.de/fileadmin/homes/techreports/ifi1603ahlbrecht.pdf) of this example, but we are don't using any scalibility technologies
 like [Map & Reduce](https://en.wikipedia.org/wiki/MapReduce). For the runtime behaviour a _synchronized_ version is used for comparing to the report benchmark, so
