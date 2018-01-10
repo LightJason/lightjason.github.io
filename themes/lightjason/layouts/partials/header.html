@@ -10,7 +10,9 @@
 	<meta  charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=0.95, maximum-scale=0.95" />
 
+	{{ if not (in (printf "%v" .Site.BaseURL) "localhost") }}
 	{{ template "_internal/google_analytics.html" . }}
+	{{ end }}
 
 	<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript" crossorigin="anonymous" async></script>
 	<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[["$","$"]],displayMath:[["$$","$$"]],processEscapes:!0,processEnvironments:!1,skipTags:["script","noscript","style","textarea","pre","code"],TeX:{equationNumbers:{autoNumber:"AMS"},extensions:["autoload-all.js"]}}})</script>
