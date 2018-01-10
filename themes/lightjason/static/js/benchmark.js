@@ -209,14 +209,25 @@ const benchmark = (function() {
         },
 
 
-        configurationtable: function( dom, inputdata ) {
+        configurationtable: function( dom, releaseurl, inputdata ) {
             const l_runtimdata = inputdata.configuration.runtime.split( " " );
             jQuery( dom ).append(
                 jQuery( "<table>" )
                     .addClass("benchmark-info")
                     .append( 
-                        jQuery( "<tr>" ).append( jQuery( "<th colspan=\"4\">" ).text( "Benchmark Configuration" ) )
-                     )
+                        jQuery( "<tr>" ).append( 
+                            jQuery( "<th colspan=\"4\">" )
+                                .append(
+                                    jQuery( "<span>" )
+                                        .text( "Configuration " )
+                                )
+                                .append(
+                                        jQuery( "<a>" )
+                                            .text( "(Download)" )
+                                            .attr( "href", releaseurl )
+                                )
+                        )
+                    )    
                     .append(  
                         jQuery( "<tr>" )
                             .append( jQuery( "<th>" ).text( "Machine Processors" ) )

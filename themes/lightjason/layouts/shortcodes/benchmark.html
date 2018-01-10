@@ -25,14 +25,13 @@
         {{- range $release := $releases -}}
             {{- if and ($.Scratch.Get "notfound") (in .name $id) -}}
                 {{- $.Scratch.Set "notfound" false -}}
-    
                 {{- range $asset := $release.assets -}}
 
                     {{- if (in $asset.name ".json") -}}
                         <script>
                             jQuery(function() {
                                 const data = {{- getJSON $asset.browser_download_url -}};
-                                benchmark.configurationtable( "#{{ delimit (slice "benchmark" "configuration" $id) "-" }}", data );
+                                benchmark.configurationtable( "#{{ delimit (slice "benchmark" "configuration" $id) "-" }}", "{{- $release.html_url -}}", data );
                                 benchmark.timeplot( "#{{ delimit (slice "benchmark" "executiontime" $id) "-" }}", "execution", "agent execution time", data );
                                 benchmark.timeplot( "#{{- delimit (slice "benchmark" "initializingtime" $id) "-" -}}", "agentinitialize", "agent initializing time", data );
                                 benchmark.cycleplot( "#{{- delimit (slice "benchmark" "cycledistribution" $id) "-" -}}", "agent cycle time distribution", data );
