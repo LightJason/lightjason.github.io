@@ -8,10 +8,10 @@ next :
     text: "knowledge base"
 ---
 
-In the following, we present a benchmark we conducted to show a) how well LightJason performs on doing agent-related tasks and b) how it compares with similar platforms. The benchmark depends on the [benchmarking framework](https://github.com/LightJason/Benchmark) and a [benchmark docker container](https://hub.docker.com/r/lightjason/benchmark/)
-which is run on [CircleCI](http://circleci.com).  A strict definition of the CircleCI Docker environment is the number of CPUs and the memory size (see [CircleCI documentation](https://circleci.com/docs/2.0/configuration-reference/#resource_class) for default configuration), so we must define our benchmarking scenarios with maximum 2 CPUs and 4GB RAM.
-But this helps us to reduce the complexity of the scenarios to a very small and straight definition without any superfluous content. Each run produces a JSON file with the raw data
-and the main information about the scenario / machine is shown within the table, a short introduction of the scenario content is also given.
+In the following, we present a benchmark we conducted to show a) how well LightJason performs on doing agent-related tasks and b) how it compares with similar platforms. 
+<!--more-->
+
+The benchmark depends on the [benchmarking framework](https://github.com/LightJason/Benchmark) and a [benchmark docker container](https://hub.docker.com/r/lightjason/benchmark/) which is run on [CircleCI](http://circleci.com). A strict definition of the CircleCI Docker environment is the number of CPUs and the memory size (see [CircleCI documentation](https://circleci.com/docs/2.0/configuration-reference/#resource_class) for default configuration), so we must define our benchmarking scenarios with maximum 2 CPUs and 4GB RAM. But this helps us to reduce the complexity of the scenarios to a very small and straight definition without any superfluous content. Each run produces a JSON file with the raw data and the main information about the scenario / machine is shown within the table, a short introduction of the scenario content is also given.
 
 
 ## Minimal Counting Benchmark

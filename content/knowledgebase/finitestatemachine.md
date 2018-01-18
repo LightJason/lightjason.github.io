@@ -14,8 +14,9 @@ next :
 
 ## State Machine
 
-A [Finite-State Machine](https://en.wikipedia.org/wiki/Finite-state_machine) is a system with explicitly defined states and transitions between the states with the following syntax:
+A [Finite-State Machine](https://en.wikipedia.org/wiki/Finite-state_machine) is a system with explicitly defined states and transitions between the states with the following syntax
 
+<!--more-->
 * a __state__ is presented by a circle and defines a _stable execution point_
 * a __final state__ is defined by a circle with a _double outline_
 * the state machine defines a single __initial state__ with a triangle

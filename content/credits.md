@@ -5,6 +5,7 @@ previous :
     text: "contact"
 ---
 We would like to give credit to some people who helped us with our work by providing us with ideas, discussion or feedback to optimise our work continuously.
+<!--more-->
 
 * Christoph Kuper - for his bachelor thesis, which provided us with a first draft of the architecture of a multi-agent system framework
 * Jetbrains - for the development tools and license support

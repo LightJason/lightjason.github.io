@@ -12,6 +12,8 @@ next :
 
 This page provides an overview of built-in actions in LightJason/AgentSpeak(L++).
 
+<!--more-->
+
 {{< toc >}}
 
 > All actions are organised within the [action.builtin](http://lightjason.github.io/AgentSpeak/sources/d7/d4b/namespaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1builtin.htm) package. 

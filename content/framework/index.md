@@ -9,7 +9,7 @@ next :
     text: "benchmark"
 ---
 
-The multi-agent framework is split up into different parts. Each component is provided with separate documentation. In this section, we give an overview of all framework elements. The whole framework is published at [Maven Central](http://mvnrepository.com).
+The multi-agent framework is split up into different parts. Each component is provided with separate documentation. In this section, we give an overview of all framework elements.<!--more--> The whole framework is published at [Maven Central](http://mvnrepository.com).
 
 The source codes are written in Java (latest release version) with a defined syntax structure; all code documentation is created with [Doxygen](http://www.doxygen.org). We are also using unit testing and the [Git-Flow](http://nvie.com/posts/a-successful-git-branching-model/) developing model.
 

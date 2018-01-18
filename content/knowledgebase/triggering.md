@@ -16,6 +16,8 @@ next :
 
 The order of execution (parallel, sequential) of sub-[plans](../plans), triggered inside their parent plan differs depending on the trigger symbol `!` or `!!`:
 
+<!--more-->
+
 * The trigger `!planname` marks a plan `+!planname` to be executed in the **next** cycle &#8594; *postponed execution*.
 
 > **Note:** Adding `!planname` multiple times in one cycle will result in `+!planname` to be executed only **once** in the next cycle because the same trigger gets only added once.

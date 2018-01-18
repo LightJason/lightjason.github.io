@@ -10,12 +10,12 @@ next :
     text: "kb: Basic - Atoms"
 ---
 
-We describe the difference between LightJason and [Jason](http://jason.sourceforge.net/), because in general the LightJason framework is inspired by Jason, but it is __not__:
+We describe the difference between LightJason and [Jason](http://jason.sourceforge.net/), because in general the LightJason framework is inspired by Jason, but it is __not__
 
 * a copy of Jason
-* a extension to Jason
+* or an extension to Jason
 
-LightJason does not use __any code fragments__ of Jason, so there is no connection between the two frameworks. LightJason is __only inspired__ by the concept of Jason on a theoretical level. We build a fully new framework from scratch. The image allows you to highlight elements by a _mouse over effect_ for better understanding.
+<!--more-->LightJason does not use __any code fragments__ of Jason, so there is no connection between the two frameworks. LightJason is __only inspired__ by the concept of Jason on a theoretical level. We build a fully new framework from scratch. The image allows you to highlight elements by a _mouse over effect_ for better understanding.
 
 {{< toc >}}
 {{< includejs "/agentcycle.js" >}}

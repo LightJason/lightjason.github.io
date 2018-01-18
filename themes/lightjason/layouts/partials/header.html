@@ -2,9 +2,11 @@
 <html lang="{{- .Site.Language -}}">
 
 <head>
+	{{- partial "description" . -}}
+
 	{{ with .Site.Params.bingverify -}}<meta name="msvalidate.01" content="{{- . -}}" />{{- end }}
 	{{ with .Site.Params.googleverify -}}<meta name="google-site-verification" content="{{- . -}}" />{{- end }}
-	{{ with .Site.Params.metadescription -}}<meta name="description" content="{{- . -}}">{{- end }}
+	<meta name="description" content="{{- $.Scratch.Get "description" -}}">
 	{{ with .Site.Params.keywords -}}<meta name="keywords" content="{{- . -}}">{{- end }}
 
 	<meta  charset="utf-8" />

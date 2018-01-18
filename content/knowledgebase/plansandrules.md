@@ -12,6 +12,8 @@ next :
 
 In contrast to [&#8594; literals](../literals), [&#8594; variables](../variables) and [&#8594; beliefs and facts](../beliefsandfacts), plans and rules are _executable structures_.
 
+<!--more-->
+
 {{< toc >}}
 
 In general Prolog uses only logical rules. _AgentSpeak(L)_ and _AgentSpeak(L++)_ also use rules but additionally provide a plan structure. Within a Prolog structure the ordering is relevant to the execution semantic (see in [Learn Prolog Now!](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-htmlse10)).

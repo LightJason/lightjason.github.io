@@ -14,6 +14,8 @@ next:
 In contrast to Prolog and original Jason, the beliefbase of LightJason is more than a list of facts.
 LightJason supports a hierarchical organized structure of beliefs, so you can manage the knowledge of an agent as [ontology](https://en.wikipedia.org/wiki/Ontology) with an  efficient searching and unification.
 
+<!--more-->
+
 {{< toc >}}
 
 ## Previous Knowledge

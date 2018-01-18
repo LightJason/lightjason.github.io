@@ -11,6 +11,9 @@ next :
 ---
 
 This article gives a short introduction in [logic programming concepts](https://en.wikipedia.org/wiki/Logic_programming), which are needed to write the source code of an agent.
+
+<!--more-->
+
 For a general understanding of logic programming it can be helpful to start by considering Prolog, in detail we recommend [SWI-Prolog](http://www.swi-prolog.org/), because there are many applications and good tutorials to understand the main mechanism of logic programming.
 
 {{< toc >}}

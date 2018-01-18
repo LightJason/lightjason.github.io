@@ -3,7 +3,11 @@ title: "Wizard"
 gitter: "tutorials"
 ---
 
-The wizard allows you to create a full working package of a _multi-agent simulation_. You get a zip file which contains a full working [Maven](https://maven.apache.org/) project. You can follow-up our [15 minutes](/tutorials/agentspeak-in-fifteen-minutes/#build-agentspeak-l-from-the-sources) tutorial step 4 to build AgentSpeak and after that the wizard generated code can be used directly. The code is tested up to 2.500.000 agents with communication, environment, external and internal actions and create an executable jar file.
+The wizard allows you to create a full working package of a _multi-agent simulation_. You get a zip file which contains a full working [Maven](https://maven.apache.org/) project. 
+
+<!--more-->
+
+You can follow-up our [15 minutes](/tutorials/agentspeak-in-fifteen-minutes/#build-agentspeak-l-from-the-sources) tutorial step 4 to build AgentSpeak and after that the wizard generated code can be used directly. The code is tested up to 2.500.000 agents with communication, environment, external and internal actions and create an executable jar file.
 
 __Note:__ We are currently testing the wizard with different workflows and examples, so bugs can occure. Please report us any problems and feel free to ask questions if there is anything ambiguous
 

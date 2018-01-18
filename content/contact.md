@@ -1,5 +1,6 @@
 ---
 title: "Contact"
+description: "Contact information of the project maintainer, university and research group"
 previous :
     url: "/about"
     text: "about"

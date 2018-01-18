@@ -1,14 +1,14 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@{{- .Site.Params.twitter -}}" />
 <meta name="twitter:title" content="{{- .Site.Title -}}{{- if not .IsHome }} - {{ .Title -}}{{- end -}}" />
-<meta name="twitter:description" content="{{- (.Render "summary") | default .Title -}}" />
+<meta name="twitter:description" content="{{- $.Scratch.Get "description" -}}" />
 <meta name="twitter:image" content="{{- if .Params.image -}}{{ delimit (slice .Site.BaseURL .Params.image) "" -}}{{- else -}}{{- delimit (slice .Site.BaseURL .Site.Params.icon.logo) "" -}}{{- end }}" />
 
 <meta property="og:site_name" content="{{- .Site.Title -}}" />
 <meta property="og:url" content="{{- partial "domainlink" (dict "content" . "path" .RelPermalink) -}}" />
 <meta property="og:title" content="{{- .Site.Title -}}{{- if not .IsHome }} - {{ .Title -}}{{- end -}}" />
 <meta property="og:image" content="{{- if .Params.image -}}{{ delimit (slice .Site.BaseURL .Params.image) "" -}}{{- else -}}{{- delimit (slice .Site.BaseURL .Site.Params.icon.logo) "" -}}{{- end }}" />
-<meta property="og:description" content="{{- (.Render "summary") | default .Title -}}" /> 
+<meta property="og:description" content="{{- $.Scratch.Get "description" -}}" /> 
 
 <script type="application/ld+json">
 [{
@@ -94,7 +94,7 @@
 	"@context" : "http://schema.org",
 	"@type" : "Course",
 	"name" : {{ .Title -}},
-	"description" : {{ .Params.description | default (replaceRE "\n+" " " (replace (.Summary | markdownify | plainify) "Contents [Hide]" "")) -}},
+	"description" :  {{ replace "Contents [Hide]" "" ($.Scratch.Get "description") -}},
 	"provider" : {
 		"@type" : "Organization",
 		"name" : {{ .Site.Title -}},

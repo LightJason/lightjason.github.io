@@ -10,7 +10,10 @@ next :
     text: "Communication"
 ---
 
-This tutorial explains the concept and usage of actions. Actions are the _executable mechanisms_. We support a lot of different actions which support some [basic functionality](/knowledgebase/builtinactions). Actions are an important part within a multi-agent system e.g. for [communication](/tutorials/communication), modifying the [environment](/tutorials/environment) or the internal state of the agent.
+This tutorial explains the concept and usage of actions. Actions are the _executable mechanisms_. We support a lot of different actions which support some [basic functionality](/knowledgebase/builtinactions). 
+<!--more-->
+
+Actions are an important part within a multi-agent system e.g. for [communication](/tutorials/communication), modifying the [environment](/tutorials/environment) or the internal state of the agent.
 
 {{< toc >}}
 

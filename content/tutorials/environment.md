@@ -11,7 +11,10 @@ next:
 ---
 
 
-The LightJason system architecture does not require any environment, but you can easily write your own. Based on the _asynchronous and parallel_ execution model in LightJason you have to create thread-safe data structures for your environment to avoid any [race condition](https://en.wikipedia.org/wiki/Race_condition).
+The LightJason system architecture does not require any environment, but you can easily write your own. 
+<!--more-->
+
+Based on the _asynchronous and parallel_ execution model in LightJason you have to create thread-safe data structures for your environment to avoid any [race condition](https://en.wikipedia.org/wiki/Race_condition).
 __Keep in mind that all calls of the environment are done in parallel and asynchronously, so your environment must handle these accesses correctly.__
 
 {{< toc >}}

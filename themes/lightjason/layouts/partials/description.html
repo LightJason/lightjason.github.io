@@ -1,0 +1,15 @@
+{{- $.Scratch.Add "description" ( index .Params "description" | default "" ) -}}
+
+{{- if not ($.Scratch.Get "description") -}}
+    {{- $.Scratch.Set "description" (.Render "summary") -}}
+{{- end -}}   
+
+{{- if not ($.Scratch.Get "description") -}}
+    {{- $.Scratch.Set "description" .Site.Params.metadescription -}}
+{{- end -}}
+
+{{- if not ($.Scratch.Get "description") -}}
+    {{- $.Scratch.Set "description" .Site.Title -}}
+{{- end -}}
+
+{{- $.Scratch.Set "description" ( strings.TrimSuffix " " (strings.TrimSuffix "..." (($.Scratch.Get "description") | replaceRE "[[:space:]]+" " " | truncate (.Site.Params.summarylength) "" | plainify) ) ) -}}

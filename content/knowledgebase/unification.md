@@ -13,6 +13,8 @@ next :
 [Unification](https://en.wikipedia.org/wiki/Unification_(computer_science)) is the process for _setting values from one literal into the variables of another literal_, e.g. determining the current value of `Colour` in `light(Colour)`.
 Note: `Colour` is a variable! Based on the previous [&#8594; time example](../literals#time) the procedure can look as follows:
 
+<!--more-->
+
 > We have two literals, one literal with values and another literal with variables
 > <!-- htmlmin:ignore --><pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">time( current( hour( 2    ), minute( 0      ), period( pm()   ) ) )
 > time( current( hour( Hour ), minute( Minute ), period( Period ) ) )

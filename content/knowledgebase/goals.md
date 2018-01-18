@@ -12,6 +12,8 @@ next :
 
 Goals define which plans an agent should try to instantiate and execute.
 
+<!--more-->
+
 They can be defined as 
 
 * [the initial goal](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#12a3e79ad1f2c67d5cd687d1277a51b1), i.e. by convention `!main.` or 

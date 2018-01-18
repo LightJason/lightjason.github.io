@@ -14,7 +14,9 @@ next :
 
 The main definition of our [BDI (Belief-Desire-Intention) framework](https://en.wikipedia.org/wiki/Belief%E2%80%93desire%E2%80%93intention_software_model) follows [Russell & Norvig - Artificial Intelligence: A Modern Approach](http://aima.cs.berkeley.edu/) with the structure of _goal-based agents_:
 
-> An agent is anything that can be viewed as perceiving its environment through sensors and acting upon that environment through effectors _(Chapter 2.1, page 31)_
+<!--more-->
+
+> An agent is anything that can be viewed as perceiving its environment through sensors and acting upon that environment through effectors _(Chapter 2.1, page 31)_<!--more-->
 
 We are defining furthermore along the book of [Michael Wooldrige - An Introduction to MultiAgent Systems](http://www.cs.ox.ac.uk/people/michael.wooldridge/pubs/imas/IMAS2e.html) _(chapter 2.1, page 26)_:
 

@@ -12,6 +12,8 @@ next :
 
 Analogously to [Java](https://en.wikipedia.org/wiki/Java_annotation), AgentSpeak(L++) also supports the concept of [annotations](https://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#4ab6864fc58ecd8b598ee10dfe2ac311).
 
+<!--more-->
+
 In AgentSpeak(L++) [&#8594; plans and logic rules](../plansandrules) can be modified in their execution behaviour by adding annotation(s) to them.
 
 {{< toc >}}
