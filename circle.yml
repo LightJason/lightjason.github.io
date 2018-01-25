@@ -4,7 +4,7 @@ jobs:
     build:
         working_directory: ~/website
         docker:
-            - image: lightjason/lightjason.github.io:latest
+            - image: lightjason/docker:web
 
         branches:
             only:
