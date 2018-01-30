@@ -48,7 +48,7 @@ public final class C{{{ actionname }}}Action  extends IBaseAction
     public final IFuzzyValue<Boolean> execute( final boolean p_parallel, @Nonnull final IContext p_context, @Nonnull final List<ITerm> p_argument, @Nonnull final List<ITerm> p_return )
     {
         // unflatten all arguments for removing lists with [ [], [ [] ] ] and check unflatten arguments
-        final List<ITerm> l_arguments = CCommon.flatcollection( p_argument ).collect( Collectors.toList() );
+        final List<ITerm> l_arguments = CCommon.flatten( p_argument ).collect( Collectors.toList() );
         // check unflatten arguments
         if ( l_arguments.size() < {{{ actionarguments }}} )
             return CFuzzyValue.from( false );
