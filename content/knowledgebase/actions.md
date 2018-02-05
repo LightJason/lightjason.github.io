@@ -21,7 +21,7 @@ Actions can be called analogously to functions inside the body or condition of a
 > **Notes:** 
 
 > * A list of already [&#8594; built-in actions](../builtinactions) can be found on the next page.
-> * An elegant way to handle failing plans are explained in the article about [&#8594; explicit repair actions](../repairactions).
+> * An elegant way to handle failing plans is explained in the article about [&#8594; explicit repair actions](../repairactions).
 > * **For developers:** See our [&#8594; tutorial about actions](/tutorials/actions/) for a practical guide on how to use and create new actions.
 
 
