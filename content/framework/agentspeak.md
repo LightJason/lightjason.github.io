@@ -16,16 +16,16 @@ This is the main component with the agent functionality. The component allows to
 
 ## Benchmarking Emergency Scenario
 
-The video presents a performance test of our framework with 15.000 agents on an emergency scenario. The video shows the system running in real-time on a single computer (iMac with 2,9 GHz Intel Core i5, 16 GB RAM and OSX El Captain 10.11.6).
+The video presents a performance test of our framework with 15.000 agents in an emergency scenario. The video shows the system running in real-time on a single computer (iMac with 2,9 GHz Intel Core i5, 16 GB RAM and OSX El Captain 10.11.6).
 
-> The agents calculate their landmarks to the exit point (position 140 / 140 in the middle) on a grid world with 250x250 cells and starts walking. If a cell is blocked by another agent, agents try to move to the right-side cell, if this is not possible to the left side cell; if neither is possible, the agent stops walking and waits for a random time until trying again to continue walking. If the agent doesn't reach a landmark within five attempts, it skips the landmark and starts walking to the next one except the exit point.
+> The agents calculate their landmarks to the exit point (position 140 / 140 in the middle) in a grid world with 250x250 cells and start walking. If a cell is blocked by another agent, agents try to move to the right-side cell, if this is not possible to the left side cell; if neither is possible, the agent stops walking and waits for a random time until trying again to continue walking. If the agent doesn't reach a landmark within five attempts, it skips the landmark and starts walking to the next one except the exit point.
 
 {{< video "https://player.vimeo.com/video/202120833" "https://vimeo.com/lightjason/emergencyscenario" >}}
 
 
 ## Language Features
 
-We present a short overview of language examples of the _AgentSpeak(L++)_ syntax. You can found the full [EBNF description](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form) of the language syntax on the project [documentation page](http://lightjason.github.io/AgentSpeak/). The Railroad / Syntax diagrams of the _AgentSpeak(L++)_ language:
+We present a short overview of language examples of the _AgentSpeak(L++)_ syntax. You can find the full [EBNF description](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form) of the language syntax on the project [documentation page](http://lightjason.github.io/AgentSpeak/). The Railroad / Syntax diagrams of the _AgentSpeak(L++)_ language:
 
 * [Agent Railroad / Syntax Diagram](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/)
 * [PlanBundle Railroad / Syntax Diagram](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/PlanBundle.g4/)
@@ -34,7 +34,7 @@ We present a short overview of language examples of the _AgentSpeak(L++)_ syntax
 
 The language does not support looping directly; however, we support [lambda expressions](http://lightjason.github.io/AgentSpeak/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#945f3fc449518a73b9f5f32868db466c) which are based on [lambda calculus](https://en.wikipedia.org/wiki/Lambda_calculus). Similar to a _for each_ call, each element in an input list (variable) can be looped.
 
-> The example below creates a list of the number _[1,20)_ and we are looping over the elements, first in sequential order and call the _print_ action for each element and in the second call we are summarize each value to the variable _R_. _R_ is in this case the _returning variable_
+> The example below creates a list of the number _[1,20)_ and we are looping over the elements, first in sequential order and call the _print_ action for each element and in the second call we add each value to the variable _R_. _R_ is in this case the _returning variable_
 
 <!-- htmlmin:ignore -->
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">L = collection/list/range(1, 20);
@@ -55,7 +55,7 @@ AgentSpeak(L++) supports the implementation of _repair planning_ with the defaul
 
 <p/>
 
-> You can also use this technique, if you don't want a plan to fail: If an action might fail you can append a ```<< true``` to its invocation. This models the behaviour _anything can go wrong, but the agent ignores the error(s)_.
+> You can also use this technique if you don't want a plan to fail: If an action might fail you can append a ```<< true``` to its invocation. This models the behaviour _anything can go wrong, but the agent ignores the error(s)_.
 <!-- htmlmin:ignore --><pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">actionA << true;
 </code></pre><!-- htmlmin:ignore -->
 
