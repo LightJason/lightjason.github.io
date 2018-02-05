@@ -25,7 +25,7 @@ The basic knowledge about agents and their execution mechanism from the [knowled
 ## Tools You Need
 
 * Working Maven greater than 3.0 [installation](http://maven.apache.org/install.html).
-* Java __JDK__ 1.8 installation which can be obtained [here](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
+* Java __JDK 1.9__ installation which can be obtained [here](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 * Git installation (optional, but recommended)
   * Linux: Installing ``git`` via your favourite package manager should be sufficient.
   * MacOS: Using [Homebrew](http://brew.sh) with ```brew install git```.
@@ -129,7 +129,7 @@ For the following sections we assume that you are working inside the directory `
 
     Inside ```Developer/myagentapp/``` open the ```pom.xml``` with your favourite (programming) editor, navigate to the ```<dependencies>``` section and add the completed excerpt above or below the already present ```<dependency>``` entries (for example, you will also find an entry for JUnit within this section).
 
-3. __For LightJason/AgentSpeak to run, it is crucial to enforce Java 1.8 support__ in your project. Add the following entry before the ```<dependencies>``` section:
+3. __For LightJason/AgentSpeak to run, it is crucial to enforce Java 1.9 support__ in your project. Add the following entry before the ```<dependencies>``` section:
 
 	<!-- htmlmin:ignore -->
 	{{< githubsource user="LightJason" repo="Examples" file="pom.xml" lang="xml" branch="tutorial-agentspeak-in-15min" filter="[[:space:]]{4}<properties>(.|\n)*?</properties>" >}}
@@ -239,12 +239,12 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
     ```
     <!-- htmlmin:ignore -->
 
-    On a recent dual-core 2C/4T laptop (benchmarked with the [Linux/Unix tool](https://linux.die.net/man/1/time) ```time```) this yields
+    With an i7-3770 4C/8T CPU ("benchmarked" with the [Linux/Unix tool](https://linux.die.net/man/1/time) ```time```) this yields
     <!-- htmlmin:ignore -->
     ```commandline
     time java -jar target/myagentapp-1.0-SNAPSHOT.jar agent.asl 500 1000
     ...
-    77.33s user 8.22s system 200% cpu 42.659 total
+    62.57s user 6.33s system 438% cpu 15.727 total
     ```
     <!-- htmlmin:ignore -->
 
@@ -253,7 +253,7 @@ In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynex
     ```commandline
     time java -jar target/myagentapp-1.0-SNAPSHOT.jar agent_noprint.asl 500 1000
     ...
-    37.77s user 1.14s system 327% cpu 11.888 total
+    44.06s user 1.47s system 595% cpu 7.638 total
     ```
     <!-- htmlmin:ignore -->
 
