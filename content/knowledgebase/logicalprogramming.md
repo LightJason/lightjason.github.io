@@ -55,7 +55,7 @@ Additionally, atoms can also contain slashes ```/``` and minus ```-``` character
 
 > We would like to say it is currently 2 o'clock post meridiem (pm)
 > <pre><code class="language-prolog">time( current( hour(2), minute(0), period( pm() ) ) )</pre></code>
-> You can see, that a literal can store a list of other literals or values inside the brackets.
+> You can see that a literal can store a list of other literals or values inside the brackets.
 
 Based on the first example a negation is also possible:
 
@@ -72,15 +72,15 @@ They can be used to define literals with a _placeholder_ and (in contrast to [at
 > <pre><code class="language-prolog">time( current( hour( Hour ), minute( Minute ), period( Period ) ) )</code></pre>
 > **Note:** The upper-case variables ```Hour```, ```Minute``` and ```Period``` can be assigned to values automatically. This mechanism is called [unification](#unification).
 
-Within a logic programming language exists a specialised variable which is _just_ the underscore ```_```. This variable can be sloppy named as _trash can_. You can use this special variable for defining a variable which value should be ignored.
+Within a logic programming language exists a specialised variable which is _just_ the underscore ```_```. This variable can be sloppy named as _trash can_. You can use this special variable for defining a variable whose value should be ignored.
 
-> In contradistinction to the time example above, we would like to ignore the period, i.e. the ```am()```/```pm()``` part, so we say, that we would like to get the current time and ignoring the 12-hour clock period.
+> In contradistinction to the time example above, we would like to ignore the period, i.e. the ```am()```/```pm()``` part, so we say, that we would like to get the current time and ignore the 12-hour clock period.
 > <pre><code class="language-prolog">time( current( hour( Hour ), minute( Minute ), period( _ ) ) )</code></pre>
 > With this definition we can get a very flexible structure for extracting some information from the literals.
 
 ### Beliefs and Facts
 
-Based on the definition of [variables](#variables) and [literals](#atomliterals) we are defining a _fact_ as a _literal without variables_. A fact is a literal which define a state or an information (independent whether the information is correct or wrong). In relation to a multi-agent system a _belief_ is a _fact about the knowledge or the environment_. So the fact defines a state or a point of view of an object without any information about the correctness.
+Based on the definition of [variables](#variables) and [literals](#atomliterals) we are defining a _fact_ as a _literal without variables_. A fact is a literal which defines a state or an information (independent from whether the information is correct or wrong). In relation to a multi-agent system a _belief_ is a _fact about the knowledge or the environment_. So the fact defines a state or a point of view of an object without any information about the correctness.
 
 ### Rules
 
@@ -114,7 +114,7 @@ fibonacci(N,R) :-
 > > (```R``` can be calculated to ```R1 + R2```) _then_ the rule will be finished successful
 
 > The order of the rule is very important, because Prolog tries to find a rule, which can be matched successfully,
-> the first rule, that matches will be used. Variables will be set during runtime and the values will be passed
+> the first rule that matches will be used. Variables will be set during runtime and the values will be passed
 > back as a reference, which is named [side effect](https://en.wikipedia.org/wiki/Side_effect_(computer_science)). In imperative programming languages these side effects are undesired, but
 > can be very helpful in logic programming languages.  
 >
@@ -123,7 +123,7 @@ fibonacci(N,R) :-
 
 ## Runtime
 
-In the section [design time](#designtime) we are talked about a symbolic representation of data. We can define such data in the agent script and during the execution of the agent we would like to modify the data. On an abstract point of view we are talking about [deductive reasoning](https://en.wikipedia.org/wiki/Deductive_reasoning), that means in slopping sentence: _We are generating new knowledge, based on the current knowledge of the agent_.
+In the section [design time](#designtime) we talked about a symbolic representation of data. We can define such data in the agent script and during the execution of the agent we would like to modify the data. From an abstract point of view, we are talking about [deductive reasoning](https://en.wikipedia.org/wiki/Deductive_reasoning), that means in a slopping sentence: _We are generating new knowledge, based on the current knowledge of the agent_.
 
 {{< img src="/images/deduction.svg" alt="deduction" width="30%" >}}
 
@@ -142,7 +142,7 @@ Based on the previous [time example](#time) the procedure can look as follows:
 > time( current( hour( Hour ), minute( Minute ), period( _    ) ) )
 > </pre></code>
 > Based on this structure the systems tries to transfer the values from the first literal into the variables
-> of the second literal, such that both literals are equal. If it is not possible the unification
+> of the second literal such that both literals are equal. If it is not possible, the unification
 > process will fail. During a successful execution the variable ```Hour``` stores the value $2$ and the variable
 > ```Minute``` the value $0$.
 
