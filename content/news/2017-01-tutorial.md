@@ -3,7 +3,7 @@ date: 2017-01-01T22:02:54+01:00
 title: "Tutorial Update"
 categories: ["Documentation"]
 ---
-We update the tutorials with a short introduction in [efficient beliefbases](/tutorials/efficient-beliefbase) and [communication](/tutorials/communication) <!--more--> 
+We updated the tutorials with a short introduction in [efficient beliefbases](/tutorials/efficient-beliefbase) and [communication](/tutorials/communication) <!--more--> 
 
 The [LightJason architecture](/) allows you to create _on-demand beliefbases_ (which uses a [lazy loading](https://en.wikipedia.org/wiki/Lazy_loading)) structure. The beliefs within the beliefbase are generated while the agent gets access to the literal. This pattern is very fast and efficient.
 
