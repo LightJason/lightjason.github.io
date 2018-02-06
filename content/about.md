@@ -19,14 +19,14 @@ Our research projects consider _traffic_ and _crowd simulation_, and we try to s
 > application-based structure, but it is a great and
 > helpful work, in which way a multi-agent system can
 > be used in complex simulation scenarios.<br>
-> As an alumni of the DFG project [SocialCars](https://socialcars.github.io), his current academic research is focused on the field of _(de-&#x2060;)centralized cooperative traffic management_ and [documented on the project's GitHub-site](https://socialcars.github.io/b-decentralized-cooperative/#b2-1-malte-aschermann-https-github-com-masc-a-mechanism-for-automatic-coordination-of-cooperative-driving-manoeuvres-fairness-vs-efficiency). 
+> As an alumnus of the DFG project [SocialCars](https://socialcars.github.io), his current academic research is focused on the field of _(de-&#x2060;)centralized cooperative traffic management_ and [documented on the project's GitHub-site](https://socialcars.github.io/b-decentralized-cooperative/#b2-1-malte-aschermann-https-github-com-masc-a-mechanism-for-automatic-coordination-of-cooperative-driving-manoeuvres-fairness-vs-efficiency). 
 
 <p/>
 
 > [Sophie](/contact)'s research depends on [social-choice theory](https://en.wikipedia.org/wiki/Social_choice_theory)
 > which is the first usage of LightJason implementation.
 > The generic aspect of this work is the aggregation of individual preferences into a collective decision.<br>
-> As a member of the DFG project [SocialCars](https://socialcars.github.io), her current academic research is (like Malte's) also embedded in the field of _(de-&#x2060;)centralized cooperative traffic management_ and [documented on the project's GitHub-site](https://socialcars.github.io/b-decentralized-cooperative/#b2-2-sophie-dennisen-https-github-com-sdennisen-collective-decision-making-mechanisms-in-urban-traffic).
+> As an alumna of the DFG project [SocialCars](https://socialcars.github.io), her current academic research is (like Malte's) also embedded in the field of _(de-&#x2060;)centralized cooperative traffic management_ and [documented on the project's GitHub-site](https://socialcars.github.io/b-decentralized-cooperative/#b2-2-sophie-dennisen-https-github-com-sdennisen-collective-decision-making-mechanisms-in-urban-traffic).
 
 <p/>
 
@@ -44,7 +44,7 @@ Our work is inspired by [Jason](http://jason.sourceforge.net/), a multi-agent fr
 
 We tried a lot of different types of frameworks like [TerraME](http://www.terrame.org/), [FLAME](http://www.flame.ac.uk/), [GOAL](http://ii.tudelft.nl/trac/goal) or [MASON](http://cs.gmu.edu/~eclab/projects/mason/) to create an usable system for our simulation, but without success, so that we build up our framework from scratch.
 
-From another point of view, we had compared the main _popular programming language indices_ [Tiobe](http://www.tiobe.com/tiobe-index/), [RedMonk](http://redmonk.com/sogrady/2016/02/19/language-rankings-1-16/) and [PopularitY](http://pypl.github.io/PYPL.html) in 2015 / 2016 and we found out, that agent-programming languages are not listed on any index, only _logical programming (Prolog)_ is found on Tiobe.
+From another point of view, we had compared the main _popular programming language indices_ [Tiobe](http://www.tiobe.com/tiobe-index/), [RedMonk](http://redmonk.com/sogrady/2016/02/19/language-rankings-1-16/) and [PopularitY](http://pypl.github.io/PYPL.html) in 2015 / 2016 and we found out that agent-programming languages are not listed on any index, only _logical programming (Prolog)_ is found on Tiobe.
 Our goal for this system is to create a practically usable and well documented framework which can also be used by non-software-developers and included in already existing projects. We try to explain the ideas, concepts and technical background in a clean and understandable way to get a better approval of agent-programming and modelling.
 
 > Except where otherwise noted,

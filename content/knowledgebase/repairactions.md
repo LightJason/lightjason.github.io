@@ -23,6 +23,6 @@ The following example shows the execution of three actions _actionA_, _actionB_,
 </code></pre>
 <!-- htmlmin:ignore -->
 
-You can also use this technique, if you don't want a plan to fail: If an action might fail you can append a ```<< true``` to its invocation. This models the behaviour _anything can go wrong, but the agent ignores the error(s)_.
+You can also use this technique if you don't want a plan to fail: If an action might fail you can append a ```<< true``` to its invocation. This models the behaviour _anything can go wrong, but the agent ignores the error(s)_.
 <!-- htmlmin:ignore --><pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">actionA << true;
 </code></pre><!-- htmlmin:ignore -->

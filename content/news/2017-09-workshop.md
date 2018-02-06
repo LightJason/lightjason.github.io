@@ -28,6 +28,6 @@ You can download the source code and binary jar file
 
 {{< githubrelease user="LightJason" repo="Examples" filter="workshop-trafficsimulation" zip="true" names="trafficsimulation-1.0-SNAPSHOT.jar=Jar Executable" >}}
 
-If you run the Jar file you can found any configuration under ```~/.lightjason/trafficsimulation```. Within the configuration you can enable all agents. Documentation of MAS, LightJason and the scenario are built-in as a slide-show. All parts of the game are open-source and we will publish it later as an online game.
+If you run the Jar file you can find a configuration under ```~/.lightjason/trafficsimulation```. Within the configuration you can enable all agents. Documentation of MAS, LightJason and the scenario are built-in as a slide-show. All parts of the game are open-source and we will publish it later as an online game.
 
 {{< video "https://player.vimeo.com/video/236143206" "https://vimeo.com/lightjason/trafficgame" >}}

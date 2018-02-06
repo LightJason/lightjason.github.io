@@ -17,12 +17,13 @@ next :
 A [Finite-State Machine](https://en.wikipedia.org/wiki/Finite-state_machine) is a system with explicitly defined states and transitions between the states with the following syntax
 
 <!--more-->
-* a __state__ is presented by a circle and defines a _stable execution point_
-* a __final state__ is defined by a circle with a _double outline_
-* the state machine defines a single __initial state__ with a triangle
-* a __transition__ is presented by an arrow which starts in a state and ends in a state. A transition symbol is an active execution call like a function
 
-Mostly the state name is documented within a state, also the arrow of a transition can be used for documentation.
+- a __state__ is presented by a circle and defines a _stable execution point_
+- a __final state__ is defined by a circle with a _double outline_
+- the state machine defines a single __initial state__ with a triangle
+- a __transition__ is presented by an arrow which starts in a state and ends in a state. A transition symbol is an active execution call like a function
+
+Mostly the state name is documented within a state; the arrow of a transition can also be used for documentation.
 
 > This example shows a similar state machine with three states that runs from the _initial state_ to a _final state_ (left to right). This example shows the _static structure_ of the state machine, so there is no runtime information within the illustration
 > {{< img src="/images/fsm1.svg" alt="finite-state machine" width="30%" >}}
