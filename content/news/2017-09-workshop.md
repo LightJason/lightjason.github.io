@@ -24,7 +24,7 @@ Preparing a workshop for PhD students which shows a multi-agent simulation. We d
 Some features are
 
 * the environment and the street segments are also modelled as an agent
-* the GUI is complete browser-based with a game engine and state-of-the-art technologies (REST & [WebSockets](https://en.wikipedia.org/wiki/WebSocket))
+* the GUI is complete browser-based with a game engine and state-of-the-art technologies ([REST](https://en.wikipedia.org/wiki/Representational_state_transfer) & [WebSockets](https://en.wikipedia.org/wiki/WebSocket))
 * other vehicles are also modelled as agents
 * each vehicle can pull out or pull in
 
