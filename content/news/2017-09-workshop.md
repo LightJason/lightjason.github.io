@@ -17,12 +17,20 @@ Our task was:
 > * the user should create an agent which drives the vehicle
 > * the user gets a penalty on slow or fast driving, so the goal is driving the allowed / optimal speed
 
-Some additional features are
+## Features
+
+Some features are
 
 * the environment and the street segments are also modelled as an agent
 * the GUI is complete browser-based with a game engine and state-of-the-art technologies (REST & Websockets)
 * other vehicles are also modelled as agents
 * each vehicle can pull out or pull in
+
+## Technical details
+
+{{< img src="/images/sc-workshop-architecture.png" >}}
+
+## Download
 
 You can download the source code and binary jar file
 
