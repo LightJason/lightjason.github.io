@@ -24,7 +24,7 @@ Preparing a workshop for PhD students which shows a multi-agent simulation. We d
 Some features are
 
 * the environment and the street segments are also modelled as an agent
-* the GUI is complete browser-based with a game engine and state-of-the-art technologies (REST & Websockets)
+* the GUI is complete browser-based with a game engine and state-of-the-art technologies (REST & [WebSockets](https://en.wikipedia.org/wiki/WebSocket))
 * other vehicles are also modelled as agents
 * each vehicle can pull out or pull in
 
@@ -34,14 +34,14 @@ Some features are
 * The _runtime_ executes the agents as concurrent entities to simulate independent vehicles.
 * A visualisation of agents and environment is realised using [_phaser_](https://phaser.io).
 * For the challenge part of the exercise, we visualise the statistical results, e.g. penalties via web technologies.
-* For the communication between the browser frontend and the Java backend, we used Ajax and
- and websockets.
-* [_Jetty_](https://www.eclipse.org/jetty/) serves as a websocket endpoint.
+* For the communication between the browser [front end](https://en.wikipedia.org/wiki/Front-end_web_development) and the Java [back end](https://en.wikipedia.org/wiki/Front_and_back_ends), we used [Ajax](https://en.wikipedia.org/wiki/Ajax_(programming)) and
+ and WebSockets.
+* [_Jetty_](https://www.eclipse.org/jetty/) serves as a WebSocket endpoint.
 * For the browser interface we were using [_Bootstrap_](https://getbootstrap.com/).
 
 {{< img src="/images/sc-workshop-architecture.png" width="480px" >}}
 
-The traffic movement creates a continuous data flow to the websocket, i.e. the backend sends the  changes in movement of the vehicle agent to the browser. In the browser session, the visualisation is done by a tilemap with the JavaScript game engine _phaser_. Based on an interactive GUI the user can change how the agent moves during the simulation is executed. This interaction is technically realised with Ajax and websocket calls.
+The traffic movement creates a continuous data flow to the WebSocket, i.e. the backend sends the  changes in movement of the vehicle agent to the browser. In the browser session, the visualisation is done by a [tile map](https://en.wikipedia.org/wiki/Tile_map) with the JavaScript game engine _phaser_. Based on an interactive GUI the user can change how the agent moves during the simulation is executed. This interaction is technically realised with Ajax and WebSocket calls.
 
 ## Download
 
