@@ -10,12 +10,14 @@ We created a _traffic simulation game_ for the [Socal Cars Multi-Agent Workshop]
 The last 3 months were hard work for us, so a very large thank-you to my colleague Malte, Sophie and my student assistant Ehsan for a great job.
 Our task was: 
 
-> Preparing a workshop for PhD students which shows a multi-agent simulation. We decided on a _traffic game_ with the following definition:
->
-> * create a street with 50km length
-> * there are 4 segments with different speed settings
-> * the user should create an agent which drives the vehicle
-> * the user gets a penalty on slow or fast driving, so the goal is driving the allowed / optimal speed
+## Scenario
+
+Preparing a workshop for PhD students which shows a multi-agent simulation. We decided on a _traffic game_ with the following definition:
+
+* create a street with 50km length
+* there are 4 segments with different speed settings
+* the user should create an agent which drives the vehicle
+* the user gets a penalty on slow or fast driving, so the goal is driving the allowed / optimal speed
 
 ## Features
 
@@ -28,7 +30,7 @@ Some features are
 
 ## Technical details
 
-{{< img src="/images/sc-workshop-architecture.png" >}}
+{{< img src="/images/sc-workshop-architecture.png" width="400px" >}}
 
 ## Download
 
