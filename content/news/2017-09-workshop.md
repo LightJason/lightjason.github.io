@@ -7,6 +7,8 @@ categories: ["Project"]
 We created a _traffic simulation game_ for the [Socal Cars Multi-Agent Workshop](https://www.socialcars.org/).
 <!--more-->
 
+{{< toc >}}
+
 The last 3 months were hard work for us, so a very large thank-you to my colleague Malte, Sophie and my student assistant Ehsan for a great job.
 Our task was: 
 
@@ -52,5 +54,7 @@ You can download the source code and binary jar file
 If you run the Jar file you can find a configuration under ```~/.lightjason/trafficsimulation```. Within the configuration you can enable all agents. Documentation of MAS, LightJason and the scenario are built-in as a slide-show. All parts of the game are open-source and we will publish it later as an online game.
 
 You can also get the source code by cloning the [GitHub Repostory](https://github.com/LightJason/Examples/tree/workshop-trafficsimulation).
+
+## Video
 
 {{< video "https://player.vimeo.com/video/236143206" "https://vimeo.com/lightjason/trafficgame" >}}
