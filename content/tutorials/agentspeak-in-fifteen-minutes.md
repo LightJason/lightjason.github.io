@@ -183,7 +183,7 @@ Create an agent generator class ```MyAgentGenerator.java``` in ```src/main/java/
 
 In this section you will write your own runtime[^runtime] within the ```main``` method of the ```App``` class.
 The runtime is responsible for running the agents in each cycle.
-We are using [Java streams](https://docs.oracle.com/javase/tutorial/collections/streams/) to execute the agent, but you can use also a [thread-pool](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Executors.html), because all agents implement the [Callable](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Callable.html) interface (the [Future](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Future.html) object is the agent in the state $cycle + 1$)
+We are using [Java streams](https://docs.oracle.com/javase/tutorial/collections/streams/) to execute the agent, but you can use also a [thread-pool](https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/Executors.html), because all agents implement the [Callable](https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/Callable.html) interface (the [Future](https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/Future.html) object is the agent in the state $cycle + 1$)
 
 <!-- htmlmin:ignore -->
 {{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/App.java" lang="java" branch="tutorial-agentspeak-in-15min" >}}

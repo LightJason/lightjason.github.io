@@ -193,7 +193,7 @@ all access to the environment must be thread-safe and mostly not in a synchroniz
 <strong>Information</strong><br/>
 <p>Here can create the code examples based on the LightJason framework. We recommand to understand the code especially consideration of performance and object-orientated programming and design. This wizad cannot create a full performant example for each domain definition and problem definition, so in some cases you must create your own structure.</p>
 <p>
-The wizard should help beginners to understand the architecture of the framework without writing the full <a href="https://en.wikipedia.org/wiki/Boilerplate_code">boilerplate code</a> yourself. Please read the <a href="/tutorials">tutorials</a> first to understand the main concepts of the code. All generated codes are for Java 1.8 or higher, so a downgrade is not possible.
+The wizard should help beginners to understand the architecture of the framework without writing the full <a href="https://en.wikipedia.org/wiki/Boilerplate_code">boilerplate code</a> yourself. Please read the <a href="/tutorials">tutorials</a> first to understand the main concepts of the code. All generated codes are for *Java 1.9* or higher, so a downgrade is not possible.
 </p>
 <p><strong>We recommand that the <code>readme.md</code> within in the zip file is read before start working.</strong></p>
 <br/><br/>
