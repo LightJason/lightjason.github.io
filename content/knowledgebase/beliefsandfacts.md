@@ -23,7 +23,7 @@ Any [&#8594; literal](../literals) can be a belief or fact:
 
 It is possible to create _hierarchically structured_ belief bases by using the slash `/` as a separator, for example to distinguish between internal and external knowledge (`internal/preferredspeed(120)` vs. `external/intendedspeed(100)`). This feature **requires** to model the bliefbase by means of *Storage containers*, which have to reflect the hierarchical structure of beliefs. If these containers do not exist, the default behaviour is to ignore the belief-addition to the beliefbase. See the _[&#8594; Tutorial: Efficient Beliefbase](/tutorials/efficient-beliefbase)_ for details on *Storage containers*.
 
-> **Note:** Perceptions might be wrong!
+> **Note:** Perceptions, modelled with beliefs, can also be wrong!
 For instance, a sensor can be broken, or other agents may simply "lie" (depending on the scenario).
 So a belief can be perceived or considered as true, but needs not to be factually true.
 
