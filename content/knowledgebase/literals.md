@@ -20,7 +20,7 @@ Literals are the conclusion of terms and atoms. They have to start with a **lowe
 
 In the Prolog definition and consequently also in AgentSpeak(L++) all *literals* and *[&#8594; atoms](../atoms)* begin with a lower-case letter but otherwise may also contain upper-case letters, slashes and minuses.
 
-> **Note:** Depending on the context in which literals are used, i.e. as *belief*, the slash `/` has a special semantic meaning requiring additional adaptation to work as intended. See [&#8594; beliefs](../beliefsandfacts) for details.
+> **Note:** Depending on the context in which literals are used, i.e. as *belief*, the slash `/` has a special semantic meaning, requiring additional adaptation to work as intended. See [&#8594; beliefs](../beliefsandfacts) for details.
 
 Additionally _literals_ enrich the expressibility of _agent knowledge_ with <a href="#literal" id="animate-literal-negation">negations</a>, <a href="#literal" id="animate-literal-functor">functors</a> and <a href="#literal" id="animate-literal-values">value lists</a>.
 They may also contain _raw terms_ which define a _wrapper_ around any <a href="#literal" id="animate-literal-raw">native Java object</a> type.
