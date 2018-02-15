@@ -1,6 +1,5 @@
 ---
 title: "Framework"
-gitter: framework
 previous :
     url: "/publications"
     text: "publications"
