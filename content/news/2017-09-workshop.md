@@ -55,6 +55,10 @@ If you run the Jar file you can find a configuration under ```~/.lightjason/traf
 
 You can also get the source code by cloning the [GitHub Repostory](https://github.com/LightJason/Examples/tree/workshop-trafficsimulation).
 
-## Video
+## Videos
+
+A video of a short screen recording can be seen below.
+
+**For our AAMAS 2018 Demo Video, see https://vimeo.com/lightjason/aamas2018**
 
 {{< video "https://player.vimeo.com/video/236143206" "https://vimeo.com/lightjason/trafficgame" >}}
