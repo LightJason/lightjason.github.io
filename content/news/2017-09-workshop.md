@@ -59,6 +59,6 @@ You can also get the source code by cloning the [GitHub Repostory](https://githu
 
 A video of a short screen recording can be seen below.
 
-**For our AAMAS 2018 Demo Video, see https://vimeo.com/lightjason/aamas2018**
+**For our AAMAS 2018 Demo video, see https://vimeo.com/lightjason/aamas2018**
 
 {{< video "https://player.vimeo.com/video/236143206" "https://vimeo.com/lightjason/trafficgame" >}}
