@@ -32,10 +32,7 @@ __Note:__ We are currently testing the wizard with different workflows and examp
     </div>
     <div class="form-group">
         <label for="version">Version*</label>
-        <select class="form-control required" id="version">
-            <option value="0.0.1">Stable Release</option>
-            <option value="0.0.2-SNAPSHOT">Developing Bleeding Edge</option>
-        </select>
+        <input type="text" class="form-control required" id="version" placeholder="1.0-SNAPSHOT" />
         <small class="form-text text-muted">The version of the program it can be set to any number</small>
     </div>
 </p>
