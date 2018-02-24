@@ -68,7 +68,8 @@ __Note:__ We are currently testing the wizard with different workflows and examp
     <div class="form-check">   
         <label class="form-check-label">AgentSpeak Version
             <select class="form-control" id="agentspeakversion">
-                <option value="0.0.1-SNAPSHOT">0.0.1-SNAPSHOT (developer version)</option>
+                <option value="0.0.1">Stable Release (0.0.1)</option>
+                <option value="0.0.2-SNAPSHOT">Developing Bleeding Edge</option>
             </select>
         </label>            
     </div>
