@@ -89,17 +89,9 @@ Following the ```git-flow``` paradigm (see [&#8594; A successful Git branching m
     The build process should terminate with a ```BUILD SUCCESS``` message.
 
 3. Add the installed AgentSpeak to your project by adding
-    
-    * for the ```master``` branch
 
-		<!-- htmlmin:ignore -->
-		{{< githubsource user="LightJason" repo="AgentSpeak" branch="master" file="pom.xml" lang="xml" filter="[[:space:]]{4}<groupId>(.|\n)*?</version>" prefix="<dependency>" postfix="</dependency>" >}}
-		<!-- htmlmin:ignore -->
+	<!-- htmlmin:ignore -->
+	{{< githubsource user="LightJason" repo="AgentSpeak" branch="master" file="pom.xml" lang="xml" filter="[[:space:]]{4}<groupId>(.|\n)*?</version>" prefix="<dependency>" postfix="</dependency>" >}}
+	<!-- htmlmin:ignore -->
 	
-	* for the ```developing``` branch
-
-		<!-- htmlmin:ignore -->
-		{{< githubsource user="LightJason" repo="AgentSpeak" branch="developing" file="pom.xml" lang="xml" filter="[[:space:]]{4}<groupId>(.|\n)*?</version>" prefix="<dependency>" postfix="</dependency>" >}}
-		<!-- htmlmin:ignore -->
-
-	to the dependency section of your ```pom.xml```.
+	to the dependency section of your ```pom.xml```. (Adjust version number if needed.)
