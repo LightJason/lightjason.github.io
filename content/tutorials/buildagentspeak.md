@@ -75,7 +75,7 @@ Following the ```git-flow``` paradigm (see [&#8594; A successful Git branching m
     ```
     <!-- htmlmin:ignore -->
 
-2. Change into the AgentSpeak project directory ```Developer/AgentSpeak``` and run ```mvn install``` to build and install AgentSpeak:
+2. Change into the AgentSpeak project directory ```Developer/AgentSpeak``` and run ```mvn package install``` to build and install AgentSpeak:
 
     <!-- htmlmin:ignore -->
     ```commandline
