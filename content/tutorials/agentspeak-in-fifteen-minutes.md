@@ -38,7 +38,7 @@ This tutorial gives you a _very short_ introduction into LightJason's AgentSpeak
 
 This tutorial is structured as follows:
 First you will create your own MAS project based on the template created by the Maven tool.
-Then you will add the LightJason/AgentSpeak(L++), hosted on [maven central](http://search.maven.org) as a dependency to your own MAS project.
+Then you will add the LightJason/AgentSpeak(L++), hosted on [maven central](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22agentspeak%22%20g%3A%22org.lightjason%22) as a dependency to your own MAS project.
 
 > **Note:** If you prefer a more _bleeding-edge_ version of AgentSpeak(L++), see [&#8594; How to Build AgentSpeak from Source](../buildagentspeak).
 
