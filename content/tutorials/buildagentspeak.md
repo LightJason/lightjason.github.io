@@ -13,6 +13,8 @@ next :
 This tutorial explains how to build LightJason/AgentSpeak(L++) from source.
 <!--more-->
 
+Following the ```git-flow``` paradigm (see [&#8594; A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/) for details), the [```master``` branch](https://github.com/LightJason/AgentSpeak/tree/master) contains our current releases while the [```developing``` branch](https://github.com/LightJason/AgentSpeak/tree/developing) the ongoing development.
+
 ## Tools You Need
 
 * Working Maven greater than 3.0 [installation](http://maven.apache.org/install.html).
@@ -21,10 +23,6 @@ This tutorial explains how to build LightJason/AgentSpeak(L++) from source.
   * Linux: Installing ``git`` via your favourite package manager should be sufficient.
   * MacOS: Using [Homebrew](http://brew.sh) with ```brew install git```.
   * [Git for Windows](https://git-for-windows.github.io)
-
-## AgentSpeak(L++) Repository Structure
-
-Following the ```git-flow``` paradigm (see [&#8594; A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/) for details), the ```master``` branch contains our current releases while the ```develop``` branch the ongoing development.
 
 ## Build AgentSpeak(L++) from Source
 
@@ -91,9 +89,17 @@ Following the ```git-flow``` paradigm (see [&#8594; A successful Git branching m
     The build process should terminate with a ```BUILD SUCCESS``` message.
 
 3. Add the installed AgentSpeak to your project by adding
-<!-- htmlmin:ignore -->
-{{< githubsource user="LightJason" repo="AgentSpeak" file="pom.xml" lang="xml" filter="[[:space:]]{4}<groupId>(.|\n)*?</version>" prefix="<dependency>" postfix="</dependency>" >}}
-<!-- htmlmin:ignore -->
-to the dependency section of your ```pom.xml```. (Adjust version number if needed.)
+    
+    * for the ```master``` branch
 
+		<!-- htmlmin:ignore -->
+		{{< githubsource user="LightJason" repo="AgentSpeak" branch="master" file="pom.xml" lang="xml" filter="[[:space:]]{4}<groupId>(.|\n)*?</version>" prefix="<dependency>" postfix="</dependency>" >}}
+		<!-- htmlmin:ignore -->
+	
+	* for the ```developing``` branch
 
+		<!-- htmlmin:ignore -->
+		{{< githubsource user="LightJason" repo="AgentSpeak" branch="developing" file="pom.xml" lang="xml" filter="[[:space:]]{4}<groupId>(.|\n)*?</version>" prefix="<dependency>" postfix="</dependency>" >}}
+		<!-- htmlmin:ignore -->
+
+	to the dependency section of your ```pom.xml```.
