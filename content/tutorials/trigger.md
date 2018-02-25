@@ -3,8 +3,8 @@ title: "Tutorial: Trigger"
 jsonld: ["techarticle", "course"]
 gitter: "tutorials"
 previous:
-    url: "/tutorials/agentspeak-in-fifteen-minutes"
-    text: "Develop an AgentSpeak Scenario in 15min"
+    url: "/tutorials/buildagentspeak"
+    text: "How to Build AgentSpeak from Source"
 next:
     url: "/tutorials/actions"
     text: "Actions"
