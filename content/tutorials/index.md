@@ -19,7 +19,7 @@ Having [basic knowledge](/knowledgebase) about the [belief–desire–intention 
 
 
 1. [Develop an AgentSpeak Scenario in 15 Minutes](agentspeak-in-fifteen-minutes) is a minimal example to develop an agent scenario in 15 minutes (or so ;) from scratch with the current developer source codes of AgentSpeak.
-2. [How to Build AgentSpeak from Source] is an (optional) guide on how to build AgentSpeak from source. A pre-built package can be obtained via [maven central](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22agentspeak%22%20g%3A%22org.lightjason%22).
+2. [How to Build AgentSpeak from Source](buildagentspeak) is an (optional) guide on how to build AgentSpeak from source. A pre-built package can be obtained via [maven central](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22agentspeak%22%20g%3A%22org.lightjason%22).
 3. [Trigger](trigger) is a tutorial that shows you how to control the execution of an agent
 4. [Actions](actions) is a tutorial that teaches you how to define your own actions
 5. [Communication](communication) is a tutorial on how to realise communication
