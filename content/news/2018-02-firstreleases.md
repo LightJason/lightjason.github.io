@@ -1,6 +1,6 @@
 ---
 title: "LightJason: First Releases Published at Maven Central"
-date: 2018-02-026T14:38:03+01:00
+date: 2018-02-26T14:38:03+01:00
 categories: ["Project"]
 ---
 
