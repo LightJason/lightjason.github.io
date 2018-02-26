@@ -29,8 +29,8 @@ Following the ```git-flow``` paradigm (see [&#8594; A successful Git branching m
 > __Notes:__
 >
 > * Choose the right branch!
->   * ```master``` -> current release (default branch)
->   * ```developing``` -> _bleeding-edge_ development
+>   * ```master``` &#8594; current release (default branch)
+>   * ```developing``` &#8594; _bleeding-edge_ development
 >   
 > * Obtain the branch which is right for you by either downloading the corresponding _ZIP-archive_ or change the branch inside the cloned git repository (```git checkout <branchname>```).
 > * If you chose to download the _ZIP-archive_, be aware that the resulting directory will be ```AgentSpeak-<branchname>```. Either rename it to ```AgentSpeak``` or keep this in mind in the following sections.
