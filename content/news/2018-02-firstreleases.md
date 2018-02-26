@@ -16,7 +16,7 @@ Instead of having to pre-build AgentSpeak and REST by hand and installing it to 
 
 Piece of cake.
 
-With our switch towards releases we also fully embrace the _git-flow_ paradigm (see [&#8594; A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/) for details).
+With our switch towards releases we now fully embrace the _git-flow_ paradigm (see [&#8594; A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/) for details).
 The [```master``` branch](https://github.com/LightJason/AgentSpeak/tree/master) now contains our current release version while ongoing development can be found in the [```developing``` branch](https://github.com/LightJason/AgentSpeak/tree/developing).
 
 We also updated and simplified our tutorial [&#8594; Develop an AgentSpeak Scenario in 15 Minutes](/tutorials/agentspeak-in-fifteen-minutes) and added the new tutorial [&#8594; How to Build AgentSpeak from Source](/tutorials/buildagentspeak) to please developers who want to test _bleeding-edge_ features before they get incorporated into a stable release.
