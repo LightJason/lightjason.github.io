@@ -23,7 +23,7 @@ To create a communication structure you have to build-up your own naming model, 
 
 The tutorial can be done in two steps:
 
-1. the basic agent definition from the [AgentSpeak 15min](/f/agentspeak-in-fifteen-minutes/) tutorial
+1. the basic agent definition from the [AgentSpeak 15min](/tutorials/agentspeak-in-fifteen-minutes/) tutorial
 2. the [triggering](/tutorials/trigger/) and [action](/tutorials/actions/) tutorial to create a _send-action_
 
 > __Don't reinvent the edge__
