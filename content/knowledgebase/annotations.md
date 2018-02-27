@@ -167,7 +167,7 @@ plan failed!
 ```
 <!-- htmlmin:ignore -->
 
-as `+!subplan1` fails and the execution stops. The `<<` represents a [repair action](./repairactions.md).
+as `+!subplan1` fails and the execution stops. The `<<` represents a [&#8594; repair action](../repairactions).
 
 Adding `@parallel` to `+!plan` will execute every goal trigger and action in parallel, yielding
 
