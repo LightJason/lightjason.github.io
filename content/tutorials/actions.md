@@ -10,7 +10,7 @@ next :
     text: "Communication"
 ---
 
-This tutorial explains the concept and usage of actions. Actions are the _executable mechanisms_. We support a lot of different actions which support some [basic functionality](/knowledgebase/builtinactions). 
+This tutorial explains the concept and usage of actions. Actions are _executable mechanisms_. We support a lot of different actions which support some [basic functionality](/knowledgebase/builtinactions). 
 <!--more-->
 
 Actions are an important part within a multi-agent system e.g. for [communication](/tutorials/communication), modifying the [environment](/tutorials/environment) or the internal state of the agent.
@@ -50,7 +50,7 @@ There are some other methods inside the definition:
 
 ### Object-Actions - Internal Actions
 
-Object actions are methods inside the agent class or super classes of the agent class. LightJason can read all class methods (not static or abstract methods) and create the actions on-fly. With black- and white-listing you can define a very detailed action generation. The visibility of a method can be public, private or protected.
+Object actions are methods inside the agent class or super classes of the agent class. LightJason can read all class methods (not static or abstract methods) and create the actions on-the-fly. With black- and white-listing you can define a very detailed action generation. The visibility of a method can be public, private or protected.
 For the usage there exist three types of annotations:
 
 * method annotation ```@IAgentActionName``` for defining action name
@@ -102,7 +102,7 @@ The action instantiation is done by the generator in
 
 ## Efficent Concurrency Action
 
-Regarding the standalone action, __keep in mind that the action is called multiple times__ because the plan and rule execution is done in parallel and multiple agents can run the action in parallel. The ```synchronized``` keyword is not a general solution for avoiding [race condition](https://en.wikipedia.org/wiki/Race_condition) because synchronization slows down the performance.
+Regarding the standalone action, __keep in mind that the action is called multiple times__ because the plan and rule execution is done in parallel and multiple agents can run the action in parallel. The ```synchronized``` keyword is not a general solution for avoiding [race condition](https://en.wikipedia.org/wiki/Race_condition) because synchronisation slows down the performance.
 
 In common work, the object-orientated design of the action class can be changed to remove synchronisation. If you get race condition exceptions or performance problems, just redesign your architecture. A good design of concurrency architecture can be found in all [built-in actions](http://lightjason.github.io/AgentSpeak/sources/d7/d4b/namespaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1builtin.htm) of the framework.
 
