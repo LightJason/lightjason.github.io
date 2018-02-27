@@ -10,7 +10,7 @@ next :
     text: "How to Build AgentSpeak from Source" 
 ---
 
-This tutorial explains how to develop a simple, but full working scenario in 15 minutes with the most recent version of the AgentSpeak(L++) source code.
+This tutorial explains how to develop a simple, but fully working scenario in 15 minutes with the most recent version of the AgentSpeak(L++) source code.
 <!--more-->
 
 __Note: This tutorial aims at developers of multi-agent systems (MAS) and requires some basic understanding in programming.__
@@ -34,7 +34,7 @@ The basic knowledge about agents and their execution mechanism from the [knowled
 
 ## Introduction
 
-This tutorial gives you a _very short_ introduction into LightJason's AgentSpeak(L++) structure. Our [source code documentation](http://lightjason.github.io/AgentSpeak/sources/index.html) can help you in developing your own MAS project according to your individual requirements.
+This tutorial gives you a _very short_ introduction to LightJason's AgentSpeak(L++) structure. Our [source code documentation](http://lightjason.github.io/AgentSpeak/sources/index.html) can help you in developing your own MAS project according to your individual requirements.
 
 This tutorial is structured as follows:
 First you will create your own MAS project based on the template created by the Maven tool.
@@ -44,7 +44,7 @@ Then you will add the LightJason/AgentSpeak(L++), hosted on [maven central](http
 
 All further configuration of ```xml``` files and programming will then take place in your own project's directory.
 
-For the following sections we assume that you are working inside the directory ```Developer/```. You are of course free to choose your own, in which case, please replace ```Developer``` accordingly.
+For the following sections we assume that you are working inside the directory ```Developer/```. If you want to use another directory, replace ```Developer``` accordingly.
 
 ## Maven Project Configuration
 
@@ -84,7 +84,7 @@ For the following sections we assume that you are working inside the directory `
     {{< githubsource user="LightJason" repo="Examples" branch="tutorial-agentspeak-in-15min" file="pom.xml" lang="xml" filter="[[:space:]]{12}<groupId>org\.lightjason</groupId>(.|\n)*?<artifactId>agentspeak</artifactId>(.|\n)*?</version>" prefix="<dependency>" postfix="</dependency>" >}}
     <!-- htmlmin:ignore -->
 
-    Inside ```Developer/myagentapp/``` open the ```pom.xml``` with your favourite (programming) editor, navigate to the ```<dependencies>``` section and add the complete excerpt above or below the already present ```<dependency>``` entries (for example, you will also find an entry for JUnit within this section).
+    Inside ```Developer/myagentapp/``` open the ```pom.xml``` with your preferred (programming) editor, navigate to the ```<dependencies>``` section and add the complete excerpt above or below the already present ```<dependency>``` entries (for example, you will also find an entry for JUnit within this section).
 
 3. __For LightJason/AgentSpeak to run, it is crucial to enforce Java 1.9 support__ in your project. Add the following entry before the ```<dependencies>``` section:
 
@@ -92,7 +92,7 @@ For the following sections we assume that you are working inside the directory `
 	{{< githubsource user="LightJason" repo="Examples" file="pom.xml" lang="xml" branch="tutorial-agentspeak-in-15min" filter="[[:space:]]{4}<properties>(.|\n)*?</properties>" >}}
     <!-- htmlmin:ignore -->
 
-4. Put the following code inside the ```<project>``` section, e.g. after ```</dependencies>```. This sets the current Maven comoponents e.g. documentation build, packaging with [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/examples/executable-jar.html) which creates an executable JAR when you build your project with ```mvn package```. The commented out section defines the LightJason styleguide checking for the project
+4. Put the following code inside the ```<project>``` section, e.g. after ```</dependencies>```. This sets the current Maven components e.g. documentation build, packaging with [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/examples/executable-jar.html) which creates an executable JAR when you build your project with ```mvn package```. The commented-out section defines the LightJason styleguide checking for the project
 
     <!-- htmlmin:ignore -->
     {{< githubsource user="LightJason" repo="Examples" file="pom.xml" lang="xml" branch="tutorial-agentspeak-in-15min" filter="[[:space:]]{4}<build>(.|\n)*?</build>" >}}
@@ -110,14 +110,14 @@ For the following sections we assume that you are working inside the directory `
 
     The resulting, runnable JAR is located at  ```Developer/myagentapp/target/myagentapp-1.0-SNAPSHOT.jar```.
 
-6. Import your Maven project into your favourite IDE.
+6. Import your Maven project into your preferred IDE.
 
 ## Agent and Generator Classes
 
 __Note:__ The file names and paths provided in the following sections are relative to your project folder. For example ```src/main/java/myagentproject/MyAgent.java``` refers to the file ```MyAgent.java``` located at ```Developer/myagentapp/src/main/java/myagentproject/```.
 
 ### <a id="agentclass"></a> Agent Class
-Each agent you use must be inherited from our base class {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d3/d39/interfaceorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IAgent_3_01T_01extends_01IAgent_3_04_4_01_4__coll__graph.svg" "IAgent" >}} interface, but we recommend our {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d6/df3/classorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IBaseAgent_3_01T_01extends_01IAgent_3_04_4_01_4__coll__graph_org.svg" "IBaseAgent" >}} with a complete execution mechanism. __Please note__ that you need to pass your agent class as a generic parameter to the definition of a LightJason agent class. A necessary property is the ```serialVersionUID``` which is defined by the Java [Serializable](https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html) interface, this allows to serialize the agent e.g. to transfer the agent over the network
+Each agent you use must be inherited from our base class {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d3/d39/interfaceorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IAgent_3_01T_01extends_01IAgent_3_04_4_01_4__coll__graph.svg" "IAgent" >}} interface, but we recommend our {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d6/df3/classorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IBaseAgent_3_01T_01extends_01IAgent_3_04_4_01_4__coll__graph_org.svg" "IBaseAgent" >}} with a complete execution mechanism. __Please note__ that you need to pass your agent class as a generic parameter to the definition of a LightJason agent class. A necessary property is the ```serialVersionUID``` which is defined by the Java [Serializable](https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html) interface - this allows to serialise the agent e.g. to transfer the agent over the network
 
 Create an agent class ```MyAgent.java``` in ```src/main/java/myagentproject/``` as follows:
 
@@ -156,8 +156,8 @@ Add a file ```agent.asl``` in the top-level directory of your project with the f
 {{< githubsource user="LightJason" repo="Examples" file="agent.asl" lang="agentspeak" branch="tutorial-agentspeak-in-15min" >}}
 <!-- htmlmin:ignore -->
 
-The agent starts in cycle $0$ with the initial goal ```!main```. As the plan ```main``` matches, it gets executed, i.e. printing "Hello World" and adding ```mynextgoal``` to be triggered in the next cycle.
-In cycle $1$ and preceding cycles $1+n$ the agent will execute the plan ```mynextgoal```, printing ```Hello World! (again)``` with the current cycle number and adds the trigger for the same plan for the preceding cycle.
+The agent starts in cycle $0$ with the initial goal ```!main```. As the plan ```main``` matches, it gets executed, i.e. it prints "Hello World" and adds ```mynextgoal``` to be triggered in the next cycle.
+In cycle $1$ and following cycles $1+n$ the agent will execute the plan ```mynextgoal```, printing ```Hello World! (again)``` with the current cycle number and adding the trigger for the same plan for the following cycle.
 
 ### Run It
 
