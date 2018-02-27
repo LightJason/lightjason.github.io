@@ -13,14 +13,14 @@ next :
 This tutorial explains how to build LightJason/AgentSpeak(L++) from source.
 <!--more-->
 
-Following the ```git-flow``` paradigm (see [&#8594; A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/) for details), the [```master``` branch](https://github.com/LightJason/AgentSpeak/tree/master) contains our current releases while the [```developing``` branch](https://github.com/LightJason/AgentSpeak/tree/developing) the ongoing development.
+Following the ```git-flow``` paradigm (see [&#8594; A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/) for details), the [```master``` branch](https://github.com/LightJason/AgentSpeak/tree/master) contains our current releases while the [```developing``` branch](https://github.com/LightJason/AgentSpeak/tree/developing) contains the ongoing development.
 
 ## Tools You Need
 
 * Working Maven greater than 3.0 [installation](http://maven.apache.org/install.html).
 * Java __JDK 1.9__ installation which can be obtained [here](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 * Git installation (optional, but recommended)
-  * Linux: Installing ``git`` via your favourite package manager should be sufficient.
+  * Linux: Installing ``git`` via your preferred package manager should be sufficient.
   * MacOS: Using [Homebrew](http://brew.sh) with ```brew install git```.
   * [Git for Windows](https://git-for-windows.github.io)
 
@@ -34,7 +34,7 @@ Following the ```git-flow``` paradigm (see [&#8594; A successful Git branching m
 >   
 > * Obtain the branch which is right for you by either downloading the corresponding _ZIP-archive_ or change the branch inside the cloned git repository (```git checkout <branchname>```).
 > * If you chose to download the _ZIP-archive_, be aware that the resulting directory will be ```AgentSpeak-<branchname>```. Either rename it to ```AgentSpeak``` or keep this in mind in the following sections.
-> * In this section we assume that you are working inside the directory ```Developer/```. You are of course free to choose your own, in which case, please replace ```Developer/``` accordingly.
+> * In this section we assume that you are working inside the directory ```Developer/```. If you choose another directory, replace ```Developer/``` accordingly.
 
 1. Obtain the current source code from [AgentSpeak(L++)](https://github.com/LightJason/AgentSpeak) and place it into ```Developer/AgentSpeak```. This can be done on the command line 
     
