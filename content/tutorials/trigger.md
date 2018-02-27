@@ -45,12 +45,12 @@ An agent is a _logical program_ which defines some knowledge elements e.g. belie
 
 From a global viewpoint, a trigger is created based on a _semantic definition_, so there is no defined type for calling a certain trigger in a situation. It depends on your conceptional view of your multi-agent system and your individual execution model.
 
-The usage is very simple, the agent class supports a [trigger-method](http://lightjason.github.io/AgentSpeak/sources/db/d62/interfaceorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IAgent_3_01T_01extends_01IAgent_3_04_4_01_4.html#af453e6a5f02ca05958925af4a8c04c10), so create your trigger and call this method.
+The usage is very simple, the agent class supports a [trigger-method](http://lightjason.github.io/AgentSpeak/sources/d1/db6/interfaceorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IAgent.htm#a493f8fb001fd7d897b6854b93f0a7a09), so create your trigger and call this method.
 
 
 ### Java Implementation
 
-A trigger is a combination of a _literal_ and a _trigger type_. Both elements are defined as classes [CTrigger](http://lightjason.github.io/AgentSpeak/sources/d1/d5a/classorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1CTrigger.html) and [ITrigger.EType](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.html). The code shows the usage of a _add goal trigger_ which defines with the first argument at {{< linelink "" "triggercreate" "71" >}} the type of the trigger and with the second argument at {{< linelink "" "triggercreate" "73-75" >}} the literal.
+A trigger is a combination of a _literal_ and a _trigger type_. Both elements are defined as classes [CTrigger](http://lightjason.github.io/AgentSpeak/sources/d1/d5a/classorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1CTrigger.htm) and [ITrigger.EType](http://lightjason.github.io/AgentSpeak/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.htm). The code shows the usage of a _add goal trigger_ which defines with the first argument at {{< linelink "" "triggercreate" "71" >}} the type of the trigger and with the second argument at {{< linelink "" "triggercreate" "73-75" >}} the literal.
 
 <!-- htmlmin:ignore -->
 {{< githubsource user="LightJason" repo="Examples" file="src/main/java/myagentproject/App.java" lang="java" branch="tutorial-agent-trigger" id="triggercreate" >}}
