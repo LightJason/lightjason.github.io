@@ -139,6 +139,13 @@ The agent script
     !!plan << generic/print("plan failed!")
 .
 </code><code class="language-agentspeak">
++!plan <-
+    generic/print("foo");
+    !!subplan1;
+    !!subplan2;
+    generic/print("bar")
+.
+</code><code class="language-agentspeak">
 +!subplan1 <-
     generic/print("sub-plan1");
     fail
@@ -160,7 +167,7 @@ plan failed!
 ```
 <!-- htmlmin:ignore -->
 
-as `+!subplan1` fails and the execution stops.
+as `+!subplan1` fails and the execution stops. The `<<` represents a [repair action](./repairactions.md).
 
 Adding `@parallel` to `+!plan` will execute every goal trigger and action in parallel, yielding
 
@@ -191,7 +198,7 @@ sub-plan2
 (ordering might vary).
 The same effect could also be achieved by preventing `!subplan1` to fail via `@atomic`, which is left as an exercise to the reader.
 
-The complete example discussed above would be
+The complete example with `@atomic` and `@parallel` would be
 
 <!-- htmlmin:ignore -->
 <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">!main.
