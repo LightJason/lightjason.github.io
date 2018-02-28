@@ -1,7 +1,6 @@
 ---
 title: "Tutorial: Multiple-Environment"
 jsonld: ["techarticle", "course"]
-gitter: "tutorials"
 draft: true
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: "Basic Knowledge: Unification"
 jsonld: ["techarticle"]
-gitter: "knowledge base"
 previous :
     url: "/knowledgebase/builtinactions"
     text: "kb: Basic - Built-in Actions"

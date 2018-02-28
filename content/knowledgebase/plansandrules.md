@@ -1,7 +1,6 @@
 ---
 title: "Basic Knowledge: Plans and Logic Rules"
 jsonld: ["techarticle"]
-gitter: "knowledge base"
 previous :
     url: "/knowledgebase/variables"
     text: "kb: Basic - Variables"

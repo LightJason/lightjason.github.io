@@ -1,7 +1,6 @@
 ---
 title: "Advanced Knowledge: Plan and Rule Annotations"
 jsonld: ["techarticle"]
-gitter: "knowledge base"
 previous :
     url: "/knowledgebase/triggering"
     text: "kb: Advanced - Plan Triggering Techniques"

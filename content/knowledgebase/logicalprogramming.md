@@ -1,7 +1,6 @@
 ---
 title: "Theoretical Introduction: Logic Programming"
 jsonld: ["techarticle", "course"]
-gitter: "knowledge base"
 previous :
     url: "/knowledgebase/differencetojason"
     text: "kb: Background - Difference to Jason"

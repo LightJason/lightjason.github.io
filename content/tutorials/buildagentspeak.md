@@ -1,7 +1,6 @@
 ---
 title: "Tutorial: How to Build AgentSpeak from Source"
 jsonld: ["techarticle", "course"]
-gitter: "tutorials"
 previous :
     url: "/tutorials/agentspeak-in-fifteen-minutes"
     text: "Develop an AgentSpeak Scenario in 15min"

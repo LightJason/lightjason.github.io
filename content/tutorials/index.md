@@ -1,6 +1,5 @@
 ---
 title: "Tutorials"
-gitter: "tutorials"
 previous :
     url: "/knowledgebase/builtinactions"
     text: "Actions"

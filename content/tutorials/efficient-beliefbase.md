@@ -2,7 +2,6 @@
 draft: true
 title: "Tutorial: Efficient Beliefbase"
 jsonld: ["techarticle"]
-gitter: "tutorials"
 previous:
     url: "/tutorials/environment"
     text: "Environment"  

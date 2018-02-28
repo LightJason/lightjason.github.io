@@ -1,6 +1,5 @@
 ---
 title: "Wizard"
-gitter: "tutorials"
 ---
 
 The wizard allows you to create a full working package of a _multi-agent simulation_. You get a zip file which contains a full working [Maven](https://maven.apache.org/) project. 

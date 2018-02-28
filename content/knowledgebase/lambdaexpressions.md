@@ -1,7 +1,6 @@
 ---
 title: "Advanced Knowledge: Lambda Expressions"
 jsonld: ["techarticle"]
-gitter: "knowledge base"
 previous :
     url: "/knowledgebase/annotations"
     text: "kb: Advanced - Plan Annotations"

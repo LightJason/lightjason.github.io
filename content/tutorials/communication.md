@@ -1,7 +1,6 @@
 ---
 title: "Tutorial: Communication"
 jsonld: ["techarticle", "course"]
-gitter: "tutorials"
 previous:
     url: "/tutorials/actions"
     text: "Actions"

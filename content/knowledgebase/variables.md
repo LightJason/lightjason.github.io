@@ -1,7 +1,6 @@
 ---
 title: "Basic Knowledge: Variables"
 jsonld: ["techarticle"]
-gitter: "knowledge base"
 previous :
     url: "/knowledgebase/literals"
     text: "kb: Basic - Literals"

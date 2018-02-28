@@ -1,6 +1,5 @@
 ---
 title: "Knowledge Base"
-gitter: "knowledge base"
 previous :
     url: "/framework"
     text: "Framework"

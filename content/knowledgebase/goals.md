@@ -1,7 +1,6 @@
 ---
 title: "Basic Knowledge: Goals"
 jsonld: ["techarticle"]
-gitter: "knowledge base"
 previous :
     url: "/knowledgebase/plansandrules"
     text: "kb: Basic - Plans and Logic Rules"

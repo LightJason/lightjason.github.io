@@ -1,7 +1,6 @@
 ---
 title: "Basic Knowledge: Built-in Actions"
 jsonld: ["techarticle"]
-gitter: "knowledge base"
 previous :
     url: "/knowledgebase/actions"
     text: "kb: Basic - Actions"

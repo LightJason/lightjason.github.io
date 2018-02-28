@@ -1,7 +1,6 @@
 ---
 title: "Advanced Knowledge: Plan Triggering Techniques"
 jsonld: ["techarticle"]
-gitter: "knowledge base"
 previous :
     url: "/knowledgebase/multiassignments"
     text: "kb: Advanced - Multi-Assignments"

@@ -1,7 +1,6 @@
 ---
 title: "Basic Knowledge: Finite-State Machine"
 jsonld: ["techarticle", "course"]
-gitter: "knowledge base"
 previous :
     url: "/knowledgebase/logicalprogramming"
     text: "kb: Background - Logical Programming"

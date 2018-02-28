@@ -1,7 +1,6 @@
 ---
 title: "Theoretical Introduction: From Finite-State Machine and Logical Programming to an Agent"
 jsonld: ["techarticle", "course"]
-gitter: "knowledge base"
 previous :
     url: "/knowledgebase/finitestatemachine"
     text: "kb: Background - Finite-State Machine"

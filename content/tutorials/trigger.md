@@ -1,7 +1,6 @@
 ---
 title: "Tutorial: Trigger"
 jsonld: ["techarticle", "course"]
-gitter: "tutorials"
 previous:
     url: "/tutorials/buildagentspeak"
     text: "How to Build AgentSpeak from Source"

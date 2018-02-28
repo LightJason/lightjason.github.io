@@ -1,7 +1,6 @@
 ---
 title: "Advanced Knowledge: Explicit Repair Actions"
 jsonld: ["techarticle"]
-gitter: "knowledge base"
 previous :
     url: "/knowledgebase/lambdaexpressions"
     text: "kb: Advanced - Lambda Expressions"

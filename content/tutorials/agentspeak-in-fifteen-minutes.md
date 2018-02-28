@@ -1,7 +1,6 @@
 ---
 title: "Tutorial: Develop an AgentSpeak Scenario in 15 Minutes"
 jsonld: ["techarticle", "course"]
-gitter: "tutorials"
 previous :
     url: "/tutorials"
     text: "Tutorials"

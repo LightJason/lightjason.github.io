@@ -1,7 +1,6 @@
 ---
 title: "Advanced Knowledge: Multi-Assignments"
 jsonld: ["techarticle"]
-gitter: "knowledge base"
 previous :
     url: "/knowledgebase/unification"
     text: "kb: Basic - Unification"

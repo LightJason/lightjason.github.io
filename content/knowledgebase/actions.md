@@ -1,7 +1,6 @@
 ---
 title: "Basic Knowledge: Actions"
 jsonld: ["techarticle"]
-gitter: "knowledge base"
 previous :
     url: "/knowledgebase/beliefsandfacts"
     text: "kb: Basic - Beliefs and Facts"

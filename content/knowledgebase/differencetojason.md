@@ -1,7 +1,6 @@
 ---
 title: "Theoretical Introduction: Difference to Jason"
 jsonld: ["techarticle", "course"]
-gitter: "knowledge base"
 previous :
     url: "/knowledgebase/agent/"
     text: "kb: Background - From Finite-State-Machine and Logical Programming to an Agent"

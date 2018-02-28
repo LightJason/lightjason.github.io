@@ -1,7 +1,6 @@
 ---
 title: "Advanced Knowledge: Failing is Intentional"
 jsonld: ["techarticle"]
-gitter: "knowledge base"
 previous :
     url: "/knowledgebase/repairactions"
     text: "kb: Advanced - Explicit Repair Actions"

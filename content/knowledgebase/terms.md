@@ -1,7 +1,6 @@
 ---
 title: "Basic Knowledge: Terms"
 jsonld: ["techarticle"]
-gitter: "knowledge base"
 previous :
     url: "/knowledgebase/atoms"
     text: "kb: Basic - Atoms"
