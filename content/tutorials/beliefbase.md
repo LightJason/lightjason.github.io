@@ -1,6 +1,6 @@
 ---
 draft: true
-title: "Tutorial: Efficient Beliefbase"
+title: "Tutorial: Beliefbase"
 jsonld: ["techarticle"]
 previous:
     url: "/tutorials/environment"
@@ -25,22 +25,26 @@ This tutorial describes the usage of beliefbases in a more general usage.
 * it is also nessessary to understand the basic structure of [literals](/knowledgebase/logicalprogramming/#a-name-atomliterals-atom-literals-a)
 * and the [extended literal](/knowledgebase/differencetojason/#terms-and-literals) structure in LightJason
 
-## What is the basic structure of a beliefbase?
+
+
+
+## Beliefbase Components
 
 The beliefbase consists of three different elements
 
-* __Storage__ is a persistent thread-safe structure for the literals and views, the storage exists into two different kinds
-    * [Multi Storage](http://lightjason.github.io/AgentSpeak/sources/d2/d95/classorg_1_1lightjason_1_1agentspeak_1_1beliefbase_1_1storage_1_1CMultiStorage_3_01N_00_01M_00_0f76da3f13faeb8dccc4b0189b986a9c3.html) which can contains literals and views
-    * [Single Storage](http://lightjason.github.io/AgentSpeak/sources/d2/d52/classorg_1_1lightjason_1_1agentspeak_1_1beliefbase_1_1storage_1_1CSingleStorage_3_01N_00_01M_00_a0ca30d8a5854c607f6e884a44d553ab.html) which can contains literals only  
-* __Views__ are structured elements to build the hierarchical naming structure of the literal
-* __Beliefbase__ is a middleware between views and storage to create goal-trigger
-
-### Persistence
-
-In general, beliefs can be stored in a persistent way.
-So an literal object will be set into the storage and the views creates the tree structure.
+* __Views__ are structured elements to build the hierarchical naming structure of the beliefbase, the view is the component which allows the agent to get access to the beliefbase data
+* __Storage__ is a persistent thread-safe structure for the belief literals and views, there are different built-in storages inside the the package ```org.lightjason.agentspeak.beliefbase.storage```
+* __Beliefbase__ is a middleware between views and storage to create goal- and belief-trigger
 
 {{< img src="/images/beliefbase.svg" alt="beliefbase" width="30%" >}}
+
+Beliefs are literals that carry any information in a structured form, e. g. the state of the environment. Beliefs are therefore ambiguous, which means that several beliefs can be stored under the same functor. During unification, the appropriate delivery is then selected on the basis of the unification parameters and the variables are assigned.
+
+
+### Storage - Persistence
+
+In order to enable an efficient query within the beliefbase, the belief literals are stored in a map within the storage. The storage itself must therefore allow the storage of the queries for beliefs. In addition to the literal, a storage can also contain views. Using this mechanism, hierarchical structures can be built up in the supply base, because the views can be referenced from one storage to another storage by storing the views. 
+
 
 In this example, there are two agents and both agents are referenced to the equal storage, but use different views.
 
