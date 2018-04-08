@@ -23,8 +23,8 @@
         "given": "J. P."
       }
     ],
-    "collection-title": "Lecture notes in artificial intelligence (lnai)",
-    "container-title": "Engineering multiagent systems ii",
+    "collection-title": "Lecture Notes in Artificial Intelligence (LNAI)",
+    "container-title": "Engineering Multiagent Systems II",
     "editor": [
       {
         "family": "Dalpiaz",
@@ -83,8 +83,7 @@
     "number": "IfI Technical Report IfI-16-04",
     "publisher": "Department of Computer Science, TU Clausthal",
     "publisher-place": "Clausthal-Zellerfeld, Germany",
-    "title": "LightJason: A bdi framework inspired by jason",
-    "title-short": "LightJason",
+    "title": "LightJason: A BDI Framework Inspired by Jason",
     "type": "report"
   },
   {
@@ -103,7 +102,7 @@
         "given": "Jörg P."
       }
     ],
-    "container-title": "Multi-agent systems and agreement technologies: 14th europ. conf., eumas 2016, and 4rd int. Conf., at 2016, valencia, spain, 2016",
+    "container-title": "Multi-Agent Systems and Agreement Technologies: 14th Europ. Conf., EUMAS 2016, and 4rd Int. Conf., AT 2016, Valencia, Spain, 2016",
     "id": "Kraus2016eumas",
     "issued": {
       "date-parts": [
@@ -114,9 +113,35 @@
     },
     "page": "tbd",
     "publisher": "Springer International Publishing",
-    "title": "LightJason: A bdi framework inspired by jason",
-    "title-short": "LightJason",
+    "title": "LightJason: A BDI Framework inspired by Jason",
     "type": "paper-conference"
+  },
+  {
+    "URL": "/publications/2016-eumas-slides.pdf",
+    "author": [
+      {
+        "family": "Aschermann",
+        "given": "Malte"
+      },
+      {
+        "family": "Kraus",
+        "given": "Philipp"
+      },
+      {
+        "family": "Müller",
+        "given": "Jörg P."
+      }
+    ],
+    "id": "Kraus2016eumasslides",
+    "issued": {
+      "date-parts": [
+        [
+          2016
+        ]
+      ]
+    },
+    "title": "Slides - LightJason: A BDI Framework inspired by Jason",
+    "type": "no-type"
   },
   {
     "DOI": "10.1504/IJAOSE.2016.10001873",
