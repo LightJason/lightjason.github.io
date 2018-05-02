@@ -1,4 +1,5 @@
 *.*
+!CNAME
 !.gitignore
 !.hidden
 !*.toml
