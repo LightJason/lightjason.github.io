@@ -185,5 +185,39 @@
     "title": "An architecture for scalable simulation of systems of cognitive agents",
     "type": "article-journal",
     "volume": "5"
+  },
+  {
+    "URL": "/publications/2018-aamas-demo-preprint.pdf",
+    "author": [
+      {
+        "family": "Aschermann",
+        "given": "Malte"
+      },
+      {
+        "family": "Dennisen",
+        "given": "Sophie"
+      },
+      {
+        "family": "Kraus",
+        "given": "Philipp"
+      },
+      {
+        "family": "Müller",
+        "given": "Jörg P."
+      }
+    ],
+    "container-title": "Proc. Of the 17th international conference on autonomous agents and multiagent systems (aamas 2018)",
+    "id": "ADK+2018aamasdemo",
+    "issued": {
+      "date-parts": [
+        [
+          2018
+        ]
+      ]
+    },
+    "note": "Accepted. To appear",
+    "page": "tbd",
+    "title": "<span class=\"nocase\">LightJason, a Highly Scalable and Concurrent Agent Framework: Overview and Application</span> (demonstration)",
+    "type": "paper-conference"
   }
 ]
