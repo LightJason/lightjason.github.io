@@ -87,7 +87,7 @@
     "type": "report"
   },
   {
-    "URL": "/publications/2016-eumas.pdf",
+    "URL": "/publications/2016-eumas-preprint.pdf",
     "author": [
       {
         "family": "Aschermann",
@@ -187,7 +187,7 @@
     "volume": "5"
   },
   {
-    "URL": "/publications/2018-aamas-demo-preprint.pdf",
+    "URL": "/publications/2018-aamas-preprint.pdf",
     "author": [
       {
         "family": "Aschermann",
@@ -207,7 +207,7 @@
       }
     ],
     "container-title": "Proc. Of the 17th international conference on autonomous agents and multiagent systems (aamas 2018)",
-    "id": "ADK+2018aamasdemo",
+    "id": "ADK2018aamasdemo",
     "issued": {
       "date-parts": [
         [
@@ -217,7 +217,7 @@
     },
     "note": "Accepted. To appear",
     "page": "tbd",
-    "title": "<span class=\"nocase\">LightJason, a Highly Scalable and Concurrent Agent Framework: Overview and Application</span> (demonstration)",
+    "title": "LightJason, a Highly Scalable and Concurrent Agent Framework: Overview and Application (demonstration)",
     "type": "paper-conference"
   }
 ]
