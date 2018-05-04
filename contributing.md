@@ -2,7 +2,7 @@
 
 We welcome any constructive feedback.
 
-If you think there is anything missing or wish to contribute to our documentation feel free to [contact us](https://lightjason.github.io/contact/).
+If you think there is anything missing or wish to contribute to our documentation feel free to [contact us](https://lightjason.org/contact/).
 For some general discussion and fast answering just use our [discussion board](https://gitter.im/LightJason) so you can send us a message immediatly.
 
 On your request / proposal we will check your content and send a feedback to you or we include the content directly. All the content must use a

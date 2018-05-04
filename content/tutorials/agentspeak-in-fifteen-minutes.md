@@ -6,7 +6,7 @@ previous :
     text: "Tutorials"
 next :
     url: "/tutorials/buildagentspeak"
-    text: "How to Build AgentSpeak from Source" 
+    text: "How to Build AgentSpeak from Source"
 ---
 
 This tutorial explains how to develop a simple, but fully working scenario in 15 minutes with the most recent version of the AgentSpeak(L++) source code.
@@ -33,7 +33,7 @@ The basic knowledge about agents and their execution mechanism from the [knowled
 
 ## Introduction
 
-This tutorial gives you a _very short_ introduction to LightJason's AgentSpeak(L++) structure. Our [source code documentation](http://lightjason.github.io/AgentSpeak/sources/index.html) can help you in developing your own MAS project according to your individual requirements.
+This tutorial gives you a _very short_ introduction to LightJason's AgentSpeak(L++) structure. Our [source code documentation](https://agentspeak.lightjason.org/sources/) can help you in developing your own MAS project according to your individual requirements.
 
 This tutorial is structured as follows:
 First you will create your own MAS project based on the template created by the Maven tool.
@@ -71,7 +71,7 @@ For the following sections we assume that you are working inside the directory `
     │           └── test/
     │               └── java/
     │                   └── myagentproject/
-    │                       └── AppTest.java    
+    │                       └── AppTest.java
     ```
     <!-- htmlmin:ignore -->
 
@@ -116,7 +116,7 @@ For the following sections we assume that you are working inside the directory `
 __Note:__ The file names and paths provided in the following sections are relative to your project folder. For example ```src/main/java/myagentproject/MyAgent.java``` refers to the file ```MyAgent.java``` located at ```Developer/myagentapp/src/main/java/myagentproject/```.
 
 ### <a id="agentclass"></a> Agent Class
-Each agent you use must be inherited from our base class {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/de/d94/interfaceorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IAgent__coll__graph_org.svg" "IAgent" >}} interface, but we recommend our {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/da/d29/classorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IBaseAgent__coll__graph_org.svg" "IBaseAgent" >}} with a complete execution mechanism. __Please note__ that you need to pass your agent class as a generic parameter to the definition of a LightJason agent class. A necessary property is the ```serialVersionUID``` which is defined by the Java [Serializable](https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html) interface - this allows to serialise the agent e.g. to transfer the agent over the network
+Each agent you use must be inherited from our base class {{< lightbox "https://agentspeak.lightjason.org/sources/de/d94/interfaceorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IAgent__coll__graph_org.svg" "IAgent" >}} interface, but we recommend our {{< lightbox "https://agentspeak.lightjason.org/sources/da/d29/classorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IBaseAgent__coll__graph_org.svg" "IBaseAgent" >}} with a complete execution mechanism. __Please note__ that you need to pass your agent class as a generic parameter to the definition of a LightJason agent class. A necessary property is the ```serialVersionUID``` which is defined by the Java [Serializable](https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html) interface - this allows to serialise the agent e.g. to transfer the agent over the network
 
 Create an agent class ```MyAgent.java``` in ```src/main/java/myagentproject/``` as follows:
 
@@ -126,7 +126,7 @@ Create an agent class ```MyAgent.java``` in ```src/main/java/myagentproject/``` 
 
 ### Agent Generator Class
 
-Next create your own {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/da/d1d/interfaceorg_1_1lightjason_1_1agentspeak_1_1generator_1_1IAgentGenerator__inherit__graph_org.svg" "agent generator" >}} (agent factory). This component is based on the [UML factory pattern](https://en.wikipedia.org/wiki/Factory_method_pattern). Within the factory the agent script (ASL) is parsed once and you can generate a lot of agents with a single factory. We support a general implementation of the factory the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d1/d4a/interfaceorg_1_1lightjason_1_1agentspeak_1_1generator_1_1IAgentGenerator__coll__graph_org.svg" "IBaseAgentGenerator" >}}.
+Next create your own {{< lightbox "https://agentspeak.lightjason.org/sources/da/d1d/interfaceorg_1_1lightjason_1_1agentspeak_1_1generator_1_1IAgentGenerator__inherit__graph_org.svg" "agent generator" >}} (agent factory). This component is based on the [UML factory pattern](https://en.wikipedia.org/wiki/Factory_method_pattern). Within the factory the agent script (ASL) is parsed once and you can generate a lot of agents with a single factory. We support a general implementation of the factory the {{< lightbox "https://agentspeak.lightjason.org/sources/d1/d4a/interfaceorg_1_1lightjason_1_1agentspeak_1_1generator_1_1IAgentGenerator__coll__graph_org.svg" "IBaseAgentGenerator" >}}.
 
 Create an agent generator class ```MyAgentGenerator.java``` in ```src/main/java/myagentproject/``` as follows:
 

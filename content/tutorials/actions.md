@@ -3,13 +3,13 @@ title: "Tutorial: Actions"
 jsonld: ["techarticle"]
 previous :
     url: "/tutorials/trigger"
-    text: "Trigger" 
+    text: "Trigger"
 next :
     url: "/tutorials/communication"
     text: "Communication"
 ---
 
-This tutorial explains the concept and usage of actions. Actions are _executable mechanisms_. We support a lot of different actions which support some [basic functionality](/knowledgebase/builtinactions). 
+This tutorial explains the concept and usage of actions. Actions are _executable mechanisms_. We support a lot of different actions which support some [basic functionality](/knowledgebase/builtinactions).
 <!--more-->
 
 Actions are an important part within a multi-agent system e.g. for [communication](/tutorials/communication), modifying the [environment](/tutorials/environment) or the internal state of the agent.
@@ -37,7 +37,7 @@ There are two kinds of actions, both can also be used in similar context. The us
 
 ### Standalone-Actions - External Actions
 
-Standalone actions, which are named in the Jason definition _external actions_, are classes which implement the [IAction](https://lightjason.github.io/AgentSpeak/sources/dc/d53/interfaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1IAction.htm) interface. But we recommand to use the base implementation [IBaseAction](http://lightjason.github.io/AgentSpeak/sources/da/d94/classorg_1_1lightjason_1_1agentspeak_1_1action_1_1IBaseAction.htm). For getting an overview of the structure, take a look on the {{< lightbox "https://lightjason.github.io/AgentSpeak/sources/dd/d3e/classorg_1_1lightjason_1_1agentspeak_1_1action_1_1IBaseAction__coll__graph.svg" "IBaseAction inheritance diagram" >}}. The recommand parts of an action are:
+Standalone actions, which are named in the Jason definition _external actions_, are classes which implement the [IAction](https://agentspeak.lightjason.org/sources/dc/d53/interfaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1IAction.htm) interface. But we recommand to use the base implementation [IBaseAction](https://agentspeak.lightjason.org/sources/da/d94/classorg_1_1lightjason_1_1agentspeak_1_1action_1_1IBaseAction.htm). For getting an overview of the structure, take a look on the {{< lightbox "https://agentspeak.lightjason.org/sources/dd/d3e/classorg_1_1lightjason_1_1agentspeak_1_1action_1_1IBaseAction__coll__graph.svg" "IBaseAction inheritance diagram" >}}. The recommand parts of an action are:
 
 * a ```name``` which represents the call on the agent script
 * the number of ```minimal arguments``` for checking the correct number of arguments during parsing
@@ -103,7 +103,7 @@ The action instantiation is done by the generator in
 
 Regarding the standalone action, __keep in mind that the action is called multiple times__ because the plan and rule execution is done in parallel and multiple agents can run the action in parallel. The ```synchronized``` keyword is not a general solution for avoiding [race condition](https://en.wikipedia.org/wiki/Race_condition) because synchronisation slows down the performance.
 
-In common work, the object-orientated design of the action class can be changed to remove synchronisation. If you get race condition exceptions or performance problems, just redesign your architecture. A good design of concurrency architecture can be found in all [built-in actions](http://lightjason.github.io/AgentSpeak/sources/d7/d4b/namespaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1builtin.htm) of the framework.
+In common work, the object-orientated design of the action class can be changed to remove synchronisation. If you get race condition exceptions or performance problems, just redesign your architecture. A good design of concurrency architecture can be found in all [built-in actions](https://agentspeak.lightjason.org/sources/d7/d4b/namespaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1builtin.htm) of the framework.
 
 ## Reference Solution
 

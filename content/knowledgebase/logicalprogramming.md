@@ -38,12 +38,12 @@ Unification and assignments are nonetheless possible on these raw data structure
 * *Other terms* like literals are structured objects which are described in the following.
 
 In LightJason an inheritance model exists to build a software architecture for these structured elements.
-The root element is the [ITerm interface](https://lightjason.github.io/AgentSpeak/sources/d9/d34/interfaceorg_1_1lightjason_1_1agentspeak_1_1language_1_1ITerm.html) and the {{< lightbox "https://lightjason.github.io/AgentSpeak/sources/d4/dc1/interfaceorg_1_1lightjason_1_1agentspeak_1_1language_1_1ITerm__inherit__graph_org.svg" "ITerm inheritance diagram" >}} shows the structure of the relations.
+The root element is the [ITerm interface](https://agentspeak.lightjason.org/sources/d9/d34/interfaceorg_1_1lightjason_1_1agentspeak_1_1language_1_1ITerm.html) and the {{< lightbox "https://agentspeak.lightjason.org/sources/d4/dc1/interfaceorg_1_1lightjason_1_1agentspeak_1_1language_1_1ITerm__inherit__graph_org.svg" "ITerm inheritance diagram" >}} shows the structure of the relations.
 
 ### <a name="atomliterals">Atoms & Literals</a>
 
 The simplest structural elements of a logic programming language are _atoms_ which are part of _literals_.
-In the Prolog definition and consequently also in AgentSpeak(L++) all *literals* and *atoms* begin with a lower-case letter. 
+In the Prolog definition and consequently also in AgentSpeak(L++) all *literals* and *atoms* begin with a lower-case letter.
 Additionally, atoms can also contain slashes ```/``` and minus ```-``` characters. For clarification see the following example:
 
 > We would like to define that the sun is shining
@@ -115,7 +115,7 @@ fibonacci(N,R) :-
 > The order of the rule is very important, because Prolog tries to find a rule, which can be matched successfully,
 > the first rule that matches will be used. Variables will be set during runtime and the values will be passed
 > back as a reference, which is named [side effect](https://en.wikipedia.org/wiki/Side_effect_(computer_science)). In imperative programming languages these side effects are undesired, but
-> can be very helpful in logic programming languages.  
+> can be very helpful in logic programming languages.
 >
 >  But an advice regarding writing such rules: In the worst-case, the logic programming runtime will have to check all possibilities to calculate a solution. The system tries to find a successful solution with a [backtracking algorithm](https://en.wikipedia.org/wiki/Backtracking). This can be a [NP-complete problem](https://en.wikipedia.org/wiki/NP-completeness) and so a solution cannot be calculated efficiently.
 

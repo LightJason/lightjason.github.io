@@ -63,7 +63,7 @@ Actions are one of the helpful structures within agent-programming. A definition
 
 > The action is a function with $f : \mathbb{X}^n \rightarrow \mathbb{B}$ and $\mathbb{X}$ is any input data type and $\mathbb{B}$ is a binary set with {true, false}, which is executed independend and directly within the current agent / plan context. An action can change the environment immediately or the internal structure of the agent.
 
-From a technical point of view, the action is a [method](https://en.wikipedia.org/wiki/Method_(computer_programming)), which is called inside the current plan. The method is defined by the {{< lightbox "http://lightjason.github.io/AgentSpeak/sources/d0/dfe/interfaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1IAction__coll__graph.svg" "IAction interface" >}}. All actions[^iaction] implement this interface which uses the _IExecution_ interface for all executable structures.
+From a technical point of view, the action is a [method](https://en.wikipedia.org/wiki/Method_(computer_programming)), which is called inside the current plan. The method is defined by the {{< lightbox "https://agentspeak.lightjason.org/sources/d0/dfe/interfaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1IAction__coll__graph.svg" "IAction interface" >}}. All actions[^iaction] implement this interface which uses the _IExecution_ interface for all executable structures.
 <br/>
 Based on the first illustrated finite-state machine, we will show the action structure. In short: Actions executed on the _transition_. On the first state machine the transition contains only the _achievement goals_. An achievement goal is also an action which executes a plan.
 
@@ -94,4 +94,4 @@ Based on the first illustrated finite-state machine, we will show the action str
 <!-- htmlmin:ignore -->
 
 
-[^iaction]: see the [IAction interface](http://lightjason.github.io/AgentSpeak/sources/dc/d53/interfaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1IAction.html) for a detailed description
+[^iaction]: see the [IAction interface](https://agentspeak.lightjason.org/sources/dc/d53/interfaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1IAction.html) for a detailed description
