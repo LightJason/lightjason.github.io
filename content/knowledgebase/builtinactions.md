@@ -22,4 +22,4 @@ This page provides an overview of built-in actions in LightJason/AgentSpeak(L++)
 The action list below shows all existing built-in actions.
 Clicking on the brief description opens a drop-down box containing detailed information and code examples.
 
-{{< agentaction "http://lightjason.org/AgentSpeak/sources/action.json" "https://lightjason.org/AgentSpeak/sources/" ".htm" >}}
+{{< agentaction "https://lightjason.org/AgentSpeak/sources/action.json" "https://lightjason.org/AgentSpeak/sources/" ".htm" >}}

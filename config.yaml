@@ -1,7 +1,7 @@
 # --- main configuration -------------------------------------------
 # see http://www.emoji-cheat-sheet.com/
 
-baseurl		 	       : "http://lightjason.org/"
+baseurl		 	       : "https://lightjason.org/"
 metadataformat		   : "yaml"
 ignoreFiles            : [ "\\.graffle$", "\\.sh$", "\\.config" ]
 defaultContentLanguage : "en-GB"
@@ -38,7 +38,7 @@ params:
         type           : "image/png"
 
     domain:
-        protocol       : "http://"
+        protocol       : "https://"
         name           : "lightjason.org"
 
     person:

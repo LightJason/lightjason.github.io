@@ -79,7 +79,7 @@ jobs:
                 command: echo -e '*.*\n!CNAME!.gitignore\n!circle.yml\n!*.html\n!*.xml\n!*.css\n!*.js\n!*.json\n!*.bib\n!*.zip\n!*.png\n!*.gif\n!*.pdf\n!*.svg\n!*.txt\n' > .gitignore
             - run:
                 name: Create Readme
-                command: echo -e '# LightJason\n\nCurrent website of the [LightJason](http://lightjason.org) project' > readme.md
+                command: echo -e '# LightJason\n\nCurrent website of the [LightJason](https://lightjason.org) project' > readme.md
             - run: 
                 name: Git Branch Add
                 command: git add --all .
