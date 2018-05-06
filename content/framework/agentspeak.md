@@ -2,7 +2,9 @@
 title: "AgentSpeak(L++) Component"
 ---
 
-This is the main component with the agent functionality. The component allows to build agents from the ASL script and contains all [built-in actions](/knowledgebase/builtinactions).<!--more-->
+{{< img src="/images/logo_asl.png" width="100px" class="#right" >}} AgentSpeak(L++) is the main component providing the agent functionality.
+
+The component allows to build agents from the ASL script and contains all [built-in actions](/knowledgebase/builtinactions).<!--more-->
 
 * [Source Documentation](https://agentspeak.lightjason.org/sources/)
 * [OpenHub Code Statistic](https://www.openhub.net/p/LightJason-AgentSpeak)
