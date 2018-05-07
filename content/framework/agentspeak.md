@@ -2,18 +2,15 @@
 title: "AgentSpeak(L++) Component"
 ---
 
-{{< img src="/images/logo_asl.png" width="100px" class="#right" >}} AgentSpeak(L++) is the main component providing the agent functionality.
+{{< img src="/images/logo_asl.png" width="100px" class="#right" >}} [LightJason/AgentSpeak](https://agentspeak.lightjason.org/) is the main component providing the agent functionality.
 
 The component allows to build agents from the ASL script and contains all [built-in actions](/knowledgebase/builtinactions).<!--more-->
 
 * [Source Documentation](https://agentspeak.lightjason.org/sources/)
 * [OpenHub Code Statistic](https://www.openhub.net/p/LightJason-AgentSpeak)
 * [Libraries.io Statistic](https://libraries.io/github/LightJason/AgentSpeak)
-* Testing Agent
-	* [Unit Testing Agent](https://github.com/LightJason/AgentSpeak/blob/master/src/test/resources/agent/complete.asl)
-	* [Agent](https://github.com/LightJason/AgentSpeak/blob/master/src/test/resources/agent/hanoi.asl) which plays [Tower of Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi)
-
-
+* Testing Agents
+    * [Unit Testing Agents](https://github.com/LightJason/AgentSpeak/tree/master/src/test/resources/agent), e.g. [Hanoi Agent](https://github.com/LightJason/AgentSpeak/blob/master/src/test/resources/agent/hanoi.asl) which plays [Tower of Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi)
 
 ## Benchmarking Emergency Scenario
 
