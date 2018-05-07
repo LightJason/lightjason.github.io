@@ -3,10 +3,10 @@ title: "Basic Knowledge: Beliefs and Facts"
 jsonld: ["techarticle"]
 previous :
     url: "/knowledgebase/goals"
-    text: "kb: Basic - Goals"
+    text: "KB: Basic - Goals"
 next :
     url: "/knowledgebase/actions"
-    text: "kb: Basic - Actions"
+    text: "KB: Basic - Actions"
 ---
 
 Any [&#8594; literal](../literals) can be a belief or fact:

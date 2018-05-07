@@ -1,11 +1,11 @@
 ---
 title: "About"
 previous:
-    url: "/tutorials/efficient-beliefbase"
-    text: "Efficient Beliefbase" 
+    url: "/tutorials/environment"
+    text: "Environment" 
 next :
     url: "/contact"
-    text: "contact"
+    text: "Contact"
 ---
 
 We started this project as part of our Ph.D. work, because our research deals with [multi-agent systems](https://en.wikipedia.org/wiki/Multi-agent_system).

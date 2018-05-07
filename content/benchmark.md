@@ -2,10 +2,10 @@
 title: "Benchmark"
 previous :
     url: "/framework"
-    text: "framework"
+    text: "Framework"
 next :
     url: "/knowledgebase"
-    text: "knowledge base"
+    text: "Knowledge Base"
 ---
 
 In the following, we present a benchmark we conducted to show a) how well LightJason performs on doing agent-related tasks and b) how it compares with similar platforms. 

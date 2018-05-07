@@ -2,10 +2,10 @@
 title: "Framework"
 previous :
     url: "/publications"
-    text: "publications"
+    text: "Publications"
 next :
     url: "/benchmark"
-    text: "benchmark"
+    text: "Benchmark"
 ---
 
 The multi-agent framework is split up into different parts. Each component is provided with separate documentation. In this section, we give an overview of all framework elements.<!--more--> The whole framework is published at [Maven Central](http://mvnrepository.com).

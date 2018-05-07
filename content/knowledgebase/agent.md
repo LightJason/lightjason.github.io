@@ -3,10 +3,10 @@ title: "Theoretical Introduction: From Finite-State Machine and Logical Programm
 jsonld: ["techarticle", "course"]
 previous :
     url: "/knowledgebase/finitestatemachine"
-    text: "kb: Background - Finite-State Machine"
+    text: "KB: Background - Finite-State Machine"
 next :
     url: "/knowledgebase/differencetojason"
-    text: "kb: Background - Difference to Jason"
+    text: "KB: Background - Difference to Jason"
 ---
 
 {{< includejs "/agentfsm.js" >}}

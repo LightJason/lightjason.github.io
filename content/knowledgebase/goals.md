@@ -3,10 +3,10 @@ title: "Basic Knowledge: Goals"
 jsonld: ["techarticle"]
 previous :
     url: "/knowledgebase/plansandrules"
-    text: "kb: Basic - Plans and Logic Rules"
+    text: "KB: Basic - Plans and Logic Rules"
 next :
     url: "/knowledgebase/beliefsandfacts"
-    text: "kb: Basic - Beliefs and Facts"
+    text: "KB: Basic - Beliefs and Facts"
 ---
 
 Goals define which plans an agent should try to instantiate and execute.

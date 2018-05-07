@@ -3,10 +3,10 @@ title: "Basic Knowledge: Literals"
 jsonld: ["techarticle"]
 previous :
     url: "/knowledgebase/terms"
-    text: "kb: Basic - Terms"
+    text: "KB: Basic - Terms"
 next :
     url: "/knowledgebase/variables"
-    text: "kb: Basic - Variables"
+    text: "KB: Basic - Variables"
 ---
 
 {{< includejs "/agentcycle.js" >}}

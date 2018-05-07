@@ -3,10 +3,10 @@ title: "Advanced Knowledge: Multi-Assignments"
 jsonld: ["techarticle"]
 previous :
     url: "/knowledgebase/unification"
-    text: "kb: Basic - Unification"
+    text: "KB: Basic - Unification"
 next :
     url: "/knowledgebase/triggering"
-    text: "kb: Advanced - Plan Triggering Techniques"
+    text: "KB: Advanced - Plan Triggering Techniques"
 ---
 
 The [multi-assignment](https://agentspeak.lightjason.org/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#aaf72be46bb3458f45cf02c8858d96be) allows to extract elements from a list into different variables. It is similar to the [head-tail-notation of Prolog](https://en.wikibooks.org/wiki/Prolog/Lists) but here we can create complex structures.

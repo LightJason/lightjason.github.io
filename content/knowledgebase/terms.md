@@ -3,10 +3,10 @@ title: "Basic Knowledge: Terms"
 jsonld: ["techarticle"]
 previous :
     url: "/knowledgebase/atoms"
-    text: "kb: Basic - Atoms"
+    text: "KB: Basic - Atoms"
 next :
     url: "/knowledgebase/literals"
-    text: "kb: Basic - Literals"
+    text: "KB: Basic - Literals"
 ---
 
 Terms can represent **any value- and data-type** within the language.

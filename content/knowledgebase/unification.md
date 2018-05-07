@@ -3,10 +3,10 @@ title: "Basic Knowledge: Unification"
 jsonld: ["techarticle"]
 previous :
     url: "/knowledgebase/builtinactions"
-    text: "kb: Basic - Built-in Actions"
+    text: "KB: Basic - Built-in Actions"
 next :
     url: "/knowledgebase/multiassignments"
-    text: "kb: Advanced - Multi-Assignments"
+    text: "KB: Advanced - Multi-Assignments"
 ---
 
 [Unification](https://en.wikipedia.org/wiki/Unification_(computer_science)) is the process for _setting values from one literal into the variables of another literal_, e.g. determining the current value of `Colour` in `light(Colour)`.

@@ -3,10 +3,10 @@ title: "Advanced Knowledge: Plan and Rule Annotations"
 jsonld: ["techarticle"]
 previous :
     url: "/knowledgebase/triggering"
-    text: "kb: Advanced - Plan Triggering Techniques"
+    text: "KB: Advanced - Plan Triggering Techniques"
 next :
     url: "/knowledgebase/lambdaexpressions"
-    text: "kb: Advanced - Lambda Expressions"
+    text: "KB: Advanced - Lambda Expressions"
 ---
 
 Analogously to [Java](https://en.wikipedia.org/wiki/Java_annotation), AgentSpeak(L++) also supports the concept of [annotations](https://agentspeak.lightjason.org/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#4ab6864fc58ecd8b598ee10dfe2ac311).

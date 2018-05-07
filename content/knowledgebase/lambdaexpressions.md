@@ -3,10 +3,10 @@ title: "Advanced Knowledge: Lambda Expressions"
 jsonld: ["techarticle"]
 previous :
     url: "/knowledgebase/annotations"
-    text: "kb: Advanced - Plan Annotations"
+    text: "KB: Advanced - Plan Annotations"
 next :
     url: "/knowledgebase/repairactions"
-    text: "kb: Advanced - Explicit Repair Actions"
+    text: "KB: Advanced - Explicit Repair Actions"
 ---
 
 AgentSpeak(L++) does not support looping directly; however, we support [lambda expressions](https://agentspeak.lightjason.org/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#945f3fc449518a73b9f5f32868db466c) which are based on [lambda calculus](https://en.wikipedia.org/wiki/Lambda_calculus). Similar to a _for each_ call, each element in an input list (variable) can be looped.

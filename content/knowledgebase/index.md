@@ -5,7 +5,7 @@ previous :
     text: "Framework"
 next :
     url: "/knowledgebase/logicalprogramming/"
-    text: "kb: Background - Logic Programming"
+    text: "KB: Background - Logic Programming"
 ---
 
 In this section we provide a background of multi-agent modelling, a gentle introduction into logic programming and basic and advanced knowledge helpful for understanding the theoretical concepts of our framework.

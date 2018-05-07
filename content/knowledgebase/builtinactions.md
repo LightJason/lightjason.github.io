@@ -3,10 +3,10 @@ title: "Basic Knowledge: Built-in Actions"
 jsonld: ["techarticle"]
 previous :
     url: "/knowledgebase/actions"
-    text: "kb: Basic - Actions"
+    text: "KB: Basic - Actions"
 next :
     url: "/knowledgebase/unification"
-    text: "kb: Basic - Unification"
+    text: "KB: Basic - Unification"
 ---
 
 This page provides an overview of built-in actions in LightJason/AgentSpeak(L++).

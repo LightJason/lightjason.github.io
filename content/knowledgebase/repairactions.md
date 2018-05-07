@@ -3,10 +3,10 @@ title: "Advanced Knowledge: Explicit Repair Actions"
 jsonld: ["techarticle"]
 previous :
     url: "/knowledgebase/lambdaexpressions"
-    text: "kb: Advanced - Lambda Expressions"
+    text: "KB: Advanced - Lambda Expressions"
 next :
     url: "/knowledgebase/failing"
-    text: "kb: Advanced - Failing is Intentional"
+    text: "KB: Advanced - Failing is Intentional"
 ---
 
 AgentSpeak(L++) supports the implementation of _repair planning_ with the default behaviour ```-!```. With this additional structure we also support [repair action chains](https://agentspeak.lightjason.org/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#503f34271b101269197f766a6b90e4a9).

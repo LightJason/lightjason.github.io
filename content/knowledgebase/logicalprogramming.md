@@ -3,10 +3,10 @@ title: "Theoretical Introduction: Logic Programming"
 jsonld: ["techarticle", "course"]
 previous :
     url: "/knowledgebase/differencetojason"
-    text: "kb: Background - Difference to Jason"
+    text: "KB: Background - Difference to Jason"
 next :
     url: "/knowledgebase/finitestatemachine"
-    text: "kb: Background - Finite-State-Machine"
+    text: "KB: Background - Finite-State-Machine"
 ---
 
 This article gives a short introduction in [logic programming concepts](https://en.wikipedia.org/wiki/Logic_programming), which are needed to write the source code of an agent.

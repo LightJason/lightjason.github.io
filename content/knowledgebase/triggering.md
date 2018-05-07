@@ -3,10 +3,10 @@ title: "Advanced Knowledge: Plan Triggering Techniques"
 jsonld: ["techarticle"]
 previous :
     url: "/knowledgebase/multiassignments"
-    text: "kb: Advanced - Multi-Assignments"
+    text: "KB: Advanced - Multi-Assignments"
 next :
     url: "/knowledgebase/annotations"
-    text: "kb: Advanced - Plan and Rule Annotations"
+    text: "KB: Advanced - Plan and Rule Annotations"
 ---
 
 {{< toc >}}

@@ -3,10 +3,10 @@ title: "Basic Knowledge: Atoms"
 jsonld: ["techarticle"]
 previous :
     url: "/knowledgebase/differencetojason"
-    text: "kb: Background - Difference to Jason"
+    text: "KB: Background - Difference to Jason"
 next :
     url: "/knowledgebase/terms"
-    text: "kb: Basic - Terms"
+    text: "KB: Basic - Terms"
 ---
 
 Atoms are **unsplittable** elements and represent the _basic building blocks_.

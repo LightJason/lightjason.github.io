@@ -3,7 +3,7 @@ title: "Advanced Knowledge: Failing is Intentional"
 jsonld: ["techarticle"]
 previous :
     url: "/knowledgebase/repairactions"
-    text: "kb: Advanced - Explicit Repair Actions"
+    text: "KB: Advanced - Explicit Repair Actions"
 next :
     url: "/tutorials"
     text: "Tutorials"

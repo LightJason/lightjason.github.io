@@ -3,10 +3,10 @@ title: "Basic Knowledge: Finite-State Machine"
 jsonld: ["techarticle", "course"]
 previous :
     url: "/knowledgebase/logicalprogramming"
-    text: "kb: Background - Logical Programming"
+    text: "KB: Background - Logical Programming"
 next :
     url: "/knowledgebase/agent"
-    text: "kb: Background - Finite-State Machine and Logical Programming to an Agent"
+    text: "KB: Background - Finite-State Machine and Logical Programming to an Agent"
 ---
 
 {{< includejs "/statemachine.js" >}}

@@ -3,10 +3,10 @@ title: "Basic Knowledge: Plans and Logic Rules"
 jsonld: ["techarticle"]
 previous :
     url: "/knowledgebase/variables"
-    text: "kb: Basic - Variables"
+    text: "KB: Basic - Variables"
 next :
     url: "/knowledgebase/goals"
-    text: "kb: Basic - Goals"
+    text: "KB: Basic - Goals"
 ---
 
 In contrast to [&#8594; literals](../literals), [&#8594; variables](../variables) and [&#8594; beliefs and facts](../beliefsandfacts), plans and rules are _executable structures_.

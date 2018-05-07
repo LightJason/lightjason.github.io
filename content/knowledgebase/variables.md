@@ -3,10 +3,10 @@ title: "Basic Knowledge: Variables"
 jsonld: ["techarticle"]
 previous :
     url: "/knowledgebase/literals"
-    text: "kb: Basic - Literals"
+    text: "KB: Basic - Literals"
 next :
     url: "/knowledgebase/plansandrules"
-    text: "kb: Basic - Plans and Logic Rules"
+    text: "KB: Basic - Plans and Logic Rules"
 ---
 
 Variables are specialised [&#8594; terms](../terms) to store information during runtime.
