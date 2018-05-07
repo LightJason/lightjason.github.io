@@ -33,6 +33,7 @@ Some features are
 ## Technical details
 
 * Our Web-Application is a single bundled jar of programs with all necessary components and a web-based GUI.
+* We use our own [_LightJason/AgentSpeak_](/framework/agentspeak) and [_LightJason/REST_](/framework/rest) components for modelling the agents entities and realising communication.
 * The _runtime_ executes the agents as concurrent entities to simulate independent vehicles.
 * A visualisation of agents and environment is realised using [_phaser_](https://phaser.io).
 * For the challenge part of the exercise, we visualise the statistical results, e.g. penalties via web technologies.
