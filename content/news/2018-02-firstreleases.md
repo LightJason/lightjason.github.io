@@ -4,11 +4,11 @@ date: 2018-02-26T14:38:03+01:00
 categories: ["Project"]
 ---
 
-We are happy to announce that we just released our first packaged versions of [AgentSpeak(L++)](http://github.com/LightJason/AgentSpeak) and [REST](http://github.com/LightJason/REST) to [maven central](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.lightjason%22).
+We are happy to announce that we just released our first packaged versions of [AgentSpeak(L++)](http://github.com/LightJason/AgentSpeak-Java) to [maven central](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.lightjason%22).
 <!--more-->
 
 By creating releases of the two packages, development with LightJason/AgentSpeak(L++) becomes even easier:
-Instead of having to pre-build AgentSpeak and REST by hand and installing it to the local repository (i.e. running ```mvn package install```), it can now simply be added to the project's dependencies, e.g.
+Instead of having to pre-build AgentSpeak by hand and installing it to the local repository (i.e. running ```mvn package install```), it can now simply be added to the project's dependencies, e.g.
 
 <!-- htmlmin:ignore -->
 {{< githubsource user="LightJason" repo="Examples" branch="tutorial-agentspeak-in-15min" file="pom.xml" lang="xml" filter="[[:space:]]{12}<groupId>org\.lightjason</groupId>(.|\n)*?<artifactId>agentspeak</artifactId>(.|\n)*?</version>" prefix="<dependency>" postfix="</dependency>" >}}
