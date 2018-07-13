@@ -93,8 +93,8 @@ params:
     footer:
         links:
             -
-                name   : "AgentSpeak(L++)"
-                url    : "https://github.com/LightJason/AgentSpeak"
+                name   : "Java AgentSpeak(L++)"
+                url    : "https://github.com/LightJason/AgentSpeak-Java"
 
             -
                 name   : "ResearchGate"
