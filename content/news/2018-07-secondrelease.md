@@ -1,12 +1,12 @@
 ---
 title: "Preparing 2nd Release"
-date: 2018-02-26T14:38:03+01:00
+date: 2018-07-12T14:38:03+01:00
 categories: ["Project"]
 ---
 
 We are planning the second release and would like to announce new features in LightJason.
 
-<!--More-->>
+<!--More-->
 
 * Machine learning algorithms such as deep learning, decision trees,.....
 * native Prolog integration for executing prolog scripts within an action
