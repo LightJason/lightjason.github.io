@@ -1,10 +1,10 @@
 ---
-title: "Preparing 2nd Release"
+title: "Preparing 2nd Release & Reorganizing Project"
 date: 2018-07-12T14:38:03+01:00
 categories: ["Project"]
 ---
 
-We are planning the second release and would like to announce new features in LightJason.
+We are currently planning the second release through which we have to reorganize large parts of the project, so some parts of the website may be broken. Furthermore we would like to announce new features especially in the area of machine learning in LightJason.
 
 <!--More-->
 
