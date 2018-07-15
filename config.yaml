@@ -5,13 +5,10 @@
 baseurl		 	       : "https://lightjason.org/"
 metadataformat		   : "yaml"
 ignoreFiles            : [ "\\.graffle$", "\\.sh$", "\\.config" ]
-defaultContentLanguage : "en"
-defaultContentLanguageInSubdir: false
 title                  : "LightJason"
 enableEmoji            : true
 enableRobotsTXT        : true
 googleAnalytics		   : "UA-89676576-1"
-
 
 taxonomies:
     news        	   : "news"
