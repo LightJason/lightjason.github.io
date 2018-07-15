@@ -4,7 +4,6 @@
 baseurl		 	       : "https://lightjason.org/"
 metadataformat		   : "yaml"
 ignoreFiles            : [ "\\.graffle$", "\\.sh$", "\\.config" ]
-defaultContentLanguage : "en-GB"
 theme 			       : "lightjason"
 title                  : "LightJason"
 enableEmoji            : true

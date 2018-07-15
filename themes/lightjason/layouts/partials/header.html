@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="{{- .Site.Language -}}">
+<html lang="en-GB">
 
 <head>
-	{{- partial "description" . -}}
+	{{- partial "description.html" . -}}
 
 	{{ with .Site.Params.bingverify -}}<meta name="msvalidate.01" content="{{- . -}}" />{{- end }}
 	{{ with .Site.Params.googleverify -}}<meta name="google-site-verification" content="{{- . -}}" />{{- end }}
