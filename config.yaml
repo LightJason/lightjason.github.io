@@ -1,10 +1,12 @@
 # --- main configuration -------------------------------------------
 # see http://www.emoji-cheat-sheet.com/
+# https://github.com/gohugoio/hugo/tree/master/examples/multilingual
 
 baseurl		 	       : "https://lightjason.org/"
 metadataformat		   : "yaml"
 ignoreFiles            : [ "\\.graffle$", "\\.sh$", "\\.config" ]
-theme 			       : "lightjason"
+defaultContentLanguage : "en"
+defaultContentLanguageInSubdir: false
 title                  : "LightJason"
 enableEmoji            : true
 enableRobotsTXT        : true

@@ -10,7 +10,7 @@
 				<a href="{{ .Permalink }}">{{- .Title -}}</a>
 				{{- end -}}
 				{{- if not .Date.IsZero -}}<time> ({{- .Date.Format "Mon, Jan 2, 2006" -}}) </time>{{- end -}}
-			    {{ with .Params.categories -}} [{{ delimit (apply (apply (sort .) "partial" "categories" ".") "chomp" ".") ", " }}] {{- end -}}
+			    {{ with .Params.categories -}} [{{ delimit (apply (apply (sort .) "partial" "categories.html" ".") "chomp" ".") ", " }}] {{- end -}}
 			    <br/>
 				<span class="info">
 			    {{- .Render "summary" -}}

@@ -80,7 +80,7 @@
 	<link href="{{- .Site.BaseURL -}}news/index.xml" type="application/rss+xml" rel="alternate" title="{{- .Site.Title -}}" />
 	<title>{{- .Site.Title }} {{ if not .IsHome -}}&mdash; {{ .Title -}}{{- end -}}</title>
 
-	{{- partial "microdata" . -}}
+	{{- partial "microdata.html" . -}}
 </head>
 
 <body {{ if .IsHome -}}{{- range first 1 (where .Site.Pages "Type" "homepage") -}}{{- if .Params.previous -}}data-previouspage="{{- .Params.previous.url -}}"{{- end }} {{ if .Params.next -}}data-nextpage="{{- .Params.next.url -}}"{{- end -}}{{- end -}}{{- else -}}{{- if .Params.previous -}}data-previouspage="{{- .Params.previous.url -}}"{{- end }} {{ if .Params.next -}}data-nextpage="{{- .Params.next.url -}}"{{- end -}}{{- end -}}>

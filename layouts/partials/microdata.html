@@ -5,7 +5,7 @@
 <meta name="twitter:image" content="{{- if .Params.image -}}{{ delimit (slice .Site.BaseURL .Params.image) "" -}}{{- else -}}{{- delimit (slice .Site.BaseURL .Site.Params.icon.logo) "" -}}{{- end }}" />
 
 <meta property="og:site_name" content="{{- .Site.Title -}}" />
-<meta property="og:url" content="{{- partial "domainlink" (dict "content" . "path" .RelPermalink) -}}" />
+<meta property="og:url" content="{{- partial "domainlink.html" (dict "content" . "path" .RelPermalink) -}}" />
 <meta property="og:title" content="{{- .Site.Title -}}{{- if not .IsHome }} - {{ .Title -}}{{- end -}}" />
 <meta property="og:image" content="{{- if .Params.image -}}{{ delimit (slice .Site.BaseURL .Params.image) "" -}}{{- else -}}{{- delimit (slice .Site.BaseURL .Site.Params.icon.logo) "" -}}{{- end }}" />
 <meta property="og:description" content="{{- $.Scratch.Get "description" -}}" /> 
@@ -140,8 +140,8 @@
 	"@context" : "http://schema.org",
 	"@type" : "DigitalDocument",
 	"about" : {{ .Title -}},
-	"fileFormat" : {{ partial "domainlink" (dict "content" . "path" .Params.relmedia) -}},
-	"url" : {{ partial "domainlink" (dict "content" . "path" .Params.relmedia) -}},
+	"fileFormat" : {{ partial "domainlink.html" (dict "content" . "path" .Params.relmedia) -}},
+	"url" : {{ partial "domainlink.html" (dict "content" . "path" .Params.relmedia) -}},
 	"license" : {{ .Site.Params.license -}}
 }
 {{- end -}}
