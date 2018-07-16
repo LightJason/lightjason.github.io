@@ -55,7 +55,7 @@ Following the ```git-flow``` paradigm (see [&#8594; A successful Git branching m
 	    ```
 	    <!-- htmlmin:ignore -->
 
-	* or by downloading the {{< githubzip user="LightJason" repo="AgentSpeak" branch="master" text="AgentSpeak-master.zip" >}} (or {{< githubzip user="LightJason" repo="AgentSpeak" branch="developing" text="AgentSpeak-developing.zip" >}}) and extracting it to ```Developer/```.
+	* or by downloading the {{< githubzip user="LightJason" repo="AgentSpeak-Java" branch="master" text="AgentSpeak-master.zip" >}} (or {{< githubzip user="LightJason" repo="AgentSpeak-Java" branch="developing" text="AgentSpeak-developing.zip" >}}) and extracting it to ```Developer/```.
 
 	    <!-- htmlmin:ignore -->
 	    ```commandline
@@ -90,7 +90,7 @@ Following the ```git-flow``` paradigm (see [&#8594; A successful Git branching m
 3. Add the installed AgentSpeak to your project by adding
 
 	<!-- htmlmin:ignore -->
-	{{< githubsource user="LightJason" repo="AgentSpeak" branch="master" file="pom.xml" lang="xml" filter="[[:space:]]{4}<groupId>(.|\n)*?</version>" prefix="<dependency>" postfix="</dependency>" >}}
+	{{< githubsource user="LightJason" repo="AgentSpeak-Java" branch="master" file="pom.xml" lang="xml" filter="[[:space:]]{4}<groupId>(.|\n)*?</version>" prefix="<dependency>" postfix="</dependency>" >}}
 	<!-- htmlmin:ignore -->
 	
 	to the dependency section of your ```pom.xml```. (Adjust version number if needed.)
