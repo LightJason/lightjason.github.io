@@ -23,6 +23,3 @@ Other topics we are working on:
 * Development of a concept for porting LightJason to C++, so that agent scripts can be executed natively
 
 If you have any questions, just write us for more information.
-
-
-Translated with www.DeepL.com/Translator
