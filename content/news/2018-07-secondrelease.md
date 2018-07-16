@@ -5,8 +5,7 @@ categories: ["Project"]
 ---
 
 We are currently planning the second release through which we have to reorganize large parts of the project, so some parts of the website may be broken. Furthermore we would like to announce new features especially in the area of machine learning in LightJason.
-
-<!--More-->
+<!--more-->
 
 * Machine learning algorithms such as deep learning, decision trees,.....
 * native Prolog integration for executing prolog scripts within an action
