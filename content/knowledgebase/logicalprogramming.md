@@ -38,7 +38,7 @@ Unification and assignments are nonetheless possible on these raw data structure
 * *Other terms* like literals are structured objects which are described in the following.
 
 In LightJason an inheritance model exists to build a software architecture for these structured elements.
-The root element is the [ITerm interface](https://agentspeak.lightjason.org/sources/d9/d34/interfaceorg_1_1lightjason_1_1agentspeak_1_1language_1_1ITerm.html) and the {{< lightbox "https://agentspeak.lightjason.org/sources/d4/dc1/interfaceorg_1_1lightjason_1_1agentspeak_1_1language_1_1ITerm__inherit__graph_org.svg" "ITerm inheritance diagram" >}} shows the structure of the relations.
+The root element is the [ITerm interface](https://agentspeak-java.lightjason.org/sources/d9/d34/interfaceorg_1_1lightjason_1_1agentspeak_1_1language_1_1ITerm.html) and the {{< lightbox "https://agentspeak-java.lightjason.org/sources/d4/dc1/interfaceorg_1_1lightjason_1_1agentspeak_1_1language_1_1ITerm__inherit__graph_org.svg" "ITerm inheritance diagram" >}} shows the structure of the relations.
 
 ### <a name="atomliterals">Atoms & Literals</a>
 

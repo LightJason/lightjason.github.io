@@ -5,7 +5,6 @@ categories: ["Project"]
 ---
 
 We have removed the REST component of LightJason AgentSpeak.
-
 <!--More-->
 
 The motivation of removing the REST-API is, that in a lot of use-cases you need more use-case-defined REST calls which are more application-based.

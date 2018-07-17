@@ -90,7 +90,7 @@ We built this structure with _on-demand beliefbases_ into LightJason/AgentSpeak(
 The default beliefbase structure will be created within the _configuration structure_, so each agent gets on the default behaviour its own beliefbase, view and storage. The ```CDefaultAgentConfiguration``` [class](https://github.com/LightJason/AgentSpeak/blob/master/src/main/java/org/lightjason/agentspeak/configuration/CDefaultAgentConfiguration.java#L163-L173) defines the creating process:
 
 <!-- htmlmin:ignore -->
-{{< githubsource user="LightJason" repo="AgentSpeak" file="src/main/java/org/lightjason/agentspeak/configuration/CDefaultAgentConfiguration.java" lang="java" filter="[[:space:]]{4}public.*beliefbase(.|\n)*?{(.|\n)*?}" id="beliefbase" postfix=" ">}}
+{{< githubsource user="LightJason" repo="AgentSpeak-Java" file="src/main/java/org/lightjason/agentspeak/configuration/CDefaultAgentConfiguration.java" lang="java" filter="[[:space:]]{4}public.*beliefbase(.|\n)*?{(.|\n)*?}" id="beliefbase" postfix=" ">}}
 <!-- htmlmin:ignore -->
 
 The {{< linelink "" "beliefbase" "4" >}} creates the base structure, the first call creates a _persistent beliefbase_ with a _multi-storage_ (for literals and views). After that a view is created with the ```create``` call. The call expects a name for the view and tree node name. For the root structure an existing name ```BELIFBASEROOTNAME``` exists. 
