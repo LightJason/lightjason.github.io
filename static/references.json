@@ -111,7 +111,7 @@
         ]
       ]
     },
-    "page": "58 - 66",
+    "page": "58-66",
     "publisher": "Springer International Publishing",
     "title": "LightJason: A BDI Framework inspired by Jason",
     "type": "paper-conference"
@@ -206,7 +206,7 @@
         "given": "Jörg P."
       }
     ],
-    "container-title": "Proc. Of the 17th international conference on autonomous agents and multiagent systems (AAMAS 2018), accepted, to appear",
+    "container-title": "Proc. Of the 17th international conference on autonomous agents and multiagent systems (AAMAS 2018)",
     "id": "ADK+2018aamasdemo",
     "issued": {
       "date-parts": [
@@ -233,7 +233,7 @@
         "given": "S."
       }
     ],
-    "page": "1794 - 1796",
+    "page": "1794-1796",
     "title": "LightJason, a Highly Scalable and Concurrent Agent Framework: Overview and Application (Demonstration)",
     "type": "paper-conference"
   }
