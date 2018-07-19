@@ -1,8 +1,11 @@
 {{ define "main" -}}
-    {{- $baseurl := .Site.BaseURL -}} 
+{{ template "_internal/pagination.html" . }}
+
 	<span class="category_control"><a href="#" class="category_showall">show all</a></span>
-	<ul>
-    {{- range .Data.Pages.ByDate.Reverse -}} 
+	<ul>		
+	{{ range .Paginator.Pages.ByDate.Reverse -}}
+
+
 		    <li class="spread">
 				{{- if (isset .Params "relmedia") -}}
 				<a href="{{ .Params.relmedia }}">{{- .Title -}}</a>
