@@ -1,3 +1,13 @@
 {{ define "main" -}}
-	List template
+	{{ partial "paginate" . }}
+	<ul>		
+	{{ range .Paginator -}}
+		    <li class="spread">
+				<a href="{{ .Permalink }}">{{- .Title -}}</a>
+				<span class="info">
+			    {{- .Render "summary" -}}
+				</span>
+		    </li>
+	{{- end }}
+	</ul>
 {{- end }}
