@@ -1,7 +1,7 @@
 {{ define "main" -}}
 	{{ partial "paginate" . }}
 	<ul>		
-	{{ range .Paginator -}}
+	{{ range .Paginator.Pages -}}
 		    <li class="spread">
 				<a href="{{ .Permalink }}">{{- .Title -}}</a>
 				<span class="info">

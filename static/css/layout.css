@@ -414,6 +414,22 @@ span.teletype-prefix {
     display: none;
 }
 
+.pagination {
+  width: 100%;
+  text-align: center;  
+}
+
+.pagination ul {
+  list-style-type: none;
+  margin: 0 auto;
+}
+
+.pagination li {
+  display: inline;
+  margin: 0.5em auto;
+  padding: 0.25em;
+}
+
 .sitepagination {
     border: 1px solid #B1B4B6;
     margin-top: 1.5em;

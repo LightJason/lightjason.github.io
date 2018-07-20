@@ -12,6 +12,8 @@ googleAnalytics		   : "UA-89676576-1"
 
 taxonomies:
     news        	   : "news"
+    tutorials          : "tutorials"
+    knowledgebase      : "knowledgebase"
 
 
 params:
