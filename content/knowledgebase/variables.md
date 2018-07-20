@@ -1,6 +1,9 @@
 ---
 title: "Basic Knowledge: Variables"
 jsonld: ["techarticle"]
+categories_weight: 40
+categories: "Basic Knowledge"
+shortsummary: "placeholder to store dynamic information at runtime"
 previous :
     url: "/knowledgebase/literals"
     text: "KB: Basic - Literals"

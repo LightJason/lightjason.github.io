@@ -1,6 +1,9 @@
 ---
 title: "Basic Knowledge: Terms"
 jsonld: ["techarticle"]
+categories_weight: 20
+categories: "Basic Knowledge"
+shortsummary: "fit all value- and data-types"
 previous :
     url: "/knowledgebase/atoms"
     text: "KB: Basic - Atoms"

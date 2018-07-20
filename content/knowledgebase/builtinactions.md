@@ -1,6 +1,9 @@
 ---
 title: "Basic Knowledge: Built-in Actions"
 jsonld: ["techarticle"]
+categories_weight: 90
+categories: "Basic Knowledge"
+shortsummary: "provides a reference to all built-in actions available to LightJason agent programmers"
 previous :
     url: "/knowledgebase/actions"
     text: "KB: Basic - Actions"

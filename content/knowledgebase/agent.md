@@ -1,6 +1,9 @@
 ---
 title: "Theoretical Introduction: From Finite-State Machine and Logical Programming to an Agent"
 jsonld: ["techarticle", "course"]
+categories_weight: 30
+categories: "Background and Introduction"
+shortsummary: "to understand how we combine the parts previously discussed into our agent definition"
 previous :
     url: "/knowledgebase/finitestatemachine"
     text: "KB: Background - Finite-State Machine"

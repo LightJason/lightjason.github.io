@@ -1,6 +1,9 @@
 ---
 title: "Basic Knowledge: Goals"
 jsonld: ["techarticle"]
+categories_weight: 60
+categories: "Basic Knowledge"
+shortsummary: "mark plans to be executed"
 previous :
     url: "/knowledgebase/plansandrules"
     text: "KB: Basic - Plans and Logic Rules"

@@ -1,6 +1,9 @@
 ---
 title: "Advanced Knowledge: Plan Triggering Techniques"
 jsonld: ["techarticle"]
+categories_weight: 20
+categories: "Advanced Knowledge"
+shortsummary: "provides insights into different ways to trigger plans in AgentSpeak(L++)"
 previous :
     url: "/knowledgebase/multiassignments"
     text: "KB: Advanced - Multi-Assignments"

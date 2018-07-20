@@ -1,6 +1,9 @@
 ---
 title: "Advanced Knowledge: Plan and Rule Annotations"
 jsonld: ["techarticle"]
+categories_weight: 30
+categories: "Advanced Knowledge"
+shortsummary: "shows how to modify the execution behaviour of plans"
 previous :
     url: "/knowledgebase/triggering"
     text: "KB: Advanced - Plan Triggering Techniques"

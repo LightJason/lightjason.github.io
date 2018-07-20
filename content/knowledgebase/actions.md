@@ -1,6 +1,9 @@
 ---
 title: "Basic Knowledge: Actions"
 jsonld: ["techarticle"]
+categories_weight: 80
+categories: "Basic Knowledge"
+shortsummary: "to interact with other agents or the environment"
 previous :
     url: "/knowledgebase/beliefsandfacts"
     text: "KB: Basic - Beliefs and Facts"

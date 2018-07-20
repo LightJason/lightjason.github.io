@@ -1,6 +1,9 @@
 ---
 title: "Theoretical Introduction: Difference to Jason"
 jsonld: ["techarticle", "course"]
+categories_weight: 40
+categories: "Background and Introduction"
+shortsummary: "shows the main differences between [Jason](http://jason.sourceforge.net) and our framework"
 previous :
     url: "/knowledgebase/agent/"
     text: "KB: Background - From Finite-State-Machine and Logical Programming to an Agent"

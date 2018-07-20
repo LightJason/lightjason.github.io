@@ -1,6 +1,9 @@
 ---
 title: "Basic Knowledge: Plans and Logic Rules"
 jsonld: ["techarticle"]
+categories_weight: 50
+categories: "Basic Knowledge"
+shortsummary: "to describe complex behaviour"
 previous :
     url: "/knowledgebase/variables"
     text: "KB: Basic - Variables"

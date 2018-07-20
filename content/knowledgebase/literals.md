@@ -1,6 +1,9 @@
 ---
 title: "Basic Knowledge: Literals"
 jsonld: ["techarticle"]
+categories_weight: 30
+categories: "Basic Knowledge"
+shortsummary: "comprise complex information"
 previous :
     url: "/knowledgebase/terms"
     text: "KB: Basic - Terms"

@@ -1,0 +1,15 @@
+{{ define "main" -}}
+<p>In this section we provide a background of multi-agent modelling, a gentle introduction into logic programming and basic and advanced knowledge helpful for understanding the theoretical concepts of our framework.</p><p></p><blockquote><p><strong>Note:</strong> For a more <em>hands-on</em> experience see <a href="/tutorials">→ practical tutorials</a>.</p></blockquote>
+
+	{{ partial "paginate" . }}
+	<ul>		
+	{{ range .Paginator.Pages -}}
+		    <li class="spread">
+				<a href="{{ .Permalink }}">{{- .Title -}}</a>
+				<span class="info">
+			    {{- .Render "summary" -}}
+				</span>
+		    </li>
+	{{- end }}
+	</ul>
+{{- end }}

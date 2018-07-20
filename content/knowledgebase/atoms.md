@@ -1,6 +1,9 @@
 ---
 title: "Basic Knowledge: Atoms"
 jsonld: ["techarticle"]
+categories_weight: 10
+categories: "Basic Knowledge"
+shortsummary: "the basic building blocks"
 previous :
     url: "/knowledgebase/differencetojason"
     text: "KB: Background - Difference to Jason"

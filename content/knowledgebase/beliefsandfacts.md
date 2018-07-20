@@ -1,6 +1,9 @@
 ---
 title: "Basic Knowledge: Beliefs and Facts"
 jsonld: ["techarticle"]
+categories_weight: 70
+categories: "Basic Knowledge"
+shortsummary: "to store information the agent perceived or deduced from the environment"
 previous :
     url: "/knowledgebase/goals"
     text: "KB: Basic - Goals"

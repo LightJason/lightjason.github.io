@@ -1,6 +1,9 @@
 ---
 title: "Advanced Knowledge: Lambda Expressions"
 jsonld: ["techarticle"]
+categories_weight: 40
+categories: "Advanced Knowledge"
+shortsummary: "are useful to implement loops over iterable structures likes lists"
 previous :
     url: "/knowledgebase/annotations"
     text: "KB: Advanced - Plan Annotations"

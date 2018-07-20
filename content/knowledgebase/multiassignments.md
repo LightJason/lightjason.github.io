@@ -1,6 +1,9 @@
 ---
 title: "Advanced Knowledge: Multi-Assignments"
 jsonld: ["techarticle"]
+categories_weight: 10
+categories: "Advanced Knowledge"
+shortsummary: "explains how to assign the output of actions to a list containing multiple variables"
 previous :
     url: "/knowledgebase/unification"
     text: "KB: Basic - Unification"

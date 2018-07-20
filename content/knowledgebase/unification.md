@@ -1,6 +1,9 @@
 ---
 title: "Basic Knowledge: Unification"
 jsonld: ["techarticle"]
+categories_weight: 100
+categories: "Basic Knowledge"
+shortsummary: "to get current values from literals"
 previous :
     url: "/knowledgebase/builtinactions"
     text: "KB: Basic - Built-in Actions"

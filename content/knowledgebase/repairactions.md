@@ -1,6 +1,9 @@
 ---
 title: "Advanced Knowledge: Explicit Repair Actions"
 jsonld: ["techarticle"]
+categories_weight: 50
+categories: "Advanced Knowledge"
+shortsummary: "can be used to catch failing actions"
 previous :
     url: "/knowledgebase/lambdaexpressions"
     text: "KB: Advanced - Lambda Expressions"

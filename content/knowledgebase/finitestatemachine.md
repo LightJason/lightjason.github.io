@@ -1,6 +1,9 @@
 ---
 title: "Basic Knowledge: Finite-State Machine"
 jsonld: ["techarticle", "course"]
+categories_weight: 20
+categories: "Background and Introduction"
+shortsummary: "for understanding the runtime model of the agent behaviour"
 previous :
     url: "/knowledgebase/logicalprogramming"
     text: "KB: Background - Logical Programming"

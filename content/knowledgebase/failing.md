@@ -1,6 +1,9 @@
 ---
 title: "Advanced Knowledge: Failing is Intentional"
 jsonld: ["techarticle"]
+categories_weight: 60
+categories: "Advanced Knowledge"
+shortsummary: "explains techniques to mitigate failing plans and actions, as failing is part of ~~humans~~ agents interacting with each other in a shared environment."
 previous :
     url: "/knowledgebase/repairactions"
     text: "KB: Advanced - Explicit Repair Actions"

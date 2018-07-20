@@ -1,6 +1,9 @@
 ---
 title: "Theoretical Introduction: Logic Programming"
 jsonld: ["techarticle", "course"]
+categories_weight: 10
+categories: "Background and Introduction"
+shortsummary: "for understanding the difference to imperative programming. Explanation of the basic concepts for using this paradigm to describe the agent behaviour"
 previous :
     url: "/knowledgebase/differencetojason"
     text: "KB: Background - Difference to Jason"
