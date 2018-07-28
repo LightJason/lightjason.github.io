@@ -1,0 +1,207 @@
+version: 2
+
+jobs:
+
+    build:
+        docker:
+            - image: ubuntu:latest
+
+        environment:
+            TZ: "/usr/share/zoneinfo/Europe/Berlin"
+
+        steps:
+            # --- installation software ---
+            - run: apt-get update
+            - run: apt-get -y install wget git
+            - run: wget -O /tmp/hugo.deb  https://github.com/gohugoio/hugo/releases/download/v0.45.1/hugo_0.45.1_Linux-64bit.deb
+            - run: dpkg -i /tmp/hugo.deb
+            #
+            # --- git checkout ---
+            - checkout
+            - run: git clean -xdf
+            - run: git fetch -p
+            - run: git gc --prune=now
+            #
+            # --- build & persistent workspace ---
+            - run: hugo --ignoreCache --cleanDestinationDir
+            - persist_to_workspace:
+                root: .
+                paths:
+                    - .
+
+    deploy:
+        docker:
+            - image: ubuntu:latest
+
+        environment:
+            TZ: "/usr/share/zoneinfo/Europe/Berlin"
+            GIT_AUTHOR_NAME: CircleCI
+            GIT_AUTHOR_EMAIL: info@lightjason.org
+            GIT_COMMITTER_NAME: CircleCI
+            GIT_COMMITTER_EMAIL: info@lightjason.org
+
+        steps:
+            # --- installation software ---
+            - run: apt-get update
+            - run: apt-get -y install curl git gnupg
+            - run: curl -sL https://deb.nodesource.com/setup_10.x | bash
+            - run: apt-get install -y nodejs
+            # see release version https://www.npmjs.com/package/html-minifier
+            - run: npm install -g html-minifier
+            # see release version https://www.npmjs.com/package/svgo
+            - run: npm install -g svgo
+            # see release version https://www.npmjs.com/package/uglify-es
+            - run: npm install -g uglify-es
+            #
+            # --- ssh-key ---
+            - run: mkdir ~/.ssh
+            - run: echo -e "github.com,192.30.253.112 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==\n" >> ~/.ssh/known_hosts
+            #
+            # --- attach workspace ---
+            - attach_workspace:
+                at: .
+            #
+            # --- build deployment version ---
+            - run: svgo --multipass --config=data/svgo.config public/images/ || true
+            - run: find public -type f -name "*.htm*" -exec data/minify.sh \{\} \;
+            - run: find public -type f -name "*.css" -exec data/minify.sh \{\} \;
+            - run: find public -type f -name "*.js" -exec data/minifyjs.sh \{\} \;
+            - run: mv -f public /tmp
+            #
+            # --- store artifact ---
+            - run: tar -cvjSf /tmp/site.tar.bz2 /tmp/public/* 
+            - store_artifacts:
+                path: /tmp/site.tar.bz2
+            #
+            # --- deploy ---
+            - run: rm -Rf *
+            - run: mv -f /tmp/public/* .
+            - run: echo -e 'general:\n    branches:\n        ignore:\n            - master\n' > circle.yml
+            - run: echo -e '*.*\n!CNAME!.gitignore\n!circle.yml\n!*.html\n!*.xml\n!*.css\n!*.js\n!*.json\n!*.bib\n!*.zip\n!*.png\n!*.gif\n!*.pdf\n!*.svg\n!*.txt\n' > .gitignore
+            - run: echo -e '# LightJason\n\nCurrent website of the [LightJason](https://lightjason.org) project' > readme.md
+            - run: git brach -D master || true       
+            - run: git checkout --orphan master
+            - run: git add --all .
+            - run: export GIT_COMMIT_MESSAGE="$(git show -s --pretty=format:%s $CIRCLE_SHA1)" && git commit -m "webpage update [$GIT_COMMIT_MESSAGE]"
+            - add_ssh_keys:
+                fingerprints:
+                    - "68:f3:5d:d1:2e:72:7e:73:14:40:07:7e:82:04:4a:37"
+            - run: git push -f origin master
+
+workflows:
+    version: 2
+    build-and-deploy:
+        jobs:
+            - build:
+                filters:
+                    branches:
+                        only: developing
+            - deploy:
+                requires:
+                    - build
+
+
+
+
+
+
+
+
+
+
+
+
+version: 2
+
+jobs:
+    build:
+        working_directory: ~/website
+        docker:
+            - image: lightjason/docker:web
+
+        branches:
+            only:
+                - developing
+            ignore:
+                - master
+                - /dev-.*/              
+
+
+        environment:
+            TZ: "/usr/share/zoneinfo/Europe/Berlin"
+
+            GIT_AUTHOR_NAME: CircleCI
+            GIT_AUTHOR_EMAIL: info@lightjason.org
+            GIT_COMMITTER_NAME: CircleCI
+            GIT_COMMITTER_EMAIL: info@lightjason.org
+
+
+
+        steps:
+            - checkout
+            - run:
+                name: Git Clean
+                command: git clean -xdf
+            - run:
+                name: Git Remove Unused Branches
+                command: git fetch -p
+            - run:
+                name: Git Prune
+                command: git gc --prune=now
+            - run:
+                name: Build Hugo Website
+                command: hugo --ignoreCache --cleanDestinationDir
+            - run:
+                name: Minify SVGs
+                command: data/minifysvg.sh public/images/
+            - run:
+                name: Minify HTML
+                command: find public -type f -name "*.htm*" -exec data/minify.sh \{\} \;
+            - run:
+                name: Minify CSS
+                command: find public -type f -name "*.css" -exec data/minify.sh \{\} \;
+            - run:
+                name: Minify JS
+                command: find public -type f -name "*.js" -exec data/minifyjs.sh \{\} \;
+            - run:
+                name: Build Artifacts
+                command: tar -cvjSf site.tar.bz2 public/*    
+            - store_artifacts:
+                path: site.tar.bz2
+            - run:
+                name: Moving Artifacts to Temporary
+                command: mv -f public /tmp
+            # start deployment    
+            - run:
+                name: Delete Local Master Branch
+                command: git branch -D master || true  
+            - run:
+                name: Initialize Orphan Master Branch
+                command: git checkout --orphan master
+            - run:
+                name: Remove Non-Usable Data
+                command: rm -Rf *
+            - run:
+                name: Moving Artifacts back to Repository
+                command: mv -f /tmp/public/* .
+            - run:
+                name: Create Circle-CI Configuration
+                command: echo -e 'general:\n    branches:\n        ignore:\n            - master\n' > circle.yml
+            - run:
+                name: Create GitIgnore
+                command: echo -e '*.*\n!CNAME!.gitignore\n!circle.yml\n!*.html\n!*.xml\n!*.css\n!*.js\n!*.json\n!*.bib\n!*.zip\n!*.png\n!*.gif\n!*.pdf\n!*.svg\n!*.txt\n' > .gitignore
+            - run:
+                name: Create Readme
+                command: echo -e '# LightJason\n\nCurrent website of the [LightJason](https://lightjason.org) project' > readme.md
+            - run: 
+                name: Git Branch Add
+                command: git add --all .
+            - run:
+                name: Git Branch Commit
+                command: GIT_COMMIT_MESSAGE="$(git show -s --pretty=format:%s $CIRCLE_SHA1)" && git commit -m "webpage update [$GIT_COMMIT_MESSAGE]"
+            - add_ssh_keys:
+                fingerprints:
+                    - "68:f3:5d:d1:2e:72:7e:73:14:40:07:7e:82:04:4a:37"
+            - run:
+                name: Deployment
+                command: git push -f origin master
