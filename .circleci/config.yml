@@ -76,8 +76,7 @@ jobs:
             # --- deploy ---
             - run: rm -Rf *
             - run: mv -f /tmp/public/* .
-            - run: echo -e 'general:\n    branches:\n        ignore:\n            - master\n' > circle.yml
-            - run: echo -e '*.*\n!CNAME!.gitignore\n!circle.yml\n!*.html\n!*.xml\n!*.css\n!*.js\n!*.json\n!*.bib\n!*.zip\n!*.png\n!*.gif\n!*.pdf\n!*.svg\n!*.txt\n' > .gitignore
+            - run: echo -e '*.*!.gitignore\n!.circleci\n!CNAME\n!circle.yml\n!config.yml\n!robots.txt\n!*.html\n!*.xml\n!*.css\n!*.js\n!*.json\n!*.bib\n!*.zip\n!*.png\n!*.gif\n!*.pdf\n!*.svg\n' > .gitignore
             - run: echo -e '# LightJason\n\nCurrent website of the [LightJason](https://lightjason.org) project' > readme.md
             - run: git brach -D master || true       
             - run: git checkout --orphan master
