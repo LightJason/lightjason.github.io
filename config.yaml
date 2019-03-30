@@ -96,7 +96,7 @@ params:
         links:
             -
                 name   : "Java AgentSpeak(L++)"
-                url    : "https://github.com/LightJason/AgentSpeak-Java"
+                url    : "https://github.com/LightJason/Java-AgentSpeak"
 
             -
                 name   : "ResearchGate"
