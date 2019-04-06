@@ -251,13 +251,13 @@
     "issued": {
       "date-parts": [
         [
-          2018,
-          4
+          2018
         ]
       ]
     },
     "note": "https://github.com/LightJason/Thesis-Multilane-Overtaking-Manoeuvre",
-    "publisher": "Clausthal University of Technology - Department of Informatics",
+    "publisher": "Department of Computer Science, TU Clausthal",
+    "publisher-place": "Clausthal-Zellerfeld, Germany",
     "title": "Eine agentenbasierte Erweiterung des Nagel-Schreckenberg-Fahrzeugfolgemodells",
     "type": "thesis"
   }
