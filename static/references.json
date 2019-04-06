@@ -117,8 +117,8 @@
     "type": "paper-conference"
   },
   {
-    "URL": "/publications/2016-eumas-slides.pdf",
     "DOI": "10.5281/zenodo.1313725",
+    "URL": "/publications/2016-eumas-slides.pdf",
     "author": [
       {
         "family": "Aschermann",
@@ -207,15 +207,7 @@
         "given": "Jörg P."
       }
     ],
-    "container-title": "Proc. Of the 17th international conference on autonomous agents and multiagent systems (AAMAS 2018)",
-    "id": "ADK+2018aamasdemo",
-    "issued": {
-      "date-parts": [
-        [
-          2018
-        ]
-      ]
-    },
+    "container-title": "Proc. of the 17th International Conference on Autonomous Agents and Multiagent Systems (AAMAS 2018)",
     "editor": [
       {
         "family": "Dastani",
@@ -234,9 +226,38 @@
         "given": "S."
       }
     ],
+    "id": "ADK+2018aamasdemo",
+    "issued": {
+      "date-parts": [
+        [
+          2018
+        ]
+      ]
+    },
+    "note": "/news/2018-07-aamas",
     "page": "1794-1796",
     "title": "LightJason, a Highly Scalable and Concurrent Agent Framework: Overview and Application (Demonstration)",
-    "type": "paper-conference",
-    "note": "/news/2018-07-aamas"
+    "type": "paper-conference"
+  },
+  {
+    "URL": "/publications/2016-eumas-slides.pdf",
+    "author": [
+      {
+        "family": "Albert-Pedersen",
+        "given": "S."
+      }
+    ],
+    "id": "AlbertPedersen2018bsc",
+    "issued": {
+      "date-parts": [
+        [
+          2018,
+          4
+        ]
+      ]
+    },
+    "publisher": "Clausthal University of Technology - Department of Informatics",
+    "title": "Eine agentenbasierte Erweiterung des Nagel-Schreckenberg-Fahrzeugfolgemodells",
+    "type": "thesis"
   }
 ]
