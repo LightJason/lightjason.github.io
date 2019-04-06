@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Knowledgebases on LightJason</title>
+    <link>https://lightjason.org/knowledgebase/</link>
+    <description>Recent content in Knowledgebases on LightJason</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="https://lightjason.org/knowledgebase/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Advanced Knowledge: Explicit Repair Actions</title>
+      <link>https://lightjason.org/knowledgebase/repairactions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/knowledgebase/repairactions/</guid>
+      <description>&lt;p&gt;AgentSpeak(L++) supports the implementation of &lt;em&gt;repair planning&lt;/em&gt; with the default behaviour &lt;code&gt;-!&lt;/code&gt;. With this additional structure we also support &lt;a href=&#34;https://agentspeak-java.lightjason.org/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#503f34271b101269197f766a6b90e4a9&#34;&gt;repair action chains&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Advanced Knowledge: Failing is Intentional</title>
+      <link>https://lightjason.org/knowledgebase/failing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/knowledgebase/failing/</guid>
+      <description>  Note: Under construction
+ Deliberate Failing on Different Levels Produced by OmniGraffle 7.4.2 dc:date2017-09-18 14:45:54 +0000/dc:dateKnowledgebase - FailingLayer 1!main.triggers-!plan3 &amp;lt;--!plan2 &amp;lt;--!plan1 &amp;lt;-.+!plan3 &amp;lt;-+!plan2 &amp;lt;-+!plan1 &amp;lt;-.on failurerepairfailedplanstriggersretry/resumeStrategicTacticalaction1(): bool&amp;hellip;return false&amp;lt;&amp;lt;action2(): bool&amp;hellip;return false&amp;lt;&amp;lt;action3(): bool&amp;hellip;return trueon failon failOperationalrepair failedactionsexecute actions!plan2;!plan3;action1()&amp;lt;&amp;lt;action2()&amp;lt;&amp;lt;action3()rollback_action1();!planreturn on successreturn if action3 fails =&amp;gt; !plan1 fails
+ Strategic
+ Tactical
+ Operational
+  Tactical Level: Repair Plans Operational Level: Explicit Repair Actions Plans to Big to Fail: @atomic </description>
+    </item>
+    
+    <item>
+      <title>Advanced Knowledge: Lambda Expressions</title>
+      <link>https://lightjason.org/knowledgebase/lambdaexpressions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/knowledgebase/lambdaexpressions/</guid>
+      <description>&lt;p&gt;AgentSpeak(L++) does not support looping directly; however, we support &lt;a href=&#34;https://agentspeak-java.lightjason.org/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#945f3fc449518a73b9f5f32868db466c&#34;&gt;lambda expressions&lt;/a&gt; which are based on &lt;a href=&#34;https://en.wikipedia.org/wiki/Lambda_calculus&#34;&gt;lambda calculus&lt;/a&gt;. Similar to a &lt;em&gt;for each&lt;/em&gt; call, each element in an input list (variable) can be looped.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Advanced Knowledge: Multi-Assignments</title>
+      <link>https://lightjason.org/knowledgebase/multiassignments/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/knowledgebase/multiassignments/</guid>
+      <description>&lt;p&gt;The &lt;a href=&#34;https://agentspeak-java.lightjason.org/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#aaf72be46bb3458f45cf02c8858d96be&#34;&gt;multi-assignment&lt;/a&gt; allows to extract elements from a list into different variables. It is similar to the &lt;a href=&#34;https://en.wikibooks.org/wiki/Prolog/Lists&#34;&gt;head-tail-notation of Prolog&lt;/a&gt; but here we can create complex structures.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Advanced Knowledge: Plan Triggering Techniques</title>
+      <link>https://lightjason.org/knowledgebase/triggering/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/knowledgebase/triggering/</guid>
+      <description>&lt;div id=&#34;toccontainer&#34;&gt;Contents [&lt;a href=&#34;#&#34; id=&#34;tochideshow&#34;&gt;Hide&lt;/a&gt;]&lt;div id=&#34;toc&#34;&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&#34;vs&#34;&gt;&lt;code&gt;!&lt;/code&gt; vs &lt;code&gt;!!&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;The order of execution (parallel, sequential) of sub-&lt;a href=&#34;../plans&#34;&gt;plans&lt;/a&gt;, triggered inside their parent plan differs depending on the trigger symbol &lt;code&gt;!&lt;/code&gt; or &lt;code&gt;!!&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Advanced Knowledge: Plan and Rule Annotations</title>
+      <link>https://lightjason.org/knowledgebase/annotations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/knowledgebase/annotations/</guid>
+      <description>&lt;p&gt;Analogously to &lt;a href=&#34;https://en.wikipedia.org/wiki/Java_annotation&#34;&gt;Java&lt;/a&gt;, AgentSpeak(L++) also supports the concept of &lt;a href=&#34;https://agentspeak-java.lightjason.org/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#4ab6864fc58ecd8b598ee10dfe2ac311&#34;&gt;annotations&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Basic Knowledge: Actions</title>
+      <link>https://lightjason.org/knowledgebase/actions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/knowledgebase/actions/</guid>
+      <description>&lt;p&gt;Actions enrich agents twofold: First they provide further functionality, for example to compute complex calculations which could be implemented better, i.e. simpler, more scalable, in an imperative programming language. Secondly they allow agents to interact with their environment and other agents.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Basic Knowledge: Atoms</title>
+      <link>https://lightjason.org/knowledgebase/atoms/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/knowledgebase/atoms/</guid>
+      <description>&lt;p&gt;Atoms are &lt;strong&gt;unsplittable&lt;/strong&gt; elements and represent the &lt;em&gt;basic building blocks&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Basic Knowledge: Beliefs and Facts</title>
+      <link>https://lightjason.org/knowledgebase/beliefsandfacts/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/knowledgebase/beliefsandfacts/</guid>
+      <description>&lt;p&gt;Any &lt;a href=&#34;../literals&#34;&gt;&amp;#8594; literal&lt;/a&gt; can be a belief or fact:&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Basic Knowledge: Built-in Actions</title>
+      <link>https://lightjason.org/knowledgebase/builtinactions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/knowledgebase/builtinactions/</guid>
+      <description>&lt;p&gt;This page provides an overview of built-in actions in LightJason/AgentSpeak(L++).&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Basic Knowledge: Finite-State Machine</title>
+      <link>https://lightjason.org/knowledgebase/finitestatemachine/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/knowledgebase/finitestatemachine/</guid>
+      <description>&lt;script src=&#34;https://lightjason.org/js/statemachine.js&#34;&gt;&lt;/script&gt;
+
+&lt;h2 id=&#34;state-machine&#34;&gt;State Machine&lt;/h2&gt;
+
+&lt;p&gt;A &lt;a href=&#34;https://en.wikipedia.org/wiki/Finite-state_machine&#34;&gt;Finite-State Machine&lt;/a&gt; is a system with explicitly defined states and transitions between the states with the following syntax&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Basic Knowledge: Goals</title>
+      <link>https://lightjason.org/knowledgebase/goals/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/knowledgebase/goals/</guid>
+      <description>&lt;p&gt;Goals define which plans an agent should try to instantiate and execute.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Basic Knowledge: Literals</title>
+      <link>https://lightjason.org/knowledgebase/literals/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/knowledgebase/literals/</guid>
+      <description>&lt;script src=&#34;https://lightjason.org/js/agentcycle.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;Literals are the conclusion of terms and atoms. They have to start with a &lt;strong&gt;lower-case letter&lt;/strong&gt;!&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Basic Knowledge: Plans and Logic Rules</title>
+      <link>https://lightjason.org/knowledgebase/plansandrules/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/knowledgebase/plansandrules/</guid>
+      <description>&lt;p&gt;In contrast to &lt;a href=&#34;../literals&#34;&gt;&amp;#8594; literals&lt;/a&gt;, &lt;a href=&#34;../variables&#34;&gt;&amp;#8594; variables&lt;/a&gt; and &lt;a href=&#34;../beliefsandfacts&#34;&gt;&amp;#8594; beliefs and facts&lt;/a&gt;, plans and rules are &lt;em&gt;executable structures&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Basic Knowledge: Terms</title>
+      <link>https://lightjason.org/knowledgebase/terms/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/knowledgebase/terms/</guid>
+      <description>&lt;p&gt;Terms can represent &lt;strong&gt;any value- and data-type&lt;/strong&gt; within the language.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Basic Knowledge: Unification</title>
+      <link>https://lightjason.org/knowledgebase/unification/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/knowledgebase/unification/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Unification_(computer_science)&#34;&gt;Unification&lt;/a&gt; is the process for &lt;em&gt;setting values from one literal into the variables of another literal&lt;/em&gt;, e.g. determining the current value of &lt;code&gt;Colour&lt;/code&gt; in &lt;code&gt;light(Colour)&lt;/code&gt;.
+Note: &lt;code&gt;Colour&lt;/code&gt; is a variable! Based on the previous &lt;a href=&#34;../literals#time&#34;&gt;&amp;#8594; time example&lt;/a&gt; the procedure can look as follows:&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Basic Knowledge: Variables</title>
+      <link>https://lightjason.org/knowledgebase/variables/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/knowledgebase/variables/</guid>
+      <description>&lt;p&gt;Variables are specialised &lt;a href=&#34;../terms&#34;&gt;&amp;#8594; terms&lt;/a&gt; to store information during runtime.
+They can be used to define &lt;a href=&#34;../literals&#34;&gt;&amp;#8594; literals&lt;/a&gt; with a &lt;em&gt;placeholder&lt;/em&gt; and (in contrast to &lt;a href=&#34;../atoms&#34;&gt;&amp;#8594; atoms&lt;/a&gt; or literals) begin with an upper-case letter.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Knowledge Base</title>
+      <link>https://lightjason.org/knowledgebase/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/knowledgebase/</guid>
+      <description>&lt;p&gt;In this section we provide a background of multi-agent modelling, a gentle introduction into logic programming and basic and advanced knowledge helpful for understanding the theoretical concepts of our framework.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Theoretical Introduction: Difference to Jason</title>
+      <link>https://lightjason.org/knowledgebase/differencetojason/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/knowledgebase/differencetojason/</guid>
+      <description>&lt;p&gt;We describe the difference between LightJason and &lt;a href=&#34;http://jason.sourceforge.net/&#34;&gt;Jason&lt;/a&gt;, because in general the LightJason framework is inspired by Jason, but it is &lt;strong&gt;not&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;a copy of Jason&lt;/li&gt;
+&lt;li&gt;or an extension to Jason&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Theoretical Introduction: From Finite-State Machine and Logical Programming to an Agent</title>
+      <link>https://lightjason.org/knowledgebase/agent/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/knowledgebase/agent/</guid>
+      <description>&lt;script src=&#34;https://lightjason.org/js/agentfsm.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;The main definition of our &lt;a href=&#34;https://en.wikipedia.org/wiki/Belief%E2%80%93desire%E2%80%93intention_software_model&#34;&gt;BDI (Belief-Desire-Intention) framework&lt;/a&gt; follows &lt;a href=&#34;http://aima.cs.berkeley.edu/&#34;&gt;Russell &amp;amp; Norvig - Artificial Intelligence: A Modern Approach&lt;/a&gt; with the structure of &lt;em&gt;goal-based agents&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Theoretical Introduction: Logic Programming</title>
+      <link>https://lightjason.org/knowledgebase/logicalprogramming/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/knowledgebase/logicalprogramming/</guid>
+      <description>&lt;p&gt;This article gives a short introduction in &lt;a href=&#34;https://en.wikipedia.org/wiki/Logic_programming&#34;&gt;logic programming concepts&lt;/a&gt;, which are needed to write the source code of an agent.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

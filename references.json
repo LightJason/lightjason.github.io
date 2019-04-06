@@ -1,0 +1,264 @@
+[
+  {
+    "URL": "/publications/2014-emas.pdf",
+    "author": [
+      {
+        "family": "Ahlbrecht",
+        "given": "T."
+      },
+      {
+        "family": "Dix",
+        "given": "J."
+      },
+      {
+        "family": "Köster",
+        "given": "M."
+      },
+      {
+        "family": "Kraus",
+        "given": "P."
+      },
+      {
+        "family": "Müller",
+        "given": "J. P."
+      }
+    ],
+    "collection-title": "Lecture Notes in Artificial Intelligence (LNAI)",
+    "container-title": "Engineering Multiagent Systems II",
+    "editor": [
+      {
+        "family": "Dalpiaz",
+        "given": "F."
+      },
+      {
+        "dropping-particle": "van",
+        "family": "Riemsdijk",
+        "given": "M. Birna"
+      },
+      {
+        "family": "Dix",
+        "given": "J."
+      }
+    ],
+    "id": "Ahlbrecht2014emas",
+    "issued": {
+      "date-parts": [
+        [
+          2014
+        ]
+      ]
+    },
+    "note": "2014-emas-maserati",
+    "page": "81-102",
+    "publisher": "Springer International Publishing",
+    "publisher-place": "Switzerland",
+    "title": "A scalable runtime platform for multiagent-based simulation",
+    "type": "paper-conference",
+    "volume": "8758"
+  },
+  {
+    "URL": "/publications/2016-ifi-techreport.pdf",
+    "author": [
+      {
+        "family": "Aschermann",
+        "given": "M."
+      },
+      {
+        "family": "Kraus",
+        "given": "P."
+      },
+      {
+        "family": "Müller",
+        "given": "J. P."
+      }
+    ],
+    "id": "Aschermann2016",
+    "issued": {
+      "date-parts": [
+        [
+          2016
+        ]
+      ]
+    },
+    "number": "IfI Technical Report IfI-16-04",
+    "publisher": "Department of Computer Science, TU Clausthal",
+    "publisher-place": "Clausthal-Zellerfeld, Germany",
+    "title": "LightJason: A BDI Framework Inspired by Jason",
+    "type": "report"
+  },
+  {
+    "URL": "/publications/2016-eumas-preprint.pdf",
+    "author": [
+      {
+        "family": "Aschermann",
+        "given": "Malte"
+      },
+      {
+        "family": "Kraus",
+        "given": "Philipp"
+      },
+      {
+        "family": "Müller",
+        "given": "Jörg P."
+      }
+    ],
+    "container-title": "Multi-Agent Systems and Agreement Technologies: 14th Europ. Conf., EUMAS 2016, and 4rd Int. Conf., AT 2016, Valencia, Spain, 2016",
+    "id": "Kraus2016eumas",
+    "issued": {
+      "date-parts": [
+        [
+          2016
+        ]
+      ]
+    },
+    "page": "58-66",
+    "publisher": "Springer International Publishing",
+    "title": "LightJason: A BDI Framework inspired by Jason",
+    "type": "paper-conference"
+  },
+  {
+    "DOI": "10.5281/zenodo.1313725",
+    "URL": "/publications/2016-eumas-slides.pdf",
+    "author": [
+      {
+        "family": "Aschermann",
+        "given": "Malte"
+      },
+      {
+        "family": "Kraus",
+        "given": "Philipp"
+      },
+      {
+        "family": "Müller",
+        "given": "Jörg P."
+      }
+    ],
+    "id": "Kraus2016eumasslides",
+    "issued": {
+      "date-parts": [
+        [
+          2016
+        ]
+      ]
+    },
+    "title": "Slides - LightJason: A BDI Framework inspired by Jason",
+    "type": "no-type"
+  },
+  {
+    "DOI": "10.1504/IJAOSE.2016.10001873",
+    "author": [
+      {
+        "family": "Ahlbrecht",
+        "given": "T."
+      },
+      {
+        "family": "Dix",
+        "given": "J."
+      },
+      {
+        "family": "Fiekas",
+        "given": "N."
+      },
+      {
+        "family": "Köster",
+        "given": "M."
+      },
+      {
+        "family": "Kraus",
+        "given": "P."
+      },
+      {
+        "family": "Müller",
+        "given": "J. P."
+      }
+    ],
+    "container-title": "International Journal of Agent-Oriented Software Engineering (IJAOSE)",
+    "id": "Ahlbrecht2016ijaose",
+    "issue": "2/3",
+    "issued": {
+      "date-parts": [
+        [
+          2016
+        ]
+      ]
+    },
+    "page": "232-265",
+    "title": "An architecture for scalable simulation of systems of cognitive agents",
+    "type": "article-journal",
+    "volume": "5"
+  },
+  {
+    "URL": "/publications/2018-aamas-preprint.pdf",
+    "author": [
+      {
+        "family": "Aschermann",
+        "given": "Malte"
+      },
+      {
+        "family": "Dennisen",
+        "given": "Sophie"
+      },
+      {
+        "family": "Kraus",
+        "given": "Philipp"
+      },
+      {
+        "family": "Müller",
+        "given": "Jörg P."
+      }
+    ],
+    "container-title": "Proc. of the 17th International Conference on Autonomous Agents and Multiagent Systems (AAMAS 2018)",
+    "editor": [
+      {
+        "family": "Dastani",
+        "given": "M."
+      },
+      {
+        "family": "Sukthankar",
+        "given": "G."
+      },
+      {
+        "family": "André",
+        "given": "E."
+      },
+      {
+        "family": "Koenig",
+        "given": "S."
+      }
+    ],
+    "id": "ADK+2018aamasdemo",
+    "issued": {
+      "date-parts": [
+        [
+          2018
+        ]
+      ]
+    },
+    "note": "/news/2018-07-aamas",
+    "page": "1794-1796",
+    "title": "LightJason, a Highly Scalable and Concurrent Agent Framework: Overview and Application (Demonstration)",
+    "type": "paper-conference"
+  },
+  {
+    "URL": "/publications/2018-albertpedersen-thesis.pdf",
+    "author": [
+      {
+        "family": "Albert-Pedersen",
+        "given": "S."
+      }
+    ],
+    "id": "AlbertPedersen2018bsc",
+    "issued": {
+      "date-parts": [
+        [
+          2018
+        ]
+      ]
+    },
+    "note": "https://github.com/LightJason/Thesis-Multilane-Overtaking-Manoeuvre",
+    "publisher": "Department of Computer Science, TU Clausthal",
+    "publisher-place": "Clausthal-Zellerfeld, Germany",
+    "title": "Eine agentenbasierte Erweiterung des Nagel-Schreckenberg-Fahrzeugfolgemodells",
+    "type": "thesis"
+  }
+]

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tutorials on LightJason</title>
+    <link>https://lightjason.org/tutorials/</link>
+    <description>Recent content in Tutorials on LightJason</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="https://lightjason.org/tutorials/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tutorial: Actions</title>
+      <link>https://lightjason.org/tutorials/actions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/tutorials/actions/</guid>
+      <description>&lt;p&gt;This tutorial explains the concept and usage of actions. Actions are &lt;em&gt;executable mechanisms&lt;/em&gt;. We support a lot of different actions which support some &lt;a href=&#34;https://lightjason.org/knowledgebase/builtinactions&#34;&gt;basic functionality&lt;/a&gt;.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Tutorial: Communication</title>
+      <link>https://lightjason.org/tutorials/communication/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/tutorials/communication/</guid>
+      <description>&lt;p&gt;LightJason architecture does not support in general a built-in communication, because communication and
+agent addressing / naming depends on the domain or underlying software architecture.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Tutorial: Develop an AgentSpeak Scenario in 15 Minutes</title>
+      <link>https://lightjason.org/tutorials/agentspeak-in-fifteen-minutes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/tutorials/agentspeak-in-fifteen-minutes/</guid>
+      <description>&lt;p&gt;This tutorial explains how to develop a simple, but fully working scenario in 15 minutes with the most recent version of the AgentSpeak(L++) source code.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Tutorial: Environment</title>
+      <link>https://lightjason.org/tutorials/environment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/tutorials/environment/</guid>
+      <description>&lt;p&gt;The LightJason system architecture does not require any environment, but you can easily write your own.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Tutorial: How to Build AgentSpeak from Source</title>
+      <link>https://lightjason.org/tutorials/buildagentspeak/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/tutorials/buildagentspeak/</guid>
+      <description>&lt;p&gt;This tutorial explains how to build LightJason/AgentSpeak(L++) from source.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Tutorial: Trigger</title>
+      <link>https://lightjason.org/tutorials/trigger/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/tutorials/trigger/</guid>
+      <description>&lt;p&gt;This tutorial explains the functionality of &lt;em&gt;agent triggering&lt;/em&gt;. For understanding the purpose of triggers you have to understand the concept of events, which is a well-known concept in &lt;a href=&#34;https://docs.oracle.com/javase/tutorial/uiswing/events/&#34;&gt;UI programming&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Tutorials</title>
+      <link>https://lightjason.org/tutorials/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/tutorials/</guid>
+      <description>&lt;p&gt;In this section, we introduce LightJason/AgentSpeak(L++) from a &lt;em&gt;hands-on&lt;/em&gt; perspective by providing tutorials for understanding the practical applications of our framework.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Wizard</title>
+      <link>https://lightjason.org/tutorials/wizard/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/tutorials/wizard/</guid>
+      <description>&lt;p&gt;The wizard allows you to create a full working package of a &lt;em&gt;multi-agent simulation&lt;/em&gt;. You get a zip file which contains a full working &lt;a href=&#34;https://maven.apache.org/&#34;&gt;Maven&lt;/a&gt; project.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

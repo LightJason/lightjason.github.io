@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Frameworks on LightJason</title>
+    <link>https://lightjason.org/framework/</link>
+    <description>Recent content in Frameworks on LightJason</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="https://lightjason.org/framework/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>AgentSpeak(L&#43;&#43;) Component</title>
+      <link>https://lightjason.org/framework/agentspeak/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/framework/agentspeak/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://lightjason.org/images/logo_asl.png#right&#34;  style=&#34;width: 100px; &#34;/&gt; &lt;a href=&#34;https://agentspeak.lightjason.org/&#34;&gt;LightJason/AgentSpeak&lt;/a&gt; is the main component providing the agent functionality.&lt;/p&gt;
+
+&lt;p&gt;The component allows to build agents from the ASL script and contains all &lt;a href=&#34;https://lightjason.org/knowledgebase/builtinactions&#34;&gt;built-in actions&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Framework</title>
+      <link>https://lightjason.org/framework/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lightjason.org/framework/</guid>
+      <description>&lt;p&gt;The multi-agent framework is split up into different parts. Each component is provided with separate documentation. In this section, we give an overview of all framework elements. The whole framework is published at &lt;a href=&#34;http://mvnrepository.com&#34;&gt;Maven Central&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

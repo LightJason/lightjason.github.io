@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>News on LightJason</title>
+    <link>https://lightjason.org/news/</link>
+    <description>Recent content  in News  on LightJason</description><language>en-GB</language><lastBuildDate>Fri, 13 Jul 2018 14:38:03 +0100</lastBuildDate><atom:link href="/news/" rel="self" type="application/rss+xml" /><item>
+      <title>Removing REST Component</title>
+      <link>https://lightjason.org/news/2018-07-removerest/</link>
+      <pubDate>Fri, 13 Jul 2018 14:38:03 +0100</pubDate><guid>https://lightjason.org/news/2018-07-removerest/</guid>
+      <description>We have removed the REST component of LightJason AgentSpeak. 
+The motivation of removing the REST-API is, that in a lot of use-cases you need more use-case-defined REST calls which are more application-based.
+</description>
+    </item><item>
+      <title>AAMAS 2018 Demo</title>
+      <link>https://lightjason.org/news/2018-07-aamas/</link>
+      <pubDate>Thu, 12 Jul 2018 17:38:03 +0100</pubDate><guid>https://lightjason.org/news/2018-07-aamas/</guid>
+      <description>We have visited the AAMAS 2018 in Stockholm and would like to say &amp;ldquo;thank you&amp;rdquo; for some nice talks. Our publication Lightjason, A Highly Scalable And Concurrent Agent Framework: Overview And Application (Demonstration) can be found in the publication section. Details on our practical implementation can be found in our news entry from September last year.
+ https://vimeo.com/lightjason/aamas2018</description>
+    </item><item>
+      <title>Preparing 2nd Release &amp; Reorganizing Project</title>
+      <link>https://lightjason.org/news/2018-07-secondrelease/</link>
+      <pubDate>Thu, 12 Jul 2018 14:38:03 +0100</pubDate><guid>https://lightjason.org/news/2018-07-secondrelease/</guid>
+      <description>We are currently planning the second release through which we have to reorganize large parts of the project, so some parts of the website may be broken. Furthermore we would like to announce new features especially in the area of machine learning in LightJason. These features are:
+ Machine learning algorithms such as deep learning, decision trees,&amp;hellip;.. native Prolog integration for executing prolog scripts within an action Lazy action loading to reduce memory consumption when creating the agent generator Lambda expression stream to create a streaming operator for iteration over the data for each Java object. Complete redesign of the backend model to accelerate execution performance and reduce data structures Porting to Java 11 (OpenJDK) Redesign of the fuzzy operation using Java streams  Other topics we are working on:
+ We tested LightJason on a Raspberry Pi with very good results. We have tested LightJason to control a Parrot Bebop 2 drone, hopefully we can present some videos soon. Development of a concept for porting LightJason to C&#43;&#43;, so that agent scripts can be executed natively  If you have any questions, just write us for more information.
+</description>
+    </item><item>
+      <title>LightJason: First Releases Published at Maven Central</title>
+      <link>https://lightjason.org/news/2018-02-firstreleases/</link>
+      <pubDate>Mon, 26 Feb 2018 14:38:03 +0100</pubDate><guid>https://lightjason.org/news/2018-02-firstreleases/</guid>
+      <description>We are happy to announce that we just released our first packaged versions of AgentSpeak(L&#43;&#43;) to maven central. By creating releases of the two packages, development with LightJason/AgentSpeak(L&#43;&#43;) becomes even easier: Instead of having to pre-build AgentSpeak by hand and installing it to the local repository (i.e. running mvn package install), it can now simply be added to the project&amp;rsquo;s dependencies, e.g.
+&amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.lightjason&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;agentspeak&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;0.0.1&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; Piece of cake.
+With our switch towards releases we now fully embrace the git-flow paradigm (see &amp;#8594; A successful Git branching model for details). The master branch now contains our current release version while ongoing development can be found in the developing branch.
+We also updated and simplified our tutorial &amp;#8594; Develop an AgentSpeak Scenario in 15 Minutes and added the new tutorial &amp;#8594; How to Build AgentSpeak from Source to please developers who want to test bleeding-edge features before they get incorporated into a stable release.
+</description>
+    </item><item>
+      <title>LightJason Joined Docker-Hub Community</title>
+      <link>https://lightjason.org/news/2017-12-docker/</link>
+      <pubDate>Thu, 07 Dec 2017 22:38:03 +0100</pubDate><guid>https://lightjason.org/news/2017-12-docker/</guid>
+      <description>We joined the Docker-Hub community with LightJason. Our (minimal) pre-built docker container contains a Java development environment with the latest AgentSpeak(L&#43;&#43;) developer build. The lightjason/agentspeak container consists of
+ Linux Alpine 3.7 Glibc &amp;amp; Git Maven Oracle Java 9 Development Kit  The container is public, so we welcome everyone to extend or fork it. Updates in the AgentSpeak(L&#43;&#43;) repository will automatically trigger container updates. We plan to set up different versions of this container when the first release is finished.
+Update 2018-02-09: LightJason now uses (and requires) Java 1.9; updated JDK link.
+</description>
+    </item><item>
+      <title>Planning AAMAS 2018 Demo</title>
+      <link>https://lightjason.org/news/2017-11-planningaamas/</link>
+      <pubDate>Wed, 15 Nov 2017 09:00:44 +0100</pubDate><guid>https://lightjason.org/news/2017-11-planningaamas/</guid>
+      <description>Our recent practical applications of LightJason in the SocialCars simulation workshop and the DAIMON project helped us to find further real-life use cases for our multi-agent system. Additionally we plan to submit LightJason for a demonstration at AAMAS 2018. Fingers crossed!
+</description>
+    </item><item>
+      <title>Application in DAIMON project</title>
+      <link>https://lightjason.org/news/2017-11-daimon/</link>
+      <pubDate>Wed, 15 Nov 2017 08:57:47 +0100</pubDate><guid>https://lightjason.org/news/2017-11-daimon/</guid>
+      <description>The AgentSpeak(L&#43;&#43;) component will find further use in the DAIMON project.
+The project combines neuronal networks with a multi-agent system for calculating risk values. The multi-agent system is to be used to develop the individual tasks for exploring the data, communication with the neural networks and communication with the user interface in fine granular form. With this project we intend to extend AgentSpeak(L&#43;&#43;) with neuronal networks, e.g. deep-learning to provide an artificial intelligence decision aid tool.
+</description>
+    </item><item>
+      <title>Multi-Agent Workshop - Traffic Game</title>
+      <link>https://lightjason.org/news/2017-09-workshop/</link>
+      <pubDate>Fri, 29 Sep 2017 22:05:43 +0200</pubDate><guid>https://lightjason.org/news/2017-09-workshop/</guid>
+      <description>We created a traffic simulation game for the Socal Cars Multi-Agent Workshop. Contents [Hide] The last 3 months were hard work for us, so a very large thank-you to my colleague Malte, Sophie and my student assistant Ehsan for a great job. Our task was:
+Scenario Preparing a workshop for PhD students which shows a multi-agent simulation. We decided on a traffic game with the following definition:
+ create a street with 50km length there are 4 segments with different speed settings the user should create an agent which drives the vehicle the user gets a penalty on slow or fast driving, so the goal is driving the allowed / optimal speed  Features Some features are
+ the environment and the street segments are also modelled as an agent the GUI is complete browser-based with a game engine and state-of-the-art technologies (REST &amp;amp; WebSockets) other vehicles are also modelled as agents each vehicle can pull out or pull in  Technical details  Our Web-Application is a single bundled jar of programs with all necessary components and a web-based GUI. We use our own LightJason/AgentSpeak and LightJason/REST components (now deprecated) for modelling the agents and realising communication. The runtime executes the agents as concurrent entities to simulate independent vehicles. A visualisation of agents and environment is realised using phaser. For the challenge part of the exercise, we visualise the statistical results, e.g. penalties via web technologies. For the communication between the browser front end and the Java back end, we used Ajax and and WebSockets. Jetty serves as a WebSocket endpoint. For the browser interface we were using Bootstrap.  The traffic movement creates a continuous data flow to the WebSocket, i.e. the backend sends the changes in movement of the vehicle agent to the browser. In the browser session, the visualisation is done by a tile map with the JavaScript game engine phaser. Based on an interactive GUI the user can change how the agent moves during the simulation is executed. This interaction is technically realised with Ajax and WebSocket calls.
+Download You can download the source code and binary jar file
+trafficsimulation-0.0.1-SNAPSHOT.jarZip Source If you run the Jar file you can find a configuration under ~/.lightjason/trafficsimulation. Within the configuration you can enable all agents. Documentation of MAS, LightJason and the scenario are built-in as a slide-show. All parts of the game are open-source and we will publish it later as an online game.
+You can also get the source code by cloning the GitHub Repostory.
+Videos A video of a short screen recording can be seen below.
+ Update 2018-02-16: For our AAMAS 2018 Demo video, see https://vimeo.com/lightjason/aamas2018
+  https://vimeo.com/lightjason/trafficgame</description>
+    </item><item>
+      <title>Code-Cleanup, Test-Case Coverage and Serialisable Components</title>
+      <link>https://lightjason.org/news/2017-06-serial/</link>
+      <pubDate>Tue, 27 Jun 2017 18:47:12 +0200</pubDate><guid>https://lightjason.org/news/2017-06-serial/</guid>
+      <description>A large update of the AgentSpeak components extends the framework for distributed architectures, defensive programming and analysing and increases the code coverage. We are currently within the workflow of the first release. The main components are refactored to a more usable and simplified architecture and we are extending the unit-testing; we try to reach 90% code coverage. We extend the framework also with annotations which can be analysed by FindBugs and we extend all framework components with Java&amp;rsquo;s Serializable Objects structure to build distributed systems.
+</description>
+    </item><item>
+      <title>Code coverage working in progress</title>
+      <link>https://lightjason.org/news/2017-05-coverage/</link>
+      <pubDate>Wed, 10 May 2017 09:53:24 +0200</pubDate><guid>https://lightjason.org/news/2017-05-coverage/</guid>
+      <description>We are working on unit-testing of the whole framework, so we append JUnit test to all main components. The current line coverage can be found on the Coverall site and a detailed analysis are within the documentation.
+</description>
+    </item><item>
+      <title>Add simulation wizard</title>
+      <link>https://lightjason.org/news/2017-03-wizard/</link>
+      <pubDate>Wed, 29 Mar 2017 14:25:53 +0200</pubDate><guid>https://lightjason.org/news/2017-03-wizard/</guid>
+      <description>We added a simulation wizard to the website, which can be used to create a full working project zip file, with the source codes of a multi-agent simulation. The wizard allows you to define the base structure of a multi-agent simulation and generates on the current developer AgentSpeak version a project, which can build directly into an executable jar file. We have tested the wizard-generated source with communication, environment, internal and external actions up to 2.500.000 agents on a normal office computer.
+</description>
+    </item><item>
+      <title>Add Gitter chat</title>
+      <link>https://lightjason.org/news/2017-02-chat/</link>
+      <pubDate>Fri, 24 Feb 2017 12:08:10 +0100</pubDate><guid>https://lightjason.org/news/2017-02-chat/</guid>
+      <description>We add the realtime chat-system Gitter to our project to get into contact with you. We would like to get any information about your projects and any suggestions to developing LightJason. We try to help you in any kind of problems, because we are new and we can optimize our system with your help, so don&amp;rsquo;t be shy and feel free to ask. You can find the chat on each website on the bottom-right corner.
+We can optimize your system only if you send us feedback&amp;hellip;
+</description>
+    </item><item>
+      <title>Action documentation</title>
+      <link>https://lightjason.org/news/2017-02-actiondocumentation/</link>
+      <pubDate>Fri, 24 Feb 2017 12:02:16 +0100</pubDate><guid>https://lightjason.org/news/2017-02-actiondocumentation/</guid>
+      <description>We are working on a full documentation of all built-in actions in LightJason. The documentation contains the main description of each action, a short code example, the reference to the source code of the action and optional additional information of the functionality of the action.
+We address this to the agent developer to take a look into the documentation for create your own agents. We try to support a lot of data structures and elements to get a high abstraction to write your agent.
+If you have any suggestions to add more features please let us know&amp;hellip;
+</description>
+    </item><item>
+      <title>Update actions and agent cycle documentation</title>
+      <link>https://lightjason.org/news/2017-02-actionscycle/</link>
+      <pubDate>Fri, 17 Feb 2017 20:29:56 +0100</pubDate><guid>https://lightjason.org/news/2017-02-actionscycle/</guid>
+      <description>Update actions and agent cycle description within the knowledge base. The agent cycle images allow you to use a mouse over effect to highlight elements. The action list links to the source code documentation. We will append the description of the actions soon.
+</description>
+    </item><item>
+      <title>Tutorial and knowledge base working in progress</title>
+      <link>https://lightjason.org/news/2017-02-tutorials/</link>
+      <pubDate>Fri, 10 Feb 2017 00:11:43 +0100</pubDate><guid>https://lightjason.org/news/2017-02-tutorials/</guid>
+      <description>Updated the knowledge base and tutorials and added an example repository with source codes and generated jar files also:  We reduced the tutorials, so that each tutorial contains only one description with sources. For each tutorial we created a full working example and explain it. On the knowledge base we put a schematic illustration of our agent cycle and compare it with the original Jason cycle.  Tutorials and knowledge base are heavily under developing, because we would like to use LightJason also in teaching
+</description>
+    </item></channel>
+</rss>

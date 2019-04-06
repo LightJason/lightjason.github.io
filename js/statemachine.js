@@ -1,0 +1,7 @@
+"use strict"
+jQuery(function(){var t=function(t){var e=t.dom.parent().find(".unchecked")
+t.dom.parent().find(".checked").each(function(t,a){var o=jQuery(a)
+jQuery(e[t]).text(o.text()),o.empty()}),["state-error","state-4"].forEach(function(e){jQuery(t.prefix+e).attr("fill",t.statecolor)})},e=function(t){if(t.execution[0][t.index].startsWith(t.transitionstring)){var e=t.dom.parent().find(".checked")
+t.dom.parent().find(".unchecked").each(function(t,a){var o=jQuery(e[t]),n=jQuery(a)
+o.text(o.text()+n.text().charAt(0)),n.text(n.text().substring(1))})}},a={callbackStart:t,callbackNext:e,execution:[["state-1","path-1to1","state-1","path-1to1","state-1","path-1to1","state-1","path-1to1","state-1","path-1to1","state-1","path-1to1","state-1","path-1to2","state-2","path-2to2","state-2","path-2to2","state-2","path-2to3","state-3","path-3to4","state-4"]]},o={callbackStart:t,callbackNext:e,execution:[["state-1","path-1to1","state-1","path-1to1","path-1to2","state-2","path-2toerror","state-error"]]}
+jQuery(".unchecked").css("opacity",.3),jQuery("#animate-valid").click(function(){o.timout||a.timout||(a.dom=jQuery(this),a=LJason.finitestatemachine(a))}),jQuery("#animate-nonvalid").click(function(){o.timout||a.timout||(o.dom=jQuery(this),o=LJason.finitestatemachine(o))}),["state-1","state-4","state-error"].forEach(function(t){jQuery("#animate-"+t).hover(function(){jQuery("#"+t).attr("fill","#0e7")},function(){jQuery("#"+t).attr("fill","#fff")})})})

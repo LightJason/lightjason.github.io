@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="en-GB"><head><meta name="msvalidate.01" content="2EB13C5538E9973D8DFC39C6A455DEFE"><meta name="google-site-verification" content="sVNU1mmaPgvbzlig03vdNtqHYnJNzvbdQYLCWqvtxRU"><meta name="description" content="LightJason/AgentSpeak is the main component providing the agent functionality. The component allows to build agents from the ASL script and contains all built-in actions."><meta name="keywords" content="AI, BDI, Agent, Multi-Agent System, Concurrency, Java, Development, Artificial Intelligence, Software, Psychology, Sociology, Simulation"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=0.95,maximum-scale=0.95"><script>!function(e,a,t,n,g,c,o){e.GoogleAnalyticsObject=g,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),o=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",o.parentNode.insertBefore(c,o)}(window,document,"script",0,"ga"),ga("create","UA-89676576-1","auto"),ga("send","pageview")</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" crossorigin="anonymous" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[["$","$"]],displayMath:[["$$","$$"]],processEscapes:!0,processEnvironments:!1,skipTags:["script","noscript","style","textarea","pre","code"],TeX:{equationNumbers:{autoNumber:"AMS"},extensions:["autoload-all.js"]}}})</script><script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js" crossorigin="anonymous" defer></script><script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script><script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/jquery-steps/1.1.0/jquery.steps.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/toolbar/prism-toolbar.min.js" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/show-language/prism-show-language.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/command-line/prism-command-line.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-highlight/prism-line-highlight.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-numbers/prism-line-numbers.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-java.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-prolog.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.1/mobile-detect.min.js" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js" crossorigin="anonymous"></script><script src="https://lightjason.org/js/chartjs.boxplot.min.js"></script><script src="https://lightjason.org/js/chartjs.zoom.min.js"></script><script src="https://lightjason.org/js/colormap.min.js"></script><script src="https://lightjason.org/js/benchmark.js"></script><script src="https://lightjason.org/js/jquery.hammer.js" defer></script><script src="https://lightjason.org/js/prism-agentspeak.js" async></script><script src="https://lightjason.org/js/toc.min.js" async></script><script src="https://lightjason.org/js/teletype.js" async></script><script src="https://lightjason.org/js/script.js" defer></script><script src="https://lightjason.org/js/ljason.js" defer></script><link href="//fonts.googleapis.com/css?family=Pridi:200,300,400,500,600,700" rel="stylesheet" media="all"><link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous" media="screen"><link href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/css/lightbox.min.css" rel="stylesheet" media="screen"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism-coy.min.css" rel="stylesheet" media="all"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet" media="all"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/command-line/prism-command-line.min.css" rel="stylesheet" media="all"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-highlight/prism-line-highlight.min.css" rel="stylesheet" media="screen"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" media="all"><link href="https://lightjason.org/css/layout.css" rel="stylesheet" media="all"><link href="https://lightjason.org/css/print.css" rel="stylesheet" media="print"><link href="https://lightjason.org/css/mobile.css" rel="stylesheet" media="screen and (max-width:1000px)"><link href="https://lightjason.org/css/jquery.steps.css" rel="stylesheet" media="screen"><link href="https://lightjason.org/images/favicon.png" type="image/png" rel="shortcut icon"><link href="https://lightjason.org/news/index.xml" type="application/rss+xml" rel="alternate" title="LightJason"><title>LightJason — AgentSpeak(L++) Component</title><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@LightJasonAI"><meta name="twitter:title" content="LightJason - AgentSpeak(L++) Component"><meta name="twitter:description" content="LightJason/AgentSpeak is the main component providing the agent functionality. The component allows to build agents from the ASL script and contains all built-in actions."><meta name="twitter:image" content="https://lightjason.org/images/logo.png"><meta property="og:site_name" content="LightJason"><meta property="og:url" content="https://lightjason.org/framework/agentspeak/"><meta property="og:title" content="LightJason - AgentSpeak(L++) Component"><meta property="og:image" content="https://lightjason.org/images/logo.png"><meta property="og:description" content="LightJason/AgentSpeak is the main component providing the agent functionality. The component allows to build agents from the ASL script and contains all built-in actions."><script type="application/ld+json">[{
+	"@context": "http://schema.org",
+	"@type": "Organization",	
+	"name" : LightJason,
+	"email" : info@lightjason.org,
+	"url" : https://lightjason.org,
+	"logo" : https://lightjason.org/images/logo.png,
+	"founders": [{
+			"@type": "Person",
+			"email" : malte@lightjason.org,
+			"name" : Malte Aschermann,
+			"givenName" : Malte,
+			"familyName" : Aschermann
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/malte_aschermann.png
+		}
+		,{
+			"@type": "Person",
+			"email" : sophie@lightjason.org,
+			"name" : Sophie Dennisen,
+			"givenName" : Sophie,
+			"familyName" : Dennisen
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/sdennisen.jpg
+			, "sameAs" : [
+				http://xing.to/sdennisen,
+				http://www.linkedin.com/in/sdennisen,
+				https://www.researchgate.net/profile/Sophie_Dennisen
+			]
+		}
+		,{
+			"@type": "Person",
+			"email" : philipp@lightjason.org,
+			"name" : Philipp Kraus,
+			"givenName" : Philipp,
+			"familyName" : Kraus
+			, "image" : http://www.gravatar.com/avatar/2de3ae533823dae934d3b45b239f797c
+			, "sameAs" : [
+				http://xing.to/philippkraus,
+				http://www.linkedin.com/in/philipp-kraus,
+				https://www.researchgate.net/profile/Philipp_Kraus2
+			]
+		}
+		]
+},
+
+
+{
+	"@context": "http://schema.org",
+	"@type": "WebSite",
+	"name": LightJason,
+	"alternateName": LightJason,
+	"url":https://lightjason.org
+	, "license" : https://creativecommons.org/licenses/by-sa/4.0/
+	, "genre" : AI, BDI, Agent, Multi-Agent System, Concurrency, Java, Development, Artificial Intelligence, Software, Psychology, Sociology, Simulation, "keywords" : AI, BDI, Agent, Multi-Agent System, Concurrency, Java, Development, Artificial Intelligence, Software, Psychology, Sociology, Simulation
+	, "author" : [{
+			"@type": "Person",
+			"email" : malte@lightjason.org,
+			"name" : Malte Aschermann,
+			"givenName" : Malte,
+			"familyName" : Aschermann
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/malte_aschermann.png
+		}
+		,{
+			"@type": "Person",
+			"email" : sophie@lightjason.org,
+			"name" : Sophie Dennisen,
+			"givenName" : Sophie,
+			"familyName" : Dennisen
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/sdennisen.jpg
+			, "sameAs" : [
+				http://xing.to/sdennisen,
+				http://www.linkedin.com/in/sdennisen,
+				https://www.researchgate.net/profile/Sophie_Dennisen
+			]
+		}
+		,{
+			"@type": "Person",
+			"email" : philipp@lightjason.org,
+			"name" : Philipp Kraus,
+			"givenName" : Philipp,
+			"familyName" : Kraus
+			, "image" : http://www.gravatar.com/avatar/2de3ae533823dae934d3b45b239f797c
+			, "sameAs" : [
+				http://xing.to/philippkraus,
+				http://www.linkedin.com/in/philipp-kraus,
+				https://www.researchgate.net/profile/Philipp_Kraus2
+			]
+		}
+		]
+}
+]</script></head><body><div class="document"><div id="nav">☰</div><div class="documentwrapper"><div class="bodywrapper"><div class="body"><h1 id="root"><a href="#root">AgentSpeak(L++) Component</a></h1><p><img src="/images/logo_asl.png#right" style="width:100px"> <a href="https://agentspeak.lightjason.org/">LightJason/AgentSpeak</a> is the main component providing the agent functionality.</p><p>The component allows to build agents from the ASL script and contains all <a href="/knowledgebase/builtinactions">built-in actions</a>.</p><ul><li><a href="https://agentspeak.lightjason.org/sources/">Source Documentation</a></li><li><a href="https://www.openhub.net/p/LightJason-AgentSpeak">OpenHub Code Statistic</a></li><li><a href="https://libraries.io/github/LightJason/AgentSpeak">Libraries.io Statistic</a></li><li>Testing Agents<ul><li><a href="https://github.com/LightJason/AgentSpeak/tree/master/src/test/resources/agent">Unit Testing Agents</a>, e.g. <a href="https://github.com/LightJason/AgentSpeak/blob/master/src/test/resources/agent/hanoi.asl">Hanoi Agent</a> which plays <a href="https://en.wikipedia.org/wiki/Tower_of_Hanoi">Tower of Hanoi</a></li></ul></li></ul><h2 id="benchmarking-emergency-scenario">Benchmarking Emergency Scenario</h2><p>The video presents a performance test of our framework with 15.000 agents in an emergency scenario. The video shows the system running in real-time on a single computer (iMac with 2,9 GHz Intel Core i5, 16 GB RAM and OSX El Captain 10.11.6).</p><blockquote><p>The agents calculate their landmarks to the exit point (position 140 / 140 in the middle) in a grid world with 250x250 cells and start walking. If a cell is blocked by another agent, agents try to move to the right-side cell, if this is not possible to the left side cell; if neither is possible, the agent stops walking and waits for a random time until trying again to continue walking. If the agent doesn’t reach a landmark within five attempts, it skips the landmark and starts walking to the next one except the exit point.</p></blockquote><iframe class="video" src="https://player.vimeo.com/video/202120833" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe><a class="videoprintlink" href="https://vimeo.com/lightjason/emergencyscenario">https://vimeo.com/lightjason/emergencyscenario</a><h2 id="language-features">Language Features</h2><p>We present a short overview of language examples of the <em>AgentSpeak(L++)</em> syntax. You can find the full <a href="https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form">EBNF description</a> of the language syntax on the project <a href="https://agentspeak.lightjason.org/">documentation page</a>. The Railroad / Syntax diagrams of the <em>AgentSpeak(L++)</em> language:</p><ul><li><a href="https://agentspeak.lightjason.org/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/">Agent Railroad / Syntax Diagram</a></li><li><a href="https://agentspeak.lightjason.org/rrd-output/html/org/lightjason/agentspeak/grammar/PlanBundle.g4/">PlanBundle Railroad / Syntax Diagram</a></li></ul><h3 id="a-name-lambdaexpression-a-lambda-expressions"><a name="lambdaexpression"></a>Lambda Expressions</h3><p>The language does not support looping directly; however, we support <a href="https://agentspeak.lightjason.org/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#945f3fc449518a73b9f5f32868db466c">lambda expressions</a> which are based on <a href="https://en.wikipedia.org/wiki/Lambda_calculus">lambda calculus</a>. Similar to a <em>for each</em> call, each element in an input list (variable) can be looped.</p><blockquote><p>The example below creates a list of the number <em>[1,20)</em> and we are looping over the elements, first in sequential order and call the <em>print</em> action for each element and in the second call we add each value to the variable <em>R</em>. <em>R</em> is in this case the <em>returning variable</em></p></blockquote>
+
+<p><pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">L = collection/list/range(1, 20);
+(L) -&gt; Y : generic/print(Y);
+(L) -&gt; Y | R : R = Y+1;
+</code></pre>
+<p></p><h3 id="a-name-repairaction-a-explicit-repair-actions"><a name="repairaction"></a>Explicit Repair Actions</h3><p>AgentSpeak(L++) supports the implementation of <em>repair planning</em> with the default behaviour <code>-!</code>. With this additional structure we also support <a href="https://agentspeak.lightjason.org/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#503f34271b101269197f766a6b90e4a9">repair action chains</a>.</p><blockquote><p>The following example shows the execution of three actions <em>actionA</em>, <em>actionB</em>, <em>actionC</em>. The system executes the <em>actionA</em> first, if the action fails, <em>actionB</em> will be executed, if this also fails <em>actionC</em> will be executed. If the last action in the statement fails (here: <em>actionC</em>), the whole plan fails. 
+<pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">actionA &lt;&lt; actionB &lt;&lt; actionC;
+</code></pre>
+</p></blockquote><p></p><p><p></p><blockquote><p>You can also use this technique if you don’t want a plan to fail: If an action might fail you can append a <code>&lt;&lt; true</code> to its invocation. This models the behaviour <em>anything can go wrong, but the agent ignores the error(s)</em>. <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">actionA &lt;&lt; true;
+</code></pre></p></blockquote><h3 id="a-name-multiplanrule-a-multi-plan-and-rule-definitions"><a name="multiplanrule"></a>Multi-Plan and Rule Definitions</h3><p>In general Prolog uses only logical rules. <em>AgentSpeak(L)</em> and <em>AgentSpeak(L++)</em> also use rules but additionally provide a plan structure. Within a Prolog structure the ordering is relevant to the execution semantic (see in <a href="http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-htmlse10">Learn Prolog Now!</a>).</p><p>But in <em>AgentSpeak(L++)</em> the ordering of rules and plans are <strong>not</strong> relevant for the execution semantic. Furthermore plan and rule structures can be grouped within the source code to simplify modelling different paths of execution.</p><blockquote><p>This example shows the <a href="https://en.wikipedia.org/wiki/Ackermann_function">Ackermann function</a>. The first line defines the <a href="https://agentspeak.lightjason.org/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#d0404623ab035c7e30f997d91d173a52">rule</a> name (literal) similar to Prolog. Each rule will be added by the <code>:-</code> rule-sign under the literal. In classical Prolog the rule-literal must be for each different rule and Prolog executes the rules in sequential order. In our case we change this behaviour, so that each rule, which can be executed, will be executed. So we put a condition first to the rule, so this condition will deny or allow the execution. After that the rule-body will be added. For calling a rule from a plan or a rule, you need to put a <code>$</code>-sign in front of the rule-name. 
+<pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">ackermann(N, M, R)
+    :- N == 0; M &gt; 0; R = M+1
+    :- M == 0; N &gt; 0; TN = N-1; $ackermann(TN, 1, RA); R = RA
+    :- N &gt; 0; M &gt; 0; TN = N-1; TM = M-1; $ackermann(N, TM, RI); $ackermann(TN, RI, RO); R = RO
+</code></pre>
+</p></blockquote><p></p><p><p></p><blockquote><p>The second example shows the structure for <a href="https://agentspeak.lightjason.org/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#5fc25157650d0cb24f02216d904584df">plans</a>. For plans it is similar to the rule structure, but the <code>&lt;-</code> plan-sign is used and a condition of the plan execution can be added. Here exist three plans, the first will be executed, iif there is a belief <code>hello</code> with a string value, the second plan will be executed, iif there exists a belief <code>hello</code> with a numeric value which is greater than $1000$ and the third plan will be run every time (default plan). <pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">+!main
+</code><code class="language-agentspeak">
+    : &gt;&gt;( hallo(X), generic/type/isstring(X) ) &lt;-
+            generic/print(&ldquo;&mdash;&rdquo;, &ldquo;first plan&rdquo;, &ldquo;&mdash;&rdquo;, &ldquo;unification variables&rdquo;, X)
+</code><code class="language-agentspeak">
+    : &gt;&gt;( hallo(X), generic/type/isnumeric(X) &amp;&amp; X &gt; 1000 )  &lt;-
+        generic/print(&ldquo;&mdash;&rdquo;, &ldquo;second plan&rdquo;, &ldquo;&mdash;&rdquo;, &ldquo;unification variables&rdquo;, X)
+</code><code class="language-agentspeak">
+    &lt;- generic/print(&ldquo;&mdash;&rdquo;, &ldquo;third (default) plan&rdquo;, &ldquo;&mdash;&rdquo;)
+.
+</code></pre>
+</p></blockquote><h3 id="a-name-multiassignment-a-multi-assignments"><a name="multiassignment"></a>Multi-Assignments</h3><p>The <a href="https://agentspeak.lightjason.org/rrd-output/html/org/lightjason/agentspeak/grammar/Agent.g4/index.htm#aaf72be46bb3458f45cf02c8858d96be">multi-assignment</a> allowed to extract elements from a list into different variables. It is similar to the <a href="https://en.wikibooks.org/wiki/Prolog/Lists">head-tail-notation of Prolog</a> but here we can create complex structures.</p><blockquote><p>The examples creates a list if number within in the range <em>[1,20)</em> and 1 will be put into the variable <em>A</em>, 2 in <em>B</em>, 3 in <em>C</em>, 4 will be ignore, 5 in <em>D</em>, 6 in <em>E</em>, 7 in <em>F</em> and the list <em>[8,20)</em> in <em>G</em></p></blockquote>
+
+<p><pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">L = collection/list/range(1, 20);
+[A|B|C|_|D|E|F|G] = L;
+</code></pre>
+<p></p><h3 id="a-name-parallelism-a-parallelism-and-thread-safe-variables"><a name="parallelism"></a>Parallelism and Thread-Safe Variables</h3><p>The sign for parallelism is the <em>at-sign (@)</em> character. If the <code>@</code> is put in front of an action or variable the action will be executed in parallel and the variable will be thread-safe. <strong>Note:</strong> Not every action supports a parallel execution.</p></div></div></div><div class="sidebar" role="navigation" aria-label="main navigation"><div class="sidebarwrapper"><div class="logo"><a href="https://lightjason.org/">LightJason</a><div class="subtitle">Concurrent BDI multi-agent system</div></div><ul><li><a class="reference internal" href="/news/">News</a> <span class="sublink">(<a href="/news/index.xml">RSS</a>)</span></li><li><a class="reference internal" href="/publications/">Publications</a></li><li><a class="reference internal" href="/framework/">Framework</a></li><li><a class="reference internal" href="/benchmark/">Benchmark</a></li><li><a class="reference internal" href="/knowledgebase/">Knowledge Base</a></li><li><a class="reference internal" href="/tutorials/">Tutorials</a> <span class="sublink">(<a href="/tutorials/wizard">Wizard</a>)</span></li><li><a class="reference internal" href="/about/">About</a></li><li><a class="reference internal" href="/contact/">Contact</a></li><li><a class="reference internal" href="/credits/">Credits</a></li></ul><ul class="horizontal socialmedia"><li><a href="https://github.com/LightJason"><img src="/images/github.svg" alt="github" class="socialmediaimg"></a></li><li><a href="https://hub.docker.com/u/lightjason"><img src="/images/docker.svg" alt="docker" class="socialmediaimg"></a></li><li><a href="http://twitter.com/LightJasonAI"><img src="/images/twitter.svg" alt="twitter" class="socialmediaimg"></a></li><li><a href="https://vimeo.com/lightjason"><img src="/images/vimeo.svg" alt="vimeo" class="socialmediaimg"></a></li></ul><script>((window.gitter={}).chat={}).options={room:"LightJason/Lobby"}</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script><div class="sharebutton">Share on<ul class="horizontal socialmediaaction"><li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2flightjason.org%2fframework%2fagentspeak%2f" title="Share on Facebook" target="_blank" onclick='return window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(document.URL)+"&t="+encodeURIComponent(document.URL)),!1'><img alt="Share on Facebook" src="/images/share_facebook.svg" class="socialmediaimg"></a></li><li><a href="https://plus.google.com/share?url=https%3a%2f%2flightjason.org%2fframework%2fagentspeak%2f" target="_blank" title="Share on Google+" onclick='return window.open("https://plus.google.com/share?url="+encodeURIComponent(document.URL)),!1'><img alt="Share on Google+" src="/images/share_googleplus.svg" class="socialmediaimg"></a></li><li><a href="https://twitter.com/intent/tweet?source=https%3a%2f%2flightjason.org%2fframework%2fagentspeak%2f&text=https%3a%2f%2flightjason.org%2fframework%2fagentspeak%2f&via=LightJasonAI" target="_blank" title="Tweet" onclick='return window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(document.title)+":%20"+encodeURIComponent(document.URL)),!1'><img alt="Tweet" src="/images/share_twitter.svg" class="socialmediaimg"></a></li></ul></div></div></div><div class="clear"></div></div><div class="footer"><span class="contact">info [at] lightjason.org</span><ul class="horizontal"><li><a href="https://github.com/LightJason/Java-AgentSpeak">Java AgentSpeak(L++)</a></li><li><a href="https://www.researchgate.net/project/LightJason">ResearchGate</a></li><li>© 2019-04-06</li></ul></div></body></html>

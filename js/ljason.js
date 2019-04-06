@@ -1,0 +1,5 @@
+"use strict"
+var LJason=function(t){var i=function(t){if(t.wait)return t.execution.forEach(function(i){t.callbackColor(t.prefix,i[t.index],t.statestring,t.statecolor,t.transitionstring,t.transitioncolor)}),t.index++,t.wait=!t.wait,void(t.timeout=setTimeout(function(){i(t)},t.time))
+t.wait=!t.wait,t.execution.forEach(function(i){t.callbackColor(t.prefix,i[t.index],t.statestring,t.activecolor,t.transitionstring,t.activecolor)}),t.index<t.execution[0].length-1?("function"==typeof t.callbackNext&&t.callbackNext(t),t.timeout=setTimeout(function(){i(t)},t.time)):(t.index=0,clearTimeout(t.timeout),"function"==typeof t.callbackFinish&&t.callbackFinish(t))}
+return t.finitestatemachine=function(t){var a=jQuery.extend({},{index:0,wait:!1,prefix:"#",time:750,execution:[[]],timeout:void 0,activecolor:"#0e7",statecolor:"#fff",transitioncolor:"#000",statestring:"state",transitionstring:"path",callbackStart:void 0,callbackFinish:void 0,callbackNext:void 0,callbackColor:function(t,i,a,e,n,o){i.startsWith(a)&&jQuery(t+i).attr("fill",e),i.startsWith(n)&&jQuery(t+i).attr("stroke",o)}},t||{})
+return"function"==typeof a.callbackStart&&a.callbackStart(a),i(a),a},t}(LJason||{})

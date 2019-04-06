@@ -1,0 +1,148 @@
+<!DOCTYPE html><html lang="en-GB"><head><meta name="msvalidate.01" content="2EB13C5538E9973D8DFC39C6A455DEFE"><meta name="google-site-verification" content="sVNU1mmaPgvbzlig03vdNtqHYnJNzvbdQYLCWqvtxRU"><meta name="description" content="This tutorial explains how to build LightJason/AgentSpeak(L++) from source."><meta name="keywords" content="AI, BDI, Agent, Multi-Agent System, Concurrency, Java, Development, Artificial Intelligence, Software, Psychology, Sociology, Simulation"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=0.95,maximum-scale=0.95"><script>!function(e,a,t,n,g,c,o){e.GoogleAnalyticsObject=g,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),o=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",o.parentNode.insertBefore(c,o)}(window,document,"script",0,"ga"),ga("create","UA-89676576-1","auto"),ga("send","pageview")</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" crossorigin="anonymous" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[["$","$"]],displayMath:[["$$","$$"]],processEscapes:!0,processEnvironments:!1,skipTags:["script","noscript","style","textarea","pre","code"],TeX:{equationNumbers:{autoNumber:"AMS"},extensions:["autoload-all.js"]}}})</script><script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js" crossorigin="anonymous" defer></script><script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script><script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/jquery-steps/1.1.0/jquery.steps.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/toolbar/prism-toolbar.min.js" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/show-language/prism-show-language.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/command-line/prism-command-line.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-highlight/prism-line-highlight.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-numbers/prism-line-numbers.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-java.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-prolog.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.1/mobile-detect.min.js" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js" crossorigin="anonymous"></script><script src="https://lightjason.org/js/chartjs.boxplot.min.js"></script><script src="https://lightjason.org/js/chartjs.zoom.min.js"></script><script src="https://lightjason.org/js/colormap.min.js"></script><script src="https://lightjason.org/js/benchmark.js"></script><script src="https://lightjason.org/js/jquery.hammer.js" defer></script><script src="https://lightjason.org/js/prism-agentspeak.js" async></script><script src="https://lightjason.org/js/toc.min.js" async></script><script src="https://lightjason.org/js/teletype.js" async></script><script src="https://lightjason.org/js/script.js" defer></script><script src="https://lightjason.org/js/ljason.js" defer></script><link href="//fonts.googleapis.com/css?family=Pridi:200,300,400,500,600,700" rel="stylesheet" media="all"><link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous" media="screen"><link href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/css/lightbox.min.css" rel="stylesheet" media="screen"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism-coy.min.css" rel="stylesheet" media="all"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet" media="all"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/command-line/prism-command-line.min.css" rel="stylesheet" media="all"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-highlight/prism-line-highlight.min.css" rel="stylesheet" media="screen"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" media="all"><link href="https://lightjason.org/css/layout.css" rel="stylesheet" media="all"><link href="https://lightjason.org/css/print.css" rel="stylesheet" media="print"><link href="https://lightjason.org/css/mobile.css" rel="stylesheet" media="screen and (max-width:1000px)"><link href="https://lightjason.org/css/jquery.steps.css" rel="stylesheet" media="screen"><link href="https://lightjason.org/images/favicon.png" type="image/png" rel="shortcut icon"><link href="https://lightjason.org/news/index.xml" type="application/rss+xml" rel="alternate" title="LightJason"><title>LightJason — Tutorial: How to Build AgentSpeak from Source</title><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@LightJasonAI"><meta name="twitter:title" content="LightJason - Tutorial: How to Build AgentSpeak from Source"><meta name="twitter:description" content="This tutorial explains how to build LightJason/AgentSpeak(L++) from source."><meta name="twitter:image" content="https://lightjason.org/images/logo.png"><meta property="og:site_name" content="LightJason"><meta property="og:url" content="https://lightjason.org/tutorials/buildagentspeak/"><meta property="og:title" content="LightJason - Tutorial: How to Build AgentSpeak from Source"><meta property="og:image" content="https://lightjason.org/images/logo.png"><meta property="og:description" content="This tutorial explains how to build LightJason/AgentSpeak(L++) from source."><script type="application/ld+json">[{
+	"@context": "http://schema.org",
+	"@type": "Organization",	
+	"name" : LightJason,
+	"email" : info@lightjason.org,
+	"url" : https://lightjason.org,
+	"logo" : https://lightjason.org/images/logo.png,
+	"founders": [{
+			"@type": "Person",
+			"email" : malte@lightjason.org,
+			"name" : Malte Aschermann,
+			"givenName" : Malte,
+			"familyName" : Aschermann
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/malte_aschermann.png
+		}
+		,{
+			"@type": "Person",
+			"email" : sophie@lightjason.org,
+			"name" : Sophie Dennisen,
+			"givenName" : Sophie,
+			"familyName" : Dennisen
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/sdennisen.jpg
+			, "sameAs" : [
+				http://xing.to/sdennisen,
+				http://www.linkedin.com/in/sdennisen,
+				https://www.researchgate.net/profile/Sophie_Dennisen
+			]
+		}
+		,{
+			"@type": "Person",
+			"email" : philipp@lightjason.org,
+			"name" : Philipp Kraus,
+			"givenName" : Philipp,
+			"familyName" : Kraus
+			, "image" : http://www.gravatar.com/avatar/2de3ae533823dae934d3b45b239f797c
+			, "sameAs" : [
+				http://xing.to/philippkraus,
+				http://www.linkedin.com/in/philipp-kraus,
+				https://www.researchgate.net/profile/Philipp_Kraus2
+			]
+		}
+		]
+},
+
+
+{
+	"@context": "http://schema.org",
+	"@type": "WebSite",
+	"name": LightJason,
+	"alternateName": LightJason,
+	"url":https://lightjason.org
+	, "license" : https://creativecommons.org/licenses/by-sa/4.0/
+	, "genre" : AI, BDI, Agent, Multi-Agent System, Concurrency, Java, Development, Artificial Intelligence, Software, Psychology, Sociology, Simulation, "keywords" : AI, BDI, Agent, Multi-Agent System, Concurrency, Java, Development, Artificial Intelligence, Software, Psychology, Sociology, Simulation
+	, "author" : [{
+			"@type": "Person",
+			"email" : malte@lightjason.org,
+			"name" : Malte Aschermann,
+			"givenName" : Malte,
+			"familyName" : Aschermann
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/malte_aschermann.png
+		}
+		,{
+			"@type": "Person",
+			"email" : sophie@lightjason.org,
+			"name" : Sophie Dennisen,
+			"givenName" : Sophie,
+			"familyName" : Dennisen
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/sdennisen.jpg
+			, "sameAs" : [
+				http://xing.to/sdennisen,
+				http://www.linkedin.com/in/sdennisen,
+				https://www.researchgate.net/profile/Sophie_Dennisen
+			]
+		}
+		,{
+			"@type": "Person",
+			"email" : philipp@lightjason.org,
+			"name" : Philipp Kraus,
+			"givenName" : Philipp,
+			"familyName" : Kraus
+			, "image" : http://www.gravatar.com/avatar/2de3ae533823dae934d3b45b239f797c
+			, "sameAs" : [
+				http://xing.to/philippkraus,
+				http://www.linkedin.com/in/philipp-kraus,
+				https://www.researchgate.net/profile/Philipp_Kraus2
+			]
+		}
+		]
+}
+,{
+	"@context" : "http://schema.org",
+	"@type" : "TechArticle",
+	"headline" : Tutorial: How to Build AgentSpeak from Source,
+	"proficiencyLevel" : "Beginner",
+	"wordCount" : 400,
+	"datePublished" : 2017-01-01T12:00:00&#43;01:00,
+	"image" : https://lightjason.org/images/logo.png 
+}
+,{
+	"@context" : "http://schema.org",
+	"@type" : "Course",
+	"name" : Tutorial: How to Build AgentSpeak from Source,
+	"description" :  This tutorial explains how to build LightJason/AgentSpeak(L&#43;&#43;) from source.CThis tutorial explains how to build LightJason/AgentSpeak(L&#43;&#43;) from source.oThis tutorial explains how to build LightJason/AgentSpeak(L&#43;&#43;) from source.nThis tutorial explains how to build LightJason/AgentSpeak(L&#43;&#43;) from source.tThis tutorial explains how to build LightJason/AgentSpeak(L&#43;&#43;) from source.eThis tutorial explains how to build LightJason/AgentSpeak(L&#43;&#43;) from source.nThis tutorial explains how to build LightJason/AgentSpeak(L&#43;&#43;) from source.tThis tutorial explains how to build LightJason/AgentSpeak(L&#43;&#43;) from source.sThis tutorial explains how to build LightJason/AgentSpeak(L&#43;&#43;) from source. This tutorial explains how to build LightJason/AgentSpeak(L&#43;&#43;) from source.[This tutorial explains how to build LightJason/AgentSpeak(L&#43;&#43;) from source.HThis tutorial explains how to build LightJason/AgentSpeak(L&#43;&#43;) from source.iThis tutorial explains how to build LightJason/AgentSpeak(L&#43;&#43;) from source.dThis tutorial explains how to build LightJason/AgentSpeak(L&#43;&#43;) from source.eThis tutorial explains how to build LightJason/AgentSpeak(L&#43;&#43;) from source.]This tutorial explains how to build LightJason/AgentSpeak(L&#43;&#43;) from source.,
+	"provider" : {
+		"@type" : "Organization",
+		"name" : LightJason,
+		"sameAs" : https://lightjason.org
+	}
+}
+]</script></head><body data-previouspage="/tutorials/agentspeak-in-fifteen-minutes" data-nextpage="/tutorials/trigger"><div class="document"><div id="nav">☰</div><div class="documentwrapper"><div class="bodywrapper"><div class="body"><h1 id="root"><a href="#root">Tutorial: How to Build AgentSpeak from Source</a></h1><p>This tutorial explains how to build LightJason/AgentSpeak(L++) from source.</p><p>Following the <code>git-flow</code> paradigm (see <a href="http://nvie.com/posts/a-successful-git-branching-model/">→ A successful Git branching model</a> for details), the <a href="https://github.com/LightJason/AgentSpeak/tree/master"><code>master</code> branch</a> contains our current releases while the <a href="https://github.com/LightJason/AgentSpeak/tree/developing"><code>developing</code> branch</a> contains the ongoing development.</p><h2 id="tools-you-need">Tools You Need</h2><ul><li>Working Maven greater than 3.0 <a href="http://maven.apache.org/install.html">installation</a>.</li><li>Java <strong>JDK 1.9</strong> installation which can be obtained <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">here</a>.</li><li>Git installation (optional, but recommended)<ul><li>Linux: Installing <code>git</code> via your preferred package manager should be sufficient.</li><li>MacOS: Using <a href="http://brew.sh">Homebrew</a> with <code>brew install git</code>.</li><li><a href="https://git-for-windows.github.io">Git for Windows</a></li></ul></li></ul><h2 id="build-agentspeak-l-from-source">Build AgentSpeak(L++) from Source</h2><blockquote><p><strong>Notes:</strong></p><ul><li><p>Choose the right branch!</p><ul><li><code>master</code> → current release (default branch)</li><li><code>developing</code> → <em>bleeding-edge</em> development<br></li></ul></li><li><p>Obtain the branch which is right for you by either downloading the corresponding <em>ZIP-archive</em> or change the branch inside the cloned git repository (<code>git checkout &lt;branchname></code>).</p></li><li><p>If you chose to download the <em>ZIP-archive</em>, be aware that the resulting directory will be <code>AgentSpeak-&lt;branchname></code>. Either rename it to <code>AgentSpeak</code> or keep this in mind in the following sections.</p></li><li><p>In this section we assume that you are working inside the directory <code>Developer/</code>. If you choose another directory, replace <code>Developer/</code> accordingly.</p></li></ul></blockquote><ol><li><p>Obtain the current source code from <a href="https://github.com/LightJason/AgentSpeak">AgentSpeak(L++)</a> and place it into <code>Developer/AgentSpeak</code>. This can be done on the command line</p><ul><li><p>either via Git</p>
+
+<pre><code class="language-commandline">cd Developer
+git clone https://github.com/LightJason/AgentSpeak.git
+</code></pre>
+
+<p>(if you chose to obtain the <em>bleeding-edge</em> AgentSpeak, checkout the <code>developing</code> branch)</p>
+
+<pre><code class="language-commandline">cd AgentSpeak              
+git checkout developing
+</code></pre>
+
+</li><li><p>or by downloading the <a href="https://github.com/LightJason/AgentSpeak-Java/archive/master.zip">AgentSpeak-master.zip</a> (or <a href="https://github.com/LightJason/AgentSpeak-Java/archive/developing.zip">AgentSpeak-developing.zip</a>) and extracting it to <code>Developer/</code>.</p>
+
+<pre><code class="language-commandline">cd Developer
+unzip AgentSpeak-master.zip     # or unzip AgentSpeak-developing.zip
+mv AgentSpeak-master AgentSpeak # or mv AgentSpeak-developing AgentSpeak
+</code></pre>
+
+</li></ul><p>You should now have the following directory structure:</p>
+
+<pre><code class="language-commandline">├── Developer/
+│   └── AgentSpeak/      
+</code></pre>
+
+</li><li><p>Change into the AgentSpeak project directory <code>Developer/AgentSpeak</code> and run <code>mvn package install</code> to build and install AgentSpeak:</p>
+
+<pre><code class="language-commandline">cd Developer/AgentSpeak
+mvn install
+</code></pre>
+
+<p>AgentSpeak will be installed as a local maven artifact in the directory <code>~/.m2</code> and can be imported as a dependency by your project.</p><p>The build process should terminate with a <code>BUILD SUCCESS</code> message.</p></li><li><p>Add the installed AgentSpeak to your project by adding</p>
+
+<p><pre class="language-xml "  ><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.lightjason&lt;/groupId&gt;
+    &lt;artifactId&gt;agentspeak&lt;/artifactId&gt;
+    &lt;version&gt;0.0.2-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+<p></p><p>to the dependency section of your <code>pom.xml</code>. (Adjust version number if needed.)</p></li></ol></div><div class="sitepagination"><div class="left"><a href="/tutorials/agentspeak-in-fifteen-minutes">Develop an AgentSpeak Scenario in 15min</a> previous page</div><div class="right">next page <a href="/tutorials/trigger">Trigger</a></div></div></div></div><div class="sidebar" role="navigation" aria-label="main navigation"><div class="sidebarwrapper"><div class="logo"><a href="https://lightjason.org/">LightJason</a><div class="subtitle">Concurrent BDI multi-agent system</div></div><ul><li><a class="reference internal" href="/news/">News</a> <span class="sublink">(<a href="/news/index.xml">RSS</a>)</span></li><li><a class="reference internal" href="/publications/">Publications</a></li><li><a class="reference internal" href="/framework/">Framework</a></li><li><a class="reference internal" href="/benchmark/">Benchmark</a></li><li><a class="reference internal" href="/knowledgebase/">Knowledge Base</a></li><li><a class="reference internal" href="/tutorials/">Tutorials</a> <span class="sublink">(<a href="/tutorials/wizard">Wizard</a>)</span></li><li><a class="reference internal" href="/about/">About</a></li><li><a class="reference internal" href="/contact/">Contact</a></li><li><a class="reference internal" href="/credits/">Credits</a></li></ul><ul class="horizontal socialmedia"><li><a href="https://github.com/LightJason"><img src="/images/github.svg" alt="github" class="socialmediaimg"></a></li><li><a href="https://hub.docker.com/u/lightjason"><img src="/images/docker.svg" alt="docker" class="socialmediaimg"></a></li><li><a href="http://twitter.com/LightJasonAI"><img src="/images/twitter.svg" alt="twitter" class="socialmediaimg"></a></li><li><a href="https://vimeo.com/lightjason"><img src="/images/vimeo.svg" alt="vimeo" class="socialmediaimg"></a></li></ul><script>((window.gitter={}).chat={}).options={room:"LightJason/Lobby"}</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script><div class="sharebutton">Share on<ul class="horizontal socialmediaaction"><li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2flightjason.org%2ftutorials%2fbuildagentspeak%2f" title="Share on Facebook" target="_blank" onclick='return window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(document.URL)+"&t="+encodeURIComponent(document.URL)),!1'><img alt="Share on Facebook" src="/images/share_facebook.svg" class="socialmediaimg"></a></li><li><a href="https://plus.google.com/share?url=https%3a%2f%2flightjason.org%2ftutorials%2fbuildagentspeak%2f" target="_blank" title="Share on Google+" onclick='return window.open("https://plus.google.com/share?url="+encodeURIComponent(document.URL)),!1'><img alt="Share on Google+" src="/images/share_googleplus.svg" class="socialmediaimg"></a></li><li><a href="https://twitter.com/intent/tweet?source=https%3a%2f%2flightjason.org%2ftutorials%2fbuildagentspeak%2f&text=https%3a%2f%2flightjason.org%2ftutorials%2fbuildagentspeak%2f&via=LightJasonAI" target="_blank" title="Tweet" onclick='return window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(document.title)+":%20"+encodeURIComponent(document.URL)),!1'><img alt="Tweet" src="/images/share_twitter.svg" class="socialmediaimg"></a></li></ul></div></div></div><div class="clear"></div></div><div class="footer"><span class="contact">info [at] lightjason.org</span><ul class="horizontal"><li><a href="https://github.com/LightJason/Java-AgentSpeak">Java AgentSpeak(L++)</a></li><li><a href="https://www.researchgate.net/project/LightJason">ResearchGate</a></li><li>© 2019-04-06</li></ul></div></body></html>

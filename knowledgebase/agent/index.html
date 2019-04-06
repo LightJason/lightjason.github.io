@@ -1,0 +1,142 @@
+<!DOCTYPE html><html lang="en-GB"><head><meta name="msvalidate.01" content="2EB13C5538E9973D8DFC39C6A455DEFE"><meta name="google-site-verification" content="sVNU1mmaPgvbzlig03vdNtqHYnJNzvbdQYLCWqvtxRU"><meta name="description" content=" The main definition of our BDI (Belief-Desire-Intention) framework follows Russell &amp;amp;amp; Norvig - Artificial Intelligence: A Modern Approach with the structure of goal-based agents:"><meta name="keywords" content="AI, BDI, Agent, Multi-Agent System, Concurrency, Java, Development, Artificial Intelligence, Software, Psychology, Sociology, Simulation"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=0.95,maximum-scale=0.95"><script>!function(e,a,t,n,g,c,o){e.GoogleAnalyticsObject=g,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),o=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",o.parentNode.insertBefore(c,o)}(window,document,"script",0,"ga"),ga("create","UA-89676576-1","auto"),ga("send","pageview")</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" crossorigin="anonymous" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[["$","$"]],displayMath:[["$$","$$"]],processEscapes:!0,processEnvironments:!1,skipTags:["script","noscript","style","textarea","pre","code"],TeX:{equationNumbers:{autoNumber:"AMS"},extensions:["autoload-all.js"]}}})</script><script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js" crossorigin="anonymous" defer></script><script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script><script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/jquery-steps/1.1.0/jquery.steps.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/toolbar/prism-toolbar.min.js" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/show-language/prism-show-language.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/command-line/prism-command-line.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-highlight/prism-line-highlight.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-numbers/prism-line-numbers.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-java.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-prolog.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.1/mobile-detect.min.js" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js" crossorigin="anonymous"></script><script src="https://lightjason.org/js/chartjs.boxplot.min.js"></script><script src="https://lightjason.org/js/chartjs.zoom.min.js"></script><script src="https://lightjason.org/js/colormap.min.js"></script><script src="https://lightjason.org/js/benchmark.js"></script><script src="https://lightjason.org/js/jquery.hammer.js" defer></script><script src="https://lightjason.org/js/prism-agentspeak.js" async></script><script src="https://lightjason.org/js/toc.min.js" async></script><script src="https://lightjason.org/js/teletype.js" async></script><script src="https://lightjason.org/js/script.js" defer></script><script src="https://lightjason.org/js/ljason.js" defer></script><link href="//fonts.googleapis.com/css?family=Pridi:200,300,400,500,600,700" rel="stylesheet" media="all"><link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous" media="screen"><link href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/css/lightbox.min.css" rel="stylesheet" media="screen"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism-coy.min.css" rel="stylesheet" media="all"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet" media="all"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/command-line/prism-command-line.min.css" rel="stylesheet" media="all"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-highlight/prism-line-highlight.min.css" rel="stylesheet" media="screen"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" media="all"><link href="https://lightjason.org/css/layout.css" rel="stylesheet" media="all"><link href="https://lightjason.org/css/print.css" rel="stylesheet" media="print"><link href="https://lightjason.org/css/mobile.css" rel="stylesheet" media="screen and (max-width:1000px)"><link href="https://lightjason.org/css/jquery.steps.css" rel="stylesheet" media="screen"><link href="https://lightjason.org/images/favicon.png" type="image/png" rel="shortcut icon"><link href="https://lightjason.org/news/index.xml" type="application/rss+xml" rel="alternate" title="LightJason"><title>LightJason — Theoretical Introduction: From Finite-State Machine and Logical Programming to an Agent</title><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@LightJasonAI"><meta name="twitter:title" content="LightJason - Theoretical Introduction: From Finite-State Machine and Logical Programming to an Agent"><meta name="twitter:description" content=" The main definition of our BDI (Belief-Desire-Intention) framework follows Russell &amp;amp;amp; Norvig - Artificial Intelligence: A Modern Approach with the structure of goal-based agents:"><meta name="twitter:image" content="https://lightjason.org/images/logo.png"><meta property="og:site_name" content="LightJason"><meta property="og:url" content="https://lightjason.org/knowledgebase/agent/"><meta property="og:title" content="LightJason - Theoretical Introduction: From Finite-State Machine and Logical Programming to an Agent"><meta property="og:image" content="https://lightjason.org/images/logo.png"><meta property="og:description" content=" The main definition of our BDI (Belief-Desire-Intention) framework follows Russell &amp;amp;amp; Norvig - Artificial Intelligence: A Modern Approach with the structure of goal-based agents:"><script type="application/ld+json">[{
+	"@context": "http://schema.org",
+	"@type": "Organization",	
+	"name" : LightJason,
+	"email" : info@lightjason.org,
+	"url" : https://lightjason.org,
+	"logo" : https://lightjason.org/images/logo.png,
+	"founders": [{
+			"@type": "Person",
+			"email" : malte@lightjason.org,
+			"name" : Malte Aschermann,
+			"givenName" : Malte,
+			"familyName" : Aschermann
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/malte_aschermann.png
+		}
+		,{
+			"@type": "Person",
+			"email" : sophie@lightjason.org,
+			"name" : Sophie Dennisen,
+			"givenName" : Sophie,
+			"familyName" : Dennisen
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/sdennisen.jpg
+			, "sameAs" : [
+				http://xing.to/sdennisen,
+				http://www.linkedin.com/in/sdennisen,
+				https://www.researchgate.net/profile/Sophie_Dennisen
+			]
+		}
+		,{
+			"@type": "Person",
+			"email" : philipp@lightjason.org,
+			"name" : Philipp Kraus,
+			"givenName" : Philipp,
+			"familyName" : Kraus
+			, "image" : http://www.gravatar.com/avatar/2de3ae533823dae934d3b45b239f797c
+			, "sameAs" : [
+				http://xing.to/philippkraus,
+				http://www.linkedin.com/in/philipp-kraus,
+				https://www.researchgate.net/profile/Philipp_Kraus2
+			]
+		}
+		]
+},
+
+
+{
+	"@context": "http://schema.org",
+	"@type": "WebSite",
+	"name": LightJason,
+	"alternateName": LightJason,
+	"url":https://lightjason.org
+	, "license" : https://creativecommons.org/licenses/by-sa/4.0/
+	, "genre" : AI, BDI, Agent, Multi-Agent System, Concurrency, Java, Development, Artificial Intelligence, Software, Psychology, Sociology, Simulation, "keywords" : AI, BDI, Agent, Multi-Agent System, Concurrency, Java, Development, Artificial Intelligence, Software, Psychology, Sociology, Simulation
+	, "author" : [{
+			"@type": "Person",
+			"email" : malte@lightjason.org,
+			"name" : Malte Aschermann,
+			"givenName" : Malte,
+			"familyName" : Aschermann
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/malte_aschermann.png
+		}
+		,{
+			"@type": "Person",
+			"email" : sophie@lightjason.org,
+			"name" : Sophie Dennisen,
+			"givenName" : Sophie,
+			"familyName" : Dennisen
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/sdennisen.jpg
+			, "sameAs" : [
+				http://xing.to/sdennisen,
+				http://www.linkedin.com/in/sdennisen,
+				https://www.researchgate.net/profile/Sophie_Dennisen
+			]
+		}
+		,{
+			"@type": "Person",
+			"email" : philipp@lightjason.org,
+			"name" : Philipp Kraus,
+			"givenName" : Philipp,
+			"familyName" : Kraus
+			, "image" : http://www.gravatar.com/avatar/2de3ae533823dae934d3b45b239f797c
+			, "sameAs" : [
+				http://xing.to/philippkraus,
+				http://www.linkedin.com/in/philipp-kraus,
+				https://www.researchgate.net/profile/Philipp_Kraus2
+			]
+		}
+		]
+}
+,{
+	"@context" : "http://schema.org",
+	"@type" : "TechArticle",
+	"headline" : Theoretical Introduction: From Finite-State Machine and Logical Programming to an Agent,
+	"proficiencyLevel" : "Beginner",
+	"wordCount" : 800,
+	"datePublished" : 2017-01-01T12:00:00&#43;01:00,
+	"image" : https://lightjason.org/images/logo.png 
+}
+,{
+	"@context" : "http://schema.org",
+	"@type" : "Course",
+	"name" : Theoretical Introduction: From Finite-State Machine and Logical Programming to an Agent,
+	"description" :   The main definition of our BDI (Belief-Desire-Intention) framework follows Russell &amp;amp;amp; Norvig - Artificial Intelligence: A Modern Approach with the structure of goal-based agents:C The main definition of our BDI (Belief-Desire-Intention) framework follows Russell &amp;amp;amp; Norvig - Artificial Intelligence: A Modern Approach with the structure of goal-based agents:o The main definition of our BDI (Belief-Desire-Intention) framework follows Russell &amp;amp;amp; Norvig - Artificial Intelligence: A Modern Approach with the structure of goal-based agents:n The main definition of our BDI (Belief-Desire-Intention) framework follows Russell &amp;amp;amp; Norvig - Artificial Intelligence: A Modern Approach with the structure of goal-based agents:t The main definition of our BDI (Belief-Desire-Intention) framework follows Russell &amp;amp;amp; Norvig - Artificial Intelligence: A Modern Approach with the structure of goal-based agents:e The main definition of our BDI (Belief-Desire-Intention) framework follows Russell &amp;amp;amp; Norvig - Artificial Intelligence: A Modern Approach with the structure of goal-based agents:n The main definition of our BDI (Belief-Desire-Intention) framework follows Russell &amp;amp;amp; Norvig - Artificial Intelligence: A Modern Approach with the structure of goal-based agents:t The main definition of our BDI (Belief-Desire-Intention) framework follows Russell &amp;amp;amp; Norvig - Artificial Intelligence: A Modern Approach with the structure of goal-based agents:s The main definition of our BDI (Belief-Desire-Intention) framework follows Russell &amp;amp;amp; Norvig - Artificial Intelligence: A Modern Approach with the structure of goal-based agents:  The main definition of our BDI (Belief-Desire-Intention) framework follows Russell &amp;amp;amp; Norvig - Artificial Intelligence: A Modern Approach with the structure of goal-based agents:[ The main definition of our BDI (Belief-Desire-Intention) framework follows Russell &amp;amp;amp; Norvig - Artificial Intelligence: A Modern Approach with the structure of goal-based agents:H The main definition of our BDI (Belief-Desire-Intention) framework follows Russell &amp;amp;amp; Norvig - Artificial Intelligence: A Modern Approach with the structure of goal-based agents:i The main definition of our BDI (Belief-Desire-Intention) framework follows Russell &amp;amp;amp; Norvig - Artificial Intelligence: A Modern Approach with the structure of goal-based agents:d The main definition of our BDI (Belief-Desire-Intention) framework follows Russell &amp;amp;amp; Norvig - Artificial Intelligence: A Modern Approach with the structure of goal-based agents:e The main definition of our BDI (Belief-Desire-Intention) framework follows Russell &amp;amp;amp; Norvig - Artificial Intelligence: A Modern Approach with the structure of goal-based agents:] The main definition of our BDI (Belief-Desire-Intention) framework follows Russell &amp;amp;amp; Norvig - Artificial Intelligence: A Modern Approach with the structure of goal-based agents:,
+	"provider" : {
+		"@type" : "Organization",
+		"name" : LightJason,
+		"sameAs" : https://lightjason.org
+	}
+}
+]</script></head><body data-previouspage="/knowledgebase/finitestatemachine" data-nextpage="/knowledgebase/differencetojason"><div class="document"><div id="nav">☰</div><div class="documentwrapper"><div class="bodywrapper"><div class="body"><h1 id="root"><a href="#root">Theoretical Introduction: From Finite-State Machine and Logical Programming to an Agent</a></h1><script src="https://lightjason.org/js/agentfsm.js"></script><p>The main definition of our <a href="https://en.wikipedia.org/wiki/Belief%E2%80%93desire%E2%80%93intention_software_model">BDI (Belief-Desire-Intention) framework</a> follows <a href="http://aima.cs.berkeley.edu/">Russell & Norvig - Artificial Intelligence: A Modern Approach</a> with the structure of <em>goal-based agents</em>:</p><p></p><blockquote><p>An agent is anything that can be viewed as perceiving its environment through sensors and acting upon that environment through effectors <em>(Chapter 2.1, page 31)</em></p></blockquote><p>We are defining furthermore along the book of <a href="http://www.cs.ox.ac.uk/people/michael.wooldridge/pubs/imas/IMAS2e.html">Michael Wooldrige - An Introduction to MultiAgent Systems</a> <em>(chapter 2.1, page 26)</em>:</p><blockquote><ul><li><em>Reactivity:</em> Intelligent agents are able to perceive their environment, and respond in a timely fashion to changes that occur in it in order to satisfy their design objectives</li><li><em>Proactiveness:</em> Intelligent agents are able to exhibit goal-directed behaviour by talking the initiative in order to satisfy their design objectives</li><li><em>Social ability:</em> Intelligent agents are capable of interacting with other agents (and possible humans) in order to satisfy their design objectives</li></ul></blockquote><p>The technical execution structure of the agent uses the concepts of <a href="https://en.wikipedia.org/wiki/Procedural_reasoning_system">PRS (Procedural Reasoning System)</a> and architecture of <a href="https://en.wikipedia.org/wiki/Distributed_multi-agent_reasoning_system">dMARS (Distributed Multi-Agent Reasoning System)</a>, so we are definiting the agent as a <a href="../finitestatemachine">Finite-State Machine</a> in a <a href="../logicalprogramming">Logical Programming language</a> with the following definition:</p><ul><li>the <strong>initial state</strong> is optionally defined with the <em>initial goal</em></li><li>a <strong>state</strong> is a set of beliefs if a cycle is not running</li><li>a <strong>transition</strong> is the execution of a plan (with instantiation of a goal) and is limited by the <em>plan condition</em></li></ul><p>But in general, in parallel execution of plans there can be many active transition in one cycle. We also focus on the definition of <em>M. Wooldrige</em>, stating that</p><blockquote><p>a multi-agent system is inherently multithreaded, in that each agent is assumed to have at least on thread of control <em>(chapter 2.2, page 30)</em></p></blockquote><h2 id="basic-behaviour">Basic Behaviour</h2><p>This basic example shows the main functionality of the structure. We define the structure of three plans without a condition and an <em>initial goal</em>. The <em>initial goal (<code>main</code>)</em> calls two other plans <code>first</code> and <code>second</code> within the next cycle. The <code>first</code> plan will call itself within the following cycles (loop structure) and the <code>second</code> plan calls the <em>initial goal</em> plan. The <code>first</code> plan will be called once in each cycle, because the trigger <code>!first</code> and the plan <code>+!first</code> match. Note: The plans <code>first</code> and <code>main</code> or <code>second</code> run in parallel.</p>
+
+<p><pre data-language="AgentSpeak(L++)"><code class="language-agentspeak">!main.
++!main &lt;- !first; !second.
++!first &lt;- !first.
++!second &lt;- !main.
+</code></pre>
+<p></p><p>The state machine of this agent which executes empty plans is shown in the following picture.</p><p><svg id="agentfsm" xmlns="http://www.w3.org/2000/svg" viewBox="71 51 490 248"><defs><style>@keyframes colorchange{0%{fill:#fff}50%{fill:#0e7}100%{fill:#fff}}tspan{font-family:sans-serif;fill:#000}</style><marker orient="auto" overflow="visible" id="a" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="#000"><path d="M8 0L0-3v6z" fill="currentColor" stroke="currentColor"/></marker><marker orient="auto" overflow="visible" id="b" viewBox="-9 -4 10 8" markerWidth="10" markerHeight="8" color="#000"><path d="M-8 0l8 3v-6z" fill="currentColor" stroke="currentColor"/></marker></defs><g fill="none"><circle class="state" cx="130.5" cy="121.5" r="22.5"/><circle id="init" cx="130.5" cy="121.5" r="22.5" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/><path d="M82.5 109.5l25.5 12.75L82.5 135z" fill="#fff"/><path d="M82.5 109.5l25.5 12.75L82.5 135z" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/><circle class="state" cx="292.5" cy="121.5" r="22.5"/><circle id="main" cx="292.5" cy="121.5" r="22.5" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/><circle class="state" cx="434.376" cy="121.5" r="22.5"/><circle id="first" cx="434.376" cy="121.5" r="22.5" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/><circle class="state" cx="355.5" cy="265.5" r="22.5"/><circle id="second" cx="355.5" cy="265.5" r="22.5" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/><path marker-end="url(#a)" stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M153 121.5h107.1m54.9 0h86.976m-89.208 9.784c15.854 9.18 36.886 25.068 47.232 48.716 8.308 18.99 7.907 38.826 5.104 54.606"/><path d="M282.896 152.394c-2.803 15.78-3.204 35.617 5.104 54.606 10.346 23.648 31.378 39.537 47.232 48.716" marker-start="url(#b)" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/><path d="M448.939 104.346C464.217 87.377 488.17 63.813 504 63c24.824-1.275 37.725 37.427 18 54-10.586 8.895-35.047 9.538-55.441 8.225" marker-end="url(#a)" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/><path fill="#fff" d="M177.515 106.5h49v30h-49z"/><text transform="translate(182.515 112.276)"><tspan x=".084" y="15" textLength="38.832">!main</tspan></text><path fill="#fff" d="M338.2 106.5h41v30h-41z"/><text transform="translate(343.2 112.276)"><tspan x=".1" y="15" textLength="30.8">!first</tspan></text><path fill="#fff" d="M510.291 72.278h41v30h-41z"/><text transform="translate(515.291 78.054)"><tspan x=".1" y="15" textLength="30.8">!first</tspan></text><path fill="#fff" d="M317.016 148.745h67v30h-67z"/><text transform="translate(322.016 154.521)"><tspan x=".052" y="15" textLength="56.896">!second</tspan></text><path fill="#fff" d="M266.617 198.336h49v30h-49z"/><text transform="translate(271.617 204.112)"><tspan x=".084" y="15" textLength="38.832">!main</tspan></text></g></svg></p><p>The picture shows the <em>static model</em> of the agent and the states represent a <em>set of beliefs</em> which are created during runtime and the transitions are the instantiation of the goal and the execution of the plans. The initial state is defined by the initial goal.<br>Based on this static model the <em>runtime model</em> shows the execution structure of the state machine. The animation shows the continuous execution_ of the agent on each cycle. In this case the agent runs infinitely, but it switches between the <code>main</code>-state and the <code>first</code> and <code>second</code>-state, but these two states run in parallel (<a href="#agentfsm" id="animate-agentfsm">animate finite-state machine</a>).</p><h2 id="action-behaviour">Action Behaviour</h2><p>Actions are one of the helpful structures within agent-programming. A definition of an action is:</p><blockquote><p>The action is a function with $f : \mathbb{X}^n \rightarrow \mathbb{B}$ and $\mathbb{X}$ is any input data type and $\mathbb{B}$ is a binary set with {true, false}, which is executed independend and directly within the current agent / plan context. An action can change the environment immediately or the internal structure of the agent.</p></blockquote><p>From a technical point of view, the action is a <a href="https://en.wikipedia.org/wiki/Method_(computer_programming)">method</a>, which is called inside the current plan. The method is defined by the <a href="https://agentspeak-java.lightjason.org/sources/d0/dfe/interfaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1IAction__coll__graph.svg" data-lightbox="iaction-interface" data-title="IAction interface">IAction interface</a>. All actions<sup class="footnote-ref" id="fnref:iaction"><a rel="footnote" href="#fn:iaction">1</a></sup> implement this interface which uses the <em>IExecution</em> interface for all executable structures.<br>Based on the first illustrated finite-state machine, we will show the action structure. In short: Actions executed on the <em>transition</em>. On the first state machine the transition contains only the <em>achievement goals</em>. An achievement goal is also an action which executes a plan.</p>
+
+<p><pre data-language="AgentSpeak(L++)"><code class="language-agentspeak line-numbers">!main.</p>
+
+<p>+!main &lt;-
+    generic/print(&ldquo;execute main-goal&rdquo;);
+    !first;
+    generic/print(&ldquo;achievement-goal in main: first&rdquo;);
+    !second;
+    generic/print(&ldquo;achievement-goal in main: second&rdquo;)
+.</p>
+
+<p>+!first &lt;-
+    generic/print(&ldquo;execute first-goal&rdquo;);
+    !first;
+    generic/print(&ldquo;achievement-goal in first: first&rdquo;)
+.</p>
+
+<p>+!second &lt;-
+    generic/print(&ldquo;execute second-goal&rdquo;);
+    !main;
+    generic/print(&ldquo;achievement-goal in second: main&rdquo;)
+.</p>
+
+<p></code></pre>
+<p></p><div class="footnotes"><hr><ol><li id="fn:iaction">see the <a href="https://agentspeak-java.lightjason.org/sources/dc/d53/interfaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1IAction.html">IAction interface</a> for a detailed description <a class="footnote-return" href="#fnref:iaction"><sup>[return]</sup></a></li></ol></div></div><div class="sitepagination"><div class="left"><a href="/knowledgebase/finitestatemachine">KB: Background - Finite-State Machine</a> previous page</div><div class="right">next page <a href="/knowledgebase/differencetojason">KB: Background - Difference to Jason</a></div></div></div></div><div class="sidebar" role="navigation" aria-label="main navigation"><div class="sidebarwrapper"><div class="logo"><a href="https://lightjason.org/">LightJason</a><div class="subtitle">Concurrent BDI multi-agent system</div></div><ul><li><a class="reference internal" href="/news/">News</a> <span class="sublink">(<a href="/news/index.xml">RSS</a>)</span></li><li><a class="reference internal" href="/publications/">Publications</a></li><li><a class="reference internal" href="/framework/">Framework</a></li><li><a class="reference internal" href="/benchmark/">Benchmark</a></li><li><a class="reference internal" href="/knowledgebase/">Knowledge Base</a></li><li><a class="reference internal" href="/tutorials/">Tutorials</a> <span class="sublink">(<a href="/tutorials/wizard">Wizard</a>)</span></li><li><a class="reference internal" href="/about/">About</a></li><li><a class="reference internal" href="/contact/">Contact</a></li><li><a class="reference internal" href="/credits/">Credits</a></li></ul><ul class="horizontal socialmedia"><li><a href="https://github.com/LightJason"><img src="/images/github.svg" alt="github" class="socialmediaimg"></a></li><li><a href="https://hub.docker.com/u/lightjason"><img src="/images/docker.svg" alt="docker" class="socialmediaimg"></a></li><li><a href="http://twitter.com/LightJasonAI"><img src="/images/twitter.svg" alt="twitter" class="socialmediaimg"></a></li><li><a href="https://vimeo.com/lightjason"><img src="/images/vimeo.svg" alt="vimeo" class="socialmediaimg"></a></li></ul><script>((window.gitter={}).chat={}).options={room:"LightJason/Lobby"}</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script><div class="sharebutton">Share on<ul class="horizontal socialmediaaction"><li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2flightjason.org%2fknowledgebase%2fagent%2f" title="Share on Facebook" target="_blank" onclick='return window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(document.URL)+"&t="+encodeURIComponent(document.URL)),!1'><img alt="Share on Facebook" src="/images/share_facebook.svg" class="socialmediaimg"></a></li><li><a href="https://plus.google.com/share?url=https%3a%2f%2flightjason.org%2fknowledgebase%2fagent%2f" target="_blank" title="Share on Google+" onclick='return window.open("https://plus.google.com/share?url="+encodeURIComponent(document.URL)),!1'><img alt="Share on Google+" src="/images/share_googleplus.svg" class="socialmediaimg"></a></li><li><a href="https://twitter.com/intent/tweet?source=https%3a%2f%2flightjason.org%2fknowledgebase%2fagent%2f&text=https%3a%2f%2flightjason.org%2fknowledgebase%2fagent%2f&via=LightJasonAI" target="_blank" title="Tweet" onclick='return window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(document.title)+":%20"+encodeURIComponent(document.URL)),!1'><img alt="Tweet" src="/images/share_twitter.svg" class="socialmediaimg"></a></li></ul></div></div></div><div class="clear"></div></div><div class="footer"><span class="contact">info [at] lightjason.org</span><ul class="horizontal"><li><a href="https://github.com/LightJason/Java-AgentSpeak">Java AgentSpeak(L++)</a></li><li><a href="https://www.researchgate.net/project/LightJason">ResearchGate</a></li><li>© 2019-04-06</li></ul></div></body></html>

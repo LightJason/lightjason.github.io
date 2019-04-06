@@ -1,0 +1,250 @@
+<!DOCTYPE html><html lang="en-GB"><head><meta name="msvalidate.01" content="2EB13C5538E9973D8DFC39C6A455DEFE"><meta name="google-site-verification" content="sVNU1mmaPgvbzlig03vdNtqHYnJNzvbdQYLCWqvtxRU"><meta name="description" content="This tutorial explains the concept and usage of actions. Actions are executable mechanisms. We support a lot of different actions which support some basic functionality."><meta name="keywords" content="AI, BDI, Agent, Multi-Agent System, Concurrency, Java, Development, Artificial Intelligence, Software, Psychology, Sociology, Simulation"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=0.95,maximum-scale=0.95"><script>!function(e,a,t,n,g,c,o){e.GoogleAnalyticsObject=g,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),o=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",o.parentNode.insertBefore(c,o)}(window,document,"script",0,"ga"),ga("create","UA-89676576-1","auto"),ga("send","pageview")</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" crossorigin="anonymous" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[["$","$"]],displayMath:[["$$","$$"]],processEscapes:!0,processEnvironments:!1,skipTags:["script","noscript","style","textarea","pre","code"],TeX:{equationNumbers:{autoNumber:"AMS"},extensions:["autoload-all.js"]}}})</script><script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js" crossorigin="anonymous" defer></script><script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script><script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/jquery-steps/1.1.0/jquery.steps.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/toolbar/prism-toolbar.min.js" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/show-language/prism-show-language.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/command-line/prism-command-line.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-highlight/prism-line-highlight.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-numbers/prism-line-numbers.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-java.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-prolog.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.1/mobile-detect.min.js" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js" crossorigin="anonymous"></script><script src="https://lightjason.org/js/chartjs.boxplot.min.js"></script><script src="https://lightjason.org/js/chartjs.zoom.min.js"></script><script src="https://lightjason.org/js/colormap.min.js"></script><script src="https://lightjason.org/js/benchmark.js"></script><script src="https://lightjason.org/js/jquery.hammer.js" defer></script><script src="https://lightjason.org/js/prism-agentspeak.js" async></script><script src="https://lightjason.org/js/toc.min.js" async></script><script src="https://lightjason.org/js/teletype.js" async></script><script src="https://lightjason.org/js/script.js" defer></script><script src="https://lightjason.org/js/ljason.js" defer></script><link href="//fonts.googleapis.com/css?family=Pridi:200,300,400,500,600,700" rel="stylesheet" media="all"><link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous" media="screen"><link href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/css/lightbox.min.css" rel="stylesheet" media="screen"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism-coy.min.css" rel="stylesheet" media="all"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet" media="all"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/command-line/prism-command-line.min.css" rel="stylesheet" media="all"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-highlight/prism-line-highlight.min.css" rel="stylesheet" media="screen"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" media="all"><link href="https://lightjason.org/css/layout.css" rel="stylesheet" media="all"><link href="https://lightjason.org/css/print.css" rel="stylesheet" media="print"><link href="https://lightjason.org/css/mobile.css" rel="stylesheet" media="screen and (max-width:1000px)"><link href="https://lightjason.org/css/jquery.steps.css" rel="stylesheet" media="screen"><link href="https://lightjason.org/images/favicon.png" type="image/png" rel="shortcut icon"><link href="https://lightjason.org/news/index.xml" type="application/rss+xml" rel="alternate" title="LightJason"><title>LightJason — Tutorial: Actions</title><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@LightJasonAI"><meta name="twitter:title" content="LightJason - Tutorial: Actions"><meta name="twitter:description" content="This tutorial explains the concept and usage of actions. Actions are executable mechanisms. We support a lot of different actions which support some basic functionality."><meta name="twitter:image" content="https://lightjason.org/images/logo.png"><meta property="og:site_name" content="LightJason"><meta property="og:url" content="https://lightjason.org/tutorials/actions/"><meta property="og:title" content="LightJason - Tutorial: Actions"><meta property="og:image" content="https://lightjason.org/images/logo.png"><meta property="og:description" content="This tutorial explains the concept and usage of actions. Actions are executable mechanisms. We support a lot of different actions which support some basic functionality."><script type="application/ld+json">[{
+	"@context": "http://schema.org",
+	"@type": "Organization",	
+	"name" : LightJason,
+	"email" : info@lightjason.org,
+	"url" : https://lightjason.org,
+	"logo" : https://lightjason.org/images/logo.png,
+	"founders": [{
+			"@type": "Person",
+			"email" : malte@lightjason.org,
+			"name" : Malte Aschermann,
+			"givenName" : Malte,
+			"familyName" : Aschermann
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/malte_aschermann.png
+		}
+		,{
+			"@type": "Person",
+			"email" : sophie@lightjason.org,
+			"name" : Sophie Dennisen,
+			"givenName" : Sophie,
+			"familyName" : Dennisen
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/sdennisen.jpg
+			, "sameAs" : [
+				http://xing.to/sdennisen,
+				http://www.linkedin.com/in/sdennisen,
+				https://www.researchgate.net/profile/Sophie_Dennisen
+			]
+		}
+		,{
+			"@type": "Person",
+			"email" : philipp@lightjason.org,
+			"name" : Philipp Kraus,
+			"givenName" : Philipp,
+			"familyName" : Kraus
+			, "image" : http://www.gravatar.com/avatar/2de3ae533823dae934d3b45b239f797c
+			, "sameAs" : [
+				http://xing.to/philippkraus,
+				http://www.linkedin.com/in/philipp-kraus,
+				https://www.researchgate.net/profile/Philipp_Kraus2
+			]
+		}
+		]
+},
+
+
+{
+	"@context": "http://schema.org",
+	"@type": "WebSite",
+	"name": LightJason,
+	"alternateName": LightJason,
+	"url":https://lightjason.org
+	, "license" : https://creativecommons.org/licenses/by-sa/4.0/
+	, "genre" : AI, BDI, Agent, Multi-Agent System, Concurrency, Java, Development, Artificial Intelligence, Software, Psychology, Sociology, Simulation, "keywords" : AI, BDI, Agent, Multi-Agent System, Concurrency, Java, Development, Artificial Intelligence, Software, Psychology, Sociology, Simulation
+	, "author" : [{
+			"@type": "Person",
+			"email" : malte@lightjason.org,
+			"name" : Malte Aschermann,
+			"givenName" : Malte,
+			"familyName" : Aschermann
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/malte_aschermann.png
+		}
+		,{
+			"@type": "Person",
+			"email" : sophie@lightjason.org,
+			"name" : Sophie Dennisen,
+			"givenName" : Sophie,
+			"familyName" : Dennisen
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/sdennisen.jpg
+			, "sameAs" : [
+				http://xing.to/sdennisen,
+				http://www.linkedin.com/in/sdennisen,
+				https://www.researchgate.net/profile/Sophie_Dennisen
+			]
+		}
+		,{
+			"@type": "Person",
+			"email" : philipp@lightjason.org,
+			"name" : Philipp Kraus,
+			"givenName" : Philipp,
+			"familyName" : Kraus
+			, "image" : http://www.gravatar.com/avatar/2de3ae533823dae934d3b45b239f797c
+			, "sameAs" : [
+				http://xing.to/philippkraus,
+				http://www.linkedin.com/in/philipp-kraus,
+				https://www.researchgate.net/profile/Philipp_Kraus2
+			]
+		}
+		]
+}
+,{
+	"@context" : "http://schema.org",
+	"@type" : "TechArticle",
+	"headline" : Tutorial: Actions,
+	"proficiencyLevel" : "Beginner",
+	"wordCount" : 1200,
+	"datePublished" : 2017-01-01T12:00:00&#43;01:00,
+	"image" : https://lightjason.org/images/logo.png 
+}
+]</script></head><body data-previouspage="/tutorials/trigger" data-nextpage="/tutorials/communication"><div class="document"><div id="nav">☰</div><div class="documentwrapper"><div class="bodywrapper"><div class="body"><h1 id="root"><a href="#root">Tutorial: Actions</a></h1><p>This tutorial explains the concept and usage of actions. Actions are <em>executable mechanisms</em>. We support a lot of different actions which support some <a href="/knowledgebase/builtinactions">basic functionality</a>.</p><p>Actions are an important part within a multi-agent system e.g. for <a href="/tutorials/communication">communication</a>, modifying the <a href="/tutorials/environment">environment</a> or the internal state of the agent.</p><div id="toccontainer">Contents [<a href="#" id="tochideshow">Hide</a>]<div id="toc"></div></div><h2 id="previous-knowledge">Previous Knowledge</h2><p>The <a href="/tutorials/agentspeak-in-fifteen-minutes/">AgentSpeak 15min</a> tutorial defines the basic knowledge and working scenario.</p><h2 id="what-are-actions">What are actions?</h2><p>For actions, there exist two points of view:</p><ol><li>software-based, so an action is a method (within a class) which will be executed during the agent cycle with the current agent-based execution context</li><li>agent-based, the action is represented by a literal within a rule or plan, but during execution the same action can be run more than one times in parallel</li></ol><p>Based on these two definitions, on the Java-side a method must be written and be combined with the literal information for the AgentSpeak(L++) script, so that the agent can get access to the method. LightJason supports for this structure an interface, method annotations and reading mechanism to create all action objects.</p><h2 id="what-kinds-of-actions-do-exist">What kinds of actions do exist?</h2><p>There are two kinds of actions, both can also be used in similar context. The usage of an action is based on the software-design, so there is no general approach to use an action.</p><h3 id="standalone-actions-external-actions">Standalone-Actions - External Actions</h3><p>Standalone actions, which are named in the Jason definition <em>external actions</em>, are classes which implement the <a href="https://agentspeak.lightjason.org/sources/dc/d53/interfaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1IAction.htm">IAction</a> interface. But we recommand to use the base implementation <a href="https://agentspeak.lightjason.org/sources/da/d94/classorg_1_1lightjason_1_1agentspeak_1_1action_1_1IBaseAction.htm">IBaseAction</a>. For getting an overview of the structure, take a look on the <a href="https://agentspeak.lightjason.org/sources/dd/d3e/classorg_1_1lightjason_1_1agentspeak_1_1action_1_1IBaseAction__coll__graph.svg" data-lightbox="ibaseaction-inheritance-diagram" data-title="IBaseAction inheritance diagram">IBaseAction inheritance diagram</a>. The recommand parts of an action are:</p><ul><li>a <code>name</code> which represents the call on the agent script</li><li>the number of <code>minimal arguments</code> for checking the correct number of arguments during parsing</li><li>the <code>execution</code> which defines the functionality of the action</li></ul><p>There are some other methods inside the definition:</p><ul><li>the <code>variables</code> method returns a list of variables if the action generates variables</li></ul><h3 id="object-actions-internal-actions">Object-Actions - Internal Actions</h3><p>Object actions are methods inside the agent class or super classes of the agent class. LightJason can read all class methods (not static or abstract methods) and create the actions on-the-fly. With black- and white-listing you can define a very detailed action generation. The visibility of a method can be public, private or protected. For the usage there exist three types of annotations:</p><ul><li>method annotation <code>@IAgentActionName</code> for defining action name</li><li>class annotation <code>@IAgentAction</code>, which can get two arguments:<ul><li><code>access</code> with the values <code>BLACKLIST</code> or <code>WHITELIST</code> to define the filter mechanism (default: <code>BLACKLIST</code>)</li><li><code>classes</code> a list of class objects for which the filtering should be defined (default empty for all classes)</li></ul></li><li>method annotation <code>@IAgentActionFilter</code> with the <code>classes</code> argument for defining class filtering of a method (see <code>@IAgentAction</code>)</li></ul><p>Parameters of the method will be packed / unpacked into terms automatically.</p><h2 id="how-can-i-create-an-action">How can I create an action?</h2><p>Within this section both kinds of actions are shown. The code of an action should be very efficient and minimalistic, because an action will be called multiple times from an agent, because plan execution and also agent execution are in parallel.</p><h3 id="agentspeak-l-script">AgentSpeak(L++) Script</h3><p>The agent script shows the usage of a standalone action, it can be used like a built-in action. The naming is equal to the <code>name</code>-method or annotation.</p>
+
+<p><pre class="language-agentspeak "  data-language="AgentSpeak(L++)"><code class="language-agentspeak">
+!main.
+&#43;!main &lt;-
+    
+    I = math/statistic/randomsimple() * 12 &#43; 4;
+    R = string/random( &#34;abcdefghijklmnopqrstuvwxyz&#34;, I );
+    
+    N = my/standalone-action( R );
+    
+    L = my/object-action( N );
+    
+    generic/print( &#34;agent uses string&#34;, R, &#34;gets from standalone action&#34;, N, &#34;and from object action&#34;, L )
+.
+</code></pre>
+<p></p><h3 id="standalone-actions-external-actions-1">Standalone-Actions - External Actions</h3><p>The data representation can be comprehended by the standalone action. A necessary property is the <code>serialVersionUID</code> which is defined by the Java <a href="https://docs.oracle.com/javase/9/docs/api/java/io/Serializable.html">Serializable</a> interface, this allows to serialise the action.</p>
+
+<p><pre class="language-java "  ><code class="language-java">
+package myagentproject;
+import org.lightjason.agentspeak.action.IBaseAction;
+import org.lightjason.agentspeak.common.CPath;
+import org.lightjason.agentspeak.common.IPath;
+import org.lightjason.agentspeak.language.CRawTerm;
+import org.lightjason.agentspeak.language.ITerm;
+import org.lightjason.agentspeak.language.execution.IContext;
+import org.lightjason.agentspeak.language.fuzzy.CFuzzyValue;
+import org.lightjason.agentspeak.language.fuzzy.IFuzzyValue;
+import javax.annotation.Nonnull;
+import java.text.MessageFormat;
+import java.util.List;
+final class CStandAloneAction extends IBaseAction
+{
+    
+    private static final long serialVersionUID = 2237639821101860757L;
+    @Nonnull
+    @Override
+    public final IPath name()
+    {
+        return CPath.from( &#34;my/standalone-action&#34; );
+    }
+    @Override
+    public final int minimalArgumentNumber()
+    {
+        return 1;
+    }
+    @Override
+    public final IFuzzyValue&lt;Boolean&gt; execute( final boolean p_parallel, @Nonnull final IContext p_context,
+                                               @Nonnull final List&lt;ITerm&gt; p_argument, @Nonnull final List&lt;ITerm&gt; p_return
+    )
+    {
+        
+        System.out.println(
+            MessageFormat.format(
+                &#34;agent {0} calls standalone-action with parameter {1}&#34;,
+                p_context.agent().hashCode(),
+                p_argument.get( 0 ).&lt;String&gt;raw()
+            )
+        );
+        
+        p_return.add(
+            CRawTerm.from(
+                p_argument.get( 0 ).&lt;String&gt;raw().length()
+            )
+        );
+        
+        return CFuzzyValue.from( true );
+    }
+}
+</code></pre>
+<p></p><h3 id="object-actions-internal-actions-1">Object-Actions - Internal Actions</h3><p>In object / internal actions, the pack & unpack process of values is done automatically. The actions are written inside the agent class and must be annotated</p>
+
+<p><pre class="language-java "  ><code class="language-java">
+package myagentproject;
+import org.lightjason.agentspeak.action.binding.IAgentAction;
+import org.lightjason.agentspeak.action.binding.IAgentActionFilter;
+import org.lightjason.agentspeak.action.binding.IAgentActionName;
+import org.lightjason.agentspeak.agent.IBaseAgent;
+import org.lightjason.agentspeak.configuration.IAgentConfiguration;
+import javax.annotation.Nonnull;
+@IAgentAction
+final class MyAgent extends IBaseAgent&lt;MyAgent&gt;
+{
+    
+    private static final long serialVersionUID = -2111543876806742109L;
+    
+    MyAgent( @Nonnull final IAgentConfiguration&lt;MyAgent&gt; p_configuration )
+    {
+        super( p_configuration );
+    }
+    
+    @Nonnull
+    @IAgentActionFilter
+    @IAgentActionName( name = &#34;my/object-action&#34; )
+    private Number calculate( @Nonnull final Number p_value )
+    {
+        return p_value.intValue() ^ this.hashCode();
+    }
+}
+</code></pre>
+<p></p><p>The action instantiation is done by the generator in</p>
+
+<p><pre class="language-java "  ><code class="language-java">
+package myagentproject;
+import org.lightjason.agentspeak.common.CCommon;
+import org.lightjason.agentspeak.generator.IBaseAgentGenerator;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.io.InputStream;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+final class MyAgentGenerator extends IBaseAgentGenerator&lt;MyAgent&gt;
+{
+    
+    MyAgentGenerator( @Nonnull final InputStream p_stream ) throws Exception
+    {
+        super(
+            
+            p_stream,
+            Stream.concat(
+                
+                 CCommon.actionsFromPackage(),
+                
+                Stream.concat(
+                    
+                    CCommon.actionsFromAgentClass( MyAgent.class ),
+                    
+                    Stream.of( new CStandAloneAction() )
+                )
+            ).collect( Collectors.toSet() )
+        );
+    }
+    
+    @Nullable
+    @Override
+    public final MyAgent generatesingle( @Nullable final Object... p_data )
+    {
+        return new MyAgent( m_configuration );
+    }
+}
+</code></pre>
+<p></p><h2 id="efficent-concurrency-action">Efficent Concurrency Action</h2><p>Regarding the standalone action, <strong>keep in mind that the action is called multiple times</strong> because the plan and rule execution is done in parallel and multiple agents can run the action in parallel. The <code>synchronized</code> keyword is not a general solution for avoiding <a href="https://en.wikipedia.org/wiki/Race_condition">race condition</a> because synchronisation slows down the performance.</p><p>In common work, the object-orientated design of the action class can be changed to remove synchronisation. If you get race condition exceptions or performance problems, just redesign your architecture. A good design of concurrency architecture can be found in all <a href="https://agentspeak.lightjason.org/sources/d7/d4b/namespaceorg_1_1lightjason_1_1agentspeak_1_1action_1_1builtin.htm">built-in actions</a> of the framework.</p><h2 id="reference-solution">Reference Solution</h2><p>This tutorial depends on the tutorial <a href="/tutorials/agentspeak-in-fifteen-minutes">AgentSpeak-in-15min</a>, so the whole build process is explained within the basic tutorial. If you struggled at some point or wish to obtain our exemplary solution with code documentation of this tutorial, you can download the archive containing the source code and an executable jar file:</p><ul><li><a href="https://github.com/LightJason/Examples/releases/download/tutorial-agent-action-v1.1.44/myagentapp-0.0.1-SNAPSHOT.jar">myagentapp-0.0.1-SNAPSHOT.jar</a></li><li><a href="https://api.github.com/repos/LightJason/Examples/zipball/tutorial-agent-action-v1.1.44">Zip Source</a></li></ul><p>We run the example with 5 agents and 1 cycle</p><pre><code class="language-commandline">agent 981.414.120 calls standalone-action with parameter rvuoaiwqa
+agent 263.847.538 calls standalone-action with parameter tqhkgkrcpziag
+agent 1.675.634.764 calls standalone-action with parameter aefrnaopw
+agent uses string   aefrnaopw   gets from standalone action   9   and from object action   1675634757
+agent uses string   tqhkgkrcpziag   gets from standalone action   13   and from object action   263847551
+agent 1.053.779.425 calls standalone-action with parameter dwyziieavx
+agent uses string   rvuoaiwqa   gets from standalone action   9   and from object action   981414113
+agent uses string   dwyziieavx   gets from standalone action   10   and from object action   1053779435
+agent 1.128.132.589 calls standalone-action with parameter urm
+agent uses string   urm   gets from standalone action   3   and from object action   1128132590
+</code></pre></div><div class="sitepagination"><div class="left"><a href="/tutorials/trigger">Trigger</a> previous page</div><div class="right">next page <a href="/tutorials/communication">Communication</a></div></div></div></div><div class="sidebar" role="navigation" aria-label="main navigation"><div class="sidebarwrapper"><div class="logo"><a href="https://lightjason.org/">LightJason</a><div class="subtitle">Concurrent BDI multi-agent system</div></div><ul><li><a class="reference internal" href="/news/">News</a> <span class="sublink">(<a href="/news/index.xml">RSS</a>)</span></li><li><a class="reference internal" href="/publications/">Publications</a></li><li><a class="reference internal" href="/framework/">Framework</a></li><li><a class="reference internal" href="/benchmark/">Benchmark</a></li><li><a class="reference internal" href="/knowledgebase/">Knowledge Base</a></li><li><a class="reference internal" href="/tutorials/">Tutorials</a> <span class="sublink">(<a href="/tutorials/wizard">Wizard</a>)</span></li><li><a class="reference internal" href="/about/">About</a></li><li><a class="reference internal" href="/contact/">Contact</a></li><li><a class="reference internal" href="/credits/">Credits</a></li></ul><ul class="horizontal socialmedia"><li><a href="https://github.com/LightJason"><img src="/images/github.svg" alt="github" class="socialmediaimg"></a></li><li><a href="https://hub.docker.com/u/lightjason"><img src="/images/docker.svg" alt="docker" class="socialmediaimg"></a></li><li><a href="http://twitter.com/LightJasonAI"><img src="/images/twitter.svg" alt="twitter" class="socialmediaimg"></a></li><li><a href="https://vimeo.com/lightjason"><img src="/images/vimeo.svg" alt="vimeo" class="socialmediaimg"></a></li></ul><script>((window.gitter={}).chat={}).options={room:"LightJason/Lobby"}</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script><div class="sharebutton">Share on<ul class="horizontal socialmediaaction"><li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2flightjason.org%2ftutorials%2factions%2f" title="Share on Facebook" target="_blank" onclick='return window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(document.URL)+"&t="+encodeURIComponent(document.URL)),!1'><img alt="Share on Facebook" src="/images/share_facebook.svg" class="socialmediaimg"></a></li><li><a href="https://plus.google.com/share?url=https%3a%2f%2flightjason.org%2ftutorials%2factions%2f" target="_blank" title="Share on Google+" onclick='return window.open("https://plus.google.com/share?url="+encodeURIComponent(document.URL)),!1'><img alt="Share on Google+" src="/images/share_googleplus.svg" class="socialmediaimg"></a></li><li><a href="https://twitter.com/intent/tweet?source=https%3a%2f%2flightjason.org%2ftutorials%2factions%2f&text=https%3a%2f%2flightjason.org%2ftutorials%2factions%2f&via=LightJasonAI" target="_blank" title="Tweet" onclick='return window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(document.title)+":%20"+encodeURIComponent(document.URL)),!1'><img alt="Tweet" src="/images/share_twitter.svg" class="socialmediaimg"></a></li></ul></div></div></div><div class="clear"></div></div><div class="footer"><span class="contact">info [at] lightjason.org</span><ul class="horizontal"><li><a href="https://github.com/LightJason/Java-AgentSpeak">Java AgentSpeak(L++)</a></li><li><a href="https://www.researchgate.net/project/LightJason">ResearchGate</a></li><li>© 2019-04-06</li></ul></div></body></html>

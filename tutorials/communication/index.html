@@ -1,0 +1,352 @@
+<!DOCTYPE html><html lang="en-GB"><head><meta name="msvalidate.01" content="2EB13C5538E9973D8DFC39C6A455DEFE"><meta name="google-site-verification" content="sVNU1mmaPgvbzlig03vdNtqHYnJNzvbdQYLCWqvtxRU"><meta name="description" content="LightJason architecture does not support in general a built-in communication, because communication and agent addressing / naming depends on the domain or underlying software architecture."><meta name="keywords" content="AI, BDI, Agent, Multi-Agent System, Concurrency, Java, Development, Artificial Intelligence, Software, Psychology, Sociology, Simulation"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=0.95,maximum-scale=0.95"><script>!function(e,a,t,n,g,c,o){e.GoogleAnalyticsObject=g,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),o=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",o.parentNode.insertBefore(c,o)}(window,document,"script",0,"ga"),ga("create","UA-89676576-1","auto"),ga("send","pageview")</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" crossorigin="anonymous" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[["$","$"]],displayMath:[["$$","$$"]],processEscapes:!0,processEnvironments:!1,skipTags:["script","noscript","style","textarea","pre","code"],TeX:{equationNumbers:{autoNumber:"AMS"},extensions:["autoload-all.js"]}}})</script><script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js" crossorigin="anonymous" defer></script><script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script><script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/jquery-steps/1.1.0/jquery.steps.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/toolbar/prism-toolbar.min.js" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/show-language/prism-show-language.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/command-line/prism-command-line.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-highlight/prism-line-highlight.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-numbers/prism-line-numbers.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-java.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-prolog.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.1/mobile-detect.min.js" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js" crossorigin="anonymous"></script><script src="https://lightjason.org/js/chartjs.boxplot.min.js"></script><script src="https://lightjason.org/js/chartjs.zoom.min.js"></script><script src="https://lightjason.org/js/colormap.min.js"></script><script src="https://lightjason.org/js/benchmark.js"></script><script src="https://lightjason.org/js/jquery.hammer.js" defer></script><script src="https://lightjason.org/js/prism-agentspeak.js" async></script><script src="https://lightjason.org/js/toc.min.js" async></script><script src="https://lightjason.org/js/teletype.js" async></script><script src="https://lightjason.org/js/script.js" defer></script><script src="https://lightjason.org/js/ljason.js" defer></script><link href="//fonts.googleapis.com/css?family=Pridi:200,300,400,500,600,700" rel="stylesheet" media="all"><link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous" media="screen"><link href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/css/lightbox.min.css" rel="stylesheet" media="screen"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism-coy.min.css" rel="stylesheet" media="all"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet" media="all"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/command-line/prism-command-line.min.css" rel="stylesheet" media="all"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-highlight/prism-line-highlight.min.css" rel="stylesheet" media="screen"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" media="all"><link href="https://lightjason.org/css/layout.css" rel="stylesheet" media="all"><link href="https://lightjason.org/css/print.css" rel="stylesheet" media="print"><link href="https://lightjason.org/css/mobile.css" rel="stylesheet" media="screen and (max-width:1000px)"><link href="https://lightjason.org/css/jquery.steps.css" rel="stylesheet" media="screen"><link href="https://lightjason.org/images/favicon.png" type="image/png" rel="shortcut icon"><link href="https://lightjason.org/news/index.xml" type="application/rss+xml" rel="alternate" title="LightJason"><title>LightJason — Tutorial: Communication</title><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@LightJasonAI"><meta name="twitter:title" content="LightJason - Tutorial: Communication"><meta name="twitter:description" content="LightJason architecture does not support in general a built-in communication, because communication and agent addressing / naming depends on the domain or underlying software architecture."><meta name="twitter:image" content="https://lightjason.org/images/logo.png"><meta property="og:site_name" content="LightJason"><meta property="og:url" content="https://lightjason.org/tutorials/communication/"><meta property="og:title" content="LightJason - Tutorial: Communication"><meta property="og:image" content="https://lightjason.org/images/logo.png"><meta property="og:description" content="LightJason architecture does not support in general a built-in communication, because communication and agent addressing / naming depends on the domain or underlying software architecture."><script type="application/ld+json">[{
+	"@context": "http://schema.org",
+	"@type": "Organization",	
+	"name" : LightJason,
+	"email" : info@lightjason.org,
+	"url" : https://lightjason.org,
+	"logo" : https://lightjason.org/images/logo.png,
+	"founders": [{
+			"@type": "Person",
+			"email" : malte@lightjason.org,
+			"name" : Malte Aschermann,
+			"givenName" : Malte,
+			"familyName" : Aschermann
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/malte_aschermann.png
+		}
+		,{
+			"@type": "Person",
+			"email" : sophie@lightjason.org,
+			"name" : Sophie Dennisen,
+			"givenName" : Sophie,
+			"familyName" : Dennisen
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/sdennisen.jpg
+			, "sameAs" : [
+				http://xing.to/sdennisen,
+				http://www.linkedin.com/in/sdennisen,
+				https://www.researchgate.net/profile/Sophie_Dennisen
+			]
+		}
+		,{
+			"@type": "Person",
+			"email" : philipp@lightjason.org,
+			"name" : Philipp Kraus,
+			"givenName" : Philipp,
+			"familyName" : Kraus
+			, "image" : http://www.gravatar.com/avatar/2de3ae533823dae934d3b45b239f797c
+			, "sameAs" : [
+				http://xing.to/philippkraus,
+				http://www.linkedin.com/in/philipp-kraus,
+				https://www.researchgate.net/profile/Philipp_Kraus2
+			]
+		}
+		]
+},
+
+
+{
+	"@context": "http://schema.org",
+	"@type": "WebSite",
+	"name": LightJason,
+	"alternateName": LightJason,
+	"url":https://lightjason.org
+	, "license" : https://creativecommons.org/licenses/by-sa/4.0/
+	, "genre" : AI, BDI, Agent, Multi-Agent System, Concurrency, Java, Development, Artificial Intelligence, Software, Psychology, Sociology, Simulation, "keywords" : AI, BDI, Agent, Multi-Agent System, Concurrency, Java, Development, Artificial Intelligence, Software, Psychology, Sociology, Simulation
+	, "author" : [{
+			"@type": "Person",
+			"email" : malte@lightjason.org,
+			"name" : Malte Aschermann,
+			"givenName" : Malte,
+			"familyName" : Aschermann
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/malte_aschermann.png
+		}
+		,{
+			"@type": "Person",
+			"email" : sophie@lightjason.org,
+			"name" : Sophie Dennisen,
+			"givenName" : Sophie,
+			"familyName" : Dennisen
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/sdennisen.jpg
+			, "sameAs" : [
+				http://xing.to/sdennisen,
+				http://www.linkedin.com/in/sdennisen,
+				https://www.researchgate.net/profile/Sophie_Dennisen
+			]
+		}
+		,{
+			"@type": "Person",
+			"email" : philipp@lightjason.org,
+			"name" : Philipp Kraus,
+			"givenName" : Philipp,
+			"familyName" : Kraus
+			, "image" : http://www.gravatar.com/avatar/2de3ae533823dae934d3b45b239f797c
+			, "sameAs" : [
+				http://xing.to/philippkraus,
+				http://www.linkedin.com/in/philipp-kraus,
+				https://www.researchgate.net/profile/Philipp_Kraus2
+			]
+		}
+		]
+}
+,{
+	"@context" : "http://schema.org",
+	"@type" : "TechArticle",
+	"headline" : Tutorial: Communication,
+	"proficiencyLevel" : "Beginner",
+	"wordCount" : 1400,
+	"datePublished" : 2017-01-01T12:00:00&#43;01:00,
+	"image" : https://lightjason.org/images/logo.png 
+}
+,{
+	"@context" : "http://schema.org",
+	"@type" : "Course",
+	"name" : Tutorial: Communication,
+	"description" :  LightJason architecture does not support in general a built-in communication, because communication and agent addressing / naming depends on the domain or underlying software architecture.CLightJason architecture does not support in general a built-in communication, because communication and agent addressing / naming depends on the domain or underlying software architecture.oLightJason architecture does not support in general a built-in communication, because communication and agent addressing / naming depends on the domain or underlying software architecture.nLightJason architecture does not support in general a built-in communication, because communication and agent addressing / naming depends on the domain or underlying software architecture.tLightJason architecture does not support in general a built-in communication, because communication and agent addressing / naming depends on the domain or underlying software architecture.eLightJason architecture does not support in general a built-in communication, because communication and agent addressing / naming depends on the domain or underlying software architecture.nLightJason architecture does not support in general a built-in communication, because communication and agent addressing / naming depends on the domain or underlying software architecture.tLightJason architecture does not support in general a built-in communication, because communication and agent addressing / naming depends on the domain or underlying software architecture.sLightJason architecture does not support in general a built-in communication, because communication and agent addressing / naming depends on the domain or underlying software architecture. LightJason architecture does not support in general a built-in communication, because communication and agent addressing / naming depends on the domain or underlying software architecture.[LightJason architecture does not support in general a built-in communication, because communication and agent addressing / naming depends on the domain or underlying software architecture.HLightJason architecture does not support in general a built-in communication, because communication and agent addressing / naming depends on the domain or underlying software architecture.iLightJason architecture does not support in general a built-in communication, because communication and agent addressing / naming depends on the domain or underlying software architecture.dLightJason architecture does not support in general a built-in communication, because communication and agent addressing / naming depends on the domain or underlying software architecture.eLightJason architecture does not support in general a built-in communication, because communication and agent addressing / naming depends on the domain or underlying software architecture.]LightJason architecture does not support in general a built-in communication, because communication and agent addressing / naming depends on the domain or underlying software architecture.,
+	"provider" : {
+		"@type" : "Organization",
+		"name" : LightJason,
+		"sameAs" : https://lightjason.org
+	}
+}
+]</script></head><body data-previouspage="/tutorials/actions" data-nextpage="/tutorials/environment"><div class="document"><div id="nav">☰</div><div class="documentwrapper"><div class="bodywrapper"><div class="body"><h1 id="root"><a href="#root">Tutorial: Communication</a></h1><p>LightJason architecture does not support in general a built-in communication, because communication and agent addressing / naming depends on the domain or underlying software architecture.</p><p>To create a communication structure you have to build-up your own naming model, a send action with a receiving plan and a data structure to map agent names / addresses to agent objects.</p><div id="toccontainer">Contents [<a href="#" id="tochideshow">Hide</a>]<div id="toc"></div></div><h2 id="previous-knowledge">Previous Knowledge</h2><p>The tutorial can be done in two steps:</p><ol><li>the basic agent definition from the <a href="/tutorials/agentspeak-in-fifteen-minutes/">AgentSpeak 15min</a> tutorial</li><li>the <a href="/tutorials/trigger/">triggering</a> and <a href="/tutorials/actions/">action</a> tutorial to create a <em>send-action</em></li></ol><blockquote><p><strong>Don’t reinvent the edge</strong><br>Communication can be a <em>very expensive</em> calling structure, especially on distributed systems. If you build your own communication structure just think about multi-threading and performance aspects. Within this tutorial we cannot show you all details of fast and efficient communication data structures, so we would like to show you the basics only. In a distributed system, you have to organise the naming schema and searching methods of names and objects. If you need to transfer messages over the network, just think about serialisation and deserialisation performance. Java supports a <a href="https://docs.oracle.com/javase/tutorial/jndi/objects/serial.html">serialize interface</a> so don’t create self-defined string data structure, because for such message transfering there are a lot of other and well-known and estabilished components. Well known formats are <a href="https://en.wikipedia.org/wiki/JavaScript_Object_Notation">JSON</a>, <a href="https://en.wikipedia.org/wiki/YAML">YAML</a> or <a href="https://en.wikipedia.org/wiki/Java_Architecture_for_XML_Binding">XML/XSD with Jaxb</a></p></blockquote><h2 id="agent">Agent</h2><p>For this example we create a small agent, which sends a random message to the agent with the name <code>agent 0</code>. The initial-goal triggers the <code>main</code>-plan, which generates the message and calls the send action.</p>
+
+<p><pre class="language-agentspeak "  data-language="AgentSpeak(L++)"><code class="language-agentspeak">
+!main.
+&#43;!main &lt;-
+    
+    R = string/random( &#34;abcdefghijklmnopqrstuvwxyz&#34;, 12 );
+    
+    
+     message/send(&#34;agent 0&#34;, R)
+.
+&#43;!message/receive(  message( Message ), from( AgentName )  ) &lt;-
+    
+    generic/print( MyName, &#34; received message [&#34;, Message, &#34;] from [&#34;, AgentName, &#34;]&#34;)
+.
+</code></pre>
+<p></p><h3 id="agent-with-name">Agent with name</h3><p>For communication a <em>name resolution</em> is needed, so the agents needs to get a name (here a string). This name will be used to determine the sender of a message</p>
+
+<p><pre class="language-java "  ><code class="language-java">
+package myagentproject;
+import org.lightjason.agentspeak.agent.IBaseAgent;
+import org.lightjason.agentspeak.configuration.IAgentConfiguration;
+import javax.annotation.Nonnull;
+final class MyCommunicationAgent extends IBaseAgent&lt;MyCommunicationAgent&gt;
+{
+    
+    private static final long serialVersionUID = 3523915760001772665L;
+    
+    private final String m_name;
+    
+    MyCommunicationAgent( @Nonnull final IAgentConfiguration&lt;MyCommunicationAgent&gt; p_configuration, @Nonnull final String p_name )
+    {
+        super( p_configuration );
+        m_name = p_name;
+    }
+    
+    @Nonnull
+    final String name()
+    {
+        return m_name;
+    }
+}
+</code></pre>
+<p></p><h3 id="agent-factory-with-name-generating">Agent factory with name generating</h3><p>The agent factory must create the agent object and a unique name. Within this example we use one factory only, so each factory creates a <em>send</em> action and the send action contains the name resolution. Based on this, the action must be accessible within the factory to register each agent. The name definition is here with the schema <code>agent &lt;number></code> but <strong>keep in mind that the generate method can be called in parallel, so the counter must be thread-safe.</strong> Java supports such <a href="https://docs.oracle.com/javase/tutorial/essential/concurrency/atomicvars.html">atomic variables</a>.</p>
+
+<p><pre class="language-java "  ><code class="language-java">
+package myagentproject;
+import org.lightjason.agentspeak.common.CCommon;
+import org.lightjason.agentspeak.generator.IBaseAgentGenerator;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.io.InputStream;
+import java.text.MessageFormat;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+final class MyAgentGenerator extends IBaseAgentGenerator&lt;MyCommunicationAgent&gt;
+{
+    
+    private final CSend m_send;
+    
+    private final AtomicLong m_counter = new AtomicLong();
+    
+    MyAgentGenerator( @Nonnull final InputStream p_stream, @Nonnull final CSend p_send ) throws Exception
+    {
+        super(
+            
+            p_stream,
+            
+            Stream.concat(
+                
+                CCommon.actionsFromPackage(),
+                
+                Stream.of( p_send )
+                
+            ).collect( Collectors.toSet() ),
+            
+            new CVariableBuilder()
+        );
+        m_send = p_send;
+    }
+    
+    @Nullable
+    @Override
+    public final MyCommunicationAgent generatesingle( @Nullable final Object... p_data )
+    {
+        
+        
+        return m_send.register(
+            new MyCommunicationAgent(
+                
+                
+                
+                m_configuration, MessageFormat.format( &#34;agent {0}&#34;, m_counter.getAndIncrement() )
+                
+            )
+        );
+    }
+    
+    final void unregister( final MyCommunicationAgent p_agent )
+    {
+        m_send.unregister( p_agent );
+    }
+}
+</code></pre>
+<p></p><h2 id="send-action-with-address-resolution">Send-Action with address resolution</h2><p>For communication basics a <em>send</em> action must be created. This actions needs also an <em>address resolution</em> for the agent names, this can be an URL access or a string name. Within this example we use a map with string for the agent name and the value for the agent object. Each generated agent must be registered at this action so that other agents can send messages. The action tries to find the agent object based on the name, builds the goal-trigger and transfers the data to the other agent. In the next cycle call of the receiving agent, the message goal-plan will be triggered.</p>
+
+<p><pre class="language-java "  ><code class="language-java">
+package myagentproject;
+import org.lightjason.agentspeak.action.IBaseAction;
+import org.lightjason.agentspeak.agent.IAgent;
+import org.lightjason.agentspeak.common.CPath;
+import org.lightjason.agentspeak.common.IPath;
+import org.lightjason.agentspeak.language.CLiteral;
+import org.lightjason.agentspeak.language.CRawTerm;
+import org.lightjason.agentspeak.language.ITerm;
+import org.lightjason.agentspeak.language.execution.IContext;
+import org.lightjason.agentspeak.language.fuzzy.CFuzzyValue;
+import org.lightjason.agentspeak.language.fuzzy.IFuzzyValue;
+import org.lightjason.agentspeak.language.instantiable.plan.trigger.CTrigger;
+import org.lightjason.agentspeak.language.instantiable.plan.trigger.ITrigger;
+import javax.annotation.Nonnull;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+final class CSend extends IBaseAction
+{
+    
+    private static final long serialVersionUID = 2043960703654019947L;
+    
+    private final Map&lt;String, MyCommunicationAgent&gt; m_agents = new ConcurrentHashMap&lt;&gt;();
+    @Nonnull
+    @Override
+    public final IPath name()
+    {
+        return CPath.from( &#34;message/send&#34; );
+    }
+    @Override
+    public final int minimalArgumentNumber()
+    {
+        return 2;
+    }
+    @Override
+    public final IFuzzyValue&lt;Boolean&gt; execute( final boolean p_parallel, @Nonnull final IContext p_context,
+                                               @Nonnull final List&lt;ITerm&gt; p_argument, @Nonnull final List&lt;ITerm&gt; p_return )
+    {
+        
+        final IAgent&lt;?&gt; l_receiver = m_agents.get( p_argument.get( 0 ).&lt;String&gt;raw() );
+        
+        if ( l_receiver == null )
+            return CFuzzyValue.from( false );
+        
+        l_receiver.trigger(
+            CTrigger.from(
+                ITrigger.EType.ADDGOAL,
+                
+                
+                CLiteral.from(
+                    &#34;message/receive&#34;,
+                    
+                    CLiteral.from(
+                        &#34;message&#34;,
+                        
+                        
+                        p_argument
+                            .subList( 1, p_argument.size() )
+                            .stream()
+                            .map( i -&gt; CRawTerm.from( i.raw() ) )
+                    ),
+                    
+                    
+                    
+                    CLiteral.from(
+                        &#34;from&#34;,
+                        CRawTerm.from(
+                            p_context.agent().&lt;MyCommunicationAgent&gt;raw().name()
+                        )
+                    )
+                )
+            )
+        );
+        return CFuzzyValue.from( true );
+    }
+    
+    @Nonnull
+    final MyCommunicationAgent register( @Nonnull final MyCommunicationAgent p_agent )
+    {
+        m_agents.put( p_agent.name(), p_agent );
+        return p_agent;
+    }
+    
+    @Nonnull
+    final MyCommunicationAgent unregister( @Nonnull final MyCommunicationAgent p_agent )
+    {
+        m_agents.remove( p_agent.name() );
+        return p_agent;
+    }
+}
+</code></pre>
+<p></p><h2 id="variable-builder">Variable-Builder</h2><p>The variable builder allows to create <em>individual variables and constants</em> during runtime within a plan. In this case we create the constant <code>MyName</code> which stores the individual agent name. The <code>raw</code>-method allows to create an object reference with a safe-cast. The variable builder is added to the agent factory.</p>
+
+<p><pre class="language-java "  ><code class="language-java">
+package myagentproject;
+import org.lightjason.agentspeak.agent.IAgent;
+import org.lightjason.agentspeak.language.execution.IVariableBuilder;
+import org.lightjason.agentspeak.language.instantiable.IInstantiable;
+import org.lightjason.agentspeak.language.variable.CConstant;
+import org.lightjason.agentspeak.language.variable.IVariable;
+import javax.annotation.Nonnull;
+import java.util.stream.Stream;
+final class CVariableBuilder implements IVariableBuilder
+{
+    @Nonnull
+    @Override
+    public final Stream&lt;IVariable&lt;?&gt;&gt; apply( @Nonnull final IAgent&lt;?&gt; p_agent, @Nonnull final IInstantiable p_runningcontext )
+    {
+        return Stream.of(
+            new CConstant&lt;&gt;( &#34;MyName&#34;, p_agent.&lt;MyCommunicationAgent&gt;raw().name() )
+        );
+    }
+}
+</code></pre>
+<p></p><h2 id="reference-solution">Reference Solution</h2><p>This tutorial depends on the tutorial <a href="/tutorials/agentspeak-in-fifteen-minutes">AgentSpeak-in-15min</a>, so the whole build process is explained within the basic tutorial. If you struggled at some point or wish to obtain our exemplary solution with code documentation of this tutorial, you can download the archive containing the source code and an executable jar file:</p><ul><li><a href="https://github.com/LightJason/Examples/releases/download/tutorial-agent-communication-v1.1.43/myagentapp-0.0.1-SNAPSHOT.jar">myagentapp-0.0.1-SNAPSHOT.jar</a></li><li><a href="https://api.github.com/repos/LightJason/Examples/zipball/tutorial-agent-communication-v1.1.43">Zip Source</a></li></ul><p>If you run the example the shown output can be different. For the first run we start the program with 10 agents and 5 iterations:</p><pre><code class="language-commandline">agent 0    received message [   pcfhmqrkdcfo   ] from [   agent 2   ]
+agent 0    received message [   eiwnfjhiqmcn   ] from [   agent 9   ]
+agent 0    received message [   wevkklxbfbkp   ] from [   agent 4   ]
+agent 0    received message [   mzlcztwrppss   ] from [   agent 8   ]
+agent 0    received message [   tvnqxtlxfbuj   ] from [   agent 7   ]
+agent 0    received message [   wgjgrponcrqp   ] from [   agent 1   ]
+agent 0    received message [   kmplxsurilpd   ] from [   agent 0   ]
+agent 0    received message [   sufdpibrcjvc   ] from [   agent 3   ]
+agent 0    received message [   mxxiktkorrrd   ] from [   agent 5   ]
+agent 0    received message [   zczagzgobfsf   ] from [   agent 6   ]
+</code></pre><p>and run it again with equal arguments</p><pre><code class="language-commandline">agent 0    received message [   eafmluuggwde   ] from [   agent 6   ]
+agent 0    received message [   nfckpeggfkwa   ] from [   agent 5   ]
+agent 0    received message [   rtlbasuuoucp   ] from [   agent 9   ]
+agent 0    received message [   jfnsinsfkpkr   ] from [   agent 1   ]
+agent 0    received message [   lxedhrtkymxm   ] from [   agent 4   ]
+agent 0    received message [   dyrpqwemcast   ] from [   agent 3   ]
+agent 0    received message [   sxkbsmxrvttn   ] from [   agent 7   ]
+agent 0    received message [   vvitgoirttnt   ] from [   agent 0   ]
+agent 0    received message [   flwnyyekgmul   ] from [   agent 8   ]
+agent 0    received message [   issvvzansmbl   ] from [   agent 2   ]
+</code></pre><p>You can see that the agent 0 received messages in different ordering, so the executed plans are different. This behaviour is desired, because all agents run in parallel and so the agent can receive the message before its own cycle is called; otherwise the cycle is called and after that the agent receives the message. <strong>So keep in mind that all execution is heavily asynchronised and parallel</strong>.</p></div><div class="sitepagination"><div class="left"><a href="/tutorials/actions">Actions</a> previous page</div><div class="right">next page <a href="/tutorials/environment">Environment</a></div></div></div></div><div class="sidebar" role="navigation" aria-label="main navigation"><div class="sidebarwrapper"><div class="logo"><a href="https://lightjason.org/">LightJason</a><div class="subtitle">Concurrent BDI multi-agent system</div></div><ul><li><a class="reference internal" href="/news/">News</a> <span class="sublink">(<a href="/news/index.xml">RSS</a>)</span></li><li><a class="reference internal" href="/publications/">Publications</a></li><li><a class="reference internal" href="/framework/">Framework</a></li><li><a class="reference internal" href="/benchmark/">Benchmark</a></li><li><a class="reference internal" href="/knowledgebase/">Knowledge Base</a></li><li><a class="reference internal" href="/tutorials/">Tutorials</a> <span class="sublink">(<a href="/tutorials/wizard">Wizard</a>)</span></li><li><a class="reference internal" href="/about/">About</a></li><li><a class="reference internal" href="/contact/">Contact</a></li><li><a class="reference internal" href="/credits/">Credits</a></li></ul><ul class="horizontal socialmedia"><li><a href="https://github.com/LightJason"><img src="/images/github.svg" alt="github" class="socialmediaimg"></a></li><li><a href="https://hub.docker.com/u/lightjason"><img src="/images/docker.svg" alt="docker" class="socialmediaimg"></a></li><li><a href="http://twitter.com/LightJasonAI"><img src="/images/twitter.svg" alt="twitter" class="socialmediaimg"></a></li><li><a href="https://vimeo.com/lightjason"><img src="/images/vimeo.svg" alt="vimeo" class="socialmediaimg"></a></li></ul><script>((window.gitter={}).chat={}).options={room:"LightJason/Lobby"}</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script><div class="sharebutton">Share on<ul class="horizontal socialmediaaction"><li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2flightjason.org%2ftutorials%2fcommunication%2f" title="Share on Facebook" target="_blank" onclick='return window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(document.URL)+"&t="+encodeURIComponent(document.URL)),!1'><img alt="Share on Facebook" src="/images/share_facebook.svg" class="socialmediaimg"></a></li><li><a href="https://plus.google.com/share?url=https%3a%2f%2flightjason.org%2ftutorials%2fcommunication%2f" target="_blank" title="Share on Google+" onclick='return window.open("https://plus.google.com/share?url="+encodeURIComponent(document.URL)),!1'><img alt="Share on Google+" src="/images/share_googleplus.svg" class="socialmediaimg"></a></li><li><a href="https://twitter.com/intent/tweet?source=https%3a%2f%2flightjason.org%2ftutorials%2fcommunication%2f&text=https%3a%2f%2flightjason.org%2ftutorials%2fcommunication%2f&via=LightJasonAI" target="_blank" title="Tweet" onclick='return window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(document.title)+":%20"+encodeURIComponent(document.URL)),!1'><img alt="Tweet" src="/images/share_twitter.svg" class="socialmediaimg"></a></li></ul></div></div></div><div class="clear"></div></div><div class="footer"><span class="contact">info [at] lightjason.org</span><ul class="horizontal"><li><a href="https://github.com/LightJason/Java-AgentSpeak">Java AgentSpeak(L++)</a></li><li><a href="https://www.researchgate.net/project/LightJason">ResearchGate</a></li><li>© 2019-04-06</li></ul></div></body></html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html><html lang="en-GB"><head><meta name="msvalidate.01" content="2EB13C5538E9973D8DFC39C6A455DEFE"><meta name="google-site-verification" content="sVNU1mmaPgvbzlig03vdNtqHYnJNzvbdQYLCWqvtxRU"><meta name="description" content="This tutorial explains the functionality of agent triggering. For understanding the purpose of triggers you have to understand the concept of events, which is a well-known concept in UI programming."><meta name="keywords" content="AI, BDI, Agent, Multi-Agent System, Concurrency, Java, Development, Artificial Intelligence, Software, Psychology, Sociology, Simulation"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=0.95,maximum-scale=0.95"><script>!function(e,a,t,n,g,c,o){e.GoogleAnalyticsObject=g,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),o=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",o.parentNode.insertBefore(c,o)}(window,document,"script",0,"ga"),ga("create","UA-89676576-1","auto"),ga("send","pageview")</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" crossorigin="anonymous" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[["$","$"]],displayMath:[["$$","$$"]],processEscapes:!0,processEnvironments:!1,skipTags:["script","noscript","style","textarea","pre","code"],TeX:{equationNumbers:{autoNumber:"AMS"},extensions:["autoload-all.js"]}}})</script><script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js" crossorigin="anonymous" defer></script><script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script><script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/jquery-steps/1.1.0/jquery.steps.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/toolbar/prism-toolbar.min.js" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/show-language/prism-show-language.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/command-line/prism-command-line.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-highlight/prism-line-highlight.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-numbers/prism-line-numbers.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-java.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-prolog.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.1/mobile-detect.min.js" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js" crossorigin="anonymous"></script><script src="https://lightjason.org/js/chartjs.boxplot.min.js"></script><script src="https://lightjason.org/js/chartjs.zoom.min.js"></script><script src="https://lightjason.org/js/colormap.min.js"></script><script src="https://lightjason.org/js/benchmark.js"></script><script src="https://lightjason.org/js/jquery.hammer.js" defer></script><script src="https://lightjason.org/js/prism-agentspeak.js" async></script><script src="https://lightjason.org/js/toc.min.js" async></script><script src="https://lightjason.org/js/teletype.js" async></script><script src="https://lightjason.org/js/script.js" defer></script><script src="https://lightjason.org/js/ljason.js" defer></script><link href="//fonts.googleapis.com/css?family=Pridi:200,300,400,500,600,700" rel="stylesheet" media="all"><link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous" media="screen"><link href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/css/lightbox.min.css" rel="stylesheet" media="screen"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism-coy.min.css" rel="stylesheet" media="all"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet" media="all"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/command-line/prism-command-line.min.css" rel="stylesheet" media="all"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-highlight/prism-line-highlight.min.css" rel="stylesheet" media="screen"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" media="all"><link href="https://lightjason.org/css/layout.css" rel="stylesheet" media="all"><link href="https://lightjason.org/css/print.css" rel="stylesheet" media="print"><link href="https://lightjason.org/css/mobile.css" rel="stylesheet" media="screen and (max-width:1000px)"><link href="https://lightjason.org/css/jquery.steps.css" rel="stylesheet" media="screen"><link href="https://lightjason.org/images/favicon.png" type="image/png" rel="shortcut icon"><link href="https://lightjason.org/news/index.xml" type="application/rss+xml" rel="alternate" title="LightJason"><title>LightJason — Tutorial: Trigger</title><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@LightJasonAI"><meta name="twitter:title" content="LightJason - Tutorial: Trigger"><meta name="twitter:description" content="This tutorial explains the functionality of agent triggering. For understanding the purpose of triggers you have to understand the concept of events, which is a well-known concept in UI programming."><meta name="twitter:image" content="https://lightjason.org/images/logo.png"><meta property="og:site_name" content="LightJason"><meta property="og:url" content="https://lightjason.org/tutorials/trigger/"><meta property="og:title" content="LightJason - Tutorial: Trigger"><meta property="og:image" content="https://lightjason.org/images/logo.png"><meta property="og:description" content="This tutorial explains the functionality of agent triggering. For understanding the purpose of triggers you have to understand the concept of events, which is a well-known concept in UI programming."><script type="application/ld+json">[{
+	"@context": "http://schema.org",
+	"@type": "Organization",	
+	"name" : LightJason,
+	"email" : info@lightjason.org,
+	"url" : https://lightjason.org,
+	"logo" : https://lightjason.org/images/logo.png,
+	"founders": [{
+			"@type": "Person",
+			"email" : malte@lightjason.org,
+			"name" : Malte Aschermann,
+			"givenName" : Malte,
+			"familyName" : Aschermann
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/malte_aschermann.png
+		}
+		,{
+			"@type": "Person",
+			"email" : sophie@lightjason.org,
+			"name" : Sophie Dennisen,
+			"givenName" : Sophie,
+			"familyName" : Dennisen
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/sdennisen.jpg
+			, "sameAs" : [
+				http://xing.to/sdennisen,
+				http://www.linkedin.com/in/sdennisen,
+				https://www.researchgate.net/profile/Sophie_Dennisen
+			]
+		}
+		,{
+			"@type": "Person",
+			"email" : philipp@lightjason.org,
+			"name" : Philipp Kraus,
+			"givenName" : Philipp,
+			"familyName" : Kraus
+			, "image" : http://www.gravatar.com/avatar/2de3ae533823dae934d3b45b239f797c
+			, "sameAs" : [
+				http://xing.to/philippkraus,
+				http://www.linkedin.com/in/philipp-kraus,
+				https://www.researchgate.net/profile/Philipp_Kraus2
+			]
+		}
+		]
+},
+
+
+{
+	"@context": "http://schema.org",
+	"@type": "WebSite",
+	"name": LightJason,
+	"alternateName": LightJason,
+	"url":https://lightjason.org
+	, "license" : https://creativecommons.org/licenses/by-sa/4.0/
+	, "genre" : AI, BDI, Agent, Multi-Agent System, Concurrency, Java, Development, Artificial Intelligence, Software, Psychology, Sociology, Simulation, "keywords" : AI, BDI, Agent, Multi-Agent System, Concurrency, Java, Development, Artificial Intelligence, Software, Psychology, Sociology, Simulation
+	, "author" : [{
+			"@type": "Person",
+			"email" : malte@lightjason.org,
+			"name" : Malte Aschermann,
+			"givenName" : Malte,
+			"familyName" : Aschermann
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/malte_aschermann.png
+		}
+		,{
+			"@type": "Person",
+			"email" : sophie@lightjason.org,
+			"name" : Sophie Dennisen,
+			"givenName" : Sophie,
+			"familyName" : Dennisen
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/sdennisen.jpg
+			, "sameAs" : [
+				http://xing.to/sdennisen,
+				http://www.linkedin.com/in/sdennisen,
+				https://www.researchgate.net/profile/Sophie_Dennisen
+			]
+		}
+		,{
+			"@type": "Person",
+			"email" : philipp@lightjason.org,
+			"name" : Philipp Kraus,
+			"givenName" : Philipp,
+			"familyName" : Kraus
+			, "image" : http://www.gravatar.com/avatar/2de3ae533823dae934d3b45b239f797c
+			, "sameAs" : [
+				http://xing.to/philippkraus,
+				http://www.linkedin.com/in/philipp-kraus,
+				https://www.researchgate.net/profile/Philipp_Kraus2
+			]
+		}
+		]
+}
+,{
+	"@context" : "http://schema.org",
+	"@type" : "TechArticle",
+	"headline" : Tutorial: Trigger,
+	"proficiencyLevel" : "Beginner",
+	"wordCount" : 1000,
+	"datePublished" : 2017-01-01T12:00:00&#43;01:00,
+	"image" : https://lightjason.org/images/logo.png 
+}
+,{
+	"@context" : "http://schema.org",
+	"@type" : "Course",
+	"name" : Tutorial: Trigger,
+	"description" :  This tutorial explains the functionality of agent triggering. For understanding the purpose of triggers you have to understand the concept of events, which is a well-known concept in UI programming.CThis tutorial explains the functionality of agent triggering. For understanding the purpose of triggers you have to understand the concept of events, which is a well-known concept in UI programming.oThis tutorial explains the functionality of agent triggering. For understanding the purpose of triggers you have to understand the concept of events, which is a well-known concept in UI programming.nThis tutorial explains the functionality of agent triggering. For understanding the purpose of triggers you have to understand the concept of events, which is a well-known concept in UI programming.tThis tutorial explains the functionality of agent triggering. For understanding the purpose of triggers you have to understand the concept of events, which is a well-known concept in UI programming.eThis tutorial explains the functionality of agent triggering. For understanding the purpose of triggers you have to understand the concept of events, which is a well-known concept in UI programming.nThis tutorial explains the functionality of agent triggering. For understanding the purpose of triggers you have to understand the concept of events, which is a well-known concept in UI programming.tThis tutorial explains the functionality of agent triggering. For understanding the purpose of triggers you have to understand the concept of events, which is a well-known concept in UI programming.sThis tutorial explains the functionality of agent triggering. For understanding the purpose of triggers you have to understand the concept of events, which is a well-known concept in UI programming. This tutorial explains the functionality of agent triggering. For understanding the purpose of triggers you have to understand the concept of events, which is a well-known concept in UI programming.[This tutorial explains the functionality of agent triggering. For understanding the purpose of triggers you have to understand the concept of events, which is a well-known concept in UI programming.HThis tutorial explains the functionality of agent triggering. For understanding the purpose of triggers you have to understand the concept of events, which is a well-known concept in UI programming.iThis tutorial explains the functionality of agent triggering. For understanding the purpose of triggers you have to understand the concept of events, which is a well-known concept in UI programming.dThis tutorial explains the functionality of agent triggering. For understanding the purpose of triggers you have to understand the concept of events, which is a well-known concept in UI programming.eThis tutorial explains the functionality of agent triggering. For understanding the purpose of triggers you have to understand the concept of events, which is a well-known concept in UI programming.]This tutorial explains the functionality of agent triggering. For understanding the purpose of triggers you have to understand the concept of events, which is a well-known concept in UI programming.,
+	"provider" : {
+		"@type" : "Organization",
+		"name" : LightJason,
+		"sameAs" : https://lightjason.org
+	}
+}
+]</script></head><body data-previouspage="/tutorials/buildagentspeak" data-nextpage="/tutorials/actions"><div class="document"><div id="nav">☰</div><div class="documentwrapper"><div class="bodywrapper"><div class="body"><h1 id="root"><a href="#root">Tutorial: Trigger</a></h1><p>This tutorial explains the functionality of <em>agent triggering</em>. For understanding the purpose of triggers you have to understand the concept of events, which is a well-known concept in <a href="https://docs.oracle.com/javase/tutorial/uiswing/events/">UI programming</a>.</p><p></p><div id="toccontainer">Contents [<a href="#" id="tochideshow">Hide</a>]<div id="toc"></div></div><h2 id="previous-knowledge">Previous Knowledge</h2><p>The <a href="/tutorials/agentspeak-in-fifteen-minutes/">AgentSpeak 15min</a> tutorial defines the basic knowledge and working scenario.</p><h2 id="what-are-triggers">What are triggers?</h2><p>A short definition of triggers in LightJason’s agent concept: a trigger is</p><blockquote><p>an event written in a first-order logical literal</p></blockquote><p>On the other hand, the agent is</p><blockquote><p>an event listener which executes a plan if an event is released</p></blockquote><h3 id="what-kinds-of-triggers-do-exist">What kinds of triggers do exist?</h3><p>An agent is a <em>logical program</em> which defines some knowledge elements e.g. beliefbase and the beliefs, so there are different kinds of triggers to distinguish the elements:</p><ul><li><strong>add goal (+!)</strong> tells the agent try to reach the goal which is named by the trigger</li><li><strong>delete goal (-!)</strong> tells the agent that something is going wrong, the <em>delete goal</em> is executed iif a plan failed</li><li><strong>add belief (+)</strong> is created if a belief is pushed into the beliefbase</li><li><strong>delete belief (-)</strong> is created if a belief is removed from the beliefbase</li></ul><h2 id="how-can-i-use-them">How can I use them?</h2><p>From a global viewpoint, a trigger is created based on a <em>semantic definition</em>, so there is no defined type for calling a certain trigger in a situation. It depends on your conceptional view of your multi-agent system and your individual execution model.</p><p>The usage is very simple, the agent class supports a <a href="https://agentspeak.lightjason.org/sources/d1/db6/interfaceorg_1_1lightjason_1_1agentspeak_1_1agent_1_1IAgent.htm#a493f8fb001fd7d897b6854b93f0a7a09">trigger-method</a>, so create your trigger and call this method.</p><h3 id="java-implementation">Java Implementation</h3><p>A trigger is a combination of a <em>literal</em> and a <em>trigger type</em>. Both elements are defined as classes <a href="https://agentspeak.lightjason.org/sources/d1/d5a/classorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1CTrigger.htm">CTrigger</a> and <a href="https://agentspeak.lightjason.org/sources/d9/d18/enumorg_1_1lightjason_1_1agentspeak_1_1language_1_1instantiable_1_1plan_1_1trigger_1_1ITrigger_1_1EType.htm">ITrigger.EType</a>. The code shows the usage of a <em>add goal trigger</em> which defines with the first argument at <a href="#source-triggercreate.71">line 71</a> the type of the trigger and with the second argument at <a href="#source-triggercreate.73-75">line 73-75</a> the literal.</p>
+
+<p><pre class="language-java " id="source-triggercreate" ><code class="language-java">
+package myagentproject;
+import org.lightjason.agentspeak.language.CLiteral;
+import org.lightjason.agentspeak.language.CRawTerm;
+import org.lightjason.agentspeak.language.instantiable.plan.trigger.CTrigger;
+import org.lightjason.agentspeak.language.instantiable.plan.trigger.ITrigger;
+import java.io.FileInputStream;
+import java.util.Collections;
+import java.util.Set;
+import java.util.logging.LogManager;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+final class App
+{
+    static
+    {
+        
+        LogManager.getLogManager().reset();
+    }
+    
+    private App()
+    {
+    }
+    
+    public static void main( final String[] p_args )
+    {
+        if ( p_args.length &lt; 2 )
+            throw new RuntimeException( &#34;arguments are not set: ASL script, number of agents&#34; );
+        
+        
+        
+        
+        final Set&lt;MyAgent&gt; l_agents;
+        try
+            (
+                final FileInputStream l_stream = new FileInputStream( p_args[0] );
+            )
+        {
+            
+            l_agents = Collections.unmodifiableSet(
+                new MyAgentGenerator( l_stream )
+                    .generatemultiple( Integer.parseInt( p_args[1] ) )
+                    .collect( Collectors.toSet() )
+            );
+        }
+        catch ( final Exception l_exception )
+        {
+            l_exception.printStackTrace();
+            return;
+        }
+        
+        IntStream
+            .range(
+                0,
+                p_args.length &lt; 3
+                ? Integer.MAX_VALUE
+                : Integer.parseInt( p_args[2] )
+            )
+            .forEach( j -&gt; l_agents.parallelStream()
+                                   .forEach( i -&gt;
+                                   {
+                                       try
+                                       {
+                                           i.call();
+                                           
+                                           
+                                           if ( Math.random() &lt; 0.5 )
+                                               i.trigger(
+                                                   CTrigger.from(
+                                                       
+                                                       ITrigger.EType.ADDGOAL,
+                                                       
+                                                       CLiteral.from(
+                                                           &#34;special-goal&#34;,
+                                                           CRawTerm.from( 100 * Math.random() )
+                                                       )
+                                                   )
+                                               );
+                                       }
+                                       catch ( final Exception l_exception )
+                                       {
+                                           l_exception.printStackTrace();
+                                       }
+                                   } ) );
+    }
+}
+</code></pre>
+<p></p><h3 id="agentspeak-implementation">AgentSpeak Implementation</h3><p>The agent (in detail the ASL script) can handle the trigger iif a plan (an instantiated goal) exists which matches the literal. For this example the agents need only to define a plan which matches the literal (<a href="#source-triggercall.11">line 11</a>) and executes a print message (<a href="#source-triggercall.12">line 12</a>)</p>
+
+<p><pre class="language-agentspeak " id="source-triggercall" data-language="AgentSpeak(L++)"><code class="language-agentspeak">
+!main.
+&#43;!main &lt;-
+    generic/print(&#34;Hello World on agent&#34;, MyName);
+    !mynextgoal
+.
+&#43;!mynextgoal &lt;-
+    generic/print( &#34;Hello World again on agent&#34;, MyName );
+    !mynextgoal
+.
+&#43;!special-goal(X) &lt;-
+    generic/print( &#34;special goal with value&#34;, X, &#34;triggered on agent&#34;, MyName )
+.
+</code></pre>
+<p></p><h2 id="notes">Notes</h2><p>The <code>trigger</code>-method allows you to control the agent from Java-side, so that your system can execute any plans inside the agent. You can push the trigger at any time to the agent and the agent will execute the trigger as soon as possible, except you tell the agent that the trigger should be executed immediately (see the second argument of the method documentation). The agent can sleep, so in that case the trigger will be discarded.</p><h2 id="reference-solution">Reference Solution</h2><p>The reference solution is based on the <a href="/tutorials/agentspeak-in-fifteen-minutes">agentspeak-in-15min</a> tutorial; we extended this tutorial with trigger behaviour. If you struggled at some point or wish to obtain our exemplary solution with code documentation of this tutorial, you can download the archive containing the source code and an executable jar file:</p><ul><li><a href="https://github.com/LightJason/Examples/releases/download/tutorial-agent-trigger-v1.1.42/myagentapp-0.0.1-SNAPSHOT.jar">myagentapp-0.0.1-SNAPSHOT.jar</a></li><li><a href="https://api.github.com/repos/LightJason/Examples/zipball/tutorial-agent-trigger-v1.1.42">Zip Source</a></li></ul><p>We run the program two times with 3 agents and 4 cycles and get the following output, first run</p><pre><code class="language-commandline">Hello World on agent   980.697.799
+Hello World on agent   595.995.566
+Hello World on agent   1.142.993.467
+Hello World again on agent   595.995.566
+Hello World again on agent   980.697.799
+special goal with value   2.2248289532471044   triggered on agent   980.697.799
+Hello World again on agent   1.142.993.467
+special goal with value   76.80922753529944   triggered on agent   1.142.993.467
+Hello World again on agent   980.697.799
+Hello World again on agent   595.995.566
+special goal with value   37.108561892490954   triggered on agent   595.995.566
+Hello World again on agent   1.142.993.467
+Hello World again on agent   980.697.799
+special goal with value   2.0871955837920453   triggered on agent   980.697.799
+Hello World again on agent   595.995.566
+special goal with value   98.1913332685896   triggered on agent   595.995.566
+Hello World again on agent   1.142.993.467
+</code></pre><p>second run</p><pre><code class="language-commandline">Hello World on agent   212.890.971
+Hello World on agent   1.082.569.346
+Hello World on agent   1.258.955.623
+Hello World again on agent   212.890.971
+Hello World again on agent   1.082.569.346
+Hello World again on agent   1.258.955.623
+special goal with value   92.44063483887761   triggered on agent   1.258.955.623
+Hello World again on agent   212.890.971
+Hello World again on agent   1.082.569.346
+Hello World again on agent   1.258.955.623
+Hello World again on agent   212.890.971
+Hello World again on agent   1.082.569.346
+special goal with value   61.76316960019202   triggered on agent   1.082.569.346
+Hello World again on agent   1.258.955.623
+</code></pre><p>Based on the random execution of the trigger the results are different.</p></div><div class="sitepagination"><div class="left"><a href="/tutorials/buildagentspeak">How to Build AgentSpeak from Source</a> previous page</div><div class="right">next page <a href="/tutorials/actions">Actions</a></div></div></div></div><div class="sidebar" role="navigation" aria-label="main navigation"><div class="sidebarwrapper"><div class="logo"><a href="https://lightjason.org/">LightJason</a><div class="subtitle">Concurrent BDI multi-agent system</div></div><ul><li><a class="reference internal" href="/news/">News</a> <span class="sublink">(<a href="/news/index.xml">RSS</a>)</span></li><li><a class="reference internal" href="/publications/">Publications</a></li><li><a class="reference internal" href="/framework/">Framework</a></li><li><a class="reference internal" href="/benchmark/">Benchmark</a></li><li><a class="reference internal" href="/knowledgebase/">Knowledge Base</a></li><li><a class="reference internal" href="/tutorials/">Tutorials</a> <span class="sublink">(<a href="/tutorials/wizard">Wizard</a>)</span></li><li><a class="reference internal" href="/about/">About</a></li><li><a class="reference internal" href="/contact/">Contact</a></li><li><a class="reference internal" href="/credits/">Credits</a></li></ul><ul class="horizontal socialmedia"><li><a href="https://github.com/LightJason"><img src="/images/github.svg" alt="github" class="socialmediaimg"></a></li><li><a href="https://hub.docker.com/u/lightjason"><img src="/images/docker.svg" alt="docker" class="socialmediaimg"></a></li><li><a href="http://twitter.com/LightJasonAI"><img src="/images/twitter.svg" alt="twitter" class="socialmediaimg"></a></li><li><a href="https://vimeo.com/lightjason"><img src="/images/vimeo.svg" alt="vimeo" class="socialmediaimg"></a></li></ul><script>((window.gitter={}).chat={}).options={room:"LightJason/Lobby"}</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script><div class="sharebutton">Share on<ul class="horizontal socialmediaaction"><li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2flightjason.org%2ftutorials%2ftrigger%2f" title="Share on Facebook" target="_blank" onclick='return window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(document.URL)+"&t="+encodeURIComponent(document.URL)),!1'><img alt="Share on Facebook" src="/images/share_facebook.svg" class="socialmediaimg"></a></li><li><a href="https://plus.google.com/share?url=https%3a%2f%2flightjason.org%2ftutorials%2ftrigger%2f" target="_blank" title="Share on Google+" onclick='return window.open("https://plus.google.com/share?url="+encodeURIComponent(document.URL)),!1'><img alt="Share on Google+" src="/images/share_googleplus.svg" class="socialmediaimg"></a></li><li><a href="https://twitter.com/intent/tweet?source=https%3a%2f%2flightjason.org%2ftutorials%2ftrigger%2f&text=https%3a%2f%2flightjason.org%2ftutorials%2ftrigger%2f&via=LightJasonAI" target="_blank" title="Tweet" onclick='return window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(document.title)+":%20"+encodeURIComponent(document.URL)),!1'><img alt="Tweet" src="/images/share_twitter.svg" class="socialmediaimg"></a></li></ul></div></div></div><div class="clear"></div></div><div class="footer"><span class="contact">info [at] lightjason.org</span><ul class="horizontal"><li><a href="https://github.com/LightJason/Java-AgentSpeak">Java AgentSpeak(L++)</a></li><li><a href="https://www.researchgate.net/project/LightJason">ResearchGate</a></li><li>© 2019-04-06</li></ul></div></body></html>

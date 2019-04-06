@@ -1,0 +1,389 @@
+<!DOCTYPE html><html lang="en-GB"><head><meta name="msvalidate.01" content="2EB13C5538E9973D8DFC39C6A455DEFE"><meta name="google-site-verification" content="sVNU1mmaPgvbzlig03vdNtqHYnJNzvbdQYLCWqvtxRU"><meta name="description" content="The LightJason system architecture does not require any environment, but you can easily write your own."><meta name="keywords" content="AI, BDI, Agent, Multi-Agent System, Concurrency, Java, Development, Artificial Intelligence, Software, Psychology, Sociology, Simulation"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=0.95,maximum-scale=0.95"><script>!function(e,a,t,n,g,c,o){e.GoogleAnalyticsObject=g,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),o=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",o.parentNode.insertBefore(c,o)}(window,document,"script",0,"ga"),ga("create","UA-89676576-1","auto"),ga("send","pageview")</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" crossorigin="anonymous" async></script><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[["$","$"]],displayMath:[["$$","$$"]],processEscapes:!0,processEnvironments:!1,skipTags:["script","noscript","style","textarea","pre","code"],TeX:{equationNumbers:{autoNumber:"AMS"},extensions:["autoload-all.js"]}}})</script><script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js" crossorigin="anonymous" defer></script><script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script><script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/jquery-steps/1.1.0/jquery.steps.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/toolbar/prism-toolbar.min.js" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/show-language/prism-show-language.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/command-line/prism-command-line.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-highlight/prism-line-highlight.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-numbers/prism-line-numbers.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-java.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-prolog.min.js" crossorigin="anonymous" async></script><script src="//cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.1/mobile-detect.min.js" crossorigin="anonymous"></script><script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js" crossorigin="anonymous"></script><script src="https://lightjason.org/js/chartjs.boxplot.min.js"></script><script src="https://lightjason.org/js/chartjs.zoom.min.js"></script><script src="https://lightjason.org/js/colormap.min.js"></script><script src="https://lightjason.org/js/benchmark.js"></script><script src="https://lightjason.org/js/jquery.hammer.js" defer></script><script src="https://lightjason.org/js/prism-agentspeak.js" async></script><script src="https://lightjason.org/js/toc.min.js" async></script><script src="https://lightjason.org/js/teletype.js" async></script><script src="https://lightjason.org/js/script.js" defer></script><script src="https://lightjason.org/js/ljason.js" defer></script><link href="//fonts.googleapis.com/css?family=Pridi:200,300,400,500,600,700" rel="stylesheet" media="all"><link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous" media="screen"><link href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/css/lightbox.min.css" rel="stylesheet" media="screen"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism-coy.min.css" rel="stylesheet" media="all"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet" media="all"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/command-line/prism-command-line.min.css" rel="stylesheet" media="all"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-highlight/prism-line-highlight.min.css" rel="stylesheet" media="screen"><link href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" media="all"><link href="https://lightjason.org/css/layout.css" rel="stylesheet" media="all"><link href="https://lightjason.org/css/print.css" rel="stylesheet" media="print"><link href="https://lightjason.org/css/mobile.css" rel="stylesheet" media="screen and (max-width:1000px)"><link href="https://lightjason.org/css/jquery.steps.css" rel="stylesheet" media="screen"><link href="https://lightjason.org/images/favicon.png" type="image/png" rel="shortcut icon"><link href="https://lightjason.org/news/index.xml" type="application/rss+xml" rel="alternate" title="LightJason"><title>LightJason — Tutorial: Environment</title><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@LightJasonAI"><meta name="twitter:title" content="LightJason - Tutorial: Environment"><meta name="twitter:description" content="The LightJason system architecture does not require any environment, but you can easily write your own."><meta name="twitter:image" content="https://lightjason.org/images/logo.png"><meta property="og:site_name" content="LightJason"><meta property="og:url" content="https://lightjason.org/tutorials/environment/"><meta property="og:title" content="LightJason - Tutorial: Environment"><meta property="og:image" content="https://lightjason.org/images/logo.png"><meta property="og:description" content="The LightJason system architecture does not require any environment, but you can easily write your own."><script type="application/ld+json">[{
+	"@context": "http://schema.org",
+	"@type": "Organization",	
+	"name" : LightJason,
+	"email" : info@lightjason.org,
+	"url" : https://lightjason.org,
+	"logo" : https://lightjason.org/images/logo.png,
+	"founders": [{
+			"@type": "Person",
+			"email" : malte@lightjason.org,
+			"name" : Malte Aschermann,
+			"givenName" : Malte,
+			"familyName" : Aschermann
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/malte_aschermann.png
+		}
+		,{
+			"@type": "Person",
+			"email" : sophie@lightjason.org,
+			"name" : Sophie Dennisen,
+			"givenName" : Sophie,
+			"familyName" : Dennisen
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/sdennisen.jpg
+			, "sameAs" : [
+				http://xing.to/sdennisen,
+				http://www.linkedin.com/in/sdennisen,
+				https://www.researchgate.net/profile/Sophie_Dennisen
+			]
+		}
+		,{
+			"@type": "Person",
+			"email" : philipp@lightjason.org,
+			"name" : Philipp Kraus,
+			"givenName" : Philipp,
+			"familyName" : Kraus
+			, "image" : http://www.gravatar.com/avatar/2de3ae533823dae934d3b45b239f797c
+			, "sameAs" : [
+				http://xing.to/philippkraus,
+				http://www.linkedin.com/in/philipp-kraus,
+				https://www.researchgate.net/profile/Philipp_Kraus2
+			]
+		}
+		]
+},
+
+
+{
+	"@context": "http://schema.org",
+	"@type": "WebSite",
+	"name": LightJason,
+	"alternateName": LightJason,
+	"url":https://lightjason.org
+	, "license" : https://creativecommons.org/licenses/by-sa/4.0/
+	, "genre" : AI, BDI, Agent, Multi-Agent System, Concurrency, Java, Development, Artificial Intelligence, Software, Psychology, Sociology, Simulation, "keywords" : AI, BDI, Agent, Multi-Agent System, Concurrency, Java, Development, Artificial Intelligence, Software, Psychology, Sociology, Simulation
+	, "author" : [{
+			"@type": "Person",
+			"email" : malte@lightjason.org,
+			"name" : Malte Aschermann,
+			"givenName" : Malte,
+			"familyName" : Aschermann
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/malte_aschermann.png
+		}
+		,{
+			"@type": "Person",
+			"email" : sophie@lightjason.org,
+			"name" : Sophie Dennisen,
+			"givenName" : Sophie,
+			"familyName" : Dennisen
+			, "image" : http://meclab.in.tu-clausthal.de/images/people/sdennisen.jpg
+			, "sameAs" : [
+				http://xing.to/sdennisen,
+				http://www.linkedin.com/in/sdennisen,
+				https://www.researchgate.net/profile/Sophie_Dennisen
+			]
+		}
+		,{
+			"@type": "Person",
+			"email" : philipp@lightjason.org,
+			"name" : Philipp Kraus,
+			"givenName" : Philipp,
+			"familyName" : Kraus
+			, "image" : http://www.gravatar.com/avatar/2de3ae533823dae934d3b45b239f797c
+			, "sameAs" : [
+				http://xing.to/philippkraus,
+				http://www.linkedin.com/in/philipp-kraus,
+				https://www.researchgate.net/profile/Philipp_Kraus2
+			]
+		}
+		]
+}
+,{
+	"@context" : "http://schema.org",
+	"@type" : "TechArticle",
+	"headline" : Tutorial: Environment,
+	"proficiencyLevel" : "Beginner",
+	"wordCount" : 1800,
+	"datePublished" : 2017-01-01T12:00:00&#43;01:00,
+	"image" : https://lightjason.org/images/logo.png 
+}
+,{
+	"@context" : "http://schema.org",
+	"@type" : "Course",
+	"name" : Tutorial: Environment,
+	"description" :  The LightJason system architecture does not require any environment, but you can easily write your own.CThe LightJason system architecture does not require any environment, but you can easily write your own.oThe LightJason system architecture does not require any environment, but you can easily write your own.nThe LightJason system architecture does not require any environment, but you can easily write your own.tThe LightJason system architecture does not require any environment, but you can easily write your own.eThe LightJason system architecture does not require any environment, but you can easily write your own.nThe LightJason system architecture does not require any environment, but you can easily write your own.tThe LightJason system architecture does not require any environment, but you can easily write your own.sThe LightJason system architecture does not require any environment, but you can easily write your own. The LightJason system architecture does not require any environment, but you can easily write your own.[The LightJason system architecture does not require any environment, but you can easily write your own.HThe LightJason system architecture does not require any environment, but you can easily write your own.iThe LightJason system architecture does not require any environment, but you can easily write your own.dThe LightJason system architecture does not require any environment, but you can easily write your own.eThe LightJason system architecture does not require any environment, but you can easily write your own.]The LightJason system architecture does not require any environment, but you can easily write your own.,
+	"provider" : {
+		"@type" : "Organization",
+		"name" : LightJason,
+		"sameAs" : https://lightjason.org
+	}
+}
+]</script></head><body data-previouspage="/tutorials/communication" data-nextpage="/about"><div class="document"><div id="nav">☰</div><div class="documentwrapper"><div class="bodywrapper"><div class="body"><h1 id="root"><a href="#root">Tutorial: Environment</a></h1><p>The LightJason system architecture does not require any environment, but you can easily write your own.</p><p>Based on the <em>asynchronous and parallel</em> execution model in LightJason you have to create thread-safe data structures for your environment to avoid any <a href="https://en.wikipedia.org/wiki/Race_condition">race condition</a>. <strong>Keep in mind that all calls of the environment are done in parallel and asynchronously, so your environment must handle these accesses correctly.</strong></p><div id="toccontainer">Contents [<a href="#" id="tochideshow">Hide</a>]<div id="toc"></div></div><h2 id="previous-knowledge">Previous Knowledge</h2><p>The tutorial consists of three steps:</p><ol><li>create the basic agent structure based on the <a href="/tutorials/agentspeak-in-fifteen-minutes/">AgentSpeak 15min</a>, <a href="/tutorials/trigger/">Triggering</a> and <a href="/tutorials/actions/">Actions</a> tutorials</li><li>we use the <a href="/tutorials/actions/#object-actions-internal-actions">object-actions (internal actions)</a> to pass the calls from the agent to the environment</li><li>we create a <em>thread-safe</em> environment which can execute the <em>object-actions</em> from the agent.</li></ol><h2 id="environment">Environment</h2><p>For this example we use a small structure within which the agents should change their positions. The agents can move from one cell to the left or right, but the agents can only move if the cell is free. The number of cells is $1.5 \cdot \text{number of agents}$, so there are guaranteed free cells. The agent position will be set at random on initialisation.</p><img src="/images/environment.svg#centering" style="width:35%"><p>In the environment, we need two structures for storing, both structures must be thread-safe:</p><ul><li>a storage for the agents (the cell definition) <a href="#source-env.14">line 14</a></li><li>a map to store agent positions for read access <a href="#source-env.16">line 16</a></li></ul><p>For execution we need two methods:</p><ul><li>a method for initial set of the agent <a href="#source-env.36-50">line 36-50</a></li><li>the method for moving, which is used for the agent action <a href="#source-env.52-84">line 52-84</a></li></ul><p>With a trigger on <a href="#source-env.66-73">line 66-73</a> we notify all other agents if an agent changes the position in <a href="#source-env.79-80">line 79-80</a>. If the agent cannot move because the cell is not empty, we throw an exception on <a href="#source-env.83">line 83</a> and this will fail the agent action.</p>
+
+<p><pre class="language-java " id="source-env" ><code class="language-java">
+package myagentproject;
+import org.lightjason.agentspeak.language.CLiteral;
+import org.lightjason.agentspeak.language.CRawTerm;
+import org.lightjason.agentspeak.language.instantiable.plan.trigger.CTrigger;
+import org.lightjason.agentspeak.language.instantiable.plan.trigger.ITrigger;
+import javax.annotation.Nonnull;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicReferenceArray;
+final class CEnvironment
+{
+    
+    private final AtomicReferenceArray&lt;MyAgent&gt; m_position;
+    
+    private final Map&lt;MyAgent, Integer&gt; m_agentposition = new ConcurrentHashMap&lt;&gt;();
+    
+    private final int m_size;
+    
+    CEnvironment( final int p_size )
+    {
+        m_size = p_size;
+        m_position = new AtomicReferenceArray&lt;&gt;( new MyAgent[(int) ( m_size * 1.5 )] );
+    }
+    
+    final int length()
+    {
+        return m_size;
+    }
+    
+    final int size()
+    {
+        return m_position.length();
+    }
+    
+    final boolean initialset( @Nonnull final MyAgent p_agent, final int p_position )
+    {
+        
+        if ( m_agentposition.size() &gt;= m_size )
+            return true;
+        
+        if ( ( p_position &lt; 0 ) || ( p_position &gt;= m_position.length() ) )
+            return false;
+        if ( m_position.compareAndSet( p_position, null, p_agent ) )
+        {
+            m_agentposition.put( p_agent, p_position );
+            return true;
+        }
+        return false;
+    }
+    
+    final void move( @Nonnull final MyAgent p_agent, @Nonnull final Number p_value )
+    {
+        
+        
+        if ( ( p_value.intValue() &lt; 0 ) || ( p_value.intValue() &gt;= m_position.length() ) )
+            throw new RuntimeException( &#34;position index is incorrect&#34; );
+        
+        if ( m_position.compareAndSet( p_value.intValue(), null, p_agent ) )
+        {
+            final int l_oldposition = m_agentposition.get( p_agent );
+            
+            m_position.set( l_oldposition, null );
+            m_agentposition.put( p_agent, p_value.intValue() );
+            
+            final ITrigger l_trigger = CTrigger.from(
+                ITrigger.EType.ADDGOAL,
+                CLiteral.from(
+                    &#34;other/agent-position/changed&#34;,
+                    CLiteral.from( &#34;from&#34;, CRawTerm.from( l_oldposition ) ),
+                    CLiteral.from( &#34;to&#34;, CRawTerm.from( p_value.intValue() ) )
+                )
+            );
+            
+            m_agentposition
+                .keySet()
+                .parallelStream()
+                
+                .filter( i -&gt; !i.equals( p_agent ) )
+                .forEach( i -&gt; i.trigger( l_trigger ) );
+        }
+        else
+            throw new RuntimeException( &#34;position is not free&#34; );
+    }
+    
+    final int position( @Nonnull final MyAgent p_agent )
+    {
+        return m_agentposition.get( p_agent );
+    }
+}
+</code></pre>
+<p></p><h2 id="agent-with-environment-actions">Agent with environment actions</h2><p>The agent class must define the actions which passed the call to the environment. Based on this definition the action can be called inside the agent script.</p><h3 id="agent-class">Agent class</h3><p>In this example we implement the action as <a href="/tutorials/actions/#object-actions-internal-actions">object-action (internal action)</a> on <a href="#source-agentclass.23-28">line 23-28</a>. The method name can be arbitrarily chosen, so the annotation defines the action name. Arguments can be passed with the native Java type inside the method. The method passes the data to the method of the environment object in <a href="#source-agentclass.27">line 27</a>. The environment object is set by the constructor and stored inside the agent object <a href="#source-agentclass.15,17,20">line 15, 17, 20</a>. All agents references the same environment, because in Java all inheritance of objects are passed as references.</p>
+
+<p><pre class="language-java " id="source-agentclass" ><code class="language-java">
+package myagentproject;
+import org.lightjason.agentspeak.action.binding.IAgentAction;
+import org.lightjason.agentspeak.action.binding.IAgentActionFilter;
+import org.lightjason.agentspeak.action.binding.IAgentActionName;
+import org.lightjason.agentspeak.agent.IBaseAgent;
+import org.lightjason.agentspeak.configuration.IAgentConfiguration;
+import javax.annotation.Nonnull;
+@IAgentAction
+final class MyAgent extends IBaseAgent&lt;MyAgent&gt;
+{
+    
+    private static final long serialVersionUID = -5105593330267677627L;
+    
+    private final CEnvironment m_environment;
+    
+    MyAgent( @Nonnull final IAgentConfiguration&lt;MyAgent&gt; p_configuration, @Nonnull final CEnvironment p_environment )
+    {
+        super( p_configuration );
+        m_environment = p_environment;
+    }
+    
+    @IAgentActionFilter
+    @IAgentActionName( name = &#34;env/move&#34; )
+    private void envmove( @Nonnull final Number p_value )
+    {
+        m_environment.move( this, p_value );
+    }
+    
+    final int position()
+    {
+        return m_environment.position( this );
+    }
+}
+</code></pre>
+<p></p><h3 id="agent-agentspeak-l-script">Agent AgentSpeak(L++) Script</h3><p>The agent script can use the action <code>env/move</code> at <a href="#source-asl.10">line 10</a>. The parameter is the new position, but this can fail, so the whole can fail also. Here we encapsulate the action with a plan to handle failure execution. The failure execution starts with the plan <a href="#source-asl.15-20">line 15-20</a>. Each of the <em>movement plans</em> calls itself to create an <em>infinity loop</em> of moving. In parallel the plan <a href="#source-asl.21-23">line 21-23</a> will be executed if another agents have been moved.</p>
+
+<p><pre class="language-agentspeak " id="source-asl" data-language="AgentSpeak(L++)"><code class="language-agentspeak">
+!main.
+&#43;!main &lt;-
+    NewPosition = MyPosition &#43; 1;
+    NewPosition = NewPosition % EnvSize;
+    !!move( NewPosition )
+.
+&#43;!move(X) &lt;-
+    generic/print( &#34;agent&#34;, MyName, &#34;is on position&#34;, MyPosition, &#34;move to &#34;, X );
+    env/move( X );
+    X&#43;&#43;;
+    X = X % EnvSize;
+    !move( X )
+.
+-!move(X) &lt;-
+    Y = MyPosition - 1;
+    Y = Y &lt; 0 ? EnvSize &#43; Y : Y;
+    generic/print( &#34;agent&#34;, MyName, &#34;cannot move from&#34;, MyPosition, &#34;to &#34;, X, &#34;try to move to&#34;, Y );
+    !move(Y)
+.
+&#43;!other/agent-position/changed( from(X), to(Y) ) &lt;-
+    generic/print( &#34;agent&#34;, MyName, &#34;get information that other agent has moved from&#34;, X, &#34;to&#34;, Y )
+.
+</code></pre>
+<p></p><h2 id="agent-generator-with-environment">Agent generator with environment</h2><p>The agent generator is structured for a flexible environment, so with the constructor the environment object is set into <a href="#source-generator.13,15,29">line 13, 15, 29</a></p>
+
+<p><pre class="language-java " id="source-generator" ><code class="language-java">
+package myagentproject;
+import org.lightjason.agentspeak.common.CCommon;
+import org.lightjason.agentspeak.generator.IBaseAgentGenerator;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.io.InputStream;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+final class MyAgentGenerator extends IBaseAgentGenerator&lt;MyAgent&gt;
+{
+    
+    private final CEnvironment m_environment;
+    
+    MyAgentGenerator( @Nonnull final InputStream p_stream, @Nonnull final CEnvironment p_environment ) throws Exception
+    {
+        super(
+            
+            p_stream,
+            Stream.concat(
+                
+                CCommon.actionsFromPackage(),
+                
+                CCommon.actionsFromAgentClass( MyAgent.class )
+            ).collect( Collectors.toSet() ),
+            
+            new CVariableBuilder( p_environment )
+        );
+        m_environment = p_environment;
+    }
+    
+    @Nullable
+    @Override
+    public final MyAgent generatesingle( @Nullable final Object... p_data )
+    {
+        
+        final MyAgent l_agent = new MyAgent( m_configuration, m_environment );
+        
+        int l_position = (int) ( Math.random() * m_environment.size() );
+        while ( !m_environment.initialset( l_agent, l_position ) )
+            l_position = (int) ( Math.random() * m_environment.size() );
+        return l_agent;
+    }
+}
+</code></pre>
+<p></p><h3 id="variable-builder">Variable Builder</h3><p>For creating fast access to data of the environment (size) and agent name (hashcode) we use a variable builder that gets the environment also as reference in <a href="#source-variablebuilder.14,16,18">line 14, 16, 18</a>. The <em>generate</em> method creates constants for each plan <a href="#source-variablebuilder.23-30">line 23-30</a>. Regarding the environment data, <a href="#source-variablebuilder.28">line 28</a> creates a variable with the size of the environment</p>
+
+<p><pre class="language-java " id="source-variablebuilder" ><code class="language-java">
+package myagentproject;
+import org.lightjason.agentspeak.agent.IAgent;
+import org.lightjason.agentspeak.language.execution.IVariableBuilder;
+import org.lightjason.agentspeak.language.instantiable.IInstantiable;
+import org.lightjason.agentspeak.language.variable.CConstant;
+import org.lightjason.agentspeak.language.variable.IVariable;
+import javax.annotation.Nonnull;
+import java.text.MessageFormat;
+import java.util.stream.Stream;
+final class CVariableBuilder implements IVariableBuilder
+{
+    
+    private final CEnvironment m_environment;
+    
+    CVariableBuilder( final CEnvironment p_environment )
+    {
+        m_environment = p_environment;
+    }
+    
+    @Nonnull
+    @Override
+    public final Stream&lt;IVariable&lt;?&gt;&gt; apply( @Nonnull final IAgent&lt;?&gt; p_agent, @Nonnull final IInstantiable p_runningcontext )
+    {
+        return Stream.of(
+            new CConstant&lt;&gt;( &#34;MyPosition&#34;, p_agent.&lt;MyAgent&gt;raw().position() ),
+            new CConstant&lt;&gt;( &#34;MyName&#34;, MessageFormat.format( &#34;{0}&#34;, p_agent.hashCode() ) ),
+            new CConstant&lt;&gt;( &#34;EnvSize&#34;, m_environment.length() )
+        );
+    }
+}
+</code></pre>
+<p></p><h2 id="reference-solution">Reference Solution</h2><p>If you struggled at some point or wish to obtain our exemplary solution with code documentation of this tutorial, you can download the archive containing the source code and an executable jar file:</p><ul><li><a href="https://github.com/LightJason/Examples/releases/download/tutorial-environment-v1.1.41/myagentapp-0.0.1-SNAPSHOT.jar">myagentapp-0.0.1-SNAPSHOT.jar</a></li><li><a href="https://api.github.com/repos/LightJason/Examples/zipball/tutorial-environment-v1.1.41">Zip Source</a></li></ul><p>We run the example with 5 agents and 5 cycles (different runs returns different outputs)</p><pre><code class="language-commandline">agent   2.003.087.617   is on position   6   move to    2
+agent   544.479.674   is on position   2   move to    3
+agent   793.503.139   is on position   5   move to    1
+agent   2.135.449.562   is on position   3   move to    4
+agent   1.713.875.358   get information that other agent has moved from   3   to   4
+agent   1.713.875.358   get information that other agent has moved from   5   to   1
+agent   1.713.875.358   is on position   0   move to    1
+agent   2.135.449.562   get information that other agent has moved from   5   to   1
+agent   2.135.449.562   is on position   4   move to    0
+agent   544.479.674   get information that other agent has moved from   3   to   4
+agent   544.479.674   get information that other agent has moved from   5   to   1
+agent   544.479.674   cannot move from   2   to    3   try to move to   1.0
+agent   2.003.087.617   get information that other agent has moved from   3   to   4
+agent   2.003.087.617   get information that other agent has moved from   5   to   1
+agent   2.003.087.617   cannot move from   6   to    2   try to move to   5.0
+agent   793.503.139   is on position   1   move to    2
+agent   793.503.139   get information that other agent has moved from   3   to   4
+agent   1.713.875.358   cannot move from   0   to    1   try to move to   4.0
+agent   2.003.087.617   is on position   6   move to    5.0
+agent   544.479.674   is on position   2   move to    1.0
+agent   2.135.449.562   cannot move from   4   to    0   try to move to   3.0
+agent   793.503.139   cannot move from   1   to    2   try to move to   0.0
+agent   1.713.875.358   is on position   0   move to    4.0
+agent   1.713.875.358   get information that other agent has moved from   6   to   5
+agent   2.003.087.617   is on position   5   move to    1
+agent   2.135.449.562   get information that other agent has moved from   6   to   5
+agent   2.135.449.562   is on position   4   move to    3.0
+agent   544.479.674   get information that other agent has moved from   6   to   5
+agent   544.479.674   cannot move from   2   to    1.0   try to move to   1.0
+agent   793.503.139   is on position   1   move to    0.0
+agent   793.503.139   get information that other agent has moved from   6   to   5
+agent   1.713.875.358   cannot move from   0   to    4.0   try to move to   4.0
+agent   1.713.875.358   get information that other agent has moved from   4   to   3
+agent   2.003.087.617   get information that other agent has moved from   4   to   3
+agent   2.135.449.562   is on position   3   move to    4
+agent   2.003.087.617   cannot move from   5   to    1   try to move to   4.0
+agent   544.479.674   get information that other agent has moved from   4   to   3
+agent   544.479.674   is on position   2   move to    1.0
+agent   793.503.139   get information that other agent has moved from   4   to   3
+agent   793.503.139   cannot move from   1   to    0.0   try to move to   0.0
+agent   1.713.875.358   get information that other agent has moved from   3   to   4
+agent   1.713.875.358   is on position   0   move to    4.0
+</code></pre></div><div class="sitepagination"><div class="left"><a href="/tutorials/communication">Communication</a> previous page</div><div class="right">next page <a href="/about">About</a></div></div></div></div><div class="sidebar" role="navigation" aria-label="main navigation"><div class="sidebarwrapper"><div class="logo"><a href="https://lightjason.org/">LightJason</a><div class="subtitle">Concurrent BDI multi-agent system</div></div><ul><li><a class="reference internal" href="/news/">News</a> <span class="sublink">(<a href="/news/index.xml">RSS</a>)</span></li><li><a class="reference internal" href="/publications/">Publications</a></li><li><a class="reference internal" href="/framework/">Framework</a></li><li><a class="reference internal" href="/benchmark/">Benchmark</a></li><li><a class="reference internal" href="/knowledgebase/">Knowledge Base</a></li><li><a class="reference internal" href="/tutorials/">Tutorials</a> <span class="sublink">(<a href="/tutorials/wizard">Wizard</a>)</span></li><li><a class="reference internal" href="/about/">About</a></li><li><a class="reference internal" href="/contact/">Contact</a></li><li><a class="reference internal" href="/credits/">Credits</a></li></ul><ul class="horizontal socialmedia"><li><a href="https://github.com/LightJason"><img src="/images/github.svg" alt="github" class="socialmediaimg"></a></li><li><a href="https://hub.docker.com/u/lightjason"><img src="/images/docker.svg" alt="docker" class="socialmediaimg"></a></li><li><a href="http://twitter.com/LightJasonAI"><img src="/images/twitter.svg" alt="twitter" class="socialmediaimg"></a></li><li><a href="https://vimeo.com/lightjason"><img src="/images/vimeo.svg" alt="vimeo" class="socialmediaimg"></a></li></ul><script>((window.gitter={}).chat={}).options={room:"LightJason/Lobby"}</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script><div class="sharebutton">Share on<ul class="horizontal socialmediaaction"><li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2flightjason.org%2ftutorials%2fenvironment%2f" title="Share on Facebook" target="_blank" onclick='return window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(document.URL)+"&t="+encodeURIComponent(document.URL)),!1'><img alt="Share on Facebook" src="/images/share_facebook.svg" class="socialmediaimg"></a></li><li><a href="https://plus.google.com/share?url=https%3a%2f%2flightjason.org%2ftutorials%2fenvironment%2f" target="_blank" title="Share on Google+" onclick='return window.open("https://plus.google.com/share?url="+encodeURIComponent(document.URL)),!1'><img alt="Share on Google+" src="/images/share_googleplus.svg" class="socialmediaimg"></a></li><li><a href="https://twitter.com/intent/tweet?source=https%3a%2f%2flightjason.org%2ftutorials%2fenvironment%2f&text=https%3a%2f%2flightjason.org%2ftutorials%2fenvironment%2f&via=LightJasonAI" target="_blank" title="Tweet" onclick='return window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(document.title)+":%20"+encodeURIComponent(document.URL)),!1'><img alt="Tweet" src="/images/share_twitter.svg" class="socialmediaimg"></a></li></ul></div></div></div><div class="clear"></div></div><div class="footer"><span class="contact">info [at] lightjason.org</span><ul class="horizontal"><li><a href="https://github.com/LightJason/Java-AgentSpeak">Java AgentSpeak(L++)</a></li><li><a href="https://www.researchgate.net/project/LightJason">ResearchGate</a></li><li>© 2019-04-06</li></ul></div></body></html>
