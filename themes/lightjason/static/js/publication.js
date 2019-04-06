@@ -199,7 +199,7 @@
                       " (" + ( po.issued ? po.issued["date-parts"][0][0] : "" ) + "). "
                     );
                     // title
-                    lo.append( po.URL ? jQuery("<a>").attr("href", po.URL ).append( titlecase( po.title ) + "." ) : titlecase( po.title ) + "." ); 
+                    lo.append( po.URL ? jQuery("<a>").attr("href", po.URL ).append( po.title ) + "." : po.title + "." ); 
                     if ( po.DOI )
                         lo.append(' (')
                           .append( 
@@ -378,14 +378,6 @@
 
 
     // ---- private function ------------------------------------------------------------------------------------------------
-
-    /**
-     * As our bibtex file contains rather poorly formatted titles, etc. use this function to fancify titles
-     */
-    var titlecase = function ( str )
-    {
-        return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-    }
 
     /**
      * process BibJSON array
