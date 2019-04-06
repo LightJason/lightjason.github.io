@@ -98,7 +98,7 @@
             // title
             0 : function( po_this, po ) { 
                     var lo = jQuery('<span class="title">'); 
-                    lo.append( po.URL ? jQuery("<a>").attr("href", po.URL ).append( po.title ) : po.title ); 
+                    lo.append( po.URL ? jQuery("<a>").attr("href", po.URL ).append( po.title + "." ) : po.title + "." ); 
                     if ( po.DOI )
                         lo.append(' (')
                           .append( 
@@ -199,7 +199,7 @@
                       " (" + ( po.issued ? po.issued["date-parts"][0][0] : "" ) + "). "
                     );
                     // title
-                    lo.append( po.URL ? jQuery("<a>").attr("href", po.URL ).append( po.title ) + "." : po.title + "." ); 
+                    lo.append( po.URL ? jQuery("<a>").attr("href", po.URL ).append( po.title + "." ) : po.title + "." ); 
                     if ( po.DOI )
                         lo.append(' (')
                           .append( 
